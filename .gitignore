@@ -3,5 +3,7 @@
 *.sublime-workspace
 .DS_Store
 
+*/app/graphics
+
 node_modules/*
 resources
