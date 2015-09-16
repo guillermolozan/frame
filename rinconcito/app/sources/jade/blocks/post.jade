@@ -1,0 +1,11 @@
+-item = post
+div(class="post container row")
+	div(class="col l10 offset-l1 m12 s12")
+		
+		article(class="card-panel")
+			h1(class="card-title")
+				a(href="#{uri}") #{item.name}
+			div!= item.text
+			if(item.img)
+				img(src="#{item.img}",class="responsive-img")
+

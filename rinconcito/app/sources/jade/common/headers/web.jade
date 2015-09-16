@@ -1,0 +1,17 @@
+header(class="navbar-fixed")
+	nav(style="background-image:url('#{header_bg}')")
+		div(class="nav-wrapper container")
+			a(href="#{link_home}",class="brand-logo",title="#{name}"): img(src="#{pub_img}#{logo}",title="#{name}",alt="#{name}")
+			a(href="#",data-activates="mobile-nav",class="button-collapse"): i(class="mdi-navigation-menu")
+
+			//- div(class="phones hide-on-med-and-down")!= header_phones
+				
+		//- menu_top
+		div(class="menu hide-on-med-and-down")
+			ul(class="menu_top container")
+				+menu_items(menu_top)
+		//- div(class="white-bar")
+
+//- menu_left
+ul(class="menu_left side-nav",id="mobile-nav")
+	+menu_items_collapsible(menu_left)

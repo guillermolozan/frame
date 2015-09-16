@@ -1,0 +1,16 @@
+include ../../../../work/sources/jade/includes.jade
+		
+block body
+
+	include common/header.jade
+	
+	main(class="container row")
+
+		-responsive="col s12"
+
+		-grid=projects
+
+		.wide
+			include blocks/grid.jade
+	
+	include common/footer.jade

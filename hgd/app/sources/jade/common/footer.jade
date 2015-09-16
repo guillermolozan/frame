@@ -1,0 +1,13 @@
+footer(class="container")
+	nav(class="transparent z-depth-0")
+		ul
+			//- li: a ©2015 #{web_name}
+			li: a ©2015 HGD CONTRATISTAS S.A.C
+			//- bucle de menu
+
+		ul(class="right menu")
+			if(visiters)
+				li #{visiters} visitas
+			+menu_items(menu_footer)
+
+

@@ -1,0 +1,14 @@
+{
+  "name": "sgi",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "jade2php": "jade2php --pretty --omit-php-runtime --omit-php-extractor  app/sources/jade/layout*.jade --out app/views/php"
+  },
+  "author": "Guillermo Lozán",
+  "license": "ISC",
+  "dependencies": {
+    "jade2php": "^1.2.1"
+  }
+}

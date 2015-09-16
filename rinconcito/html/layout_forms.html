@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <base href="//localhost:8080/rinconcito/">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Contactenos - Rinconcito Ayacuchano</title>
+    <link href="../rinconcito/public/img/icon.png" rel="shortcut icon" type="image/png">
+    <link href="../rinconcito/public/vendor/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="../rinconcito/public/css/app.css" type="text/css" rel="stylesheet" media="screen,projection">
+    <link href="../rinconcito/public/vendor/css/venobox.css" type="text/css" rel="stylesheet" media="screen,projection">
+  </head>
+  <body>
+    <header class="navbar-fixed">
+      <nav style="background-image:url('http://rinconcitoayacuchano.com/imagenes_dir/blofot_imas/2015/08/03/blofot_1438663112_1152x160.jpg')">
+        <div class="nav-wrapper container"><a href="./" title="Rinconcito Ayacuchano" class="brand-logo"><img src="../rinconcito/public/img/logo.png" title="Rinconcito Ayacuchano" alt="Rinconcito Ayacuchano"></a><a href="#" data-activates="mobile-nav" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+        </div>
+        <div class="menu hide-on-med-and-down">
+          <ul class="menu_top container">
+            <li class="undefined"><a href="">Inicio</a></li>
+            <li class="undefined"><a href="nosotros">Nosotros</a></li>
+            <li class="undefined"><a href="servicios">Servicios</a></li>
+            <li class="undefined"><a href="restaurant">Restaurant</a></li>
+            <li class="undefined"><a href="carta">Nuestra Carta</a></li>
+            <li class="undefined active"><a href="contactenos">Contactenos</a></li>
+          </ul>
+        </div>
+        <div class="white-bar"></div>
+      </nav>
+    </header>
+    <ul id="mobile-nav" class="menu_left side-nav">
+      <li class="undefined"><a href="nosotros">Nosotros</a></li>
+      <li class="undefined"><a href="servicios">Servicios</a></li>
+      <li class="undefined"><a href="restaurant">Restaurant</a></li>
+      <li class="undefined"><a href="carta">Carta</a></li>
+      <li class="undefined active"><a href="contactenos">Contactenos</a></li>
+      <li class="local"><a href="carapongo">Carapongo</a></li>
+      <li class="local"><a href="lince">Lince</a></li>
+      <li class="local"><a href="los-olivos">Los Olivos</a></li>
+      <li class="local"><a href="tayta-shanti">Tayta Shanti</a></li>
+    </ul>
+    <main>
+      <div class="container post">
+        <div class="row">
+          <div class="col l10 offset-l1 m12 s12">
+            <article class="card-panel">
+              <h1 class="card-title"><a href="/contactenos">Contáctenos</a></h1>
+              <div class="row">
+                <form method="POST" name="contact" class="col s12 l9">
+                  <div class="input-field col s12">
+                    <input id="contact_name" name="name" type="text" value="" class="validate"/>
+                    <label for="name">Nombre</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <input id="contact_phone" name="phone" type="text" value=""/>
+                    <label for="phone">Teléfono</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <input id="contact_email" name="email" type="email" value="" class="validate"/>
+                    <label for="email">Email</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <textarea id="contact_text" name="text" class="materialize-textarea validate"></textarea>
+                    <label for="contact_text">Consulta</label>
+                  </div>
+                  <div class="input-field col s12">
+                    <button type="submit" class="btn waves-effect waves-blue">ENVIAR</button>
+                  </div>
+                </form>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <nav class="transparent z-depth-0">
+        <div class="container">
+          <ul>
+            <li>©2015 Rinconcito Ayacuchano</li>
+            <li class="right"><a href="http://prodiserv.com">prodiserv</a></li>
+            <li class="right">1002 visitas</li>
+          </ul>
+        </div>
+      </nav>
+    </footer>
+    <script src="../rinconcito/public/vendor/js/jquery-2.1.4.min.js"></script>
+    <script src="../rinconcito/public/vendor/js/materialize.min.js"></script>
+    <script src="../rinconcito/public/vendor/js/venobox.min.js"></script>
+    <script src="../rinconcito/public/js/app.js"></script>
+  </body>
+</html>

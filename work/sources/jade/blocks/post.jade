@@ -1,0 +1,32 @@
+if(post)
+	div(class="post")
+
+		if(menu_post)
+			div(class="col s3 hide-on-med-and-down")
+
+				if(group_post)
+					h2 #{group_post}
+					
+				ul(class="menu_post collection")
+					+menu_collection(menu_post)
+
+		div(class=menu_post?"col m12 l9":"col s12")
+			article(class="card-panel")
+				div(class="card-title")
+
+					if(main)
+						h1: +item(post)
+						-main=false
+					else
+						h2: +item(post)
+
+				if(post.sub)
+					h3 #{post.sub}
+
+				if(post.html)
+					div!= post.html
+				
+				if(post.img)
+					div.center-align
+						img(src="#{post.img}",class="responsive-img")
+

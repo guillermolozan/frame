@@ -1,0 +1,19 @@
+/* TEAM */
+	Chef and Developer: Guillermo Lozán
+	Twitter: @guillelozan
+	From: Lima, Perú
+
+	Chef and Web designer: Walter Távara
+	From: Lima, Perú
+
+/* SITE */
+	Last update: 2015/08/01
+	Language: Spanish
+	Doctype: HTML5
+	IDE: Sublime Text 3
+
+/* TECHNOLOGY */
+    CSS3, HTML5, ECMA SCRIPT 6
+    Apache 2, PHP 5.3, Mysql 5
+    jQuery, MaterializaCSS, Responsive web design,
+    Nodejs, NPM, gulp, require js, browserify, jade, stylus, babel

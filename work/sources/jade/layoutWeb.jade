@@ -1,0 +1,29 @@
+doctype html
+html(lang="es")
+
+	head
+		
+		base(href="#{base}")
+		meta(http-equiv="Content-Type",content="text/html; charset=UTF-8")
+		meta(name="viewport",content="width=device-width, initial-scale=1")
+		meta(http-equiv="X-UA-Compatible",content="IE=edge")
+		title #{head_title}
+		link(href="#{pub_img}#{icon}",rel="shortcut icon",type="image/png")
+		link(href="#{ven_css}materialize.min.css",type="text/css",rel="stylesheet",media="screen,projection")
+		link(href="#{pub_css}app.css",type="text/css",rel="stylesheet",media="screen,projection")
+		block head
+
+
+	body(class="#{classbody}")
+
+		block body
+
+		script(src="#{ven_js}jquery-2.1.4.min.js")
+		script(src="#{ven_js}materialize.min.js")
+		script(type='text/javascript').
+			var ven_css='#{ven_css}';
+		script(src="#{ven_js}loadcss.js")
+		script(src="#{ven_js}require.js",data-main="#{ven_js}")
+		script(src="#{pub_js}app.js")
+
+		block foot

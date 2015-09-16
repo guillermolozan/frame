@@ -1,0 +1,146 @@
+
+
+
+mixin video_responsive(video)
+	ul(class="collection with-header")
+		if(video.name)
+			li(class="collection-header"): h3 #{video.name}
+		li(class="video-container")
+			iframe(width="853",height="480",src="//www.youtube.com/embed/#{video.code}?rel=0",frameborder="0",allowfullscreen=true)
+
+
+
+mixin card(post)
+	.card
+		.card-content
+			if(post.name)
+				h3: +item(post)
+			if(post.html)
+				div!= post.html
+			if(post.text)
+				p= post.text
+			+img_item(post)
+			if(post.video)
+				.video-container
+					iframe(width="853",height="480",src="//www.youtube.com/embed/#{post.video}?rel=0",frameborder="0",allowfullscreen=true)
+
+
+
+mixin items_list(items)
+	each men_item in items
+		li(class="collection-item")
+			+link_item(men_item)
+
+
+
+mixin simple_list(items)
+	ul(class="collection")
+		+items_list(items)
+
+
+
+mixin header_list(list)
+	ul(class="collection with-header")
+		if(list.name)
+			li(class="collection-header"): h3 #{list.name}
+		+items_list(list.items)
+
+
+mixin list_card(list)
+	.card
+		.card-content
+			if(list.name)
+				span(class="card-title"): h3 #{list.name}
+			ul
+				+items_list(list.items)
+			if(list.items)
+				if(list.more)
+					a(class="more right",href="#{list.more.url}") #{list.more.name}
+
+
+
+mixin link_item(item)
+	if(item.target)
+		a(href="#{item.url}",title="#{item.name}",class="#{item.aclass}",target="#{item.target}") #{item.name}
+	else
+		a(href="#{item.url}",title="#{item.name}",class="#{item.aclass}") #{item.name}
+
+
+
+mixin item(item)
+	if(item.url)
+		+link_item(item)
+	else		
+		span #{item.name}
+
+
+mixin imgg(item)
+	if(item.name)
+		img(src="#{item.img}",
+			class="responsive-img",
+			alt="#{item.name}",
+			title="#{item.name}",
+			data-caption="#{item.name}")
+	else
+		img(src="#{item.img}",
+			class="responsive-img")
+
+
+mixin img_item(item)
+	if(item.img)
+		if(item.url)
+			if(item.target)
+				a(href="#{item.url}",target="#{item.target}",title="#{item.name}",class="#{item.aclass}")
+					+imgg(item)
+			else
+				a(href="#{item.url}",title="#{item.name}",class="#{item.aclass}")
+					+imgg(item)
+		
+		else		
+			img(src="#{item.img}",title="#{item.name}",alt="#{item.name}",class="responsive-img")
+
+
+mixin img_magnific(item)
+	a(href="#{item.img}",title="#{item.name}",class="#{item.aclass}")
+		img(src="#{item.img}",title="#{item.name}",alt="#{item.name}",class="responsive-img")
+
+
+mixin img_venobox(item)
+	a(class="venobox",
+		data-type="youtube",
+		href="http://youtu.be/#{item.video}")
+		img(src="http://i.ytimg.com/vi/#{item.video}/mqdefault.jpg",
+				class="responsive-img")
+
+mixin menu_collection(items)
+
+	each men_item in items
+		li(class="collection-item #{men_item.class}")
+			+link_item(men_item)
+
+
+mixin menu_items(items)
+
+	each men_item in items
+		li(class="#{men_item.class}")
+			+link_item(men_item)
+			if(men_item.items)	
+				ul(class="submenu z-depth-5")
+					+menu_items(men_item.items)
+
+
+
+mixin menu_items_collapsible(items)
+
+	each men_item in items
+		if(men_item.items)	
+			li(class="collapse")
+				a(class="collapsible-header waves-effect waves-teal #{men_item.class}") #{men_item.name}
+				div(class="collapsible-body")
+					ul
+						+menu_items(men_item.items)
+		else
+			li(class="#{clas}")
+				+link_item(men_item)
+
+

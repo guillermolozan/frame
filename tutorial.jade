@@ -1,0 +1,60 @@
+- app = 'rinconcito'
+doctype html
+html(lang="en")
+  head
+    title Tutorial
+    base(href="/")
+    meta(http-equiv="Content-Type",content="text/html; charset=UTF-8")
+    meta(name="viewport",content="width=device-width, initial-scale=1")
+    meta(http-equiv="X-UA-Compatible",content="IE=edge")
+    link(href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css",type="text/css",rel="stylesheet",media="screen,projection")
+  body
+    .container
+      h5.header cd
+      p(class="card-panel grey lighten-5 z-depth-1")
+        | cd frame
+
+      h5.header install gulp
+      p(class="card-panel grey lighten-5 z-depth-1")
+        | sudo npm i -D gulp; #[br]
+        | sudo npm i -D browserify babelify vinyl-source-stream gulp-watch gulp-jade gulp-stylus gulp-babel gulp-autoprefixer gulp-sourcemaps gulp-livereload gulp-data 
+
+
+      h5.header run gulp
+      p(class="card-panel grey lighten-5 z-depth-1")  
+        | gulp -p #{app}
+
+
+      h5.header run server
+      p(class="card-panel grey lighten-5 z-depth-1")
+        | http-server .
+
+
+      h5.header servers
+      div(class="card-panel grey lighten-5 z-depth-1")
+        .row
+          div(class="col s12 m3") server
+          div(class="col s12 m9") http://localhost:8080
+          div(class="col s12 m3") app
+          div(class="col s12 m9") http://localhost:8080/#{app}
+          div(class="col s12 m3") test
+          div(class="col s12 m9") http://localhost:8080/#{app}/app/views/html/layout.html
+          div(class="col s12 m3") tut
+          div(class="col s12 m9") http://localhost:8080/tutorial.html
+
+
+      h5.header run gulp for Tutorial
+      p(class="card-panel grey lighten-5 z-depth-1")
+        | gulp tutorial
+
+
+      h5.header run from jade 2 php in the project
+      p(class="card-panel grey lighten-5 z-depth-1")  
+        | cd #{app}; #[br]
+        | npm run jade2php #[br]
+        span(class="grey-text") jade2php --pretty --omit-php-runtime --omit-php-extractor  app/sources/jade/layout*.jade --out app/views/php
+
+
+
+
+

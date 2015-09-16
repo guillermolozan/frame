@@ -1,0 +1,154 @@
+
+
+// header
+header
+	@media $large
+		height auto !important	
+	nav
+		background-color white
+		height auto
+		line-height @height
+		@media $large
+			position relative !important
+			background-color menu_top_bgcolor
+		.button-collapse
+			color color2
+		h1
+			display none
+		.brand-logo
+			img
+				height 54px			
+				@media $small
+					height 34px
+					margin-top 10px
+			@media $large
+				opacity 0
+				width maxwide
+				height header_height
+				margin-top unquote('-'+ header_height)
+				img
+					width 100%
+					height 100%
+		a
+			text-transform uppercase
+	@media $large		
+		&::before
+			display block
+			background header_bg
+			height header_height	
+			content ""	
+			width 100%
+			
+
+
+
+
+.menu_top
+	height menu_top_height
+	margin-top 0px
+	display block
+	li
+		height auto
+		a
+			color menu_top_textcolor
+			font-weight 700
+			font-size 0.9rem
+			height menu_top_height
+			line-height @height
+			&:hover
+				text-decoration none
+
+
+
+
+
+.menu
+	// background red !important
+	> li
+		// background-image linear-gradient(top,transparent,lighten(color2,15))
+		position relative
+		margin-right 2px
+		a:hover
+			color inherit !important
+		.submenu
+			display none
+			position absolute
+			top 100%
+			left 0px
+			background white
+			min-width 100%
+			width auto
+			> li
+				display block
+				width 100%
+				border-bottom 1px solid color6
+				&:last-child
+					border-bottom 0
+				>a
+					color black
+					display block
+					white-space nowrap
+					height 40px
+					line-height @height
+					&:hover
+						color black !important
+		&:hover
+			.submenu
+				display block
+				
+		
+
+
+
+
+
+.menu_left	
+	li
+		border-bottom 1px solid color6
+		&:last-child
+			border-bottom 0
+		a
+			line-height 1.5em !important
+			height auto !important
+			padding-top 1em
+			padding-bottom 1em
+			display block
+			vertical-align middle
+			// &.collapsible-header
+			// 	font-weight bold
+	.collapsible-body
+		li
+			border-bottom 0
+			a
+				margin-left 1em
+				color color1
+				font-weight normal				
+			&.active
+				background-color lighten(#ddd,4)
+				a
+					color color2
+	&.collapsible-accordion
+		li.collapse
+			padding 0
+			
+
+
+
+
+
+
+		
+@media $large
+	body.headfixed
+		padding-top header_height + menu_top_height
+		header
+			nav
+				position fixed !important
+				top 0px
+			&::before
+				display none
+					
+
+
+			
+

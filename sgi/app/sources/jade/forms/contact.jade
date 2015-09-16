@@ -1,0 +1,24 @@
+div(class="post")
+	div(class="row")
+		div(class="col s12")
+			+card_sended(message)
+		div(class="col l6 m12 s12 text") 
+			| Teléfono: (+511) 275 - 5045 #[br]
+			| E-mail: info@sginvestments.pe
+		div(class="col l6 m12 s12 form")
+			article(class="card-panel")
+				div(class="card-title")
+
+					if(main)
+						h1: a(href="#{uri}") Contáctenos
+					else
+						h2: a(href="#{uri}") Contáctenos
+						-main=false
+
+					form(method="POST",name="contact")
+						
+						+simple_form('contact',fields)
+
+						+input_submit('ENVIAR')
+
+

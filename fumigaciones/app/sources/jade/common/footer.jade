@@ -1,0 +1,16 @@
+
+include footer_pre
+
+footer(class="container row")
+	nav(class="transparent z-depth-0 col s12")
+
+		ul: li: a ©2015 #{web_name}
+
+		//- bucle de menu
+		ul(class="right menu")
+			if(visiters)
+				li(class="black-text") #{visiters} visitas
+			+menu_items(menu_footer)
+
+
+//- include footer_after				

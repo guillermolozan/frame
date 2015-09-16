@@ -1,0 +1,7 @@
+nav(class="light-blue accent-4")
+	//- bucle de menu
+	ul
+		each item in menu_top
+			li(class="right"): a(href="#{item.url}") #{item.name}
+	//- boton de menu en mobile
+	a(href="#",data-activates="slide-out",class="button-collapse"): i(class="mdi-navigation-menu")

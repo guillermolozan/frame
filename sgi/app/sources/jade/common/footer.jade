@@ -1,0 +1,20 @@
+footer
+	.container
+		ul
+			li: h3 CONTÁCTANOS
+			li(class="facebook icon-circle") 
+				a(title="Facebook",target="_blank",href="https://www.facebook.com/sginvestmentssac")
+			li(class="youtube icon-circle") 
+				a(title="Youtube",target="_blank",href="https://www.facebook.com/sginvestmentssac")
+			li: span Teléfono (+511) 275-5045
+			li: span E-mail: info@sginvestments.pe
+			//- bucle de menu
+
+		ul(class="right menu")
+			li: h3 LA EMPRESA
+			if(visiters)
+				li #{visiters} visitas
+
+			+menu_items(menu_footer)
+
+

@@ -1,0 +1,10 @@
+-item = popup
+
+if(popup)
+	div(id="popup",class="modal")
+		div(class="modal-footer")
+			a(onclick="javascript:$('#modal1').closeModal();",class="modal-action modal-close waves-effect waves-green btn-flat") Cerrar
+		div(class="modal-content center-align")
+			//- h4 #{item.name}
+			img(src="#{item.img}",class="responsive-img",alt="#{item.name}",title="#{item.name}")
+

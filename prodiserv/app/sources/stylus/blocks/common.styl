@@ -1,0 +1,97 @@
+
+.collection
+	.collection-item
+		padding 7px 5px
+		a
+			display block
+			font-weight 400
+			font-size 0.85em
+			// color color5
+		&.active
+			background-color lighten(black,40)
+			color white
+			a
+				color inherit
+				
+				
+.footerpre1
+	margin-top -20px
+	padding-bottom 1em
+	background-color darken(#A7D747,0)
+	h3
+		color white 
+		text-transform uppercase
+		font-size 1.2em
+		font-weight bold
+	ul
+		@media $small-medium 
+			min-height 220px
+		li
+			a
+				color black
+				font-size 0.8em
+				position relative
+				&:before
+					content "-"
+					// font-family icomoon
+					font-size 1em
+					position absolute
+					left -1em
+					top 0em
+					@media $small-medium 
+						content ""
+	.container
+		position relative	
+		.icom
+			position absolute
+			color black
+			font-size 1.5em
+			&:hover
+				text-decoration none
+			
+		.facebook
+			bottom 14px
+			right 3em
+		.twitter
+			bottom 14px			
+			right 1em
+
+.footerpre2
+	background-color black
+	margin-top -20px !important
+	background-color footer_pre_bgcolor
+	color white
+	strong 
+		color white
+			
+
+footer
+	background-color black
+	li
+		a
+			color white !important	
+	.submenu
+		a
+			color black !important
+					
+form
+	.btn
+		background-color rgba(#357BB2, 1)
+		&:hover
+			background-color rgba(color1, 1)
+	.input-field 
+		label
+			color black
+	
+			
+// main,footer
+	// background-color lighten(color6,60)
+	
+
+article
+	> div
+		strong
+			color darken(#357BB2,30)
+			
+
+		

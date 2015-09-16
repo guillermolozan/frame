@@ -1,0 +1,42 @@
+.bold, .bold a { font-weight: bold; }
+
+ul.side-nav.fixed li {
+  line-height: 44px;
+}
+.side-nav.fixed a {
+	line-height: 1.35em;
+	padding: 0.75em 15px;
+	height: auto;	
+}
+
+header, main, footer {
+    padding-left: 380px;
+  }
+
+@media only screen and (max-width : 992px) {
+ header, main, footer {
+   padding-left: 0;
+ }
+}
+      
+
+
+
+body {
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
+main {
+	flex: 1 0 auto;
+}
+
+.brand-logo img {
+	height: 60px;
+}
+
+/*.side-nav .collapsible-body li.active, 
+.side-nav.fixed .collapsible-body li.active {
+  background-color: #ee6e73;
+}*/

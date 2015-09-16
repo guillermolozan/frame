@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Tutorial</title>
+    <base href="/">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.0/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+  </head>
+  <body>
+    <div class="container">
+      <h5 class="header">cd</h5>
+      <p class="card-panel grey lighten-5 z-depth-1">cd /frame</p>
+      <h5 class="header">install gulp</h5>
+      <p class="card-panel grey lighten-5 z-depth-1">sudo npm i -D gulp <br>sudo npm i -D browserify babelify vinyl-source-stream gulp-watch gulp-jade gulp-stylus gulp-babel gulp-autoprefixer gulp-sourcemaps gulp-livereload gulp-data </p>
+      <h5 class="header">run gulp</h5>
+      <p class="card-panel grey lighten-5 z-depth-1">
+         
+        gulp
+      </p>
+      <h5 class="header">run server</h5>
+      <p class="card-panel grey lighten-5 z-depth-1">http-server .</p>
+      <h5 class="header">servers</h5>
+      <div class="card-panel grey lighten-5 z-depth-1">
+        <div class="row">
+          <div class="col s12 m3">server</div>
+          <div class="col s12 m9">http://localhost:8080</div>
+          <div class="col s12 m3">app</div>
+          <div class="col s12 m9">http://localhost:8080/rinconcito</div>
+          <div class="col s12 m3">test</div>
+          <div class="col s12 m9">http://localhost:8080/rinconcito/app/views/html/layout.html</div>
+          <div class="col s12 m3">tut</div>
+          <div class="col s12 m9">http://localhost:8080/tutorial.html</div>
+        </div>
+      </div>
+      <h5 class="header">run gulp for Tutorial</h5>
+      <p class="card-panel grey lighten-5 z-depth-1">gulp tutorial</p>
+      <h5 class="header">run from jade 2 php in the project</h5>
+      <p class="card-panel grey lighten-5 z-depth-1"> cd rinconcito; <br>npm run jade2php <br><span class="grey-text">jade2php --pretty --omit-php-runtime --omit-php-extractor  app/sources/jade/layout*.jade --out app/views/php</span></p>
+    </div>
+  </body>
+</html>

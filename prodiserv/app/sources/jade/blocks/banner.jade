@@ -1,0 +1,12 @@
+//- include ../../../../../work/sources/jade/blocks/banner.jade
+
+if(banner)
+	.container
+		div(class="slider")
+			ul(class="slides")
+				each item in banner
+					li
+						img(src="#{item.img}")
+						div(class="caption #{item.class}")
+							h3 #{item.name}
+							h5(class="light grey-text text-lighten-3") #{item.text}

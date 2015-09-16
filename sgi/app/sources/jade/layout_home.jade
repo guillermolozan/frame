@@ -1,0 +1,63 @@
+include ../../../../work/sources/jade/includes.jade
+
+block body
+
+	include common/header.jade
+
+	//- img(src="index.jpg",width="1500")
+
+	include blocks/banner.jade
+	//- .slider: ul.slides: li: img(class="",src="#{pub_img}photo1.jpg")
+	
+	//- main(class="container row") S-GROUP & INVESTMENTS
+
+	section(class="line_two")
+		div
+			div(class="row titl")
+
+				div(class="col s12 m12 l6 lef")
+					h3 PRODUCTOS ESTRELLA
+
+				div(class="col s12 m12 l6 rig")
+					a(class="btn",href="productos") VER MÁS
+
+			div(class="row prods")
+
+				each item in products
+					div(class="col s12 m12 l4 ")
+						div
+							img(src="#{item.img}")
+							a(class="btn",href="producto-producto/#{item.url}") #{item.name}
+
+
+
+	//- section(class="line_three row")
+		
+	//- 	div(class="col s12")
+
+	//- 		h3 TIERRAS
+
+	//- 		p!= tierras.text
+
+	//- 		a(href="tierras") leer más
+
+	section(class="line_four row")
+
+		div(class="col s12 m6 photo")
+			img(src="#{pub_img}photo2.jpg",class="responsive-img")
+
+		div(class="col s12 m6 texto")
+		
+			p!= nosotros.text
+
+			a(href="nosotros") Leer más &#8594;
+
+	section(class="line_five row")
+
+		div(class="col s12")
+
+			h2 COMPRA PRODUCTOS DE LA MEJOR CALIDAD
+			p Contáctanos y pide cotizaciones de los mejores productos.
+			a(class="btn",href="contactenos") CONTÁCTANOS
+
+	include common/footer.jade

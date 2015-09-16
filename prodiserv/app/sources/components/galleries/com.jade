@@ -1,0 +1,23 @@
+-items = gallery.items
+-name  = gallery.name
+-sub   = gallery.sub
+-com   = 'com-galleries'
+
+if(items)
+	div(class="#{com} section container",id="gallery-photo-#{index}")
+		h4 #[i(class="icon-pictures")] #{name}
+		h5 #{sub}
+		div(class="row")
+			each item in items
+				div(class="col s12 m4 l3 item ")
+					div(class="z-depth-1")
+						if(item.name)
+							img(src="#{item.img}",
+								class=" materialboxed responsive-img",
+								alt="#{item.name}",
+								title="#{item.name}",
+								data-caption="#{item.name}")
+						else
+							img(src="#{item.img}",
+								class=" materialboxed responsive-img")
+

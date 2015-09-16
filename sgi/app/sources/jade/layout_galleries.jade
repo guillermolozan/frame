@@ -1,0 +1,14 @@
+include ../../../../work/sources/jade/includes.jade
+		
+block body
+
+	include common/header.jade
+	
+	main(class="row")
+
+		-item_responsive = "col s12 m4"
+		
+		//- .wide
+		include blocks/gallery.jade
+	
+	include common/footer.jade

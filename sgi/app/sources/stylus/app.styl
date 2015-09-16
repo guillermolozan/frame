@@ -1,0 +1,77 @@
+// icomoon
+@import '../../../../work/sources/stylus/icomoon.styl'
+
+	
+// dirs
+imgs               = '../../public/img/'
+load_imgs          = '../../../public/img/'
+
+
+// colors
+angle              =0deg
+
+color1             =#3A2F73 + angle //red
+color2             =#67BDBC + angle //blue
+color3             =#9e9e9e + angle + angle //grey
+color4             =skyblue + angle //black
+color5             =#014087 + angle
+color6             =#40b3ff + angle
+
+
+
+// blocks
+body_color         =#FFF
+
+//header
+header_img_path	 =load_imgs+'header-bg.jpg'
+header_bg          =transparent url(imgs+'logo-2.png') no-repeat left
+header_height      =image-size(header_img_path)[1]
+
+//menu_top
+menu_top_bgcolor   =color1
+menu_top_textcolor =white
+menu_top_height 	 =42px
+
+//main
+main_bgcolor       =transparent
+
+//footer
+footer_bgcolor     =color2
+footer_textcolor   =white
+
+
+
+// widths
+// maxwide            =image-size(header_img_path)[0]
+maxwide            = 1030px
+mobile             = 600px
+tablet             = 992px
+
+
+
+// media queries
+$small        = 'only screen and (max-width : '+mobile+')'
+$small-medium = 'only screen and (max-width : '+tablet+')'
+$large        = 'only screen and (min-width : '+tablet+')'
+$medium-large = 'only screen and (min-width : '+mobile+')'
+$maxim        = 'only screen and (max-width : '+maxwide+')'
+
+
+//blocks
+@import '../../../../work/sources/stylus/common.styl'
+@import '../../../../work/sources/stylus/galleries.styl'
+
+
+
+//blocks
+@import 'blocks/*'
+
+
+
+
+//layouts
+@import 'layouts/*'
+
+
+
+

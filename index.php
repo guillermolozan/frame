@@ -1,0 +1,1 @@
+<?php chdir('hgd'); include 'index.php';

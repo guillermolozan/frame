@@ -1,0 +1,50 @@
+
+
+mixin input_text(name,line,clas)
+
+	div(class="input-field #{clas}")
+		input(id="#{name}_#{line.name}",name="#{line.name}",type="#{line.type}",class="#{line.class}",value="#{line.value}")
+		label(for="#{line.name}") #{line.label}
+
+
+mixin input_textarea(name,line,clas)
+
+	div(class="input-field #{clas}")
+		textarea(id="#{name}_#{line.name}",name="#{line.name}",class="materialize-textarea #{line.class}") #{line.value}
+		label(for="#{name}_#{line.name}") #{line.label}
+
+mixin simple_input_text(name,line,clas)
+
+	div(class="#{clas}")
+		input(id="#{name}_#{line.name}",placeholder="#{line.label}",name="#{line.name}",type="#{line.type}",class="#{line.class}",value="#{line.value}")
+
+
+mixin simple_input_textarea(name,line,clas)
+
+	div(class="#{clas}")
+		textarea(id="#{name}_#{line.name}",placeholder="#{line.label}",name="#{line.name}",class="materialize-textarea #{line.class}") #{line.value}
+
+
+mixin input_submit(msg)
+	div(class="input-field col s12")
+		button(class="btn waves-effect waves-blue",type="submit") #{msg}
+
+
+mixin form(name,form)
+	each item in form
+		if(item.type=='textarea')
+			+input_textarea(name,item,"col s12")
+		else
+			+input_text(name,item,"col s12")
+
+
+mixin simple_form(name,form)
+	each item in form
+		if(item.type=='textarea')
+			+simple_input_textarea(name,item,"col s12")
+		else
+			+simple_input_text(name,item,"col s12")
+
+mixin card_sended(msg)
+	if(msg)
+		div(class="card-panel lime lighten-5") #{msg}

@@ -1,0 +1,11 @@
+-items = slides
+if(items)
+	div(class="slider")
+		ul(class="slides")
+			each item in items
+				li
+					img(src="#{item.img}")
+					div(class="caption #{item.class}")
+						h3 #{item.name}
+						h5(class="light grey-text text-lighten-3") #{item.text}
+  

@@ -1,0 +1,98 @@
+.p-home
+	@media $large
+		main
+			margin-bottom 0
+			background-color lighten(#EAEAEA,5)
+		.bar
+			h1,h2
+				font-size 1em
+				font-weight bold
+			h3
+				font-size 0.9em
+			h4,h5
+				font-size 0.9em
+				// margin-bottom 0.4em
+			h6
+				margin-top 0.5em
+			&.sidelef
+				.card
+					min-height 0
+					padding-left 30px
+					background white url(imgs+'arrow.png') no-repeat
+					h4
+						min-height 0.65em
+						line-height @min-height
+						vertical-align middle
+						font-size 1em
+			&.sideright
+				h4
+					margin-top 0
+					// max-height 2.1em
+					// overflow hidden	
+				
+		.post
+			h2
+				font-size 0.9em
+				margin 0
+			.card-panel
+				min-height 467px
+				
+				
+		.homefooter
+			
+			background-color color5
+			a,p
+				color white !important		
+			ul
+				// border-color darken(color2,4)
+				border-color transparent !important
+				
+				li
+					background-color color5
+					// border-color inherit !important
+					border-color inherit !important
+					margin-bottom 0.7em
+					padding-bottom 0.5em
+					a
+						font-size 0.9em
+						overflow hidden
+						max-height 3em
+						display block
+			.block_one
+				li	
+					border-bottom 1px solid #e0e0e0 !important
+				a.more
+					color color6 !important
+					text-decoration underline
+					
+			.block_two
+				.card-content
+					padding-bottom 0
+					ul
+						margin-bottom 0
+						li
+							margin-bottom 0.2em
+			.block_four
+				.card-content
+					padding-left 5px
+					padding-right 5px
+					font-size 0.9em
+						
+			div
+				background-color inherit !important
+				border-color transparent !important
+				// box-shadow none
+			.card
+				background-color color5
+				min-height 270px
+				@media $small-medium	
+					min-height 0
+				li
+					font-size 0.9rem
+					
+			h3
+				font-size 1.2rem
+				margin 0
+				margin-bottom 0.5em
+				color color6
+				text-align center

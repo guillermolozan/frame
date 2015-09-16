@@ -1,0 +1,14 @@
+div(class="container post")
+	div(class="row")
+		div(class="col l10 offset-l1 m12 s12")
+			+card_sended(message)
+			article(class="card-panel")
+				h1(class="card-title"): a(href="#{uri}") Contáctenos
+				div(class="row")
+					form(class="col s12 l9",method="POST",name="contact")
+						
+						+form('contact',fields)
+
+						+input_submit('ENVIAR')
+
+

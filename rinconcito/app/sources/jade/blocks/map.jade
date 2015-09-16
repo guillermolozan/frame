@@ -1,0 +1,18 @@
+-item = map
+div(class="maps scrollspy",id="ubicacion")
+	h4 #[i(class="icon-location")] UBICACIÓN
+	div(class="card")
+		class(class="card-content row")
+			div(class="col s12 m9")
+				div(id="map",
+					data-name="#{item.name}",
+					data-lat="#{item.lat}",
+					data-lon="#{item.lon}",
+					data-text="#{item.text}")
+			div(class="col s12 m3")
+				h5 Dirección
+				div.section
+					p #{item.address}
+				div.divider
+				div.section
+					p #{item.phone}

@@ -1,0 +1,119 @@
+.icon-circle
+	position relative	
+	content ''
+	width 34px
+	height @width
+	border-radius 50%
+	background-color white
+	padding 0 !important
+	margin 0 !important
+	overflow hidden
+	&:hover
+		a
+			color transparent !important	
+	&:before
+		font-family icomoon
+		position absolute
+	a
+		display block
+		width 100%
+		height 100%
+		float left
+		margin 0
+		padding 0
+		position relative
+		z-index 0
+		color transparent !important		
+		// background-color rgba(red,0.4)
+	&.facebook
+		&:before
+			content "\e673"
+			font-size 1.5em
+			top 3px
+			left 3px
+	&.youtube
+		&:before
+			content "\e674"
+			font-size 1.4em
+			top 6px
+			left 6px		
+			
+
+.collection
+	.collection-item
+		a
+			color color1
+			text-transform uppercase
+			display block
+			font-weight 400
+		&.active
+			background-color color2
+			color white
+			a
+				color inherit
+
+
+footer
+	background url(imgs+'grass_green.jpg') bottom center repeat-x
+	height 275px
+	margin-top 0px !important
+	background-color footer_bgcolor
+	margin-bottom 0
+	// overflow hidden
+	@media $small-medium	
+		padding-left 1em
+		padding-right 1em
+	ul
+		margin-top 20px
+		margin-right 9.3em
+		float left		
+		li
+			position relative
+			margin-bottom 4px
+			&.icon-circle
+				margin-top 15px !important
+				margin-bottom 15px !important
+				&:hover
+						background-color black					
+				&:before
+					color #67BDBC 		
+			h3
+				color #53888B
+				margin-top 1em
+				margin-bottom 2em
+				font-weight 700
+			a,span
+				color white
+				font-weight 400
+			a
+				padding-left 10px
+				&:before
+					content "."
+					color white
+					position absolute
+					left -2px
+					bottom 0px
+					font-size 2em
+				&.prodiserv
+					// margin-top 50px
+					float left
+					color #67BDBC
+					&:hover
+						color white
+					&:before
+						content ""
+
+	
+.post
+	max-width 1280px		
+	h1
+		display none	
+	.card-panel
+		box-shadow none
+		.text
+			font-size 1.55em
+			p 
+				font-weight 300
+				strong
+					font-weight 400
+				

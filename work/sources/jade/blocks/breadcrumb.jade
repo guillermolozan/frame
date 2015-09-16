@@ -1,0 +1,8 @@
+if(breadcrumb)
+	.container
+		ul(class="breadcrumb")
+			each item in breadcrumb
+				if(item.class)
+					li(class="#{item.class}"): h3: +item(item)
+				else
+					li: h3: +item(item)

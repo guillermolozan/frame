@@ -1,0 +1,25 @@
+//- ul(id="slide-out",class="side-nav fixed z-depth-3")
+  li(class="no-padding")
+    a(href="#{link_home}"): img(src="#{pub_img}#{logo}",style="width:100%;")
+  //- bucle de grupo
+  each aa in menu_left
+    li(class="no-padding")
+      ul(class="collapsible collapsible-accordion")
+        li
+          if aa.active
+            - classActive = "active";
+          else 
+            - classActive = "";          
+          a(class="bold collapsible-header waves-effect waves-red #{classActive} ") #{aa.name}
+          div(class="collapsible-body")
+            ul
+              //- bucle de item
+              each bb in aa.menu
+                if(bb.section)
+                  li: a(class="bold deep-orange-text text-darken-3") #{bb.section}
+                else
+                  if bb.active
+                    - classActive = "teal active";
+                  else 
+                    - classActive = "";
+                  li(class="#{classActive}"): a(href="modules/#{bb.url}") #{bb.name}

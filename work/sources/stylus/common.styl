@@ -1,0 +1,190 @@
+// for all
+body
+	display flex
+	min-height 100vh
+	flex-direction column
+	// background-color lighten(brown,55)
+	@media $large
+		background-color body_color
+		
+
+// *
+	// transition:all 0.5s linear;
+
+		
+
+main
+	flex 1 0 auto
+	// background-image linear-gradient(0,transparent,darken(white,4))
+	// background-color darken(white,4)
+	// outline 1.5em solid darken(white,4)
+	// padding 0 1em
+	@media $large
+		background-color main_bgcolor	
+		
+
+
+footer
+	margin-top -20px !important
+	background-color footer_bgcolor
+	nav
+		a
+			color footer_textcolor
+		.prodiserv
+			color grey
+	.menu
+		.submenu
+			top initial !important
+			bottom 100%		
+			left -100% !important
+
+
+h1,h2
+	color color1
+	text-transform uppercase
+	font-size 1rem
+	font-weight 400
+	@media $large
+		font-size 1rem	
+	@media $small-medium
+		font-size 1rem		
+	a
+		color inherit
+		&:hover
+			color color2
+			
+
+
+h1
+	@media $large
+		font-size 1.5rem	
+	@media $small-medium
+		font-size 1.5rem
+		padding-left 0.75rem
+		// margin-top 2em
+
+
+
+h3,h4,h5,h6
+	color lighten(color2,10)
+	@media $large
+		font-size 1em
+	@media $small-medium
+		font-size 1em
+		// padding-top 0.4em
+	a
+		color inherit
+	
+
+
+h6
+	color black
+
+		
+
+a
+	&:hover
+		text-decoration underline
+
+
+
+
+select
+	@media $large
+		width auto
+
+
+
+article
+	> div
+		// text-align: justify
+		color black
+		font-size 1.1rem
+		font-weight 300
+	img
+		margin-top 0px
+		
+
+
+// form
+form
+	.btn
+		background-color rgba(color1, 0.65)
+		
+
+
+pre
+	color invert(body_color)
+	font-size 0.8em
+
+
+
+
+//wide
+.wide
+	padding 0 3%
+	@media $small-medium
+		padding 0
+		
+
+
+.container
+	width maxwide
+	@media $maxim
+		width 100%		
+		
+.icom
+	font-family icomoon
+	&:before
+		color inherit
+	&.facebook
+		&:before
+			content "\e660"
+			
+	&.twitter
+		&:before
+			content "\e66c"
+			
+// post	
+.post
+		h1
+			padding-left 0	
+	article.card-panel
+		min-height 70vh	
+		@media $small-medium
+			min-height 0
+			box-shadow none		
+
+//breadcrumb
+.breadcrumb
+	display inline-block
+	white-space nowrap
+	text-overflow ellipsis	
+	overflow hidden		
+	width 98%
+	text-align left
+	margin 1em 0
+	li
+		display inline
+		padding 0 1em
+		color rgba(black,0.5)
+		&+li
+			&:before
+				content "/\00a0"
+				display inline-block
+				padding 0 1em 0 0
+		h3,h4
+			display inline
+			padding 0
+			color inherit
+			font-weight 300		
+			a
+				color inherit
+				// max-width 150px					
+		&.active
+			h3,h4
+				font-weight bold
+				font-weight 500
+	
+			
+

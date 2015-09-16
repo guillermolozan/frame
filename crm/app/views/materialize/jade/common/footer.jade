@@ -1,0 +1,8 @@
+footer(class=" blue-grey darken-1")
+	nav(class="transparent z-depth-0")
+		.container
+			ul
+				li © 2015 Copyright
+				//- bucle de menu
+				each item in menu_footer
+					li(class="right"): a(href="#{item.url}") #{item.name}
