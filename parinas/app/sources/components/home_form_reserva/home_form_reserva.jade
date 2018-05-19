@@ -1,0 +1,15 @@
+.outside
+	.container
+		div(id="form_reservar",class="home_form_reserva")
+			article.card-panel
+				//- h2 Reservar
+				//- p Si desea más información acerca del proyecto #{post.name} por favor ingrese sus datos y nos pondremos en contacto con usted:
+				//- form.row(method="POST",name="contact")
+				form.row(method="post",name="frm",action="reservar")
+					//- .col
+					//- 	div Completando el formulario te asesoramos según tu necesidad
+					a#close.right.active
+					h2 Reserva Ahora
+					.form_content.active
+						+form('frm',fields_reservar)
+						+input_submit('RESERVAR')

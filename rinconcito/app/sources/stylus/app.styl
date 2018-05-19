@@ -1,396 +1,72 @@
+// googleFonts='Material+Icons';
+googleFonts=false;
 
-color1=#E21322 //red
-color2=#2C355C //blue
-color3=#9e9e9e //grey
-color4=#3d2e1c //brown
+if googleFonts
+	@import url('https://fonts.googleapis.com/css?family='+googleFonts)
+
+
+work_stylus='../../../../work/sources/stylus/'
+
+// dirs
+imgs               = '../../public/img/'
+load_imgs          = '../../../public/img/'
+
+
+// colors
+angle              =0deg
+
+color1=#E21322 + angle //red
+color2=#212d7e + angle //blue
+color3=#9e9e9e + angle //grey
+color4=#3d2e1c + angle //brown
+color5             =#014087 + angle
+color6             =#40b3ff + angle
 
 breakpoint_mobile = 600px
 
 breakpoint_tablet = 992px
 
+
+
 dir_public_img = '../../public/img/'
 
-// icomoon
-@import '../../../../work/sources/stylus/icomoon.styl'
 
 
-// for all
-body
-	display flex
-	min-height 100vh
-	flex-direction column
-	// background-color lighten(brown,55)
 
-main
-	flex 1 0 auto
-	// background-color white
-	
-h4
-	color color1
-	text-transform uppercase
-	font-weight 300
-	.material-icons
-		font-size 0.9em
-		
-a:hover
-	color color1 !important
-	
-// a
-	// color color2 !important	
 
-// .card
-	// background-color lighten(#F0E5D7,7)
-// 	color #846C63
+// widths
+maxwide            = 1030px
+mobile             = 600px
+tablet             = 992px
+
+
+
+		// work
+@import work_stylus+'work.styl'
 
 
 
 
 
 
-// header
-header
-	nav
-		background-color white //rgb(157, 25, 23)
-		a
-			text-transform uppercase
-		.button-collapse
-			color color2
-		.brand-logo img
-			height 54px	
-			visibility visible			
 
-.menu_top
-	a
-		color color2
-		font-weight 700
-		&:hover
-			color color1
-
-.menu_left	
-	li
-		border-bottom 1px solid rgba(red,0.2)
-	a
-		color color1
-		font-weight bold
-
-			
-.menu
-	// background red !important
-	> li
-		// background-image linear-gradient(top,transparent,lighten(color2,15))
-		position relative
-		margin-right 2px
-		a:hover
-			color inherit !important
-		.submenu
-			display none
-			position absolute
-			top 100%
-			left 0px
-			background white
-			min-width 100%
-			width auto
-			> li
-				display block
-				width 100%
-				border-bottom 1px solid color6
-				&:last-child
-					border-bottom 0
-				>a
-					color black
-					display block
-					white-space nowrap
-					height 40px
-					line-height @height
-					&:hover
-						color black !important
-		&:hover
-			.submenu
-				display block
-				
-
-							
-@media only screen and (min-width : breakpoint_tablet)
-
-	header
-		position relative
-		height 200px !important
-		margin-bottom -5px
-		nav
-			position relative !important
-			height 158px !important
-			background-color color4
-			background-repeat no-repeat
-			background-position center top
-			// background-image url(dir_public_img+'header_logo.jpg')
-			background-image none
-			.brand-logo img
-				visibility hidden
-				width 100%
-				height 138px
-				
-			div.menu
-				height 38px
-				margin-top -5px
-				background transparent url(dir_public_img+'header_red.png') repeat-x
-				z-index 1
-				.menu_top
-					li
-						line-height 38px
-						&.active
-							background-color rgba(black,0.3)
-						a
-							color white
-							text-transform uppercase
-							&:hover
-								color white	!important
-			&:after
-				content ""
-				height 10px
-				background transparent url(dir_public_img+'header_white.png') repeat-x
-				display block
-				z-index 2
-					
-			// div.phones
-			// 	font-size 1.7em
-			// 	font-weight 400
-			// 	color white
-			// 	float right	
-			// 	text-align right
-			// 	line-height 1.7em
-			// 	margin-top 1.3em
-			// 	text-shadow 2px 2px rgba(black,0.5);
-		&.headerfixed
-			nav
-				height 32px !important
-				background none
-				position fixed !important	
-				div.nav-wrapper
-					display none
-				div.menu
-					background-color color1
-					background-image linear-gradient('top',#f00,darken(color1,10))
-				&:after
-					display none	
-					
-
-
-@media only screen and (max-width : breakpoint_tablet)
-	header
-		nav
-			background-image none !important
-			
+//blocks
+@import 'blocks/*'
 
 
 
 
-
-// footer
-footer
-	background-color color2			
-	.right
-		a
-			color grey
-	.menu
-		.submenu
-			top initial
-			bottom 100%		
+//layouts
+@import 'layouts/*'
 
 
+// Begin Components
+@import '../../../../work/app/sources/components/common/common.styl'
+@import '../../../../work/app/sources/components/menu_left/menu_left.styl'
+@import '../../../../work/app/sources/components/block_gallery/block_gallery.styl'
+@import '../../../../work/app/sources/components/block_post/block_post.styl'
+@import '../../../../work/app/sources/components/block_banner/block_banner.styl'
+@import '../../../../rinconcito/app/sources/components/header/header.styl'
+@import '../../../../rinconcito/app/sources/components/footer/footer.styl'
+// Finish Components
 
-// map
-#map 
-	width 100%
-	height 350px
-	margin-top 10px
-	
-
-
-
-// events
-.events
-	.card-title
-		color color2
-	.card-content
-		padding-top 5px
-		.sub
-			color color1
-		p
-			color color3
-			
-
-
-// post
-.post
-	h1
-		font-size 3rem
-		font-weight 300
-		
-
-
-
-// article
-article
-	color color3
-	.card-title
-		a
-			color black
-	> div
-		text-align: justify
-		color black
-		font-size 1.1rem
-		font-weight 300
-	img
-		margin-top 20px
-		
-
-
-
-// banner
-.slider
-	.indicators
-		.indicator-item.active
-			background-color color1
-
-
-
-					
-
-
-			
-// galleries
-.galleries
-	.item		
-		position relative
-		height 220px
-		margin-bottom 10px
-		div.img
-			height 150px
-		h6
-			background-color white
-			color color2	
-			z-index 2
-			position absolute
-			bottom 0
-			width 100%
-			padding 1em 0
-			text-align center
-							
-@media only screen and (max-width : breakpoint_tablet)
-	
-	.galleries
-		.item
-			height auto
-			div.img
-				height auto
-			h6
-				position relative
-
-
-// locales
-.locales
-	.card
-		.card-title
-			a
-				color color1
-		.card-image
-			display flex
-			flex-direction column		
-			height 155px				
-		.card-action
-			a
-				line-height 2em
-				color color2
-				text-transform capitalize
-				&:before
-					margin-right 10px
-					color color3
-			span
-				display block					
-
-
-			
-
-@media only screen and (max-width : breakpoint_tablet)
-	.locales
-		.card
-			.card-image	
-				height auto			
-			.card-action
-				span
-					display inline
-					
-					
-
-
-// local
-.local
-	.card	
-		.card-title
-			text-align center
-			color color1
-		.card-action
-			a
-				line-height 2em
-				color color2
-				text-transform capitalize
-				&:before
-					margin-right 10px
-					color color3
-			li
-				display block
-	.localfixed
-		position fixed
-		top 37px
-		
-
-@media only screen and (max-width : breakpoint_tablet)
-	.local
-		.card
-			.card-title
-				font-size 3em
-			.card-action
-				li
-					display inline
-		.localfixed
-			position relative
-			top 0
-					
-// form
-form
-	.btn
-		background-color rgba(color2, 0.65)
-	.waves-effect.waves-blue .waves-ripple
-		background-color rgba(color2, 0.65)
-	
-
-
-// video
-.fancybox-iframe
-	width 100%
-	height 100%
-	
-.fancybox-wrap
-	z-index 2			
-
-
-// modal
-.modal
-	top 0% !important
-	max-height 100%
-	.modal-footer
-		height 0px
-		margin-bottom -20px
-		a
-			color white
-			background-color black
-			padding 0 4px
-			line-height 1.5em
-			height 1.3em
-			&:hover
-				color grey !important	
-			
-			// text-shadow 1px 1px 1px rgba(white,1)
-	.modal-close
-		margin-left -115px !important
-		

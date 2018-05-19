@@ -1,0 +1,39 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include includes/header
+		
+
+		main.container
+
+			.row.titulos
+				.col.s12.l3
+					h3.fecha #{gallery.fecha}
+				.col.s12.l9
+					h1: +item(gallery)
+					-main=false
+
+			.row.contenidos
+				.col.s12.l3
+					.row.input-field
+						select(class="browser-default right",id="select_date")
+							option(value="all",selected) todas las fechas
+							each item in event_dates
+								option(value="#{item.option}") #{item.val}
+
+					.row
+						ul(class="menu_post collection")
+							+menu_collection(gallery.menu.items)
+
+				.col.s12.l9
+					div!= gallery.html
+					-li_class='s12 m6 l4'
+					include includes/gallery_grid
+
+		include includes/footer.jade
+		include common/foot.jade

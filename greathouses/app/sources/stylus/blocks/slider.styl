@@ -1,0 +1,91 @@
+
+
+// banner
+.slider
+	// container_center()
+	height auto !important
+	// max-height 535px
+	@media $small
+		max-height initial
+	.slides
+		height auto
+		background-color #d6f3fd
+		@media $small
+			background-color #ffffff
+		li
+			.desktop
+				display block
+				// @media $small
+					// display none
+			// .small
+			// 	display none
+			// 	@media $small
+			// 		display block
+			// a
+				// display none
+				img
+					max-height 535px
+			&.sy-active 
+				a
+					display block
+			
+			// opacity 1
+	// margin-bottom -40px
+	h3,h5
+		color white
+	.indicators
+		@media $small-medium
+			display none
+		bottom 66px
+		z-index 2
+		.indicator-item
+			width 12px
+			height @width
+			margin 0 5px
+			border 2px solid white
+			background-color transparent
+			&.active
+				background-color #515254
+	.sy-pager
+		bottom 26px
+		z-index 2
+		position absolute
+		> li
+			width 12px
+			height @width
+			margin 0 5px
+			border 2px solid white
+			background-color transparent
+			&.sy-active a
+				background-color color1
+	.flechas,.sy-controls
+		li
+			display none
+			// position absolute
+			top 40% !important
+			width 89px
+			height @width
+			background-color white
+			background-repeat no-repeat
+			background-position center center
+			border-radius 50%
+			z-index 2
+			opacity .9
+			cursor pointer
+			@media $small
+				background-size 40%
+				width 50px
+				height @width
+				min-width 0
+			// &.sy-prev
+			// 	left 2%
+			// 	background-image url(imgs+'banner_arrow_left.png')
+			// &.sy-next
+			// 	right 2%
+			// 	background-image url(imgs+'banner_arrow_right.png')
+			a,a:hover
+				opacity 0 !important
+				
+				
+				
+				

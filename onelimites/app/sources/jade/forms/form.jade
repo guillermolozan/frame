@@ -1,0 +1,29 @@
+div(class="post")
+	div(class="row")
+		div(class="col l12 m12 s12")
+			+card_sended(message)
+			article(class="card-panel")
+				div(class="card-title")
+					if(main)
+						h1: a(href="#{uri}") #{title}
+					else
+						h2: a(href="#{uri}") #{title}
+						-main=false
+					div(class="row")
+						form(method="post",enctype="multipart/form-data",name="contact",class="col s12 l6")
+							
+							+form('contact',fields)
+
+							+input_submit('ENVIAR')
+
+						div(class="col s12 l6")
+							if uri=='contactenos'
+								div!= map.text
+								div(id="map",
+									data-name="#{map.name}",
+									data-lat="#{map.lat}",
+									data-lon="#{map.lon}",
+									data-text="#{map.text}")
+
+
+

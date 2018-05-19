@@ -1,0 +1,152 @@
+		
+// banner
+.slider
+	// container_center()
+	height auto !important
+	// max-height 535px
+	@media $small
+		max-height initial
+	.slides
+		height auto
+		background-color #d6f3fd
+		@media $small
+			background-color #ffffff
+		li
+			.desktop
+				display block
+				// @media $small
+					// display none
+			// .small
+			// 	display none
+			// 	@media $small
+			// 		display block
+			// a
+				// display none
+				img
+					max-height 535px
+			&.sy-active 
+				a
+					display block
+			> div
+				position absolute
+				z-index 2
+				font-family Roboto
+				text-align center
+				&.base
+					top 30%
+					right 2.9%
+					background #343434
+					width 48%
+					height 47%
+					// display none
+					p
+						width 100%
+						color #fff
+						font-size 2.6vw
+						font-weight 100
+						overflow hidden
+						height 1.5em
+						line-height @height
+						opacity 0
+						margin 0
+						padding 0
+						display none
+						strong
+							font-size 1.35em
+						&:nth-child(1)
+							display block
+							transform-origin 0% -1000%
+							animation dearriba 2s 0s 1 forwards
+						&:nth-child(2)
+							display block
+							transform-origin -1000% 0
+							animation dederecha 2s .5s 1 forwards
+						&:nth-child(3)
+							display block
+							transform-origin 1000% 0
+							animation deizquierda 2s 1s 1 forwards
+							
+
+				
+			// opacity 1
+	// margin-bottom -40px
+	h3,h5
+		color white
+	.indicators
+		@media $small-medium
+			display none
+		bottom 66px
+		z-index 2
+		.indicator-item
+			width 12px
+			height @width
+			margin 0 5px
+			border 2px solid white
+			background-color transparent
+			&.active
+				background-color #515254
+	.sy-pager
+		@media $small-medium
+			display none
+		bottom 26px
+		z-index 2
+		position absolute
+		> li
+			width 15px
+			height @width
+			margin 0 5px
+			border 2px solid white
+			background-color transparent
+			&.sy-active a
+				background-color red
+	.flechas,.sy-controls
+		li
+			@media $large
+				display none			
+			// display none
+			// position absolute
+			top 40% !important
+			width 89px
+			height @width
+			background-color white
+			background-repeat no-repeat
+			background-position center center
+			border-radius 50%
+			z-index 2
+			opacity .9
+			cursor pointer
+			@media $small
+				background-size 40%
+				width 50px
+				height @width
+				min-width 0
+			&.sy-prev
+				left 2%
+				background-image url(imgs+'banner_arrow_left.png')
+			&.sy-next
+				right 2%
+				background-image url(imgs+'banner_arrow_right.png')
+			a,a:hover
+				opacity 0 !important
+				
+				
+@keyframes dearriba
+	from
+		transform translate(0%,-1000%)
+	to
+		transform translate(0%,0%)
+		opacity 1
+		
+@keyframes deizquierda
+	from
+		transform translate(-1000%,0%)
+	to
+		transform translate(0%,0%)
+		opacity 1
+
+@keyframes dederecha
+	from
+		transform translate(1000%,0%)
+	to
+		transform translate(0%,0%)
+		opacity 1

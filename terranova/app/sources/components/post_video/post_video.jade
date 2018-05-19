@@ -1,0 +1,28 @@
+.post_video
+	if(main)
+		h1: +item(post)
+		-main=false
+	else
+		h2: +item(post)
+
+	if(post.sub)
+		h3 #{post.sub}
+
+	if(post.html)
+		div!= post.html
+
+	if(post.img)
+		div.center-align
+			img(src="#{post.img}",class="responsive-img")
+
+	if(post.video)
+		.video-container
+			+video_youtube(post.video)
+
+		-gallery=videos
+		-li_class='s12 m4 l6'
+		.gallery_videos
+			include ../../jade/includes/block_gallery
+		//- ul
+		//- 	each item in post_videos.items
+		//- 		li: a(href="video/#{item.id}") #{item.num}

@@ -114,7 +114,7 @@ class Home extends Controller {
 		$video=fila(
 			"name,video",
 			"galleries_videos_videos",
-			"where id=2",
+			"where id=1",
 			0	
 			);
 

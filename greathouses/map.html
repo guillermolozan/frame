@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+</head>
+<body>
+<div id="map" style="width:100%;height:300px;border:1px solid #000;"></div>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>(function () {
+// alert('map4');
+var mapCanvas = document.getElementById("map");
+var mapOptions = {
+center: new google.maps.LatLng(51.5, -0.2), 
+zoom: 10
+}
+var map = new google.maps.Map(mapCanvas, mapOptions);
+})();
+</script>
+</body>
+</html>

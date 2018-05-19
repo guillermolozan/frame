@@ -1,0 +1,84 @@
+div(class="post")
+	div(class="row")
+		div(class="col l12 m12 s12")
+			+card_sended(message)
+			article(class="card-panel")
+				div(class="card-title")
+					if(main)
+						h1: a(href="#{uri}") #{title}
+					else
+						h2: a(href="#{uri}") #{title}
+						-main=false
+					div(class="row")
+						form(method="post",enctype="multipart/form-data",name="contact",class="col s12 l6")
+							
+							+form('contact',fields)
+
+							+input_submit('ENVIAR')
+
+						div(class="col s12 l6")
+							if uri=='contactenos'
+							.form_content.
+								<h3>ENCUÉNTRANOS</h3>
+
+								<h4>Surquillo</h4>
+
+								<div class="sub_content">
+
+								Av. República de Panamá 3837 – Surquillo
+
+								<h4>Servicios</h4>
+
+								<div class="sub_content">
+
+								<strong>Asesores comerciales:</strong><br>
+								Orlando Ponce<br>
+								Telf.: RPM: #996510045<br>
+								oponce@incapower.pe<br>
+								<br>
+								<strong>Jack Saavedra</strong><br>
+								Telf.: RPM: #995307906<br>
+								jsaavedra@incapower.pe
+
+								</div>
+								
+								<h4>Central</h4>
+								<div class="sub_content">
+								(01)225-4242 Anexos: 213, 212, 211
+
+								</div>
+
+								<h4>Repuestos</h4>
+
+								<div class="sub_content">
+
+								<strong>Ricardo Lopez</strong><br>
+								(01)225-4242  Anexo 217<br>
+								rlopez@incapower.pe<br>
+								<br>
+								<strong>Edwin Moreno</strong><br>
+								(01)225-4242 Anexo 216<br>
+								<br>
+								emoreno@incapower.pe
+								</div>
+
+								</div>
+
+								<h4>Los Olivos</h4>
+								<div class="sub_content">
+								Av. Alfredo Mendiola 6241 – Los Olivos
+								<h4>Central</h4>
+								<div class="sub_content">
+								528-7466
+								</div>
+								</div>
+							//- if uri=='contactenos2'
+							//- 	div!= map.text
+							//- 	div(id="map",
+							//- 		data-name="#{map.name}",
+							//- 		data-lat="#{map.lat}",
+							//- 		data-lon="#{map.lon}",
+							//- 		data-text="#{map.text}")
+
+
+

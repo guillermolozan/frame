@@ -1,0 +1,14 @@
+section(class="footer_pre container row")
+	div(class="card")!= footer_pre
+
+
+footer(class="")
+	nav(class="container transparent z-depth-0 col s12")
+
+		ul: li: a ©2016 #{web_name}
+
+		//- bucle de menu
+		ul(class="right menu")
+			//- if(visiters)
+				li #{visiters} visitas
+			+menu_items(menu_footer)

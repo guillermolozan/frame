@@ -1,0 +1,7 @@
+article.page_post
+	-post_class='s12'
+	include ../../jade/includes/block_post
+
+	if(post.video)
+		.video-container
+			+video_youtube(post.video)

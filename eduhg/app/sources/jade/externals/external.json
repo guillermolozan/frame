@@ -1,0 +1,14 @@
+[
+"./work/app/sources/components/common/common.jade",
+"./work/app/sources/components/menu_left/menu_left.jade",
+"./work/app/sources/components/block_gallery/block_gallery.jade",
+"./work/app/sources/components/block_post/block_post.jade",
+"./work/app/sources/components/block_banner/block_banner.jade",
+"./work/app/sources/components/form_default/form_default.jade",
+"./agro/app/sources/components/header_pre/header_pre.jade",
+"./prodiserv/app/sources/components/home_block_planes/home_block_planes.jade",
+"./bestpower/app/sources/components/home_block_welcome/home_block_welcome.jade",
+"./asiste/app/sources/components/home_block_notes/home_block_notes.jade",
+"./asiste/app/sources/components/home_block_links/home_block_links.jade",
+"./bestpower/app/sources/components/footer/footer.jade"
+]

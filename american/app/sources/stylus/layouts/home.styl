@@ -1,0 +1,186 @@
+
+.p-home
+
+	// .line_wide
+	// 	background url(imgs+'header-lines.jpg')
+	// 	height 10px
+	// 	width 100%
+	.line_inmuebles
+		.vermas
+			float right
+			background-color color1
+	.wide
+		padding 0
+		.collapsible
+			border-top 1px solid white
+			border-right 1px solid white
+			border-left 1px solid white
+			box-shadow none
+			.collapsible-header
+				border 1px solid #ccc
+				border-radius 5px
+				margin-bottom 10px
+				font-size 1.2em
+				color color1
+				&:before
+					float right
+					font-size 1.05em
+					color grey
+					font-weight normal
+				icomoon('f0a3')
+			.collapsible-body
+				border-bottom 1px solid white
+				font-size 1em
+				p
+					padding-top 0.3rem
+
+	.line_0
+		h4
+			font-size 1.5em
+			text-transform uppercase
+			color color1
+			font-family 'Orbitron','Roboto', sans-serif !important
+		margin-top 1em
+		.img_side
+			margin-top 1em
+			
+
+		
+	.line_a // la mejor experiencia en ingenieria
+		padding 3em 0
+		h3
+			margin-top 2em
+			margin-bottom 1em
+			color color1
+			// text-decoration underline
+			// text-shadow 0px 4px 3px rgba(0,0,0,0.6), 0px 8px 0px rgba(0,0,0,0.1);
+			text-align center
+			font-size 1.5em
+			font-weight 400
+		h4
+			color #0198FF
+			font-size 2em
+		p 
+			font-size 1.2em
+			color lighten(black,50)
+			img
+				width 123px
+				margin 5px 9px 9px 0
+				height auto 
+				float left 
+		
+
+		
+	.line_b // la mejor experiencia en ingenieria
+		padding .3em 0
+		background #E2E2E2
+		min-height 542px
+		.container > .col > .col
+			padding 0 4em
+			@media $small-medium
+				padding 0 0em				
+		h4
+			color #E47C0C
+			font-size 1.5em
+			margin-bottom 0
+			overflow hidden
+			height 1.26em
+			@media $small-medium
+				text-align center
+				height auto
+				overflow visible
+		p 
+			font-size 1em
+			color #000
+			margin-top 0
+			line-height 1.3em
+			overflow hidden
+			height 90px
+			@media $small-medium
+				height auto
+			img
+				width auto
+				margin 5px 9px 9px 0
+				height auto 
+				float left 
+				
+
+	.grid
+		li 
+			.card
+				// width 100%
+				min-height 150px
+				@media $large
+					height 350px
+					// max-height 350px
+					overflow hidden
+					// border-radius 10px 10px 0 0
+				h3
+					// font-weight bold
+					font-weight 300
+					font-size 1.2em
+					color #fff
+					background darken(color1,10)
+					text-align left !important
+					padding .5em
+					// white-space nowrap
+					margin-top 0px
+					margin-bottom 0px
+					// position absolute
+					top 0
+					z-index 1
+					width 100%
+					opacity 1
+					transition background-color 1s,top .5s
+					line-height 1.5em
+					// height 76px
+					a
+						height 2.8em
+						overflow hidden
+						display inline-block
+				.card-image img
+					margin 0
+				.card-content
+					padding-top .5em 
+					padding-bottom .5em
+					position absolute
+					width 100%
+					bottom 0px
+					@media $large
+						bottom -78px
+					// bottom 0
+					background #fff
+					transition opacity .1s,bottom .5s
+					vertical-align middle
+					h4
+						color black
+					.precio
+						text-align right
+						font-size 1em
+						transition font-size .5s
+					.operacion
+						text-transform uppercase
+					.contactar
+						text-align right
+						padding-bottom 0
+						// display none
+						a
+							background-color color2
+					@media $small
+						position relative
+						.precio,.operacion,.contactar,.tipo
+							text-align center
+
+			@media $large
+				&:hover
+					h3
+						background darken(color1,35)
+					.card-content
+						// opacity .5
+						bottom 0px
+						.contactar
+							display block
+						h5.precio
+							font-size 1.5em
+
+

@@ -1,0 +1,86 @@
+if(post)
+	div(class="post")
+
+		+card_sended(message)
+
+		if(menu_post)
+			div(class="col s12 l3")
+
+				if(group_post)
+					.card-title
+						h2 #{group_post}
+				//- ul(class="menu_post collection",id="menu_left")
+				//- 	+menu_collection(menu_post)
+				ul(class="menu_post collection collapsible collapsible-accordion",id="menu_left")
+					+menu_items_collapsible(menu_post)
+				div(id="cotizar",class="card")
+					.card-content
+						div(class="card-title"): h2 Cotizar
+						//- p Si desea más información acerca del proyecto #{post.name} por favor ingrese sus datos y nos pondremos en contacto con usted:
+						form(method="POST",name="contact")
+							+form('contact',contact)
+							//- +form('contact',contact)
+							//- div(class="input-field col s12 l12")
+								button(class="btn waves-effect waves-blue",type="submit") ENVIAR
+							+input_submit('ENVIAR')
+						//- div(class="col s12 l4")				
+
+		div(class=menu_post?"col m12 l9":"col s12")
+
+			if post.titleout
+				div(class="card-title")
+					if(main)
+						h1: +item(post)
+						-main=false
+					else
+						h2: +item(post)
+
+			article(class="card-panel")
+
+
+				if !post.titleout
+					div(class="card-title")
+						if(main)
+							h1: +item(post)
+							-main=false
+						else
+							h2: +item(post)
+
+				if(post.sub)
+					h3 #{post.sub}
+
+				if post.imgfirst
+					if(post.img)
+						div.center-align
+							img(src="#{post.img}",class="responsive-img")
+
+				if(post.html)
+					div!= post.html
+				
+				if !post.imgfirst
+					if(post.img)
+						div.center-align
+							img(src="#{post.img}",class="responsive-img")
+
+				if(gallery.items)
+					div(class="galleries #{type}")
+						ul(class="#{ul_class}")
+
+							each item in gallery.items
+
+								li(class="#{item_responsive}")
+
+									div(class="card")
+										div(class="card-image")
+											+img_item(item)
+
+										div(class="card-content")
+											if(type=='photos')
+												h3 #{item.name}
+											else
+												h3: +item(item)
+											if(item.sub)
+												h4 #{item.sub}
+
+- post = false
+

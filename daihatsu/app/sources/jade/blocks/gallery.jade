@@ -1,0 +1,26 @@
+div(class="galleries parent-container")
+	
+	h1: +item(gallery)
+	-main=false
+
+	if(gallery.items)
+
+		ul(class="#{ul_class}")
+
+			each item in gallery.items
+
+				li(class="#{item_responsive}")
+
+					div(class="card")
+						div(class="card-content")
+							h3: +item(item)
+							if(item.sub)
+								h4 #{item.sub}
+						div(class="card-image")
+
+							if (gallery.type=='videos')
+								+img_venobox(item)
+							else if (gallery.type=='photos')
+								+img_magnific(item)
+							else
+								+img_item(item)

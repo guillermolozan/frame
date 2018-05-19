@@ -1,0 +1,44 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+
+		//- include blocks/breadcrumb.jade
+
+		include blocks/image.jade
+
+		main(class="container row")
+			
+			.row
+				.col.s12.m10.offset-m1
+					p Encuentra la tienda más cercana a tu ciudad
+					+input_combo(ciudades)
+				.col.s12.m4.offset-m1
+					each item in locales
+						.bloques(id="bloque_#{item.id}")
+							h3 #{item.name}
+							ul(class="collapsible",data-collapsible="accordion")
+								each ite,i in item.items
+									if i==0
+										-activo = 'active';
+									li
+										div(class="collapsible-header #{ite.class} #{activo}"): h4 #{ite.name}
+										.collapsible-body
+											.html
+												p!= ite.html
+												a(class="btn showmap",data-name="#{ite.name}",data-lon="#{ite.lon}",data-lat="#{ite.lat}") ver mapa
+				.col.s12.m6
+					div(id="map",
+						data-name="#{map.name}",
+						data-lat="#{map.lat}",
+						data-lon="#{map.lon}",
+						data-text="#{map.text}")
+
+		include common/footer.jade
+
+		include common/foot.jade

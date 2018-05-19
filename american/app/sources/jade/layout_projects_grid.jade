@@ -1,0 +1,48 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+		
+		main(class="container row")
+
+			
+			.wide
+				if(gallery.type=='photos')
+					-ul_class='parent-container'
+				else
+					-ul_class=''
+
+
+				div(class="grid #{gallery.type}")
+					
+					if(main)
+						h1: +item(gallery)
+						-main=false
+					else
+						h2: +item(gallery)
+
+
+					if(gallery.sub)
+						h3 #{gallery.sub}
+
+
+					if(gallery.html)
+						div!= gallery.html
+
+
+					div(class="col m12 l3")
+						include blocks/search.jade
+
+					-col_ul='m12 l9'
+					-col_li='s12 l6'
+
+					include blocks/grid_items.jade
+
+		include common/footer.jade
+
+		include common/foot.jade

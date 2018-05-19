@@ -1,0 +1,101 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+
+		include blocks/banner.jade
+
+
+		//- solidez creatividad éxito
+		section.line_a
+
+			div(class="container row")
+
+				h3 Unidades de Negocio
+
+				each item in units
+					div(class="col s12 m6")
+						.card-panel
+							h4 #{item.name}
+							p
+								img(src="#{item.img}",width="20%",class="responsive-img")
+								div!= item.html
+
+
+
+		
+		main(class="container row")
+
+			div(class="col s12")
+
+				//- div(class="col s12 m3 bar sidelef")
+					-grid = project_groups
+					-responsive = ""
+					include blocks/grid_card.jade
+
+				div(class="col s12 bar")
+					-responsive = ""
+					include blocks/post.jade
+
+				//- div(class="col s12 m3 bar sideright")
+					-grid = projects
+					-responsive = ""
+					include blocks/grid_card.jade
+
+
+
+
+		//- div(class="container row homefooter")
+
+		//- 	div(class="col s12 m6 l3 block_one")
+		//- 		+list_card(news)
+
+		//- 	div(class="col s12 m6 l3 block_two")
+		//- 		+list_card(links)
+
+		//- 	div(class="col s12 m6 l3 block_three")
+		//- 		+card(video)
+
+		//- 	div(class="col s12 m6 l3 block_four")
+		//- 		+card(phones)
+
+
+
+		//- clientes
+		section(class="line_b parallax-container")
+			
+			div(class="parallax")
+				img(src="#{pub_img}clientes.jpg")
+
+			div(class="container row")
+
+				h3 Nuestros Clientes
+				each item in clients
+					div(class="col s12 m4")
+						a(href="#{item.url}",target="_blank",title="#{item.name}"): img(src="#{item.img}")
+						a(href="#{item.url}",target="_blank",title="#{item.name}"): h4 #{item.name}
+
+				a(class="more",href="galeria-fotos-clientes/1") ver más
+
+
+
+		section(class="line_c container row")
+
+			div(class="col s12  bar links")
+				.card-panel
+					.card-title: h2 Enlaces
+					.responsive
+						each ite in links.items
+							div.ite
+								+img_item(ite)
+								h4.name #{ite.name}
+								
+
+		include common/footer.jade
+
+		include common/foot.jade

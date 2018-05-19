@@ -1,0 +1,69 @@
+.product_detail
+	.main
+		p strong 
+			color color1
+		margin-bottom 2em
+		@media $large
+			float right
+	.train
+		> div
+			padding 1px
+			display inline-block
+			border 1px solid #999
+			margin-bottom 10px
+		a
+			cursor pointer
+	.foto
+		display block
+		text-align center
+		vertical-align middle
+		// height 450px
+		// object-fit contain
+		position relative
+		a
+			img
+				max-height 450px
+				margin auto
+				position relative
+				
+	&.card-panel
+		overflow hidden
+		@media $small-medium
+			margin-top 40px
+		@media $small
+			margin-top 80px
+		h1
+			font-family Orbitron !important
+			font-weight bold
+			text-transform uppercase
+			font-size 1.6em
+			margin-top 0
+			@media $small
+				text-align center
+				font-size 2em
+		.precio
+			font-size 1.5em
+		.oferta
+			color color2
+			font-weight bold
+			float right
+			margin-top 30px
+			font-size 20px
+			&:before
+				content "OFERTA "
+				color color1
+			&:after
+				content "%"
+		h2
+			font-family Orbitron !important
+		h3
+			font-size 1em
+		.download
+			margin-top 2em
+			background grey
+			i
+				icomoon('e69c')
+				color inherit
+				font-style normal
+			&:hover
+				text-decoration none	

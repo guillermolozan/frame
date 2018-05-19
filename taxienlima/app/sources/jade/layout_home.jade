@@ -1,0 +1,138 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+
+		//- include blocks/breadcrumb.jade
+
+		include blocks/banner.jade
+
+		main(class="container")
+
+			div(class="row wide line_0")
+				div(class="col s12 l6")
+					h4 Acerca de Nosotros
+					ul(class="collapsible",data-collapsible="accordion")
+
+						li
+							div(class="collapsible-header active") Nuestra Misión
+							div(class="collapsible-body")
+								p Proveer transporte terrestre de manera innovadora, permitiendo el disfrute del tiempo en forma segura, responsable y eficiente.
+								p Garantizar un servicio de calidad y transmitirlo a cada uno de nuestros clientes.
+								p Establecer alianzas estratégicas con empresas líderes, para agregar valor a la nuestra y poder brindar servicios especializados.
+
+						li
+							div(class="collapsible-header") Nuestra Visión
+							div(class="collapsible-body")
+								p Consolidarnos con una firma líder de transporte según las necesidades del mercado exclusivamente al servicio de transporte de pasajeros y mensajeria las 24 horas.
+							
+						li
+							div(class="collapsible-header") Nuestra Filosofía se basa en 3 pilares
+							div(class="collapsible-body")
+								p #[strong SEGURIDAD] #[br] Nuestro sistema informático nos permite ofrecer un servicio instantáneo con absoluta confidencialidad y seguridad. Empleamos tecnología digital para monitorear todo el recorrido de su viaje.
+								p #[strong RAPIDEZ] #[br] Después que solicita el viaje, usted tendrá a su disposición en el tiempo acordado, una de nuestras móviles y un chofer profesional que lo llevará a su destino con un servicio exclusivo y de primera clase.
+								p #[strong SERVICIO] #[br] Automóviles y vans con máxima comodidad, choferes profesionales con capacitación permanente y un call center que lo atiende las 24 horas.
+
+				div(class="col s12 l6 img_side")
+					img(class="responsive-img",src="#{pub_img}presentacion.png")
+
+
+			div(class="row wide line_a")
+				div(class="col s12 l6")
+					+post_item(capacitacion,true,'h4')
+					| #[a.more_information(href="pagina/taxi-programado/2")]
+				div(class="col s12 l6")
+					+post_item(consultoria,true,'h4')
+					| #[a.more_information(href="pagina/cobertura/3")]
+
+
+			div(class="row wide hide-on-med-and-down0")
+				div(class="col s12 l12")
+					section(class="bloque_servicios")
+						h4 Tarifarios
+						table
+							each men_item in servicios.items
+								tr
+									td.name
+										+link_item(men_item)
+									td.text
+										div!= men_item.html
+										a.more_information(href="#{men_item.url}")
+							//- include blocks/grid_card.jade					
+
+			div(class="row wide line_four")
+				
+				div(class="col s12 l4")
+					+list_card(news_one)
+
+				div(class="col s12 l4")
+					.card
+						.card-content
+							.card-title
+								h3 Brochure corporativo
+								img(src="#{pub_img}brochure2.png")
+								div: strong.descargar: a(target="_blank",href="http://taxienlima.com/taxienlima/public/img/presentacion-de-taxi-en-lima.pdf") Descargar
+				
+				div(class="col s12 l4")
+					.card
+						.card-content
+							.card-title
+								h3 Social
+							div(
+								class="fb-page",
+								data-href="https://www.facebook.com/taxiremisselima24h/",
+								data-tabs="timeline",
+								data-small-header="false",
+								data-adapt-container-width="true",
+								data-hide-cover="false",
+								data-show-facepile="true")
+
+			div(class="row wide")
+				div(class="col s12  bar links")
+					.card-panel
+						.card-title: h2 Enlaces
+						.responsive
+							each ite in links.items
+								div.ite
+									+img_item(ite)
+									h4.name #{ite.name}
+
+			//- div(class="row wide")
+				
+			//- 	div(class="col s12 l3")
+			//- 		section(class="bloque_servicios hide-on-med-and-down")
+			//- 			div(class="card-title"): h2 servicios
+			//- 			ul
+			//- 				+menu_items(servicios.items)
+			//- 				//- include blocks/grid_card.jade
+			//- 		section.bloque_brochure
+			//- 		section.bloque_recomendar
+
+			//- 	div(class="col s12 l6")
+			//- 		section.bloque_bienvenidos
+			//- 			-post = bienvenidos
+			//- 			-post.titleout=true
+			//- 			-post.imgfirst=true
+			//- 			include blocks/post.jade
+			//- 		section.bloque_capacitacion
+			//- 			-post = capacitacion
+			//- 			-post.titleout=true
+			//- 			include blocks/post.jade
+
+			//- 	div(class="col s12 l3")
+			//- 		section.bloque_consultoria
+			//- 			-post = consultoria
+			//- 			-post.imgfirst=true
+			//- 			-post.titleout=true
+			//- 			include blocks/post.jade
+			//- 		section.bloque_pyme
+			//- 		section.bloque_redes
+
+		include common/footer.jade
+
+		include common/foot.jade

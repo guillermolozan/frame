@@ -1,0 +1,63 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+		.container.back
+
+		include common/header.jade
+
+		//- include blocks/breadcrumb.jade
+
+		//- include blocks/banner.jade
+		
+		section.fondo
+			.container
+				.line_two
+					.responsive
+						each ite in links.items
+							div.ite
+								+img_item(ite)
+								h4.name: a(href="#{ite.url}") #{ite.name}
+		.container
+			section.row.contacto
+				h2 Contacto
+				ul.numeros
+					li.fijo
+						strong Fijo
+						span 938707291
+					li.rpm 
+						strong RPM
+						span #938707291
+					li.rpc 
+						strong RPC
+						span 938707291
+					li.wsp 
+						strong Whatsapp
+						span 938707291
+				a.email(href="mailto:cursos@creatiu.pe") cursos@creatiu.pe				
+
+		section.nosotros
+			.container
+				.row
+					.col.s12.l4.links
+						h2 Nosotros
+						ul
+							li: a(href="pagina/quienes-somos/1") ¿Quiénes somos?
+							li: a(href="pagina/metodologia/2") Metodología
+							li: a(href="pagina/formas-de-pago/3") Formas de Pago
+							li: a(href="trabaja-con-nosotros") Trabaja con Nosotros
+							li: a(href="pagina/politicas-de-la-empresa/4") Políticas de la Empresa
+							li: a(href="contactenos") Contáctanos
+					.col.s12.l4.instagram
+						h2 Instagram
+					.col.s12.l4.ubicacion
+						h2 Ubicación
+						if map.lat
+							+map(map)
+
+		include common/footer.jade
+
+		include common/foot.jade

@@ -1,0 +1,7 @@
+{
+	"host":     "creatiu.incaclick.com",
+	"user":     "incaclick",
+	"password": "pezplatano",
+	"parallel": "3",
+	"remotedir":"/public_html/creatiu"
+}

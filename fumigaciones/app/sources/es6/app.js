@@ -56,6 +56,16 @@
         $(".dates_"+vall).show();
     });
     
+    //slick
+    require("./slick")();
+    
+  
 
-  });
+// Begin Components
+require("../../../../work/app/sources/components/common/common.js")();
+require("../../../../work/app/sources/components/menu_left/menu_left.js")();
+require("../../../../work/app/sources/components/block_gallery/block_gallery.js")();
+// Finish Components
+
+});
 })(jQuery);

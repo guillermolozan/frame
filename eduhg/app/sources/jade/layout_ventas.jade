@@ -1,0 +1,63 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include includes/header
+		
+		include includes/banner
+
+		main.container
+			
+			h1 VENTAS
+			//- include includes/form_contact
+			table.responsive-table.highlight.striped
+				thead
+					tr
+						th Fecha
+						th Cod Venta
+						th # Factura
+						th S/.Total
+						th Puntos
+						th Asesor
+						th Jefe
+				tbody
+					tr
+						td 31 Jul 2:39pm
+						td V001333
+						td 023-1055
+						td S/.1500
+						td 650
+						td RAFAEL RAMIREZ CORREA
+						td NACIN BAZAN AGUILAR
+					tr
+						td 1 Jul 1:30pm
+						td V001377
+						td 023-1076
+						td S/.900
+						td 100
+						td GUILLERM LOZAN
+						td NACIN BAZAN AGUILAR
+					tr
+						td 10 Jun 12:00pm
+						td V001323
+						td 023-1056
+						td S/.500
+						td 20
+						td ALBERTO GAMBOA
+						td NACIN BAZAN AGUILAR
+					tr
+						td 30 May 5:00pm
+						td V001363
+						td 023-1032
+						td S/.100
+						td 44
+						td JESUS GUERRERO
+						td NACIN BAZAN AGUILAR
+
+
+		//- include includes/footer
+		include common/foot

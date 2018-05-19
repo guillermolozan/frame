@@ -12,11 +12,14 @@ class Forms extends \core\controllers\Forms {
 		parent::__construct($params);
 
 		$this->admin_emails=[
-					'servicios@prodiserv.com',
 					'guillermolozan@gmail.com',
+					'wtavara@prodiserv.com',
+					'wtavara@gmail.com'
 								 ];
 
 	}
+
+
 
 	function contactenos(){
 
@@ -29,6 +32,12 @@ class Forms extends \core\controllers\Forms {
 				'label' =>'Nombre',
 			],
 
+			'medio'=>[
+				'label'=>'¿Por qué medio nos encontró?',
+				'type'  =>'select',
+				'options'=>['Web','Periódico','Revista','Televisión','Panel Publicitario','Un conocido nos recomendó','Otros']
+			],		
+			
 			'telefono'=>[
 				'label'=>'Teléfono',
 			],
@@ -38,6 +47,12 @@ class Forms extends \core\controllers\Forms {
 				'label' =>'Email',
 				'type'  =>'email',
 			],
+
+			'medio'=>[
+				'label'=>'¿Por qué medio nos encontró?',
+				'type'  =>'select',
+				'options'=>['Web','Periódico','Revista','Televisión','Panel Publicitario','Un conocido nos recomendó','Otros']
+			],	
 
 			'comentario'=>[
 				'class' =>'validate',
@@ -53,18 +68,29 @@ class Forms extends \core\controllers\Forms {
 
 		if($_SERVER['REQUEST_METHOD']=='POST'){
 
+			// prin($_POST);
+			
+			$email= new \controllers\Emails($this->view);
 
-			$message=(mail(
-
+			$sended=$email->send(
 				implode(',',$this->admin_emails),
+				"Mensaje de Contáctenos",
+				[
+					'name_right' =>$this->view->vars['web_name'],
+					'title'      =>"Contacto",
+					'subtitle'   =>'Se recibió un mensaje desde la web '.$this->view->vars['web_name'],
+					'html'       =>$this->emailFields('html')
+				],
+				[
+					'name'		 =>$this->name.' para administrador'
+				]
+			);
 
-				"Mensaje de contacto desde ".$name,
 
-				$this->emailFields()
-
-				))?'Consulta Enviada':false;
+			if($sended){	$this->setMessage($email);		} 
 
 
+			if(0)
 			insert(
 				array_merge(
 					[
@@ -73,10 +99,14 @@ class Forms extends \core\controllers\Forms {
 					],
 				$this->insertFields()
 				),
-				"contacto");
+				"contacto"
+			);
 
 
 		}
+
+		// parent::split();
+		// prin($params);
 
 
 		$this->view->render(
@@ -87,11 +117,12 @@ class Forms extends \core\controllers\Forms {
 				//head
 				'head_title'   => $this->name.' - '.$this->title,
 
-				'title' 			=> $this->name,
-				
-				'message'		=> $message,
+				// 'title' 			=> $this->name,
+
+				'message'		=> $this->message,
 
 				'fields'			=> $fields_reformated,
+
 
 				//main
 				// 'main_title' 	=> 'Home',
@@ -105,5 +136,8 @@ class Forms extends \core\controllers\Forms {
 		);		
 
 	}
+
+
+
 
 }

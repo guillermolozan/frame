@@ -34,6 +34,10 @@ class Home extends Controller {
 		//links
 		$Links=$this->loadModel('Links');
 
+		$Links->setConfig([
+					'items'=>['fields'=>'name,url,fecha_creacion,file'],
+				]);
+
 		$links=$Links->getLinks();	
 
 

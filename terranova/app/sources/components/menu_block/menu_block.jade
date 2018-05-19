@@ -1,0 +1,6 @@
+.menu_blocks
+	each menu_block in menu_blocks
+		.menu_block
+			h3 #{menu_block.name}
+			ul(class="menu_post collection")
+				+menu_collection(menu_block.items)

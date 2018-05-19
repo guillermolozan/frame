@@ -1,128 +1,84 @@
-include ../../../../work/sources/jade/includes.jade
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include includes/header
+
+		include blocks/breadcrumb
+
+		include includes/banner
+
+		//- solidez creatividad éxito
+		section.experiencia
+
+			.container.row
+
+				h3 LA MEJOR EXPERIENCIA EN INGENIERIA COMERCIAL
+				.col.s12.m4
+					h4 Solidez
+					p
+						| #[img(src="#{pub_img}solidez.jpg")]
+						| Cualquier Organización que cimiente su crecimiento en una clara estrategia enfocada en el cliente, sólidos procesos y el aprovechamiento de sus talentos se mantendrá en constante crecimiento.
+				.col.s12.m4
+					h4 Creatividad
+					p
+						| #[img(src="#{pub_img}creatividad.jpg")]
+						| Estamos convencidos que la evolución resulta de la creatividad, el objetivo fundamental de cualquier evento o proyecto de consultoría debe ser generar nuevas formas de satisfacer al cliente.
+				.col.s12.m4
+					h4 Éxito
+					p
+						| #[img(src="#{pub_img}exito.jpg")]
+						| Estamos convencidos que el éxito es un camino y no un destino, la correcta interpretación del entorno y la constante evolución de nuestras fortalezas son la base de las empresas triunfadoras.
 
 
-block body
 
 
-	include common/header.jade
+		//- toda emprea comienza con un dominio
+		section.comienza.parallax-container
+			.parallax: img(src="#{pub_img}parallax2.jpg")
 
-	include blocks/breadcrumb.jade
+			.container
 
-	include blocks/banner.jade
+				h2 Toda empresa comienza con un dominio…
 
+				p Tu sueño de iniciar tu propio negocio está más cerca de lo que tu piensas. Da el primer paso para convertirte en tu propio jefe.
 
-	//- solidez creatividad éxito
-	section.line_a
-
-		div(class="container row")
-
-			h3 LA MEJOR EXPERIENCIA EN INGENIERIA COMERCIAL
-			div(class="col s12 m4")
-				h4 Solidez
 				p
-					| #[img(src="#{pub_img}solidez.jpg")]
-					| Cualquier Organización que cimiente su crecimiento en una clara estrategia enfocada en el cliente, sólidos procesos y el aprovechamiento de sus talentos se mantendrá en constante crecimiento.
-			div(class="col s12 m4")
-				h4 Creatividad
+					| <strong>Dominio.-</strong> es Nombre o Dirección IP única reconocida en la red mundial de internet
+
+				h6 www.tuempresa.com
 				p
-					| #[img(src="#{pub_img}creatividad.jpg")]
-					| Estamos convencidos que la evolución resulta de la creatividad, el objetivo fundamental de cualquier evento o proyecto de consultoría debe ser generar nuevas formas de satisfacer al cliente.
-			div(class="col s12 m4")
-				h4 Éxito
-				p
-					| #[img(src="#{pub_img}exito.jpg")]
-					| Estamos convencidos que el éxito es un camino y no un destino, la correcta interpretación del entorno y la constante evolución de nuestras fortalezas son la base de las empresas triunfadoras.
+					| <strong>US$ 17.00</strong> (no incluye IGV, Contrato por 1 año)
+
+				h6 www.tuempresa.net    
+				p 
+					| <strong>US$ 17.00</strong> (no incluye IGV, Contrato por 1 año)
+
+				h6 www.tuempresa.org    
+				p 
+					| <strong>US$ 20.00</strong> (no incluye IGV, Contrato por 1 año)
+
+				h6 • www.tuempresa.com.pe ó     www.tuempresa.pe        
+				p 
+					| <strong>US$ 50.00</strong> (no incluye IGV, Contrato por 1 año)
 
 
 
-	//- planes de hosting
-	section.line_two
+		include includes/home_block_planes
 
-		div(class="container row")
+		//- clientes
+		include includes/block_gallery_clients.jade
 
-			h2 Planes de Hosting
 
-			each item in line_two
-				div(class="col s12 m6 l3")
-					.card
-						div.card-content
-							h3.card-title= item.name
-							div!= item.html
-							a(class="btn light-blue darken-4",href="#{item.url}") Leer más
+		//- notas brochure social
+		include includes/home_block_notes
 
 
 
-	//- toda emprea comienza con un dominio
-	section(class="line_three parallax-container")
-		
-		div(class="parallax")
-			img(src="#{pub_img}parallax2.jpg")
+		include includes/footer
 
-		div(class="container")
-
-			h2 Toda empresa comienza con un dominio…
-			//- p Tu sueño de iniciar tu propio negocio está más cerca de lo que tu piensas. Utiliza la casilla de búsqueda a continuación para encontrar el dominio ideal y da el primer paso para convertirte en tu propio jefe.
-			p Tu sueño de iniciar tu propio negocio está más cerca de lo que tu piensas. Da el primer paso para convertirte en tu propio jefe.
-
-			p
-				| <strong>Dominio.-</strong> es Nombre o Dirección IP única reconocida en la red mundial de internet
-
-			h6 www.tuempresa.com
-			p
-				| <strong>US$ 17.00</strong> (no incluye IGV, Contrato por 1 año)
-
-			h6 www.tuempresa.net    
-			p 
-				| <strong>US$ 17.00</strong> (no incluye IGV, Contrato por 1 año)
-
-			h6 www.tuempresa.org    
-			p 
-				| <strong>US$ 20.00</strong> (no incluye IGV, Contrato por 1 año)
-
-			h6 • www.tuempresa.com.pe ó     www.tuempresa.pe        
-			p 
-				| <strong>US$ 50.00</strong> (no incluye IGV, Contrato por 1 año)
-
-	
-
-	//- noticias y video
-	section(class="line_four")
-
-		div(class="container row")
-			div(class="col s12 m4 l4 block_one")
-				+list_card(news_one)
-			div(class="col s12 m4 l4 block_two")
-				.card
-					.card-content
-						.card-title
-							h3 Pasión por Servir
-						.video-container
-							iframe(width="853",height="480",src="//www.youtube.com/embed/FxW0P7fWsuA?rel=0",frameborder="0",allowfullscreen="allowfullscreen")
-
-			div(class="col s12 m4 l4 block_three")
-				.card
-					script(src="http://connect.facebook.net/es_ES/all.js#xfbml=1")
-					fb:like-box(href="https://www.facebook.com/prodiserv",width="100%",height="100%",show_faces="true",stream="false",header="true")
-
-
-
-
-	//- clientes
-	section(class="line_b parallax-container")
-		
-		div(class="parallax")
-			img(src="#{pub_img}clientes.jpg")
-
-		div(class="container row")
-
-			h3 Nuestros Clientes
-			each item in clients
-				div(class="col s12 m4")
-					a(href="#{item.url}",target="_blank",title="#{item.name}"): img(src="#{item.img}")
-					a(href="#{item.url}",target="_blank",title="#{item.name}"): h4 #{item.name}
-
-			a(class="more",href="galeria-fotos-clientes/2") ver más
-
-
-
-	include common/footer.jade
+		include common/foot

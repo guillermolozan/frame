@@ -1,0 +1,20 @@
+.form_contact
+	.container
+		.row: .col.s12
+			+card_sended(message)
+		.row: .col.s12
+			h2 CONTÁCTENOS
+		.row
+			div(class="col l7 m12 s12")
+				div(id="map")
+					a(target="_blank",href="https://www.google.com.pe/maps/place/Hotel+Punta+Pari%C3%B1as/@-4.5766936,-81.2688833,17z/data=!3m1!4b1!4m5!3m4!1s0x9036441166062fe3:0xef855f4591ea19b!8m2!3d-4.5766936!4d-81.2666946")
+						img(src="#{pub_img}map.png")
+
+			div(class="col l5 m12 s12 form")
+				form.row(method="post",name="frm")
+					.col
+						div Completando el formulario te asesoramos según tu necesidad
+					+form('frm',fields)
+					+input_submit('ENVIAR')
+
+

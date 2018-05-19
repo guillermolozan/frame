@@ -1,0 +1,307 @@
+
+.collection
+	.collection-item
+		padding 7px 5px
+		a
+			display block
+			font-weight 400
+			font-size 0.85em
+			// color color5
+		&.active
+			background-color lighten(black,40)
+			color white
+			a
+				color inherit
+
+.preheader
+	nav
+		height 40px
+		background-color darken(white,5)
+		color black
+		.menu 
+			> li
+				line-height 40px
+				padding-left 0.3em
+				padding-right 0.3em
+				a
+					color inherit
+				&:before
+					margin-right 0.5em
+				&.facebook a
+					icomoon('e660')
+				&.twitter a
+					icomoon('e66c')	
+				&.phone
+					float right
+					icomoon('e620')
+				&.email
+					float right
+					icomoon('e622')
+
+
+			
+
+footer
+	min-height 200px
+	margin-top 0 !important
+	@media $small-medium
+		min-height 280px		
+	.grey
+		height 50px
+		background-color #8A929D
+	.white
+		height 2px
+		background-color white
+	background-color #194D74
+	ul.footer_menu
+		// margin-top 13px
+		@media $small-medium
+			margin-top 36px
+			// margin-left 19%
+			text-align center
+			margin-left 10%
+			margin-right 10%
+		@media $small
+			margin-top 10px
+			text-align center
+		li
+			display inline-block
+			padding 0 5px 0 0
+			position relative
+			overflow visible
+			z-index 1
+			
+			a
+				color white !important	
+				font-size 0.65em
+			&:after
+				display inline-block
+				content "|"
+				color white
+				margin-left 8px
+			&:last-child:after
+				display none
+	.direccion
+		color white
+		float right
+		margin-top -25px
+		text-align right
+		font-size 0.82em
+		@media $small-medium
+			float none
+			text-align center
+			margin-top 0px
+	.copyright
+		color white
+		margin-top 25px
+		font-size 0.82em
+		@media $small-medium
+			text-align center
+			margin-top 15px
+	nav
+		margin-left -1em
+		> ul > .container > li a
+			color black !important
+			&.prodiserv
+				color white !important
+	// .author
+	// 	margin-top 30px
+	// 	color white
+	// 	font-size 0.97em		
+	// 	@media $small-medium
+	// 		margin-top 14px
+	// 		text-align center
+	
+
+
+
+form
+	.btn
+		background-color rgba(#357BB2, 1)
+		&:hover
+			background-color rgba(color1, 1)
+	.input-field 
+		label
+			color black
+#map
+	margin-top 2em
+	width 100%
+	height 350px
+	display inline-block
+	
+			
+// main,footer
+	// background-color lighten(color6,60)
+	
+
+article
+	> div
+		strong
+			font-weight 500
+			
+
+.p-emails
+	.wide
+		text-align center
+		.lines
+			display inline-block
+			margin 0 auto
+			a
+				display block
+				margin 0
+				padding 0
+				img
+					margin 0
+					padding 0
+					display block
+		
+.p-pages, .p-projects
+	.wide
+		> .post, > .galleries
+			min-height 400px
+			@media $small
+				min-height 0
+
+.banner
+	background white url(imgs+'home_banner_bg.jpg') repeat-x
+	.container
+		background white
+		padding 10px 10px 0px 10px
+		img
+			margin-bottom -5px
+		@media $small-medium
+			padding 0
+			img
+				margin-top -3px
+			
+	
+.iconos
+	margin-top 10px
+	padding 10px
+	padding-top 1px
+	margin-bottom -20px
+	background transparent
+	display block
+	ul
+		// background transparent url(imgs+'home_unidades_item_bg.png') repeat
+		vertical-align top
+		li
+			width 33.3333%
+			display inline-block
+			vertical-align top
+			// padding-right 1%
+			margin-bottom 1em
+			text-align center
+			@media $small-medium
+				width 50%
+				margin-bottom 30px
+			@media $small
+				width 100%
+				padding-left 1%
+				padding-right 1%
+			// &:last-child
+				// padding-right 0
+			a
+				border-radius 5px
+				display inline-block
+				width 70%
+				margin-top 10px
+				margin-bottom 10px
+				height 200px
+				background white url(imgs+'home_unidades_item_bg.jpg') repeat-x
+				border 2px #2A5A7E solid
+				position relative
+				text-align center
+				padding-top 130px
+				padding-left 20px
+				padding-right 20px
+				font-size 1em
+				font-family 'PT Sans Narrow', sans-serif
+				color #333
+				transition border-radius .5s, background 2s		
+				overflow hidden		
+				line-height 22px
+				strong
+					position absolute
+					top 40px
+					left 0px
+					width 100%
+					padding 0 10%
+					text-align center
+					font-size 0.8em
+					line-height 16px
+				&:after
+					content ""
+					width 100%
+					height 94px
+					position absolute
+					top 45px
+					left 0
+					background-repeat no-repeat
+					background-position center
+					background-size 30%
+				&:hover
+					border-radius 50% 50%
+					background white
+										
+			&.ico_infra	a:after
+				background-image url(imgs+'unidades_1.png')
+			&.ico_soft a:after
+				background-image url(imgs+'unidades_2.png')
+			&.ico_comu a:after
+				background-image url(imgs+'unidades_3.png')					
+			&.ico_arren	a:after
+				background-image url(imgs+'unidades_4.png')						
+			&.ico_serv a:after
+				background-image url(imgs+'unidades_5.png')						
+
+.last_line	
+	margin-top 10px
+	margin-bottom 10px
+	.container
+		background-color white
+		
+
+			
+	
+.post, .galleries
+	h1
+		color #202020
+		font-size 60px
+		border-bottom 3px solid #194D74
+		text-transform capitalize
+		font-weight 100
+	h2
+		color #194D74
+		font-size 1.5em
+	strong
+		color #194D74
+		font-size 1.1em
+		
+
+
+.no-bottom
+	margin-bottom 0
+	
+.side_right
+	img
+		border-style solid
+		border-color #9097A1
+		border-width 5px 4px 4px 5px
+	.inner_menu
+		float right
+		width 90%
+		li
+			background #194D74
+			margin-bottom 0.7em
+			border-radius 0.7em
+			padding 0.2em 3.5em
+			a 
+				color white
+				font-size 1.3em
+				text-transform uppercase
+			&.active
+				background  #9097A1
+				a
+					color #194D74
+		

@@ -1,0 +1,114 @@
+
+.p-home
+
+	// .line_wide
+	// 	background url(imgs+'header-lines.jpg')
+	// 	height 10px
+	// 	width 100%
+		
+
+
+	.line_one
+		background #D6F3FD
+		background #0A7BC1
+		height 97px
+		text-align center
+		a	
+			margin-top 2em
+			position relative
+			display inline-block
+			color white
+			&:before
+				content ''
+				background url(imgs+'arrow_down.png') no-repeat center 0px
+				width 100%
+				height 17px
+				bottom -22px
+				position absolute
+			&:hover
+				text-decoration none
+
+	.line_two
+		background #fff
+		height 623px
+		text-align center
+		.responsive
+			margin-top 20px
+			display inline-block
+			width 1110px
+			@media $medium-small
+				width 740px
+				@media $small
+					width 370px
+			.slick-slide
+				position relative
+				margin 0 35px
+				&.ite
+					width 300px
+					text-align center
+					.status
+						position absolute
+						// margin-left -2px
+						width 100%
+						height 39px
+						// background url(imgs+'status.png') no-repeat
+						color black
+						text-align left !important
+						padding 4px 0 0 5px
+						font-size 16px
+						font-weight bold
+					img
+						width 100% !important
+					// margin 0 -1px
+				h4.name
+					color #0077bd !important
+					// text-transform uppercase
+					position relative
+					padding-bottom 1em
+					border-bottom 1px solid #0077bd
+					font-size 1.4em
+					font-weight bold
+					@media $small
+						font-size 1.7em
+				h5.distrito
+					// color #959595 !important
+					color #000 !important
+					text-transform capitalize
+					font-size 1.3em
+			.slick-slide:focus
+				outline 0
+			.slick-dots
+				display none !important
+			.slick-arrow
+				position absolute
+				top 52%
+				width 17px
+				height 30px
+				z-index 2
+				background-color transparent
+				color transparent
+				border 0
+				// opacity .9
+				cursor pointer
+				&.slick-prev
+					left -50px
+					background-image url(imgs+'arrow_left.png')
+					@media $small
+						left 15px
+				&.slick-next
+					right -50px
+					background-image url(imgs+'arrow_right.png')
+					@media $small
+						right 15px
+				// width 50%
+				// padding 0 25%
+
+
+
+
+
+
+
+
+
+

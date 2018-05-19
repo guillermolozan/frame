@@ -1,0 +1,46 @@
+//- section(class="preheader")
+	nav
+		.container
+			ul(class="menu hide-on-med-and-down")
+				li
+					a(href="trabaja-con-nosotros") Trabaja con nosotros
+					span | 
+					a(href="pagina/terminos-y-condiciones/31") Terminos y condiciones
+header
+	//- nav(style="background-image:url('#{header_bg}')")
+	nav
+		div(class="container")
+
+			a.link_home(href="#{link_home}",title="#{web_name}")
+
+			div(class="derecha social")
+				a.facebook(href="#",title="Facebok")
+				a.youtube(href="#",title="Youtube")
+				a.instagram(href="#",title="Instagram")
+				a.whatsapp(href="#",title="Whatsapp") 938707291
+
+			if(is_home)
+				h1: #{web_name}
+				-main = false
+
+			//- a(href="#{link_home}",class="brand-logo",title="#{web_name}"): img(src="#{pub_img}#{logo}",title="#{web_name}",alt="#{web_name}")
+
+
+
+
+
+		//- menu_top
+		ul(class="menu menu_top")
+			.container
+				a(href="#",data-activates="mobile-nav",class="button-collapse")
+					i(class="mdi-navigation-menu") 
+					span Cursos
+				a(class="intranet") Intranet
+				//- +menu_items(menu_top)
+
+
+//- menu_left
+ul(class="menu_left side-nav collapsible collapsible-accordion",id="mobile-nav")
+	+menu_items_collapsible(menu_left)
+
+

@@ -1,0 +1,17 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}",style="background-image:url('#{body_bg}')")
+
+		include common/header.jade
+
+		main.container
+
+			include blocks/post.jade
+		
+		include common/footer.jade
+
+		include common/foot.jade

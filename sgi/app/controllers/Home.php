@@ -29,7 +29,7 @@ class Home extends Controller {
 					'items'  =>['table'=>'pages_photos'],
 					'photos' =>['table'=>'pages_photos_photos','dir'=>'profot_imas'],
 					'url'		=>'producto',
-					'type'	=>''
+					'type'	=>'link'
 				]);
 
 

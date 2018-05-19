@@ -1,0 +1,76 @@
+body { background:#000; }
+body { font-family:calibri,helvetica,arial,sans-serif,tahoma,verdana; font-size:12px; margin-top:0px;background:url(../img/particular/body/bg.jpg) repeat-x #18440F;}
+#div_allcontent { width: 996px; }
+#contenido_principal { margin-top:0; margin-bottom:10px; padding:0;  }
+#contenido_margen { margin: 0px; border:0px solid #FFF; border-bottom:0;  float:none; #float:left; padding-left:0px;padding-right:0px; }
+.div_body {  }
+#div_header { width:100%; height:auto; background:#FFF; clear:left; margin-bottom:0px;  }
+.header-logo { background-image:none !important; }
+.iconos { font-weight:bold;font-size:14px; height:19px; color:#762B1B; padding-top:5px;float:left;background-repeat:no-repeat;background-color:transparent;background-position:0px 0px; padding-left:28px; margin:7px 10px 0px 0;}
+.iconos b { color:#DD2A08; }
+.telefono { background-image:url("../img/particular/iconos/mobile_phone.png");}
+.contactenos { background-image:url("../img/particular/iconos/mail.png");}
+.cotizacion { background-image:url("../img/particular/iconos/calculator.png");}
+#div_bar { height:302px; background:#FFF; margin-top:0px; }
+#div_header_out { height:; background:;  }
+#div_header_pre { height:28px; background:;  }
+#div_header_after { height:auto; background:#FFF; padding:3px 0 3px 0;overflow:visible; }
+#div_footer_pre { height:; background:;  }
+#div_footer_after { height:; background:;  }
+#div_footer_out { height:; background:;  }
+	.div_canvas { background:#FFF;  margin-top:0px; min-height:250px; height:auto !important; height:350px; border:1 solid #999; float:none; border-top:0; padding-bottom:0px; 
+padding-top:7px; padding-left:0px; 
+}
+	.div_sombra_left, .div_sombra_right { top:100px; display:none; }
+a { color:#BB7E06; text-decoration:none; } a:hover { color:#000; text-decoration:underline; }
+a.fuerte { color:#FF0000; font-size:14px; font-weight:bold; } 
+a.debil { color:#FF0000; font-size:11px; font-weight:normal; } 
+a.main { color:#FF0000;} 
+.header-logo { width:auto; height:auto; }
+.header-menu { width:auto; height:auto; }
+.header-img { width:auto; height:auto; }
+.footer_copy { width:auto; height:auto; }
+.footer_direccion { width:auto; height:auto; }
+.footer_telefonos { width:auto; height:auto; }
+.footer_contacto { width:auto; height:auto; }
+.footer_empresa { width:auto; height:auto; }
+.footer_by { width:auto; height:auto; }
+.header-telefono { width:auto; height:auto; }
+.visitas { width:auto; height:auto; }
+	.div_col_1d1 { width:982px; margin-right:0px; background:none; 
+padding:0px 0px 0px 7px; }
+	.div_col_1d2 { width:204px; margin-right:0px; background:none; 
+padding-top:0px; padding-right: 0px; padding-bottom:0px; padding-left:7px; }
+	.div_col_2d2{ width:771px; background-color:none;
+padding-top:0px; padding-right: 0px; padding-bottom:0px; padding-left:7px;}
+	.div_col_1d3 { width:204px; margin-right:0px; background:none; 
+padding-top:0px; padding-right: 0px; padding-bottom:0px; padding-left:7px; }
+	.div_col_3d3 { width:245px; background-color:none; 
+padding-top:0px; padding-right: 0px; padding-bottom:0px; padding-left:7px; }
+	.div_col_2d3 { width:519px; background-color:none; 
+padding-top:0px; padding-right: 0px; padding-bottom:0px; padding-left:7px;}
+	.div_col_1d4 { width:204px; margin-right:0px; background:none; 
+padding-top:0px; padding-right: 0px; padding-bottom:0px; padding-left:7px; }
+	.div_col_2d4 { width:204px; margin-right:0px; background:none; 
+padding-top:0px; padding-right: 0px; padding-bottom:0px; padding-left:7px; }
+	.div_col_4d4 { width:219px; margin-right:0px; background:none; 
+padding-top:0px; padding-right: 0px; padding-bottom:0px; padding-left:7px; }
+	.div_col_3d4 { width:334px; background-color:none; 
+padding-top:0px; padding-right: 0px; padding-bottom:0px; padding-left:7px;}
+.margen_izquierda { padding-left:7px; } 
+.header-logo { top:3px;left:6px; }
+.header-buscador { top:29px;left:455px; }
+.header-contactenos { top:3px;left:783px; }
+.header-telefono { top:43px;left:695px; }
+.header-telefonobg { top:26px;left:765px; }
+.header-boletin { top:5px;left:837px; }
+.div-buscador { top:-1px;left:329px; }
+.footer_info { top:11px;left:710px; }
+.footer_copy { top:4px;left:350px; }
+.footer_by { top:3px;left:14px; }
+.footer_telefonos { top:8px;left:201px; }
+.footer_contacto { top:7px;left:311px; }
+.footer_direccion { top:8px;left:7px; }
+.header-menu { top:0px;left:904px; }
+.header-img { top:48px;left:402px; }
+.visitas { top:5px;left:901px; }

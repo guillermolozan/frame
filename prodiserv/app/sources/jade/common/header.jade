@@ -1,1 +1,26 @@
-include headers/web
+include ../../jade/includes/header_pre
+
+header(class="navbar-fixed")
+	//- nav(style="background-image:url('#{header_bg}')")
+	nav
+		.container
+
+			if(is_home)
+				h1 #{web_name}
+				-main = false
+
+			a(href="#{link_home}",class="brand-logo",title="#{web_name}"): img(src="#{pub_img}#{logo}",title="#{web_name}",alt="#{web_name}")
+
+			a(href="#",data-activates="mobile-nav",class="button-collapse"): i(class="mdi-navigation-menu")
+
+			//- div(class="phones hide-on-med-and-down")!= header_phones
+				
+			//- menu_top
+			ul(class="menu menu_top hide-on-med-and-down")
+				+menu_items(menu_top)
+
+			ul.list
+				li: a(class="btn",href="promociones/promocion-de-pagina-web-administrable/50") Promociones
+				
+//- menu_left
+include ../../jade/includes/menu_left

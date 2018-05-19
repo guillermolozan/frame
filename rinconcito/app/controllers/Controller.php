@@ -27,6 +27,12 @@ class Controller extends \core\Controller {
 			
 			}
 
+			$replace_menu_pre['locales']=[
+				'url'   =>'#',
+				'name'  =>'Locales',
+				'items' =>$this->menu_left
+			];
+
 			$this->menu_left=$this->elements->getMenu('menu_left',$this->menu_left,$params['uri']);
 
 
@@ -36,7 +42,7 @@ class Controller extends \core\Controller {
 
 
 		//menu top
-			$this->menu_top=$this->elements->getMenu('menu_top',[],$params['uri']);
+			$this->menu_top=$this->elements->getMenu('menu_top',$replace_menu_pre,$params['uri']);
 
 
 		$web=$this->elements->getFromFile('web');
@@ -63,6 +69,8 @@ class Controller extends \core\Controller {
 		$this->view->assign(
 			[
 
+				'build_css'    => $this->view->vars['build_css'].'?'.$this->static_build,
+				'build_js'     => $this->view->vars['build_js'].'?'.$this->static_build,	
 			//header and menu top
 				'menu_top'     => $this->menu_top,
 				'menu_left'    => $this->menu_left,

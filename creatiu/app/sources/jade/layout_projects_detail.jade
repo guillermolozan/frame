@@ -1,0 +1,91 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+
+		//- include blocks/breadcrumb.jade
+		
+		include blocks/image.jade
+
+		main(class="container row")
+			//- .wide
+			div(class="post project")
+
+				div(class="cabecera")
+					h1(class="cparts"): +item(post)
+					-main=false
+					
+					//- div(class="contacts cparts")
+						span(class="phone"): a(href="tel:01#{post.phone}") #{post.phone}
+						span(class="email hide-on-small-only"): a(href="mailto:#{post.email}",target="_top") #{post.email}
+						span(class="cotizar hide-on-med-and-down"): a(href="#cotizar") Cotizar
+				.row
+					div(class="col s12 l6")
+						article(class="card-panel")
+							h2 Descripción
+							div!= post.html
+
+
+					div(class="col s12 l6 galleries")
+						article.card-panel.row
+							h2 Fotos
+							if post.galleries
+								each gallery in post.galleries
+									//- h2 #{gallery.name}
+									.col.s3
+										a(class="zoom",id="button",href="#{gallery.get_archivo}")
+											img(class="responsive-img",src="#{gallery.get_archivo}")
+
+				.row
+					.col.s12.l6
+						.row
+							.col.s3: h2 Inicio
+							.col.s9 #{post.inicio}
+						.row
+							.col.s3: h2 Horarios
+							.col.s9 #{post.horarios}
+					.col.s12.l6
+						.row
+							.col.s3: h2 Modalidad
+							.col.s9 #{post.modalidad}
+						.row
+							.col.s3: h2 Duración
+							.col.s9 #{post.duracion}					
+
+				.row
+					div(class="col s12 l6")
+						ul.collapsible(data-collapsible="accordion")
+							li
+								.collapsible-header.active Presentación
+								.collapsible-body: div!= post.html_presentacion
+							li
+								.collapsible-header Ventajas
+								.collapsible-body: div!= post.html_ventajas
+							li
+								.collapsible-header Syllabus
+								.collapsible-body: div!= post.html_syllabus
+							li
+								.collapsible-header Certificación
+								.collapsible-body: div!= post.html_certificacion
+							li
+								.collapsible-header Inversión
+								.collapsible-body: div!= post.html_inversion								
+
+
+
+
+
+
+		//- .actions
+			ul
+				li: a(class="call",href="tel:01#{post.phone}") Llamar
+				li: a(class="email",href="mailto:#{post.email}",target="_top") Email
+				
+		include common/footer.jade
+
+		include common/foot.jade

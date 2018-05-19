@@ -1,0 +1,50 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+		
+		main(class="container row")
+
+			.wide
+
+				if(grid.items)
+					div(class="grid")
+						
+						if(main)
+							h1: +item(grid)
+							-main=false
+						else
+							h2: +item(grid)
+
+						if(grid.items)
+							ul
+								each item in grid.items
+									li.col.s12.m6.l4
+										div(class="card")
+
+											if(item.img)
+												div.card-image
+													+img_item(item)
+
+											.col.s12
+												h2: +item(item)
+											.col.s1: span.facebook
+											.col.s11
+												if(item.text)
+													p.text #{item.text}
+
+												if(item.html)
+													div!= item.html
+
+												if(item.more)
+													a(class="more",href="#{item.more.url}") #{item.more.name}
+
+
+		include common/footer.jade
+
+		include common/foot.jade

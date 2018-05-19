@@ -1,0 +1,69 @@
+.home_gallery
+	background #dadada !important
+	h2
+		text-align center
+		// color grey
+		text-shadow 3px 4px 5px #fff !important
+		font-size 30px !important
+		font-family Merriweather !important
+		color grey !important
+		font-weight bold
+	.container
+		@media $large-medium
+			padding-left 12%
+			padding-right 12%
+		.items
+			text-align center
+			display flex
+			flex-wrap wrap
+			justify-content center
+			@media $large
+				display block
+			.col
+				@media $large
+					vertical-align top
+					float none
+					display inline-block
+				.card
+					// margin 0
+					background none
+					box-shadow initial
+					height auto
+					text-align center
+					// border-radius 20px
+					// border 1px solid #000
+					@media $medium-large
+						display flex
+						align-items center
+						overflow hidden
+						height 100px
+						@media $large
+							overflow hidden
+							height 80px
+					text-align center
+					.card-content
+						padding 0 0 .4em
+						.btn, > div
+							padding 0 .5em
+							white-space nowrap
+							color white
+					.card-image
+						fit_image(80px)
+						@media $small
+							height auto
+		// .line_more
+		// 	a
+		// 		display inline-block
+		// 		color #000
+		// 		border 1px solid @color
+		// 		padding .7em 1.6em
+		// 		font-size 1.2em
+		// 		font-weight 400
+		// 		text-transform uppercase
+		// 		position relative
+		// 		width auto
+		// 		margin-bottom 1em
+		// 		&:after
+		// 			content ">"
+		// 			position absolute
+		// 			right .4em

@@ -1,0 +1,33 @@
+header(class="navbar-fixed")
+	//- nav(style="background-image:url('#{header_bg}')")
+	div(class="container")
+		.row
+			.col.l4.content-logo
+
+				if(is_home)
+					h1 #{web_name}
+					-main = false
+
+				a(href="#{link_home}",class="brand-logo",title="#{web_name}"): img(src="#{pub_img}#{logo}",title="#{web_name}",alt="#{web_name}")
+
+			.col.s12.l8.content-banner
+				include ../../jade/includes/banner
+				//- +embed_flash("banner.swf")
+
+		.row
+			nav
+				a(href="#{link_home}",class="brand-logo hide-on-large-only",title="#{web_name}"): img(src="#{pub_img}#{logo}",title="#{web_name}",alt="#{web_name}")
+				.row
+					.col.l9
+						//- menu_top
+						ul(class="menu menu_top hide-on-med-and-down")
+							+menu_items(menu_top)
+
+					.col.l3.hide-on-med-and-down
+						//- descargar
+						a(href="presentacion.pdf",target="_blank") Descargar Presentación
+				+button_side_nav()
+//- menu_left
+include ../../jade/includes/menu_left
+
+

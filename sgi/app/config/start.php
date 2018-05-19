@@ -34,7 +34,7 @@ return [
 
 		'static' =>"./sgi/public",
 
-		'devel' =>"desarrollo",
+		// 'devel' =>"desarrollo",
 
 		// 'data_test'	=>true,		
 	

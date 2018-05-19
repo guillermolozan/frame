@@ -1,0 +1,40 @@
+footer
+	.container
+		.row.logo
+			.col.s12.l3
+				img(src="#{pub_img}#{logo}",title="#{web_name}",alt="#{web_name}")
+		.row.items
+			.col.s12.l3.first
+				ul.menu
+					+menu_items(menu_top)
+
+			.col.s12.l5.second
+				h4 Llámenos
+				ul.menu
+					.row
+						li.col.s12
+							span Teléfono: #[br] #[strong #{web_phone}]
+					li
+						div.address Dirección: #[br] #[strong #{web_address}]
+						div.email #{web_email}
+
+			.col.s12.l4.third
+				h4 Síganos
+				ul.menu
+					if(web_facebook)
+						li(class="facebook circle") 
+							a(title="Facebook",target="_blank",href="#{web_facebook}") /hotelpuntaparinas
+					if(web_youtube)
+						li(class="youtube circle") 
+							a(title="Youtube",target="_blank",href="#{web_youtube}") /hotelpuntaparinas
+					if(web_twitter)
+						li(class="twitter circle") 
+							a(title="Twitter",target="_blank",href="#{web_twitter}") /hotelpuntaparinas
+				//- bucle de menu
+
+	.down
+		.container
+			.copy Copyright © #{web_name} #{current_year}
+			//- .nav
+			ul.by.right.menu
+				+menu_items(menu_footer)

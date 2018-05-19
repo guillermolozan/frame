@@ -1,0 +1,124 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}") 
+
+		include includes/header
+
+		//- include blocks/breadcrumb.jade
+
+		//- include blocks/image.jade
+
+		main(class="container row")
+			//- .wide
+			div(class="post project")
+				+card_sended(message)
+				div(class="cabecera row")
+
+
+					if(breadcrumb)
+						ol.breadcrumb
+							each item in breadcrumb
+								if(item.class)
+									li(class="#{item.class}"): +item(item)
+								else
+									li: +item(item)
+
+
+					//- if post.menu_name
+					//- 	//- div(class="col s12 l3")
+					//- 	//- 	h2.menu_name #{post.menu_name}
+					//- 	div(class="col s12 l12 cent")
+					//- 		h1 #{post.name}
+					//- 		-main=false
+					//- else
+					//- 	div(class="col s12 l12")
+					//- 		h1 #{post.name}
+					//- 		-main=false
+							
+
+					div(class="col s12 l12")
+						h1 #{post.name}
+						-main=false
+				.row
+
+					if menu_post
+						div(class="col s12 l3")
+							//- ul(class="menu_post collection collapsible collapsible-accordion",id="menu_left")
+							ul(class="menu_post collection collapsible collapsible-accordion",id="menu_left")
+								+menu_items_collapsible(menu_post)
+								//- +menu_collection(menu_post)
+								//- +menu_items_nocollapsible(menu_post)
+						-class_row_main="l9"
+						-class_row_item="m4"
+					else
+						-class_row_main="l12"
+						-class_row_item="m3"
+
+
+					div(class="col s12 #{class_row_main}")
+
+						if post.html
+							div(class="col s12")
+								div!= post.html
+
+									//- if post.html2
+									//- 	a(class="btn modal-trigger",href="#modal1") Acabados
+									//- 	div(id="modal1",class="modal")
+									//- 		div(class="modal-content")
+									//- 			h2 Acabados
+									//- 			div!= post.html2
+
+						if(items)
+							div(class="productos_item")
+								ul(class="col s12")
+									.row
+										each productos_item in items
+											div(class="col s12 #{class_row_item}")
+												.card.producto
+													.card-image
+														a(href="#{productos_item.url}",title="#{productos_item.name}"): img(src="#{productos_item.img}")
+													.card-content
+														.card-title: a(href="#{productos_item.url}",title="#{productos_item.name}") #{productos_item.name}
+													.card-action
+														if(productos_item.subname!='')
+															span.subname #{productos_item.subname}
+														if(productos_item.precio!='S/.')
+															span.precio #{productos_item.precio}
+
+						if(grupos)
+							section.line_grupos
+								.collection
+									each grupos_item in grupos
+										div(class="col s12 productos_reel")
+
+											div(class="collection-item #{grupos_item.url}")
+												h2: a(href="#{grupos_item.url}") #{grupos_item.name}
+												.row
+													.responsive
+														each productos_item in grupos_item.items
+															div(class="col s12 m4")
+																.card.producto
+																	.card-image
+																		a(href="#{productos_item.url}",title="#{productos_item.name}"): img(src="#{productos_item.img}")
+																	.card-content
+																		.card-title: a(href="#{productos_item.url}",title="#{productos_item.name}") #{productos_item.name}
+																	.card-action
+																		if(productos_item.subname!='')
+																			span.subname #{productos_item.subname}
+																		if(productos_item.precio!='S/.')
+																			span.precio #{productos_item.precio}
+													a(class="badge",href="#{grupos_item.url}") ver más
+
+
+		//- .actions
+		//- 	ul
+		//- 		li: a(class="call",href="tel:01#{post.phone}") Llamar
+		//- 		li: a(class="email",href="mailto:#{post.email}",target="_top") Email
+		include includes/footer.jade
+
+		include common/foot.jade
+

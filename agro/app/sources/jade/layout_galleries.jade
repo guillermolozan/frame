@@ -1,0 +1,17 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include includes/header
+		
+		main(class="row")
+			
+			//- .wide
+			include includes/gallery_photos.jade
+		
+		include includes/footer.jade
+		include common/foot.jade

@@ -1,0 +1,70 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+
+		//- include blocks/breadcrumb.jade
+
+		include blocks/banner.jade
+
+		section.line_menu
+			.container
+				.top LISTO PARA...
+				ul.menu.menu_center
+					+menu_items(menu_home)
+
+		section.line_grupos
+			.collection.container
+				each grupos_item in grupos
+					//- div(class="collection-item row scrollspy",id="#{grupos_item.url}")
+					div(class="collection-item row")
+						//- div(class="col s12")
+						.grupos_banner
+							.anchor.scrollspy(id="#{grupos_item.url}")
+							img.responsive-img(src="#{grupos_item.img}")
+							div(class="slogan #{grupos_item.class}")
+								img.logo(src="#{grupos_item.ico}")
+								strong #{grupos_item.word_action}
+								i SIN LÍMITES
+								a(href="#{grupos_item.url}") VER MÁS
+
+						.grupos_items
+							h4 LISTO PARA #[strong #{grupos_item.name}]
+							.subline
+							.row_items.responsive
+								each productos_item in grupos_item.productos
+									div(class="row_item")
+										.card.producto
+											.card-image
+												a(href="#{productos_item.url}",title="#{productos_item.name}"): img(src="#{productos_item.foto.img}")
+											.card-content
+												.card-title: a(href="#{productos_item.url}",title="#{productos_item.name}") #{productos_item.name}
+											.card-action
+												if(productos_item.precio!='S/.')
+													span #{productos_item.precio}
+
+		//- if true
+		section.line_clientes
+			div(class="container row")
+				h2 Marcas
+				div(class="col s12")
+					each item in clients
+						div(class="col s6 m4")
+							.conte
+								if(item.url)
+									a(href="#{item.url}",target="_blank",title="#{item.name}"): img(src="#{item.img}")
+									a(href="#{item.url}",target="_blank",title="#{item.name}"): h4 #{item.name}
+								else
+									a(title="#{item.name}"): img(src="#{item.img}")
+									a(title="#{item.name}"): h4 #{item.name}
+				.line_more: a(class="more",href="galeria-fotos-clientes/2") ver más
+
+
+		include common/footer.jade
+
+		include common/foot.jade

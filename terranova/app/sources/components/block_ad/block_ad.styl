@@ -1,0 +1,58 @@
+.block_ad
+	.block_publicidad
+		height 260px
+		overflow hidden
+		// display none
+		// border 1px solid color1
+		margin-bottom .5em
+		margin-top .5em
+		@media $large
+			border 1px solid color1
+		text-align center
+		> div 
+			margin auto
+		h3
+			// border-radius 7px 7px 0 0
+			color #fff
+			background-color color1
+			font-weight bold
+			margin 0
+			padding .6em 1em
+			@media $large
+				font-family Arial
+				font-size 12px
+			@media $small-medium
+				text-align center
+		.ad
+			text-align center
+		// &:after
+		// 	content ""
+		// 	// width 100%
+		// 	height 20px
+		// 	background-color #666666
+		// 	display block
+		// 	margin-bottom 0
+		// 	@media $small-medium
+		// 		background-color #fff
+	> .ad
+		text-align center
+		margin-bottom 1em
+		margin-top 1em
+		li
+			list-style none
+			display inline-block
+			// margin-bottom 2em
+			> a
+				display inline-block
+				background-repeat no-repeat
+				margin 0 .2em
+				height 30px
+				&.facebook
+					background-image url(imgs+'facebook.jpg')
+					width 29px
+				&.twitter
+					background-image url(imgs+'twitter.jpg')
+					width 30px
+				&.youtube
+					background-image url(imgs+'youtube.jpg')
+					width 73px

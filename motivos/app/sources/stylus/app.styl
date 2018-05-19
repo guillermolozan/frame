@@ -1,0 +1,721 @@
+@import url(https://fonts.googleapis.com/css?family=Lobster)
+
+
+// icomoon
+work_stylus='../../../../work/sources/stylus/'
+
+color1=#E21322 //red
+color2=#2C355C //blue
+color3=#9e9e9e //grey
+color4=#3d2e1c //brown
+
+
+
+dir_public_img = '../../public/img/'
+
+//materialize
+@import '../../../public/vendor/css/materialize.min.css'
+
+//work mixins
+@import work_stylus+'mixins.styl'
+
+// icomoon
+@import '../../../../work/sources/stylus/icomoon.styl'
+
+
+breakpoint_mobile = mobile
+
+breakpoint_tablet = tablet
+
+mobile             = 600px
+tablet             = 992px
+container 			 = 1000px
+maxwide 				 = container
+
+// media queries
+$small        = 'only screen and (max-width : '+mobile+')'
+$small-medium = 'only screen and (max-width : '+tablet+')'
+$large        = 'only screen and (min-width : '+tablet+')'
+$medium-large = 'only screen and (min-width : '+mobile+')'
+$maxim        = 'only screen and (max-width : '+maxwide+')'
+
+$medium-large = $large-medium
+$medium-small = $small-medium 
+
+
+// @import url(https://fonts.googleapis.com/css?family=Indie+Flower);
+// @import url(https://fonts.googleapis.com/css?family=Architects+Daughter);
+// for all
+body
+	display flex
+	min-height 100vh
+	flex-direction column
+	// background-color lighten(brown,55)
+
+
+	
+main
+	flex 1 0 auto
+	// background-color white
+	
+h4
+	color color1
+	text-transform uppercase
+	font-weight 300
+	.material-icons
+		font-size 0.9em
+		
+a:hover
+	color color1 !important
+	
+// a
+	// color color2 !important	
+
+// .card
+	// background-color lighten(#F0E5D7,7)
+// 	color #846C63
+
+
+
+
+
+
+// header
+header
+	nav
+		background-color white //rgb(157, 25, 23)
+		background-size 1000px 180px
+		a
+			text-transform capitalize
+			font-size 0.7em
+		.button-collapse
+			color color2
+		.brand-logo img
+			height 54px	
+			visibility visible			
+
+.menu_top
+	a
+		color color2
+		font-weight 700
+		font-family Arial
+		&:hover
+			color color1
+
+.menu_left	
+	li
+		border-bottom 1px solid rgba(red,0.2)
+	a
+		color color1
+		font-weight bold
+
+			
+.menu
+	// background red !important
+	> li
+		// background-image linear-gradient(top,transparent,lighten(color2,15))
+		position relative
+		margin-right 2px
+		a:hover
+			color inherit !important
+		.submenu
+			display none
+			position absolute
+			top 100%
+			left 0px
+			background white
+			min-width 100%
+			width auto
+			> li
+				display block
+				width 100%
+				border-bottom 1px solid color6
+				&:last-child
+					border-bottom 0
+				>a
+					color black
+					display block
+					white-space nowrap
+					height 40px
+					line-height @height
+					&:hover
+						color black !important
+		&:hover
+			.submenu
+				display block
+				
+
+							
+@media only screen and (min-width : breakpoint_tablet)
+
+	.container
+		width container
+	
+	header
+		position relative
+		height 180px !important
+		margin-bottom -5px
+		nav
+			position relative !important
+			height 180px !important
+			background-color #BAB1D8
+			background-repeat no-repeat
+			background-position center top
+			// background-image url(dir_public_img+'header_logo.jpg')
+			background-image none
+			.brand-logo img
+				visibility hidden
+				width 100%
+				height 138px
+			div.menu
+				height 49px
+				// margin-top -42px
+				background transparent
+				position absolute
+				top 138px
+				
+				// background transparent url(dir_public_img+'header_red.png') repeat-x
+				z-index 10000
+				.menu_top
+					padding-right 30px
+					li
+						box-shadow: 3px 3px 5px grey
+						line-height 30px
+						margin 6px 0em 0 0em
+						float right
+						border-radius 0.6em
+						
+						&.active
+							background-color rgba(black,0.3)
+						a
+							color white
+							text-transform capitalize
+							letter-spacing 0.08em
+							font-weight bold
+							padding-left 0.9em
+							padding-right 0.9em
+							font-size 0.9.em
+							&:hover
+								color white	!important
+						&:nth-child(1)
+							background tranparent
+							box-shadow: 0 0 0 transparent
+							width 40px
+							margin-top -4px
+							.twitter
+								font-size 1.8em
+						&:nth-child(2)							
+							background tranparent
+							box-shadow: 0 0 0 transparent
+							width 40px
+							margin-top -4px
+							.facebook
+								font-size 1.8em							
+						&:nth-child(3)
+							background rgb(106, 93, 162)
+						&:nth-child(4)
+							background rgb(133, 195, 35)
+						&:nth-child(5)
+							background rgb(212, 30, 120)
+						&:nth-child(6)
+							background rgb(1, 145, 219)
+			// &:after
+			// 	content ""
+			// 	height 10px
+			// 	background transparent url(dir_public_img+'header_white.png') repeat-x
+			// 	display block
+			// 	z-index 2
+					
+			// div.phones
+			// 	font-size 1.7em
+			// 	font-weight 400
+			// 	color white
+			// 	float right	
+			// 	text-align right
+			// 	line-height 1.7em
+			// 	margin-top 1.3em
+			// 	text-shadow 2px 2px rgba(black,0.5);
+		&.headerfixed
+			nav
+				box-shadow 0 0 0
+				height 32px !important
+				background none
+				position fixed !important	
+				background-image none !important
+				div.nav-wrapper
+					display none
+				// div.menu
+					// background-color color1
+					// background-image linear-gradient('top',#f00,darken(color1,10))
+				&:after
+					display none	
+					
+
+
+@media only screen and (max-width : breakpoint_tablet)
+	header
+		nav
+			background-image none !important
+			
+
+
+
+
+
+// footer
+footer
+	background-color #DF7BA4			
+	.right
+		a
+			color grey
+	.menu
+		.submenu
+			top initial
+			bottom 100%		
+
+
+
+// map
+#map 
+	width 100%
+	height 350px
+	margin-top 10px
+.maps
+	.card
+		padding 0 1%
+	
+
+
+
+// events
+.events
+	.card-title
+		color color2
+	.card-content
+		padding-top 5px
+		.sub
+			color color1
+		p
+			color color3
+			
+
+
+// post
+.post
+	h1
+		font-size 3rem
+		font-weight bold
+		color red
+		font-family 'Times New Roman', 'serif'
+
+		a
+			font-family inherit
+		
+
+
+
+// article
+article
+	color color3
+	.card-title
+		a
+			color black
+	> div
+		text-align: justify
+		color black
+		font-size 1.1rem
+		font-weight 300
+	img
+		margin-top 20px
+		
+
+
+
+
+// banner
+// .slider
+// 	margin-top 7px
+// 	.indicators
+// 		.indicator-item
+// 			width 24px
+// 			height 24px
+// 			font-weight bold
+// 			// list-style-type decimal
+// 		.indicator-item.active
+// 			background-color color1
+// 			color white
+// 	.slides li 
+// 		background white
+// 		.caption.cfotocentro
+// 			top 0%
+// 			img
+// 				width 100%	
+// 		.caption.cfoto
+// 			top 0%
+// 			right 14%
+// 			left initial
+// 			@media only screen and (min-width : 1000px)
+// 				right 34%		
+// 				width 20%	
+// 			@media only screen and (min-width : 1200px)
+// 				right 36%					
+// 		.caption.ctexto
+// 			top 10%
+// 			width 20%	
+// 			left 14%
+// 			a
+// 				color navy
+// 				font-size 0.7em
+// 				text-shadow:3px 3px 0 #fff,-1px -1px 0 #fff,  1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff;
+// 				&:hover
+// 					color #0191DB !important
+// 			@media only screen and (min-width : 1000px)
+// 				left 12%
+// 		.movil
+// 			display none
+// 		.desktop
+// 			display block				
+// 		@media only screen and (max-width : 600px)
+// 			.movil
+// 				display block
+// 			.desktop
+// 				display none
+// 			.caption.ctexto
+// 				display none
+// 				background white
+// 				width 90%
+// 				padding 0 1em
+// 				text-align center
+// 				top 3%
+// 				left 5%
+// 				border-radius 10px
+// 				opacity 0.8 !important
+// 				overflow hidden
+// 				a
+// 					font-size 0.8em
+// 			.caption.cfoto
+// 				display none
+// 				right 30%
+// 		.caption img
+// 			height 520px
+// 			width 600px
+// 		.caption
+// 			h3
+// 				color black
+// 				a
+// 					color inherit
+// 					font-family Lobster, cursive
+	
+
+// banner
+.slider2
+	// margin-top 7px
+	.caption
+		border-style solid
+		border-width 0px
+		top 0 !important
+		// @media only screen and (min-width : 992px)
+		// 	border-color red
+		// 	width 80% !important
+		// 	left 10% !important
+		// @media only screen and (min-width : 1100px)
+		// 	border-color yellow
+		// 	width 85% !important
+		// 	left 7.5% !important
+		// @media only screen and (min-width : 1200px)
+		// 	border-color orange
+		// 	width 80% !important
+		// 	left 10% !important
+			
+		@media only screen and (max-width : 992px)
+			border-color green
+			width 85% !important
+			left 7.5% !important
+		@media only screen and (max-width : 900px)
+			border-color purple
+			width 90% !important
+			left 5% !important
+		@media only screen and (max-width : 800px)
+			border-color purple
+			width 95% !important
+			left 2.5% !important
+		// @media only screen and (max-width : 992px)
+		// 	width 90% !important
+		// 	left 5% !important
+	.indicators
+		@media $small-medium
+			display none
+		.indicator-item
+			width 24px
+			height 24px
+			font-weight bold
+			// list-style-type decimal
+		.indicator-item.active
+			background-color color1
+			color white
+	.slides li 
+		> img
+			opacity 0
+			transition opacity 2s
+		background white
+		// container_center()
+		.movil
+			display none
+			@media $small
+				display block
+		.desktop
+			display block
+			@media $small
+				display none
+		.imagen_centro
+			top 0%
+			img
+				width 100%	
+		.imagen_derecha
+			position absolute
+			display block
+			top 1%
+			right -1000%
+			transition right 0.5s
+			left initial
+			// @media $small-medium 
+			// 	right 0
+			img
+				height 500px
+				width 600px		
+		.texto_izquierda
+			position absolute
+			display block
+			top 0%
+			width 25%	
+			left -1000%
+			transition left 1.1s
+			height 500px
+			// @media $small-medium 
+			// 	left 0
+			a
+				color navy
+				font-size 0.7em
+				font-family Lobster, cursive
+				text-shadow:3px 3px 0 #fff,-1px -1px 0 #fff,  1px -1px 0 #fff,-1px 1px 0 #fff,1px 1px 0 #fff;
+				&:hover
+					color #0191DB !important
+		@media $small
+			.texto_izquierda
+				display none
+				background white
+				width 90%
+				padding 0 1em
+				text-align center
+				top 3%
+				left 5%
+				border-radius 10px
+				opacity 0.8 !important
+				overflow hidden
+				a
+					font-size 0.8em
+			.imagen_derecha
+				display none
+				right 30%
+	.slides li.active
+		> img
+			opacity 1
+		.imagen_derecha
+			right -10%
+		.texto_izquierda
+			left 2%
+
+
+			
+// galleries
+.galleries
+	.item		
+		position relative
+		height 220px
+		margin-bottom 10px
+		div.img
+			height 150px
+		h6
+			background-color white
+			color color2	
+			z-index 2
+			position absolute
+			bottom 0
+			width 100%
+			padding 1em 0
+			text-align center
+
+	
+@media only screen and (max-width : breakpoint_tablet)	
+	.galleries
+		.item
+			height auto
+			div.img
+				height auto
+			h6
+				position relative
+
+
+
+// locales
+.locales
+	.card
+		.card-title
+			a
+				color color1
+		.card-image
+			display flex
+			flex-direction column		
+			height 155px				
+		.card-action
+			a
+				line-height 2em
+				color color2
+				text-transform capitalize
+				&:before
+					margin-right 10px
+					color color3
+			span
+				display block					
+
+
+			
+
+@media only screen and (max-width : breakpoint_tablet)
+	.locales
+		.card
+			.card-image	
+				height auto			
+			.card-action
+				span
+					display inline
+					
+					
+
+
+// local
+.local
+	.card	
+		.card-title
+			text-align center
+			color color1
+		.card-action
+			a
+				line-height 2em
+				color color2
+				text-transform capitalize
+				&:before
+					margin-right 10px
+					color color3
+			li
+				display block
+	.localfixed
+		position fixed
+		top 37px
+		
+
+@media only screen and (max-width : breakpoint_tablet)
+	.local
+		.card
+			.card-title
+				font-size 3em
+			.card-action
+				li
+					display inline
+		.localfixed
+			position relative
+			top 0
+					
+// form
+form
+	.btn
+		background-color rgba(color2, 0.65)
+	.waves-effect.waves-blue .waves-ripple
+		background-color rgba(color2, 0.65)
+	
+
+
+// video
+.fancybox-iframe
+	width 100%
+	height 100%
+	
+.fancybox-wrap
+	z-index 2			
+
+
+// modal
+.modal
+	top 0% !important
+	max-height 100%
+	.modal-footer
+		height 0px
+		margin-bottom -20px
+		a
+			color white
+			background-color black
+			padding 0 4px
+			line-height 1.5em
+			height 1.3em
+			&:hover
+				color grey !important	
+			
+			// text-shadow 1px 1px 1px rgba(white,1)
+	.modal-close
+		margin-left -115px !important
+		
+.row
+	margin-bottom 0
+	
+.footer_pre .card
+	border-radius 7px
+	
+.menu_top
+	.facebook
+		line-height 1.6em
+		color black
+		display inline-block
+		width 39px
+		height 39px
+		padding 0 !important
+		margin-left 10px
+		background transparent url(dir_public_img+'facebook.png') no-repeat
+	.twitter
+		line-height 1.6em
+		color black
+		display inline-block
+		width 39px
+		height 39px
+		padding 0 !important
+		margin-left 20px
+		background transparent url(dir_public_img+'twitter.png') no-repeat
+			
+	
+.footer_pre
+	.facebook
+		line-height 1.6em
+		color black
+		&:before
+			vertical-align middle
+			content '\e66b'
+			font-family icomoon
+			font-size 1.2em
+			color #3a5795
+	.twitter
+		line-height 1.6em
+		color black
+		&:before
+			vertical-align middle
+			content '\e66c'
+			font-family icomoon
+			font-size 1.2em
+			color #55ACEE			
+
+.button_like
+	float right
+	width 56px
+	height 33px
+	overflow hidden
+	span
+		vertical-align top !important
+		margin-top 10px

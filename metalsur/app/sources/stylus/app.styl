@@ -1,0 +1,79 @@
+// icomoon
+@import '../../../../work/sources/stylus/icomoonlight.styl'
+// @import '../../../../work/sources/stylus/icomoon.styl'
+work_stylus='../../../../work/sources/stylus/'
+
+// dirs
+imgs               = '../../public/img/'
+load_imgs          = '../../../public/img/'
+
+
+// colors
+angle              =0deg
+
+color1             =#cc0000 + angle //red
+color2             =black + angle //blue
+color3             =#9e9e9e + angle //grey
+color4             =lighten(#000000,35) + angle //black
+color5             =#0164CE + angle
+color6             =#40b3ff + angle
+
+
+
+// blocks
+body_color         =color2
+
+header_img_path	 =load_imgs+'header-bg.jpg'
+header_bg          =#fff
+header_height      =157px
+
+menu_top_bgcolor   =#fff
+menu_top_textcolor =black
+menu_top_height 	 =27px
+
+main_bgcolor       =rgba(#f7f7f7,50)
+
+
+footer_bgcolor     =#586998
+footer_textcolor   =white
+
+
+
+// widths
+maxwide            = 980px
+mobile             = 600px
+tablet             = 992px
+container 			 = maxwide
+
+
+
+// media queries
+$small        = 'only screen and (max-width : '+mobile+')'
+$small-medium = 'only screen and (max-width : '+tablet+')'
+$large        = 'only screen and (min-width : '+tablet+')'
+$medium-large = 'only screen and (min-width : '+mobile+')'
+$maxim        = 'only screen and (max-width : '+maxwide+')'
+
+
+//materialize
+@import '../../../public/vendor/css/materialize.min.css'
+//work mixins
+@import work_stylus+'mixins.styl'
+//blocks
+@import work_stylus+'common.styl'
+@import work_stylus+'galleries.styl'
+
+
+
+//blocks
+@import 'blocks/*'
+
+
+
+
+//layouts
+@import 'layouts/*'
+
+
+
+

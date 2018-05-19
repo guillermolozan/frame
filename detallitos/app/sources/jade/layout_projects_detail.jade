@@ -1,0 +1,149 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include includes/header
+
+		//- include blocks/breadcrumb.jade
+		
+		include blocks/image.jade
+
+		main(class="container row")
+			//- .wide
+			div(class="post project")
+				+card_sended(message)
+				div(class="cabecera")
+					h1(class="cparts"): +item(post)
+					-main=false
+					div(class="contacts cparts")
+						span(class="phone"): a(href="tel:01#{post.phone}") #{post.phone}
+						span(class="email hide-on-small-only"): a(href="mailto:#{post.email}",target="_top") #{post.email}
+						span(class="cotizar hide-on-med-and-down"): a(href="#cotizar") Cotizar
+				.row
+					if post.html
+						div(class="col s12 l6")
+							article(class="card-panel")
+								h2 Descripción
+								div.more!= post.html
+								//- if post.html2
+								//- 	a(class="btn modal-trigger",href="#modal1") Acabados
+								//- 	div(id="modal1",class="modal")
+								//- 		div(class="modal-content")
+								//- 			h2 Acabados
+								//- 			div!= post.html2
+
+					if post.html2
+						div(class="col s12 l6")
+							article(class="card-panel")
+								h2 Acabados
+								div.more!= post.html2
+
+					if post.galleries
+						each gallery in post.galleries
+							div(class="col s12 l6 galleries")
+								article(class="card-panel")
+									h2 #{gallery.name}
+									div
+										a(class="zoom",id="button",data-items="#{gallery.items}")
+											img(class="responsive-img",src="#{gallery.img}")
+
+					if post.video
+						div(class="col s12 l6")
+							article(class="card-panel")
+								h2 Videos
+								.video-container
+									iframe(width="853",height="480",src="//www.youtube.com/embed/#{post.video}?rel=0",frameborder="0",allowfullscreen="allowfullscreen")
+
+
+					//- if post.depas || post.niveles
+					if false
+						div(class="col s12 l6 planos")
+							article(class="card-panel")
+								h2 Planos
+								h6 Estadística de Ventas
+								div(class="col s12 l8 estadisticas")
+									if post.niveles
+										ul(class="niveles nvl")
+											each item in post.niveles
+												if item.href
+													li: a(href="#{item.href}",title="#{item.title}") #{item.nombre}
+												else
+													li #{item.nombre}
+												//- li(data-sete="#{item.set}") #{item.nombre}
+									if post.depas
+										ul.depas
+											each piso in post.depas
+												div(class="tods")
+													div(class="one nvl")
+														if piso.href
+															li: a(href="#{piso.href}",title="#{piso.title}") #{piso.nombre}
+														else
+															li #{piso.nombre}
+														//- li(data-sete="#{piso.set}") #{piso.nombre}
+													div.two
+														div
+															each item in piso.items
+																if item.photos
+																	//- li(class="#{item.class}"): a(href="#{item.href}",title="#{item.title}") #{item.numero}
+																	li(class="#{item.class}"): span(data-depa="#{item.set}",title="#{item.title}",class="#{item.active}") #{item.numero}
+																else
+																	li(class="#{item.class}") #{item.numero}
+											div.tods
+												div.legen
+													li Libre #[span.libre]
+													li Separado #[span.separado]
+													li Vendido #[span.vendido]
+
+								div(class="col s12 l4")
+									div.select_depas
+										each piso in post.depas
+											each item in piso.items
+												div(class="selec_depa #{item.set}",style="#{item.style}")
+													h4 #{item.name}
+													div: span(class="#{item.status}") #{item.status}
+													div area: #{item.area}m²
+													each photo in item.photos
+														if(photo.href)
+															a(href="#{photo.href}",title="#{photo.title}"): img(src="#{photo.href}")
+
+								//- div(class="col s12 l6")
+									ul(class="parent-container"): li: a(class="zoom",href="#{post.foto.href}"): img(class="responsive-img",src="#{post.foto.href}")
+
+					if map.lat
+						div(class="col s12 l6")
+							article(class="card-panel")
+								h2 Ubicación
+								+map(map)
+								div.section
+									p #{map.text}
+								//- div(class="col s12 m3")
+								//- 	h5 Dirección
+								//- 	div.divider
+									//- div.section
+										p #{item.phone}
+
+					div(id="cotizar",class="col s12 l6 scrollspy")
+						article(class="card-panel")
+							h2 Cotizar
+							//- p Si desea más información acerca del proyecto #{post.name} por favor ingrese sus datos y nos pondremos en contacto con usted:
+							form(method="POST",name="contact")
+								+form('contact',contact)
+								//- +form('contact',contact)
+								//- div(class="input-field col s12 l12")
+									button(class="btn waves-effect waves-blue",type="submit") ENVIAR
+								+input_submit('ENVIAR')
+							//- div(class="col s12 l4")
+
+
+		.actions
+			ul
+				li: a(class="call",href="tel:01#{post.phone}") Llamar
+				li: a(class="email",href="mailto:#{post.email}",target="_top") Email
+		
+		include includes/footer
+
+		include common/foot.jade

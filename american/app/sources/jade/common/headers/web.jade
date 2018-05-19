@@ -1,0 +1,55 @@
+//- section(class="preheader hide-on-med-and-down")
+//- 	nav
+//- 		.container
+//- 			ul(class="menu")
+				
+
+//- 				li.twitter: a(target="_blank",href="#{web_twitter}")
+//- 				li.facebook: a(target="_blank",href="#{web_facebook}")
+				
+//- 				li.email: a #{web_email}
+//- 				li.phone: a Celular: #{web_phone}
+//- 				li.bola: a(href="pagina/servicios-inmobiliarios-internacionales/11") SERVICIOS INMOBILIARIOS INTERNACIONALES
+
+
+header(class="navbar-fixed")
+	//- nav(style="background-image:url('#{header_bg}')")
+	nav
+		div(class="container")
+
+			if(is_home)
+				h1 #{web_name}
+				-main = false
+
+			a(href="#{link_home}",class="brand-logo",title="#{web_name}"): img(src="#{pub_img}#{logo}",title="#{web_name}",alt="#{web_name}")
+
+			a(href="#",data-activates="mobile-nav",class="button-collapse"): i(class="mdi-navigation-menu")
+
+			//- div(class="phones hide-on-med-and-down")!= header_phones
+				
+			//- menu_top
+			ul(class="menu menu_top hide-on-med-and-down")
+				li.lines.line_1: span ¡Tu decisión de vender o alquilar, nosotros lo hacemos realidad!
+
+				li.lines.line_2: span American House Company
+				li.lines.line_3
+					span.phone #[strong #{web_phone}]
+					if(web_youtube)
+						span.bolita.youtube: a(target="_blank",href="#{web_youtube}")
+					if(web_facebook)
+						span.bolita.facebook: a(target="_blank",href="#{web_facebook}")
+					if(web_twitter)
+						span.bolita.twitter: a(target="_blank",href="#{web_twitter}")
+				li.lines.line_4: span #{web_email}
+				+menu_items(menu_top)
+
+			//- ul.list
+				li: a(class="btn",href="promociones/promocion-de-pagina-web-administrable/50") Promociones
+				
+.header_line
+//- menu_left
+ul(class="menu_left side-nav collapsible collapsible-accordion",id="mobile-nav")
+	+menu_items_collapsible(menu_left)
+
+
+

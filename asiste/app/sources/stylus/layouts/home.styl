@@ -1,0 +1,129 @@
+
+.p-home
+					
+
+						
+	.bar
+		h1,h2
+			font-size 1em
+			font-weight bold
+		h3
+			font-size 0.9em
+		h4,h5
+			font-size 0.9em
+			// margin-bottom 0.4em
+		h6
+			margin-top 0.5em
+		&.sidelef
+			.card
+				min-height 0
+				padding-left 30px
+				background white url(imgs+'arrow.png') no-repeat
+				h4
+					min-height 0.65em
+					line-height @min-height
+					vertical-align middle
+					font-size 1em
+					color #02337a
+		&.sideright
+			h4
+				margin-top 0
+				color #02337a
+				font-weight 400
+				// max-height 2.1em
+				// overflow hidden
+			.more
+				color #02337a
+				font-size 1.2em
+				font-weight 500
+
+	.bloque_servicios
+		table
+			margin-top 7px
+			tr
+				border-top 1px solid #999
+				td.name
+					padding 1em
+					width 30%
+					color black
+					text-align center
+					vertical-align middle
+					a
+						color #999
+						font-size 1.3em
+				td.text
+					// padding-top .5em
+					padding-left 1em
+					background-color #eee
+					vertical-align top
+
+
+	.wide
+		.collapsible
+			border-top 1px solid white
+			border-right 1px solid white
+			border-left 1px solid white
+			box-shadow none
+			.collapsible-header
+				border 1px solid #ccc
+				border-radius 5px
+				margin-bottom 10px
+				font-size 1.2em
+				&:before
+					float right
+					font-size 1.05em
+					color grey
+					font-weight normal
+				icomoon('f0a3')
+			.collapsible-body
+				border-bottom 1px solid white
+				font-size 1em
+				p
+					padding-top 0.3rem
+
+				
+
+	h4
+		color #0198FF
+		font-size 2em
+	
+	.line_0
+		margin-top 1em
+		.img_side
+			margin-top 1em
+	.line_a // la mejor experiencia en ingenieria
+		> .col
+			display flex
+			flex-direction row
+			flex-wrap wrap
+			align-items flex-start
+			h4
+				order 1
+				color #0198ff
+				font-size 2em
+				width 100%
+				@media $small
+					text-align center
+					margin-bottom 0
+			img
+				order 2
+				width 48%
+				@media $medium-small
+					width auto
+				margin 5px 9px 9px 0
+				height auto 
+				@media $small
+					margin 5px auto 9px
+				// float left
+			> div
+				order 3
+				// float left
+				width 48%
+				@media $medium-small
+					flex-grow 1
+				@media $small
+					width auto
+			a.more_information
+				// float left
+				order 4
+				width 100%

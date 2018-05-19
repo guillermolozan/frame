@@ -1,0 +1,15 @@
++card_sended(message)
+.post
+	if(main)
+		h1 Contáctenos
+	else
+		h2 Contáctenos
+		-main=false
+	.row
+		form(class="col s12 l10 offset-l1",method="post",name="contact")
+			
+			+form('contact',fields)
+
+			+input_submit('ENVIAR')
+
+

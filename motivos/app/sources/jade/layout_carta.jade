@@ -1,0 +1,17 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+
+		main(class="container")
+			-responsive = "s12 m4 l3"
+			include blocks/gallery_photos.jade
+
+		include common/footer.jade
+	
+		include common/foot.jade

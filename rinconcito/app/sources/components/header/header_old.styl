@@ -1,0 +1,93 @@
+// header
+header
+	nav
+		background-color white //rgb(157, 25, 23)
+		a
+			text-transform uppercase
+		.button-collapse
+			color color2
+		.brand-logo img
+			height 54px	
+			visibility visible			
+
+.menu_top
+	a
+		color color2
+		font-weight 700
+		&:hover
+			color color1
+				
+
+							
+@media only screen and (min-width : breakpoint_tablet)
+
+	header
+		position relative
+		height 200px !important
+		margin-bottom -5px
+		nav
+			position relative !important
+			height 158px !important
+			background-color color4
+			background-repeat no-repeat
+			background-position center top
+			// background-image url(dir_public_img+'header_logo.jpg')
+			background-image none
+			.brand-logo img
+				visibility hidden
+				width 100%
+				height 138px
+				
+			div.menu
+				height 38px
+				margin-top -5px
+				background transparent url(dir_public_img+'header_red.png') repeat-x
+				z-index 1
+				.menu_top
+					li
+						line-height 38px
+						&.active
+							background-color rgba(black,0.3)
+						a
+							color white
+							text-transform uppercase
+							&:hover
+								color white	!important
+			&:after
+				content ""
+				height 10px
+				background transparent url(dir_public_img+'header_white.png') repeat-x
+				display block
+				z-index 2
+					
+			// div.phones
+			// 	font-size 1.7em
+			// 	font-weight 400
+			// 	color white
+			// 	float right	
+			// 	text-align right
+			// 	line-height 1.7em
+			// 	margin-top 1.3em
+			// 	text-shadow 2px 2px rgba(black,0.5);
+		&.headerfixed
+			nav
+				height 32px !important
+				background none
+				position fixed !important	
+				div.nav-wrapper
+					display none
+				div.menu
+					background-color color1
+					background-image linear-gradient('top',#f00,darken(color1,10))
+				&:after
+					display none	
+					
+
+
+@media only screen and (max-width : breakpoint_tablet)
+	header
+		nav
+			background-image none !important
+			
+
+

@@ -1,0 +1,28 @@
+doctype strict
+html(xmlns="http://www.w3.org/1999/xhtml")
+	head
+		meta(http-equiv="Content-Type",content="text/html; charset=utf-8")
+		meta(name="viewport",content="width=device-width")
+		link(rel="stylesheet",href="../../../public/css/email.css")
+	body
+		table(class="body",data-made-with-foundation=""): tr: th(class="center",align="center",valign="top"): center(data-parsed="")
+			include email/header.jade
+			//- body
+			table(class="container text-center"): tbody: tr: th
+				table(class="row"): tobody: tr: th(class="small-12 large-12 columns first last")
+					table: tr: th
+						if photo
+							| #[br]
+							center(data-parsed=""): img(src="#{pub_img}#{photo}",align="center",class="text-center")
+						if title
+							| #[br]
+							h5 #{title}
+						if subtitle
+							p(class="lead") #{subtitle}
+						if html
+							table(class="callout"): tr
+								td(class="callout-inner primary")
+									table(class="row"): tbody: tr: th(class="small-12 large-12 columns")!=html
+								td(class="expander")
+						//- include email/callout.jade
+

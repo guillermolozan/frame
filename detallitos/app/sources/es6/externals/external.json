@@ -1,0 +1,11 @@
+[
+"./work/app/sources/components/common/common.styl",
+"./work/app/sources/components/menu_left/menu_left.styl",
+"./work/app/sources/components/block_gallery/block_gallery.styl",
+"./work/app/sources/components/block_post/block_post.styl",
+"./work/app/sources/components/block_banner/block_banner.styl",
+"./agro/app/sources/components/header_pre/header_pre.styl",
+"./consorcio/app/sources/components/header/header.styl",
+"./bestpower/app/sources/components/footer/footer.styl",
+"./agro/app/sources/components/form_contact/form_contact.styl"
+]

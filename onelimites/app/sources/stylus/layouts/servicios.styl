@@ -1,0 +1,326 @@
+.p-servicios
+	&.p-detail
+		@media $small-medium
+			h1
+				margin-top 0px
+		ol.breadcrumb
+			padding-left 0
+			@media $small-medium
+				margin-top 100px
+			@media $small
+				margin-top 30px
+			.active a
+				color #d81a33 
+				
+					
+
+	figure
+		object-fit contain
+		width 100%
+		img.mfp-img
+			max-height 100% !important
+			// object-fit contain
+
+
+
+
+	&.p-grid
+		#menu_left
+			@media $small-medium
+				display none
+		.line_grupos
+			.collection-item
+				// background-color #eee
+				padding-top 1px
+				h2
+					padding-left 15px
+					@media $small-medium
+						padding 10px 15px
+				.badge
+					margin-right 30px
+				&.entrenar
+					background-color rgba(#EF3941,0.4)
+				&.proteger
+					background-color rgba(#00B199,0.4)
+				&.reducir
+					background-color rgba(#F9ED08,0.4)
+				&.divertir
+					background-color rgba(#FF9F2F,0.4)
+				&.rehabilitar
+					background-color rgba(#A34DC3,0.4)
+		@media $small
+			> .container
+				padding 0
+			.post
+				> .row
+					> .s12
+						padding 0
+						.collection-item
+							padding 0 40px	
+			// > .row
+			// 	> .s12
+			// 		padding 0
+
+		.productos_item
+			.card
+				.card-image
+					// height 200px
+					overflow hidden
+				.card-content h4
+					text-align center
+					font-size 1.1em
+				.card-title
+					// display none
+					height 30px
+					overflow hidden
+		h2
+			text-transform initial
+			font-size 1.7rem
+			line-height 110%
+			margin 2.1rem 0 1.68rem 0
+			@media $small-medium
+				// border-bottom 1px solid #0077bd
+				font-weight normal
+				margin 0
+		.cent
+			padding-left 45px
+		.menu_post
+			.collection-item
+				> a
+					font-weight bold
+					text-transform uppercase
+					font-family Orbitron
+					color #777 !important
+					background #eef
+				a 
+					color #000
+					display block
+					padding .4em 0 .4em 1em
+				&.active
+					background #fff
+					> a
+						// font-weight bold
+						background #333
+						color #fff !important
+				> .submenu
+					> li
+						padding-left 1.5em
+						&.active
+							a
+								// color color1
+								font-weight bold
+								icomoon('e64f')
+								&:before
+									color color1
+									margin-left -1em
+		.line_grupos
+			background-color initial !important
+			margin-top -25px
+
+	.post.project
+		@media $large
+			img.responsive-img, video.responsive-video
+				margin -1px
+				max-width 100.5%
+		.row
+			position relative
+			// &:before
+			// 	content ""
+			// 	position absolute
+			// 	width 1px
+			// 	background-color #0077bd
+			// 	left 50%
+			// 	top 3em
+			// 	height 98%
+			// 	@media $small-medium
+			// 		width 0
+			&.cabecera:before
+				width 0
+			@media $large
+				> div > article
+					margin-top 0px
+					margin-bottom 0px
+		.more
+			line-height 21px 
+			& + a
+				color grey
+				&:hover
+					color #0077bd
+			
+
+	.cabecera
+		display flex
+		@media $small
+			display block
+			text-align center
+			// margin-bottom -3em
+		h1
+			font-size 1.7rem
+		// 	text-align center
+		@media $small
+			h1
+				font-size 1.7em
+				// margin-bottom 0
+		.cparts
+			flex-grow 1
+			flex-shrink 1
+			flex-basis auto
+			@media $small
+				display inline-block
+				// background-color red
+		.contacts
+			display inline-block
+			color #0076bb
+			padding 1em 0 0 0
+			text-align right
+			@media $small
+				padding-top 0
+			span
+				font-size 1em
+				margin 0.5em
+				@media $small
+					margin 0.5em 0.5em 0.5em 1em
+					// display block
+				
+				&.whatsapp a
+					&:before
+						color #333
+						margin-right 0.5em
+					icomoon('e900')
+					// text-align left
+				&.phone
+					background url(imgs+'phone.jpg') no-repeat 0px 2px
+					padding-left 18px
+					font-size 1.3em
+					@media $small
+						font-size .8em
+						background-position 0px -2px
+						display none
+					// text-align left
+				&.email
+					font-size 1.3em
+					background url(imgs+'email.jpg') no-repeat 0px 4px	
+					padding-left 27px
+				&.cotizar
+					background url(imgs+'pencil.jpg') no-repeat 0px 2px
+					padding-left 20px
+			
+	article.card-panel
+		// min-height 500px
+		// min-height 345px
+		min-height 370px
+		margin-bottom 20px !important
+		@media $small-medium
+			min-height 0
+
+	#cotizar
+		// p
+		// 	display none
+		h2
+			padding-bottom 0
+	.actions
+		display none
+		position fixed
+		bottom 0px
+		z-index 2
+		width 100%
+		// display inline-block
+		ul
+			margin 0 auto
+			padding 0
+			display flex
+			width 100%
+			// margin 0 auto
+			text-align center
+			li
+				flex-grow 1
+				flex-shrink 1
+				flex-basis auto
+				a
+					display block
+					box-shadow inset 0px 0px 50px 0px #09598a
+					text-shadow: 3px 1px 5px #09598a
+					height 55px
+					line-height @height
+					// min-width 300px
+					width 100%
+					// margin-right 1%
+					// padding-left 5px
+					display inline-block
+					background-color #0d9aee
+					color #fff
+					border-radius 25px 25px 0 0
+					text-align center
+					// position relative
+					cursor pointer
+					font-size 50px
+					@media $small
+						font-size 30px
+					&:hover
+						text-decoration none
+					&:before
+						content ""
+						width 44px
+						height 38px
+						top 10px
+						left -7px
+						position relative
+						// top 20px
+						// left 50px
+						display inline-block
+						// margin-left 10px
+						background-repeat no-repeat
+						@media $small
+							background-size @width @height
+					&.email:before
+						background-image url(imgs+'proy-email.png')
+					&.call:before
+						background-image url(imgs+'proy-llamar.png')
+	@media $small
+		.actions
+			display block
+		footer
+			visibility hidden
+			
+	
+	// .menu_post
+	// 	.collapsible-body
+	// 		display block !important
+			
+
+	.card-title h2
+		padding 1.3em 0 .4em
+		font-size 1.7em
+
+	article.card-panel
+		// box-shadow none
+		.parent-container > li
+			@media $large
+				min-height 220px
+			.card
+				transition border-radius .5s, box-shadow .5s, background-color .5s, margin .2s
+				box-shadow 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)
+				background-color darken(white,5)
+				border-radius 15px
+				&:hover
+					box-shadow 0 12px 15px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19)
+					background-color white
+					border-radius 0
+					@media $large
+						margin -1px
+				.card-content
+					padding-top 0
+					padding-bottom 0
+					font-weight bold
+					text-transform uppercase
+	#cotizar
+		.card-title
+			h2
+				margin-top 0
+				margin-bottom 0
+				padding-top 0
+		form
+			.btn
+				margin-bottom 1em
+			// .input-field
+			// 	margin-top .1rem

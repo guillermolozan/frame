@@ -1,0 +1,96 @@
+// googleFonts='Orbitron';
+googleFonts=false;
+
+if googleFonts
+	@import url('https://fonts.googleapis.com/css?family='+googleFonts)
+
+
+// icomoon
+work_stylus='../../../../work/sources/stylus/'
+
+// dirs
+imgs               = '../../public/img/'
+load_imgs          = '../../../public/img/'
+
+
+// colors
+angle              =0deg
+
+color1             =#005985 + angle //red
+color2             =#dddddd + angle //blue
+color3             =#9e9e9e + angle + angle //grey
+color4             =lighten(#000000,35) + angle //black
+color5             =#014087 + angle
+color6             =#357BB2 + angle
+
+
+
+// blocks
+body_color         =white
+
+// header_img_path    =load_imgs+'header-bg.jpg'
+header_bg          =white url(imgs+'logo.jpg') no-repeat center
+header_height      =147px
+
+menu_top_bgcolor   =color6
+menu_top_textcolor =white
+menu_top_height    =60px
+
+main_bgcolor       =white
+
+footer_bgcolor     =white
+footer_textcolor   =black
+
+
+//
+ratio_header       =1
+
+
+// widths
+// maxwide            = ratio_header * image-size(header_img_path)[0]
+maxwide            = 1000px
+
+mobile             = 600px
+tablet             = 992px
+container 			 = maxwide
+
+
+
+// work
+@import work_stylus+'work.styl'
+
+
+
+
+//blocks
+@import 'blocks/*'
+
+
+
+body
+	background #fff
+	@media $large
+		background-image linear-gradient(top,black,white,white)
+	// background black
+
+
+//layouts
+@import 'layouts/*'
+
+
+// Begin Components
+@import '../../../../work/app/sources/components/common/common.styl'
+@import '../../../../work/app/sources/components/menu_left/menu_left.styl'
+@import '../../../../work/app/sources/components/block_gallery/block_gallery.styl'
+@import '../../../../work/app/sources/components/block_post/block_post.styl'
+@import '../../../../terranova/app/sources/components/header/header.styl'
+@import '../../../../terranova/app/sources/components/banner/banner.styl'
+@import '../../../../terranova/app/sources/components/page_post/page_post.styl'
+@import '../../../../terranova/app/sources/components/post_video/post_video.styl'
+@import '../../../../terranova/app/sources/components/block_ad/block_ad.styl'
+@import '../../../../terranova/app/sources/components/block_home_gallery/block_home_gallery.styl'
+@import '../../../../terranova/app/sources/components/block_home_videos/block_home_videos.styl'
+@import '../../../../terranova/app/sources/components/menu_block/menu_block.styl'
+@import '../../../../terranova/app/sources/components/footer/footer.styl'
+// Finish Components
+

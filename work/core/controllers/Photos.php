@@ -37,7 +37,7 @@ class Photos extends \controllers\Controller {
 		$Photos=$this->loadModel('Photos');
 
 		$gallery=$Photos->getItem();
-
+		
 		$this->view->assign([
 
 			'head_title'=> $gallery['name'].' | '.$this->title,

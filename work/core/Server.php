@@ -4,6 +4,22 @@ namespace core;
 
 class Server {
 
+	public static function frame(){
+
+		$aaa = explode("/",str_replace($_SERVER['DOCUMENT_ROOT'],'',getcwd()));
+		unset($aaa[sizeof($aaa)-1]);
+		return implode("/",$aaa);
+
+	}
+
+
+	public static function directory(){
+
+		$aaa=explode(self::frame().'/',self::base());
+		return str_replace('/','',$aaa['1']);
+
+	}
+
 	public static function name(){
 
 		return $_SERVER['SERVER_NAME'];
@@ -38,6 +54,12 @@ class Server {
 		$aaa = explode("/",$_SERVER['SCRIPT_NAME']);
 		unset($aaa[sizeof($aaa)-1]);
 		return "//".$_SERVER['HTTP_HOST'].implode("/",$aaa).'/'. ( (isset($start['private']))?$start['private'].'/':'' ) ;
+
+	}
+
+	public static function baseUrl(){
+
+		return ((inString('',$_SERVER['SERVER_PROTOCOL']))?'http:':'https:' ). self::base();
 
 	}
 

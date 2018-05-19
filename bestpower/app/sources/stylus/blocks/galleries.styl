@@ -1,0 +1,100 @@
+
+
+
+// galleries
+.galleries
+	> div
+		@media $small-medium
+			padding 0 .75rem
+	ul
+		li
+			clear none
+			.card
+				height auto
+				box-shadow none
+				border-width 3px 2px 2px 3px
+				border-style solid 
+				border-color white
+				.card-image
+					// background-color darken(white,7)
+					background-color white
+					text-align center
+					height 262px
+					line-height @height
+					vertical-align middle
+					overflow hidden
+					position relative
+					&:before
+						font-family icomoon
+						content "\e656"
+						font-size 8em
+						line-height inherit
+						color rgba(color2,0.1)
+						position absolute
+						left 0
+						width 100%
+						z-index 0
+					img
+						display inline-block
+						height auto
+						width 100%
+						max-width none
+						margin-left -50%
+						margin-right -50%
+						margin-top -5%
+						margin-bottom -5%
+					@media $small
+						height auto
+						line-height 0
+						img
+							margin 0
+							width 100%
+				.card-content
+					display none
+					overflow hidden
+					height 100px
+					@media $small
+						height auto
+					h3
+						text-align center
+						text-transform uppercase
+						margin 0
+						color black
+						font-size 500
+						font-size 0.9em
+						// color black	
+		div.boton
+			background-color #194D74
+			line-height 1.8em
+			font-size 3em
+			padding-left 0.5em
+			padding-right 0.5em
+			text-align center
+			a
+				color white
+				font-weight 300
+				strong
+					display block
+					font-size 0.4em
+					font-weight 200
+					line-height 1.3em
+					&:after
+						content "Ver Detalles"
+						display block
+						color white
+						background-color #89919C
+						width 40%
+						text-align center
+						margin 3em 33%
+						font-size 0.9em
+						padding 5px 10px
+				&:hover
+					text-decoration none
+
+.p-photos
+	.galleries ul li .card 
+		.card-content
+			display block
+			height 50px
+		.card-image
+			height 173px

@@ -1,0 +1,162 @@
+
+.more_information
+	display block
+	text-align right
+	margin-right 1em
+	position relative
+	&:hover
+		text-decoration none	
+	&:before
+		content 'Más información'
+	&:after
+		margin-left .5em
+		vertical-align middle
+	icomoonafter('e667')
+
+.collection
+	.collection-item
+		padding 7px 5px
+		a
+			display block
+			font-weight 400
+			font-size 0.85em
+			// color color5
+		&.active
+			background-color lighten(black,40)
+			color white
+			a
+				color inherit
+
+
+			
+.pre-footer
+	.row
+		line-height 2.5em
+		vertical-align middle
+		margin-bottom 0px
+	background #E9E9E9
+	span,a
+		color #000
+		font-weight 500
+
+footer
+	.men
+		a
+			color white
+			margin-left 5px
+	.row
+		margin-bottom 5px
+	background-color #000
+	border-radius 0
+	text-align left
+	color white
+	line-height 1.4em
+	font-weight 400
+	font-size .9em
+	// font-size 0.9em
+	strong
+		color red
+	nav 
+		margin-top -30px
+		height auto
+		line-height auto 
+		padding 0
+		ul > .container
+			width auto
+			> li .submenu a
+				color black !important
+				&:hover
+					color black !important
+			> li a.prodiserv
+				color white !important
+
+
+form
+	.btn
+		background-color rgba(#357BB2, 1)
+		&:hover
+			background-color rgba(color1, 1)
+	.input-field 
+		label
+			color black
+	
+#map
+	margin-top 2em
+	width 100%
+	height 350px
+	display inline-block
+	
+// main,footer
+	// background-color lighten(color6,60)
+	
+
+article
+	> div
+		strong
+			font-weight 500
+			
+
+.p-emails
+	.wide
+		text-align center
+		.lines
+			display inline-block
+			margin 0 auto
+			a
+				display block
+				margin 0
+				padding 0
+				img
+					margin 0
+					padding 0
+					display block
+
+
+	
+	
+main
+	// padding-bottom 0
+	margin-bottom 0 !important
+	
+main.container
+	> .row
+		margin-left 0
+	
+section
+	.card-panel
+		min-height 0
+
+// post
+.card-title
+	background-color color1
+	background-image linear-gradient(top,color1,lighten(color1,10))
+	// margin-bottom -1.5em
+	border-radius 10px 10px 0 0
+	h2
+		color white
+		padding 0.65em 1em
+	~ .card-panel
+		margin-top -1.5em
+	~ ul
+		margin-top -1.5em !important
+
+				
+.card-panel,.card-content
+	.card-title
+		background none
+		h2,h3,h4
+			color color5
+
+	
+@media $large	
+	.bloque_bienvenidos
+		.center-align
+			float left
+			margin-top 15px
+			margin-right 15px
+		
+form
+	.picker__date-display
+		background-color #00A7E3
+	.picker__weekday-display
+		background-color #0098CF

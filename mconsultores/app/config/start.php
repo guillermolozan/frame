@@ -2,7 +2,7 @@
 
 return [
 
-	'name'	=>'MyM Consultores',
+	'name'	=>'Consultores Sanitarios',
 
 	'visitors'	=>true,
 

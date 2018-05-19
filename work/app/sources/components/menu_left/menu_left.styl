@@ -1,0 +1,62 @@
+.menu_left
+	// transform translateX(0px) !important
+	// background rgba(white,.7)
+	li
+		// border-bottom 1px solid lighten(color1,60)
+		// border-bottom 0
+		// border-bottom 10px solid transparent
+		border-bottom 1px solid #999
+		&:last-child
+			border-bottom 0
+		a
+			line-height 1.5em !important
+			height auto !important
+			padding-top 1em
+			padding-bottom 1em
+			padding-left 16px
+			display block
+			vertical-align middle
+		&.collection-item,&.collapse 
+			padding 0
+			a
+				font-weight 500
+				color color1
+				text-transform uppercase
+		&.collapse 
+			a.collapsible-header
+				padding 1em 0 1em 1em !important
+				margin 0
+				&:before
+					color grey
+					font-size 1.1em
+					transform scale(1.8,1)
+				icoright(0px)
+				icomoon('e652')
+				&.active
+					icomoon('e653')
+			.collapsible-body
+				li
+					border-bottom 1px solid darken(#fff,10)
+					padding 0 0 0 5px
+					a
+						margin 0
+						color black
+						font-weight normal
+						// text-decoration underline
+						padding 1em 0 1em 2rem		
+					&.active,&:hover
+						background-color lighten(#ddd,4)
+						a
+							color black
+					.submenu
+						display block
+						// padding-left 1em
+						a
+							font-size .8em
+							// color lighter(black,70) !important
+							// color grey
+							&:before
+								content "- "
+			&.collapsible-accordion
+				li.collapse
+					padding 0

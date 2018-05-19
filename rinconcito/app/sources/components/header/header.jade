@@ -1,0 +1,27 @@
+header.navbar-fixed
+	
+	if(is_home)
+		h1 #{web_name}
+		-main = false
+
+	.prenav
+		a(href="#{link_home}",class="logo",title="#{web_name}"): img(src="#{header_bg}",title="#{web_name}",alt="#{web_name}")
+
+	nav
+		
+		+button_side_nav()
+
+		.container
+
+			//- a.brand-logo(href="#{link_home}",title="#{name}"): img(src="#{pub_img}#{logo}",title="#{name}",alt="#{name}")
+
+
+			//- menu_top
+			ul.menu.menu_top
+				+menu_items(menu_top)
+		//- div(class="white-bar")
+
+
+
+//- menu_left
+include ../../jade/includes/menu_left

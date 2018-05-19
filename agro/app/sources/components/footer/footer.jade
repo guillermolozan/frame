@@ -1,0 +1,25 @@
+footer
+	.container
+		ul
+			li: h3 CONTÁCTANOS
+			if(web_facebook)
+				li(class="facebook icon-circle") 
+					a(title="Facebook",target="_blank",href="#{web_facebook}")
+			if(web_youtube)
+				li(class="youtube icon-circle")
+					a(title="Youtube",target="_blank",href="#{web_youtube}")
+			if(web_twitter)
+				li(class="twitter icon-circle")
+					a(title="Twitter",target="_blank",href="#{web_twitter}")
+			li: span Teléfono #{web_phone}
+			li: span E-mail: #{web_email}
+			//- bucle de menu
+
+		ul(class="menu")
+			li: h3 LA EMPRESA
+			if(visiters)
+				li #{visiters} visitas
+
+			+menu_items(menu_footer)
+
+

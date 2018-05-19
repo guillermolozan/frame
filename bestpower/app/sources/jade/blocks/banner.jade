@@ -1,0 +1,9 @@
+if(slides)
+	div(class="slider")
+		ul(class="slides")
+			each item,i in slides
+				li
+					if !item.url
+						img(class="desktop",src="#{item.bg}",alt="banner #{i}",title="banner #{i}")
+					else
+						a(href="#{item.url}"): img(class="desktop",src="#{item.bg}",alt="banner #{i}",title="banner #{i}")

@@ -1,0 +1,84 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include includes/header
+		
+		include includes/banner
+
+		main.container
+
+			h1 CANJES
+			//- include includes/form_contact
+			table.responsive-table.highlight.striped
+				thead
+					tr
+						th Fecha
+						th Puntos
+						th Tip Prod.
+						th Mensaje de cliente
+						th mensaje
+						th Regoger en
+						th Fecha de entrega
+						th estado
+				tbody
+					tr
+						td 31 Jul 2:44pm
+						td 500
+						td Articulo
+						td P00037
+						td Entrega de producto con éxito
+						td Los Olivos
+						td 3 Jul 9:00am
+						td entregado
+					tr
+						td 31 Jul 4:30pm
+						td 200
+						td Articulo
+						td P00040
+						td .
+						td Los Olivos
+						td 7 Ago 9:00am
+						td pendiente
+					tr
+						td 28 Jul 2:00pm
+						td 100
+						td Articulo
+						td P00034
+						td .
+						td Los Olivos
+						td 8 Ago 9:00am
+						td pendiente
+					tr
+						td 31 Jul 2:44pm
+						td 500
+						td Articulo
+						td P00037
+						td Entrega de producto con éxito
+						td Los Olivos
+						td 3 Jul 9:00am
+						td entregado
+					tr
+						td 31 Jul 4:30pm
+						td 200
+						td Articulo
+						td P00040
+						td .
+						td Los Olivos
+						td 7 Ago 9:00am
+						td pendiente
+					tr
+						td 28 Jul 2:00pm
+						td 100
+						td Articulo
+						td P00034
+						td .
+						td Los Olivos
+						td 8 Ago 9:00am
+						td pendiente
+		//- include includes/footer
+		include common/foot

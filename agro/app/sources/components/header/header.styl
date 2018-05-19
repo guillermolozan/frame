@@ -1,0 +1,32 @@
+// menu_logo      ='logo.png'
+
+menu_height    =40px
+menu_font_size =1rem
+
+menu_bg        =color2
+menu_color     =menu_top_textcolor
+
+menu_bg_over   =color3
+menu_color_over=white
+
+header_customize()
+	header
+		nav
+			> .container
+				> .menu_top
+					> li.brand-logo
+						a
+							img
+								height 48px
+								// transform scale(1)
+								@media $small-medium
+									height 40px
+									@media $small
+										height 40px
+										// transform scale(.8) !important
+						
+
+header_basic_logo()
+
+
+header_customize()

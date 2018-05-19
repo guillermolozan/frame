@@ -1,14 +1,23 @@
 include ../../../../work/sources/jade/includes.jade
-		
-block body
+doctype html
+html(lang="es")
 
-	include common/header.jade
-	
-	main(class="container row")
+	include common/head.jade
 
-		-item_responsive = "col s12 m4 l3"
+	body(class="#{classbody}")
+
+		include common/header.jade
 		
-		.wide
-			include blocks/gallery.jade
-	
-	include common/footer.jade
+		main(class="container row")
+
+			if params.item==7
+				-item_responsive = "col s12 m4 l6 cetificaciones"
+			else
+				-item_responsive = "col s12 m4 l3"
+			
+			.wide
+				include blocks/gallery.jade
+		
+		include common/footer.jade
+
+		include common/foot.jade

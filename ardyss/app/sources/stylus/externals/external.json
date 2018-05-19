@@ -1,0 +1,13 @@
+[
+"./work/app/sources/components/common/common.styl",
+"./work/app/sources/components/menu_left/menu_left.styl",
+"./work/app/sources/components/block_gallery/block_gallery.styl",
+"./work/app/sources/components/block_post/block_post.styl",
+"./work/app/sources/components/block_banner/block_banner.styl",
+"./agro/app/sources/components/header_pre/header_pre.styl",
+"./agro/app/sources/components/block_gallery_videos/block_gallery_videos.styl",
+"./onelimites/app/sources/components/product_detail/product_detail.styl",
+"./onelimites/app/sources/components/form_consulta/form_consulta.styl",
+"./onelimites/app/sources/components/products_reel/products_reel.styl",
+"./asiste/app/sources/components/home_block_links/home_block_links.styl"
+]

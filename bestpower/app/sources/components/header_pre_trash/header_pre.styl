@@ -1,0 +1,53 @@
+.preheader
+	nav
+		height pre_header_height
+		background-color pre_header_bgcolor
+		color pre_header_textcolor
+		box-shadow none
+		.menu 
+			> li
+				line-height pre_header_height
+				// padding-left 0.3em
+				padding-right 0.3em
+				a
+					height pre_header_height
+					color inherit
+					font-size 1.3em
+					i
+						font-style normal
+						color #a7e8f8
+					&:hover
+						// color lighten(yellow,30)
+						text-decoration none
+					&:before
+						color #a7e8f8
+						content ""
+						width 24px
+						height 100%
+						float left
+						margin-right 0.3em
+						background-position 0 center
+						background-repeat no-repeat
+				&.facebook a, &.twitter a, &.whatsapp a
+					padding 0
+				&.facebook a
+					&:before
+						color lighten(#3b5998,20)
+					icomoon('e902')
+				&.twitter a
+					&:before
+						color #a7e8f8
+					icomoon('e901')
+				&.whatsapp a
+					&:before
+						color lighten(green,30)
+					icomoon('e900')
+				&.bola, &.phone, &.email
+					float right
+				&.bola a:before
+					background-image url(imgs+'ico_bola.png')
+				&.phone a
+					icomoon('e620')
+				&.email a
+					icomoon('e679')
+					

@@ -8,6 +8,7 @@ class Routes {
 	var $controller;
 	var $method;
 	var $uri;
+	var $disabled;
 	var $params     = [];
 
 
@@ -17,6 +18,18 @@ class Routes {
 		global $start;
 		
 		$this->routes = require APP.'/config/routes.php';
+
+		$this->add_route(['/meta'=>'controller=Meta&method=index']);
+		$this->add_route(['/download/(:any)$'=>'controller=Runtime&method=download&item=$1']);
+
+		$this->disabled=$start['disabled'];
+
+	}
+
+	function add_route($routes=[]){
+		
+		foreach($routes as $i=>$route)
+			$this->routes[$i]=$route;
 
 	}
 
@@ -59,13 +72,20 @@ class Routes {
 		
 		$this->params     =$vars;
 
-		$this->params['uri']=$this->uri;
+		$this->params['uri']=($this->uri=='/$')?'/':$this->uri;
 
 		if("/"==substr($this->params['uri'], 0,1)) $this->params['uri']=substr($this->params['uri'],1);
 
 		// prin([$this->controller,$this->method,$this->params]);
 
 	}	
+
+
+	public function get_routes(){
+
+		return $this->routes;
+
+	}
 
 
 	function render(){
@@ -79,15 +99,15 @@ class Routes {
 
 
 
-		if(isset($_GET['routes'])){
+		// if(isset($_GET['routes'])){
 		
-			// $this->create_controllers();
+		// 	// $this->create_controllers();
 
-			prin($this->routes);
+		// 	prin($this->routes);
 
-			exit();
+		// 	exit();
 
-		}
+		// }
 
 
 
@@ -105,12 +125,23 @@ class Routes {
 
 		$this->uri=$uri;
 
-
 		// Is there a literal match?  If so we're done
 		if(isset($this->routes[$uri]))
 		{
+			if(substr($this->routes[$uri],0,4)=='302:'){
 
-			return $this->output($this->routes[$uri]);
+				header("Location: ".substr($this->routes[$uri],4)); 
+
+			} elseif(substr($this->routes[$uri],0,4)=='301:'){
+
+				header("HTTP/1.1 301 Moved Permanently"); 
+				header("Location: ".substr($this->routes[$uri],4)); 
+
+			} else {
+
+				return $this->output($this->routes[$uri]);
+
+			}
 
 		}
 
@@ -153,10 +184,18 @@ class Routes {
 
 		}		
 
+		if($uri=='/runtime/start')
+		{
+
+			return $this->output('controller=Runtime&method=start');
+
+		}
+
 		header("HTTP/1.0 404 Not Found");
 		
 		include('../404.html');
 
+		exit();
 		
 		// prin($this->routes);
 
@@ -173,9 +212,11 @@ class Routes {
 
 	function response(){
 
+		if($this->disabled) exit();
+
 		$this->render();
 
-		$met= $this->method;
+		$met= str_replace('-','_',$this->method);
 
 		$par= $this->params;
 
@@ -188,11 +229,19 @@ class Routes {
 			$ooo[str_replace('/','',$par[key($par)])]=$dom.str_replace('/','',$par[key($par)]);
 			unset($ooo['$']);
 
+			// prin($ooo);
 
-		$par['classbody']=implode(' ',$ooo);
+		$par['classbody']  =implode(' ',$ooo);
+		
+		$par['controller'] =ucfirst($this->controller);
+		
+		$par['method']     =$this->method;
 
+		// echo "\$obj = new controllers\\".$this->controller."(\$par);";
 
-		eval("\$obj = new controllers\\".$this->controller."(\$par);");
+		// echo getcwd();
+		
+		eval("\$obj = new controllers\\".ucfirst($this->controller)."(\$par);");
 
 		$obj->$met($par);
 
@@ -294,7 +343,7 @@ $txt.="
 
 		}
 
-		
+
 	}
 		
 }

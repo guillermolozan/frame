@@ -1,0 +1,247 @@
+a.link_header {
+
+	margin-top: 10px;
+	color: #CBCBCB;
+
+}
+
+.bloque_titulo .titulo {
+
+    color: #000 !important;
+    /*text-shadow: 1px 1px 1px #CCCCCC;*/
+
+}
+
+
+/**
+
+ * BODY
+
+ */
+
+@font-face {
+font-family: 'caviar_dreamsregular';
+src: url('../css/fonts/caviardreams/caviardreams-webfont.eot');
+src: url('../css/fonts/caviardreams/caviardreams-webfont.eot') format('embedded-opentype'),
+url('../css/fonts/caviardreams/caviardreams-webfont.woff') format('woff'),
+url('../css/fonts/caviardreams/caviardreams-webfont.ttf') format('truetype'),
+url('../css/fonts/caviardreams/caviardreams-webfont.svg#caviar_dreamsregular') format('svg');
+font-weight: normal;
+font-style: normal;
+margin: 0 auto;
+letter-spacing: -1px;
+font-family: 'caviar_dreamsregular';
+}
+
+
+/*body { background: url("http://www.metacritic.com/images/layout/bg.png") repeat scroll center 78px #010101 !important; }*/
+/*body { background: url("http://www.webtexture.net/wp-content/uploads/2013/02/6-Wood-Pattern-Background-Thumb01.jpg") repeat scroll center 78px #010101 !important; }*/
+/*body { background: url("http://cdn.elcomercio.e3.pe/f/i/gb_caption_nota.png") repeat !important; }*/
+body { 
+    background-color: #3E5E7E; 
+}
+
+.main_content { padding:0 10px; }
+
+
+
+/**
+
+ * HEADER
+
+ */
+
+.logo_panel {
+
+    margin-bottom: 10px;
+
+    margin-top: 10px;
+
+}
+
+a.link_header {
+
+	margin-top: 22px;
+
+	color: #CBCBCB;
+
+}
+
+#menumenu a {
+
+    color: #6F6F6F;
+
+}    
+
+/**
+ * MENU
+ */
+
+
+/**
+
+ * FORM
+
+ */
+
+.titulo_formulario {
+
+    color: #565656;
+
+}   
+
+/**
+
+ * LOGIN
+
+ */
+
+.modulo_login ul.ul_menus {
+
+	display:none;
+
+}
+
+.modulo_login .div_bloque_cuerpo {
+
+    margin-left: 23%;
+
+    margin-top: 23px;
+
+}
+
+/*body,*/
+a.link_header,
+.bloque_titulo .titulo, .bloque_titulo .titulo a,
+ul.ul_menus li a {
+    /* font-family: 'caviar_dreamsregular'; */
+    /* font-size: 11px; */
+    /* margin-left: 0px; */
+}
+.lead {
+margin-bottom:0;
+}
+
+
+.logo_panel img {
+    height: 61px;
+}
+
+a.link_header {
+    color: #666;
+    font-size: 22px;
+    margin-top: 35px;
+}    
+
+
+/**/
+
+#cart table {
+    margin-right: 10px;
+    margin-top: 73px;
+    width: 95%;
+}
+
+.esquinabtn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    display: none;
+}
+
+.quick #contenido_principal {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+
+.itms .tite a, .itms .itd a {
+/*    letter-spacing: -0.7px;
+    font-family: PTN57F !important;
+    font-size: 12px;*/
+}
+
+a, .alink {
+    /* color: #66BEE6; */
+}
+
+.modificador_grilla .first_linea .nc {
+/* color:#999; */
+}
+
+
+.bl .bd {
+/* font-family: 'caviar_dreamsregular' !important; */
+/* font-size: 17px; */
+}
+.itms .itm .itd {
+font-family: PTN57F !important;    
+text-transform: capitalize;
+}
+.modificador_grilla .first_linea .nc {
+/* font-family: PTN77F !important; */
+}
+
+.formulario label {
+font-family: PTN57F !important;    
+}
+/**
+ * modulo_productos_items
+ */
+.modulo_productos_items .modificador .itms {
+    width: 100% !important;
+}
+#html_reporte {
+    margin-top: 9px;
+    
+    width: 98%;
+    /* max-width: 1073px; */
+}
+#html_reporte .reporte_ventas {
+    width: 100%;
+
+}
+#html_reporte .reporte_ventas td.nombre {
+    min-width: 10px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 13px;
+    vertical-align: middle;
+}
+#html_reporte .reporte_ventas td.nombre b {
+    /* font-size: 10px; */
+    white-space: nowrap;
+}
+
+#html_reporte .reporte_ventas a.linkstitu {
+    font-size: 10px !important;
+
+    line-height: 16px;
+    font-weight: bold !important;
+    background-position: 0px -2px !important;
+}
+#html_reporte .reporte_ventas td.nombre:first-child  {
+    /*text-align: left;*/
+}
+
+
+.modulo_productos_ventas .filters { display: none; }
+.modulo_productos_ventas .bloque_content_repos input { display: none; }
+.modulo_productos_ventas .fst li label { width: 160px !important; }
+.modulo_productos_ventas .fst li input[type="radio"]:checked+label{ color: #CF6A27 !important; } 
+
+
+.reporte_corto { width: 670px !important; }
+
+td { background-color: #FFF; }
+
+#menumenu { margin-top: 4px; margin-bottom: -22px;}
+
+
+.htmlenlista td { background-color: transparent; }
+
+
+.modulo_login a.link_header {
+	margin-top: 35px;
+}

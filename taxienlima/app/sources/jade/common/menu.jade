@@ -1,0 +1,26 @@
+-menu = menu_left
+//- ul(id="slide-out",class="side-nav  z-depth-3")
+  li(class="no-padding")
+    a(href="#{link_home}"): img(src="#{pub_img}#{logo}",style="width:100%;")
+  //- bucle de grupo
+  each men_item in menu
+    li(class="no-padding")
+      ul(class="collapsible collapsible-accordion")
+        li
+          if men_item.active
+            - classActive = "active";
+          else 
+            - classActive = "";          
+          a(class="bold collapsible-header waves-effect waves-red #{classActive} ") #{men_item.name}
+          div(class="collapsible-body")
+            ul
+              //- bucle de item
+              each men_sub in men_item.menu
+                if(men_sub.section)
+                  li: a(class="bold deep-orange-text text-darken-3") #{men_sub.section}
+                else
+                  if men_sub.active
+                    - classActive = "teal active";
+                  else 
+                    - classActive = "";
+                  li(class="#{classActive}"): a(href="modules/#{men_sub.url}") #{men_sub.name}

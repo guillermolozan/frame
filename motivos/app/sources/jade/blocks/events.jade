@@ -1,0 +1,20 @@
+-items = events
+if(events)
+	div(class="events section scrollspy",id="eventos")
+		
+		.row
+			h4(class="col s12 m12 l6") #[i(class="icon-calendar2")] Eventos
+			div(class="col s12 m12 l6 input-field")
+				select(class="browser-default right",id="select_date")
+					option(value="all",selected) todas las fechas
+					each item in event_dates
+						option(value="#{item.option}") #{item.val}
+
+		each item in items
+			div(class="card row dates_all dates_#{item.class}")
+				div(class="col s12 m6 l3 card-image")
+					img(src="#{item.img}",class="section responsive-img",alt="#{item.name}",title="#{item.name}")
+				div(class="col s12 m6 l9 card-content")
+					a(class="card-title") #{item.name}
+					div(class="sub") #{item.sub}
+					p #{item.text}

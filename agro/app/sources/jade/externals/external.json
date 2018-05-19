@@ -1,0 +1,10 @@
+[
+"./work/app/sources/components/common/common.jade",
+"./work/app/sources/components/menu_left/menu_left.jade",
+"./work/app/sources/components/block_gallery/block_gallery.jade",
+"./work/app/sources/components/block_post/block_post.jade",
+"./work/app/sources/components/block_banner/block_banner.jade",
+"./work/app/sources/components/gallery_grid/gallery_grid.jade",
+"./onelimites/app/sources/components/product_detail/product_detail.jade",
+"./onelimites/app/sources/components/form_consulta/form_consulta.jade"
+]

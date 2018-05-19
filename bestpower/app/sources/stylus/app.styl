@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Dosis|Neucha|Montserrat')
+
+// icomoon
+work_stylus='../../../../work/sources/stylus/'
+
+// dirs
+imgs               = '../../public/img/'
+load_imgs          = '../../../public/img/'
+
+
+// colors
+angle              =0deg
+
+color1             =#0076BB + angle //red
+color2             =black + angle //blue
+color3             =#9e9e9e + angle + angle //grey
+color4             =lighten(#000000,35) + angle //black
+color5             =#71BBE0 + angle
+color6             =#357BB2 + angle
+
+
+
+
+
+//
+ratio_header       =1
+
+
+// widths
+maxwide            = 1160px
+bannerwide         = 1360px
+
+mobile             = 600px
+tablet             = 992px
+container 			 = maxwide
+
+
+
+
+
+
+
+
+// BLOCKS
+body_color         =white
+
+pre_header_height  = 35px
+pre_header_bgcolor = #bb1d1f
+pre_header_textcolor= white
+
+// header_img_path    =load_imgs+'header-bg.jpg'
+// header_bg          =white url(imgs+'header-bg.jpg') no-repeat center
+// header_height      =image-size(header_img_path)[1]
+
+
+logo_img 		  ='logo.jpg'
+logo_ratio 		  =1
+logo_img_path    =load_imgs+logo_img
+logo_width       =image-size(logo_img_path)[0]*logo_ratio
+logo_height      =image-size(logo_img_path)[1]*logo_ratio
+
+
+
+menu_top_bgcolor   =color6
+menu_top_textcolor =black //#a0a0a0
+menu_top_height    =60px
+menu_top_item_active_bgcolor = #1b1c52
+menu_top_item_active_textcolor = #fff
+
+
+
+pre_header_height =40px
+pre_header_bgcolor=#000
+// pre_header_textcolor = lighten(yellow,30)
+pre_header_textcolor = white
+
+
+
+main_bgcolor       =white
+
+
+footer_bgcolor     =#333
+footer_textcolor   =white
+footer_height 	 	 =41px
+
+pre_footer_bgcolor =#1b1c52
+pre_footer_textcolor=#c6c6c6
+
+
+
+// work
+@import work_stylus+'work.styl'
+
+
+
+		
+//blocks
+@import 'blocks/*'
+
+
+
+
+//layouts
+@import 'layouts/*'
+
+
+
+
+
+
+// Begin Components
+@import '../../../../work/app/sources/components/common/common.styl'
+@import '../../../../work/app/sources/components/menu_left/menu_left.styl'
+@import '../../../../work/app/sources/components/block_gallery/block_gallery.styl'
+@import '../../../../work/app/sources/components/block_post/block_post.styl'
+@import '../../../../work/app/sources/components/block_banner/block_banner.styl'
+@import '../../../../agro/app/sources/components/header_pre/header_pre.styl'
+@import '../../../../bestpower/app/sources/components/header/header.styl'
+@import '../../../../consorcio/app/sources/components/block_gallery_clients/block_gallery_clients.styl'
+@import '../../../../consorcio/app/sources/components/gallery_products/gallery_products.styl'
+@import '../../../../bestpower/app/sources/components/home_block_welcome/home_block_welcome.styl'
+@import '../../../../bestpower/app/sources/components/footer/footer.styl'
+// Finish Components
+

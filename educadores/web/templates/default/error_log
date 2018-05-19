@@ -1,0 +1,1 @@
+[01-Jul-2013 07:15:57] PHP Fatal error:  Call to undefined function  web_render_tree_special() in /home/pomabamb/public_html/web/templates/default/bloques/arbol_1.php on line 27

@@ -1,0 +1,46 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+
+		include blocks/breadcrumb.jade
+
+		include blocks/banner.jade
+
+		include blocks/search.jade
+
+		-col_ul='s12'
+		-col_li='s12 l4'
+
+		.container.row.line_inmuebles
+			.wide
+				.grid
+					include blocks/grid_items_home.jade
+				a(class="vermas btn",href="inmuebles") ver más
+
+		div(class="row wide line_0")
+			.container
+				div(class="col s12 l6")
+					h4 Acerca de Nosotros
+					ul(class="collapsible",data-collapsible="expandable")
+						li
+							div(class="collapsible-header active") Misión
+							div(class="collapsible-body"): p Realizar nuestro trabajo de manera profesional con transparencia. Demostrando con procedimiento un alto nivel de asesoramiento  en la labor del proceso inmobiliario: búsqueda- asesoría - venta – alquiler-  dando asesoramiento técnico y legal de inmuebles para llegar a los futuros compradores.
+						li
+							div(class="collapsible-header active") Visión
+							div(class="collapsible-body"): p Ser líderes y diferenciarnos en el mercado inmobiliario local y nacional obteniendo propiedades en lima y provincias, usando nuestra capacidad y apoyándonos con la conectividad para atraer compradores potenciales de diferentes puntos del país.
+						//- li
+						//- 	div(class="collapsible-header") Nuestra Filosofía de Trabajo es
+						//- 	div(class="collapsible-body"): p Brindar y garantizar soluciones integrales que los tiempos actuales exigen; asimismo le permita tener la información oportuna, para eficientes tomas de decisiones. Nuestro servicio se basa en que tu crecimiento y confianza garantizan nuestro crecimiento.
+
+				div(class="col s12 l4 offset-l1 img_side")
+					img(class="responsive-img",src="#{pub_img}acordion_foto2.jpg")
+
+		include common/footer.jade
+
+		include common/foot.jade

@@ -1,0 +1,9 @@
+[
+"./work/app/sources/components/common/common.styl",
+"./work/app/sources/components/menu_left/menu_left.styl",
+"./work/app/sources/components/block_gallery/block_gallery.styl",
+"./work/app/sources/components/block_post/block_post.styl",
+"./agro/app/sources/components/header_pre/header_pre.styl",
+"./asiste/app/sources/components/home_block_links/home_block_links.styl",
+"./agro/app/sources/components/block_gallery_videos/block_gallery_videos.styl"
+]

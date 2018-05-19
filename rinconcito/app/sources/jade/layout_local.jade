@@ -1,39 +1,43 @@
 include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
 
-append head
+	include common/head.jade
 
 	script(src="//maps.google.com/maps/api/js?sensor=true")
 		
 	script(src="#{ven_js}gmaps.js")
 
-block body
+	body(class="#{classbody}")
 
-	include common/header.jade
+		include includes/header
 
-	include blocks/banner.jade
-	
-	main(class="container row")
-	
-		div(class="col l3 m12 s12")
-			include blocks/local.jade
+		include includes/banner
+		
+		main(class="container row")
+		
+			div(class="col l3 m12 s12")
+				include blocks/local.jade
 
-		div(class="col l9 m12 s12")
+			div(class="col l9 m12 s12")
 
-			include blocks/events.jade
+				include blocks/events.jade
 
-			-responsive = "s12 m6 l4"
+				-responsive = "s12 m6 l4"
 
-			if(photo_galleries)
-				each gallery,index in photo_galleries
-					include blocks/gallery_photos.jade
+				if(photo_galleries)
+					each gallery,index in photo_galleries
+						include blocks/gallery_photos.jade
 
-			if(video_galleries)
-				each gallery,index in video_galleries
-					include blocks/gallery_videos.jade
+				if(video_galleries)
+					each gallery,index in video_galleries
+						include blocks/gallery_videos.jade
 
-			include blocks/map.jade
+				include blocks/map.jade
 
-	include blocks/popup.jade
-	
-	include common/footer.jade
+		include blocks/popup.jade
+		
+		include includes/footer.jade
+
+		include common/foot.jade
 

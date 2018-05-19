@@ -1,0 +1,52 @@
+//- include ../../../../../work/sources/jade/blocks/gallery.jade
+
+if(gallery.type=='photos')
+	-ul_class='parent-container'
+else
+	-ul_class=''
+
+
+div(class="galleries #{gallery.type}")
+	
+	if(main)
+		h1: +item(gallery)
+		-main=false
+	else
+		h2: +item(gallery)
+
+
+	if(gallery.sub)
+		h3 #{gallery.sub}
+
+
+	if(gallery.html)
+		div!= gallery.html
+
+
+	if(gallery.items)
+
+		ul(class="#{ul_class}")
+
+			if(buttons)
+				each button in buttons
+					div(class="#{item_responsive} boton")
+						a(href="#{button.url}") #{button.name} #[strong #{button.sub}]
+
+			each item in gallery.items
+
+				li(class="#{item_responsive}")
+
+					div(class="card")
+						div(class="card-image")
+
+							if (gallery.type=='videos')
+								+img_venobox(item)
+							else if (gallery.type=='photos')
+								+img_magnific(item)
+							else
+								+img_item(item)
+
+						div(class="card-content")
+
+							h3: +item(item)
+

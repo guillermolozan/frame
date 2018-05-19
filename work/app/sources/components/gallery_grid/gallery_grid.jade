@@ -1,0 +1,28 @@
+if(gallery.items)
+	ul(class="row gallery_grid #{gallery.type} items #{ul_class} ")
+		each item in gallery.items
+			li(class="col #{li_class}")
+				.card
+					.card-image
+						if (gallery.type=='videos')
+							+img_venobox(item)
+						else if (gallery.type=='photos')
+							+img_magnific(item)
+						else
+							+img_item(item)
+					if(item.name)
+						.card-content
+							if (gallery.type=='videos')
+								a(class="venobox btn",data-type="youtube",href="http://youtu.be/#{item.video}") #{item.name}
+							else
+								if(item.url)
+									a(class="btn",href="#{item.url}") #{item.name}
+								else
+									div #{item.name}
+
+if(gallery.more)
+	.row.center
+		a(class="btn",href="#{gallery.more.url}") #{gallery.more.name}
+
+-ul_class=false
+-li_class=false

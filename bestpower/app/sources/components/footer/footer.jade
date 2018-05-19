@@ -1,0 +1,29 @@
+section.footerpre2
+	.container
+		.row
+			div(class="col s12 l4 offset-l4")
+				p #[strong Teléfono]:#[br]
+					if(web_mobile)
+						| Celular : 
+						span!= web_mobile
+					if(web_phone)
+						| Oficina : 
+						span!= web_phone
+			div(class="col s12 l4") 
+				p #[strong Dirección]:#[br]
+					| #{web_address}#[br]
+					| #{web_email} #{web_email_venta}
+
+footer
+	.container
+		nav.transparent.z-depth-0
+			ul.menu
+				+menu_items(menu_prefooter)
+
+				//- bucle de menu
+
+			ul.right.menu
+				li: a Copyright #{web_name_short} 2017
+				+menu_items(menu_footer)
+				//- if(visiters)
+					li #{visiters} visitas

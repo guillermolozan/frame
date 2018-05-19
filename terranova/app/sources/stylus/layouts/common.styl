@@ -1,0 +1,11 @@
+.p-home,.p-pages,.p-forms,.p-videos,.p-forms
+	@media $large
+		main.container > .row
+			display flex
+			flex-direction row
+			> .col
+				// width 100%
+				&:nth-child(2)
+					order -1
+				&:nth-child(3)
+					order 0

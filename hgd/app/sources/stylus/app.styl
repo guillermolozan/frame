@@ -1,7 +1,7 @@
 // icomoon
 @import '../../../../work/sources/stylus/icomoonlight.styl'
 // @import '../../../../work/sources/stylus/icomoon.styl'
-
+work_stylus='../../../../work/sources/stylus/'
 
 // dirs
 imgs               = '../../public/img/'
@@ -42,6 +42,7 @@ footer_textcolor   =white
 maxwide            = 980px
 mobile             = 600px
 tablet             = 992px
+container 			 = maxwide
 
 
 
@@ -53,9 +54,13 @@ $medium-large = 'only screen and (min-width : '+mobile+')'
 $maxim        = 'only screen and (max-width : '+maxwide+')'
 
 
+//materialize
+@import '../../../public/vendor/css/materialize.min.css'
+//work mixins
+@import work_stylus+'mixins.styl'
 //blocks
-@import '../../../../work/sources/stylus/common.styl'
-@import '../../../../work/sources/stylus/galleries.styl'
+@import work_stylus+'common.styl'
+@import work_stylus+'galleries.styl'
 
 
 

@@ -1,79 +1,47 @@
+h1,h2,h3
+	color color1 !important
+h1,h2
+	font-size 1.5rem !important
+h3,h4,h5,h6
+	font-size 1.1rem !important
+
 
 .collection
 	.collection-item
-		padding 7px 5px
+		// padding 7px 5px
+		padding 0 !important
 		a
+			padding 2px 7px
 			display block
 			font-weight 400
 			font-size 0.85em
-			// color color5
-		&.active
-			background-color lighten(black,40)
+			background-color #357bb2 !important
 			color white
-			a
-				color inherit
-				
-				
-.footerpre1
-	margin-top -20px
-	padding-bottom 1em
-	background-color darken(#A7D747,0)
-	h3
-		color white 
-		text-transform uppercase
-		font-size 1.2em
-		font-weight bold
-	ul
-		@media $small-medium 
-			min-height 220px
-		li
-			a
-				color black
-				font-size 0.8em
-				position relative
-				&:before
-					content "-"
-					// font-family icomoon
-					font-size 1em
-					position absolute
-					left -1em
-					top 0em
-					@media $small-medium 
-						content ""
-	.container
-		position relative	
-		.icom
-			position absolute
-			color black
-			font-size 1.5em
-			&:hover
-				text-decoration none
-			
-		.facebook
-			bottom 14px
-			right 3em
-		.twitter
-			bottom 14px			
-			right 1em
-
-.footerpre2
-	background-color black
-	margin-top -20px !important
-	background-color footer_pre_bgcolor
-	color white
-	strong 
+			// color color5
+		.submenu
+			li
+				padding-left 1px
+				a
+					padding 3px 7px 3px 20px
+					// padding-bottom 9px
+					background-color white !important
+					color black
+					border-bottom 1px solid #e0
+			> .active
+				color initial
+				a
+					margin-top 1px
+					// background-color lighten(black,10) !important
+					// background-color color3 !important
+					color color3
+					font-weight bold
+	> .active
 		color white
+		background-color initial !important
+		a
+			background-color #01579b !important
+			color inherit		
 			
-
-footer
-	background-color black
-	li
-		a
-			color white !important	
-	.submenu
-		a
-			color black !important
-					
 form
 	.btn
 		background-color rgba(#357BB2, 1)
@@ -91,7 +59,34 @@ form
 article
 	> div
 		strong
-			color darken(#357BB2,30)
+			font-weight 500
 			
+
+.p-emails
+	.wide
+		text-align center
+		.lines
+			display inline-block
+			margin 0 auto
+			a
+				display block
+				margin 0
+				padding 0
+				img
+					margin 0
+					padding 0
+					display block
+
+.breadcrumb
+	padding 0
+	a
+		color inherit
+		
+.btn
+	background-color color1 !important
+	color white
+	border-radius 8px
+	&:hover
+		background-color color2 !important
 
 		

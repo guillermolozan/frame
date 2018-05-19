@@ -51,7 +51,7 @@ class Store extends Controller {
 										]	
 			]									
 		);		
-
+		// prin($popup);
 		//video galleries
 		$video_galleries=select(
 						"id,nombre as name,fecha as sub",
@@ -153,7 +153,7 @@ class Store extends Controller {
 				'head_title'   => $local['name'].' - '.$this->title,
 
 				//banner
-				"slides"    	=> $banner,
+				"banner"    	=> $banner,
 
 				//events
 				"events"    	=> $events,

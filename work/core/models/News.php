@@ -19,56 +19,64 @@ class News extends \core\models\Pages {
 				'dir'   =>'new_imas',
 				'url'	  =>'noticia-'
 			],
+			'name'=>'Notas de Interés',
+			'url'=>'',
 			// 'groups'=>[
 			// 	'table' =>'paginas_groups',
 			// ]
 		];
 
-		return array_merge($config,$this->config);
+		foreach($this->config as $one=>$two)
+			if(is_array($two))
+				foreach($two as $three=>$four)
+					$config[$one][$three]=$four;
+			else
+				$config[$one]=$two;
+
+		return $config;
 
 	}
 
 
 	function getItems(){
 
-		$params=$this->params;
+		$config=$this->getConfig();
 
-		$post['name']='Notas de Interés';
-
+		$params=array_merge($this->params,$params);
 
 
 
 		//only for data test
-		if($this->data_test){
+		// if($this->data_test){
 
-			return $this->data_tests->getData([
-				'head_title' =>'Noticias',
-				'news.name'  =>'Noticias',
-				'news.items' =>'gallery?img&dims=500x500&name=noticia&text=200&sub=50&number=13&url=noticia',
-			]);
+		// 	return $this->data_tests->getData([
+		// 		'head_title' =>'Noticias',
+		// 		'news.name'  =>'Noticias',
+		// 		'news.items' =>'gallery?img&dims=500x500&name=noticia&text=200&sub=50&number=13&url=noticia',
+		// 	]);
 
-		}
+		// }
 
 
 
 
 		$items=select(
-			'id,name,fecha_creacion,text,fecha,foto',
-			'news',
+			$config['items']['fields'],
+			$config['items']['table'],
 			'where 1
 			order by weight desc',
 			0,
 			[
 
 				'img'=>['get_archivo'=>[
-											'carpeta'=>'new_imas',
+											'carpeta'=>$config['items']['dir'],
 											'fecha'=>'{fecha_creacion}',
 											'file'=>'{foto}',
 											'tamano'=>'2'
 											]
 										],
 
-			'url'=>['url'=>['noticia-{name}/{id}']],
+			'url'=>['url'=>[$config['items']['url'].'{name}/{id}']],
 
 			'sub'=>['fecha'=>['{fecha}','2']]			
 
@@ -77,7 +85,7 @@ class News extends \core\models\Pages {
 
 		$items=array_map(function($value){
 
-			$value['more']=['name'=>'leer mas','url'=>$value['url']];
+			$value['more']=['name'=>'leer más','url'=>$value['url']];
 
 			return $value;
 
@@ -103,10 +111,11 @@ class News extends \core\models\Pages {
 		//asing vars
 		return [
 
-				'head_title'=> $post['name'].' | '.$this->title,
+				'head_title'=> $config['name'].' | '.$this->title,
 
-				'news'=>[
-								'name'=>$post['name'],
+				'grid'=>[
+								'name' =>$config['name'],
+								'url'	 =>$config['url'],
 								'items'=>$items,
 								'dates'=>$news_dates,
 								],
@@ -126,6 +135,9 @@ class News extends \core\models\Pages {
 
 	function getLinks($params=['num'=>'7']){
 
+		$config=$this->getConfig();
+
+		$params=array_merge($this->params,$params);
 
 		if($this->data_test){
 
@@ -143,7 +155,7 @@ class News extends \core\models\Pages {
 		'name'=>'Noticias',
 		'items'=>select(
 			"name,id",
-			"news",
+			$config['items']['table'],
 			"where 1
 			order by weight desc
 			limit 0,3",

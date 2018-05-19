@@ -1,0 +1,12 @@
+[
+"./work/app/sources/components/common/common.jade",
+"./work/app/sources/components/menu_left/menu_left.jade",
+"./work/app/sources/components/block_gallery/block_gallery.jade",
+"./work/app/sources/components/block_post/block_post.jade",
+"./work/app/sources/components/block_banner/block_banner.jade",
+"./agro/app/sources/components/header_pre/header_pre.jade",
+"./onelimites/app/sources/components/product_detail/product_detail.jade",
+"./onelimites/app/sources/components/form_consulta/form_consulta.jade",
+"./agro/app/sources/components/form_contact/form_contact.jade",
+"./onelimites/app/sources/components/products_reel/products_reel.jade"
+]

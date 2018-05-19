@@ -1,0 +1,42 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include includes/header
+		
+		include includes/banner
+
+		//- include includes/home_form_reserva
+		
+		ul.after_banner
+			.container
+				li.star AMBIENTES ACOGEDORES
+				li.moon TRANQUILIDAD
+				li.wifi WI-FI TODAS LAS HABITACIONES
+				li.taxi SERVICIO DE TAXI
+				li.laundry LAVANDERÍA
+
+		//- include includes/home_block_welcome
+
+		.container
+			.block_home.z-depth-3
+				//- bienvenidos
+				include includes/home_block_welcome
+				//- habitaciones
+				include includes/block_habitaciones
+				//- about
+				include includes/home_block_about
+
+		//- include includes/block_gallery_videos
+
+		include includes/form_contact
+
+		//- enlaces
+		include includes/home_block_links
+		
+		include includes/footer.jade
+		include common/foot.jade

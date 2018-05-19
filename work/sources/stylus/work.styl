@@ -1,0 +1,30 @@
+
+
+
+// media queries
+$small        = 'only screen and (max-width : '+mobile+')'
+$small-medium = 'only screen and (max-width : '+tablet+')'
+$large        = 'only screen and (min-width : '+tablet+')'
+$medium-large = 'only screen and (min-width : '+mobile+')'
+$maxim        = 'only screen and (max-width : '+maxwide+')'
+
+$medium-small = $small-medium
+$large-medium = $medium-large
+
+
+
+// Material+Icons|Roboto
+@import url('https://fonts.googleapis.com/css?family=Roboto|Material+Icons')
+
+//materialize
+@import '../../../../work/public/vendor/css/materialize0990.css'
+
+//work mixins
+@import work_stylus+'mixins.styl'
+
+//blocks
+@import work_stylus+'icomoon.styl'
+@import work_stylus+'common.styl'
+
+// @import work_stylus+'galleries.styl'
+

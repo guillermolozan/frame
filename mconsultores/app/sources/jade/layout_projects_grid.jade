@@ -1,16 +1,22 @@
 include ../../../../work/sources/jade/includes.jade
-		
-block body
+doctype html
+html(lang="es")
 
-	include common/header.jade
-	
-	main(class="container row")
+	include common/head.jade
 
-		-responsive="col s12"
+	body(class="#{classbody}")
 
-		-grid=projects
+		include common/header.jade
 
-		.wide
-			include blocks/grid.jade
-	
-	include common/footer.jade
+		main(class="container row")
+
+			-responsive="col s12"
+
+			-grid=projects
+
+			.wide
+				include blocks/grid.jade
+
+		include common/footer.jade
+
+		include common/foot.jade

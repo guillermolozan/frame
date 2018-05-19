@@ -1,0 +1,191 @@
+
+
+// banner
+// .slider
+// 	container_center()
+// 	margin-bottom -40px
+// 	h3,h5
+// 		color white
+// 	.indicators
+// 		bottom 40px
+// 		z-index 2
+// 		.indicator-item
+// 			&.active
+// 				background-color color1
+				
+
+// banner
+.outslider
+	background white
+	overflow hidden
+	border-bottom 10px solid #fff
+.slider
+	.sinlimites
+		display flex
+		align-items center
+		width 100%
+		height 100%
+		text-align center
+		justify-content center
+		position absolute
+		letter-spacing 1em
+		span
+			color #fff
+			z-index 2
+			font-family Orbitron
+			font-size 2.6em
+			border 3px solid #fff
+			padding .4em 2em
+			display inline-block
+		@media $small-medium	
+			// display none
+			color transparent
+		@media $small
+			display none
+			
+	container_center()
+	width 100%
+	margin-top 0px
+	height auto !important
+	overflow hidden
+	&:before
+		content ""
+		width 100%
+		height 100%
+		background rgba(#000,0.7)
+		position absolute
+		top 0
+		left 0
+		z-index 2
+	@media $small-medium	
+		width 100%		
+	.indicators
+		// background white
+		// display none
+		position relative
+		bottom 30px
+		z-index 3
+		.indicator-item
+			width 24px
+			height 24px
+			font-weight bold
+			border 3px solid #000
+			transition background-color 2s,border 2s,color 2s
+			@media $small
+				display none			
+			// list-style-type decimal
+		.indicator-item.active
+			background-color black
+			border 3px solid #fff
+			color white
+	.sy-pager
+		bottom 3px
+		z-index 2
+		position absolute
+		> li
+			width 12px
+			height @width
+			margin 0 5px
+			border 2px solid white
+			background-color transparent
+			&.sy-active a
+				background-color #515254
+	.sy-controls
+		display none !important
+	.slides 
+		height auto
+		li 
+			opacity 0
+			transition opacity 2s	
+			background white
+			@media $small
+				> div
+					opacity 0 !important
+			img
+				height auto	
+			.caption
+				top 15px
+				left -1px
+				width 494px
+				height 300px
+				background transparent url(imgs+'caption.png') no-repeat 
+				padding-top 47px
+				text-align center
+				padding-right 80px
+				@media $small-medium	
+					width 100%
+					background rgba(darken(blue,50),0.5)
+					padding-right 0
+				.texto1 a
+					border 2px solid #6BBDE1
+					border-radius 15px
+					padding 0.17em 16px
+					color #6BBDE1
+					font-size 1.9em
+					text-align center
+					font-weight bold
+					display inline-block
+					min-width 350px
+					position relative
+					left -1000%
+					transition left 1s
+				.texto2 a
+					color white
+					font-size 1.7em
+					text-align center
+					font-weight bold
+					margin-top 13px
+					display inline-block
+					padding 0 1em
+					position relative
+					left -1000%
+					transition left 1.5s
+				.texto3 a
+					margin-top 10px
+					color #bcd7e4
+					font-size 2.4em
+					display inline-block
+					padding 0
+					line-height 1.2em
+					// max-width 200px
+					position relative
+					left -1000%
+					transition left 2s
+			&.sy-active 
+				> div
+					opacity 1
+				.texto1 a
+					left 0
+				.texto2 a
+					left 0
+				.texto3 a
+					left 0
+			&:after
+				content ""
+				// background rgba(0, 0, 0, 0) url(imgs+"spattern.png") repeat scroll 0 0
+				width 100%
+				height 100%
+				z-index 1
+				top 0
+				left 0
+				position absolute
+
+	
+	// ul.arrows
+	// 	display block
+	// 	margin-top -55px
+	// 	z-index 100
+	// 	position relative
+	// 	text-align center
+	// 	li 
+	// 		a:before
+	// 			display inline-block
+	// 			color white
+	// 			font-size 2.6em
+	// 			font-weight bold
+	// 			margin 0 5px
+	// 			cursor pointer
+	// 		a.left_arrow
+	// 			icomoon("e666")
+	// 		a.right_arrow
+	// 			icomoon("e667")

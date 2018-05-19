@@ -3,6 +3,7 @@ namespace core\models;
 
 class Pages extends \core\Models {
 
+	var $post;
 
 	function __construc(&$scope){
 
@@ -17,21 +18,125 @@ class Pages extends \core\Models {
 		$config=[
 			'items'=>[
 				'table' =>'paginas',
-				'fields'=>"name,text,html,fecha_creacion,foto,id_grupo",
+				'fields'=>"id,name,text,html,fecha_creacion,foto,id_grupo",
 				'dir'   =>'pag_imas',
 				'url'	  =>'pagina/',
 				'filter'=>NULL,
 			],
 			'groups'=>[
 				'table' =>'paginas_groups',
-			]
+				'fields'=>'id,name,url',
+			],
+			'debug'=>0
 		];
 
 		foreach($this->config as $one=>$two)
-			foreach($two as $three=>$four)
-				$config[$one][$three]=$four;
+			if(is_array($two))
+				foreach($two as $three=>$four)
+					$config[$one][$three]=$four;
+			else
+				$config[$one]=$two;
 
 		return $config;
+
+	}
+
+
+	function getPage($params=[]){
+
+		$config=$this->getConfig();
+
+		$params=array_merge($this->params,$params);
+
+					//only for data test
+					// if($this->data_test){
+
+					// 	if("/"==substr($params['uri'], 0,1)) $params['uri']=substr($params['uri'],1);
+
+					// 	$parts=explode('/',str_replace('-','/',$params['uri']));
+
+					// 	$url=$parts[0];
+
+					// 	$cut=substr($params['uri'], strlen($url),1);
+
+					// 	$grouppart1=explode('/',substr($params['uri'], strlen($url.$cut)));
+
+					// 	$grouppart2=explode('-',$grouppart1['0']);
+
+					// 	$id_group=end($grouppart2);
+
+					// 	$id_group=(is_numeric($id_group))?$id_group:'';
+
+					// 	$name = $url." ".$grouppart2['1']." ".$grouppart1['1'];
+
+					// 	// prin($parts);
+
+					// 	return array_merge(
+					// 		$this->data_tests->getData(
+					// 			'post?name='.$name.'&text&img=800x600'
+					// 		),
+					// 		['id_grupo'=>$id_group]
+					// 	);
+
+					// }
+
+
+		if(is_numeric($params['item'])){
+			$where="where id='".$params['item']."'";
+		} else {
+			$where="where url='".$params['item']."'";
+		}
+
+
+		//post
+		$post=fila(
+			$config['items']['fields'],
+			$config['items']['table'],
+			$where,
+			$config['debug'],
+			[
+				'img'=>['get_archivo'=>[
+											'carpeta'=>$config['items']['dir'],
+											'fecha'=>'{fecha_creacion}',
+											'file'=>'{foto}',
+											'tamano'=>'0'
+											]
+										],
+				'sub'=>['fecha'=>['{fecha}','2']]
+
+			]
+		);
+
+
+		// prin($post['id_grupo']);
+
+		// $id_grupo=dato('id_grupo',$config['groups']['table'],'where id='.$post['id_grupo']);
+
+		// prin($id_grupo);
+
+		// if( is_numeric($id_grupo) and $id_grupo>0){
+
+		// 	$post['id_grupo']=$id_grupo;
+
+		// }
+
+		// prin($post);
+
+		$this->post=$post;
+
+		return $post;
+
+
+	}
+		
+
+	function setVisited($params=[]){
+
+		$config=$this->getConfig();
+
+		$post=($post)?$post:$this->post;
+
+		update(['viewed'=>'++'],$config['items']['table'],'where id='.$post['id'],0);
 
 	}
 
@@ -43,19 +148,33 @@ class Pages extends \core\Models {
 
 		$params=array_merge($this->params,$params);
 
-		$bs[]=['name'=>'Inicio','url'=>'./'];
+		$bs1[]=['name'=>'Inicio','url'=>'./'];
 
-		$bs[]=[
+
+		$bs2[]=[
 				'name'=>dato('name',$config['groups']['table'],'where id='.$params['item'])
 				];
 
-		$bs[]=[
+		$id_grupo=dato('id_grupo',$config['groups']['table'],'where id='.$params['item']);
+
+		if( is_numeric($id_grupo) and $id_grupo>0){
+
+			$bs2[]=[
+					'name'=>dato('name',$config['groups']['table'],'where id='.$id_grupo)
+					];
+
+		}
+
+		$bs2=array_reverse($bs2);
+
+		$bs3[]=[
 				'name'   =>dato('name',$config['items']['table'],'where id='.$params['id']),
 				'class' =>'active',
 				'url'    =>$params['uri']
 				];
 
-		return $bs;
+
+		return array_merge($bs1,$bs2,$bs3);
 
 	}
 
@@ -86,7 +205,7 @@ class Pages extends \core\Models {
 			( (isset($config['items']['filter']))?$config['items']['filter']:'')." ".
 			"order by weight desc
 			limit 0,".$params['num'],
-			0,
+			$config['debug'],
 			[
 			'group'=>['dato'=>['url',$config['groups']['table'],'where id={id_grupo}',0]]
 			]
@@ -110,78 +229,20 @@ class Pages extends \core\Models {
 	}
 
 
-	function getPage($params=[]){
+
+	function getIdGroup($params=[]){
 
 		$config=$this->getConfig();
 
-		$params=array_merge($this->params,$params);
+		// $params=array_merge($this->params,$params);
 
-		//only for data test
-		if($this->data_test){
+		$id_grupo=dato('id_grupo',$config['groups']['table'],'where id='.$params['id_grupo']);
 
-			if("/"==substr($params['uri'], 0,1)) $params['uri']=substr($params['uri'],1);
+		if( is_numeric($id_grupo) and $id_grupo>0)
 
-			$parts=explode('/',str_replace('-','/',$params['uri']));
+			return $id_grupo;
 
-			$url=$parts[0];
-
-			$cut=substr($params['uri'], strlen($url),1);
-
-			$grouppart1=explode('/',substr($params['uri'], strlen($url.$cut)));
-
-			$grouppart2=explode('-',$grouppart1['0']);
-
-			$id_group=end($grouppart2);
-
-			$id_group=(is_numeric($id_group))?$id_group:'';
-
-			$name = $url." ".$grouppart2['1']." ".$grouppart1['1'];
-
-			// prin($parts);
-
-			return array_merge(
-				$this->data_tests->getData(
-					'post?name='.$name.'&text&img=800x600'
-				),
-				['id_grupo'=>$id_group]
-			);
-
-		}
-
-
-
-		if(is_numeric($params['item'])){
-			$where="where id='".$params['item']."'";
-		} else {
-			$where="where url='".$params['item']."'";
-		}
-
-
-		//post
-		$post=fila(
-			$config['items']['fields'],
-			$config['items']['table'],
-			$where,
-			0,
-			[
-				'img'=>['get_archivo'=>[
-											'carpeta'=>$config['items']['dir'],
-											'fecha'=>'{fecha_creacion}',
-											'file'=>'{foto}',
-											'tamano'=>'0'
-											]
-										]
-			]
-		);
-
-
-		return [				
-			'name'     =>$post['name'],
-			'html'     =>$post['html'],
-			'img'      =>$post['img'],
-			'id_grupo' =>$post['id_grupo'],
-		];
-
+		return $params['id_grupo'];
 
 	}
 
@@ -201,62 +262,190 @@ class Pages extends \core\Models {
 
 	}
 
+	function getTitle($post=null){
 
-	function getMenu($params=[]){
+		$post=($post)?$post:$this->post;
+		// return ucfirst(strtolower(trim($post['name'])))." | ".$this->title;
+		return trim($post['name'])." | ".$this->title;
+
+	}
+
+	function getDescription($post=null,$more=null){
+
+		$post=($post)?$post:$this->post;
+
+		if($more!=null) {
+			
+			$text=$more;
+
+		} else {
+
+			$text=str_replace("\n"," ",trim($post['text']));
+
+			if($text=='')
+				$text=str_replace("\n"," ",trim(strip_tags(html_entity_decode($post['html']))));
+
+		}
+
+		$text = explode("\n",wordwrap($text,156));
+		return $text[0];
+
+	}
+
+	function getKeywords($post=null,$more=null){
+
+		$post=($post)?$post:$this->post;
+
+		// echo '<textarea>'
+		// .str_replace("\n"," ",strip_tags(html_entity_decode($post['html'])))
+		// .'</textarea>';
+		// prin(extractCommonWords(str_replace("\n"," ",strip_tags(html_entity_decode($post['html'])))));
+
+		$text=trim(str_replace("\n"," ",strip_tags(html_entity_decode($post['name'].' '.$post['html']))).' '.$more);
+
+		return implode(",",array_keys(extractCommonWords($text)));
+
+	}
+
+	function getCanonical($array){
+		// prin($array);
+		$url = $this->view->vars['baseurl'];
+		
+		$url2='';
+		if($array['group'])
+			$url2.='/'.procesar_url($array['group']);
+
+		if($array['name'])
+			$url2.='/'.procesar_url($array['name']);
+
+		if($array['id'])
+			$url2.='/'.$array['id'];
+
+		return $url.substr($url2,1);
+
+	}
+
+	function getMenuGroup($params=[],$debug=0){
 
 		$config=$this->getConfig();
 
 		$params=array_merge($this->params,$params);
-		
+
 		// prin($params);
 
-		//only for data test
-		if($this->data_test){
 
-			if("/"==substr($params['uri'], 0,1)) $params['uri']=substr($params['uri'],1);
+			$where =' where visibilidad=1 and ';
 
-			$parts=explode('/',str_replace('-','/',$params['uri']));
+			if($params['where']!='')
+				$where.=$params['where'];
 
-			$url=$parts[0];
+			$where.=" order by weight desc ";
 
-			$cut=substr($params['uri'], strlen($url),1);
 
-			$cut=(empty($cut))?'/':$cut;
+		$groups=select(
+						$config['groups']['fields'],
+						$config['groups']['table'],
+						"where ".$params['where']."
+						and visibilidad=1
+						order by weight desc",0);
 
-			// $params['uri']=$parts[0];			
-			// prin($params);
-			// prin($url);
-			return $this->data_tests->getData(
-				'gallery'.
-				'?name='.$url. (($params['item'] and is_numeric($params['item']))?' '.$params['item']:'').' [N]'.
-				'&url='.$url.$cut.$url. ( ($params['item'] and is_numeric($params['item'])) ? '-'.$params['item']:'' ) .'/[N]'
-			);
+		return $groups;
 
+
+	}
+
+	function getMenu($params=[],$debug=0){
+
+
+		$config=$this->getConfig();
+
+		$params=array_merge($this->params,$params);
+
+		// if($debug){
+
+		// 	prin([
+		// 		'config'=>$config,
+		// 		'params'=>$this->params,
+		// 	]);
+
+		// }		
+
+		// prin($params);
+
+						// //only for data test
+						// if($this->data_test){
+
+						// 	if("/"==substr($params['uri'], 0,1)) $params['uri']=substr($params['uri'],1);
+
+						// 	$parts=explode('/',str_replace('-','/',$params['uri']));
+
+						// 	$url=$parts[0];
+
+						// 	$cut=substr($params['uri'], strlen($url),1);
+
+						// 	$cut=(empty($cut))?'/':$cut;
+
+						// 	// $params['uri']=$parts[0];			
+						// 	// prin($params);
+						// 	// prin($url);
+						// 	return $this->data_tests->getData(
+						// 		'gallery'.
+						// 		'?name='.$url. (($params['item'] and is_numeric($params['item']))?' '.$params['item']:'').' [N]'.
+						// 		'&url='.$url.$cut.$url. ( ($params['item'] and is_numeric($params['item'])) ? '-'.$params['item']:'' ) .'/[N]'
+						// 	);
+
+						// }
+
+		// if($params['item']==19) $params['item']=4;
+
+
+
+		if($params['item']!=''){
+
+			$where =" where id_grupo='".$params['item']."'";
+			$where.=" and visibilidad=1";
+
+		} else {
+
+			$where =' where visibilidad=1';
+			
 		}
 
 
-		if($params['item']!='')
-			$where="where id_grupo='".$params['item']."'";
-		else
-			$where='';
+
+		$params['more_fields']=($params['more_fields'])?','.$params['more_fields']:'';
+
+		// $debug=($params['item']=='76');
+
 
 
 		$items=select(
-							"name,id,id_grupo",
-							$config['items']['table'],
-							$where.
-							" and visibilidad=1".
-							' order by weight desc'.
-							' '.((isset($config['items']['filter']))?$config['items']['filter']:''),
-							0,
-							[
-							'group'=>['dato'=>['url',$config['groups']['table'],'where id={id_grupo}',0]]
-							]
-							);
-		
+			"name,id,id_grupo ".$params['more_fields'],
+			$config['items']['table'],
+			$where.
+			' order by weight desc'.
+			' '.((isset($config['items']['filter']))?$config['items']['filter']:''),
+			$debug
+			// ,[
+			// 'group'=>['dato'=>['url',$config['groups']['table'],'where id={id_grupo}',0]]
+			// ]
+		);
+
+
+
+		// prin($config['items']);
+		// prin($params);
+		// prin($items);
+
+
 		foreach($items as $ii=>$item){
 
-			$group             =(isset($item['group']))?$item['group']."/":$config['items']['url'];
+			// $group             =	($params['uri'])
+			// 							?$params['uri'].'/'
+			// 							:( (isset($item['group']))?$item['group']."/":$config['items']['url'] );
+
+			$group             =	 (isset($params['uri']))?$params['uri']."/":$config['items']['url'] ;
+			// $group             =	 (isset($item['group']))?$item['group']."/":$config['items']['url'] ;
 
 			$url = procesar_url($group.trim($item['name'])."/".$item['id']);
 
@@ -265,7 +454,68 @@ class Pages extends \core\Models {
 			$items[$ii]['url'] = $url;
 
 
+
+			// if($item['id_grupo']!=''){
+
+			// 	// $items[$ii]['items']='trompa '.$item['id'];
+			// 	if($item['id']=='76'){
+
+			// 		$items[$ii]['items']=$this->getMenu([
+			// 			'item' =>$item['id'],
+			// 			'uri'  =>'pagina'
+			// 		]);
+
+			// 	}
+
+			// }
+
 		}
+
+		if($params['sub']!=''){
+
+			$items_groups=$this->getMenuGroup([
+
+				'where'=>procesar_llaves(
+					[
+						'id_grupo'=>$params['item']
+					],
+					$params['sub'])
+
+			]);
+
+
+			// prin($group);
+
+
+			foreach($items_groups as $rr=>$group){
+
+				$items_groups[$rr]['url']='#';
+
+				$items_groups[$rr]['items']=$this->getMenu(
+					[
+						'item' =>$group['id'],
+						'uri'  =>$params['uri'].'/'.$group['url'],
+						// 'sub'	 => "id_grupo={id_grupo}"
+						// 'items'=>$Page->getMenu(
+						// 	[
+						// 		'item' =>$group['id'],
+						// 		'uri'  =>'pagina',
+						// 	]
+						// )
+					]
+				);
+
+			}
+
+			// prin($items_groups);
+
+			// if($items)
+				$items=array_merge($items,$items_groups);
+			// else
+			// 	$items=$items_groups;
+		}		
+
+		// prin($items);
 
 		return $items;
 

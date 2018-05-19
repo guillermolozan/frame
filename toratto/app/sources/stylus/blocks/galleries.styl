@@ -1,0 +1,69 @@
+
+
+
+// galleries
+.galleries
+	> div
+		@media $small-medium
+			padding 0 .75rem
+	ul
+		li
+			clear none
+			.card
+				height auto
+				.card-image
+					// background-color rgba(#81C3E5,0.2)
+					background #fff
+					text-align center
+					height 440px
+					line-height @height
+					vertical-align middle
+					overflow hidden
+					position relative
+					&:before
+						font-family icomoon
+						content "\e656"
+						font-size 8em
+						line-height inherit
+						color rgba(color2,0.2)
+						position absolute
+						left 0
+						width 100%
+						z-index 0
+					img
+						display inline-block
+						height 100%
+						width auto
+						max-width none
+						margin-left -50%
+						margin-right -50%
+						margin-top -5%
+						margin-bottom -5%
+					@media $small
+						height auto
+						line-height 0
+						img
+							margin 0
+							width 100%
+				.card-content
+					overflow hidden
+					height 100px
+					@media $small
+						height auto
+					h3
+						color #0077bd !important
+						text-transform capitalize
+						position relative
+						padding-bottom .3em
+						border-bottom 1px solid #0077bd
+						font-size 1.4em
+						font-weight bold
+						// border-bottom 1px solid #0077bd
+					h4
+						text-align center
+						color #000000 !important
+						text-transform capitalize
+						font-size 1.3em
+						// color black						
+
+

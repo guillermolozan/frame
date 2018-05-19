@@ -1,0 +1,19 @@
+div(class="post card #{post_class}")
+
+	.card-content
+		.card-title
+			if(main)
+				h1: +item(post)
+				-main=false
+			else
+				h2: +item(post)
+
+		if(post.sub)
+			h3 #{post.sub}
+
+		if(post.html)
+			.text!= post.html
+
+	if(post.img)
+		.card-image
+			img.responsive-img(src="#{post.img}")

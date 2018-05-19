@@ -1,0 +1,102 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+
+
+		//- include blocks/breadcrumb.jade
+		
+		if banner
+			.banner
+				main(class="container row no-bottom")
+					img(class="responsive-img",src="#{banner}")
+
+		main(class="container row")
+
+			.wide
+				div(class="post")
+
+					article
+						div(class="card-title")
+
+							if(main)
+								h1: +item(post)
+								-main=false
+							else
+								h2: +item(post)
+
+						if group_post=='Nosotros'
+							div(class="col s6 side_left")
+
+								if(post.sub)
+									h3 #{post.sub}
+
+								if(post.html)
+									div!= post.html
+								
+								if(post.img)
+									div.center-align
+										img(src="#{post.img}",class="responsive-img")
+
+							div(class="col s6 side_right")
+								img(class="responsive-img",src="#{pub_img}nosotros_foto.jpg")
+								ul.inner_menu
+									+menu_items(menu_post)
+						else
+							if(post.parts>1)
+								div(class="side_left")
+									div(class="col s12 l6")
+										div!= post.html[0]
+									div(class="col s12 l6")
+										div!= post.html[1]
+							else
+								div(class="col s12 l10 side_left")
+
+									if(post.html)
+										div!= post.html
+									if params.item!=1
+										if(post.img)
+											div.center-align
+												img(src="#{post.img}",class="responsive-img")
+
+						if(buttons)
+							each button in buttons
+								div(class="#{item_responsive} boton")
+									a(href="#{button.url}") #{button.name} #[strong #{button.sub}]
+
+						if params.item==18
+							include static/azure.jade
+						else if params.item==19
+							include static/licenciamiento.jade
+						else if params.item==20
+							include static/office-365.jade
+						else if params.item==21
+							include static/sql-server.jade
+						else if params.item==22
+							include static/windows-server.jade
+						else if params.item==1
+							include static/nosotros.jade
+						else if params.item==27
+							include static/servidores.jade
+						else if params.item==28
+							include static/storage.jade
+						else if params.item==29
+							include static/virtualizacion.jade
+						else if params.item==30
+							include static/proteccion.jade
+						else if params.item==31
+							include static/computo.jade
+						else if params.item==32
+							include static/impresion.jade
+						else if params.item==33
+							include static/infraestructura.jade
+							
+
+		include common/footer.jade
+
+		include common/foot.jade

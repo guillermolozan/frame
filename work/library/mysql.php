@@ -3,6 +3,7 @@
 $concat=array();
 
 function opciones($campos,$tabla,$donde,$debug=0){
+	$campos=($campos)?$campos:'id,nombre';
 	$array=select($campos,$tabla,$donde,$debug);
 	$Arr=array();
 	foreach($array as $arra){
@@ -11,12 +12,61 @@ function opciones($campos,$tabla,$donde,$debug=0){
 	return $Arr;
 }
 
+$ima_cats=[
+	'abstract',
+	'animals',
+	'business',
+	'cats',
+	'city',
+	'food',
+	'nightlife',
+	'fashion',
+	'people',
+	'nature',
+	'sports',
+	'technics',
+	'transport'
+];
+
+$ima_tams=[
+	'700/700',
+	'700/600',
+	'700/500',
+	'700/400',
+	'700/300',
+
+	'600/600',
+	'600/500',
+	'600/400',
+	'600/300',
+
+	'500/500',
+	'500/400',
+	'500/300',
+	'500/200',
+
+	'400/400',
+	'400/300',
+	'400/200',
+
+	'300/300',
+	'300/200',
+
+];
+
 function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 
 	$Tabla=$tabla;
 
 	global $link;
 
+	global $start;
+
+	global $ima_cats;
+
+	global $ima_tams;
+
+	$image_test = $start['image_test'];
 
 	if(isset($opciones['db'])){
 
@@ -102,7 +152,7 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 							eval(procesar_llaves($fila2,$argumentos['0']));
 							$fila2[$dd]=ob_get_contents();
 							ob_end_clean();
-							break;
+						break;
 						
 						case "video":
 							$fila2[$dd]=render_video(
@@ -110,7 +160,7 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 							,($argumentos['id'])?procesar_llaves($fila2,$argumentos['id']):procesar_llaves($fila2,$argumentos['1'])
 							,($argumentos['wxh'])?procesar_llaves($fila2,$argumentos['wxh']):procesar_llaves($fila2,$argumentos['2'])
 							);
-							break;
+						break;
 						
 						case "sub_select": case "matriz": case "filas": case "select":
 							$fila2[$dd]=select(
@@ -120,7 +170,7 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 							,($argumentos['debug'])?$argumentos['debug']:$argumentos['3']
 							,($argumentos['opciones'])?$argumentos['opciones']:$argumentos['4']
 							);
-							break;
+						break;
 						
 						case "sub_foto": case "foto":
 							list($campus,$tabla,$donde)=explode("|",$argumentos[0]);
@@ -150,6 +200,7 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 										'file'=>'null',
 									])
 							);
+							// prin($fila2[$dd]);
 							if($noarray){
 								$fila2[$dd]=$fila2[$dd]['noarray'];
 							}
@@ -175,25 +226,26 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 									$campus
 									,$tabla
 									,procesar_llaves($fila2,$donde)
-									,$debug
+									,0
 									,array_merge($ouou,[
 										'fecha_creacion'=>'null',
 										'file'=>'null',
-									])							
+									])
 							);
+							// prin($fila2[$dd]);
 							if($noarray){
 								foreach($fila2[$dd] as $iji=>$jij){
 									$fila2[$dd][$iji]=$fila2[$dd][$iji]['noarray'];
 								}
 							}							
-							break;
+						break;
 						case "sub_contar": case "contar":
 							$fila2[$dd]=contar(
 							($argumentos['tabla'])?$argumentos['tabla']:$argumentos['0']
 							,($argumentos['donde'])?procesar_llaves($fila2,$argumentos['donde']):procesar_llaves($fila2,$argumentos['1'])
 							,($argumentos['debug'])?$argumentos['debug']:$argumentos['2']
 							);
-							break;
+						break;
 						case "sub_select_fila": case "fila":
 							$fila2[$dd]=select_fila(
 							($argumentos['campos'])?$argumentos['campos']:$argumentos[0]
@@ -202,7 +254,7 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 							,($argumentos['debug'])?$argumentos['debug']:$argumentos[3]
 							,($argumentos['opciones'])?$argumentos['opciones']:$argumentos[4]
 							);
-							break;
+						break;
 						case "sub_select_dato":	case "dato":
 							$fila2[$dd]=select_dato(
 							($argumentos['campo'])?$argumentos['campo']:$argumentos['0']
@@ -211,7 +263,7 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 							,($argumentos['debug'])?$argumentos['debug']:$argumentos['3']
 							,($argumentos['opciones'])?$argumentos['opciones']:$argumentos['4']
 							);
-							break;
+						break;
 						case "get_atributos": case "atributos": case "atributo":
 							if(!is_array($argumentos)){
 								$argumentos=explode(",",$argumentos);
@@ -224,7 +276,7 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 									($argumentos['dimensionado'])?procesar_llaves($fila2,$argumentos['dimensionado']):procesar_llaves($fila2,$argumentos['4']),
 									($argumentos['centrado'])?procesar_llaves($fila2,$argumentos['centrado']):procesar_llaves($fila2,$argumentos['5'])
 							);
-							break;
+						break;
 						case "get_archivo":	case "archivo":
 							if(!is_array($argumentos)){
 								$argumentos=explode(",",$argumentos);
@@ -235,42 +287,49 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 									($argumentos['file'])?procesar_llaves($fila2,$argumentos['file']):procesar_llaves($fila2,$argumentos['2']),
 									($argumentos['tamano'])?procesar_llaves($fila2,$argumentos['tamano']):procesar_llaves($fila2,$argumentos['3'])
 							);
-							break;
+							// prin(sizeof($fila2[$dd]));
+							// prin($fila2[$dd]);
+							if($image_test){
+								shuffle($ima_cats);
+								shuffle($ima_tams);
+								$fila2[$dd]='http://lorempixel.com/'.$ima_tams['0'].'/'.$ima_cats['0'];
+							}
+						break;
 						case "limit_string": case "limit":
 							$fila2[$dd]=limit_string(
 							($argumentos['string'])?procesar_llaves($fila2,$argumentos['string']):procesar_llaves($fila2,$argumentos['0']),
 							($argumentos['limit'])?$argumentos['limit']:$argumentos['1']
 							);
-							break;
+						break;
 						case "formato_moneda": case "moneda":
 							$fila2[$dd]=procesar_llaves($fila2,$argumentos['simbolo']).number_format(
 							procesar_llaves($fila2,$argumentos['numero'])
 							, 2, '.', ','
 									);
-									break;
+						break;
 						case "trim":
 							$fila2[$dd]=trim(
 							procesar_llaves($fila2,$argumentos['string'])
 							);
-							break;
+						break;
 						case "procesar_url": case "url":
 							$fila2[$dd]=(function_exists('procesar_url'))?procesar_url(
 							($argumentos['url'])?procesar_llaves($fila2,$argumentos['url']):procesar_llaves($fila2,$argumentos['0'])
 							):$fila2[$dd];
-							break;
+						break;
 						case "fecha_formato": case "fecha":
 							$fila2[$dd]=fecha_formato(
 							($argumentos['fecha'])?procesar_llaves($fila2,$argumentos['fecha']):procesar_llaves($fila2,$argumentos['0']),
 							($argumentos['formato'])?procesar_llaves($fila2,$argumentos['formato']):procesar_llaves($fila2,$argumentos['1'])
 							);
-							break;
+						break;
 						case "opcion":
 							$fila2[$dd]=get_opcion(
 							$Tabla
 							,procesar_llaves($fila2,$argumentos['campo'])
 							,procesar_llaves($fila2,"{".$argumentos['campo']."}")
 							);
-							break;
+						break;
 						case "ucfirst":
 							$fila2[$dd]=ucfirst(
 							procesar_llaves($fila2,$argumentos['string'])
@@ -279,72 +338,72 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 							$fila2[$dd]=url_externa(
 							procesar_llaves($fila2,$argumentos['link'])
 							);
-							break;
+						break;
 						case "cleantext":
 							$fila2[$dd]=cleantext(
 							procesar_llaves($fila2,$argumentos['string'])
 							);
-							break;
+						break;
 						case "nl2br":
 							$fila2[$dd]=nl2br(
 							procesar_llaves($fila2,$argumentos['string'])
 							);
-							break;
+						break;
 						case "ucwords":
 							$fila2[$dd]=ucwords(
 							procesar_llaves($fila2,$argumentos['string'])
 							);
-							break;
+						break;
 						case "strtolower":
 							$fila2[$dd]=strtolower(
 							procesar_llaves($fila2,$argumentos['string'])
 							);
-							break;
+						break;
 						case "strtoupper":
 							$fila2[$dd]=strtoupper(
 							procesar_llaves($fila2,$argumentos['string'])
 							);
-							break;
+						break;
 						case "stripslashes":
 							$fila2[$dd]=stripslashes(
 							procesar_llaves($fila2,$argumentos['string'])
 							);
-							break;
+						break;
 						case "htmlspecialchars":
 							$fila2[$dd]=htmlspecialchars(
 							procesar_llaves($fila2,$argumentos['string'])
 							);
-							break;
+						break;
 						case "strip_tags":
-							$fila2[$dd]=strip_tags(
+							$fila2[$dd]=html_entity_decode(strip_tags(
 							procesar_llaves($fila2,$argumentos['string'])
-							);
-							break;
+							));
+						break;
 						case "url_encode_seo":
 							$fila2[$dd]=url_encode_seo(
 							procesar_llaves($fila2,$argumentos['string'])
 							);
-							break;
+						break;
 						case "urlencode":
 							$fila2[$dd]=urlencode(
 							procesar_llaves($fila2,$argumentos['string'])
 							);
-							break;
+						break;
 						case "url_friendly":
 							$fila2[$dd]=url_friendly(
 							procesar_llaves($fila2,$argumentos['string'])
 							);
-							break;
+						break;
 						case "match":
 							$argumentos['a']	=($argumentos['a'])		?$argumentos['a']		:$argumentos[0];
 							$argumentos['b']	=($argumentos['b'])		?$argumentos['b']		:$argumentos[1];
 							$argumentos['equal']=($argumentos['equal'])	?$argumentos['equal']	:$argumentos[2];
 							$argumentos['else']	=($argumentos['else'])	?$argumentos['else']	:$argumentos[3];
 							$fila2[$dd]=(trim(procesar_llaves($fila2,$argumentos['a']))==trim(procesar_llaves($fila2,$argumentos['b'])))?$argumentos['equal']:$argumentos['else'];
-							break;
+						break;
 						case "concat":
 							$concat[$dd][]=procesar_llaves($fila2,$argumentos['values']);
-							break;
+						break;
 						default:
 							if(function_exists($accion)){
 								foreach($argumentos as &$aa){
@@ -352,7 +411,7 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 								}
 								$fila2[$dd]=call_user_func_array($accion,$argumentos);
 							}
-							break;
+						break;
 					}
 				} else
 				{
@@ -454,6 +513,17 @@ function get_valores($key,$value,$tabla,$donde="",$debug=0){
 	}
 	return $ret;
 }
+
+
+function get_valores_min($key,$value,$tabla,$donde="",$debug=0){
+	$matriz=select("$key,$value",$tabla,$donde,$debug);
+	$ret=array();
+	foreach($matriz as $mat){
+		$ret[$mat[$key]]=strtolower($mat[$value]);
+	}
+	return $ret;
+}
+
 
 function insert($campos_array,$tabla,$debug=0){
 
@@ -786,11 +856,34 @@ function get_imagen( $carpeta, $fecha_bd, $file, $tamano=NULL){
 	global $httpfiles, $DIRECTORIO_IMAGENES, $USU_IMG_DEFAULT;
 	global $MASTERCOFIG;
 
+	global $start;
+
+	global $ima_cats;
+
+	global $ima_tams;
+	
+	$image_test = $start['image_test'];
+
+	if($image_test){
+		shuffle($ima_cats);
+		shuffle($ima_tams);
+		return 'http://lorempixel.com/'.$ima_tams['0'].'/'.$ima_cats['0'];
+	}
+
+
 	if($MASTERCOFIG['imagenes_devel']=='1'){
 
 		return "panel/img/devel.jpg";
 
 	}
+
+	if($start['image_devel'] ){
+
+		// return "panel/img/devel.jpg";
+		return "../work/resources/img/pixel.png";
+
+	}
+
 
 	if((!(strpos($file,"x.")===FALSE)) or ($file=='')) {
 		$img=$USU_IMG_DEFAULT;
@@ -818,8 +911,21 @@ function dimensionar_imagen( $carpeta, $fecha_bd, $file, $tamano=NULL, $dimensio
 	global $SERVER;
 	global $LOCAL;
 	global $vars;
+	global $start;
+
+	// prin($start);
 	//	$centrado=($centrado==NULL)?0:$centrado;
-	if( ($MASTERCOFIG['imagenes_devel']=='1') or ($LOCAL and $vars['GENERAL']['mostrar_toolbars']) ){
+	if($start['image_devel'] ){
+
+		list($ancho_ideal,$alto_ideal) = explode("x",$dimensionado_ideal);
+
+		$atributo=' src="'."../work/resources/img/pixel.png".'" width="'.$ancho_ideal.'" height="'.$alto_ideal.'" ';
+
+		// return "panel/img/devel.jpg";
+		// return "../work/resources/img/pixel.png";
+
+	}
+	elseif( ($MASTERCOFIG['imagenes_devel']=='1') or ($LOCAL and $vars['GENERAL']['mostrar_toolbars']) ){
 
 		list($ancho_ideal,$alto_ideal) = explode("x",$dimensionado_ideal);
 
@@ -1714,10 +1820,12 @@ function enhay($en,$hay,$aminuscula=false){
 }
 
 function procesar_llaves($fila,$string){
-	// 
+	//
+	/* 
 	$fila=array_map(function($item){
 		return trim($item);
 	},$fila);
+	*/
 	// 
 	$string2=" $string ";
 	if( !(strpos($string2,"{")==false) and !(strpos($string2,"}")==false) ){
@@ -1727,7 +1835,7 @@ function procesar_llaves($fila,$string){
 			if( !(strpos($un,"}")==false) ){
 				$dos = explode("}",$un);
 				$interior = $dos[0];
-				$string = str_replace("{".$interior."}",$fila[$interior],$string);
+				$string = str_replace("{".$interior."}",trim($fila[$interior]),$string);
 			}
 		}
 	}
@@ -1737,10 +1845,12 @@ function procesar_llaves($fila,$string){
 
 function procesar_url($url,$debug=0){
 
-	$from =['á','é','í','ó','ú','Á','É','Í','Ó','Ú','&','˜'];
-	$to   =['a','e','i','o','u','A','E','I','O','U','','-'];
+	// prin("|$url|");
+
+	$from =['á','é','í','ó','ú','Á','É','Í','Ó','Ú','&','˜','¿','?'];
+	$to   =['a','e','i','o','u','A','E','I','O','U','','-','',''];
 	
-	$url  =str_replace([' /','/ ','.',',',';'],[' ',' ','','',''],$url);
+	$url  =str_replace([' /','/ ','.',',',';',':'],[' ',' ','','','',''],trim($url));
 	
 	$url  =strtolower(str_replace($from,$to,$url));
 	$url  =urlencode($url);
@@ -1751,6 +1861,188 @@ function procesar_url($url,$debug=0){
 }
 
 
+function processFields($fields){
+
+ 		
+		$fields3=[];
+
+		foreach($fields as $name=>$item)
+		{
+			$fields2=$item;
+			
+			$fields2['name']=$name;
+
+			if(!isset($item['type']))	$fields2['type']='text';
+
+			if(!isset($item['class'])){
+			
+				$fields2['class']='';
+
+			} else {
+				
+				if(enhay($item['class'],'validate') and !isset($item['required'])){
+
+					$fields2['required']='1';
+		
+				}
+
+			}
+
+			if(!isset($item['value']))	$fields2['value']='';
+
+			if($fields2['required']=='1'){
+
+				$fields2['label']=$fields2['label']."*";
+
+			}
+
+			$fields3[]=$fields2;
+		}
+
+		return $fields3;
+
+}
 
 
+function extractCommonWords($string){
 
+
+	$string=mb_strtolower($string,'UTF-8');
+
+	$string=str_replace(
+		['á','é','í','ó','ú'],
+		['a','e','i','o','u'],
+		$string
+	);
+   
+   $stopWords = ['un','una','unas','unos','uno','sobre','todo','también','tras','otro','algún','alguno','alguna','algunos','algunas','ser','es','soy','eres','somos','sois','estoy','esta','estamos','estais','estan','como','en','para','atras','porque','por qué','estado','estaba','ante','antes','siendo','ambos','pero','por','poder','puede','puedo','podemos','podeis','pueden','fui','fue','fuimos','fueron','hacer','hago','hace','hacemos','haceis','hacen','cada','fin','incluso','primero	desde','conseguir','consigo','consigue','consigues','conseguimos','consiguen','ir','voy','va','vamos','vais','van','vaya','gueno','ha','tener','tengo','tiene','tenemos','teneis','tienen','el','la','lo','las','los','su','aqui','mio','tuyo','ellos','ellas','nos','nosotros','vosotros','vosotras','si','dentro','solo','solamente','saber','sabes','sabe','sabemos','sabeis','saben','ultimo','largo','bastante','haces','muchos','aquellos','aquellas','sus','entonces','tiempo','verdad','verdadero','verdadera	cierto','ciertos','cierta','ciertas','intentar','intento','intenta','intentas','intentamos','intentais','intentan','dos','bajo','arriba','encima','usar','uso','usas','usa','usamos','usais','usan','emplear','empleo','empleas','emplean','ampleamos','empleais','valor','muy','era','eras','eramos','eran','modo','bien','cual','cuando','donde','mientras','quien','con','entre','sin','trabajo','trabajar','trabajas','trabaja','trabajamos','trabajais','trabajan','podria','podrias','podriamos','podrian','podriais','yo','aquel',
+
+   	'desde'
+   ];
+
+   // $string = preg_replace('/\s\s+/i', '', $string); // replace whitespace
+   $string = trim($string); // trim the string
+   $string = preg_replace('/[^a-zA-Z0-9 -]/', '', $string); // only take alphanumerical characters, but keep the spaces and dashes too…
+   $string = strtolower($string); // make it lowercase
+
+   preg_match_all('/\b.*?\b/i', $string, $matchWords);
+   $matchWords = $matchWords[0];
+   
+   foreach ( $matchWords as $key=>$item ) {
+       if ( $item == '' || in_array(strtolower($item), $stopWords) || strlen($item) <= 3 ) {
+           unset($matchWords[$key]);
+       }
+   }   
+   $wordCountArr = array();
+   if ( is_array($matchWords) ) {
+       foreach ( $matchWords as $key => $val ) {
+           $val = strtolower($val);
+           if ( isset($wordCountArr[$val]) ) {
+               $wordCountArr[$val]++;
+           } else {
+               $wordCountArr[$val] = 1;
+           }
+       }
+   }
+   arsort($wordCountArr);
+   $wordCountArr = array_slice($wordCountArr, 0, 10);
+   return $wordCountArr;
+
+}
+
+$debug_arrays=[];
+function myprint_r($my_array,$deep=0) {
+	global $debug_arrays;
+	 $colors=['navy','INDIANRED','green','MAROON','OLIVE','PURPLE'];
+    if (is_array($my_array)) {
+    	  // echo '<div class="card blue-grey darken-1">';
+        echo "<table border=0 cellspacing=0 cellpadding=0 style='width:auto;margin-bottom:1em;margin-top:0.2em;'>";
+        // echo '<tr><td colspan=2 style="background-color:#ddd;height:1px;padding:0;"><strong><font color=white></font></strong></td></tr>';
+        foreach ($my_array as $k => $v) {
+                echo '<tr><td valign="top" style="vertical-align:top;width:auto;background-color:#F0F0F0; border-bottom:1px solid #fff; padding:3px 5px;">';
+                echo '<strong class="debug_strong" style="color:'.$colors[$deep].';">';
+                if($deep==0){
+                	echo '<div class="debug_above" id="debug_'.$k.'"></div>';
+                }
+                echo $k;
+                // echo ' <i>('.sizeof($v).')</i>';
+                echo '</strong></td>';
+                echo '<td style="padding:0px 15px;border-bottom:1px solid #ddd;">';
+                	if($k=='img' and is_string($v)){
+	                	echo $v;
+	                	if(substr($v,0,4)=='http'){
+                			echo '<div><img src="'.$v.'"/></div>';
+                		}
+                	} elseif(($k=='url' or $k=='uri') and is_string($v)){
+                		echo '<a href="'.$v.'?debug">'.$v.'</a>';
+		            } else {
+	                	myprint_r($v,$deep+1);
+		            }
+                echo "</td></tr>";
+                if(sizeof($v)>1 and $deep==0){
+                	$debug_arrays[]=$k;
+                }
+        }
+        echo "</table>";
+
+        // echo '</div>';
+        return;
+    }
+    echo $my_array;
+}
+
+
+function items2string($items,$name=['name'],$repeat=1){
+	$name_a=[];
+	if(sizeof($items)>0)
+	foreach($items as $item){
+		foreach($name as $nam){
+			for($i=0;$i<$repeat;$i++){
+				$name_a[]=$item[$nam];
+			}
+		}
+	}
+	return implode(' ',$name_a);
+}
+
+
+function mb_ucwords($str) { 
+    $str = mb_convert_case($str, MB_CASE_TITLE, "UTF-8"); 
+    $fromthis=[
+    ' Y ',
+    ' En ',
+    ' A ',
+    ' De ',
+    ' Desde ',
+    ' Hasta ',
+    ' La ',
+    ' El ',
+    ' Las ',
+    ' Los ',
+    ' Lo ',
+ 	 ];
+    $tothis=[
+    ' y ',
+    ' en ',
+    ' a ',
+    ' de ',
+    ' desde ',
+    ' hasta ',
+    ' la ',
+    ' el ',
+    ' las ',
+    ' los ',
+    ' lo ',
+ 	 ];
+    $str = str_replace($fromthis,$tothis,$str);
+    return ($str); 
+} 
+
+		
+function putbetween($insert,$all,$from,$to){
+
+	list($uno,$dos0)=explode($from,$all);
+	list($dos,$tres)=explode($to,$dos0);
+	return $uno.$from.$insert.$to.$tres;
+
+}

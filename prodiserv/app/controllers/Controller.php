@@ -13,30 +13,108 @@ class Controller extends \core\Controller {
 
 		parent::__construct($params);
 
-		$groups=select(
-						"id,url,name",
-						"paginas_groups",
-						"where id in (1,2,3,4,5,6)
-						and visibilidad=1
-						order by weight desc",0);
-
 
 		$Page=$this->loadModel('Pages');
 
+		// menu left
+		$groups_left=select(
+						"id,url,name",
+						"paginas_groups",
+						"where id in (1,2,3,4,5,6,8,13,9)
+						and visibilidad=1
+						order by weight desc",0);
 
-		foreach($groups as $group){
+		foreach($groups_left as $group){
 
-			$replace_menu[]=[
+			$replace_menu_left_pre[]=[
 				'url'   =>'#',
 				'name'  =>$group['name'],
 				'items' =>$Page->getMenu(['item'=>$group['id'],'uri'=>'pagina'])
 			];
 
+		}
+
+		$replace_menu_left=[
+			$replace_menu_left_pre[0],
+			$replace_menu_left_pre[1],
+			$replace_menu_left_pre[6],
+			$replace_menu_left_pre[2],
+			$replace_menu_left_pre[3],
+			$replace_menu_left_pre[4],
+			$replace_menu_left_pre[5],
+			$replace_menu_left_pre[8],
+			$replace_menu_left_pre[7],
+		];
+
+		$replace_menu_left['contactenos']='CONTÁCTENOS';
+
+		$this->menu_left=$this->elements->getMenu('menu_left',$replace_menu_left,$params['uri']);
+
+
+
+		// menu top
+
+		$groups_top=$Page->getMenuGroup(
+			[
+				'where'=>'id in (1,2,3,4,5,6,8)'
+			]
+		);
+
+	
+
+		foreach($groups_top as $group)
+		{
+
+			
+			$replace_menu_top_pre[]=[
+				'url'   =>'#',
+				'name'  =>$group['name'],
+				'items' =>$Page->getMenu(
+					[
+						'item' =>$group['id'],
+						'uri'  =>$group['url'],
+						'sub'	 => "id_grupo={id_grupo}",
+					]
+				)
+			];
+
+
 		}	
+
+
+
+		// $replace_menu_top_pre[3]['items'][0]['items'][]=$replace_menu_top_pre[3];
+		
+		// prin($replace_menu_top_pre[0]);
+		
+		// prin($replace_menu_top_pre);
+
+
+
+		$replace_menu_top=[
+			$replace_menu_top_pre[0],
+			$replace_menu_top_pre[1],
+			$replace_menu_top_pre[6],
+			$replace_menu_top_pre[2],
+			$replace_menu_top_pre[3],
+			$replace_menu_top_pre[4],
+			$replace_menu_top_pre[5],
+		];
+
+
+		$replace_menu_top['contactenos']='CONTÁCTENOS';
+
+		$this->menu_top=$this->elements->getMenu('menu_top',$replace_menu_top,$params['uri']);		
 
 		// $replace_menu['galeria-fotos-staff/1']='STAFF';
 
-		$replace_menu['contactenos']='CONTÁCTENOS';
+		// $replace_menu[]=[
+		// 	'url'		=>'promociones/promocion-de-pagina-web-administrable/50',
+		// 	'name'	=>'PROMOCIONES',
+		// 	'aclass'	=>'promociones'
+		// ];
+
+
 
 		// $replace_menu['contactenos']='Contactenos';
 
@@ -57,16 +135,11 @@ class Controller extends \core\Controller {
 
 
 
-		//menu top
-			$this->menu_top=$this->elements->getMenu('menu_top',$replace_menu,$params['uri']);
 
-
-		//menu left
-			$this->menu_left=$this->elements->getMenu('menu_left',$replace_menu,$params['uri']);
 
 
 		//menu footer
-			$this->menu_footer=$this->elements->getMenu('menu_footer',$this->menu_footer);
+		$this->menu_footer=$this->elements->getMenu('menu_footer',$this->menu_footer);
 		
 
 
@@ -93,10 +166,10 @@ class Controller extends \core\Controller {
 		// 	);
 
 
-		$groups=select(
+		$groups_footer=select(
 						"id,url,name",
 						"paginas_groups",
-						"where id in (1,2,3,4,5,6)
+						"where id in (1,2,3,4,5,6,8)
 						and visibilidad=1
 						order by weight desc",0);
 
@@ -104,7 +177,7 @@ class Controller extends \core\Controller {
 		$Page=$this->loadModel('Pages',['items'=>['filter'=>'limit 0,12']]);
 
 
-		foreach($groups as $group){
+		foreach($groups_footer as $group){
 
 			$menutop[]=[
 				'url'   =>'#',
@@ -115,14 +188,14 @@ class Controller extends \core\Controller {
 		}	
 
 
-		// $menutop=[
-		// 	$menutop[1],
-		// 	$menutop[2],
-		// 	$menutop[3],
-		// 	$menutop[4],
-		// 	$menutop[8],
-		// 	$menutop[5],
-		// ];
+		$menutop=[
+			$menutop[1],
+			$menutop[2],
+			$menutop[3],
+			$menutop[6],
+			$menutop[4],
+			$menutop[5],
+		];
 
 
 		$menutop[3]['ulcss']='col s6 m3';
@@ -149,11 +222,13 @@ class Controller extends \core\Controller {
 		$this->view->assign(
 			[
 
+				'build_css'        => $this->view->vars['build_css'].'?'.$this->static_build,
+				'build_js'         => $this->view->vars['build_js'].'?'.$this->static_build,		
 			//header and menu top
 				'menu_top'     => $this->menu_top,
 				'menu_left'    => $this->menu_left,
 				// 'logo'         => $this->config['img_logo'],
-				'logo'         => 'logo.png',
+				'logo'         => 'logo.jpg?1',
 				// 'header_bg'		=> $header_bg['img'],
 				// 'header_phones'=> $web['header_phones'],
 				'icon'       => 'icon.jpg',

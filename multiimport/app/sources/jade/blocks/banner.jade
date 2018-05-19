@@ -1,0 +1,39 @@
+if slides 
+	.outslider
+		.slider
+			.slides
+				each item in slides
+					if item.bg
+						li
+							img(class="desktop",src="#{item.bg}")
+							if item.name || item.texto2 || item.texto3	
+								div(class="caption left-align")
+									if item.name
+										.texto1
+											a(href="#{item.url}") #{item.name}
+									if item.texto2
+										.texto2
+											a(href="#{item.url}") #{item.texto2}
+									if item.texto3
+										.texto3
+											a(href="#{item.url}") #{item.texto3}
+
+if slides && false
+	.outslider
+		.slider
+			.slides
+				each item in slides
+					if item.bg
+						li
+							img(class="desktop",src="#{item.bg}")
+							if item.name || item.texto2 || item.texto3	
+								div(class="caption left-align")
+									if item.name
+										.texto1
+											a(href="#{item.url}") #{item.name}
+									if item.texto2
+										.texto2
+											a(href="#{item.url}") #{item.texto2}
+									if item.texto3
+										.texto3
+											a(href="#{item.url}") #{item.texto3}

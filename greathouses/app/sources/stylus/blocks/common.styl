@@ -1,0 +1,160 @@
+
+.collection
+	.collection-item
+		padding 7px 5px
+		a
+			display block
+			font-weight 400
+			font-size 0.85em
+			// color color5
+		&.active
+			background-color lighten(black,40)
+			color white
+			a
+				color inherit
+
+
+
+
+.preheader
+	nav
+		height pre_header_height
+		background-color pre_header_bgcolor
+		color pre_header_textcolor
+		.menu 
+			> li
+				line-height pre_header_height
+				// padding-left 0.3em
+				padding-right 0.3em
+				a
+					height pre_header_height
+					color inherit
+					&:before
+						content ""
+						width 14px
+						height 100%
+						float left
+						margin-right 0.3em
+						background-position 0 center
+						background-repeat no-repeat
+				&.facebook a, &.twitter a
+					padding 0
+				&.facebook a:before
+					width 24px
+					background-image url(imgs+'ico_facebook.png')
+				&.twitter a:before
+					width 24px
+					background-image url(imgs+'ico_twitter.png')
+				&.bola, &.phone, &.email
+					float right
+				&.bola a:before
+					background-image url(imgs+'ico_bola.png')
+				&.phone a:before
+					background-image url(imgs+'ico_phone.png')
+				&.email a:before
+					background-image url(imgs+'ico_mail.png')
+
+
+.footerpre1
+	margin-top -20px
+	padding-bottom 1em
+	background-color darken(#A7D747,0)
+	h3
+		color white 
+		text-transform uppercase
+		font-size 1.2em
+		font-weight bold
+	ul
+		@media $small-medium 
+			min-height 220px
+		li
+			padding-left 1em
+			a
+				color black
+				font-size 0.8em
+				position relative
+				&:before
+					content "-"
+					// font-family icomoon
+					font-size 1em
+					position absolute
+					left -1em
+					top 0em
+					@media $small-medium 
+						content "-"
+	.container
+		position relative	
+		.icom
+			position absolute
+			color black
+			font-size 1.5em
+			&:hover
+				text-decoration none
+			
+		.facebook
+			bottom 14px
+			right 3em
+		.twitter
+			bottom 14px			
+			right 1em
+
+
+.footerpre2
+	background-color pre_footer_bgcolor
+	// margin-top -20px !important
+	color pre_footer_textcolor
+	strong 
+		color footer_textcolor
+			
+
+footer
+	background-color footer_bgcolor
+	height footer_height
+	@media $small
+		height auto
+	nav
+		height footer_height
+		line-height footer_height
+	li
+		a
+			color white !important	
+			font-size 0.95rem
+	.submenu
+		a
+			color black !important
+					
+form
+	.btn
+		background-color rgba(#357BB2, 1)
+		&:hover
+			background-color rgba(color1, 1)
+	.input-field 
+		label
+			color black
+	
+			
+// main,footer
+	// background-color lighten(color6,60)
+	
+
+article
+	> div
+		strong
+			font-weight 500
+			
+
+.p-emails
+	.wide
+		text-align center
+		.lines
+			display inline-block
+			margin 0 auto
+			a
+				display block
+				margin 0
+				padding 0
+				img
+					margin 0
+					padding 0
+					display block
+		

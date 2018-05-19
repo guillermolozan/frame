@@ -1,0 +1,266 @@
+// for all
+body
+	display flex
+	min-height 100vh
+	flex-direction column
+	// background-color lighten(brown,55)
+
+main
+	flex 1 0 auto
+	// background-color white
+	
+
+h4
+	color color1
+	text-transform uppercase
+	font-weight 300
+	.material-icons
+		font-size 0.9em
+		
+a:hover
+	color color1 !important
+	
+// a
+	// color color2 !important	
+
+// .card
+	// background-color lighten(#F0E5D7,7)
+// 	color #846C63
+
+
+
+
+
+
+
+
+
+.slider
+	.sy-pager
+		bottom 45px !important
+
+
+
+
+// map
+#map 
+	width 100%
+	height 350px
+	margin-top 10px
+	
+
+
+
+// events
+.events
+	.card-title
+		color color2
+	.card-content
+		padding-top 5px
+		.sub
+			color color1
+		p
+			color color3
+			
+
+
+// post
+.post
+	h1
+		font-size 3rem
+		font-weight 300
+		
+
+
+
+// article
+article
+	color color3
+	.card-title
+		a
+			color black
+	> div
+		text-align: justify
+		color black
+		font-size 1.1rem
+		font-weight 300
+	img
+		margin-top 20px
+		
+
+
+
+
+
+
+
+					
+
+
+			
+// galleries
+.galleries
+	.item		
+		position relative
+		height 220px
+		margin-bottom 10px
+		div.img
+			height 150px
+		h6
+			background-color white
+			color color2	
+			z-index 2
+			position absolute
+			bottom 0
+			width 100%
+			padding 1em 0
+			text-align center
+							
+@media only screen and (max-width : breakpoint_tablet)
+	
+	.galleries
+		.item
+			height auto
+			div.img
+				height auto
+			h6
+				position relative
+
+
+// locales
+.locales
+	h4
+		color white
+	> .row
+		text-align center
+		> .col
+			display inline-block
+			float none
+			text-align left
+			> .card
+				border-radius 10px
+				overflow hidden
+				zoom(1.03)
+				over_shadow_3()
+				// box-shadow_5()
+				.card-content
+					padding 10px 24px
+					background black
+					.card-title
+						margin-bottom 0
+						a
+							color #cc881a
+				.card-image
+					display flex
+					flex-direction column
+					height 155px
+					@media $small-medium
+						height auto
+					padding-left 1.5em
+					padding-right 1.5em
+					padding-top .7em
+				.card-action
+					a
+						line-height 2em
+						color black !important
+						font-family Roboto
+						// text-transform capitalize
+						&:before
+							font-family icomoon
+							margin-right 10px
+							color color2
+					span
+						display block
+
+
+					
+
+@media only screen and (max-width : breakpoint_tablet)
+	.locales
+		.card
+			.card-image	
+				height auto			
+			.card-action
+				span
+					display inline
+					
+					
+
+
+// local
+.local
+	.card	
+		.card-title
+			text-align center
+			color color1
+		.card-action
+			a
+				line-height 2em
+				font-weight 400 !important
+				color color2 !important
+				font-family Roboto
+				// text-transform capitalize
+				&:before
+					font-family icomoon
+					margin-right 10px
+					color inherit
+			li
+				display block
+	.localfixed
+		position fixed
+		top 37px
+		
+.p-home
+	main
+		background #E3971D
+
+@media only screen and (max-width : breakpoint_tablet)
+	.local
+		.card
+			.card-title
+				font-size 3em
+			.card-action
+				li
+					display inline
+		.localfixed
+			position relative
+			top 0
+					
+// form
+form
+	.btn
+		background-color rgba(color2, 0.65)
+	.waves-effect.waves-blue .waves-ripple
+		background-color rgba(color2, 0.65)
+	
+
+
+// video
+.fancybox-iframe
+	width 100%
+	height 100%
+	
+.fancybox-wrap
+	z-index 2			
+
+
+// modal
+.modal
+	top 0% !important
+	max-height 100%
+	.modal-footer
+		height 0px
+		margin-bottom -20px
+		a
+			color white
+			background-color black
+			padding 0 4px
+			line-height 1.5em
+			height 1.3em
+			&:hover
+				color grey !important	
+			
+			// text-shadow 1px 1px 1px rgba(white,1)
+	.modal-close
+		margin-left -115px !important
+		

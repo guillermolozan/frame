@@ -1,0 +1,32 @@
+if(gallery.items)
+
+	ul(class="col #{col_ul} #{ul_class} gallery_ul")
+
+		each item in gallery.items
+
+			li(class="col #{col_li}")
+
+				div(class="card")
+					h3: +item(item)
+					div(class="card-image")
+						//- +img_magnific(item)
+						//- +img_item(item)	
+						a(href="#{item.url}"): img(src="#{item.img}",title="#{item.name}",alt="#{item.name}",class="responsive-img")
+					.card_content
+						div(class="col s12 l7")
+							if(item.sub)
+								h4 #{item.sub}
+						div(class="col s12 l5")
+							h4.operacion #{item.operacion}
+							h5.precio #{item.precio}
+						div(class="col s12 l6")
+							.tipo #{item.tipo}
+						div(class="col s12 l6 contactar")
+							a.btn(href="#{item.url}#cotizar") contactar
+						//- | #[strong Prec]: #{item.precio} #[br]
+						//- | #[strong Tipo]: #{item.tipo} #[br]
+						//- | #[strong Operacion]: #{item.operacion} #[br]
+						//- | #[strong Departamento]: #{item.departamento} #[br]
+						//- | #[strong Provincia]: #{item.provincia} #[br]
+						//- | #[strong Distrito]: #{item.distrito} #[br]
+

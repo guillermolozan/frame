@@ -1,50 +1,158 @@
 
+mixin form(name,form)
+	each item in form
+		-clas= item.divclass ? item.divclass : "col s12"
+		if(item.group)
+			div(class="col s12 group") #{item.group}
+		if(item.hidden)
+			+input_hidden(name,item)
+		else
+			if(item.type=='textarea')
+				+input_textarea(name,item,clas)
+			else if(item.type=='select')
+				+input_select(name,item,clas,options)
+			else if(item.type=='select_2')
+				+input_select_2(name,item,clas,options)
+			else if(item.type=='file')
+				+input_file(name,item,clas)
+			else if(item.type=='date')
+				+input_date(name,item,clas)
+			else
+				+input_text(name,item,clas)
+
+
+mixin simple_form(name,form)
+	each item in form
+		-clas= item.divclass ? item.divclass : "col s12"
+		if(item.group)
+			div(class="col s12 group") #{item.group}
+		if(item.hidden)
+			+input_hidden(name,item)
+		else
+			if(item.type=='textarea')
+				+simple_input_textarea(name,item,clas)
+			else if(item.type=='select')
+				+simple_input_select(name,item,clas,options)
+			else if(item.type=='file')
+				+simple_input_file(name,item,clas)
+			else if(item.type=='file')
+				+simple_input_date(name,item,clas)
+			else
+				+simple_input_text(name,item,clas)
+
+
+
+mixin input_hidden(name,line)
+	input(id="#{name}_#{line.name}",name="#{line.name}",type="hidden",value="#{line.value}")
+
+
 
 mixin input_text(name,line,clas)
-
 	div(class="input-field #{clas}")
-		input(id="#{name}_#{line.name}",name="#{line.name}",type="#{line.type}",class="#{line.class}",value="#{line.value}")
-		label(for="#{line.name}") #{line.label}
+		if line.required
+			input(required,id="#{name}_#{line.name}",name="#{line.name}",type="#{line.type}",class="#{line.class}",value="#{line.value}",oninvalid="this.setCustomValidity('El campo no puede estar vació')")
+		else
+			input(id="#{name}_#{line.name}",name="#{line.name}",type="#{line.type}",class="#{line.class}",value="#{line.value}")
+		label(for="#{name}_#{line.name}") #{line.label}
 
 
 mixin input_textarea(name,line,clas)
-
 	div(class="input-field #{clas}")
 		textarea(id="#{name}_#{line.name}",name="#{line.name}",class="materialize-textarea #{line.class}") #{line.value}
 		label(for="#{name}_#{line.name}") #{line.label}
 
-mixin simple_input_text(name,line,clas)
 
+mixin input_select(name,line,clas)
+	div(class="input-field #{clas}")
+		//- label #{line.name}
+		select(id="#{name}_#{line.name}",name="#{line.name}")
+			option(value="",disabled,selected) #{line.label}
+			each item in line.options
+				if(item==line.value)
+					option(value="#{item}",selected) #{item}
+				else
+					option(value="#{item}") #{item}		
+
+
+mixin input_select_2(name,line,clas)
+	div(class="input-field #{clas}")
+		//- label #{line.name}
+		select(class="browser-default",id="#{name}_#{line.name}",name="#{line.name}")
+			option(value="",disabled,selected) #{line.label}
+			each item in line.options
+				if(item==line.value)
+					option(value="#{item}",selected) #{item}
+				else
+					option(value="#{item}") #{item}					
+
+
+mixin input_combo(line)
+	div(class="input-field")
+		select(class="browser-default",id="#{line.id}",name="#{line.name}",onchange="#{line.onchange}")
+			option(value="",disabled,selected) #{line.label}
+			each item in line.options
+				if(item.index==line.value)
+					option(value="#{item.index}",selected) #{item.value}
+				else
+					option(value="#{item.index}") #{item.value}
+
+
+mixin input_file(name,line,clas)
+	div(class="input-field file-field #{clas}")
+		.btn
+			span Archivo
+			input(type="file")
+		.file-path-wrapper
+			input(class="file-path validate",type="text")
+
+
+mixin input_date(name,line,clas)
+	div(class="input-field #{clas}")
+		label(for="#{name}_#{line.name}") #{line.label} 
+		input(id="#{name}_#{line.name}",name="#{line.name}",type="text",class="datepicker #{line.class}",value="#{line.value}")
+
+
+
+
+
+
+mixin simple_input_text(name,line,clas)
 	div(class="#{clas}")
 		input(id="#{name}_#{line.name}",placeholder="#{line.label}",name="#{line.name}",type="#{line.type}",class="#{line.class}",value="#{line.value}")
 
 
 mixin simple_input_textarea(name,line,clas)
-
 	div(class="#{clas}")
 		textarea(id="#{name}_#{line.name}",placeholder="#{line.label}",name="#{line.name}",class="materialize-textarea #{line.class}") #{line.value}
 
 
+mixin simple_input_select(name,line,clas)
+	div(class="#{clas}")
+		//- label #{line.name}
+		select(class="browser-default",id="#{name}_#{line.name}",name="#{line.name}")
+			option(value="",disabled,selected) Seleccione #{line.name}
+			each item in line.options
+				option(value="#{item}") #{item}
+
+mixin simple_input_file(name,line,clas)
+	div(class="#{clas}")
+		input(type="file")
+
+
+mixin simple_input_date(name,line,clas)
+	div(class="#{clas}")
+		input(id="#{name}_#{line.name}",name="#{line.name}",type="#{line.type}",class="datepicker #{line.class}",value="#{line.value}")
+
+
+
+
 mixin input_submit(msg)
 	div(class="input-field col s12")
-		button(class="btn waves-effect waves-blue",type="submit") #{msg}
+		button(class="btn waves-effect waves-blue submit",type="submit") #{msg}
 
 
-mixin form(name,form)
-	each item in form
-		if(item.type=='textarea')
-			+input_textarea(name,item,"col s12")
-		else
-			+input_text(name,item,"col s12")
 
-
-mixin simple_form(name,form)
-	each item in form
-		if(item.type=='textarea')
-			+simple_input_textarea(name,item,"col s12")
-		else
-			+simple_input_text(name,item,"col s12")
 
 mixin card_sended(msg)
 	if(msg)
-		div(class="card-panel lime lighten-5") #{msg}
+		div(class="card-panel lime lighten-5")!=msg

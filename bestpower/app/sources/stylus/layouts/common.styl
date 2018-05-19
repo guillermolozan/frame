@@ -1,0 +1,27 @@
+.header_pre
+	nav
+		background-color pre_header_bgcolor !important
+		color pre_header_textcolor !important
+		.container
+			border 0 !important
+			.menu 
+				> li
+					font-size 1.2em
+					&:before,
+					a:before,
+					i
+						font-style normal
+						color #a7e8f8
+					a
+						font-size 1em
+						&:before
+							font-size 1em
+						&:hover
+							text-decoration none
+					&.facebook a, &.twitter a, &.whatsapp a
+						padding 0 .1em
+					&.facebook a
+						icomoon('e902',lighten(#3b5998,20))
+					&.whatsapp:before
+						color lighten(green,30)
+						

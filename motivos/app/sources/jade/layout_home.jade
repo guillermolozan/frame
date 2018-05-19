@@ -1,0 +1,27 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	//- script(src="//maps.google.com/maps/api/js?sensor=true")
+
+	//- script(src="#{ven_js}gmaps.js")
+
+	body(class="#{classbody}",style="background-image:url('#{body_bg}')")
+
+		include common/header.jade
+
+		include blocks/banner.jade
+
+		main.container
+
+			include blocks/post.jade
+
+			//- include blocks/map.jade
+
+			include forms/contact.jade
+
+		include common/footer.jade
+
+		include common/foot.jade

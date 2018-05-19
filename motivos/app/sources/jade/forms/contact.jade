@@ -1,0 +1,14 @@
+div(class="post scrollspy",id="contactenos")
+	div(class="row")
+		div(class="col l12 m12 s12")
+			+card_sended(message)
+			article(class="card-panel")
+				h1(class="card-title") Contáctenos
+				div(class="row")
+					form(class="col s12 l8",method="POST",name="contact")
+						
+						+form('contact',fields)
+
+						+input_submit('ENVIAR')
+
+

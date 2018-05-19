@@ -1,0 +1,85 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}") 
+
+		include includes/header
+
+		//- include blocks/breadcrumb.jade
+
+		//- include blocks/image.jade
+
+		main(class="container row")
+			//- .wide
+			div(class="post project")
+				+card_sended(message)
+				div(class="cabecera")
+
+					h1(class="cparts") 
+						| #{group_post} 
+						| - 
+						+item(post)
+					-main=false
+					div(class="contacts cparts")
+						//- span(class="phone"): a(href="tel:01#{post.phone}") #{post.phone}
+						span(class="whatsapp"): a(href="tel:#{web_whatsapp}") #{web_whatsapp}
+						//- span(class="email hide-on-small-only"): a(href="mailto:#{post.email}",target="_top") #{post.email}
+						span(class="cotizar hide-on-med-and-down"): a(href="#cotizar") Consultar
+				.row
+
+					div(class="col s12 l3")
+
+							
+						//- ul(class="menu_post collection collapsible collapsible-accordion",id="menu_left")
+						ul(class="menu_post collection collapsible collapsible-accordion",id="menu_left")
+							//- +menu_collection(menu_post)
+							+menu_items_collapsible(menu_post)
+
+					div(class="col s12 l9")
+
+						if post.html
+							div(class="col s12")
+								article(class="card-panel")
+									h2 Descripción
+									//- div.more
+									div
+										div!= post.html
+									if post.adjunto
+										div
+											a(href="#{post.adjunto}",target="_blank",class="waves-effect waves-light btn-large right-align download") #[i] Descargar Ficha Técnica
+
+						if galleries
+							each gallery in galleries
+								div(class="col s12 galleries")
+									article(class="card-panel")
+										h2 #{gallery.name}
+										div
+											a(class="zoom",id="button",data-items="#{gallery.items}")
+												img(class="responsive-img",src="#{gallery.img}")
+
+
+						div(id="cotizar",class="col s12 scrollspy")
+							article(class="card-panel")
+								h2 Consultar
+								//- p Si desea más información acerca del proyecto #{post.name} por favor ingrese sus datos y nos pondremos en contacto con usted:
+								form(method="POST",name="contact")
+									+form('contact',contact)
+									//- +form('contact',contact)
+									//- div(class="input-field col s12 l12")
+										button(class="btn waves-effect waves-blue",type="submit") ENVIAR
+									+input_submit('ENVIAR')
+								//- div(class="col s12 l4")
+
+
+		.actions
+			ul
+				li: a(class="call",href="tel:01#{post.phone}") Llamar
+				li: a(class="email",href="mailto:#{post.email}",target="_top") Email
+				
+		include includes/footer.jade
+
+		include common/foot.jade
+

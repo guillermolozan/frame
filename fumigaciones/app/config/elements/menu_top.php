@@ -3,13 +3,14 @@
 
 return [
 	
-	(($start['devel'])?$start['devel']:'') => 'Inicio',
+	(($start['devel'])?$start['devel'] :'') => 'Inicio',
 	
-	'empresa'                              => 'Empresa',
-	'servicios'                            => 'Servicios',
-	'productos'                            => 'Productos',
+	'empresa'                          => 'Empresa',
+	'servicio-fumigaciones'            => 'Servicios',
+	'products-fumigaciones'            => 'Productos',
+	'pagina/retardante-de-fuego/24' => 'Retardante de Fuego',
 
-	'galeria-fotos-clientes/3' => 'Clientes',
+	// 'galeria-fotos-clientes/3' => 'Clientes',
 
 
 	[
@@ -20,6 +21,8 @@ return [
 			'galerias-videos' =>'Galería de videos'
 		]
 	],
+
+	'galeria-fotos-certificados/7'     => 'Certificados',
 
 	'contactenos'     => 'Contactenos',
 ];

@@ -41,6 +41,12 @@ class Home extends Controller {
 		},$banner);
 
 
+		// //banner
+		// $Banner=$this->loadModel('Banners');
+
+		// $banner=$Banner->getItems();
+
+
 
 		// locales
 		$locales=select("id,url,nombre as name,foto,foto_descripcion,fecha_creacion,facebook","locales","",0,
@@ -76,13 +82,16 @@ class Home extends Controller {
 
 		$this->view->assign(
 			[
+
+				'is_home'              => true,
+
 				'title'			=> $this->title,
 
 				//head
 				'head_title'   => $this->title.' - Restaurant Peña Campestre',
 
 				//banner
-				"slides"    	=> $banner,
+				"banner"               => $banner,
 
 				//locales
 				"locales"      => $locales,

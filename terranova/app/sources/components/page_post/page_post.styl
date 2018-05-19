@@ -1,0 +1,57 @@
+.page_post
+	margin-bottom .5em
+	margin-top .5em
+	background #fff
+	@media $large
+		border-radius 13px
+		border 7px solid color2
+		min-height 570px
+	.card
+		box-shadow initial
+		margin 0
+		h1,h2
+			margin 0
+			color color1
+			text-align center
+			padding 1em 0 0
+			font-size 1.5rem
+			@media $large
+				color #fff
+				background-color color1
+				border-radius 7px 7px 0 0
+				padding .6em 1em
+				font-family Arial
+				font-size 12px
+				font-weight bold
+				text-align left
+		.card-content 
+			padding 0
+			p
+				text-align justify
+				padding 0 .25rem
+				font-weight 400
+				@media $large
+					padding 0 1em
+					margin 1em 0
+					// font-family Arial
+					// line-height 1.2em
+.p-home 
+	.page_post
+		@media $small-medium
+			h2
+				display none
+		.card-content p
+			@media $large
+				font-size 13px
+				line-height 1.2em
+			strong
+				display block
+				text-align center
+				font-size 18px
+				color #0c6998
+				@media $large
+					border 1px solid #0c6998
+					padding .6em
+					font-weight 500
+			// color color1 !important
+		

@@ -1,0 +1,98 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include includes/header
+
+		//- include blocks/breadcrumb.jade
+
+		include blocks/banner
+
+		main(class="container")
+
+			div(class="row wide line_0")
+				div(class="col s12 l6")
+					h4 Acerca de Nosotros
+					ul(class="collapsible",data-collapsible="accordion")
+						li
+							div(class="collapsible-header active") Nuestra Misión
+							div(class="collapsible-body"): p Obtener la confianza de nuestros clientes, brindando una asesoría integral de calidad, en el ámbito empresarial, según las necesidades de nuestros clientes.
+						li
+							div(class="collapsible-header") Nuestra Visión
+							div(class="collapsible-body"): p Consolidarnos con una firma líder de asesoramiento a entidades y ejecutivos según las necesidades del mercado.
+						li
+							div(class="collapsible-header") Nuestra Filosofía de Trabajo es
+							div(class="collapsible-body"): p Brindar y garantizar soluciones integrales que los tiempos actuales exigen; asimismo le permita tener la información oportuna, para eficientes tomas de decisiones. Nuestro servicio se basa en que tu crecimiento y confianza garantizan nuestro crecimiento.
+
+				div(class="col s12 l6 img_side")
+					img(class="responsive-img",src="#{pub_img}presentacion.png")
+
+
+			div(class="row wide line_a")
+				div(class="col s12 l6")
+					+post_item(capacitacion,true,'h4')
+					| #[a.more_information(href="pagina/capacitacion/2")]
+				div(class="col s12 l6")
+					+post_item(consultoria,true,'h4')
+					| #[a.more_information(href="pagina/consultoria/3")]
+
+
+			div(class="row wide hide-on-med-and-down0")
+				div(class="col s12 l12")
+					section(class="bloque_servicios")
+						h4 Servicios
+						table
+							each men_item in servicios.items
+								tr
+									td.name
+										+link_item(men_item)
+									td.text
+										div!= men_item.html
+										a.more_information(href="#{men_item.url}")
+
+							//- include blocks/grid_card.jade					
+
+			include includes/home_block_notes
+
+			include includes/home_block_links
+
+
+
+			//- div(class="row wide")
+				
+			//- 	div(class="col s12 l3")
+			//- 		section(class="bloque_servicios hide-on-med-and-down")
+			//- 			div(class="card-title"): h2 servicios
+			//- 			ul
+			//- 				+menu_items(servicios.items)
+			//- 				//- include blocks/grid_card.jade
+			//- 		section.bloque_brochure
+			//- 		section.bloque_recomendar
+
+			//- 	div(class="col s12 l6")
+			//- 		section.bloque_bienvenidos
+			//- 			-post = bienvenidos
+			//- 			-post.titleout=true
+			//- 			-post.imgfirst=true
+			//- 			include blocks/post.jade
+			//- 		section.bloque_capacitacion
+			//- 			-post = capacitacion
+			//- 			-post.titleout=true
+			//- 			include blocks/post.jade
+
+			//- 	div(class="col s12 l3")
+			//- 		section.bloque_consultoria
+			//- 			-post = consultoria
+			//- 			-post.imgfirst=true
+			//- 			-post.titleout=true
+			//- 			include blocks/post.jade
+			//- 		section.bloque_pyme
+			//- 		section.bloque_redes
+
+		include includes/footer
+
+		include common/foot.jade

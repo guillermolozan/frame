@@ -1,0 +1,24 @@
+if(slides)
+	div(class="slider")
+		ul(class="slides")
+			each item in slides
+				li
+					//- a(href="#{item.url}"): img(class="small",src="#{item.small}")
+					//- a(href="#{item.url}") #{item.url}
+					if !item.url
+						img(class="desktop",src="#{item.img}")
+					else
+						a(href="#{item.url}"): img(aclass="desktop",src="#{item.img}")
+
+if slides && false
+	div(class="slider")
+		ul(class="slides")
+			each item in slides
+				li
+					a(href="#{item.url}"): img(src="#{item.img}")
+					//- div(class="caption #{item.class}")
+						//- h3 #{item.name}
+						//- h5(class="light grey-text text-lighten-3") #{item.text}
+			.flechas
+				a.izquierda
+				a.derecha

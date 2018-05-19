@@ -1,0 +1,25 @@
+//- include footerpre1.jade
+
+
+footer
+
+	div(class="container")
+		
+		nav(class="transparent z-depth-0")
+			ul
+				//- li: a ©2015 #{web_name}
+				li: a Copyright #{web_name_short} 2017
+				li: a(href="pagina/terminos-y-condiciones/16") Terminos y Condiciones
+				li: a(href="pagina/politicas-de-privacidad/15") Políticas de Privacidad
+				//- bucle de menu
+
+			ul(class="right menu")
+				//- li: a Oficinas
+				li: a(href="pagina/franquicias/14") Franquicias
+				li: a(href="curriculum") Trabaja con nosotros			
+				//- if(visiters)
+				//- 	li #{visiters} visitas
+				//- +menu_items(menu_footer)
+
+
+include footerpre2.jade

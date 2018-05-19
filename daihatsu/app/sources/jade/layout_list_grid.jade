@@ -1,0 +1,63 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+		
+		main(class="container row")
+
+			-item_responsive = "col s12"
+			
+			.wide
+				if(gallery.type=='photos')
+					-ul_class='parent-container'
+				else
+					-ul_class=''
+
+
+				div(class="grid #{gallery.type}")
+					
+					if(main)
+						h1: +item(gallery)
+						-main=false
+					else
+						h2: +item(gallery)
+
+
+					if(gallery.sub)
+						h3 #{gallery.sub}
+
+
+					if(gallery.html)
+						div!= gallery.html
+
+
+					//- div(class="col m12 l3")
+					//- 	include blocks/search.jade
+
+
+					if(gallery.items)
+
+						ul(class="col m12 l12 #{ul_class}")
+
+							each item in gallery.items
+
+								li(class="#{item_responsive}")
+
+									div(class="card")
+										if(item.name)
+											div(class="card-title col s12") #{item.name}
+										div(class="card-image col l3 s12")
+											if(item.img)
+												a(href="#{item.img}"): img(src="#{item.img}",title="#{item.name}",alt="#{item.name}",class="responsive-img")
+										div(class="card-image col l9 s12")
+											if(item.banner)
+												a(href="#{item.banner}"): img(src="#{item.banner}",title="#{item.name}",alt="#{item.name}",class="responsive-img")
+
+		include common/footer.jade
+
+		include common/foot.jade

@@ -1,0 +1,80 @@
+.home_block_about
+	padding-bottom 20px
+	margin-bottom 10px
+	h4
+		// text_border(#333)
+		font-size 25px
+		color #111 !important
+		font-weight bold
+		font-family arial
+			
+		margin-left 23px
+		// text-shadow 0px 0px 4px black
+		// font-weight bold
+	> .row
+		margin-left 0
+		margin-right 0
+	.img_side
+		margin-top 1em
+	.collapsible
+		border-top 1px solid white
+		border-right 1px solid white
+		border-left 1px solid white
+		box-shadow none
+		.collapsible-header
+			border 1px solid #000
+			border-radius 5px
+			margin-bottom 10px
+			font-size 13px
+			font-weight bold
+			font-family arial
+			padding-left 16px
+			@media $small
+				padding-left 5px
+				font-size 12px
+			&:before
+				float right
+				font-size 1.7em
+				color grey
+				font-weight normal
+			icomoon('f0a3')
+		.collapsible-body
+			border-bottom 1px solid white
+			font-size 1em
+			padding 5px 10px 20px
+			p
+				padding-top 0
+				margin 0
+	.img_side
+		.foto
+			position relative
+			.more
+				position absolute
+				color black
+				bottom 50px
+				right 15px
+				border-radius 0
+				border 1px solid #fff
+				// font-size 26px
+				// text_border(#fff)
+				font-size 20px
+				color #fff !important
+				height 35px
+				line-height @height
+				padding 0 10px
+				opacity .8
+				// font-weight bold
+				// font-family arial	
+			img
+				fit_image(300px)				
+		.train
+			width 100%
+			overflow hidden
+			height 60px
+			@media $small
+				height 35px
+			> div
+				width 18%
+				float left
+				margin-right 3px
+				height 60px

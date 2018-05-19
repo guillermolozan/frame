@@ -1,0 +1,22 @@
+footer
+	.row
+		.col.l6.s12
+			p.men
+				| #[a(href="pagina/quienes-somos/4") Quienes Sómos] |
+				| #[a(href="#{first_servicio}") Servicios] |
+				| #[a(href="#{first_tarifa}") Tarifas] |
+				| #[a(href="haga-su-reserva") Haga su reserva] |
+				| #[a(href="contactenos") Contáctenos]	|
+				| #[a(href="trabaja-con-nosotros") Trabaja con Nosotros]
+		.col.l6.s12
+			p 
+				| Nos encontramos en:  Lince - Lima, Perú 
+				//- | #[strong Central]: (511) 303-6912 
+				//- | #[strong Movistar/RPM]: #998920047 #[br]
+				| reservas@taxienlima.com
+	nav(class="transparent right z-depth-0")
+		ul(class="right menu")
+			.container
+				if(visiters)
+					li #{visiters} visitas
+				//- +menu_items(menu_footer)			

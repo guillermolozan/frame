@@ -1,0 +1,17 @@
+section(class="footerpre1")
+
+	div(class="container row")
+
+		each item in menu_prefooter
+
+			ul(class="#{item.ulcss}")
+
+				each sub in item.items
+					if(sub.url=='#')
+						li: h3 #{sub.name}
+					else
+						li: +link_item(sub)
+
+		a(class="icom facebook",target="_blank",title="Facebook - Prodiserv",href="https://www.facebook.com/prodiserv")
+
+		a(class="icom twitter",target="_blank",title="Twitter - Prodiserv",href="https://twitter.com/prodiserv")

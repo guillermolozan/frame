@@ -1,0 +1,47 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include includes/header
+
+		//- include blocks/breadcrumb.jade
+
+		include includes/banner
+
+		section.line_a
+
+			.container.row
+
+				div(class="col s12 m8 offset-m2")
+					//- .center-align: img(class="responsive-img",src="#{pub_img}welcome.png")
+					h2.center-align!= post.name
+					p.center-align!= post.html
+					.center-align: a(href="pagina/bienvenidos/1") Mas información
+		
+
+		.servicios
+			.container
+				h2 Servicios
+				.row
+					each men_item in servicios.items
+						div(class="col s12 m6 l4")
+							.card
+								.card-image
+									+img_item(men_item)
+								.card-content
+									h4: +item(men_item)
+									div!= men_item.html
+									p= men_item.text						
+									//- +post_item(men_item,true,'h4')
+									a.mas(href="#{men_item.url}") ver más
+				//- .more: a(href="#{servicios.more}")
+
+
+
+		include includes/footer.jade
+
+		include common/foot.jade

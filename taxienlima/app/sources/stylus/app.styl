@@ -1,0 +1,86 @@
+// icomoon
+work_stylus='../../../../work/sources/stylus/'
+
+// dirs
+imgs               = '../../public/img/'
+load_imgs          = '../../../public/img/'
+
+
+// colors
+angle              =0deg
+
+color1             =#2F4B93 + angle //red
+color2             =#DADADA + angle //blue
+color3             =#9e9e9e + angle + angle //grey
+color4             =lighten(#000000,35) + angle //black
+color5             =#014087 + angle
+color6             =#444 + angle
+
+
+
+// blocks
+body_color         =white
+
+header_img_path    =load_imgs+'header-bg.jpg'
+header_bg          =white url(imgs+'header-bg.jpg') no-repeat left
+header_height      =image-size(header_img_path)[1]
+
+menu_top_bgcolor   =color6
+menu_top_textcolor =white
+menu_top_height    =60px
+
+main_bgcolor       =white
+
+footer_bgcolor     =white
+footer_textcolor   =black
+
+
+//
+ratio_header       =1
+
+
+// widths
+// maxwide            = ratio_header * image-size(header_img_path)[0]
+maxwide 				 = 978px
+
+mobile             = 600px
+tablet             = 992px
+container 			 = maxwide
+
+
+// media queries
+$small        = 'only screen and (max-width : '+mobile+')'
+$small-medium = 'only screen and (max-width : '+tablet+')'
+$large        = 'only screen and (min-width : '+tablet+')'
+$medium-large = 'only screen and (min-width : '+mobile+')'
+$maxim        = 'only screen and (max-width : '+maxwide+')'
+
+$medium-large = $large-medium
+$medium-small = $small-medium 
+
+//materialize
+@import '../../../public/vendor/css/materialize.min.css'
+
+//work mixins
+@import work_stylus+'mixins.styl'
+//work blocks
+@import work_stylus+'fix.styl'
+@import work_stylus+'icomoon.styl'
+@import work_stylus+'common.styl'
+@import work_stylus+'galleries.styl'
+
+
+
+
+//blocks
+@import 'blocks/*'
+
+
+
+
+//layouts
+@import 'layouts/*'
+
+
+
+

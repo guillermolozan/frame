@@ -1,0 +1,15 @@
+ul.row.gallery_grid
+	.col
+		.card
+			border-radius 10px
+			border 10px solid lighten(color1,78)
+			// border 10px solid transparent
+			.card-image
+				.btn
+					font-size 1.3em
+					font-weight 400
+				fit_image(100px)
+			@media $large-medium
+				over_zoom()
+				over_shadow()
+		

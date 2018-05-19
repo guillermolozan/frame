@@ -33,6 +33,12 @@ header
 				@media $small
 					height 34px
 					margin-top 10px
+					@media only screen and (max-width : 500px)
+						height 25px
+						margin-top 15px
+						@media only screen and (max-width : 300px)
+							height 15px
+							margin-top 20px
 			@media $large
 				opacity 0
 				width maxwide
@@ -51,9 +57,8 @@ header
 				display block
 				clear both
 				height 22px
+				icomoon("e683")
 				&:before
-					content "\e683"
-					font-family icomoon
 					color red
 					font-size 1em
 					margin-right 0.3em

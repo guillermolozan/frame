@@ -1,0 +1,10 @@
+-item = post
+div(class="post row scrollspy",id="#{item.pagina}")
+	div(class="col l12 m12 s12")
+		
+		article(class="card-panel")
+			h1(class="card-title") #{item.name}
+			div!= item.text
+			if(item.img)
+				img(src="#{item.img}",class="responsive-img")
+

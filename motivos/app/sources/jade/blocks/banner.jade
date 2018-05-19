@@ -1,0 +1,45 @@
+-items = slides
+//- if(items)
+//- 	div(class="slider")
+//- 		ul(class="slides")
+//- 			each item in items
+//- 				li
+//- 					a(target="_blank",href="#{item.url}"): img(class="movil",src="#{item.bgmovil}")
+//- 					img(class="desktop",src="#{item.bg}")
+//- 					div(class="caption cfoto right-align")
+//- 						img(src="#{item.img}")
+//- 					div(class="caption desktop cfotocentro center-align")
+//- 						a(target="_blank",href="#{item.url}"): img(src="#{item.filecentro}")
+//- 					div(class="caption ctexto left-align")
+//- 						h3 
+//- 							a(target="_blank",href="#{item.url}") #{item.name}
+
+-items = slides
+if(items)
+	div(class="slider slider2")
+		ul(class="slides")
+			each item in items
+				li
+					img(class="desktop",src="#{item.bg}")
+					a(target="_blank",href="#{item.url}"): img(class="movil",src="#{item.bgmovil}")
+					.caption
+						div(class="imagen_derecha"): img(src="#{item.img}")
+						div(class="desktop imagen_centro"): a(target="_blank",href="#{item.url}"): img(src="#{item.filecentro}")
+						div(class="texto_izquierda"): h3: a(target="_blank",href="#{item.url}") #{item.name}
+
+
+//- if(items)
+//- 	div(class="slider slider2")
+//- 		ul(class="slides")
+//- 			each item in items
+//- 				li
+//- 					a(target="_blank",href="#{item.url}"): img(class="movil",src="#{item.bgmovil}")
+//- 					img(class="desktop",src="#{item.bg}")
+//- 					div(class="caption cfoto right-align")
+//- 						img(src="#{item.img}")
+//- 					div(class="caption desktop cfotocentro center-align")
+//- 						a(target="_blank",href="#{item.url}"): img(src="#{item.filecentro}")
+//- 					div(class="caption ctexto left-align")
+//- 						h3 
+//- 							a(target="_blank",href="#{item.url}") #{item.name}
+

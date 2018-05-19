@@ -1,0 +1,32 @@
+.footerpre2
+	overflow hidden
+	background-color pre_footer_bgcolor
+	// margin-top -20px !important
+	color pre_footer_textcolor
+	p
+		color inherit !important
+	strong 
+		color pre_footer_textcolor
+		font-weight 700 !important
+			
+
+footer
+	background-color footer_bgcolor
+	height footer_height
+	@media $small
+		height auto
+	nav
+		height footer_height
+		line-height footer_height
+		.menu
+			> li
+				a
+					color footer_textcolor !important	
+					font-size 0.95rem
+				.submenu > li > a
+					color black !important
+					padding-top 0 !important
+					padding-bottom 0 !important
+					line-height 2em !important
+	.menu_prodiserv
+		float right

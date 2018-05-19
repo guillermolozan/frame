@@ -1,0 +1,49 @@
+-item_item=item
+
+if item_item.photos
+	-classgalle='m7'
+	-classtext='m5'
+else
+	-classgalle='m7 noshow'
+	-classtext='m12'
+
+li(class="col block_habitacion #{li_class}")
+	.row
+		.galle.col.s12(class=classgalle)
+			.col
+				.foto
+					//- a.zoom
+					//- img(class="responsive-img",src="#{item_item.photos[0]}")
+					//- slider
+					.slider: ul.slides
+						each foto in item_item.photos
+							li: img(src="#{foto}")
+						//- 
+					.orange
+					a(class="name",href="#{item_item.url}") #{item_item.name}
+					a(class="more btn",href="#{item_item.url}") VER MAS >
+				.train
+					each foto in item_item.photos
+						div: a: img(class="responsive-img",src="#{foto}")
+
+		.text.col.s12(class=classtext)
+			if !item_item.photos
+				h3(class="titu"): a(href="#{item_item.url}") #{item_item.name}
+			.col
+				ul.collapsible(data-collapsible="accordion")
+					li
+						.collapsible-header Resumen de la habitación
+						.collapsible-body: p #{item_item.text}
+					li
+						.collapsible-header Comodidades de la habitación
+						.collapsible-body: p #{item_item.text2}
+					li
+						.collapsible-header Unidades Multimedia en la habitación
+						.collapsible-body: p #{item_item.text3}
+					li
+						.collapsible-header.active Servicios
+						.collapsible-body.servicios!=item_item.text4
+				.reservar 
+					//- div RESERVE SU ESTANCIA
+					a(class="btn",href="#{item_item.url}#reservar") RESERVAR
+

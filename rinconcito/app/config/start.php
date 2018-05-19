@@ -13,6 +13,8 @@ return [
 		'models' =>APP."/../../../sistemapanel/rinconcito/panel/config/tablas.php",
 	
 		'static' =>"../rinconcito/public",
+
+		'email_test'=>true,
 	
 	],
 

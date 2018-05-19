@@ -19,20 +19,24 @@ class Home extends Controller {
 
 
 		//news
-		$News=$this->loadModel('News');
+		// $News=$this->loadModel('News');
 
-		$news=$News->getLinks();	
+		// $news=$News->getLinks();	
 
 
 
 		//links
 		$Links=$this->loadModel('Links');
 
+		$Links->setConfig([
+					'items'=>['fields'=>'name,url,fecha_creacion,file'],
+				]);
+
 		$links=$Links->getLinks();	
 
 
 
-
+		/*
 		// phones
 		$img_one=fila(
 			"name,html,fecha_creacion,foto",
@@ -50,28 +54,14 @@ class Home extends Controller {
 			]
 		);
 
-
-
-		// phones
-		$phones=fila(
-			"name,text as html,fecha_creacion,foto",
-			"paginas",
-			"where id='8'",
-			0,
-			[
-				'img'=>['get_archivo'=>[
-											'carpeta'=>'pag_imas',
-											'fecha'=>'{fecha_creacion}',
-											'file'=>'{foto}',
-											'tamano'=>'2'
-											]
-										]
-			]
-		);
+		prin($img_one);
+		*/
 
 
 
+		
 
+		/* 
 		// video
 		$video=fila(
 			"name,video",
@@ -79,7 +69,7 @@ class Home extends Controller {
 			"where id=1",
 			0	
 			);
-
+		*/
 
 
 
@@ -90,7 +80,7 @@ class Home extends Controller {
 				'title'         => $this->title,
 				
 				//head
-				'head_title'    => $this->title.' - Consultoría Integral de Ingeniería',
+				'head_title'    => $this->title.' :: Desinfección, Desinsectación, Desratización, Limpieza y Desinfección de Reservorios de Agua',
 				
 				//banner
 				"banner"        => $banner,
@@ -102,10 +92,10 @@ class Home extends Controller {
 				"links"         => $links,
 
 				// news
-				"news"          => $news,
+				// "news"          => $news,
 
 				// video
-				"video"         => $video,
+				// "video"         => $video,
 				
 				// // phones
 				// "phones"        => $phones,

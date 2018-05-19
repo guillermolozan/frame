@@ -9,7 +9,6 @@ class Videos extends \controllers\Controller {
 
 		$Videos=$this->loadModel('Videos');
 
-
 		$gallery=$Videos->getItems();
 
 		$this->view->assign([
@@ -37,7 +36,7 @@ class Videos extends \controllers\Controller {
 
 
 		$gallery=$Videos->getItem();
-
+		
 		$this->view->assign([
 
 			'head_title'=> $gallery['name'].' | '.$this->title,
@@ -53,6 +52,46 @@ class Videos extends \controllers\Controller {
 
 		);
 	
+
+	}
+
+
+
+	function post($params){
+
+		$Video=$this->loadModel('Videos');
+		
+		$video             	=$Video->getVideo(['id'=>$params['item']]);
+
+		$video['name']=($video['name'])?$video['name']:'video '.$params['item'];
+		// prin($video);
+				
+		// $head_description =$Page->getDescription($post);
+
+		// $head_keywords    =$Page->getKeywords($post);
+		
+		$head_title       =$Video->getTitle($video);
+
+
+
+		$this->view->assign([
+
+			'head_title'       => $head_title,
+
+			// 'head_description' => $head_description,
+
+			// 'head_keywords' 	 => $head_keywords,
+			
+			'title'            => $video['name'],
+			
+			'post'             => [
+											'name' =>$video['name'],
+
+											'video'=>$video['video'],
+										],
+		
+		]);
+
 
 	}
 

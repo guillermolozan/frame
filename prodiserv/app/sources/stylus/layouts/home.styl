@@ -7,8 +7,59 @@
 	// 	width 100%
 		
 
+	.home_gallery // clientes
 		
-	.line_a // la mejor experiencia en ingenieria
+		height 580px
+		padding-top .25rem
+		// background_opacity('fondo-clientes.png',.8)
+		.container
+			padding 0
+		h2
+			font-size 2em
+			text_border(black)
+			color white !important
+		.card
+			display flex
+			flex-direction column-reverse
+			height auto !important
+			// over_shadow()
+			.card-image
+				height 150px !important
+				@media $small
+					height auto !important
+					margin 0 15%
+				border-radius 10px !important
+				background white !important
+				// fit_image(150px)
+				.photo
+					padding 8px
+			.card-content
+				a.btn
+					white-space nowrap
+					background-color initial !important
+					height auto !important
+					line-height initial !important
+					
+
+	.home_block_planes
+		h2
+			margin-bottom 1em
+			color color1
+			// text-decoration underline
+			// text-shadow 0px 4px 3px rgba(0,0,0,0.6), 0px 8px 0px rgba(0,0,0,0.1);
+			text-align center
+			font-size 1.5em
+			font-weight 400
+		.card
+			.card-title
+				color color3 !important
+			.card-content
+				padding-bottom 100px !important
+			
+
+	.experiencia // la mejor experiencia en ingenieria
+		z-index 10
+		background white
 		h3
 			margin-top 2em
 			margin-bottom 1em
@@ -16,7 +67,7 @@
 			// text-decoration underline
 			// text-shadow 0px 4px 3px rgba(0,0,0,0.6), 0px 8px 0px rgba(0,0,0,0.1);
 			text-align center
-			font-size 1.5em
+			font-size 1.5rem !important
 			font-weight 400
 		h4
 			color #0198FF
@@ -30,89 +81,16 @@
 				height auto 
 				float left 
 				
-	.line_two //planes de hosting
-		h2
-			padding-left 10px
-			font-size 1.2em
-			font-weight bold
-			margin-bottom 0.2em
-		.btn	
-			position absolute
-			right 1em
-			bottom 3em
-			text-transform initial
-			
-		> div
-			> div
-				&:nth-child(2)
-					.card:before
-						background-image url('http://prodiserv.com/img/hosting_economico.jpg') 
-				&:nth-child(3)
-					.card:before
-						background-image url('http://prodiserv.com/img/hosting_empresa.jpg') 
-				&:nth-child(4)
-					.card:before
-						background-image url('http://prodiserv.com/img/hosting_corporativo.jpg') 
-				&:nth-child(5)
-					.card
-						&:before
-							background-image url('http://prodiserv.com/img/hosting_ilimitado.jpg') 															
-				.card
-					min-height 200px
-					&:before
-						background-position left bottom
-						position absolute
-						width 100px
-						height 110px
-						bottom -5px
-						left -5px
-						z-index 0
-						content ""		
-					.card-content	
-						padding-right 10px	
-						padding-bottom 100px
-						@media $large
-							min-height 420px
-						@media $small-medium 
-							min-height 365px
-						@media $small 
-							min-height 0
-						.card-title
-							color color5
-							font-size 1.05em
-							line-height 120%
-							font-weight bold
-						ul
-							padding-left 1.4em
-							li
-								font-size 0.9em
-								margin-bottom 0.2em
-								&:before
-									font-family icomoon
-									content "\e682"
-									color color1
-									float left
-									margin-left -20px
-								&.price
-									color color1
-									font-size 1.2em
-									font-weight bold
-									float right
-									margin-right 9px
-									&:before
-										content ""
-
 
 
 
 		
-	.line_three //parallax
+	.comienza //parallax
 		@media $small-medium 
 			padding 0 1em
 		height 450px
-		margin-bottom 20px
 		p,h2,h6 
-			color white
+			color white !important
 			font-weight 300
 		h2
 			font-size 3em
@@ -137,59 +115,12 @@
 			margin 0
 			strong 
 				color #A7D746
-				
 
-	.line_four // noticias
-		.card
-			min-height 300px
-			.card-title
-				h3
-					color color5			
-		.block_three
-			.card
-				padding-top 3em
-		.block_one
-			li
-				padding-bottom 0.5em
-				padding-top 0.5em
-				border-bottom 1px solid lighten(grey,30)
-
-
-	.line_b //clientes
-		height 500px
-		@media $small
-			height auto
-		h3
-			color darken(white,5)
-			text-shadow 0px 4px 3px rgba(0,0,0,0.8), 0px 8px 0px rgba(0,0,0,0.1);
-			text-align center
-			font-size 1.5em
-		.col
-			text-align center
-			@media $small
-				text-align left
-				padding 0 6em
-			img
-				width 198px
-				// height 147px
-				border-radius 27px
-				@media $small
-					display inline-block
-					vertical-align text-top
-					margin-bottom 1em
-			h4
-				margin-top 0
-				margin-bottom 1em	
-				border-radius 27px
-				font-size 0.9em
-				@media $small
-					display inline-block	
-					margin-left 1em			
-		a.more
-			float right
-			margin-right 20px
-			@media $small
-				margin-bottom 20px
-
-
+	.home_block_notes
+		@media $large
+			.container 
+				> .col 
+					> .card.social .fb_iframe_widget
+						min-height 254px !important
+						// display none
 

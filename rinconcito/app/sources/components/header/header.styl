@@ -1,0 +1,86 @@
+menu_logo      ='logo.png'
+
+menu_bg        =rgba(white,.9)
+menu_color     =black
+menu_font_size =14px
+menu_height    =38px
+menu_bg_over   =color1
+menu_color_over=white
+
+// menu_bg        =rgba(black,.7)
+// menu_color     =white
+// menu_font_size =14px
+// menu_height    =38px
+// menu_bg_over   =rgba(white,.9)
+// menu_color_over=black
+
+header_customize()
+	header nav > .container > .menu_top > li.logo a
+		@media $small-medium
+			transform scale(1) !important
+		@media $small
+			transform scale(.8) !important
+	@media $large
+		header
+			nav
+				margin-top -10px
+				margin-bottom -10px
+				background transparent url("../../public/img/header_red.png") center top repeat-x
+				box-shadow initial !important
+				> .container 
+					> .menu_top
+						> li
+							> a
+								color white !important
+							&.active,&:hover
+								background rgba(black,.3)
+								> a
+									color white !important
+				&:after
+					content ""
+					height 10px
+					background transparent url(dir_public_img+'header_white.png') repeat-x
+					display block
+		body.headfixed
+			header
+				nav
+					&:after
+						display none
+					background white
+					// box-shadow initial
+					> .container
+						> .menu_top
+							> li
+								> a
+									color menu_color !important
+								&.active,&:hover
+									background menu_bg_over
+									> a
+										color menu_color_over !important
+									// font-weight bold
+								&.logo
+									background initial !important
+									a
+										width 120px
+										color transparent !important
+					
+
+
+
+
+
+.prenav
+	background-color color4
+	text-align center
+	@media $small-medium
+		display none
+	img
+		@media $large
+			width auto
+
+
+
+header_basic_long()
+
+
+header_customize()

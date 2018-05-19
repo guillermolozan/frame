@@ -1,0 +1,116 @@
+.home_block_links
+	> .container
+		padding 0 0.75rem
+		overflow hidden
+		> .card
+			padding 0 1em
+			h2
+				margin 0
+			> ul.responsive	
+				padding 0 2em
+				// padding-top 0
+				margin-top 0
+				margin-bottom 0
+				.col
+					padding 0 3em
+					&:focus
+						outline none
+					> .card
+						box-shadow initial
+						.card-image	
+							fit_image(80px)
+						.card-content 
+							padding 0
+							text-align center
+							a
+								background transparent
+								box-shadow initial
+								color #9a9a9a
+								line-height initial
+								height auto
+				.slick-arrow
+					position absolute
+					top 15%
+					color transparent
+					background transparent
+					outline none
+					border none
+					width 0
+					&:before
+						font-family icomoon
+						font-size 2em
+						position absolute
+					// opacity 0
+					&.slick-prev
+						left 1.5em
+						&:before
+							content "\e666"
+							color black
+							right 0em
+					&.slick-next
+						right 1.5em
+						&:before
+							content "\e667"
+							color black
+							left 0em
+							
+				
+
+				/* Dots */
+				.slick-slider
+					margin-bottom 30px
+				.slick-dots
+					position absolute
+					bottom -45px
+					display block
+					width 100%
+					padding 0
+					list-style none
+					text-align center
+					li
+						position relative
+						display inline-block
+						width 20px
+						height 20px
+						margin 0 5px
+						padding 0
+						cursor pointer
+						button
+							font-size 0
+							line-height 0
+							display block
+							width 20px
+							height 20px
+							padding 5px
+							cursor pointer
+							color transparent
+							border 0
+							outline none
+							background transparent
+							&:hover
+								outline none
+								&:before
+									opacity 1
+							&:focus
+								outline none
+								&:before
+									opacity 1
+							&:before
+								font-size: 6px;
+								line-height: 20px;
+								position: absolute;
+								top: 0;
+								left: 0;
+								width: 20px;
+								height: 20px;
+								// content: '•';
+								text-align: center;
+								opacity: .25;
+								color: black;
+								-webkit-font-smoothing: antialiased;
+								-moz-osx-font-smoothing: grayscale;
+								content "."
+						&.slick-active
+							button:before
+								opacity: .75;
+								color: black;	

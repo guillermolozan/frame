@@ -1,0 +1,59 @@
+-items  = grid.items
+-name   = grid.name
+-sub    = grid.sub
+
+
+if(grid.items)
+	div(class="grid scrollspy")
+		
+		if(main)
+			h1: +item(grid)
+			-main=false
+		else
+			h2: +item(grid)
+
+
+		if(grid.sub)
+			h3 #{grid.sub}
+
+
+
+		if(grid.dates)
+			select(class="browser-default right",id="select_date")
+				option(value="all",selected) todas las fechas
+				each item in grid.dates
+					option(value="#{item.option}") #{item.val}
+
+
+		if(grid.items)
+			ul
+				each item in grid.items
+					li(class="#{responsive} dates_all dates_#{item.class}") 
+						div(class="card")
+
+							if(item.img)
+								div(class="col s12 m5 l3")
+									div(class="card-image")
+										+img_item(item)
+								
+							if(item.img)
+								-res="col s12 m7 l9"
+							else
+								-res="col s12"
+
+							div(class="#{res}")
+
+								h4: +item(item)
+
+								if(item.sub)
+									h5 #{item.sub}
+
+								if(item.text)
+									p #{item.text}
+
+								if(item.html)
+									div!= item.html
+
+								if(item.more)
+									a(class="more",href="#{item.more.url}") #{item.more.name}
+

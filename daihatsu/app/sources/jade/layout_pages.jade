@@ -1,0 +1,45 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+
+		//- include blocks/breadcrumb.jade
+
+		include blocks/image.jade
+
+		main(class="container row")
+			
+			.wide
+				include blocks/post.jade
+
+				if params.item==17
+					.col.m12.l9.offset-l3
+						h4: strong Tipos de Servicios:
+						ul(class="collapsible",data-collapsible="accordion")
+							li
+								div(class="collapsible-header active") Tratamiento de planchado
+								div(class="collapsible-body"): p.
+									Nuestra <strong>mesa traccionadora</strong>&nbsp;para el enderezamiento del chasis, es un equipo hidr&aacute;ulico que nos permite garantizar un trabajo a la medida sumado a los procesos de preparaci&oacute;n y pintado con materiales de alta calidad garantizan la satisfacci&oacute;n de nuestros clientes.
+							li
+								div(class="collapsible-header") Lavado de Salón
+								div(class="collapsible-body"): p.
+									Es un servicio que renueva el interior de su auto, revitalizando asientos, alfombras, techo, asientos, consola y pisos, as&iacute; como molduras, maletera, puertas y ventanas.
+							li
+								div(class="collapsible-header") Tratamiento de Pintura
+								div(class="collapsible-body"): p.
+									Incluye un tratamiento de lavado de carrocer&iacute;a con shampoo,&nbsp;descontaminaci&oacute;n de la superficie, limpieza de neum&aacute;ticos, pulido con m&aacute;quina orbital, sellador sint&eacute;tico aplicado a mano y aplicaci&oacute;n de cera.
+
+							li
+								div(class="collapsible-header") En caso de siniestro
+								div(class="collapsible-body"): p.
+									Para su m&aacute;xima comodidad, nuestro taller trabaja con las&nbsp;<strong>empresas m&aacute;s importantes de seguros</strong>, por lo que su autom&oacute;vil podr&aacute; ser atendido en nuestro amplio taller, con la&nbsp;<strong>calidad</strong>&nbsp;y el&nbsp;<strong>respaldo</strong>&nbsp;que nuestra experiencia en reparaci&oacute;n de veh&iacute;culos puede brindar.&nbsp;
+
+
+		include common/footer.jade
+
+		include common/foot.jade

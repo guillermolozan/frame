@@ -1,0 +1,18 @@
+-blocks=planes
+//- planes de hosting
+section.home_block_planes
+
+	.container.row
+
+		h2 #{blocks.name}
+
+		each item in blocks.items
+			.col.s12.m6.l3
+				.card
+					.card-content
+						h3.card-title= item.name
+						div!= item.html
+						a.btn(href="#{item.url}") Leer más
+					if(item.img)
+						img(src="#{pub_img}#{item.img}?2")
+

@@ -1,0 +1,323 @@
+
+#map 
+	width 100%
+	height 350px
+	display inline-block
+
+.p-projects.p-detail
+	.train
+		> div
+			padding 1px
+			display inline-block
+			border 1px solid #999
+			margin-bottom 10px
+		@media $large
+			overflow auto
+			max-height 600px
+	.foto
+		display block
+		text-align center
+		vertical-align middle
+		// height 450px
+		// object-fit contain
+		position relative
+		a
+			img
+				max-height 450px
+				margin auto
+				position relative
+	h1
+		font-family Arial !important
+		font-weight bold
+		text-transform uppercase
+		font-size 1.6em
+		margin-top 0
+		@media $small
+			text-align center
+			font-size 2em
+	.precio
+		text-align right
+		font-size 1.5em
+		margin-right 1em	
+	.main
+		strong 
+			color color1
+			font-weight 500
+		margin-bottom 2em
+		@media $large
+			float right
+	h2
+		font-family Orbitron !important
+	h3
+		font-size 1em		
+	.download
+		margin-top 2em
+		background grey
+		i
+			icomoon('e69c')
+			color inherit
+			font-style normal
+		&:hover
+			text-decoration none	
+	.post.project
+		@media $large
+			img.responsive-img, video.responsive-video
+				margin -1px
+				max-width 100.5%
+		.row
+			position relative
+			// &:before
+			// 	content ""
+			// 	position absolute
+			// 	width 1px
+			// 	background-color #0077bd
+			// 	left 50%
+			// 	top 3em
+			// 	height 98%
+			// 	@media $small-medium
+			// 		width 0
+			&.cabecera:before
+				width 0
+			@media $large
+				> div > article
+					margin-top 0px
+					margin-bottom 0px
+		.more
+			line-height 21px 
+			& + a
+				color grey
+				&:hover
+					color #0077bd
+	// h2
+	// 	margin-top 0px
+	// 	margin-bottom 5px
+	// 	padding-bottom 1em	
+	// 	font-weight bold
+	// 	text-transform initial
+	// 	font-size 1.1em
+	// 	@media $small-medium
+	// 		// border-bottom 1px solid #0077bd
+	// 		font-weight normal
+	// 		margin 0
+			
+	// .galleries
+	// 	> article.card-panel 
+	// 		@media $small
+	// 			margin 0
+	// 		> div
+	// 			height 280px
+	// 			overflow hidden
+	// 			@media $small-medium
+	// 				height auto
+	// 				overflow visible
+	.cabecera
+		display flex
+		@media $small
+			display block
+			text-align center
+			// margin-bottom -3em
+		h1
+			font-size 1.7rem
+		// 	text-align center
+		@media $small
+			h1
+				font-size 1.7em
+				// margin-bottom 0
+		.cparts
+			flex-grow 1
+			flex-shrink 1
+			flex-basis auto
+			@media $small
+				display inline-block
+				// background-color red
+		.contacts
+			display inline-block
+			color #0076bb
+			padding 2em 0 0 0
+			text-align right
+			@media $small
+				padding-top 0
+			span
+				font-size 1em
+				margin 0.5em
+				@media $small
+					margin 0.5em 0.5em 0.5em 1em
+					// display block
+				&.phone
+					background url(imgs+'phone.jpg') no-repeat 0px 2px
+					padding-left 18px
+					// font-size 1.3em
+					@media $small
+						font-size .8em
+						background-position 0px -2px
+						display none
+					// text-align left
+				&.email
+					background url(imgs+'email.jpg') no-repeat 0px 4px	
+					padding-left 27px
+				&.cotizar
+					background url(imgs+'pencil.jpg') no-repeat 0px 2px
+					padding-left 20px
+			
+	article.card-panel
+		// min-height 500px
+		// min-height 345px
+		min-height 370px
+		margin-bottom 20px !important
+		@media $small-medium
+			min-height 0
+	#cotizar
+		// p
+		// 	display none
+		h2
+			padding-bottom 0
+	form
+		display inline-block
+		float none
+		// margin-top 4em
+		padding-bottom 2em
+		input, textarea
+			margin-bottom 0px
+			// background-color lighten(#ECECEC,3)
+			// border-bottom 0
+			// border-left 10px solid @background-color
+			// font-weight 400
+			// border-radius 5px
+			&:focus
+				// border-bottom 0
+				box-shadow none
+			&::placeholder
+				color #8c8c8c
+		textarea
+			height em
+			padding-top .5em
+			padding-bottom .5em
+		button
+			// float right
+			// background-color #63BDBD
+			margin-right -7px
+	.actions
+		display none
+		position fixed
+		bottom 0px
+		z-index 2
+		width 100%
+		// display inline-block
+		ul
+			margin 0 auto
+			padding 0
+			display flex
+			width 100%
+			// margin 0 auto
+			text-align center
+			li
+				flex-grow 1
+				flex-shrink 1
+				flex-basis auto
+				a
+					display block
+					box-shadow inset 0px 0px 50px 0px #09598a
+					text-shadow: 3px 1px 5px #09598a
+					height 55px
+					line-height @height
+					// min-width 300px
+					width 100%
+					// margin-right 1%
+					// padding-left 5px
+					display inline-block
+					background-color #0d9aee
+					color #fff
+					border-radius 25px 25px 0 0
+					text-align center
+					// position relative
+					cursor pointer
+					font-size 50px
+					@media $small
+						font-size 30px
+					&:hover
+						text-decoration none
+					&:before
+						content ""
+						width 44px
+						height 38px
+						top 10px
+						left -7px
+						position relative
+						// top 20px
+						// left 50px
+						display inline-block
+						// margin-left 10px
+						background-repeat no-repeat
+						@media $small
+							background-size @width @height
+					&.email:before
+						background-image url(imgs+'proy-email.png')
+					&.call:before
+						background-image url(imgs+'proy-llamar.png')
+	@media $small
+		.actions
+			display block
+		footer
+			visibility hidden
+		
+
+.p-projects.p-grid
+	.grid
+		.gallery_ul
+			margin-top 0
+		li: .card
+			min-height 150px
+			@media $large
+				// max-height 250px
+				overflow hidden
+				padding-bottom 1em
+			h3
+				// font-weight bold
+				font-weight 300
+				font-size 1.2em			
+				margin-top 0
+				margin-bottom 0
+				text-align left !important
+				color #fff
+				background-image linear-gradient(left,lighten(color1,10),darken(color1,30))
+				// background darken(color1,10)
+				padding .7em
+				a
+					height 2.1em
+					overflow hidden
+					display inline-block
+				// padding-bottom 2em
+			// .card-content
+				// padding-top 0
+			.card-image
+				@media $large
+					overflow hidden
+					max-height 200px
+				img
+					margin 0
+			h4
+				color #666
+				max-height 97px
+				overflow hidden
+				&.operacion
+					text-align right
+				@media $small-medium
+					max-height none
+					// height auto
+					overflow visible
+					font-size 1.1em
+					line-height 1.3
+			h5.precio
+				text-align right
+				font-size 1.5em
+			.tipo
+				font-weight bold
+				text-transform uppercase
+			.contactar
+				text-align right
+				a
+					background-color color2
+					&:hover					
+						background-color color1
+				
+				

@@ -1,0 +1,159 @@
+// @import url('https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Dosis|Neucha')
+@import url('https://fonts.googleapis.com/css?family=Oswald|Open+Sans|Roboto|Orbitron')
+
+// icomoon
+work_stylus='../../../../work/sources/stylus/'
+
+// dirs
+imgs               = '../../public/img/'
+load_imgs          = '../../../public/img/'
+
+
+// colors
+angle              =0deg
+
+color1             =#697f8a + angle //red
+color2             =black + angle //blue
+color3             =#9e9e9e + angle + angle //grey
+color4             =lighten(#000000,35) + angle //black
+color5             =#71BBE0 + angle
+color6             =#357BB2 + angle
+
+
+
+
+
+//
+ratio_header       =1
+
+
+// widths
+maxwide            = 1160px
+bannerwide         = 1360px
+
+mobile             = 600px
+tablet             = 992px
+container 			 = maxwide
+
+
+
+// media queries
+$small        = 'only screen and (max-width : '+mobile+')'
+$small-medium = 'only screen and (max-width : '+tablet+')'
+$large        = 'only screen and (min-width : '+tablet+')'
+$medium-large = 'only screen and (min-width : '+mobile+')'
+$maxim        = 'only screen and (max-width : '+maxwide+')'
+
+$large-medium = $medium-large
+$medium-small = $small-medium 
+
+
+
+
+
+// BLOCKS
+body_color         =white
+
+pre_header_height  = 35px
+pre_header_bgcolor = #f99848
+pre_header_textcolor= white
+
+// header_img_path    =load_imgs+'header-bg.jpg'
+// header_bg          =white url(imgs+'header-bg.jpg') no-repeat center
+// header_height      =image-size(header_img_path)[1]
+
+
+logo_img 		  ='logo.png'
+logo_ratio 		  =1
+logo_img_path    =load_imgs+logo_img
+logo_width       =image-size(logo_img_path)[0]*logo_ratio
+logo_height      =image-size(logo_img_path)[1]*logo_ratio
+
+
+
+menu_top_bgcolor   =color6
+menu_top_textcolor =black //#a0a0a0
+menu_top_height    =60px
+menu_top_item_active_bgcolor = #f99848
+menu_top_item_active_textcolor = white
+
+main_bgcolor       =white
+
+footer_bgcolor     =#009ae7
+footer_textcolor   =white
+footer_height 	 	 =41px
+
+pre_footer_bgcolor =#666
+pre_footer_textcolor=white
+
+
+//materialize
+@import '../../../public/vendor/css/materialize.min.css'
+
+//work mixins
+@import work_stylus+'mixins.styl'
+//work blocks
+@import work_stylus+'fix.styl'
+@import work_stylus+'icomoon.styl'
+@import work_stylus+'common.styl'
+@import work_stylus+'galleries.styl'
+
+
+html 
+	font-family 'Open Sans', sans-serif;
+	// font-size 1.05em
+	@media $small
+		font-family 'Roboto', sans-serif
+		font-size 1.05em
+		
+.preheader,
+.p-home .line_a,
+.p-home .servicios
+footer,
+.footerpre2
+	font-family 'Roboto', sans-serif
+.preheader li a
+	// font-size 1em
+	font-weight 700
+	font-size 1.1em
+h1,h2
+	font-family 'Roboto', sans-serif !important
+	font-size 24px !important
+	text-transform uppercase !important
+.servicios
+	font-family 'Roboto', sans-serif !important
+	
+	
+
+	
+.menu_top > li 
+	margin-right -6px !important
+	> a
+		font-family 'Orbitron','Roboto', sans-serif !important
+		font-size 12px !important
+		line-height 1.6em !important
+		// text-transform capitalize !important
+		// font-family 'Dosis','Roboto', sans-serif 
+
+
+footer .menu.first > li > a
+	font-family 'Orbitron','Roboto', sans-serif !important
+	text-transform uppercase
+	
+
+
+.post
+	font-family 'Roboto', sans-serif
+		
+//blocks
+@import 'blocks/*'
+
+
+
+
+//layouts
+@import 'layouts/*'
+
+
+
+

@@ -1,0 +1,7 @@
+{
+	"host":     "multimport.com.pe",
+	"user":     "webcreator@multimport.com.pe",
+	"password": "webmaster2016!",
+	"parallel": "3",
+	"remotedir":"."
+}

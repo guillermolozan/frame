@@ -13,7 +13,7 @@ class Controller extends \core\Controller {
 
 		parent::__construct($params);
 
-		$grouppages	= select(['id','url','name'],"paginas_groups","where id in (1,2)",0);
+		$grouppages	= select(['id','url','name'],"paginas_groups","where id in (1,2,12)",0);
 
 		foreach($grouppages as $i=> $group){
 
@@ -29,17 +29,17 @@ class Controller extends \core\Controller {
 		}
 
 
-		$replace_menu['productos']=[
-			'url'=>'#',
-			'name'=>'Productos',
-			'items'=>select(
-						"id,name",
-						"pages_photos",
-						"where 1",0,
-						[
-						'url'=>['url'=>['productos-{name}/{id}']],
-						])
-		];
+		// $replace_menu['productos']=[
+		// 	'url'=>'#',
+		// 	'name'=>'Productos',
+		// 	'items'=>select(
+		// 				"id,name",
+		// 				"pages_photos",
+		// 				"where 1",0,
+		// 				[
+		// 				'url'=>['url'=>['productos-{name}/{id}']],
+		// 				])
+		// ];
 
 		// $replace_menu['capacitaciones']=fila("id,name","paginas","where id=7",0,
 		// 	[
@@ -67,6 +67,41 @@ class Controller extends \core\Controller {
 		$web=$this->elements->getFromFile('web');
 
 
+		// phones
+		$phones=fila(
+			"name,html,fecha_creacion,foto",
+			"paginas",
+			"where id='8'",
+			0,
+			[
+				'img'=>['get_archivo'=>[
+											'carpeta'=>'pag_imas',
+											'fecha'=>'{fecha_creacion}',
+											'file'=>'{foto}',
+											'tamano'=>'2'
+											]
+										]
+			]
+		);
+
+		$parts=explode('<hr />',$phones['html']);
+		$numparts=sizeof($parts);
+		if($numparts==0){
+			$html='';
+		} elseif($numparts>4){
+			$html =$parts[0];
+			$html.=$parts[1];
+			$html.=$parts[2];
+			unset($parts[0],$parts[1],$parts[2]);
+			$html.=implode("<br>",$parts);
+		} else {
+			$html='';
+			foreach($parts as $part)
+				$html.='<div class="col s12 l'. (12/$numparts) .'">'.$part.'</div>';
+		}
+
+		$footer_pre=$html;
+
 		//header_bg
 		// $header_bg=fila(
 		// 	"fecha_creacion,file",
@@ -85,9 +120,14 @@ class Controller extends \core\Controller {
 		// 	);
 
 
+		// prin($this->view->vars);
+
+
 		$this->view->assign(
 			[
 
+				'build_css'        => $this->view->vars['build_css'].'?5'.$this->static_build,
+				'build_js'         => $this->view->vars['build_js'].'?5'.$this->static_build,
 			//header and menu top
 				'menu_top'     => $this->menu_top,
 				'menu_left'    => $this->menu_left,
@@ -99,6 +139,8 @@ class Controller extends \core\Controller {
 
 			//footer
 				'menu_footer'  => $this->menu_footer,
+
+				'footer_pre'			=> $footer_pre
 
 
 			]

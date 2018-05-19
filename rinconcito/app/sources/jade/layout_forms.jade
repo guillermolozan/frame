@@ -1,10 +1,16 @@
 include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
 
-block body
+	include common/head.jade
 
-	include common/header.jade
+	body(class="#{classbody}")
 
-	main
-		include forms/contact.jade
-	
-	include common/footer.jade
+		include includes/header
+
+		main
+			include forms/contact.jade
+		
+		include includes/footer.jade
+
+		include common/foot.jade

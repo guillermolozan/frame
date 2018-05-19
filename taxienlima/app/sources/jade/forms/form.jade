@@ -1,0 +1,24 @@
+div(class="post")
+	div(class="row")
+		div(class="col l10 offset-l1 m12 s12")
+			+card_sended(message)
+			article(class="card-panel")
+				div(class="card-title")
+					if(main)
+						h1 #{title}
+					else
+						h2 #{title}
+						-main=false
+
+					if(post.html)
+						div!= post.html
+
+					div(class="row")
+						
+						form(method="post",name="contact",class="col s12 l9")
+							
+							+form('contact',fields)
+
+							+input_submit('ENVIAR')
+
+

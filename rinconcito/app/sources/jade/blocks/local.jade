@@ -1,15 +1,15 @@
 -item = local
 
-div(class="local section")
-  div(class="card")
-  
-    h5(class="card-title") #{item.name}
-    
-    div(class="card-action")
-      ul(class="section table-of-contents")
-        li: a(href="#eventos",class="icon-calendar2") eventos
-        li: a(href="#gallery-photo-0",class="icon-pictures") fotos 
-        li: a(href="#gallery-video-0",class="icon-youtube") videos 
-        li: a(href="#ubicacion",class="icon-location") ubicación 
-        li: a(href="#{item.facebook}",target="_blank",class="icon-facebook") facebook 
+.local.section
+	.card
 
+		.card-title
+			h5 #{item.name}
+
+		.card-action
+			.section.table-of-contents
+				li: a(href="#eventos",class="icon-calendar2") eventos
+				li: a(href="#gallery-photo-0",class="icon-pictures") fotos 
+				li: a(href="#gallery-video-0",class="icon-youtube") videos 
+				li: a(href="#ubicacion",class="icon-location") ubicación 
+				li: a(href="#{item.facebook}",target="_blank",class="icon-facebook") facebook 

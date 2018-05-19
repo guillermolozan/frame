@@ -1,7 +1,41 @@
 .p-home
+	.links
+		margin-top 1em
+		// background-color black
+		.card-panel
+			padding-bottom 0
+			padding-top 0.6em
+		h2
+			margin 0
+		.responsive	
+			padding-bottom 0
+			padding-top 0
+			.ite
+				text-align center
+				position relative
+				padding 0 10px !important
+				height 75px
+				&:focus
+					outline none			
+				a
+					height 40px !important
+					line-height @height
+					vertical-align middle
+					img
+						display inline-block
+						max-height 40px
+				h4
+					height 10px 
+					line-height @height
+					text-align center
+					display block
+					position absolute
+					bottom 0px
+					width 100%
+					color #9a9a9a	
 	@media $large
 		main
-			background-color transparent
+			background-color white
 			.line_one
 				display inline-block
 				width 100%
@@ -10,7 +44,7 @@
 				.col
 					.card
 						background-color lighten(#B80001,4)
-						min-height 250px
+						min-height 270px
 						h2,h3,h4,h5
 							font-weight bold
 							color darken(white,20)
@@ -27,12 +61,24 @@
 				.block_one
 					li	
 						padding 0.5em 0
-						border-bottom 1px solid rgba(white,0.5) !important					
+						border-bottom 1px solid rgba(white,0.5) !important
+					li.collection-item
+						a
+							font-size 1.25em
+				.block_two
+					.card-content
+						ul
+							li
+								font-size 0.95em							
 				.block_four
 					.card-content
 						padding-left 8px
 						peggint-right 0
 						font-size 0.95em
+						
+
+
+				
 		// .bar
 		// 	h1,h2
 		// 		font-size 1em

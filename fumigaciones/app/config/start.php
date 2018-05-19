@@ -2,7 +2,8 @@
 
 return [
 
-	'name'	=>'Fumigaciones San Borja',
+	'name'	=>'Fumigaciones en San Borja',
+
 
 	'visitors'	=>true,
 
@@ -30,7 +31,7 @@ return [
 
 		'static' =>"./fumigaciones/public",
 
-		'devel' =>"desarrollo",
+		// 'devel' =>"desarrollo",
 
 		// 'data_test'	=>true,		
 	

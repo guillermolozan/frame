@@ -1,8 +1,13 @@
 <?php 
 namespace core\controllers;
 
+
 class Forms extends \controllers\Controller {
 
+	var $message = false;
+	var $default_message = "Mensaje Enviado";
+	var $email;
+	var $force;
 
 	function __construct($params){
 		
@@ -10,9 +15,46 @@ class Forms extends \controllers\Controller {
 
 	}
 
+	function setForce($vars){
+		foreach($vars as $val=>$var){
+
+			if($val=='_POST'){
+				foreach($var as $ele=>$men){
+					$_POST[$ele]=$men;
+				}
+			} 
+
+			elseif($val=='_SERVER'){
+				foreach($var as $ele=>$men){
+					$_SERVER[$ele]=$men;
+				}
+			}
+
+		}
+	}
+
+	function setMessage($email,$msg=false){
+
+		$msg=($msg)?$msg:$this->default_message;
+
+		$this->message=$msg;
+
+		// prin($this->email);
+
+		if($this->view->vars['email_test']){
+
+			$this->message.= '<ul><li>pruebas</li>';
+			foreach($email->files_test as $fils){
+				$this->message.='<li><a target="_black" href="'.$fils['link'].'">'.$fils['link'].'</a></li>';
+			}
+			$this->message.='</ul>';
+	
+		}
+
+	}
 
  	function processFields(){
-
+ 		
 		$fields3=[];
 
 		foreach($this->fields as $name=>$item)
@@ -20,12 +62,30 @@ class Forms extends \controllers\Controller {
 			$fields2=$item;
 			
 			$fields2['name']=$name;
-			
+
 			if(!isset($item['type']))	$fields2['type']='text';
 
-			if(!isset($item['class']))	$fields2['class']='';
+			if(!isset($item['class'])){
+			
+				$fields2['class']='';
+
+			} else {
+				
+				if(enhay($item['class'],'validate') and !isset($item['required'])){
+
+					$fields2['required']='1';
+		
+				}
+
+			}
 
 			if(!isset($item['value']))	$fields2['value']='';
+
+			if($fields2['required']=='1'){
+
+				$fields2['label']=$fields2['label']."*";
+
+			}
 
 			$fields3[]=$fields2;
 		}
@@ -35,27 +95,61 @@ class Forms extends \controllers\Controller {
 	}
 
 
-	function emailFields(){
+	function emailFields($type="text"){
 
-		$html="\n\n";
+		if($type=="html"){
 
-		foreach($this->fields as $name=>$item)
-		{	
-			switch($item['type']){
-				case "textarea":
-					$html.=$item['label'].":\n".$_POST[$name]."\n\n";
-				break;
-				default:
-					$html.=$item['label'].": ".$_POST[$name]."\n\n";
-				break;
-			}	
+			$html="<table>";
+
+			foreach($this->fields as $name=>$item)
+			{	
+				switch($item['type']){
+					case "textarea":
+						$html.=
+							"<tr><th colspan=2><br>".
+							$item['label'].
+							"</th></tr>".
+							"<tr><td colspan=2>".
+							$_POST[$name].
+							"</td></tr>";
+					break;
+					default:
+						$html.=
+							"<tr><th>".
+							$item['label']."</th>".
+							"<td>: ".
+							$_POST[$name].
+							"</td></tr>";
+					break;
+				}	
+			}
+
+			$html.="</table>";
+
+		} elseif($type=="txt"){
+
+			$html="\n\n";
+
+			foreach($this->fields as $name=>$item)
+			{	
+				switch($item['type']){
+					case "textarea":
+						$html.=$item['label'].":\n".$_POST[$name]."\n\n";
+					break;
+					default:
+						$html.=$item['label'].": ".$_POST[$name]."\n\n";
+					break;
+				}	
+			}
+
+			$html.="\n\n";
+
 		}
-
-		$html.="\n\n";
 
 		return $html;
 
 	}
+
 
 	function insertFields(){
 		

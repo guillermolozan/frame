@@ -1,0 +1,14 @@
+section(class="preheader hide-on-med-and-down")
+	nav
+		.container
+			ul(class="menu")
+				if web_twitter
+					li.twitter: a(target="_blank",href="#{web_twitter}")
+				if web_facebook
+					li.facebook: a(target="_blank",href="#{web_facebook}")
+				if web_whatsapp
+					li.whatsapp: a #{web_whatsapp}
+				if web_email
+					li.email: a(href="contactenos") #{web_email}
+				if web_phone
+					li.phone: a!= web_phone

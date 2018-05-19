@@ -1,0 +1,17 @@
+section.header_pre.hide-on-med-and-down
+	nav
+		.container
+			ul.menu
+				if(web_facebook)
+					li.facebook: a(target="_blank",href="#{web_facebook}")
+				if(web_youtube)
+					li.youtube: a(target="_blank",href="#{web_youtube}")
+				if(web_twitter)
+					li.twitter: a(target="_blank",href="#{web_twitter}")
+			ul.menu.right
+				if(web_phone)
+					li.phone #{web_phone}
+				if(web_whatsapp)
+					li.whatsapp #{web_whatsapp}
+				if(web_email)
+					li.email #{web_email}

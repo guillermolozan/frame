@@ -1,0 +1,94 @@
+section.line_search
+
+	div(class="container row")
+		form(action="inmuebles")
+			div(class="col"): .arrow Buscador del inmueble
+
+			if searches.operacion
+				div(class="col"): select(name="operacion",onchange="this.form.submit();")
+						option(value="") Alquiler/Venta
+						each item in searches.operacion.options
+							if searches.operacion.select==item.i
+								option(value="#{item.i}",selected="selected") #{item.l}
+							else
+								option(value="#{item.i}") #{item.l}
+
+			if searches.tipo
+				div(class="col"): select(name="tipo",onchange="this.form.submit();")
+						option(value="") Tipo de Inmueble
+						each item in searches.tipo.options
+							if searches.tipo.select==item.i
+								option(value="#{item.i}",selected="selected") #{item.l}
+							else
+								option(value="#{item.i}") #{item.l}
+
+
+			if searches.departamento
+				div(class="col"): select(name="departamento",onchange="this.form.submit();")
+						option(value="") Departamento
+						each item in searches.departamento.options
+							if searches.departamento.select==item.i
+								option(value="#{item.i}",selected="selected") #{item.l}
+							else
+								option(value="#{item.i}") #{item.l}					
+
+
+			if searches.provincia
+				div(class="col"): select(name="provincia",onchange="this.form.submit();")
+						option(value="") Provincia
+						each item in searches.provincia.options
+							if searches.provincia.select==item.i
+								option(value="#{item.i}",selected="selected") #{item.l}
+							else
+								option(value="#{item.i}") #{item.l}		
+
+			if searches.distrito
+				div(class="col"): select(name="distrito",onchange="this.form.submit();")
+						option(value="") Distrito
+						each item in searches.distrito.options
+							if searches.distrito.select==item.i
+								option(value="#{item.i}",selected="selected") #{item.l}
+							else
+								option(value="#{item.i}") #{item.l}	
+
+
+			if searches.num_rooms
+				div(class="col adicional"): select(name="num_rooms",onchange="this.form.submit();")
+						option(value="") Dormitorios
+						each item in searches.num_rooms.options
+							if searches.num_rooms.select==item.i
+								option(value="#{item.i}",selected="selected") #{item.l}
+							else
+								option(value="#{item.i}") #{item.l}	
+
+			if searches.num_bathrooms
+				div(class="col adicional"): select(name="num_bathrooms",onchange="this.form.submit();")
+						option(value="") Baños
+						each item in searches.num_bathrooms.options
+							if searches.num_bathrooms.select==item.i
+								option(value="#{item.i}",selected="selected") #{item.l}
+							else
+								option(value="#{item.i}") #{item.l}
+
+
+			if searches.preciomin
+				div(class="col adicional"): select(name="preciomin",onchange="this.form.submit();")
+						option(value="") Precio mínimo
+						each item in searches.preciomin.options
+							if searches.preciomin.select==item.i
+								option(value="#{item.i}",selected="selected") #{item.l}
+							else
+								option(value="#{item.i}") #{item.l}
+
+
+			if searches.preciomax
+				div(class="col adicional"): select(name="preciomax",onchange="this.form.submit();")
+						option(value="") Precio máximo
+						each item in searches.preciomax.options
+							if searches.preciomax.select==item.i
+								option(value="#{item.i}",selected="selected") #{item.l}
+							else
+								option(value="#{item.i}") #{item.l}								
+
+			div(class="col"): input(class="submit",type="submit",value="Buscar")
+

@@ -1,0 +1,32 @@
+.form_contact
+	.row: .col.s12
+		+card_sended(message)
+	.row
+		//- div(class="col l6 m12 s12"): p
+		//- 	if(web_phone)
+		//- 		| Teléfono: #{web_phone} #[br]
+		//- 	if(web_email)
+		//- 		| E-mail: #{web_email} #[br]
+		//- 	if(web_address)
+		//- 		| Dirección: #{web_address} #[br]
+		//- 	div(id="map",
+		//- 		data-name="#{map.name}",
+		//- 		data-lat="#{map.lat}",
+		//- 		data-lon="#{map.lon}",
+		//- 		data-text="#{map.text}")
+
+		div(class="col l12 m12 s12 form")
+			form(method="post",name="frm")
+				if(main)
+					h1 #{title}
+				else
+					h2 #{title}
+					-main=false
+				.row
+					.col.l6.m12.s12				
+						+form('frm',fields1)
+					.col.l6.m12.s12				
+						+form('frm',fields2)
+						+input_submit('ENVIAR')
+
+

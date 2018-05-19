@@ -1,0 +1,99 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}") 
+
+		include common/header.jade
+
+		//- include blocks/breadcrumb.jade
+
+		//- include blocks/image.jade
+
+		main(class="container row")
+			//- .wide
+			div(class="post project")
+				+card_sended(message)
+				div(class="cabecera")
+
+					//- h1(class="cparts")
+					//- 	+item(post)
+					//- -main=false
+					div(class="contacts cparts")
+						//- span(class="phone"): a(href="tel:01#{post.phone}") #{post.phone}
+						span(class="whatsapp"): a(href="tel:#{web_whatsapp}") #{web_whatsapp}
+						//- span(class="email hide-on-small-only"): a(href="mailto:#{post.email}",target="_top") #{post.email}
+						span(class="cotizar hide-on-med-and-down"): a(href="#cotizar") Consultar
+				.row
+
+					div(class="col s12 l12")
+
+						include includes/product_detail
+
+					include includes/form_consulta
+					//- div(class="col s12 l12")
+
+					//- 	article(class="card-panel galleries")
+					//- 		.row
+					//- 			div(class="col s12 l6 main")
+					//- 				//- h2 Descripción
+					//- 				h1 #{post.name}
+					//- 				h3 #{post.marca}
+					//- 				.fb-like(
+					//- 					data-layout='standard', 
+					//- 					data-action='like', 
+					//- 					data-size='small', 
+					//- 					data-show-faces='true', 
+					//- 					data-share='true')
+					//- 				div!= post.html
+					//- 				div
+					//- 					| #[strong Tipo]: #{post.tipo} #[br]
+					//- 					| #[strong Operacion]: #{post.operacion} #[br]
+					//- 					//- | #[strong Precio]: #{post.precio} #[br]
+					//- 					| #[strong Departamento]: #{post.departamento} #[br]
+					//- 					| #[strong Provincia]: #{post.provincia} #[br]
+					//- 					| #[strong Distrito]: #{post.distrito} #[br]
+					//- 					| #[strong Area]: #{post.area}m2 #[br]
+					//- 					| #[strong Baños]: #{post.num_bathrooms} #[br]
+					//- 					| #[strong Dormitorios]: #{post.num_rooms} #[br] #[br]				
+					//- 				.precio #{post.precio}
+
+					//- 				if post.adjunto
+					//- 					div
+					//- 						a(href="#{post.adjunto}",class="waves-effect waves-light btn-large right-align download") #[i] Descargar Ficha Técnica
+
+					//- 			div(class="col s12 l6 fotos")
+					//- 				.row
+					//- 					div(class="col s8 offset-s2 m4 l2 train")
+					//- 						each foto in fotos
+					//- 							div: a(class="zoom",href="#{foto.img}"): img(class="responsive-img",src="#{foto.img}")
+
+					//- 					div(class="col s8 offset-s2 m4 l10 foto")
+					//- 						a(class="zoom",href="#{fotos[0].img}"): img(class="responsive-img",src="#{fotos[0].img}")
+
+
+
+
+					//- div(id="cotizar",class="col l6 offset-l3 scrollspy")
+					//- 	article(class="card-panel")
+					//- 		h2 Consultar
+					//- 		//- p Si desea más información acerca del proyecto #{post.name} por favor ingrese sus datos y nos pondremos en contacto con usted:
+					//- 		form(method="POST",name="contact")
+					//- 			+form('contact',contact)
+					//- 			//- +form('contact',contact)
+					//- 			//- div(class="input-field col s12 l12")
+					//- 				button(class="btn waves-effect waves-blue",type="submit") ENVIAR
+					//- 			+input_submit('ENVIAR')
+					//- 		//- div(class="col s12 l4")
+
+
+		//- .actions
+		//- 	ul
+		//- 		li: a(class="call",href="tel:01#{post.phone}") Llamar
+		//- 		li: a(class="email",href="mailto:#{post.email}",target="_top") Email
+		include common/footer.jade
+
+		include common/foot.jade
+

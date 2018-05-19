@@ -1,0 +1,38 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include includes/header
+		
+		include includes/banner
+
+		//- bienvenidos
+		include includes/home_block_welcome
+
+		//- servicios
+		include includes/home_block_planes
+
+
+
+		//- include includes/block_gallery_products
+
+		//- include includes/block_gallery_videos
+
+
+
+		//- notas brochure social
+		include includes/home_block_notes
+
+		//- clientes
+		include includes/block_gallery_clients.jade
+
+		//- enlaces
+		include includes/home_block_links
+
+
+		include includes/footer.jade
+		include common/foot.jade

@@ -1,0 +1,47 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head
+
+	body(class="#{classbody}")
+
+		//- .seo1.
+		//- 	Bienvenidos a Best Power Electronics ::
+		//- 	Transformadores Best Power Perú | venta de transformadores, fabricante de transformadores, mantenimiento y reparacion de transformadores, transformadores monofasico, transformadores trifasico, transformadores electricos, transformadores de voltaje, transformadores de potencia, transformadores de aislamiento trifasico, transformador.
+		//- 	Estabilizadores Best Power Perú | venta de estabilizadores, fabricante de estabilizadores, estabilizadores monofasico, estabilizadores trifasico, estabilizadores de tension, estabilizador ferroresonante, estabilizador solido, estabilizador para computadora, estabilizador para pc, estabilizador.
+
+		include includes/header
+
+		//- include blocks/breadcrumb.jade
+
+		include includes/banner
+
+		include includes/home_block_welcome
+
+		div(class="servicios")
+			.container
+				h2 Productos
+				.row
+					each men_item in servicios.items
+						div(class="col s12 m6 l4")
+							.card
+								.card-image
+									+img_item(men_item)
+								.card-content
+									h4: +item(men_item)
+									div!= men_item.html
+									p= men_item.text						
+									//- +post_item(men_item,true,'h4')
+									//- a.mas(href="#{men_item.url}") ver más
+
+		//- .seo2.
+		//- 	Venta de Transformadores Best Power Perú | Venta de transformadores en Perú - Venta de transformadores en Lima - Venta de transformadores en San Isidro - Venta de transformadores en Miraflores - Venta de transformadores en Jes˙s MarÌa - Venta de transformadores en San Borja - Venta de transformadores en La Molina - Venta de transformadores en Surco - Venta de transformadores en Chorrillos - Venta de transformadores en La Victoria - Venta de transformadores en Lince - Venta de transformadores en Los Olivos - Venta de transformadores en Magdalena - Venta de transformadores en San Miguel - Venta de transformadores en Chacarilla - Venta de transformadores en el Callao - Venta de transformadores en Puente Piedra - Venta de transformadores en Comas - Venta de transformadores en Carabayllo - Venta de transformadores en San MartÌn de Porres - Venta de transformadores en Barranco - Venta de transformadores en el Rimac - Venta de transformadores en BreÒa - Venta de transformadores en Surquillo - Venta de transformadores en Ancon.
+		//- 	Venta de Estabilizadores Best Power Perú | Venta de estabilizadores en Perúx` - Venta de estabilizadores en Lima - Venta de estabilizadores en San Isidro - Venta de estabilizadores en Miraflores - Venta de estabilizadores en Jes˙s MarÌa - Venta de estabilizadores en San Borja - Venta de estabilizadores en La Molina - Venta de estabilizadores en Surco - Venta de estabilizadores en Chorrillos - Venta de estabilizadores en La Victoria - Venta de estabilizadores en Lince - Venta de estabilizadores en Los Olivos - Venta de estabilizadores en Magdalena - Venta de estabilizadores en San Miguel - Venta de estabilizadores en Chacarilla - Venta de estabilizadores en el Callao - Venta de estabilizadores en Puente Piedra - Venta de estabilizadores en Comas - Venta de estabilizadores en Carabayllo - Venta de estabilizadores en San MartÌn de Porres - Venta de estabilizadores en Barranco - Venta de estabilizadores en el Rimac - Venta de estabilizadores en BreÒa - Venta de estabilizadores en Surquillo - Venta de estabilizadores en Ancon.
+
+
+		include includes/block_gallery_clients.jade
+
+
+		include includes/footer.jade
+		include common/foot.jade

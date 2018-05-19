@@ -17,9 +17,12 @@ class Forms extends \core\controllers\Forms {
 										'rosariogin@hotmail.com',
 										'servicios@prodiserv.com',
 										'guillermolozan@gmail.com',
+										'evelin_perea@hotmail.com',
+										'santopabel@hotmail.com',
+										'wtavara@prodiserv.com',
+										'wtavara@gmail.com'
 									];
 
-								
 	}
 
 	function contactenos(){
@@ -37,6 +40,12 @@ class Forms extends \core\controllers\Forms {
 				'label' =>'Nombre',
 			],
 
+			'medio'=>[
+				'label'=>'¿Por qué medio nos encontró?',
+				'type'  =>'select',
+				'options'=>['Web','Periódico','Revista','Televisión','Panel Publicitario','Un conocido nos recomendó','Otros']
+			],		
+			
 			'telefono'=>[
 				'label'=>'Teléfono',
 			],
@@ -59,20 +68,30 @@ class Forms extends \core\controllers\Forms {
 		$fields_reformated=$this->processFields();
 		// prin($form);
 
+
 		if($_SERVER['REQUEST_METHOD']=='POST'){
 
+			$email= new \controllers\Emails($this->view);
 
-			$message=(mail(
-
+			$sended=$email->send(
 				implode(',',$this->admin_emails),
+				"Mensaje de Contáctenos",
+				[
+					'name_right' =>$this->view->vars['web_name'],
+					'title'      =>"CONTACTO",
+					'subtitle'   =>'Se recibió un mensaje desde la web '.$this->view->vars['web_name'],
+					'html'       =>$this->emailFields('html')
+				],
+				[
+					'name'		 =>$this->name.' para administrador'
+				]
+			);
 
-				"Mensaje de contacto desde Rinconcito Ayacuchano",
 
-				$this->emailFields()
-
-				))?'Consulta Enviada':false;
+			if($sended){	$this->setMessage($email);		} 
 
 
+			if(0)
 			insert(
 				array_merge(
 					[
@@ -81,10 +100,13 @@ class Forms extends \core\controllers\Forms {
 					],
 				$this->insertFields()
 				),
-				"contacto");
+				"contacto"
+			);
 
 
 		}
+
+
 
 		$this->view->render(
 			
@@ -96,7 +118,7 @@ class Forms extends \core\controllers\Forms {
 
 				'title' 			=> $this->name,
 				
-				'message'		=> $message,
+				'message'		=> $this->message,
 
 				'fields'			=> $fields_reformated,
 

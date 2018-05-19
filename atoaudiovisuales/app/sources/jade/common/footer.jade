@@ -1,0 +1,40 @@
+.pre-footer
+	.container
+		.row
+			.col.s12
+				| #[span Copyright Ato Audiovisuales 2016 | ]
+				| #[a(href="pagina/terminos-y-condiciones/31") Terminos y Condiciones ]
+				| #[span | ]
+				| #[a(href="trabaja-con-nosotros") Trabaja con Nosotros]
+
+footer
+	.container
+		.row
+			.col.l5.s12
+				p.men
+					| #[a(href="#{first_empresa}") Empresa] |
+					| #[a(href="#{first_servicio}") Servicios] |
+					| #[a(href="eventos") Eventos] |
+					| #[a(href="galeria-videos-videos/1") Videos] |
+					| #[a(href="clientes") Clientes] |
+					| #[a(href="contactenos") Contáctenos]
+			.col.l2.s12
+				p 
+					| #[strong Teléfonos]#[br]
+					| Telefax: (511) 472-2773#[br]
+					| Movil: (51) 999927613#[br]
+					| Entel: (51) 998122934#[br]
+					| RPM: #621845#[br]
+			.col.l5.s12
+				p 
+					| #[strong Dirección]#[br]
+					| Jr. Coronel Felix Zegarra #786 - Jesús María. Lima Perú#[br]
+					| #[strong Email]#[br]
+					| eventos@atoaudiovisuales.com.pe#[br] gerenciacomercial@atoaudiovisuales.com.pe
+		
+	nav(class="transparent right z-depth-0")
+		ul(class="right menu")
+			.container
+				if(visiters)
+					li #{visiters} visitas
+				//- +menu_items(menu_footer)			

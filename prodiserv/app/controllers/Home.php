@@ -13,55 +13,6 @@ class Home extends Controller {
 	function index($params){
 		
 
-		// clients
-		$Gallery=$this->loadModel('Photos');
-
-		$Gallery->setConfig([
-					'photos'=>['fields'=>'id,name,file,fecha_creacion,url'],
-				]);
-
-
-		$gallery=$Gallery->getItem(['item'=>'2','limit'=>'0,6']);
-
-		foreach($gallery['items'] as $ii=>$item){
-
-			$gallery['items'][$ii]['target']='_blank';
-
-		}
-
-		$clients=$gallery['items'];
-
-
-
-		//news
-		$NewsOne=$this->loadModel('Pages',[
-													'items'=>[
-														'filter'=>'and id_grupo=9',
-														]
-													]);
-
-		//noticias generales
-		$news_one=$NewsOne->getLinks();	
-		$news_one['name']='Notas de Interés';
-		$news_one['more']['url']=$news_one['items'][0]['url'];
-
-		$NewsTwo=$this->loadModel('Pages',[
-													'items'=>[
-														'filter'=>'and id_grupo=10',
-														]
-													]);
-
-		//noticias tecnológicas
-		// $news_two=$NewsTwo->getLinks();	
-		// $news_two['name']='Noticias Tecnológicas';
-		// $news_two['more']['url']=$news_two['items'][0]['url'];
-
-
-		// prin($news);
-
-
-
-
 		//banner
 		$Banner=$this->loadModel('Banners');
 
@@ -70,17 +21,74 @@ class Home extends Controller {
 
 
 
+
+
+
+
+
+
+		//news
+		$NewsBloque=$this->loadModel('Pages',[
+													'items'=>[
+														'filter'=>'and id_grupo=9',
+														]
+													]);
+		//noticias generales
+		$news=$NewsBloque->getLinks(['num'=>4]);	
+		$news['name']='Notas de Interés';
+		$news['more']=[
+			'name'=>'ver mas notas de interés',
+			'url'=>$news['items'][0]['url']
+		];
+
+
+
+
+		// //brochure
+		// $brochure=[
+		// 	'img'=>'brochure.png',
+		// 	'file'=>'brochure-consorcio-esi.pdf',
+		// ];
+
+		//youtube
+		$youtube=[
+			'name'=>'Pasión por Servir',
+			'code'=>'FxW0P7fWsuA',
+		];
+
+
+		//social
+		$social='https://www.facebook.com/prodiserv/';
+
+
+
+
+
+
+
+
+
+
 		//hosting blocks
-		$hosting_blocks=select(
+		$hosting_blocks=fila(
+			"id,name,url",
+			'paginas_groups',
+			'where id=8',
+			0
+			);
+
+		// prin($hosting_blocks);
+
+		$hosting_blocks['items']=select(
 			"id,name,text as html",
 			'paginas',
 			'where id_grupo=8',
 			0,
 			[
-				'url'=>['url'=>['planes-hosting/{name}/{id}']],
+				'url'=>['url'=>[$hosting_blocks['url'].'/{name}/{id}']],
 			]);
 
-		foreach($hosting_blocks as $ii=>$block){
+		foreach($hosting_blocks['items'] as $ii=>$block){
 			$lines=explode("\n",$block['html']);
 			$html='<ul>';
 			foreach($lines as $ll=>$line){
@@ -90,9 +98,68 @@ class Home extends Controller {
 					$html.='<li>'.$line.'</li>';
 			}
 			$html.='<ul>';
-			$hosting_blocks[$ii]['html']=$html;
+
+			$hosting_blocks['items'][$ii]['html']=$html;
+			$hosting_blocks['items'][$ii]['img']='servicio'.($ii+1).'.jpg';
+
 		}
 
+
+
+
+
+
+		// blocks planes
+		$blocks_planes=fila(
+			"id,name",
+			'paginas_groups',
+			'where id=8',
+			0
+			);
+
+		$blocks_planes['items']=select(
+			"id,name,text as html",
+			'paginas',
+			'where id_grupo=8',
+			0,
+			[
+				'url'=>['url'=>['servicios/{name}/{id}']],
+			]);
+
+		foreach($blocks_planes['items'] as $ii=>$block){
+			$lines=explode("\n",$block['html']);
+			$html='<ul>';
+			foreach($lines as $ll=>$line)				
+				$html.='<li>'.$line.'</li>';
+			$html.='</ul>';
+			$blocks_planes['items'][$ii]['html']=$html;
+		}
+
+
+
+
+
+		// clients
+		$Gallery=$this->loadModel('Photos');
+
+			$Gallery->setConfig([
+						'photos'=>[
+							'fields'=>'id,name,file,fecha_creacion,url'
+						],
+						'type'=>'external_link',
+						'target'=>'_blank',
+						'more'=>'ver más'
+					]);
+
+
+			$clients=$Gallery->getItem(['item'=>'2','limit'=>'0,7']);
+
+
+
+			$clients['parallax']='clientes.jpg';
+
+
+			// prin($clients);
 
 
 		$this->view->assign(
@@ -101,25 +168,42 @@ class Home extends Controller {
 				
 				'title'         => $this->title,
 				
+				'canonical'		 => $this->view->vars['baseurl'],
+
+				// 'head_description'=> (isset($start['web_desc']))?$start['web_desc']:'web_desc',
+
 				//head
 				// 'head_title'    => $this->title. ( ($this->slogan)?' - '.$this->slogan:'' ),
 				'head_title'    => $this->slogan." :: ".$this->title,
 
-				//clients
-				"clients"        => $clients,
+				'head_description'=>'En PRODISERV nos especializamos en desarrollo de páginas web, sistemas crm y erp, aplicativos, dominio, hosting, marketing digital e ingeniería comercial',
+
+				'head_keywords' => 'prodiserv,paginas web,dominio,hosting,vps,alojamiento,sistemas web,crm,erp,aplicativos, app,inteligencia de negocios,seo,marketing digital,lima,peru,ingenieria comercial,servicio tecnico',
+
+
 				
 				//banner
 				"banner"        => $banner,
 				
 				//blocks
-				'line_two'	 	 => $hosting_blocks,
+				'planes'	 	 => $hosting_blocks,
 
 				// links
 				"links"         => $links,
 
 				// news
-				"news_one"          => $news_one,			
-				"news_two"          => $news_two,			
+				// "news_one"          => $news_one,			
+				// "news_two"          => $news_two,			
+
+				// news
+				"noticias"   => $news,
+				"youtube"	 => $youtube,
+				"social"	 => $social,
+				//facebook
+				'opengraph'  => true,
+
+				//clients
+				"clients"        => $clients,
 
 			]
 

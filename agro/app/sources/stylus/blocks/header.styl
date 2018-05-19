@@ -1,0 +1,35 @@
+@media $large
+	header
+		nav
+			> .container
+				> .menu_top
+					display block !important
+					text-align center !important
+					> li.brand-logo
+						display block !important
+						margin 5px 0 !important
+						a
+							text-align center !important
+					> li
+						display inline-block !important
+						float none !important
+
+body.headfixed
+	header
+		nav
+			> .container
+				> .menu_top
+					display flex !important
+					text-align center !important
+					> li.brand-logo
+						margin 0 !important
+						@media $small-medium
+							display block !important
+						a
+							text-align center !important
+					> li
+						display inline-block !important
+						float left !important
+						@media $small-medium
+							display none !important
+						

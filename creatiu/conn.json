@@ -1,0 +1,7 @@
+{
+	"host":     "cadbimcenter.com",
+	"user":     "cadbimcenter",
+	"password": "3dpcr",
+	"parallel": "3",
+	"remotedir":"/public_html"
+}

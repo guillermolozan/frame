@@ -1,0 +1,61 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+
+		//- .banner
+			.container
+				img(class="responsive-img",src="#{pub_img}home_banner.jpg")
+		include blocks/banner.jade
+		
+		.container
+			.iconos
+				ul
+					li(class="ico_infra"): a(href="unidades-de-negocio/infraestructura-ti/33") INFRAESTRUCTURA TI #[strong Consultoría Permanente Soluciones integrales]
+					li(class="ico_soft"): a(href="soluciones-en-software/introduccion/11") SOLUCIONES EN SOFTWARE
+					li(class="ico_comu"): a(href="soluciones-en-comunicaciones/introduccion/14") SOLUCIONES EN COMUNICACIONES
+					li(class="ico_serv"): a(href="unidades-de-negocio/servicios/8") SERVICIOS
+					li(class="ico_arren"): a(href="unidades-de-negocio/financiamiento-y-arrendamiento/7") FINANCIAMIENTO Y ARRENDAMIENTO
+					li(class="ico_infra"): a(href="promociones") PROMOCIONES
+
+				//- ul
+					li(class="ico_infra"): a(href="unidades-de-negocio/infraestructura-ti/4") HARDWARE #[strong Consultoría Permanente Soluciones integrales]
+					li(class="ico_soft"): a(href="unidades-de-negocio/soluciones-en-software/5") SOLUCIONES EN SOFTWARE
+					li(class="ico_serv"): a(href="unidades-de-negocio/servicios/8") SERVICIOS
+					li(class="ico_arren"): a(href="unidades-de-negocio/consultoria/10") CONSULTORIA
+
+
+			//- .container
+				.form_login
+					form
+						div
+							label USUARIO
+							input(name="name")
+						div
+							label CONTRASEÑA
+							input(name="password")
+						div
+							button(type="submit",class="btn") INGRESAR
+
+
+				div(class="post presentacion")
+					div(class="col s12")
+						article
+							if(post.img)
+								img(src="#{post.img}",class="responsive-img")
+							div(class="card-title")
+								h2: +item(post)
+							.html
+								if(post.html)
+									div!= post.html
+
+
+
+		include common/footer.jade
+
+		include common/foot.jade

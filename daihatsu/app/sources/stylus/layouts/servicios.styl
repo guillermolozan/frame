@@ -1,0 +1,103 @@
+.p-servicios
+			
+	.card-title h2
+		padding 1.3em 0 .4em
+		font-size 1.7em
+
+	article.card-panel
+		box-shadow none
+		.parent-container > li
+			@media $large
+				min-height 220px
+			.card
+				transition border-radius .5s, box-shadow .5s, background-color .5s, margin .2s
+				box-shadow 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)
+				background-color darken(white,5)
+				border-radius 15px
+				&:hover
+					box-shadow 0 12px 15px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19)
+					background-color white
+					border-radius 0
+					@media $large
+						margin -1px
+				.card-content
+					padding-top 0
+					padding-bottom 0
+					font-weight bold
+					text-transform uppercase
+	#cotizar
+		.card-title
+			h2
+				margin-top 0
+				margin-bottom 0
+				padding-top 0
+		form
+			.btn
+				margin-bottom 1em
+			.input-field
+				margin-top .1rem
+
+
+
+	// galleries
+	.galleries
+		ul
+			li
+				clear none
+				.card
+					height auto
+					.card-image
+						// background-color rgba(#81C3E5,0.2)
+						background #fff
+						text-align center
+						height 139px
+						line-height 100%
+						vertical-align middle
+						overflow hidden
+						position relative
+						&:before
+							font-family icomoon
+							content "\e656"
+							font-size 8em
+							line-height inherit
+							color rgba(color2,0.2)
+							position absolute
+							left 0
+							width 100%
+							z-index 0
+						img
+							display inline-block
+							height auto
+							line-height 100%
+							width 100%
+							max-width none
+							margin-left 0
+							margin-right 0
+							margin-top 0
+							margin-bottom 0
+						@media $small
+							height auto
+							line-height 0
+							img
+								margin 0
+								width 100%
+					.card-content
+						// overflow hidden
+						height 3em
+						@media $small
+							height auto
+						h3
+							color #000 !important
+							text-transform capitalize
+							position relative
+							padding-bottom 0
+							border-bottom 0
+							font-size 1em
+							font-weight normal
+							margin .5em 0
+							// border-bottom 1px solid #0077bd
+						h4
+							text-align center
+							color #000000 !important
+							text-transform capitalize
+						font-size 1.3em					

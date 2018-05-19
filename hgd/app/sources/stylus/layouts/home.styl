@@ -3,6 +3,42 @@
 		main
 			margin-bottom 0
 			background-color lighten(#EAEAEA,5)
+			
+			.links
+				// background-color black
+				.card-panel
+					padding-bottom 0
+					padding-top 0.6em
+				h2
+					margin 0
+				.responsive	
+					padding-bottom 0
+					padding-top 0
+					.ite
+						text-align center
+						position relative
+						padding 0 10px !important
+						height 75px
+						&:focus
+							outline none			
+						a
+							height 40px !important
+							line-height @height
+							vertical-align middle
+							img
+								display inline-block
+								max-height 40px
+						h4
+							height 10px 
+							line-height @height
+							text-align center
+							display block
+							position absolute
+							bottom 0px
+							width 100%
+							color #9a9a9a
+						
+
 		.bar
 			h1,h2
 				font-size 1em
@@ -29,6 +65,7 @@
 				h4
 					margin-top 0
 					color #02337a
+					font-weight 400
 					// max-height 2.1em
 					// overflow hidden
 				.more
@@ -116,3 +153,4 @@
 				border-bottom 1px solid #e0e0e0 !important
 		.card
 			min-height 0
+			

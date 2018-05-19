@@ -1,0 +1,9 @@
+section.line_welcome
+
+	div(class="container row")
+
+		div(class="col s12 m8 offset-m2")
+			//- .center-align: img(class="responsive-img",src="#{pub_img}welcome.png")
+			h2.center-align!= post.name
+			p.center-align!= post.html
+			.center-align: a(href="pagina/bienvenidos/1") Mas información

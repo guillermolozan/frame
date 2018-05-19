@@ -18,9 +18,15 @@ class Controller {
 	var $devel;
 	var $email_test;
 	var $data_test;
+	var $image_test;
 	var $uri;
+	var $analytics;
+	var $static_build;
+	var $show_view;
 
 	function __construct($params){
+
+		session_start();
 
 		global $start;
 
@@ -31,13 +37,19 @@ class Controller {
 		// global $db;
 		
 		// $this->db       = $db;
+
+		$this->start       =$start;
 		
 		$this->config      = $Config;
 		
 		$this->views       = (isset($start['views']))?$start['views']:'views';
+
+		$this->analytics   = (isset($start['analytics']))?$start['analytics']:'analytics';
 		
 		$this->static      = $start['static'];
-		
+
+		$this->pub_img 	 = $this->static.'/img/';
+
 		$this->title       = $start['name'];
 		
 		$this->slogan      = (isset($start['slogan']))?$start['slogan']:null;
@@ -55,16 +67,19 @@ class Controller {
 		$this->menu_footer = [];	
 		
 		$this->email_test  = (isset($start['email_test']))?$start['email_test']:false;
-		
 		$this->data_test   = (isset($start['data_test']))?$start['data_test']:false;
-		
+		$this->image_test   = (isset($start['image_test']))?$start['image_test']:false;		
 		// if($this->data_test)
 		$this->data_tests  = new Tests((isset($start['fake']))?$start['fake']:null);
 		
 		// $this->models   = new Models($this);
-		
-		
-		$enviroment        = Server::environment();
+
+		$this->enviroment  = Server::environment();
+
+		$this->localhost   = ($this->enviroment=='local')?1:0;;
+
+		$this->show_view   = !(isset($params['noshow']));
+
 
 		// visitors
 		if($this->visitors){
@@ -73,70 +88,110 @@ class Controller {
 
 		}
 
-
+		// version
+		$touchjson = file('touch.json');;
+		$touch = json_decode($touchjson[0],true);
+		$this->static_build=$touch['v'];
 
 		//menu footer
 			$this->menu_footer['prodiserv']=[
 								'name'   => 'by prodiserv',
 								'url'    => 'http://prodiserv.com',
 								'aclass' => 'prodiserv',
-								'target' => '_blank'
+								'target' => '_blank',
+								'class'	=> 'menu_prodiserv',
+								'rel'		=> 'external',
 								];
 
 
-		if($enviroment=='local'){
+		if($this->enviroment=='local'){
 
 
 			$localhost=$_SERVER['HTTP_HOST'];
 
 
-			$menu_footer_proyectos=select("nombre as name,carpeta","proyectos","where tipo_web=2",0,
+			$menu_footer_proyectos=select("nombre as name,carpeta,calificacion","proyectos","where tipo_web=2 order by calificacion desc, fecha_acceso desc",0,
 				[
-				'db'=>'panel',
-				'url'=>'http://'.$_SERVER['HTTP_HOST'].'/frame/{carpeta}',
-				'carpeta'=>'null',
-				'class'=>'blue lighten-5'
+					'db'      =>'panel',
+					'url'     =>'http://'.$_SERVER['HTTP_HOST'].'/frame/{carpeta}',
+					'carpeta' =>'null',
+					'class'   =>'cyan darken-{calificacion}',
+					'rel'     =>'nofollow',
+					// 'name'	 =>'{name} - {calificacion}'
 				]
 			);
+			// prin($menu_footer_proyectos);
+
+
 
 
 			$menu_footer_proyectos[]=[
 								'class'  => 'red lighten-5',
 								'name'   => 'php',
-								'url'   	=> '//'.$localhost.'/frame/'.$this->config['CARPETA_PROYECTO']
+								'url'   	=> '//'.$localhost.'/frame/'.$this->config['CARPETA_PROYECTO'],
+								'rel'		=> 'nofollow'
 								];	
+
 
 			$menu_footer_proyectos[]=[
 								'class'  => 'red lighten-5',
 								'name'   => 'html',
-								'url'   	=> '//'.$localhost.':8080/'.$this->config['CARPETA_PROYECTO'].'/html'
+								'url'   	=> '//'.$localhost.':8080/'.$this->config['CARPETA_PROYECTO'].'/html',
+								'rel'		=> 'nofollow'
 								];
+
 
 			$menu_footer_proyectos[]=[
 								'class'  => 'red lighten-5',
 								'name'   => 'panel',
-								'url'   	=> '//'.$localhost.'/sistemapanel/'.$this->config['CARPETA_PROYECTO'].'/panel'
+								'url'   	=> '//'.$localhost.'/sistemapanel/'.$this->config['CARPETA_PROYECTO'].'/panel',
+								'rel'		=> 'nofollow'
 								];	
+
 
 			$menu_footer_proyectos[]=[
 								'class'  => 'red lighten-5',
 								'name'   => 'remote',
-								'url'   	=> $this->config['httpfiles']
+								'url'   	=> $this->config['httpfiles'],
+								'rel'		=> 'nofollow'
 								];
+
 
 			$menu_footer_proyectos[]=[
 								'class'  => 'red lighten-5',
 								'name'   => 'icomoon',
-								'url'   	=> '//'.$localhost.'/frame/work/icomoon/demo.html'
+								'url'   	=> '//'.$localhost.'/frame/work/icomoon/demo.html',
+								'rel'		=> 'nofollow'								
+								];
+
+
+			$menu_footer_proyectos[]=[
+								'class'  => 'red lighten-5',
+								'name'   => 'DEBUG',
+								'url'   	=> $params['uri'].'?debug',
+								'rel'		=> 'nofollow'								
+								];
+
+
+			$menu_footer_proyectos[]=[
+								'class'  => 'red lighten-5',
+								'name'   => 'SEO',
+								'url'   	=> $params['uri'].'?seo',
+								'rel'		=> 'nofollow'								
+								];
+
+
+			$menu_footer_proyectos[]=[
+								'class'  => 'red lighten-5',
+								'name'   => 'TOOL',
+								'url'   	=> $params['uri'].'?tool',
+								'rel'		=> 'nofollow'								
 								];
 
 			$this->menu_footer['prodiserv']['items']=$menu_footer_proyectos;
 			
+
 		}
-
-
-
-
 
 
 
@@ -146,68 +201,124 @@ class Controller {
 
 		}
 
-
-
-
-		
 		// instance view
 		$this->view = new Views($this->views.'/php');
 
 		// assing vars
 		$this->view->assign(
 			[
-				'is_home'	 => false,
-				'web_name'   => $this->title,
-				'uri'        => $params['uri'],
-				'enviroment' => $enviroment,
-				'localhost'  => ($enviroment=='local'),
-				'params'     => $params,
-				'main'	    => true,
+				'show_view'       => $this->show_view ,				
+				//
+				'is_home'         => false,
+				'web_name'        => $this->title,
+				'uri'             => $params['uri'],
+				'enviroment'      => $this->enviroment,
+				'localhost'       => $this->localhost,
+				'params'          => $params,
+				'analytics'       => $this->analytics,
+				'main'            => true,
+				'email_test'      => $this->email_test,
+				'is_debug'			=> (
+												isset($params['debug']) 
+												or isset($params['debugjson']) 
+												or isset($params['json']) 
+												or ($_SESSION['seo']=='1')
+												or ($_SESSION['tool']=='1')
+												or ($_SESSION['info']=='1')
+											)?1:0,
 				
 				//head
-				'base'       => Server::base(),
-				'ven_css'    => $this->static.'/vendor/css/',
-				'pub_css'    => $this->static.'/css/',
-				'icon'       => 'icon.png',
-				'head_title' => $this->title,
+				'build_css'       => 'app.css',
+				'base'            => Server::base(),
+				'baseurl'         => Server::baseUrl(),
+				'work_ven_css'    => '../../../../work/public/vendor/css/',
+				'ven_css'         => $this->static.'/vendor/css/',
+				'pub_css'         => $this->static.'/css/',
+				
+				'icon'            => 'icon.png',
+				'head_title'      => $this->title,
 				
 				//header and menu top
-				'link_home'  => ($this->devel)?'./'.$this->devel:'./',
+				'link_home'       => ($this->devel)?'./'.$this->devel:'./',
 				
 				//body
-				'pub_img'    => $this->static.'/img/',
-				'classbody'  => $params['classbody'],			
-				'breadcrumb' => [],
+				'pub_img'         => $this->pub_img,
+				'classbody'       => $params['classbody'],
+				'controller'      => $params['controller'],
+				'method'          => $params['method'],
 				
+				'breadcrumb'      => [],
+				
+				//abs			
+				'pub_img_abs'     => str_replace('/./','/',Server::baseUrl().$this->static.'/img/'),
+				'pub_img_abs_rem' => str_replace('/./','/',$Config['httpfiles'].Server::directory().$this->static.'/img/'),
 				//footer
-				'visiters'   => (isset($visits))?$visits:null,
+				'visiters'        => (isset($visits))?$visits:null,
+				'current_year'    => date("Y"),
 				
 				//foot
-				'ven_js'     => $this->static.'/vendor/js/',
-				'pub_js'     => $this->static.'/js/',
+				'work_ven_js'     => '../work/public/vendor/js/',
+				'ven_js'          => $this->static.'/vendor/js/',
+				'pub_js'          => $this->static.'/js/',
+				'build_js'        => 'app.js',
+				
+				//
+				'canonical'       => '',
 
 			]
 
 		);
 
+		unset($params['controller']);
 
+		unset($params['method']);
+
+		
+		if($start['web'])
+			foreach($start['web'] as $value=>$varia)
+				$this->view->assign(['web_'.$value   => $varia]);		
 
 	}
 
 
 	private function getvisitors(){
 
-		$visitor_file="visitor.php";
-		$visits=(file_exists($visitor_file))? require $visitor_file : 1;
+		// $visitor_file="visitor.php";
+		// $visits=(file_exists($visitor_file))? require $visitor_file : 1;
 
-		if (!isset($_COOKIE['visiter'])){
-			setcookie('visiter','1',time()+60*60*24);
-			$f1=fopen($visitor_file,"w+");
-			fwrite($f1,"<?php return ". ( ++$visits ) .";");
-			fclose($f1);	
+		// if (!isset($_COOKIE['visiter'])){
+		// 	setcookie('visiter','1',time()+60*60*24);
+		// 	$f1=fopen($visitor_file,"w+");
+		// 	fwrite($f1,"<?php return ". ( ++$visits ) .";");
+		// 	fclose($f1);	
+		// }
+
+		// return $visits;
+
+
+		session_start();
+		$counter_name = "visitor.txt";
+		// Check if a text file exists. If not create one and initialize it to zero.
+		if (!file_exists($counter_name)) {
+		  $f = fopen($counter_name, "w");
+		  fwrite($f,"11023");
+		  fclose($f);
+		}
+		// Read the current value of our counter file
+		$f = fopen($counter_name,"r");
+		$counterVal = fread($f, filesize($counter_name));
+		fclose($f);
+		// Has visitor been counted in this session?
+		// If not, increase counter value by one
+		if(!isset($_SESSION['hasVisited'])){
+		  $_SESSION['hasVisited']="yes";
+		  $counterVal++;
+		  $f = fopen($counter_name, "w");
+		  fwrite($f, $counterVal);
+		  fclose($f); 
 		}
 
-		return $visits;
+		return $counterVal;
 
 	}	
 

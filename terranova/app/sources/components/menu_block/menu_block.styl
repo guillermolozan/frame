@@ -1,0 +1,40 @@
+.menu_blocks
+	.menu_block
+		border-radius 13px
+		border 7px solid color2
+		margin-bottom 1em
+		margin-top .5em
+		h3
+			border-radius 7px 7px 0 0
+			color #fff
+			background-color color1
+			font-family Arial
+			font-size 12px
+			font-weight bold
+			margin 0
+			padding .6em 1em
+		ul
+			margin 0 0 -1px 0
+			// padding-bottom 1px
+			&:after
+				content ""
+				// width 100%
+				height 20px
+				background-color color1
+				display block
+				border-radius 0 0 7px 7px
+				margin-bottom 0
+				border 1px solid color1
+			li
+				background-color color2
+				border 1px solid #fff
+				border-bottom 0
+				padding .05em .6em
+				a
+					color #000
+					font-family Arial
+		@media $medium-small
+			display none
+				
+			
+		

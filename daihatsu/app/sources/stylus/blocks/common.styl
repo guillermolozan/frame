@@ -1,0 +1,347 @@
+.wide
+	.collapsible
+		border-top 1px solid white
+		border-right 1px solid white
+		border-left 1px solid white
+		box-shadow none
+		.collapsible-header
+			border 1px solid #ccc
+			border-radius 5px
+			margin-bottom 10px
+			font-size 1.2em
+			&:before
+				float right
+				font-size 1.05em
+				color grey
+				font-weight normal
+			icomoon('f0a3')
+		.collapsible-body
+			border-bottom 1px solid white
+			font-size 1em
+			p
+				padding-top 0.3rem
+					
+.collection
+	.collection-item
+		padding 7px 5px
+		a
+			display block
+			font-weight 400
+			font-size 1em
+			color color1
+			// color color5
+		&.active
+			background-color lighten(black,40)
+			color white
+			a
+				color inherit
+			
+
+.footerpre2
+	background-color pre_footer_bgcolor
+	// margin-top -20px !important
+	color pre_footer_textcolor
+	strong 
+		color footer_textcolor
+		font-weight 700 !important
+			
+
+footer
+	// background url(imgs+'footer-daihatsu2.png') repeat-x top center
+	background #CF050D
+	height auto
+	padding 1.5em 0 .5em
+	@media $small
+		height auto
+	nav
+		clear both
+		text-align center
+		height footer_height
+		line-height footer_height
+		@media $small
+			height auto
+			// line-height initial
+		.menu	
+			text-align center
+			.facebook 
+				margin-left 10px
+				a
+					padding-left 0
+					icoleft(32)
+					icomoon('e660')
+					&:before
+						font-size 1.6em
+			.logo
+				background url(imgs+'logo-daihatsu-footer.png') no-repeat 0,0 
+				background-color transparent !important
+				height 56px
+				// width 309px
+				width 100%
+				margin-bottom .6em
+				a
+					visibility hidden
+			li
+				a
+					color white !important	
+					font-size 0.95rem
+			.submenu
+				background white
+				li
+					a
+						color black !important
+			&.second
+				// margin-top 10px
+				width auto
+				text-align center
+				clear both
+				display inline-block
+				li,span
+					display inline-block
+					float left
+				li.menu_prodiserv
+					float right
+	.line
+		width 100%
+		clear both
+		padding-top 1em
+		h4 
+			color #fefb72
+			color #ddd
+			// text-transform uppercase
+			font-weight 7000
+			background rgba(0,0,0,0.1)
+			padding 10px
+			width auto
+			display inline-block
+		.phone
+			color #fff
+			font-weight 300
+			// position relative
+			// display inline-block
+			icoleft(20)
+			icomoon('e620')
+		// &:before
+		// 	position absolute
+		// 	bottom 22px
+		// 	left 40%
+		// 	font-size  1em
+		// 	height 0px
+
+#scrolltop
+	text-align center
+	margin 0 auto
+	color transparent
+	display inline-block
+	width 39px
+	height @width
+	background url(imgs+'arrow_up.png') no-repeat center 50% #0077BD
+	margin-bottom 1em
+	cursor pointer
+
+
+.btn
+	background-color rgba(#357BB2, 1) !important
+	&:hover
+		background-color rgba(color1, 1)
+form
+	.input-field 
+		label
+			color black
+	.group
+		font-weight 700
+		margin-top 1.5em
+		color color1
+		text-transform uppercase
+	.btn
+		background-color #697f8a !important
+	
+// main,footer
+	// background-color lighten(color6,60)
+	
+
+article
+	> div
+		font-size 1em
+		strong
+			font-weight 500
+			
+
+.p-emails
+	.wide
+		text-align center
+		.lines
+			display inline-block
+			margin 0 auto
+			a
+				display block
+				margin 0
+				padding 0
+				img
+					margin 0
+					padding 0
+					display block
+
+.p-forms
+	h2
+		font-weight bold
+
+.p-pages.p-1 
+	h1
+		display none
+	h2
+		font-size 1.2em
+		font-weight bold
+
+
+figure.responsive-img
+	// max-height 500px
+	overflow hidden
+	width 100% !important
+	margin 0
+	text-align center
+	vertical-align middle
+	max-height 300px
+	img
+		height auto !important
+		// margin-top -7%
+		width 106% !important
+		margin-left -3%
+		transition width 1s,margin-left 1s
+		@media $small-medium
+			max-width bannerwide
+			margin-top 0 !important
+			// margin-left -30%
+			// margin-right -30%
+		@media $large
+			&:hover
+				width 100% !important
+				margin-left 0%
+	img
+		height auto !important
+		margin-top -7%
+		width 106% !important
+		margin-left -3%
+		@media $small-medium
+			max-width bannerwide
+		@media $large
+			width 100% !important
+			margin-left 0%
+
+@media $large
+	.p-projects.p-detail.p-2 figure.responsive-img img
+		margin-top -47%
+	.p-projects.p-detail.p-1 figure.responsive-img img
+		margin-top -17%
+	.p-projects.p-detail.p-3 figure.responsive-img img
+		margin-top -16%
+
+
+.p-forms, .p-pages
+	.card, .card-panel
+		box-shadow none
+
+
+.mfp-bottom-bar
+	position inherit !important
+	.mfp-title
+		span
+			width 176px
+			height 106px
+			top 40px
+			left 0
+			position absolute
+			display block
+			background-color transparent
+			&.vendido
+				background-image url(imgs+'vendido.png')
+			&.separado
+				background-image url(imgs+'separado.png')
+	.mfp-counter
+		top initial !important
+		bottom 0
+
+h1,h2
+	text-transform initial
+	color color1
+
+.p-contactenos
+	h2	
+		font-size 1.5rem
+
+@media $large
+	.p-post-venta,.p-contactenos
+		figure.responsive-img img
+			margin-top 0%
+	.p-vende-tu-terreno
+		figure.responsive-img img
+			margin-top -10%
+	.p-proyectos-entregados
+		figure.responsive-img img
+			margin-top -9%
+
+					
+
+.p-servicios
+	.collection .collection-item.active, .collapsible-body ul > li.active
+		background-color #e80a71 !important
+		a
+			color white !important
+		
+
+.p-pages
+	.collection .collection-item.active
+		background-color #697f8a !important
+		// color #fff
+		
+		
+// .p-servicios
+// 	&.p-1,&.p-5,&.p-9,&.p-13,&.p-17
+// 		.collection .collection-item.active
+// 			background-color #0a9ce7 !important
+// 	&.p-2,&.p-6,&.p-10,&.p-14,&.p-18
+// 		.collection .collection-item.active
+// 			background-color #bdd73f !important
+// 	&.p-3,&.p-7,&.p-11,&.p-15,&.p-19
+// 		.collection .collection-item.active
+// 			background-color #2aa04e !important
+// 	&.p-4,&.p-8,&.p-12,&.p-16,&.p-20
+// 		.collection .collection-item.active
+// 			background-color #ef4a4d !important
+
+
+	
+
+// .card-effect
+// 	transition border-radius .5s, box-shadow .5s, background-color .5s
+// 	box-shadow 0 2px 5px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12)
+// 	background-color darken(white,5)
+// 	border-radius 15px
+// 	&:hover
+// 		box-shadow 0 12px 15px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19)
+// 		background-color white
+// 		border-radius 0
+// 	.card-content
+// 		padding-top 0
+// 		padding-bottom 0
+// 		font-weight bold
+// 		text-transform uppercase
+
+@media $large
+	.localfixed
+		position fixed
+		top 0px
+
+.form_content
+	background-color lighten(color1,45)
+	padding 1em 2em 3em
+	@media $small-medium
+		margin-top 3em
+	h4
+		color color1
+		font-weight bold
+	h3
+		color #000
+		font-weight bold
+	.sub_content
+		padding 0 0 1em 1.5em
+			

@@ -1,0 +1,41 @@
+.p-home
+	.after_banner
+		margin 0
+		background #333
+		color white
+		@media $small
+			display none
+		.container
+			// text-align center
+			@media $large
+				display flex
+				justify-content space-around
+			li
+				// display inline-block
+				// width auto
+				background-repeat no-repeat
+				background-position left center
+				padding 10px 0 10px 30px
+				&.star
+					background-image url(imgs+'ban-star.png')
+				&.moon
+					background-image url(imgs+'ban-moon.png')
+				&.wifi
+					padding-left 35px
+					background-image url(imgs+'ban-wifi.png')
+				&.coffee
+					padding-left 40px
+					background-image url(imgs+'ban-coffee.png')
+				&.taxi
+					padding-left 40px
+					background-image url(imgs+'ban-taxi.png')
+				&.laundry
+					padding-left 40px
+					background-image url(imgs+'ban-laund4.png')
+	.home_videos
+		margin-top 30px
+
+		
+		
+
+		

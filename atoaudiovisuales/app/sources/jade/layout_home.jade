@@ -1,0 +1,63 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+
+		//- include blocks/breadcrumb.jade
+
+		include blocks/banner.jade
+
+		main(class="container")
+
+			//- div(class="row wide line_0")
+				div(class="col s12")
+					h4 Acerca de Nosotros
+					ul(class="collapsible",data-collapsible="accordion")
+
+						li
+							div(class="collapsible-header active") Misión
+							div(class="collapsible-body")
+								p Brindar servicios para eventos con la Mejor Tecnología.
+
+						li
+							div(class="collapsible-header") Visión
+							div(class="collapsible-body")
+								p "Anticiparnos a las necesidades futuras del mundo empresarial".
+								p En ATO AUDIOVISUALES trabajamos para nuestros clientes con una visión a largo plazo, proponiendo herramientas basadas en las necesidades específicas de cada uno de ellos, siguiendo los conceptos y tendencias gerenciales del marketing actual.
+
+				//- div(class="col s12 l6 img_side")
+					img(class="responsive-img",src="#{pub_img}mision2.png")
+
+		div(class="servicios")
+			.container
+				h2 SERVICIOS
+				.row
+					each men_item in servicios.items
+						div(class="col s12 l4")
+							.pic
+								+img_item(men_item)
+							h4: +item(men_item)
+							div!= men_item.html
+							p= men_item.text						
+							//- +post_item(men_item,true,'h4')
+							a.mas(href="#{men_item.url}") leer más
+				.more: a(href="#{servicios.more}")
+
+		div(class="videos")
+			.container
+				h2 VIDEOS
+				.row
+					each men_item in videos.items
+						div(class="col s12 l3")
+							.video: +post_video(men_item.video)
+							.center: +item(men_item)
+				.more: a(href="galeria-videos-videos/1")
+
+		include common/footer.jade
+
+		include common/foot.jade

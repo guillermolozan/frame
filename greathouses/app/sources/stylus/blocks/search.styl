@@ -1,0 +1,95 @@
+.line_search
+	height 80px
+	.container
+		@media $small-medium
+			margin-bottom 0
+	@media $small-medium
+		height auto
+	background #888685 url(imgs+'search0_bg.jpg') 0 0 repeat-x
+	padding 24px 0 0 0
+	.arrow
+		width 112px
+		height 47px
+		background-color #E47C0C
+		color white
+		text-align right
+		line-height 1.1em
+		padding-top 7px
+		padding-right 8px
+		position relative
+		float left
+		margin-right 1em
+		@media $small-medium
+			display none
+		&:after
+			content ""
+			width 0
+			height 0
+			border-style solid
+			border-width 23.5px 0 23.5px 23px
+			border-color transparent transparent transparent #E47C0C
+			top 0px
+			right -23px
+			position absolute
+	form
+		@media $small
+			.col:nth-child(2),.col:nth-child(3)
+				width 50%
+			.col:nth-child(4),.col:nth-child(5),.col:nth-child(6)
+				width 33%
+			.col:nth-child(7),.col:nth-child(8),.col:nth-child(9),.col:nth-child(10)
+				width 50%				
+			// float left
+		select
+			// width 95%
+			max-width 200px
+			font-size 1em
+			display block
+			margin-bottom 1em
+		input.submit
+			padding 0.8em
+			margin-left 1em
+			background-color white
+			@media $small-medium
+				display none
+
+		// margin-right 2.1em
+
+.p-home .adicional
+		display none
+		
+		
+.p-projects.p-grid
+	.line_search
+		@media $small-medium
+			// background #888685
+			padding-top 2em
+		.arrow
+			margin-bottom 1em
+			@media $small-medium
+				display none			
+		padding-left 1em
+		padding-right 1em
+		padding-bottom .1em
+		height auto
+		.row .col
+			@media $large
+				clear both
+				width 235px
+			// margin-bottom 1em
+			@media $large
+				width 120%
+			select
+				@media $large				
+					width 100%
+	.arrow
+		width 176px
+		padding-top 1em
+	input.submit
+		// width 94%
+		margin-left 0
+
+
+
+				
+

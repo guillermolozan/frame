@@ -2,8 +2,11 @@
 
 
 // $routes_pages	= get_valores("id","url","paginas");
-$routes_grouppages   = get_valores("id","url","paginas_groups","where id in (1,2)");
+$routes_grouppages   = get_valores("id","url","paginas_groups","where id in (1,2,12)");
 $routes_grouppages[] ='pagina';
+
+
+$routes_grouppages_nogroup   = get_valores("id","url","paginas_groups","where id in (10,11)");
 
 // $routes_galleries	=['distinciones','certificaciones','galeria-fotos','galeria-videos'];
 
@@ -19,11 +22,11 @@ $routes_lists = [
 		'detail'     =>'galeria-videos',
 		'controller' =>'Videos',
 	],
-	[
-		'grid'       =>'productos',
-		'detail'     =>'producto',
-		'controller' =>'PagesPhotos',
-	],
+	// [
+	// 	'grid'       =>'productos',
+	// 	'detail'     =>'producto',
+	// 	'controller' =>'PagesPhotos',
+	// ],
 	[
 		'grid'       =>'noticias',
 		'detail'     =>'noticia',
@@ -67,6 +70,9 @@ if(sizeof($routes_pages)>0)
 if(sizeof($routes_grouppages)>0)
 	$routes_return['/('.implode("|",$routes_grouppages).')/(:any)/(:num)$'] 		='controller=Pages&item=$3';
 
+//nogroups
+if(sizeof($routes_grouppages_nogroup)>0)
+	$routes_return['/('.implode("|",$routes_grouppages_nogroup).')/(:any)/(:num)$'] 		='controller=Pages&item=$3&method=index_nogroup';
 
 
 //galleries

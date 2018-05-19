@@ -2,27 +2,28 @@
 
 return [
 	[
-	'name'   => 'Inicio',
-	'url'   => ($start['devel'])?$start['devel']:''
+	'name'  => 'Inicio',
+	'url'   => ($start['devel'])?$start['devel']:'',
+	'class' => 'logo'
 	],
 	[
-	'name'   => 'Nosotros',
+	'name'  => 'Nosotros',
 	'url'   => 'nosotros'
 	],
 	[
-	'name'   => 'Servicios',
+	'name'  => 'Servicios',
 	'url'   => 'servicios'
 	],
 	[
-	'name'   => 'Restaurant',
+	'name'  => 'Restaurant',
 	'url'   => 'restaurant'
 	],
 	[
-	'name'   => 'Nuestra Carta',
+	'name'  => 'Nuestra Carta',
 	'url'   => 'carta'
 	],	
 	[
-	'name'   => 'Contactenos',
+	'name'  => 'Contactenos',
 	'url'   => 'contactenos'
 	],
 ];

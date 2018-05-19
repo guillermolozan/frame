@@ -1,0 +1,59 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include includes/header
+
+		include includes/banner
+
+		include includes/block_gallery_products
+
+
+
+
+		section(class="home_tierra row")
+			.container
+				div(class="col s12 m6 photo")
+					img(src="#{pub_img}photo2.jpg",class="responsive-img")
+				div(class="col s12 m6 texto")
+					p!= nosotros.text
+					a(href="nosotros") Leer más &#8594;
+
+
+
+		include includes/block_gallery_videos
+
+
+		include includes/block_gallery_events
+
+
+		section(class="home_certificacion row torelease")
+			.container
+				h3.release-item Agro Sur Latino SAC, es una empresa con más de 10 años de presencia y trayectoria en el mercado; especializado en la comercialización de productos de agro-exportación de mayor demanda a nivel internacional; producidas en las principales regiones del Perú.
+				figure.release-item: img(class="responsive-img",src="#{pub_img}/sello-calidad-300x203.png")
+				p.certificacion.release-item Agro Sur Latino, es una de las empresas pioneras en desarrollar e implementar una línea completa para el procesamiento de quinua, la cual está compuesta de una línea de lavado a vapor y otra línea de selección y envasado, instaladas en un solo punto gracias a que contamos con una amplia infraestructura y con maquinarias de última generación, acompañado de una adecuado control de calidad, la cual nos permite obtener productos inocuos.
+				h2.release-item COMPRA PRODUCTOS DE LA MEJOR CALIDAD
+				p.contactenos.release-item Contáctanos y pide cotizaciones de los mejores productos.
+				a.release-item.btn(href="contactenos") CONTÁCTANOS
+
+
+
+
+
+
+		//- .container
+		//- 	.title AGRO SUR LATINO
+			//- .titlesvg
+			//- 	svg: text(x="0",y="44") AGRO SUR LATINO
+
+
+
+
+		include includes/block_gallery_clients.jade
+
+		include includes/footer.jade
+		include common/foot.jade

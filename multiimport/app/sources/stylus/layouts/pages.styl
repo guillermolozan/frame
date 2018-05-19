@@ -1,0 +1,322 @@
+.p-pages
+	.last_line
+		background white
+		margin-bottom 0 !important
+		.conllap_side
+			clear both
+			width 45%
+			// height 224px
+			// background #8A9290
+			float left
+			margin-right 2%
+			margin-top 20px
+			@media $small-medium	
+				width 100%
+			b
+				font-size 1.5em
+				font-weight normal
+				margin-left .7em
+			span
+				font-weight bold
+			// padding 25px
+			.collapsible
+				border-top 1px solid white
+				border-right 1px solid white
+				border-left 1px solid white
+				box-shadow none
+				li
+					list-style none !important
+				.collapsible-header
+					border 1px solid #ccc
+					border-radius 5px
+					margin-bottom 10px
+					font-size 1.2em
+					&:before
+						float right
+						font-size 1.05em
+						color grey
+						font-weight normal
+					icomoon('f0a3')
+				.collapsible-body
+					border-bottom 1px solid white
+					font-size 1em
+					p
+						padding-top 0.3rem
+		.img_side
+			width 48%
+			float left
+			margin-top 10px
+			img
+				width 100%
+			@media $small-medium	
+				width 100%
+				float none
+				text-align center
+			
+
+	.post
+		ul li
+			list-style initial
+			margin-left 1em
+		p img
+			max-width 100%
+	.boton
+		display inline-block
+		padding 0 3em 0 .7em
+		a
+			text-transform uppercase
+	.azul
+		background #0072C6
+		color white
+		font-size 1.1em
+		line-height 130%
+		font-weight 300
+		padding-bottom 40px
+		h4
+			color inherit !important
+			font-size 1.8em !important
+			font-weight 300 !important
+		.card-content > div
+			min-height 220px
+		img
+			margin 14px 0 0 -20px
+	.rojo
+		background #da3b01 url(imgs+'officelogo.png') no-repeat 90% 16px
+		width 100%
+		// height 100px
+		color #F8DCD1 !important
+		font-weight 300 !important
+		font-size 1.8em
+		padding 90px 100px 10px 10px
+		box-sizing border-box
+		height 160px
+	.gris
+		background #eaeaea
+		min-height 380px
+		h5
+			color #494949
+			font-size 1.66em
+			padding 3% 1% 0 0
+			line-height 1.25em
+			font-weight lighter
+			min-height 60px
+		h6 strong
+			font-size 1.15em
+			color black
+		p
+			margin 15px 0
+			font-weight 400
+		ul
+			li
+				p
+					a
+						font-size 1.15em
+						color #1570a6
+	.morado
+		background #442359
+		color white
+		.colu h4,div,p
+			color inherit
+		.card-title
+			font-size 1.5em
+			font-weight lighter
+			padding-left 20px
+		.card-content
+			font-size 1.15em
+			font-weight lighter
+	.micrositios
+		
+		.collapsible
+			border-top 1px solid white
+			border-right 1px solid white
+			border-left 1px solid white
+			box-shadow none
+			li
+				.collapsible-header
+					// border 1px solid #ccc
+					border-radius 5px
+					margin-bottom 10px
+					font-size 1.2em
+					background #505050
+					color white
+					padding-left 60px
+					&:before
+						float left
+						font-size 1.4em
+						color white
+						font-weight normal
+						margin-left -40px
+						transform: rotate(-90deg);
+						transition transform 0.5s
+					icomoon('f0a3')
+				.collapsible-body
+					border-bottom 1px solid white
+					font-size 1em
+					p
+						padding-top 0.3rem
+						font-size 1.125em
+						padding-left 60px
+						padding-right 60px
+						a
+							display block
+							margin-top 1.5em
+							icomoon('e667')
+							padding-left 25px
+							position relative
+							color black
+							font-weight bold
+							&:before
+								position absolute
+								left 0
+								top -2px
+							&:hover
+								text-decoration none
+				&.active .collapsible-header:before
+					transform: rotate(0deg);
+					
+					
+						
+		table.striped
+			> thead 
+				> tr
+					background #0072C6
+					color white
+					> th
+						font-size 1.1em
+						padding 1em
+						font-weight 400
+			> tbody 
+				> tr
+					> td
+						padding 1em
+						&.ball
+							background url(imgs+'ball.png') no-repeat 37% 18px
+					&:nth-child(odd)
+						background #D2D2D2
+					&:nth-child(even)
+						background #ffffff
+		
+		h2,h3,h4
+			color black
+			font-weight bold
+		// AZURE
+		// &#microsoft
+		&#azure
+			.checks
+				padding-top 2em
+				clear both
+				li
+					font-weight 200
+					font-size 24px
+					line-height 1.2em
+					color #505050
+					padding-left 55px
+					position relative
+					padding-bottom 1em
+					icomoon('e682')
+					&:before
+						color #a5ce00
+						font-weight 100
+						position absolute
+						left 10px
+			.soluciones
+				text-align center
+				h3
+					font-weight 200
+					font-size 30px
+					line-height 1.2
+					color #505050
+				background-color #dedede
+				.solucion
+					// text-align center
+					border 1px solid #969696
+					padding 15px 30px 10px
+					// margin 1%
+					box-sizing border-box
+					margin-bottom 20px
+					min-height 300px
+					@media $small-medium
+						min-height 330px
+					h4
+						color #505050
+						font-weight 200
+						font-size 20px
+						line-height 1.2
+					.svg
+						text-align center
+						svg
+							// width 100px
+							height 100px
+							@media $small-medium
+								height auto
+								width 40%
+							@media $small
+								height auto
+								width 50%
+					p
+						color #505050
+						display block
+						font-weight 300
+						font-size 14px
+						height 42px
+					a
+						margin-top 1em
+						display block
+		// LICENCIAMIENTO
+		&#licenciamiento
+			.esquema
+				.colu
+					width 50%
+					float left
+				img
+					width 100%
+					float right
+.p-pages
+	#infraestructura
+		.botones
+			li
+				margin-bottom 1em
+				list-style none
+				a
+					border-radius 5px
+					width 100%
+					display inline-block
+					text-align center
+					color white
+					height 200px
+					padding-top 140px
+					font-size 1.6em
+					background-position center 15px
+					background-repeat no-repeat
+					background-size 135px 117px
+					padding-left 3em
+					padding-right 3em
+					line-height 1em
+					transition border-radius .5s,background 2s
+					&:hover
+						border-radius 50%
+				&#servidores a
+					background-color #00A200
+					background-image url(imgs+'icono_servidores.png')
+				&#storage a
+					background-color #083966
+					background-image url(imgs+'icono_storage.png')
+				&#virtualizacion a
+					background-color #D34826
+					background-image url(imgs+'icono_virtualizacion.png')
+				&#proteccion a
+					background-color #252525
+					background-image url(imgs+'icono_proteccion.png')
+				&#computo a
+					background-color #BE1E4A
+					background-image url(imgs+'icono_computo.png')
+				&#impresion a
+					background-color #2D8AEF
+					background-image url(imgs+'icono_impresion.png')
+					
+
+.p-clientes
+	.galleries ul li .card .card-image
+		height 90px
+		line-height @height
+					

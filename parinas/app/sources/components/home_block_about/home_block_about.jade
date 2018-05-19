@@ -1,0 +1,25 @@
+.home_block_about
+	.row
+		.col.s12.l5
+			h4 ACERCA DE NOSOTROS
+			ul(class="collapsible",data-collapsible="accordion")
+				li
+					div(class="collapsible-header active") NUESTRA MISIÓN
+					div(class="collapsible-body"): p Brindar un servicio hotelero de excelencia, ofreciendo a nuestros huéspedes hospitalidad, mediante un trato individualizado por un personal altamente motivado, buscando superar las expectativas de nuestros visitantes.
+				li
+					div(class="collapsible-header") NUESTRA VISIÓN
+					div(class="collapsible-body"): p Convertirnos en una empresa con sólido prestigio hotelero a nivel local, nacional e internacional, fomentando el desarrollo empresarial y turístico de la ciudad de Talara; ofreciendo un servicio personalizado que permita una grata estadía de nuestros clientes.Siempre comprometidos a través de la mejora continua dentro de un marco de cultura, valores y hospitalidad talareña.
+				li
+					div(class="collapsible-header") NUESTRA FILOSOFÍA DE TRABAJO ES
+					div(class="collapsible-body"): p Brindar y garantizar servicios de calidad que permitan satisfacer las necesidades de nuestros huéspedes.#[br]Nuestro servicio se basa en tu satisfacción y confianza que garantizan la experiencia inolvidable que buscamos en tu estadía.
+
+		.col.s12.l7.img_side
+			//- img(class="responsive-img",src="#{pub_img}about.png")
+			.foto
+				//- .zoom
+				a(class="more btn",href="galeria-fotos-hotel/2") VER GALERÍA >
+				img(class="responsive-img",src="#{about.items[0].img}")
+				//- img(class="responsive-img",src="#{about.items[0].img}")
+			.train
+				each foto in about.items
+					div: a: img(class="responsive-img",src="#{foto.img}")

@@ -1,0 +1,236 @@
+
+
+.p-home
+
+	.line_a // la mejor experiencia en ingenieria
+		background #005ba1 url(imgs+'fondo-metalsur.jpg') no-repeat center
+		margin-top 20px
+		@media $small-medium 
+			background-position center 74px 
+			background-color white
+			background-image none
+		h3
+			margin-top 2em
+			margin-bottom 1em
+			color #0198FF
+			// text-decoration underline
+			// text-shadow 0px 4px 3px rgba(0,0,0,0.6), 0px 8px 0px rgba(0,0,0,0.1);
+			text-align center
+			font-size 2em
+			font-weight 400
+		h4
+			color #586998
+			font-size 1.5em
+		p 
+			font-size 0.95em
+			color lighten(black,50)
+			img
+				width 123px
+				margin 5px 9px 9px 0
+				height auto 
+				float left 
+		.card-panel
+			border-radius 13px
+			min-height 300px
+			@media $small-medium 
+				min-height 400px
+				@media $small
+					min-height 0
+
+	.line_c
+		.links
+			// background-color black
+			.card-panel
+				padding-bottom 0
+				padding-top 0.6em
+			h2
+				margin 0
+				font-size 1.5em
+				color #0198FF
+				text-transform capitalize
+			.responsive	
+				padding-bottom 0
+				padding-top 0
+				.ite
+					text-align center
+					position relative
+					padding 0 10px !important
+					height 75px
+					&:focus
+						outline none			
+					a
+						height 40px !important
+						line-height @height
+						vertical-align middle
+						img
+							display inline-block
+							max-height 40px
+					h4
+						height 10px 
+						line-height @height
+						text-align center
+						display block
+						position absolute
+						bottom 0px
+						width 100%
+						color #9a9a9a
+
+	.post
+		h2
+			font-size 2em
+			margin 0
+			color #0198FF
+			font-weight 400
+			text-transform capitalize
+			text-align center
+			margin-bottom 0.5em
+			
+	@media $large
+		main
+			margin-bottom 0
+			background-color lighten(#EAEAEA,5)
+
+		.post
+			h2
+				font-size 2em
+				margin 0
+				color #0198FF
+				font-weight 400
+				text-transform capitalize
+			.card-panel
+				min-height 467px
+				p
+					font-size 0.93em
+				ul
+					li
+						// padding-left 10px
+						icomoon(e682)
+						&:before
+							color #0198FF
+							float left
+							margin-left 0px
+							margin-right 10px
+				img
+					width 50%
+					float right
+					margin 1.4em 0 1em 1em
+				
+		.homefooter
+			
+			background-color #014087
+			a,p
+				color white !important		
+			ul
+				// border-color darken(color2,4)
+				border-color transparent !important
+				
+				li
+					background-color #014087
+					// border-color inherit !important
+					border-color inherit !important
+					margin-bottom 0.7em
+					padding-bottom 0.5em
+					a
+						font-size 0.9em
+						overflow hidden
+						max-height 3em
+						display block
+			.block_one
+				li	
+					border-bottom 1px solid #e0e0e0 !important
+					a
+						font-size 0.95em
+				a.more
+					color color6 !important
+					text-decoration underline
+					
+					
+			.block_two
+				.card-content
+					padding-bottom 0
+					ul
+						margin-bottom 0
+						li
+							margin-bottom 0.2em
+			
+			.block_four
+				.card-content
+					padding-left 5px
+					padding-right 5px
+					font-size 0.9em
+					p strong
+						color #40b3ff
+			
+			div
+				background-color inherit !important
+				border-color transparent !important
+				// box-shadow none
+			.card
+				background-color #014087
+				min-height 270px
+				li
+					font-size 0.9rem
+					
+			h3
+				font-size 1.2rem
+				margin 0
+				margin-bottom 0.5em
+				color color6
+				text-align center
+
+	.homefooter
+		.block_one
+			li	
+				padding-bottom 0.5em
+				padding-top 0.5em
+				border-bottom 1px solid #e0e0e0 !important
+		.card
+			min-height 0
+			
+
+
+.line_b //clientes
+	background #D9D9D9
+	height 550px
+	@media $small
+		height auto
+	h3
+		color #0198ff
+		font-size 2em
+		// color darken(#586998,5)
+		// text-shadow 0px 4px 3px rgba(0,0,0,0.8), 0px 8px 0px rgba(0,0,0,0.1);
+		text-align center
+	.col
+		text-align center
+		min-height 222px
+		@media $small
+			text-align center
+			padding 0 6em
+			// max-height 1000px
+		img
+			width 198px
+			// height 147px
+			border-radius 27px
+			@media $small
+				display inline-block
+				vertical-align text-top
+				margin-bottom 1em
+		h4
+			display none !important
+			margin-top 0
+			margin-bottom 1em	
+			border-radius 27px
+			font-size 0.9em
+			@media $small
+				display inline-block	
+				margin-left 1em
+	a.more
+		color #586998
+		float right
+		margin-right 20px
+		@media $small
+			margin-bottom 20px
+				
+
+
+

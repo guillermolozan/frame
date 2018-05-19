@@ -1,0 +1,65 @@
+.home_block_planes //planes de hosting
+	// display none
+	// h2
+	// 	padding-left 10px
+	// 	font-size 1.2em
+	// 	font-weight bold
+	// 	margin-bottom 0.2em
+	.container
+		@media $large-medium
+			display flex
+			flex-wrap wrap
+			align-items stretch
+			flex-direction row
+		h2
+			width 100%
+		.col
+			@media $large-medium
+				margin-bottom 1em
+			// height 100%
+			.card
+				height 100%
+				box-shadow_3()
+				zoom(1.05)
+				.card-content	
+					padding-right 10px
+					padding-bottom 50px
+					.card-title
+						color color2
+						font-size 1.1em !important
+						line-height 120%
+						font-weight bold
+						margin .5em 0
+					.btn	
+						position absolute
+						right 30%
+						bottom 1em
+						text-transform initial
+						z-index 2
+						width 40%
+						padding 0
+					ul
+						padding-left 1.4em
+						li
+							font-size 0.9em
+							margin-bottom 0.2em
+							icomoon(e682)
+							&:before
+								color color1
+								float left
+								margin-left -20px
+							&.price
+								color color3
+								font-size 1.2em
+								font-weight bold
+								float right
+								margin-right 9px
+								&:before
+									content ""
+				img
+					position absolute
+					bottom 0px
+					left 0px
+						
+
+						

@@ -1,0 +1,233 @@
+body {
+	background: #004993;
+}
+.news_menu-menus {
+	background: #004993;	
+}
+.id_news0_items_list .nombre {
+	color: #004993 !important;
+}
+
+/**
+ * 004993
+ */
+.id_menu_turismo,
+.id_menu_obras2,
+.id_menu_obras,
+.id_bloq_enlaces,
+.id_agenda,
+.id_menu_convocatoria2,
+.id_arbol_1,
+.id_bloq_centro  {
+	border:5px solid #CCC;
+	border-radius: 18px;
+	width: auto;
+}
+
+.id_menu_turismo .div_inner,
+.id_menu_obras2 .div_inner,
+.id_menu_obras  .div_inner,
+.id_bloq_enlaces  .div_inner,
+.id_agenda  .div_inner,
+.id_menu_convocatoria2  .div_inner,
+.id_arbol_1 .div_inner,
+.id_bloq_centro .div_inner
+ {
+	border-left: 0px;
+	border-right: 0px;
+}
+.id_menu_turismo .barra_arriba,
+.id_menu_obras2 .barra_arriba,
+.id_menu_obras  .barra_arriba,
+.id_bloq_enlaces  .barra_arriba,
+.id_agenda  .barra_arriba,
+.id_menu_convocatoria2  .barra_arriba,
+.id_arbol_1  .barra_arriba,
+.id_bloq_centro  .barra_arriba 
+{ 
+	background-image: none;
+	background-color: #004993;
+	border-radius: 13px 13px 0 0;
+	padding-left: 10px;
+	padding-right: 0;
+}
+
+.id_menu_turismo .arriba_derecha ,
+.id_menu_turismo .arriba_izquierda,
+.id_menu_turismo .abajo_derecha ,
+.id_menu_turismo .abajo_izquierda,
+
+.id_menu_obras2 .arriba_derecha ,
+.id_menu_obras2 .arriba_izquierda,
+.id_menu_obras2 .abajo_derecha ,
+.id_menu_obras2 .abajo_izquierda,
+
+.id_menu_obras .arriba_derecha ,
+.id_menu_obras .arriba_izquierda,
+.id_menu_obras .abajo_derecha ,
+.id_menu_obras .abajo_izquierda,
+
+.id_bloq_enlaces .arriba_derecha ,
+.id_bloq_enlaces .arriba_izquierda,
+.id_bloq_enlaces .abajo_derecha ,
+.id_bloq_enlaces .abajo_izquierda,
+
+.id_agenda .arriba_derecha ,
+.id_agenda .arriba_izquierda,
+.id_agenda .abajo_derecha ,
+.id_agenda .abajo_izquierda,
+
+.id_arbol_1 .arriba_derecha ,
+.id_arbol_1 .arriba_izquierda,
+.id_arbol_1 .abajo_derecha ,
+.id_arbol_1 .abajo_izquierda,
+
+.id_menu_convocatoria2 .arriba_derecha ,
+.id_menu_convocatoria2 .arriba_izquierda,
+.id_menu_convocatoria2 .abajo_derecha ,
+.id_menu_convocatoria2 .abajo_izquierda,
+
+.id_bloq_centro .arriba_derecha ,
+.id_bloq_centro .arriba_izquierda,
+.id_bloq_centro .abajo_derecha ,
+.id_bloq_centro .abajo_izquierda
+{
+	display: none !important;
+}
+
+.id_menu_turismo .barra_abajo,
+.id_menu_obras2 .barra_abajo,
+.id_menu_obras  .barra_abajo,
+.id_bloq_enlaces  .barra_abajo,
+.id_agenda .barra_abajo,
+.id_menu_convocatoria2  .barra_abajo,
+.id_arbol_1 .barra_abajo ,
+.id_bloq_centro .barra_abajo
+{
+	background-image: none;	
+	border-radius: 0 0 10px 10px;
+}
+
+/**
+ * 
+ */
+
+.id_header_menu .area_menu ul li {
+	border-radius: 10px 10px 0 0 !important;
+	background: #004993 !important;
+}
+.id_header_menu .area_menu ul li .menu_der,
+.id_header_menu .area_menu ul li .menu_izq {
+	display: none !important;
+}
+.header_menu-menus .area_menu .ul .li a.line_0, .header_menu-menus .area_menu .ul a.line_0 {
+    padding-top: 9px !important;
+.padding-left: 25px !important;
+.padding-right: 25px !important; 
+    /* padding-right: 13px !important; */
+    font-size: 12px;
+    text-transform: uppercase;
+}
+/**
+ * 
+ */
+.id_menu_convocatoria2,
+.id_agenda,
+.id_alcalde { display: none;}
+
+#temas_items_file .num,
+#usuarios_items_file .num {
+    margin-bottom: 14px;
+	
+    font-size: 13px;
+}
+
+#temas_items_file,
+#usuarios_items_file {
+    background: url('http://1.bp.blogspot.com/-3PBmvNum65Q/TwGIeScgF0I/AAAAAAAACtE/gMS33U7ulaY/s1600/unanotegrey.gif') repeat;
+    min-height: 1000px;
+}
+
+#temas_items_file #profile ,
+#usuarios_items_file #profile {
+    background: #ccc;
+
+    float: right;
+    border-radius: 10px;
+    padding: 2%;
+    width: 30%;
+    margin-top: 0;
+    margin-right: 0%;
+}
+#temas_items_file #profile li,
+#usuarios_items_file #profile li {
+    clear: left;
+
+    margin-bottom: 6px;
+}
+#temas_items_file #profile li label,
+#usuarios_items_file #profile li label {
+    width: 40%;
+
+    display: inline-block;
+    font-weight: bold;
+    vertical-align: top;
+}
+#temas_items_file #profile li span ,
+#usuarios_items_file #profile li span {
+    display: inline-block;
+
+    width: 60%;
+}
+#temas_items_file .barra_arriba,
+#usuarios_items_file .barra_arriba {
+    background: #004993;
+
+    padding: 10px;
+    color: #FFF;
+    border-radius: 10px 10px 0 0;
+    margin-bottom: 10px;
+}
+#usuarios_items_file .listado_items {
+
+}
+#temas_items_file .listado_items,
+#usuarios_items_file .listado_items {
+    width: 66%;
+	
+    float: left;
+}
+#temas_items_file .listado_items .listado_item ,
+#usuarios_items_file .listado_items .listado_item {
+	margin-bottom: 20px;
+	padding-left: 11px;
+}
+#temas_items_file .listado_items .fecha ,
+#usuarios_items_file .listado_items .fecha {
+    color: 333;
+	
+}
+#usuarios_items_file .listado_items .titulo {
+    color: #00527D;
+	
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 1em;
+    margin-bottom: 4px;
+}
+#temas_items_file .listado_items .texto {
+	text-transform: capitalize;
+    
+	font-size: 16px;
+    margin-bottom: 4px;	
+}
+#temas_items_file .listado_items .numero,
+#usuarios_items_file .listado_items .numero {
+	color: red;
+}
+
+#detail_clases_items_file .foto,
+#detail_empresa_items_file .foto {
+    float: left; 
+    margin: 0 20px 20px 0;
+}

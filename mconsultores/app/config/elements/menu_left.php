@@ -3,9 +3,9 @@
 return [
 	'empresa'                         => 'La empresa',
 	'servicios'                       => 'Servicios',
-	'galeria-fotos-distinciones/1'    => 'Distinciones',
-	'galeria-fotos-certificaciones/2' => 'Certificaciones',
-	'galeria-fotos-certificaciones/5' => 'Staff',
+	'galeria-fotos-clientes/1'    => 'Clientes',
+	'galeria-fotos-experiencia/2' => 'Experiencia',
+	'galeria-fotos-staff/5' => 'Staff',
 	'proyectos'                       => 'Proyectos',
 	[
 	'name'	=>	'Galería',

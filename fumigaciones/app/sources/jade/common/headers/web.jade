@@ -12,12 +12,21 @@ header(class="navbar-fixed")
 			a(href="#",data-activates="mobile-nav",class="button-collapse"): i(class="mdi-navigation-menu")
 
 			//- div(class="phones hide-on-med-and-down")!= header_phones
+
+			.top
+				h3.email ventas@fumigacionesyextintores.com
+				h3.whatsapp 947269780
 				
 			//- menu_top
 			ul(class="menu menu_top hide-on-med-and-down")
 				+menu_items(menu_top)
-				
+
+
+			//- ul.list
+			//- 	li: a(class="btn",href="servicio-limpieza/lavado-de-alfombra/25") Lavado de Alfombras
+			//- 	li: a(class="btn",href="servicio-limpieza/limpieza-de-cisternas/26") Limpieza de Cisterna
+			//- 	li: a(class="btn",href="servicio-limpieza/lavado-de-alfombra/27") Lavado de Muebles
+			//- 	li: a(class="btn",href="servicio-limpieza/lavado-de-alfombra/28") Control de Roedores
 
 //- menu_left
-ul(class="menu_left side-nav collapsible collapsible-accordion",id="mobile-nav")
-	+menu_items_collapsible(menu_left)
+include ../../../jade/includes/menu_left

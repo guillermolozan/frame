@@ -1,0 +1,35 @@
+header(class="navbar-fixed")
+	//- nav(style="background-image:url('#{header_bg}')")
+	nav
+		div(class="container")
+
+			if(is_home)
+				h1 #{web_name}
+				-main = false
+
+			a(href="#{link_home}",class="brand-logo hide-on-med-and-down",title="#{web_name}"): img(src="#{pub_img}#{logo}",title="#{web_name}",alt="#{web_name}")
+
+			a(href="#",class="menutext") MENU
+			a(href="#",data-activates="mobile-nav",class="button-collapse"): i(class="mdi-navigation-menu")
+
+			//- div(class="phones hide-on-med-and-down")!= header_phones
+			
+			ul(class="second_menu")
+				li: a(href="promociones") Promociones
+				li: a(href="social") Social
+				li: a(href="curriculum") Trabaja con nosotros
+				//- li: a(href="clientes") Area de Clientes
+				//- li: a(href="intranet") Intranet
+				//- li: a(href="webmail") Webmail
+
+		//- menu_top
+		ul(class="menu menu_top hide-on-med-and-down")
+			.container
+				+menu_items(menu_top)
+
+
+//- menu_left
+ul(class="menu_left side-nav collapsible collapsible-accordion",id="mobile-nav")
+	+menu_items_collapsible(menu_left)
+
+

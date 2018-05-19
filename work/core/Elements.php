@@ -17,12 +17,30 @@ class Elements {
 
 	}
 
+	public function getBreadcrumb($crumb){
 
-	public function getMenu($file,$more=[],$url=NULL){
+		$crumb2=[];
+		foreach($crumb as $item){
+			if($item['name']!='')
+				$crumb2[]=$item;
+		}
+		return $crumb2;
+
+	}
+
+	public function getMenu($file=NULL,$more=[],$url=NULL){
 
 		global $start;
 
-		$items = array_merge(require $this->dir_provider.$file.'.php',$more);
+		if($file){
+			if(is_array($file)){
+				$items = array_merge($file,$more);
+			} else {
+				$items = array_merge(require $this->dir_provider.$file.'.php',$more);
+			}
+		} else{
+			$items=$more;
+		}
 
 		if("/"==substr($url, 0,1)) $url=substr($url,1);
 		if('$'==substr($url, 0,1)) $url=substr($url,1);

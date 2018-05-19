@@ -1,0 +1,211 @@
+logo_2='logo.png'
+
+
+.prenav
+	@media $medium-small
+		display none
+	text-align center
+	transition all .6s
+	.container
+		transition inherit
+		display flex
+		line-height initial
+		align-items center
+		justify-content space-between
+		> a.logo
+			text-align center
+			transition inherit
+			position relative
+			width auto
+			height auto
+			background transparent
+			flex-grow 0
+			display inline-block
+			margin 12px 0
+			width 100%
+			@media $small-medium
+				display block
+				text-align center
+			a
+				padding 0
+				text-align left
+				@media $small-medium
+					text-align center
+				img
+					transition inherit
+					transform scale(1)
+			@media $small-medium
+				margin 0
+				img
+					height 50px
+			@media $large
+				img
+					width auto
+					height auto
+
+
+// header
+header
+	h1
+		display none
+	transition all .6s
+	overflow visible
+	@media $large
+		height auto !important
+	nav
+		overflow visible
+		background white
+		height auto
+		line-height initial
+		box-shadow initial
+		// box-shadow_3()
+		.button-collapse
+			color black
+		@media $medium-small
+			box-shadow_3()
+		@media $large
+			transition inherit
+			position relative !important
+			background-color initial
+		> .container
+			transition inherit
+			overflow visible	
+			line-height initial
+			align-items center
+			@media $large
+				border 1px solid darken(#eee,30)
+			// background white
+			@media $large
+				display flex
+				justify-content space-between
+			.button-collapse
+				color color2
+				position absolute
+			.menu_top
+				width 100%
+				display flex
+				// justify-content space-between
+				justify-content space-around
+				// padding-top 0px
+				// padding-bottom 0px
+				height auto
+				// align-items center
+				position relative
+				transition inherit
+				transform scale(1)
+				flex-wrap wrap
+				align-items strech
+				background white
+				@media $large
+					justify-content center
+				@media $small-medium
+					padding 4px 0
+					width initial
+				> li
+					transition inherit
+					margin 0
+					flex-grow 0
+					display flex
+					align-items center
+					border-bottom 3px solid transparent
+					// vertical-align middle
+					height 50px
+					@media $large
+						height auto
+					@media $small-medium
+						display none
+						// transform scale(.1)
+					// @media $large
+					// 	padding .54em
+					> a
+						transition inherit
+						color menu_top_textcolor
+						font-size 14px !important
+						font-weight bold
+						height auto
+						line-height initial
+						// line-height 1.4em
+						text-transform uppercase
+						padding 0 4px
+						text-align center
+						display inline-block
+						// font-family Orbitron
+						&:hover
+							text-decoration none
+						@media $large
+							padding 2.2em 3em
+					&.active,&:hover
+						@media $large
+							background-color darken(#1c1ebc,20) !important
+							> a
+								color white
+								// color #5757ba
+						// border-bottom 3px solid #A6D644 //#D9385F //#A6D644
+						// margin-bottom -3px
+					&.logo
+						@media $small-medium
+							display block
+							flex 1
+							border-bottom 0
+							background-color initial
+							a
+								// font-size 0
+								border-bottom 0
+								display inline-block
+								width 100%
+								height 100%
+								color transparent
+								background url(imgs+logo_2) no-repeat center center
+								background-size contain
+								line-height 100%
+								transform scale(1)
+								@media $small
+									transform scale(1)
+
+
+
+
+
+
+
+		
+
+
+.p-home,.p-pages
+	header
+		@media $large
+			margin-bottom -40px
+
+
+body.headfixed
+	@media $medium-small
+		padding-top 0 !important
+	@media $large
+		header
+			> div,> section
+				display none
+			margin-bottom 0px
+			box-shadow_4()
+			nav
+				box-shadow_1()
+				background white
+				position fixed !important
+				top 0px
+				.container
+					border 0
+					.menu_top
+						> li 
+							> a
+								padding-top .9em
+								padding-bottom .9em
+								// transform scale(1,1.5)
+						> li.logo
+							background-color initial
+							height auto
+							> a
+								width 120px
+								background url(imgs+logo_2) no-repeat center center
+								background-size contain
+								color transparent
+								transform scale(1,1.5)
+									

@@ -1,0 +1,12 @@
+footer
+	nav
+		.container
+			ul
+				li ©2017 #{web_name}
+				//- bucle de menu
+			ul.right.menu
+				if(visiters)
+					li #{visiters} visitas
+				+menu_items(menu_footer)
+
+

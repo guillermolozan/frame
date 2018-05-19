@@ -1,19 +1,27 @@
+// $=require('./jquery-2.1.4.min.js');
+
 (($)=>{$(()=>{
 
+    // require('./materialize.min.js');
 
-    require("./fix")();
+    // require('./loadcss.js');
+
+
+
+    // require("./fix")();
 
 
     // require("./materialize/scrollspy")();
 
 
     // materialize slider
-    require("./materialize/sidenav")();
+    // require("./materialize/sidenav")();
 
 
     // materialize slider
-    require("./materialize/slider")();
+    // require("./materialize/slider")();
 
+    require("./slippry")();
 
     // require("./materialize/modal")();
 
@@ -24,7 +32,7 @@
 
 
     // menu fixed
-    require("./headfixed")();
+    // require("./headfixed")();
 
 
 
@@ -57,5 +65,15 @@
     });
     
 
-  });
+  
+
+// Begin Components
+require("../../../../work/app/sources/components/common/common.js")();
+require("../../../../work/app/sources/components/menu_left/menu_left.js")();
+require("../../../../work/app/sources/components/block_gallery/block_gallery.js")();
+require("../../../../work/app/sources/components/block_banner/block_banner.js")();
+require("../../../../prodiserv/app/sources/components/header/header.js")();
+// Finish Components
+
+});
 })(jQuery);

@@ -41,6 +41,6 @@ div(class="galleries #{gallery.type}")
 								+img_item(item)
 
 						div(class="card-content")
-
 							h3: +item(item)
-
+							if(item.sub)
+								h4 #{item.sub}

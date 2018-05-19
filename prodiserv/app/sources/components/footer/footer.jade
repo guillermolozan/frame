@@ -1,0 +1,43 @@
+section.footerpre1
+	.container.row
+
+		each item in menu_prefooter
+
+			ul(class="#{item.ulcss}")
+
+				each sub in item.items
+					if(sub.url=='#')
+						li: h3 #{sub.name}
+					else
+						li: +link_item(sub)
+
+		a(class="icom facebook",target="_blank",title="Facebook - Prodiserv",href="https://www.facebook.com/prodiserv")
+
+		a(class="icom twitter",target="_blank",title="Twitter - Prodiserv",href="https://twitter.com/prodiserv")
+
+section.footerpre2
+	.container.row
+		.col.s12.l4
+			p.ceo #[strong C.E.O.]#[br]
+				| Ing. Walter Távara#[br]
+				| #[strong Nuestro servicio se basa en que tu crecimiento y confianza garantizan nuestro crecimiento.]
+		.col.s12.l4
+			p #[strong Teléfono]:#[br]
+				| WhatsApp : 998920047
+		.col.s12.l4
+			p #[strong Email]:#[br]
+				//- | Av. Arenales 1724 Dpto.509 Lince#[br]
+				| servicios@prodiserv.com
+
+footer
+	.container
+		nav(class="transparent z-depth-0")
+			ul
+				//- li: a ©2015 #{web_name}
+				li: a © 2009-2018 #{web_name}
+				//- bucle de menu
+
+			ul(class="right menu")
+				//- if(visiters)
+				//- 	li #{visiters} visitas
+				+menu_items(menu_footer)

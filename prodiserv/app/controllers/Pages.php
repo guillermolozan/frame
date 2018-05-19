@@ -12,16 +12,12 @@ class Pages extends \core\controllers\Pages {
 	
 
 
-	function index(){
+	function index($params){
 		
-		parent::index();
-
+		parent::index($params);
+		
 		//render the view
-		$this->view->render(
-			
-			'layout_pages'
-
-		);
+		$this->view->render('layout_pages');
 
 	}
 

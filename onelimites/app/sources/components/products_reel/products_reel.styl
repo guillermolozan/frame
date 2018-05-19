@@ -1,0 +1,101 @@
+.productos_reel
+	.responsive
+		padding 0 2em
+		// padding-top 0
+		// margin-top 0
+		// margin-bottom 0
+		.slick-arrow
+			position absolute
+			top 38%
+			color transparent
+			background transparent
+			outline none
+			border none
+			width 0
+			&:before
+				font-family icomoon
+				font-size 2em
+				position absolute
+				@media $small
+					font-size 2.7em
+			// opacity 0
+			&.slick-prev
+				left 1.9em
+				&:before
+					content "\e666"
+					color black
+					right 0em
+					@media $small
+						right .5em
+			&.slick-next
+				right 1.9em
+				&:before
+					content "\e667"
+					color black
+					left 0em
+					@media $small
+						left .5em
+		.card-image
+			fit_image(180px)
+			@media $small
+				text-align center
+				height 180px
+				width 100%
+		/* Dots */
+		.slick-slider
+			margin-bottom 30px
+		.slick-dots
+			position absolute
+			bottom -45px
+			display block
+			width 100%
+			padding 0
+			list-style none
+			text-align center
+			li
+				position relative
+				display inline-block
+				width 20px
+				height 20px
+				margin 0 5px
+				padding 0
+				cursor pointer
+				button
+					font-size 0
+					line-height 0
+					display block
+					width 20px
+					height 20px
+					padding 5px
+					cursor pointer
+					color transparent
+					border 0
+					outline none
+					background transparent
+					&:hover
+						outline none
+						&:before
+							opacity 1
+					&:focus
+						outline none
+						&:before
+							opacity 1
+					&:before
+						font-size: 6px;
+						line-height: 20px;
+						position: absolute;
+						top: 0;
+						left: 0;
+						width: 20px;
+						height: 20px;
+						// content: '•';
+						text-align: center;
+						opacity: .25;
+						color: black;
+						-webkit-font-smoothing: antialiased;
+						-moz-osx-font-smoothing: grayscale;
+						content "."
+				&.slick-active
+					button:before
+						opacity: .75;
+						color: black;	

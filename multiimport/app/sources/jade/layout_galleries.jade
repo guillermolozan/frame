@@ -1,0 +1,23 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+		
+		main(class="container row")
+
+			if(uri=='clientes')
+				-item_responsive = "col s12 m4 l2"
+			else
+				-item_responsive = "col s12 m4"
+			
+			.wide
+				include blocks/gallery.jade
+		
+		include common/footer.jade
+
+		include common/foot.jade

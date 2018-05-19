@@ -1,0 +1,38 @@
+//- include footerpre1.jade
+
+//- include footerpre2.jade
+
+footer
+	//- .grey
+	.white
+	div(class="container")
+		ul.footer_menu
+			li: a(href="desarrollo") INICIO
+			li: a(href="pagina/nosotros/1") NOSOTROS
+			li: a(href="pagina-infraestructura-ti/1") UNIDADES DE NEGOCIOS
+			li: a(href="clientes") CLIENTES
+			li: a(href="contactenos") CONTACTENOS
+
+		.direccion
+			| Jr. Aguamarina 122 Urb. San Antonio Callao 02<br>
+			| Teléfonos: (511) 429-0000<br>
+			| 429-6943 / 429 9809<br>
+		.copyright Copyright © Multimport Srl todos los derechos reservados
+		nav(class="transparent z-depth-0")
+			ul(class="right menu")
+				.container
+					if(visiters)
+						li #{visiters} visitas
+					+menu_items(menu_footer)
+		//- nav(class="transparent z-depth-0")
+		//- 	ul
+		//- 		//- li: a ©2015 #{web_name}
+		//- 		li: a © 2004-2015 #{web_name} SAC
+		//- 		//- bucle de menu
+
+		//- 	ul(class="right menu")
+		//- 		//- if(visiters)
+		//- 		//- 	li #{visiters} visitas
+		//- 		+menu_items(menu_footer)
+
+

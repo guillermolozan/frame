@@ -1,0 +1,69 @@
+.home_block_notes // noticias
+	.container
+		@media $large
+			display flex
+			align-items stretch
+		> .col
+			> .card
+				@media $large
+					height 100%
+				text-align center
+				.card-content
+					max-height 400px
+					.card-title
+						h3
+							color color5
+							// margin-top 0px
+							margin-bottom 1.3em
+					ul
+						li
+							text-align left
+							padding-bottom 0.5em
+							padding-top 0.5em
+							border-bottom 1px solid lighten(grey,30)
+			&.brochure
+				// display none
+				.card-content
+					@media $medium-small
+						padding 1em 0
+					text-align center
+					img
+						// margin-top -20px
+						// width 90%
+						@media $medium-small
+							width auto
+					.descargar
+						margin-top -10px
+						background-color color3
+						padding .3em 1.9em
+						line-height 1em
+						width 70%
+						text-align center
+						a
+							display inline-block
+							background-color white
+							border-radius 1em
+							color color3
+							padding 0 1em
+							font-size .7em
+							font-weight bold
+							line-height 1.5em
+							text-transform uppercase
+			&.social
+				// overflow hidden !important
+				.card
+					overflow hidden
+					.card-content
+						padding-bottom 1.2em
+						overflow hidden
+						.fb_iframe_widget
+							padding-bottom 1.2em
+							margin-top -20px
+							margin-left -9%
+							margin-right -9%
+							min-height 290px
+							@media only screen and (max-width:340px)
+								width 100% !important
+								> span
+									width 100% !important 
+										

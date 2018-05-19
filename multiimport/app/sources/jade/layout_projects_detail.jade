@@ -1,0 +1,27 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include common/header.jade
+
+		.banner
+			main(class="container row no-bottom")
+				img(class="responsive-img",src="#{pub_img}#{banner}")
+					
+		main(class="container row")
+
+			-item_responsive = "col s12 m4 l4"
+
+			-gallery = project
+			
+			.wide
+				include blocks/gallery.jade
+
+
+		include common/footer.jade
+
+		include common/foot.jade

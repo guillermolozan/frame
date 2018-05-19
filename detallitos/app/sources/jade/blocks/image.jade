@@ -1,0 +1,8 @@
+//- if(banner)
+	div(class="banner container row")
+			img(class="responsive-img",src="#{pub_img}#{banner}")
+figure.responsive-img
+	if(banner)
+		img(alt="banner",src="#{pub_img}#{banner}")
+	if(banner_absolute)
+		img(src="#{banner_absolute}")

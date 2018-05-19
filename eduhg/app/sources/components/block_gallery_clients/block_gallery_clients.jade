@@ -1,0 +1,9 @@
+-gallery=clients
+-gallery.name='Clientes'
+-li_class='s12 m6 l3'
+
+section.home_gallery.parallax-container
+	if gallery.parallax		
+		.parallax: img(src="#{pub_img}#{gallery.parallax}")
+	.container
+		include ../../jade/includes/block_gallery

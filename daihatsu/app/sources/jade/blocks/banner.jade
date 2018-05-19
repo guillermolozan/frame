@@ -1,0 +1,16 @@
+if(slides)
+	div(class="slider")
+		ul(class="slides")
+			each item in slides
+				li
+					//- a(href="#{item.url}"): img(class="small",src="#{item.small}")
+					//- a(href="#{item.url}") #{item.url}
+					if !item.url
+						img(class="desktop",src="#{item.bg}")
+					else
+						a(href="#{item.url}")
+							img(aclass="desktop",src="#{item.bg}")
+					.base!=item.textos
+						//- .linea_1 SERVICIO DE #[strong MANTENIMIENTO]
+						//- .linea_2 #[strong REPARACIONES] TÉCNICAS
+						//- .linea_3 #[strong REPUESTOS] ORIGINALES

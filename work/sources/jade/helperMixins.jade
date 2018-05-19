@@ -1,29 +1,52 @@
+mixin title(post)
+	if(post.name)
+		if(main)
+			h1: +item(post)
+			-main=false
+		else
+			h2: +item(post)
 
+mixin more(items)
+	if(items.more)
+		.row.center.more
+			a(class="btn",href="#{items.more.url}") #{items.more.name}			
 
-
-mixin video_responsive(video)
-	ul(class="collection with-header")
-		if(video.name)
-			li(class="collection-header"): h3 #{video.name}
-		li(class="video-container")
-			iframe(width="853",height="480",src="//www.youtube.com/embed/#{video.code}?rel=0",frameborder="0",allowfullscreen=true)
-
+mixin button_side_nav()
+	a.button-collapse(href='#', data-activates='mobile-nav'): i.material-icons menu
 
 
 mixin card(post)
 	.card
 		.card-content
-			if(post.name)
-				h3: +item(post)
-			if(post.html)
-				div!= post.html
-			if(post.text)
-				p= post.text
-			+img_item(post)
-			if(post.video)
-				.video-container
-					iframe(width="853",height="480",src="//www.youtube.com/embed/#{post.video}?rel=0",frameborder="0",allowfullscreen=true)
+			+post_item(post)
 
+
+mixin post_item(post,imgfirst,type)
+
+	if(post.name)
+		if type=='h1'
+			h1: +item(post)
+		else if type=='h2'
+			h2: +item(post)
+		else if type=='h3'
+			h1: +item(post)
+		else if type=='h4'
+			h4: +item(post)
+		else
+			h3: +item(post)
+
+	if(post.html)
+		div!= post.html
+	if(post.text)
+		div: p= post.text
+	+img_item(post)
+	if(post.video)
+		+post_video(post.video)
+
+
+mixin post_video(video)
+	.video-container
+		iframe(width="853",height="480",src="//www.youtube.com/embed/#{video}?rel=0",frameborder="0",allowfullscreen=true)
 
 
 mixin items_list(items)
@@ -50,7 +73,7 @@ mixin list_card(list)
 	.card
 		.card-content
 			if(list.name)
-				span(class="card-title"): h3 #{list.name}
+				.card-title: h3 #{list.name}
 			ul
 				+items_list(list.items)
 			if(list.items)
@@ -60,12 +83,13 @@ mixin list_card(list)
 
 
 mixin link_item(item)
-	if(item.target)
-		a(href="#{item.url}",title="#{item.name}",class="#{item.aclass}",target="#{item.target}") #{item.name}
-	else
-		a(href="#{item.url}",title="#{item.name}",class="#{item.aclass}") #{item.name}
-
-
+	a(href="#{item.url.toLowerCase()}",
+		rel="#{item.rel}",
+		title="#{item.name.toLowerCase()}",
+		class="#{item.aclass}",
+		target="#{item.target}") #{item.name} 
+		if item.sub
+			b #{item.sub}
 
 mixin item(item)
 	if(item.url)
@@ -78,35 +102,34 @@ mixin imgg(item)
 	if(item.name)
 		img(src="#{item.img}",
 			class="responsive-img",
-			alt="#{item.name}",
-			title="#{item.name}",
+			alt="#{item.name.toLowerCase()}",
+			title="#{item.name.toLowerCase()}",
 			data-caption="#{item.name}")
 	else
 		img(src="#{item.img}",
-			class="responsive-img")
+			class="responsive-img",
+			alt="foto",
+			title="foto")
 
 
 mixin img_item(item)
 	if(item.img)
 		if(item.url)
-			if(item.target)
-				a(href="#{item.url}",target="#{item.target}",title="#{item.name}",class="#{item.aclass}")
-					+imgg(item)
-			else
-				a(href="#{item.url}",title="#{item.name}",class="#{item.aclass}")
-					+imgg(item)
-		
-		else		
-			img(src="#{item.img}",title="#{item.name}",alt="#{item.name}",class="responsive-img")
+			a(href="#{item.url.toLowerCase()}",target="#{item.target}",title="#{item.name.toLowerCase()}",class="photo #{item.aclass}")
+				+imgg(item)
+		else
+			.photo
+				+imgg(item)
+			//- img(src="#{item.img}",title="#{item.name}",alt="#{item.name}",class="responsive-img")
 
 
 mixin img_magnific(item)
-	a(href="#{item.img}",title="#{item.name}",class="#{item.aclass}")
+	a(href="#{item.img}",title="#{item.name}",class="photo #{item.aclass}")
 		img(src="#{item.img}",title="#{item.name}",alt="#{item.name}",class="responsive-img")
 
 
 mixin img_venobox(item)
-	a(class="venobox",
+	a(class="photo venobox",
 		data-type="youtube",
 		href="http://youtu.be/#{item.video}")
 		img(src="http://i.ytimg.com/vi/#{item.video}/mqdefault.jpg",
@@ -117,15 +140,18 @@ mixin menu_collection(items)
 	each men_item in items
 		li(class="collection-item #{men_item.class}")
 			+link_item(men_item)
-
+			if(men_item.items)
+				ul(class="submenu")
+					+menu_items(men_item.items)
 
 mixin menu_items(items)
 
 	each men_item in items
 		li(class="#{men_item.class}")
 			+link_item(men_item)
-			if(men_item.items)	
-				ul(class="submenu z-depth-5")
+			if(men_item.items)
+				//- ul(class="submenu z-depth-5")
+				ul(class="submenu ")
 					+menu_items(men_item.items)
 
 
@@ -134,13 +160,51 @@ mixin menu_items_collapsible(items)
 
 	each men_item in items
 		if(men_item.items)	
-			li(class="collapse")
-				a(class="collapsible-header waves-effect waves-teal #{men_item.class}") #{men_item.name}
+			li(class="collapse collection-item")
+				a(class="collapsible-header waves-effect #{men_item.class}") #{men_item.name}
 				div(class="collapsible-body")
 					ul
 						+menu_items(men_item.items)
 		else
-			li(class="#{clas}")
+			li(class="#{clas} collection-item #{men_item.class}")
 				+link_item(men_item)
 
+
+//- embed de flash
+mixin embed_flash(file)
+	object(classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000",codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0",width="615" height="147",ALIGN="")
+		param(name="movie",value=file)
+		param(name="quality",value="high")
+		embed(src=file,quality="high",pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash",type="application/x-shockwave-flash" wmode="transparent",width="615",height="147",ALIGN="")
+
+//- box de facebook
+mixin box_facebook(page)
+	div(
+		class="fb-page",
+		data-href=page,
+		data-tabs="timeline",
+		data-small-header="false",
+		data-adapt-container-width="true",
+		data-hide-cover="false",
+		data-show-facepile="true")
+
+//- map
+mixin map(item)
+	div(id="map",
+		data-name="#{item.name}",
+		data-lat="#{item.lat}",
+		data-lon="#{item.lon}",
+		data-text="#{item.text}")
+
+//- video youtube
+mixin video_youtube(video)
+	iframe(width="853",height="480",src="//www.youtube.com/embed/#{video}?rel=0",frameborder="0",allowfullscreen=true)
+
+//- video container
+mixin video_responsive(video)
+	ul(class="collection with-header")
+		if(video.name)
+			li(class="collection-header"): h3 #{video.name}
+		li(class="video-container")
+			+video_youtube(video.code)
 

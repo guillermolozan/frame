@@ -1,0 +1,85 @@
+#banner
+	// background color1
+	overflow hidden
+	height 167px
+	// margin-bottom 0px
+	width 100%
+	margin 0 .25rem
+	@media $small-medium
+		height auto
+	&.row
+		display flex
+		justify-content center
+		.coll
+			height inherit
+			text-align center
+			// opacity 0
+			display none
+			@media $small-medium
+				height auto
+			img
+				margin auto
+				height 100%
+				@media $small-medium
+					max-width 100%
+					height auto
+					max-height 200px
+			&.toRight
+				display block
+				transform-origin 200% 0
+				animation deizquierda 1.5s 0s 1 forwards
+			&.toLeft
+				display block
+				transform-origin -200% 0
+				animation dederecha 1.5s 0s 1 forwards
+			&.toDown
+				display block
+				transform-origin 0 -200%
+				animation dearriba 1.5s 0s 1 forwards
+			&.toUp
+				display block
+				transform-origin 0 200%
+				animation deabajo 1.5s 0s 1 forwards
+			&.toShow
+				display block
+				opacity 0
+				animation denada 2s 0s 1 forwards
+@keyframes denada
+	from
+		// transform translate(0%,200%)
+		opacity 0
+	to
+		// transform translate(0%,0%)
+		opacity 1
+
+@keyframes deabajo
+	from
+		transform translate(0%,200%)
+		// opacity 0
+	to
+		transform translate(0%,0%)
+		opacity 1
+		
+@keyframes dearriba
+	from
+		transform translate(0%,-200%)
+		// opacity 0
+	to
+		transform translate(0%,0%)
+		opacity 1
+		
+@keyframes deizquierda
+	from
+		transform translate(-200%,0%)
+		// opacity 0
+	to
+		transform translate(0%,0%)
+		opacity 1
+
+@keyframes dederecha
+	from
+		transform translate(200%,0%)
+		// opacity 0
+	to
+		transform translate(0%,0%)
+		opacity 1

@@ -1,0 +1,12 @@
+footer
+	p 
+		//- | Dionisio Derteano N° 1550 Dpto.: 301- Cercado de Lima 
+		| #[strong Teléfono]:  (51) 993250214  
+		| #[strong Correo] gerencia@montes.com.pe #[br]
+		| © 2016 Montes Consultores  Todos los derechos reservados
+	nav(class="transparent right z-depth-0")
+		ul(class="right menu")
+			.container
+				if(visiters)
+					li #{visiters} visitas
+				+menu_items(menu_footer)

@@ -1,0 +1,33 @@
+.link_prodiserv { font-size: 9px; font-family: Arial,Verdana,sans-serif; color:#cccccc; font-weight: bold; text-decoration:none}
+a.link_prodiserv:hover { font-size: 9px; font-family: Arial,Verdana,sans-serif; color:#666666; text-decoration:none}
+
+.link_menu { font-size: 12px; font-family: Arial,sans-serif; color:#000000; text-decoration:none}
+a.link_menu:hover { font-size: 12px; font-family: Arial,sans-serif; color:#005984; text-decoration:none}
+
+.link_ver { font-size: 14px; font-family: Arial,sans-serif; color:#1E6E9B; text-decoration:none; font-weight: bold;}
+a.link_ver:hover { font-size: 14px; font-family: Arial,sans-serif; color:#000000; text-decoration:none; font-weight: bold;}
+
+.link_sub_menu { font-size: 14px; font-family: Times New Roman,sans-serif; color:#666666; text-decoration:none; font-style:italic}
+a.link_sub_menu:hover { font-size: 14px; font-family: Times New Roman,sans-serif; color:#000000; text-decoration:none; font-style:italic}
+
+.link_menu_s { font-size: 13px; font-family: Arial,sans-serif; color:#3D7493; text-decoration:none; font-weight: bold;}
+a.link_menu_s:hover { font-size: 13px; font-family: Arial,sans-serif; color:#448E24; text-decoration:none; font-weight: bold;}
+
+.link_categorias { font-size: 14px; font-family: Arial,sans-serif; color:#000000; text-decoration:none;}
+a.link_categorias:hover { font-size: 14px; font-family: Arial,sans-serif; color:#00649B; text-decoration:none;}
+
+.ardyss { font-size: 14px; font-family: Arial,sans-serif; color:#000000; text-decoration:none;}
+a.ardyss:hover { font-size: 14px; font-family: Arial,sans-serif; color:#00649B; text-decoration:none;}
+
+.link_mail{ font-size: 13px; font-family: Arial,sans-serif; color:#cccccc; text-decoration:none}
+a.link_mail:hover { font-size: 13px; font-family: Arial,sans-serif; color:#ffffff; text-decoration:none}
+
+.link_videos { font-size: 12px; font-family: Arial,sans-serif; color:#ffffff; text-decoration:none}
+a.link_videos:hover { font-size: 12px; font-family: Arial,sans-serif; color:#ffff00; text-decoration:none}
+
+.link_titulos { font-size: 12px; font-family: Arial,sans-serif; color:#ffffff; font-weight: bold; text-decoration:none}
+a.link_titulos:hover { font-size: 12px; font-family: Arial,sans-serif; color:#ffff00; text-decoration:none}
+
+.link_mailto { font-size: 11px; font-family: Century Gothic,sans-serif; color:#666666; font-weight: bold; text-decoration:none}
+a.link_mailto:hover { font-size: 11px; font-family: Century Gothic,sans-serif; color:#ff0000; text-decoration:none}
+

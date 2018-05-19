@@ -7,10 +7,10 @@
     require("./fix")();
 
 
-    require("./materialize/sidenav")();
+    // require("./materialize/sidenav")();
 
 
-    require("./materialize/slider")();
+    // require("./materialize/slider")();
 
 
     require("./materialize/modal")();
@@ -31,10 +31,6 @@
         else    
             $('.local .card').removeClass('localfixed');
 
-        if($(window).scrollTop() > 155)
-            $('header').addClass('headerfixed');
-        else    
-            $('header').removeClass('headerfixed');
 
     });
 
@@ -85,6 +81,17 @@
     // Parallax   
     // $('.parallax').parallax();
 
+
   
-  });
+  
+
+// Begin Components
+require("../../../../work/app/sources/components/common/common.js")();
+require("../../../../work/app/sources/components/menu_left/menu_left.js")();
+require("../../../../work/app/sources/components/block_gallery/block_gallery.js")();
+require("../../../../work/app/sources/components/block_banner/block_banner.js")();
+require("../../../../rinconcito/app/sources/components/header/header.js")();
+// Finish Components
+
+});
 })(jQuery);

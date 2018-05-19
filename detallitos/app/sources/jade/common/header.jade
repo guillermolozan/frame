@@ -1,0 +1,43 @@
+section(class="preheader hide-on-med-and-down")
+	nav
+		.container
+			ul(class="menu")
+				if web_twitter
+					li.twitter: a(target="_blank",href="#{web_twitter}")
+				if web_facebook
+					li.facebook: a(target="_blank",href="#{web_facebook}")
+				if web_whatsapp
+					li.whatsapp: a #{web_whatsapp}
+				if web_email
+					li.email: a #{web_email}
+				if web_phone
+					li.phone: a #{web_phone}
+
+
+header.navbar-fixed
+
+	if(is_home)
+		h1 #{web_name}
+		-main = false
+	//- nav(style="background-image:url('#{header_bg}')")
+	nav
+		.container
+
+			a(href="#{link_home}",class="brand-logo",title="#{web_name}"): img(src="#{pub_img}#{logo}",title="#{web_name}",alt="#{web_name}")
+
+			+button_side_nav()
+
+			//- div(class="phones hide-on-med-and-down")!= header_phones
+				
+			//- menu_top
+			ul(class="menu menu_top hide-on-med-and-down")
+				+menu_items(menu_top)
+
+			//- ul.list
+				li: a(class="btn",href="promociones/promocion-de-pagina-web-administrable/50") Promociones
+				
+
+//- menu_left
+include ../../jade/includes/menu_left
+
+

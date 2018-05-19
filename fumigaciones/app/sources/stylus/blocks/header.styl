@@ -8,6 +8,8 @@ header
 		background-color white
 		height auto
 		line-height @height
+		.container
+			position relative
 		@media $large
 			position relative !important
 			background-color menu_top_bgcolor
@@ -29,8 +31,73 @@ header
 				img
 					width 100%
 					height 100%
-		a
-			text-transform uppercase
+		.top
+			position absolute
+			right 25px
+			bottom 60px
+			text-align right
+			h3
+				margin 0 0 10px 0
+				font-weight bold
+			.email
+				font-size 20px
+				color black
+				text-shadow 1px 3px 2px rgba(red,0.4)
+			.whatsapp
+				color lighten(black,20)
+				font-size 26px
+				padding-left 30px
+				// text-shadow 1px 3px 2px rgba(black,4.2)
+				text-shadow 1px 3px 2px rgba(red,0.4)
+				&:before
+					color green
+					content '\e900'
+					font-family icomoon
+					margin-right 7px
+					text-shadow initial
+					font-size 23px
+	// .list 
+	// 	position absolute
+	// 	right 0px
+	// 	bottom 55px 
+	// 	height auto
+	// 	display block
+	// 	width 380px
+	// 	li
+	// 		color black
+	// 		display block
+	// 		position relative
+	// 		heigh auto
+	// 		margin-left 1em
+	// 		// float right
+	// 		// margin-bottom 0.5em
+	// 		// icomoon("e683")
+	// 		// &:before
+	// 		// 	font-size 1em
+	// 		// 	margin-right 0.3em
+	// 		a
+	// 			position relative
+	// 			display block
+	// 			background white
+	// 			border-radius 5px
+	// 			color #333
+	// 			font-size 0.85em
+	// 			padding 0em 0.7em
+	// 			margin 0.4em 0
+	// 			height 2.4em
+	// 			width 175px
+	// 			line-height @height
+	// 			border 1px solid color6
+	// 			box-shadow initial
+	// 			&:hover
+	// 				background color6
+	// 				color white
+	// 			// line-height 2.1em
+
+	// 		&:hover
+	// 			background-color inherit
+	// 	a
+	// 		text-transform uppercase
 	@media $large		
 		&::before
 			display block
@@ -55,6 +122,8 @@ header
 			font-size 0.9rem
 			height menu_top_height
 			line-height @height
+			text-transform uppercase
+			font-family
 			&:hover
 				text-decoration none
 
@@ -68,6 +137,8 @@ header
 		// background-image linear-gradient(top,transparent,lighten(color2,15))
 		position relative
 		margin-right 2px
+		a
+			font-family Roboto !important
 		.submenu
 			display none
 			position absolute
@@ -88,7 +159,8 @@ header
 					height 25px
 					line-height @height
 					color black
-					font-size 0.8em
+					font-size 0.9em
+					font-weight 400
 		&:hover
 			.submenu
 				display block
@@ -98,45 +170,8 @@ header
 
 
 
-.menu_left	
-	li
-		border-bottom 1px solid color6
-		&:last-child
-			border-bottom 0
-		a
-			line-height 1.5em !important
-			height auto !important
-			padding-top 1em
-			padding-bottom 1em
-			display block
-			vertical-align middle
-			&.collapsible-header
-				&:before
-					font-family icomoon
-					content "\f0da"
-					float right
-					color rgba(black,0.5)
-				&.active
-					&:before
-						content "\f0d7"
-	// .collapsible-header.waves-effect.waves-teal
-	// 	background-color rgba(red,0.75)
-	.collapsible-body
-		li
-			border-bottom 0
-			a
-				margin-left 1em
-				color color1
-				font-weight normal				
-			&.active
-				background-color lighten(#ddd,4)
-				a
-					color color2
-	&.collapsible-accordion
-		li.collapse
-			padding 0
-			
-
+.side-nav
+	left 0 !important
 
 
 

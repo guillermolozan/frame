@@ -1,0 +1,121 @@
+menu_logo      ='logo.png'
+
+menu_height    =menu_top_height
+menu_font_size =1rem
+
+menu_bg        =menu_top_bgcolor
+menu_color     =menu_top_textcolor
+
+menu_bg_over   =menu_top_item_active_bgcolor
+menu_color_over=menu_top_item_active_textcolor
+
+
+
+header_customize()
+	header nav > .container > .menu_top > li.logo a
+		@media $small-medium
+			transform scale(1) !important
+		@media $small
+			transform scale(.8) !important
+	@media $large
+		header
+			> nav
+				box-shadow initial
+				background transparent !important
+				> .container
+					background white
+					border 1px solid #a2a2a2
+					> .menu_top
+						display flex
+						justify-content center
+						> li
+							margin 0 1px 0 0
+							border-bottom 0
+							&.active,&:hover
+								border-bottom 0
+							> a
+								padding 0 37px
+		body.headfixed
+			header
+				> nav
+					// background menu_bg
+					background white !important
+					// box-shadow initial
+					> .container
+						background transparent !important
+						border 0
+						
+						> .menu_top
+							> li
+								> a
+									height 40px
+									line-height @height
+									// color menu_color !important
+									color black !important
+								&.active,&:hover
+									background menu_bg_over
+									> a
+										color menu_color_over !important
+								&.logo
+									background initial !important
+									> a
+										width 90px
+										color transparent !important
+										transform scale(1,1.5)
+										
+
+
+.p-home,.p-pages
+	header
+		@media $large
+			margin-bottom -40px !important
+			
+
+.prenav
+	@media $medium-small
+		display none
+	text-align center
+	transition all .6s
+	.container
+		transition inherit
+		display flex
+		line-height initial
+		align-items center
+		justify-content space-between
+		> a.logo
+			text-align center
+			transition inherit
+			position relative
+			width auto
+			height auto
+			background transparent
+			flex-grow 0
+			display inline-block
+			margin 12px 0
+			width 100%
+			@media $small-medium
+				display block
+				text-align center
+			a
+				padding 0
+				text-align left
+				@media $small-medium
+					text-align center
+				img
+					transition inherit
+					transform scale(1)
+			@media $small-medium
+				margin 0
+				img
+					height 50px
+			@media $large
+				img
+					width auto
+					height auto
+
+
+header_basic_long()
+
+
+header_customize()
+									

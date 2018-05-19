@@ -1,0 +1,28 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include includes/header
+		//- include blocks/breadcrumb.jade
+		//- include blocks/banner.jade
+		main.container
+
+			.row.no-margins
+				
+				.col.s12.l6
+					include forms/contact
+
+				.col.s12.l3
+					include includes/menu_block
+					include includes/block_home_videos
+				
+				.col.s12.l3
+					include includes/block_home_gallery
+					include includes/block_ad
+
+		include includes/footer.jade
+		include common/foot.jade

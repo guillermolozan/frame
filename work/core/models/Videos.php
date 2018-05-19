@@ -18,16 +18,16 @@ class Videos extends \core\Models {
 
 
 		//only for data test
-		if($this->data_test){
+		// if($this->data_test){
 
-			return $this->data_tests->getData([
+		// 	return $this->data_tests->getData([
 
-				'name'  =>$name,
-				'items' =>'gallery?img&dims=700x700&name=photo 700x700&number=13&url=galeria-videos'
+		// 		'name'  =>$name,
+		// 		'items' =>'gallery?img&dims=700x700&name=photo 700x700&number=13&url=galeria-videos'
 
-			]);
+		// 	]);
 
-		}
+		// }
 
 
 
@@ -35,7 +35,9 @@ class Videos extends \core\Models {
 		$items=select(
 			"id,name",
 			'galleries_videos',
-			"where 1",
+			"where 
+			visibilidad=1
+			order by weight desc ",
 			0,
 			[
 				'video'=>['dato'=>['video','galleries_videos_videos','where id_grupo={id}']],
@@ -61,39 +63,57 @@ class Videos extends \core\Models {
 	}
 
 
-	function getItem(){
+	function getItem($params=[]){
 
-		$params=$this->params;
+		$params=array_merge($this->params,$params);
 
+		$params['type']=($params['type'])?$params['type']:'videos';
 
 		//only for data test
-		if($this->data_test){
+		// if($this->data_test){
 
-			return $this->data_tests->getData([
-				'name'  =>'Galería de videos',
-				'type'  =>'videos',
-				'items' =>'gallery?video&name=video&number=13&img'
-			]);
+		// 	return $this->data_tests->getData([
+		// 		'name'  =>'Galería de videos',
+		// 		'type'  =>'videos',
+		// 		'items' =>'gallery?video&name=video&number=13&img'
+		// 	]);
 
-		}
+		// }
 
 
 		$item=fila(
 			"id,name,html",
 			'galleries_videos',
-			"where id='".$params['item']."'",0
+			"where 
+			id='".$params['item']."'
+			",
+			0
 		);
 
 		$items=select(
-			"name,video",
+			"name,video,id",
 			"galleries_videos_videos",
-			"where id_grupo=".$item['id'],
-			0	
+			"where id_grupo=".$item['id']." 
+			and visibilidad=1
+			order by weight desc ".
+			(($params['limit'])?'limit '.$params['limit']:"limit 0,100"),
+			0
 		);
 
 		$type='videos';
 
+		if($params['type']=='links'){
 
+			foreach($items as $ii=>$ite){
+			
+				$items[$ii]['img']  ='https://i.ytimg.com/vi/'.$ite['video'].'/hqdefault.jpg';
+				$items[$ii]['url'] ='video/'.$ite['id'];
+
+			}
+
+			$type='links';
+
+		}
 
 		//asing vars
 
@@ -110,6 +130,30 @@ class Videos extends \core\Models {
 
 	}
 
+
+
+	function getVideo($params=[]){
+
+		$params=array_merge($this->params,$params);
+
+		$item=fila(
+			"name,video,id",
+			"galleries_videos_videos",
+			"where id=".$params['item']." ",
+			0
+		);
+		
+		return $item;
+
+	}
+
+	function getTitle($post=null){
+
+		$post=($post)?$post:$this->post;
+		// return ucfirst(strtolower(trim($post['name'])))." | ".$this->title;
+		return trim($post['name'])." | ".$this->title;
+
+	}
 
 
 }

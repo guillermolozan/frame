@@ -1,0 +1,22 @@
+footer
+	.container.row
+
+		.col.s12.l6.first
+			ul.menu
+				+menu_items(menu_top)
+
+		.col.s12.l6.third
+			ul.menu
+				if(web_facebook)
+					li(class="facebook circle") 
+						a(title="Facebook",target="_blank",href="#{web_facebook}") #{web_facebook_page}
+				if(web_email)
+					li(class="email circle") 
+						a(title="Email",target="_blank",href="#{web_email}") #{web_email}
+				li
+					span.corp WhatsApp: #[strong 949732138]
+				li.visa
+					span Aceptamos Visa
+
+
+			//- bucle de menu

@@ -4,19 +4,20 @@ div(class="locales section container")
 
   div(class="row")
     each item in items
-      div(class="col s12 m12 l3")
+      div(class="col s12 m12 l4")
         div(class="card")
-          div(class="card-image waves-effect waves-block waves-light")
-            a(href="#{item.url}")
-              img(src="#{item.img}",class="responsive-img",alt="#{item.name}",title="#{item.name}")
           div(class="card-content")
             span(class="card-title"): a(href="#{item.url}") #{item.name}
-          div(class="card-action")
-            span: a(href="#{item.url}#eventos",class="icon-calendar2") eventos
-            span: a(href="#{item.url}#gallery-photo-0",class="icon-pictures") fotos 
-            span: a(href="#{item.url}#gallery-video-0",class="icon-youtube") videos 
-            span: a(href="#{item.url}#ubicacion",class="icon-location") ubicación 
-            span: a(href="#{item.facebook}",target="_blank",class="icon-facebook") facebook 
+          div(class="row")          
+            div(class="card-image waves-effect waves-block waves-light col s12 l6")
+              a(href="#{item.url}")
+                img(src="#{item.img}",class="responsive-img",alt="#{item.name}",title="#{item.name}")
+            div(class="card-action col s12 l6")
+              span: a(href="#{item.url}#eventos",class="icon-calendar2") eventos
+              span: a(href="#{item.url}#gallery-photo-0",class="icon-pictures") fotos 
+              span: a(href="#{item.url}#gallery-video-0",class="icon-youtube") videos 
+              span: a(href="#{item.url}#ubicacion",class="icon-location") ubicación 
+              span: a(href="#{item.facebook}",target="_blank",class="icon-facebook") facebook 
              
 
 

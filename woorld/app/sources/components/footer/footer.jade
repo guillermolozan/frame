@@ -1,0 +1,29 @@
+footer
+	.container.row
+
+		.col.s12.l3.first
+			ul.menu
+				+menu_items(menu_top)
+
+		.col.s12.l5.second
+			ul.menu
+				li
+					a.corp Ventas Corporativos
+				.row
+					li.col.s12.l6
+						span Teléfono: #[br] #{web_phone}
+					li.col.s12.l6
+						span Celular: #[br] #{web_mobile}
+				li
+					span Dirección: #[br] #{web_address}
+
+		.col.s12.l4.third
+			ul.menu
+				if(web_facebook)
+					li(class="facebook circle") 
+						a(title="Facebook",target="_blank",href="#{web_facebook}") #{web_facebook}
+				if(web_email)
+					li(class="email circle") 
+						a(title="Email",target="_blank",href="#{web_email}") #{web_email}
+
+			//- bucle de menu

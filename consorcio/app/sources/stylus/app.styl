@@ -1,0 +1,132 @@
+googleFonts='Orbitron';
+// googleFonts=false;
+
+if googleFonts
+	@import url('https://fonts.googleapis.com/css?family='+googleFonts)
+
+
+// icomoon
+work_stylus='../../../../work/sources/stylus/'
+
+
+// dirs
+imgs               = '../../public/img/'
+load_imgs          = '../../../public/img/'
+
+
+
+// colors
+angle              =0deg
+
+color1             =#042261 + angle //red
+color2             =#233F61 + angle //blue
+color3             =#0aa4f4 + angle //grey
+color4             =skyblue + angle //black
+color5             =#014087 + angle
+color6             =#40b3ff + angle
+
+
+
+
+
+// widths
+// maxwide            =image-size(header_img_path)[0]
+maxwide            = 1030px
+mobile             = 600px
+tablet             = 992px
+container 			 = maxwide
+
+
+
+
+// blocks
+body_color         =#FFF
+
+// logo
+// logo_img_path	 =load_imgs+'logo.jpg'
+// logo_width      =image-size(logo_img_path)[0]
+// logo_height     =image-size(logo_img_path)[1]
+
+
+//header
+// header_img_path	 =load_imgs+'header-bg.jpg'
+// header_bg          =transparent url(imgs+'logo-2.png') no-repeat left
+header_height      =182
+
+//menu_top
+menu_top_bgcolor   =color1
+menu_top_textcolor =white
+menu_top_height 	 =42px
+
+
+
+//logo
+logo_customize()
+	> a > img
+		@media $large
+			// height 90px !important
+			// margin -5px 0
+		@media $small-medium
+			// height 50px !important
+			// margin 0px 0 -6px
+			@media $small
+				// height 40px !important
+				// margin 5px 0 -5px
+
+
+
+//main
+main_bgcolor       =transparent
+
+
+
+pre_footer_bgcolor =color3
+pre_footer_textcolor=white
+
+//footer
+
+footer_bgcolor     =black
+footer_textcolor   =white
+footer_height 	 	 =41px
+
+
+
+
+// work
+@import work_stylus+'work.styl'
+
+
+//blocks
+@import 'blocks/*'
+
+
+
+
+//layouts
+@import 'layouts/*'
+
+
+
+
+
+
+// Begin Components
+@import '../../../../work/app/sources/components/common/common.styl'
+@import '../../../../work/app/sources/components/menu_left/menu_left.styl'
+@import '../../../../work/app/sources/components/block_gallery/block_gallery.styl'
+@import '../../../../work/app/sources/components/block_post/block_post.styl'
+@import '../../../../work/app/sources/components/block_banner/block_banner.styl'
+@import '../../../../agro/app/sources/components/header_pre/header_pre.styl'
+@import '../../../../consorcio/app/sources/components/header/header.styl'
+@import '../../../../prodiserv/app/sources/components/home_block_planes/home_block_planes.styl'
+@import '../../../../bestpower/app/sources/components/home_block_welcome/home_block_welcome.styl'
+@import '../../../../asiste/app/sources/components/home_block_notes/home_block_notes.styl'
+@import '../../../../asiste/app/sources/components/home_block_links/home_block_links.styl'
+@import '../../../../consorcio/app/sources/components/page_post/page_post.styl'
+@import '../../../../consorcio/app/sources/components/block_gallery_clients/block_gallery_clients.styl'
+@import '../../../../consorcio/app/sources/components/block_gallery_products/block_gallery_products.styl'
+@import '../../../../consorcio/app/sources/components/gallery_products/gallery_products.styl'
+@import '../../../../agro/app/sources/components/form_contact/form_contact.styl'
+@import '../../../../bestpower/app/sources/components/footer/footer.styl'
+// Finish Components
+

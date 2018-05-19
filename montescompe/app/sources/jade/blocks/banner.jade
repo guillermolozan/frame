@@ -1,0 +1,16 @@
+//- include ../../../../../work/sources/jade/blocks/banner.jade
+-items = slides
+if(items)
+	.outslider
+		div(class="slider")
+			ul(class="slides")
+				each item in items
+					li
+						img(class="desktop",src="#{item.bg}")
+						div(class="caption left-align")
+							.texto1
+								a(href="#{item.url}") #{item.name}
+							.texto2
+								a(href="#{item.url}") #{item.texto2}
+							.texto3
+								a(href="#{item.url}") #{item.texto3}

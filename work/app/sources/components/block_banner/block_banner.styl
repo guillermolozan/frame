@@ -1,0 +1,110 @@
+
+
+// banner
+.slider
+	// container_center()
+	height auto !important
+	margin-top 0px
+	max-height 484px
+	z-index 0
+	@media $small
+		max-height initial
+	.slides
+		height auto
+		background-color #d6f3fd
+		// display none !important
+		@media $small
+			background-color #ffffff
+		> li
+			z-index -1 !important
+			// display none !important
+			img
+				max-height 484px
+				max-width 1440px
+				margin auto
+			.desktop
+				display block
+				// @media $small
+					// display none
+			// .small
+			// 	display none
+			// 	@media $small
+			// 		display block
+			// a
+				// display none
+				img
+					// max-height 535px
+					max-height 450px
+			&.sy-active 
+				z-index 1 !important
+				a
+					display block
+			
+			// opacity 1
+	// margin-bottom -40px
+	h3,h5
+		color white
+	.indicators
+		@media $small-medium
+			display none
+		bottom 66px
+		z-index 2
+		.indicator-item
+			width 12px
+			height @width
+			margin 0 5px
+			border 2px solid white
+			background-color transparent
+			&.active
+				background-color #515254
+	.sy-pager
+		@media $small-medium
+			display none
+		bottom 26px
+		z-index 2
+		position absolute
+		> li
+			width 18px
+			height @width
+			margin 0 5px
+			border 2px solid white
+			background-color transparent
+			a
+				background-color #777
+			&.sy-active a,&:hover a
+				background-color color1
+	.sy-controls
+		@media $large
+			visibility hidden
+		z-index 10
+		.sy-prev a,.sy-next a
+			icomoonafter('e651')
+			font-size 0
+			opacity 1
+			display flex
+			justify-content center
+			align-items center
+			left initial
+			top initial
+			&:after
+				background rgba(white,.8)
+				width 13px
+				height @width
+				color color1
+				font-size 12px
+				line-height 16px
+				margin 0
+				left initial
+				top initial
+				transform scale(3.1)
+		.sy-next a:after
+			transform scale(3.1) rotate(180deg)
+
+				
+figure.responsive-img
+	overflow hidden
+	width 100% !important
+	margin 0
+	text-align center
+	vertical-align middle
+	max-height 300px

@@ -1,0 +1,20 @@
+//- .footer
+//- 	.container
+//- 		nav
+//- 			ul(class="menu")
+//- 				li: span 2017 #{web_name_short} - All right reserved
+//- 				li.right: a(href="http://prodiserv.com",target="_blank") by Prodiserv
+
+.footer
+	.container
+		ul(class="menu logofooter")
+			li: img(src="#{pub_img}logo-footer.jpg")
+		ul.menu
+			//- li: span Address: Calle Las Estrellas 7246 - Urb. Sol de Oro - Los Olivos
+			//- li: span Phone: 65.41.477 / 991.127.986 / 944.529.380 / 992.154.786
+			//- li: span Email: rfelix@terranovaspalessons.com / informes@terranovaspalessons.com
+			//- li: span #{web_name}
+			li: span #[strong Address:] #{web_address}
+			li: span #[strong Phone:] #{web_phone}
+			li: span #[strong E-mail:] #{web_email}
+			+menu_items(menu_footer)
