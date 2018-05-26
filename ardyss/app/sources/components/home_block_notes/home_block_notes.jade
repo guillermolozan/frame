@@ -43,14 +43,15 @@ section.home_block_notes.row
 					.card-content
 						.card-title
 							h3 Social
-						div(
-							class="fb-page",
-							data-href="#{social}",
-							data-tabs="timeline",
-							data-small-header="false",
-							data-adapt-container-width="true",
-							data-hide-cover="false",
-							data-show-facepile="true")
+						if (!localhost)
+							div(
+								class="fb-page",
+								data-href="#{social}",
+								data-tabs="timeline",
+								data-small-header="false",
+								data-adapt-container-width="true",
+								data-hide-cover="false",
+								data-show-facepile="true")
 		//- .card
 		//- 	.card-content
 		//- 		.card-title

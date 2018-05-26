@@ -2,13 +2,13 @@
 
 return [
 
-	'name'	=>'ardyss',
+	'name'	=>'Ardyss Perú',
 
 	'visitors'	=>false,
 
 	'web'	=> [
 	
-		'name_short' =>'Ardyss',
+		'name_short' =>'Ardyss Perú',
 		'email'      =>'contacto@ardyss.com.pe',
 		'phone'      =>'949732138',
 		'mobile'     =>'949732138',
@@ -51,7 +51,7 @@ return [
 
 		'static' =>"./ardyss/public",
 
-		'devel' =>"desarrollo",
+		// 'devel' =>"desarrollo",
 
 		// 'image_devel'=>true,
 

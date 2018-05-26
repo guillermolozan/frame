@@ -65,7 +65,7 @@ class Elements {
 				$item0=[];
 				// prin($item);
 				// if(!is_numeric($ii))
-				$item0['url']=$ii;
+				$item0['url']=maskUrl($ii);
 				$item0['name']=$item;
 				$item=$item0;
 			}

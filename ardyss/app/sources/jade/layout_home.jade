@@ -10,6 +10,15 @@ html(lang="es")
 		
 		include includes/banner
 
+		if (!localhost)
+			.home-facebook
+				.container: .fb-like(
+					data-layout='standard', 
+					data-action='like', 
+					data-size='small', 
+					data-show-faces='true', 
+					data-share='true')
+
 		//- productos ardyss
 		include includes/block_gallery_products
 
@@ -26,7 +35,8 @@ html(lang="es")
 		include includes/block_gallery_videos
 
 		//- enlaces
-		include includes/home_block_links
+		.container
+			include includes/home_block_links
 
 		include includes/footer
 		include common/foot

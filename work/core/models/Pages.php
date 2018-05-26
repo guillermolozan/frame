@@ -321,7 +321,7 @@ class Pages extends \core\Models {
 		if($array['id'])
 			$url2.='/'.$array['id'];
 
-		return $url.substr($url2,1);
+		return maskUrl($url.substr($url2,1));
 
 	}
 
@@ -451,7 +451,7 @@ class Pages extends \core\Models {
 
 			if("/"==substr($url, 0,1)) $url=substr($url,1);
 			
-			$items[$ii]['url'] = $url;
+			$items[$ii]['url'] = maskUrl($url);
 
 
 

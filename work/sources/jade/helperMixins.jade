@@ -135,6 +135,15 @@ mixin img_venobox(item)
 		img(src="http://i.ytimg.com/vi/#{item.video}/mqdefault.jpg",
 				class="responsive-img")
 
+
+mixin img_lifty(item)
+	a(class="photo",
+		data-lity,
+		href="http://youtu.be/#{item.video}")
+		img(src="http://i.ytimg.com/vi/#{item.video}/mqdefault.jpg",
+				class="responsive-img")
+
+
 mixin menu_collection(items)
 
 	each men_item in items

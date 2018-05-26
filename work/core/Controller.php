@@ -239,7 +239,7 @@ class Controller {
 				'head_title'      => $this->title,
 				
 				//header and menu top
-				'link_home'       => ($this->devel)?'./'.$this->devel:'./',
+				'link_home'       => maskUrl(($this->devel)?'./'.$this->devel:'./'),
 				
 				//body
 				'pub_img'         => $this->pub_img,

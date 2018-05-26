@@ -1,19 +1,20 @@
 .home_block_descuentos
 	background-color #f7f7f7 !important
+	padding 20px 0 0px
 	> .container
-		padding 0 0.75rem
+		padding 1em 0.75rem
 		overflow hidden
 		> .card
 			background transparent
 			box-shadow initial
-			padding 1em
+			padding 0 1em
 			display flex
 			flex-direction column
 			> .more
 				order -1
-				right 25px
+				right 23px
 				width 169px !important
-				top 5px
+				top -25px
 				position absolute
 				@media $small
 					display none
@@ -75,10 +76,10 @@
 								transition opacity .25s,transform .25s
 								// max-height 100%
 						.card-content
-							padding 0
-							display flex
+							// padding 0
+							// display flex
 							// flex-direction column
-							flex-wrap wrap
+							// flex-wrap wrap
 							// height 40px
 							.btn
 								background-color transparent
@@ -118,9 +119,9 @@
 								img
 									transform scale(1.1)
 									opacity .8
-					@media $large
-						&:nth-child(4)
-							display none
+					// @media $large
+					// 	&:nth-child(4)
+					// 		display none
 				.slick-arrow
 					position absolute
 					top 38%

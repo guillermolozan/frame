@@ -66,18 +66,25 @@
 					.card-image
 						border 0px solid #fff
 						border-bottom 0
-						fit_image(180px)
+						// fit_image(180px)
+						@media $large-medium
+							image_centered(180px)
 						@media $small
-							height auto
+							image_centered(270px)
+						// z-index 0
+						// @media $small
+						// 	height 270px
 						img
 							// visibility hidden
 							transition opacity .25s,transform .25s
 							// max-height 100%
 					.card-content
+						// z-index 0
 						padding 0
 						background #f7f7f7
 						padding 8px 8px 4px 8px !important
 						height 90px
+						position relative
 						.btn
 							background initial
 							color #333

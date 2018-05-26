@@ -103,6 +103,25 @@ background_opacity(file,opacity)
 		z-index -1
 
 
+image_centered(height)
+	text-align center
+	height height
+	width 100%
+	.photo
+		height inherit
+		display inline-flex
+		align-items center
+		justify-content center
+		text-align center
+		overflow hidden
+		margin 0 auto
+		width auto
+		img
+			flex 1 1 auto
+			max-height 100%
+			width auto
+
+
 fit_image(height)
 	@media $small
 		.photo 
@@ -112,22 +131,7 @@ fit_image(height)
 				width auto
 				margin 0 auto
 	@media $large-medium
-		text-align center
-		height height
-		width 100%
-		.photo
-			height inherit
-			display inline-flex
-			align-items center
-			justify-content center
-			text-align center
-			overflow hidden
-			margin 0 auto
-			width auto
-			img
-				flex 1 1 auto
-				max-height 100%
-				width auto
+		image_centered(height)
 
 
 container_center()

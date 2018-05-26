@@ -9,6 +9,13 @@ return [
 	
 	// 'header_pre'             => 'header_pre',
 	
+
+	// HOME HABITACIONES / PRODUCTS ITEMS
+	'block_locales'		    => 'block_locales',
+	// BLOCK HABITACION
+	'block_local'		       => 'block_local|es6',
+
+
 	'header'                 => 'header|es6',
 	
 	'footer'                 => 'footer',

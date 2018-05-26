@@ -1,7 +1,7 @@
 <?php
 return [
 
-	'banner'                 => 'work/block_banner|es6',
+	'banner'                 => 'block_banner|es6',
 	
 	'header_pre'             => 'agro/header_pre',
 	'header'                 => 'header|es6',
@@ -26,7 +26,7 @@ return [
 
 	'product_detail'			 => 'onelimites/product_detail|es6',
 
-	'form_consulta'			 => 'onelimites/form_consulta',
+	'form_consulta'			 => 'form_consulta',
 
 
 	'form_contact'           => 'form_contact|es6',

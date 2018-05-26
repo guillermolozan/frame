@@ -58,6 +58,7 @@ Celular: ".$this->view->vars['web_phone']."
 			],		
 
 			'telefono'=>[
+				'class' =>'validate',
 				'label'=>'Celular',
 			],
 

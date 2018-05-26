@@ -1,6 +1,7 @@
+//- article.card-panel.product_detail
 article(class="card-panel galleries product_detail")
 	.row
-		div(class="col s12 l6 main")
+		.col.s12.l6.main
 			//- h2 Descripción
 			h1 #{post.name}
 			h3 #{post.marca}
@@ -8,7 +9,7 @@ article(class="card-panel galleries product_detail")
 				data-layout='standard', 
 				data-action='like', 
 				data-size='small', 
-				data-show-faces='true', 
+				data-show-faces='false', 
 				data-share='true')
 			div!= post.html
 			if(post.precio!='S/.')
@@ -16,18 +17,16 @@ article(class="card-panel galleries product_detail")
 			if(post.oferta!='')
 				.oferta #{post.oferta}
 
-			if post.adjunto
-				div
-					a(href="#{post.adjunto}",class="waves-effect waves-light btn-large right-align download") #[i] Descargar Ficha Técnica
+			//- if post.adjunto
+			//- 	div
+			//- 		a(href="#{post.adjunto}",class="waves-effect waves-light btn-large right-align download") #[i] Descargar Ficha Técnica
 
-		div(class="col s12 l6 fotos")
+		.col.s12.l6.fotos
 			.row
-				div(class="col s3 m2 train")
+				.col.s3.m2.train
 					each foto in fotos
-						div
-							//- a(class="zoom",href="#{foto.img}")
-							a
-								img(class="responsive-img",src="#{foto.img}")
+						div: a: img(src="#{foto.img}")
 
 				div(class="col s9 m10 foto")
-					a(class="zoom",href="#{fotos[0].img}"): img(class="responsive-img",src="#{fotos[0].img}")
+					a(class="zoom",href="#{fotos[0].img}")
+						img.responsive-img(src="#{fotos[0].img}")

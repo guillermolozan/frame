@@ -7,6 +7,15 @@ footer
 
 		.col.s12.l6.third
 			ul.menu
+				if(!localhost)
+					li.footer-fb
+						.fb-like(
+							data-href="#{baseurl}",
+							data-layout='standard', 
+							data-action='like', 
+							data-size='small', 
+							data-show-faces='true', 
+							data-share='true')
 				if(web_facebook)
 					li(class="facebook circle") 
 						a(title="Facebook",target="_blank",href="#{web_facebook}") #{web_facebook_page}

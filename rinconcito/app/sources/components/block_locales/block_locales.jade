@@ -1,0 +1,16 @@
+.container
+	.block_locales.card
+
+		-items=locales
+		//- -ul_class=false
+		//- -li_class='col s12'
+		+title(items)
+		//- if(items.items)
+		ul(class="row #{ul_class} ")
+			each item in items.items
+				include ../../jade/includes/block_local
+				
+		+more(items)
+
+-ul_class=false
+-li_class=false			

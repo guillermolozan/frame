@@ -133,7 +133,7 @@ class Pages extends \controllers\Controller {
 				$menu=$Page->getMenu(
 					[
 						'item' =>$group['id'],
-						'uri'  =>$group['url'],
+						'uri'  =>maskUrl($group['url']),
 						'sub'	 => "id_grupo={id_grupo}",
 					]
 				);

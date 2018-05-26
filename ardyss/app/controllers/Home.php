@@ -14,17 +14,16 @@ class Home extends Controller {
       
       
 
-		//banner
+		// Banner
 		$Banner=$this->loadModel('Banners');
       $banner=$Banner->getItems();
       
       $this->view->assign(["banner" => $banner]);
 
-		// prin($banner);
 
 
             
-      // downloads
+   	// Downloads
 		$Downloads=$this->loadModel('Banners');
       $Downloads->setConfig([
          // 'items'=>['fields'=>'fecha_creacion,file,name,url,adjunto'],
@@ -35,7 +34,7 @@ class Home extends Controller {
       foreach($downloads as $iii=>$ddd){
 
          // $downloads[$iii]['url']='download/'.get_imagen('doc_fil',$ddd['fecha_creacion'],$ddd['adjunto']);
-         $downloads[$iii]['url']='download/'.$ddd['url'];
+         $downloads[$iii]['url']=maskUrl('download/'.$ddd['url']);
 
       }
       $this->view->assign(["downloads" => $downloads]);
@@ -63,7 +62,7 @@ class Home extends Controller {
 				// prin($id_grupo);
 				$name_grupo=dato("url","productos_grupos","where id=".$id_grupo);
 
-				$items_productos[$oo]['url']=procesar_url($name_grupo.'/sub-category-'.trim($itm['name']).'/'.$itm['id']);
+				$items_productos[$oo]['url']=procesar_url($name_grupo.'/'.trim($itm['name']).'/'.$itm['id']);
 
 				$items=filas("id","productos_items","where id_filtro=".$itm['id'],0);
 				
@@ -93,13 +92,13 @@ class Home extends Controller {
 			}
 
 
-		foreach($items_productos as $ii=>$item){
+		// foreach($items_productos as $ii=>$item){
 
-			list($uno,$url,$id)=explode("/",$item['url']);
-			$url=select_dato("url","productos_items","where id=".$id);
-			$items_productos[$ii]['url']=$url.".html";
+		// 	list($uno,$url,$id)=explode("/",$item['url']);
+		// 	$url=select_dato("url","productos_items","where id=".$id);
+		// 	$items_productos[$ii]['url']=$url.".html";
 
-		}
+		// }
 
 
 		$lineas=[
@@ -131,7 +130,7 @@ class Home extends Controller {
 			limit 0,20",
 			0,[
 
-				'url'=>['url'=>['importado/{name}/{id}']],
+				'url'=>['url'=>['recomendados/{name}/{id}']],
 
 			]);
 
@@ -160,21 +159,21 @@ class Home extends Controller {
 			}
 
 
-		foreach($items_productos as $ii=>$item){
+		// foreach($items_productos as $ii=>$item){
 
-			list($uno,$url,$id)=explode("/",$item['url']);
-			$url=select_dato("url","productos_items","where id=".$id);
-			$items_productos[$ii]['url']=$url.".html";
+		// 	list($uno,$url,$id)=explode("/",$item['url']);
+		// 	$url=select_dato("url","productos_items","where id=".$id);
+		// 	$items_productos[$ii]['url']=$url.".html";
 
-		}
+		// }
 
 
 		$importaciones=[];
 		$importaciones['name']='Recomendados';
-		$importaciones['url']='recomendados';
+		$importaciones['url']=maskUrl('recomendados');
 		$importaciones['more']=[
             'name' => 'ver más',
-            'url' => 'recomendados'
+            'url' => maskUrl('recomendados')
       ];
 
 		foreach($items_productos as $oo=>$itm){
@@ -239,15 +238,15 @@ class Home extends Controller {
 
 		$descuentos=[];
 		$descuentos['name']='Descuentos';
-		$descuentos['url']='descuentos';		
+		$descuentos['url']=maskUrl('descuentos');
 		$descuentos['more']=[
             'name' => 'ver más',
-            'url' => 'descuentos'
+            'url' => maskUrl('descuentos')
       ];
       
 
 
-
+		// prin($items_productos);
 		foreach($items_productos as $oo=>$itm){
 			$descuentos['items'][$oo]=[
 				'subname'       =>($itm['subname']=='')?'':$itm['subname']."%",
@@ -259,7 +258,7 @@ class Home extends Controller {
 			];
 		}
 
-
+		// prin($descuentos);
       $this->view->assign(["descuentos" => $descuentos]);
 
 
@@ -377,7 +376,7 @@ class Home extends Controller {
 			// prin($gallery);
 
 			$gallery['more']=[
-				'url'  =>'videos',
+				'url'  =>maskUrl('videos'),
 				'name' =>'galería de videos'
 			];
 
@@ -397,10 +396,11 @@ class Home extends Controller {
 				'title'      => $this->title,
 				
 				//head
-				'head_title' => $this->title . ( ($this->slogan)? ' - '.$this->slogan:'' ),
+				// 'head_title' => $this->title . ( ($this->slogan)? ' - '.$this->slogan:'' ),
+				'head_title' => $this->title." :: Prendas remodeladoras, Body Magic, Camiseta Abdomen, Prendas Remodeladoras Ardyss, Fajas Moldeadoras Ardyss, Fajas Ardyss, Fajas Remodeladoras, Fajas Reductoras",
 	
 				
-				
+				// 'head_title' => 'nada',
 
 
 				
@@ -409,8 +409,7 @@ class Home extends Controller {
 				// 'menu_left'    => $this->menu_left,
 
 
-				//facebook
-				'opengraph'  => true,
+
 				
 
 

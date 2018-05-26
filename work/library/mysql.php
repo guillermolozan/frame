@@ -1856,10 +1856,20 @@ function procesar_url($url,$debug=0){
 	$url  =urlencode($url);
 	$url  =str_replace(['+','%2F','---','--'],['-','/','-','-'],$url);
 
-	return $url;
+	// return $url;
+	return maskUrl($url);
 
 }
 
+
+function maskUrl($url){
+
+	global $maskUrls;
+	if($maskUrls[$url]) return $maskUrls[$url];
+	return $url;
+	// return "url-aun-no-definida.html";
+
+}
 
 function processFields($fields){
 
@@ -1949,6 +1959,8 @@ function extractCommonWords($string){
    return $wordCountArr;
 
 }
+
+
 
 $debug_arrays=[];
 function myprint_r($my_array,$deep=0) {

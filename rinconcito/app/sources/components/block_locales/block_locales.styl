@@ -1,0 +1,47 @@
+.block_locales
+	background #fff
+	h2,h1
+		text-align center
+		// text_border(#333)
+		font-size 25px
+		color #111 !important
+		font-weight bold
+		font-family arial
+
+		margin-left 20px
+		margin-right 20px
+		position relative
+		&:before,&:after
+			content ""
+			height 2px
+			background #333
+			width 40%
+			position absolute
+			top 10px
+			@media $small-medium
+				width 35%
+			@media $small
+				display none
+		&:before
+			left 0
+		&:after
+			right 0
+	padding-top 10px
+	margin-bottom 50px
+	
+	// order
+	@media $large
+		> .row > li.col:nth-child(even) > .row
+			display flex
+			.text
+				order -1
+				
+	.more
+		a
+			box-shadow initial
+			background color1
+			color white
+			font-weight bold
+			font-family arial
+			// text-decoration underline
+

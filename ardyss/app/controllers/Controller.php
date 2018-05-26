@@ -13,7 +13,6 @@ class Controller extends \core\Controller {
 
 		parent::__construct($params);
 
-
 		$Page=$this->loadModel('Pages');
 
 		// menu left
@@ -34,10 +33,10 @@ class Controller extends \core\Controller {
 
 		}	
 
-		$replace_menu_pre_top=$replace_menu_pre;
 
-		$replace_menu_pre_top['productos-ardyss']=[
-			'url'   =>'productos-ardyss',
+		
+		$replace_menu_pre['productos-ardyss']=[
+			'url'   =>maskUrl('productos-ardyss'),
 			'name'  =>'PRODUCTOS ARDYSS',
 			'items' =>select('nombre as name,id,url','productos_subgrupos','where id_grupo=3 and visibilidad=1',0,
 			[
@@ -46,8 +45,8 @@ class Controller extends \core\Controller {
 
 		];
 
-		$replace_menu_pre_top['recomendados']=[
-			'url'   =>'recomendados',
+		$replace_menu_pre['recomendados']=[
+			'url'   =>maskUrl('recomendados'),
 			'name'  =>'RECOMENDADOS',
 			'items' =>select('nombre as name,id,url','productos_subgrupos','where id_grupo=2 and visibilidad=1',0,
 			[
@@ -55,6 +54,8 @@ class Controller extends \core\Controller {
 			])
 
 		];
+
+		$replace_menu_pre_top=$replace_menu_pre;
 
 		// prin($replace_menu_pre);
 
@@ -73,7 +74,7 @@ class Controller extends \core\Controller {
 			$this->menu_footer=$this->elements->getMenu('menu_footer',$this->menu_footer);
 
 
-
+		
       $this->view->assign(
 			[
 			// menus
@@ -118,7 +119,7 @@ class Controller extends \core\Controller {
 				'build_js'     => $this->view->vars['build_js'].'?'.$this->static_build,	
 
 				// 'logo'         => $this->config['img_logo'],
-				'logo'         => 'logo2.jpg?'.$this->static_build,
+				'logo'         => 'logo.jpg?'.$this->static_build,
 				'icon'       	=> 'ico.jpg?'.$this->static_build,
 
 				// 'header_bg'		=> $header_bg['img'],
@@ -126,7 +127,10 @@ class Controller extends \core\Controller {
 				// 'header_phones'=> $web['header_phones'],
 
             //footer
-         
+				
+				//facebook
+				'opengraph'  => true,
+				
 				//gmap
 				'gmap_key'			 => 'AIzaSyDsA0HccVmhVLNFpys3BZZlmOemTq-peBA',
 

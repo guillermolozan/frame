@@ -26,6 +26,7 @@ use core\Config as Config;
 use core\Server as Server;
 use core\Connection as Connection;
 use core\Routes as Routes;
+use core\Urls as Urls;
 
 
 $starts    = require APP.'/config/start.php';
@@ -46,6 +47,10 @@ $httpfiles = $Config['httpfiles'];
 
 $DIRECTORIO_IMAGENES=$Config['DIRECTORIO_IMAGENES'];
 
+
+$masks = new Urls();
+$maskUrls=$masks->getItems();
+// prin($maskUrls);
 
 $rou = new Routes();
 $rou->response();

@@ -1,6 +1,4 @@
 .p-servicios
-	
-
 	h1
 		display none
 	ol.breadcrumb
@@ -25,30 +23,67 @@
 				margin-top 0px
 				font-size 1.2rem !important
 			display block !important
-
-		.cotizar,.whatsapp
+			color #346284
+		@media $small-medium
+			article.card-panel
+				margin-top 0px !important
+		.cotizar
 			display none
 		.fotos > .row
 			display flex
 			flex-direction column-reverse
-		.train
-			width 100%
-			// vertical-align top
-			> div
-				width 19%
-				margin-right 2%
-				display inline-block
-				vertical-align middle
-				height 162px
-				a 
-					height 160px
-					display block !important
-					img
-						height 100%
-		.foto
-			width 100%
-			float none !important
-			display block !important
+			.train
+				width 100%
+				// vertical-align top
+				height 133px
+				// overflow-x auto
+				display flex
+				justify-content space-between
+				// padding-bottom 1px
+				> div
+					border 1px solid #ccc
+					// max-width 19%
+					width auto
+					max-width 33%
+					// margin-left .5%
+					// margin-right 
+					// display inline-block
+					float left
+					height 100%
+					overflow hidden !important
+					// vertical-align middle
+					&:hover
+						border-color navy
+					a
+						// overflow hidden !important
+						height inherit
+						display flex
+						align-items center
+						justify-content center
+						// height auto
+						padding 1px
+						// margin 0px
+						// display block !impotant
+						img
+							height auto
+							max-height 100%
+							margin 0 !important
+							// width auto
+					// a 
+					// 	height auto%
+					// 	padding 1px
+					// 	display block !important
+					// 	img
+					// 		height 100%
+					@media $small-medium
+						height 80px
+			.foto
+				width 100%
+				margin auto
+				// text-align center
+				// float none !important
+				// display block !important
+				// height auto
 		.main
 			overflow hidden
 			
@@ -155,10 +190,11 @@
 					text-transform uppercase
 					font-family Roboto
 					color white !important
-					background color1
+					background #346284
 					// padding 0 0 0 1em !important
 					// height 1.5em
 					// line-height 2.2em
+					// padding 10px 0 10px 1em !important
 				a 
 					color color1
 					display block

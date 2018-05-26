@@ -90,6 +90,7 @@ require("../../../../work/app/sources/components/common/common.js")();
 require("../../../../work/app/sources/components/menu_left/menu_left.js")();
 require("../../../../work/app/sources/components/block_gallery/block_gallery.js")();
 require("../../../../work/app/sources/components/block_banner/block_banner.js")();
+require("../../../../rinconcito/app/sources/components/block_local/block_local.js")();
 require("../../../../rinconcito/app/sources/components/header/header.js")();
 // Finish Components
 

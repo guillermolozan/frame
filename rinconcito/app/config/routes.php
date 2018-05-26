@@ -23,6 +23,8 @@ $temp=array_merge($temp,[
 
 		'/carta$'                => 'controller=Carta&method=index',
 
+	//home 2
+		'/home2$'                => 'controller=Home&method=index2',
 
 
 	/*

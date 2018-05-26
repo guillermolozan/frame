@@ -2,13 +2,20 @@
 
 $routes_return = [];
 
-
-$productos_items=select("url,id","productos_items","");
-foreach($productos_items as $item)
+// ITEMS
+$productos_items=get_valores("id","url","productos_items");
+foreach($productos_items as $ii=>$url)
 {
-	$routes_return['/'.$item['url'].'.html'.'$']='controller=Servicios&method=detail&level=producto&item='.$item['id'];
+	$routes_return['/'.$url.'.html'.'$']='controller=Servicios&method=detail&level=producto&item='.$ii;
 }
-// prin($routes_return);
+
+
+// PAGES
+$pages_items=get_valores("id","url","paginas");
+foreach($pages_items as $ii=>$url)
+{
+	$routes_return['/'.$url.'.html'.'$']='controller=Pages&item='.$ii;
+}
 
 
 
@@ -28,17 +35,16 @@ $routes_group['Servicios']   = get_valores("id","url","productos_grupos","where 
 
 
 $routes_lists = [
-	[
-		'grid'       =>'galerias-fotos',
-		'detail'     =>'galeria-fotos',
-		'controller' =>'Photos',
-	],	
+	// [
+	// 	'grid'       =>'galerias-fotos',
+	// 	'detail'     =>'galeria-fotos',
+	// 	'controller' =>'Photos',
+	// ],	
 	[
 		'grid'       =>'videos',
 		'detail'     =>'galeria-videos',
 		'controller' =>'Videos',
 	],
-
 	// [
 	// 	'grid'       =>'productos',
 	// 	'detail'     =>'producto',

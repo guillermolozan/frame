@@ -1,3 +1,11 @@
+@keyframes animacion_telefono
+	0%
+		margin-right 10px
+	100%
+		margin-right 20px
+
+
+
 .header_pre
 	nav
 		background #46BEEC url(imgs+'header-bg2.png?1') repeat-y center top !important
@@ -46,7 +54,7 @@
 					// color transparent
 					// float left
 					// width 0px
-					font-size 0px
+					font-size 0px !important
 					// &:before
 					// 	display none
 					// 	width auto
@@ -56,6 +64,25 @@
 						font-size 16px
 						font-style italic
 						font-weight normal
+					
+					font-size 16px
+					font-weight bold !important
+					cursor default
+					// text-shadow 0px 0px 15px color2 
+					text-shadow 0px 0px 0px
+					transition all .5s
+					&:before
+						transition inherit
+						animation-iteration-count 3
+						color color2 !important
+					&:hover
+						text-shadow 0px 0px 15px color2 
+						&:before
+							animation-name animacion_telefono
+							animation-duration .5s
+							animation-iteration-count infinite
+							animation-direction alternate
+							animation-timing-function ease
 					// display none
 				li.whatsapp
 					order 101 !important

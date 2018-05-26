@@ -298,9 +298,9 @@ class Servicios extends \core\controllers\Pages {
 				'required' =>'1',
 			],
 
-			'empresa'=>[
+			'ciudad'=>[
 				// 'divclass' =>'col s12 l6',
-				'label'    =>'Empresa',
+				'label'    =>'Ciudad',
 			],	
 
 			'medio'=>[
@@ -465,7 +465,7 @@ Gracias
 											// 
 											'adjunto' =>$post['get_archivo'],
 
-											'oferta' =>$post['oferta'],
+											'oferta' =>round($post['oferta']),
 
 										],
 			
@@ -484,12 +484,23 @@ Gracias
 			'breadcrumb'	 => $breadcrumb,
 			
 			//form
-			'contact'       =>$fields_reformated,
-			
+			// 'contact'       =>$fields_reformated,
+			'fields1'			=> [
+				$fields_reformated[0],
+				$fields_reformated[1],
+				$fields_reformated[2],
+				$fields_reformated[3],
+				$fields_reformated[4],
+				$fields_reformated[5]
+			],
+
+			'fields2'			=> [$fields_reformated[6]],
+
+
 			'message'       => $this->message,
 
 			//facebook
-			'opengraph'			=> true,
+			// 'opengraph'			=> true,
 
 			//menu
 			'menu_left'    => $this->menu_left,
@@ -1075,21 +1086,23 @@ Gracias
 
 		$menu       = $this->elements->getM($menu,$params['uri']);
 
+		// prin($menuleftfinal);
+
 		$menuleftfinal       = $this->elements->getM($menuleftfinal,$params['uri']);
 
 
 
-		foreach($menu['items'] as $ii=>$itemmenu){
-			foreach($itemmenu['items'] as $kk=>$itemmenu2){
-				foreach($itemmenu2['items'] as $jj=>$item){
-				// prin($item);
-				list($uno,$url,$id)=explode("/",$item['url']);
-				$url=select_dato("url","productos_items","where id=".$id);
-            $menu['items'][$ii]['items'][$kk]['items'][$jj]['url']=$url.".html";
+		// foreach($menu['items'] as $ii=>$itemmenu){
+		// 	foreach($itemmenu['items'] as $kk=>$itemmenu2){
+		// 		foreach($itemmenu2['items'] as $jj=>$item){
+		// 		// prin($item);
+		// 		list($uno,$url,$id)=explode("/",$item['url']);
+		// 		$url=select_dato("url","productos_items","where id=".$id);
+      //       $menu['items'][$ii]['items'][$kk]['items'][$jj]['url']=$url.".html";
             
-				}
-			}
-		}
+		// 		}
+		// 	}
+		// }
 
       // prin($menu['items']);
 
@@ -1131,7 +1144,7 @@ Gracias
 
 			$breadcrumb[]=[
 				'name' =>'Productos',
-				'url'  =>'productos',
+				'url'  =>maskUrl('productos'),
 			];
 
 
@@ -1149,7 +1162,7 @@ Gracias
 
 			$breadcrumb[]=[
 				'name' =>'Importados',
-				'url'  =>'importaciones',
+				'url'  =>maskUrl('importaciones'),
 			];
 
 
@@ -1167,7 +1180,7 @@ Gracias
 
 			$breadcrumb[]=[
 				'name' =>'Descuentos',
-				'url'  =>'descuentos',
+				'url'  =>maskUrl('descuentos'),
 			];
 
 		// } elseif($params['level']=='mas-vistos'){
@@ -1197,12 +1210,12 @@ Gracias
 
 			$breadcrumb[]=[
 				'name' =>'Productos',
-				'url'  =>'productos',
+				'url'  =>maskUrl('productos'),
 			];
 
 			$breadcrumb[]=[
 				'name' =>$post['name'],
-				'url'  =>$post['url'],
+				'url'  =>maskUrl($post['url']),
 			];			
 
 			// $breadcrumb[]=[
@@ -1242,12 +1255,12 @@ Gracias
 
 			$breadcrumb[]=[
 				'name' =>'Productos',
-				'url'  =>'productos',
+				'url'  =>maskUrl('productos'),
 			];
 
 			$breadcrumb[]=[
 				'name' =>$post['menu_name'],
-				'url'  =>$post['menu_url'],
+				'url'  =>maskUrl($post['menu_url']),
 			];	
 
 			// prin($post);
@@ -1279,12 +1292,12 @@ Gracias
 
 			$breadcrumb[]=[
 				'name' =>'Productos',
-				'url'  =>'productos',
+				'url'  =>maskUrl('productos'),
 			];
 
 			$breadcrumb[]=[
 				'name' =>$post['menu_name'],
-				'url'  =>$post['menu_url'],
+				'url'  =>maskUrl($post['menu_url']),
 			];	
 
 			$breadcrumb[]=[
@@ -1321,7 +1334,7 @@ Gracias
 
 			]);
 
-
+		
 
 			foreach($grupos_items as $ii=>$item){
 
@@ -1336,7 +1349,7 @@ Gracias
 				limit 0,3",
 				0,[
 
-					'url'=>['url'=>['producto/{name}/{id}']],
+					'url'=>['url'=>[$item['name'].'/{name}/{id}']],
 
 				]);
 
@@ -1384,78 +1397,10 @@ Gracias
 
 		} elseif($params['level']=='2'){
 
-
-			if(0)
-			{
-
-				//Grupos
-				$grupos_items=select(
-				"nombre as name,id",
-				"productos_subgrupos",
-				"where id_grupo=".$params['item']."
-				and visibilidad=1
-				limit 0,5",
-				0,[
-					'url'=>['url'=>['{name}']],
-				]);
-
-				// prin($post);
-
-				foreach($grupos_items as $ii=>$item){
-
-
-					$grupos_items[$ii]['url']=procesar_url($params['grup']."/sub-category-".$item['name']."/".$item['id']);
-
-
-					$grupos_items[$ii]['items']=select(
-					"nombre as name,id,precio,moneda",
-					"productos_items",
-					"where id_filtro=".$item['id']."
-					and visibilidad=1
-					order by weight desc
-					limit 0,3",
-					0,[
-
-						'url'=>['url'=>['producto/{name}/{id}']],
-
-					]);
-
-
-					foreach($grupos_items[$ii]['items'] as $iii=> $prod){
-
-
-						if(trim($prod['precio'])!='')
-							$grupos_items[$ii]['items'][$iii]['precio']=(($prod['moneda']=='1')?'US$':'S/.').$prod['precio'];
-
-
-						$fotos=fila(
-							"id,fecha_creacion,file",
-							"productos_fotos",
-							"where id_item=".$prod['id'],
-							0,
-							[
-								'img'=>['get_archivo'=>[
-															'carpeta'=>'profot_imas',
-															'fecha'=>'{fecha_creacion}',
-															'file'=>'{file}',
-															'tamano'=>'0'
-															]
-														],
-								]
-
-						);
-
-						$grupos_items[$ii]['items'][$iii]['img']=$fotos['img'];
-
-
-					}
-
-				}
-
-			} //0
+		   $grupos_array=get_valores("id","url","productos_grupos","");
 
 			$items_productos=select(
-			"nombre as name,id,precio,moneda",
+			"nombre as name,id,precio,moneda,id_grupo",
 			"productos_items",
 			"where $where
 			and visibilidad=1
@@ -1472,6 +1417,9 @@ Gracias
 
 				if(trim($prod['precio'])!='')
 					$items_productos[$iii]['precio']=(($prod['moneda']=='1')?'US$':'S/.').$prod['precio'];
+
+
+				$items_productos[$iii]['url']=procesar_url($grupos_array[$prod['id_grupo']].'/'.$prod['name'].'/'.$prod['id']);
 
 
 				$fotos=fila(
@@ -1533,13 +1481,15 @@ Gracias
 				'url'=>['url'=>[$url_item.'/{name}/{id}']],
 
 			]);
-
+			// prin($items_productos);
 
 			foreach($items_productos as $iii=> $prod){
 
 
 				if(trim($prod['precio'])!='')
 					$items_productos[$iii]['precio']=(($prod['moneda']=='1')?'US$':'S/.').$prod['precio'];
+
+				$items_productos[$iii]['subname']=round($prod['subname']);
 
 				$fotos=fila(
 					"id,fecha_creacion,file",
@@ -1563,6 +1513,7 @@ Gracias
 
 			}
 
+			// prin($items_productos);
 
 			$head_description =$Page->getDescription($post,items2string($items_productos));
 			
@@ -1624,13 +1575,13 @@ Gracias
 		}
 
 
-		foreach($items_productos as $ii=>$item){
+		// foreach($items_productos as $ii=>$item){
 
-			list($uno,$url,$id)=explode("/",$item['url']);
-			$url=select_dato("url","productos_items","where id=".$id);
-			$items_productos[$ii]['url']=$url.".html";
+		// 	list($uno,$url,$id)=explode("/",$item['url']);
+		// 	$url=select_dato("url","productos_items","where id=".$id);
+		// 	$items_productos[$ii]['url']=$url.".html";
 
-		}
+		// }
 
 		$this->view->assign(['items' => $items_productos]);
 

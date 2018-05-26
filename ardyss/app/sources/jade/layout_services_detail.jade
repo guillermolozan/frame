@@ -16,9 +16,8 @@ html(lang="es")
 			//- .wide
 			div(class="post project")
 				+card_sended(message)
-				div(class="cabecera")
-
-
+				
+				.cabecera
 					if(breadcrumb)
 						ol.breadcrumb
 							each item in breadcrumb
@@ -26,19 +25,10 @@ html(lang="es")
 									li(class="#{item.class}"): +item(item)
 								else
 									li: +item(item)
-					//- h1(class="cparts")
-					//- 	+item(post)
-					//- -main=false
-					div(class="contacts cparts")
-						//- span(class="phone"): a(href="tel:01#{post.phone}") #{post.phone}
-						span(class="whatsapp"): a(href="tel:#{web_whatsapp}") #{web_whatsapp}
-						//- span(class="email hide-on-small-only"): a(href="mailto:#{post.email}",target="_top") #{post.email}
-						span(class="cotizar hide-on-med-and-down"): a(href="#cotizar") Consultar
 
 				.row
 
-					div(class="col s12 l12")
-
+					.col.s12.l12
 						include includes/product_detail
 
 					include includes/form_consulta

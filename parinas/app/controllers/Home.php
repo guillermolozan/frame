@@ -124,11 +124,9 @@ class Home extends Controller {
 			'name' =>'ver más habitaciones'
 		];
 
-		$this->view->assign([
+		// prin($habitaciones);
 
-			"habitaciones"=>$habitaciones
-
-		]);
+		$this->view->assign(["habitaciones"=>$habitaciones]);
 
 
 

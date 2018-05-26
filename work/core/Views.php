@@ -67,9 +67,39 @@ Class Views {
 		//
 		
 		$vars = array_merge($this->vars,$vars);
+		
+		// prin($vars);
 
 		extract($vars);
 
+		// prin($vars);
+		//buscar dentro del array, los indices 'url'
+		// function lokkingfor($vass){
+		// 	$uris=[];
+		// 	function looking($vas){
+		// 		global $uris;
+		// 		foreach($vas as $ii=>$yy){
+		// 			if(is_array($yy)){
+		// 				looking($yy);
+		// 			}
+		// 			else {
+		// 				if($ii=='url' or $ii=='uri')
+		// 				{
+		// 					// prin($yy);
+		// 					// array_push($uris,$yy);
+		// 					$uris[]=$yy;
+		// 					// prin($uris);
+		// 				}
+		// 			}
+		// 		}
+		// 		return;
+		// 	}
+		// 	looking($vass);
+		// 	prin($uris);
+		// 	return $uris;
+		// }
+		
+		// prin(lokkingfor($vars));
 
 		// prin($vars['params']);
 
@@ -795,6 +825,7 @@ Class Views {
 		// prin('detalle');
 
 		$file_out=APP."/".$this->views."/".$file.".php";
+		// prin($file_out);
 
 		if($file_out=='app/views/php/inline/email_default.php'){
 			// prin($vars);

@@ -33,7 +33,8 @@ var gulp         = require('gulp'),
     exec         = require('child_process').exec,
     path         = require('path'),
     wait         = require('gulp-wait'),
-    curl         = require('node-curl'),
+    // curl         = require('node-curl'),
+    request      = require('request'),
     http         = require('http'),
     st           = require('st'),
     buffer       = require('vinyl-buffer'),     
@@ -88,14 +89,15 @@ var remotedir=dconn.remotedir || '/public_html';
 
 var livedeploy= function(file){
 
+    // console.log(dconn);
     if (typeof(conn) == "undefined")
       conn = ftp.create(dconn);
 
     // remotedir = dconn.remotedir || '/public_html';
-    console.log('remotedir: '+remotedir);
+    console.log(file);
 
     return gulp.src([file],{base:'.',buffer:false})
-      .pipe(conn.newer(remotedir)) // only upload newer files 
+      // .pipe(conn.newer(remotedir)) // only upload newer files 
       .pipe(conn.dest(remotedir));
 
 }
@@ -384,10 +386,12 @@ gulp.task('json',function(){
 
   var geturl = 'http://localhost/frame/'+folder+'/runtime/jsons';
   console.log(geturl);
-  curl(geturl,{}, function(err) {
-    console.info(this.body);
-    varjson = require(json_dir+'/data.json');
-  });   
+  console.log('task json');
+  request(geturl);  
+  // curl(geturl,{}, function(err) {
+  //   console.info(this.body);
+  //   varjson = require(json_dir+'/data.json');
+  // });   
 
 });
 
@@ -416,13 +420,15 @@ gulp.task('deploy',function(){
     var conn = ftp.create(dconn);
 
     var globspc = [     
-        app+'/public/css/**',
+        app+'/public/css/app.css',
+        app+'/touch.json',
     ];
     var globspi = [     
         app+'/public/img/**',
     ];
     var globspj = [     
-        app+'/public/js/**',
+        app+'/public/js/app.js',
+        app+'/touch.json',
     ]; 
     var globspv = [     
         app+'/public/font/**',
@@ -492,7 +498,7 @@ gulp.task('deploy',function(){
     // turn off buffering in gulp.src for best performance 
  
     return gulp.src(globs,{base:'.',buffer:false})
-      .pipe(conn.newer(remotedir)) // only upload newer files 
+      // .pipe(conn.newer(remotedir)) // only upload newer files 
       .pipe(conn.dest(remotedir));
 
 });
@@ -503,10 +509,12 @@ gulp.task('components',function(){
 
   var geturl = 'http://localhost/frame/'+folder+'/runtime/start';
   console.log(geturl);
-  curl(geturl,{}, function(err) {
-    console.info(this.body);
-    // varjson = require(json_dir+'/data.json');
-  });   
+  console.log('task components');
+  request(geturl);    
+  // curl(geturl,{}, function(err) {
+  //   console.info(this.body);
+  //   // varjson = require(json_dir+'/data.json');
+  // });   
 
 });
 
