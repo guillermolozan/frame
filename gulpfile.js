@@ -1,8 +1,12 @@
 /*
 cd frames
 http-server .
-sudo npm i -D gulp              
-sudo npm i -D vinyl-buffer http st path gulp-wait gulp-exec node-curl write vinyl-ftp gulp-util yargs gulp-data gulp-stylus gulp-jade gulp-watch gulp-babel gulp-autoprefixer gulp-sourcemaps gulp-livereload gulp-jade-php
+sudo npm i -D gulp   
+
+sudo npm i -D vinyl-buffer http st path gulp-wait gulp-exec write vinyl-ftp gulp-util yargs gulp-data gulp-stylus gulp-jade gulp-watch gulp-autoprefixer gulp-sourcemaps gulp-livereload gulp-jade-php gulp-babel babel-core babel-preset-env gulp-inline-css request
+
+sudo npm i -D vinyl-buffer http st path gulp-wait gulp-exec write vinyl-ftp gulp-util yargs gulp-data gulp-stylus gulp-jade gulp-watch gulp-autoprefixer gulp-sourcemaps gulp-livereload gulp-jade-php gulp-babel babel-core babel-preset-env gulp-inline-css request gulp-jade-php
+
 gulp -p rinconcito|mconsultores
 gulp json -p rinconcito|mconsultores
 gulp deploy -p rinconcito|mconsultores -f css|img|js|vendor|public|controllers|views|config|work
@@ -10,7 +14,7 @@ gulp tutorial
 */
 
 
-var gulp         = require('gulp'),
+const gulp         = require('gulp'),
     
     browserify   = require('browserify'),
     babelify     = require('babelify'),
@@ -39,35 +43,38 @@ var gulp         = require('gulp'),
     st           = require('st'),
     buffer       = require('vinyl-buffer'),     
     writeFile    = require('write'),
+    
+    // jade_php     = require('gulp-jade-for-php'),
 
     inlineCss    = require('gulp-inline-css');
 
 
 // gulp.env has been deprecated. Use your own CLI parser instead. We recommend using yargs or minimist. 
 
-var folder     = argv.p;
-var app        = './'+folder;
-var work       = './work';
+const folder     = argv.p;
+const app        = './'+folder;
+const work       = './work';
 
-var comp_dir   = app+'/app/sources/components';
+const comp_dir   = app+'/app/sources/components';
 
-var stylus_dir = app+'/app/sources/stylus';
-var es6_dir    = app+'/app/sources/es6';
+const stylus_dir = app+'/app/sources/stylus';
+const es6_dir    = app+'/app/sources/es6';
 
-var jade_dir   = app+'/app/sources/jade';
+const jade_dir   = app+'/app/sources/jade';
 
-var views_dir  = app+'/app/views';
-var html_dir   = app+'/html';
-var json_dir   = app+'/json';
+const views_dir  = app+'/app/views';
+const html_dir   = app+'/html';
+const json_dir   = app+'/json';
 
-var public_dir = app+'/public';
+const public_dir = app+'/public';
 
-var work_jade_dir   = work+'/sources/jade';
-var work_stylus_dir = work+'/sources/stylus';
+const work_jade_dir   = work+'/sources/jade';
+const work_stylus_dir = work+'/sources/stylus';
 
-var depl=argv.d || 'no live';
+const depl = argv.d || 'no live';
+const clean = argv.c || '';
 
-var activelivedeploy = (depl=='live')?true:false;
+const activelivedeploy = (depl=='live')?true:false;
 
 // console.log(depl);
 
@@ -112,7 +119,7 @@ var livedeploy= function(file){
 
 
 // Jade Tutorial
-gulp.task('tutorial', function () {
+gulp.task('tutorial', () => {
   gulp.src('tutorial.jade')
     .pipe(jade({'pretty': true}))
     .pipe(gulp.dest('./'))
@@ -120,7 +127,7 @@ gulp.task('tutorial', function () {
 
 
 // Stylus
-gulp.task('stylus', function () {
+gulp.task('stylus', () => {
   
 
   gulp.src(stylus_dir+'/app.styl')
@@ -146,7 +153,7 @@ gulp.task('stylus', function () {
 
 
 
-gulp.task('touch', function () {
+gulp.task('touch', () => {
 
   // var touch0=require(app+'/touch.txt');
   // console.log(touch0);
@@ -169,7 +176,7 @@ gulp.task('touch', function () {
 
 
 // Babel
-gulp.task('babel', function () {
+gulp.task('babel', () => {
   gulp.src(es6_dir+'/*.js')
     .pipe(babel())
     .pipe(uglify())    
@@ -182,7 +189,7 @@ gulp.task('babel', function () {
 
 
 // Browserify
-gulp.task('browserify', function () {
+gulp.task('browserify', () => {
     browserify({
       entries: es6_dir+'/app.js',
       // shim: {
@@ -209,7 +216,7 @@ gulp.task('browserify', function () {
 
 
 // Jade2Html
-gulp.task('jade2html',['json'], function () {
+gulp.task('jade2html',['json'], () => {
 
   var layouts=[];
   var i=0;
@@ -254,13 +261,14 @@ gulp.task('server', function(done) {
   http.createServer(
     st({ path: __dirname, cache: false })
   ).listen(8080, done);
+  
 });
 
 
 
 
 // Jade2PHP
-gulp.task('jade2php', function () {
+gulp.task('jade2php', () => {
 
   exec('jade2php --pretty --omit-php-runtime --omit-php-extractor  '+folder+'/app/sources/jade/layout*.jade '+folder+'/app/sources/jade/email*.jade --out '+folder+'/app/views/php', function (err, stdout, stderr) {
     // console.log(stdout);
@@ -269,10 +277,18 @@ gulp.task('jade2php', function () {
 
 });
 
+// gulp.task("jade2php2", () => {
+//   gulp.src(folder + "/app/sources/jade/layout*.jade")
+//     // .pipe(jade({ locals: { title: "OMG THIS IS THE TITLE" } }))
+//     .pipe(jade_php({}))
+//     .pipe(gulp.dest(folder + "/app/views/php"));
+// });
 
 
 
-var modifies = [     
+
+
+const modifies = [     
 
   app+'/config/**',   
     
@@ -305,22 +321,22 @@ var modifies = [
 
 // Watch
 gulp.task('watch',[
-  'server',
+  // 'server',
   // 'json',
   'stylus',
   'browserify',
   'jade2php',
   // 'jade2html',  
   'email_inline',
-  ], function () {
+  ], () => {
   
   livereload.listen();  
   
   // console.log(comp_dir+'/**/*.styl');
 
-  var external_stylus =require(stylus_dir+'/externals/external.json');
-  var external_jade   =require(jade_dir+'/externals/external.json')
-  var external_es6    =require(es6_dir+'/externals/external.json')
+  const external_stylus =require(stylus_dir+'/externals/external.json');
+  const external_jade   =require(jade_dir+'/externals/external.json')
+  const external_es6    =require(es6_dir+'/externals/external.json')
 
   //watch styl
   gulp.watch([
@@ -382,7 +398,7 @@ gulp.task('default',
 
 
 // Generate Jsons for development
-gulp.task('json',function(){
+gulp.task('json',() => {
 
   var geturl = 'http://localhost/frame/'+folder+'/runtime/jsons';
   console.log(geturl);
@@ -395,7 +411,7 @@ gulp.task('json',function(){
 
 });
 
-// gulp.task('update',function(){
+// gulp.task('update',() => {
 
 //   var geturl = 'http://localhost/frame/'+folder+'/runtime/updatedb';
 
@@ -410,38 +426,38 @@ gulp.task('json',function(){
 
 
 //Deploy
-gulp.task('deploy',function(){
+gulp.task('deploy',() => {
   
-    var dconn = require(app+'/conn.json');
+    const dconn = require(app+'/conn.json');
     dconn.log = gutil.log;
 
-    var remotedir = dconn.remotedir || '/public_html';
+    const remotedir = dconn.remotedir || '/public_html';
 
-    var conn = ftp.create(dconn);
+    const conn = ftp.create(dconn);
 
-    var globspc = [     
+    const globspc = [     
         app+'/public/css/app.css',
         app+'/touch.json',
     ];
-    var globspi = [     
+    const globspi = [     
         app+'/public/img/**',
     ];
-    var globspj = [     
+    const globspj = [     
         app+'/public/js/app.js',
         app+'/touch.json',
     ]; 
-    var globspv = [     
+    const globspv = [     
         app+'/public/font/**',
         app+'/public/vendor/**',
     ];            
-    var globsc = [     
+    const globsc = [     
         app+'/app/controllers/**',
         app+'/app/models/**',
     ];
-    var globsv = [     
+    const globsv = [     
         app+'/app/views/php/**',
     ];    
-    var globs2 = [
+    const globs2 = [
         app+'/app/config/**',        
         // app+'/vendor/**',
         app+'/.htaccess',
@@ -449,7 +465,7 @@ gulp.task('deploy',function(){
         app+'/index.php',
     ];
 
-    var globs3 = [
+    const globs3 = [
         './work/core/**',
         './work/data_test/**',
         './work/library/**',
@@ -458,11 +474,11 @@ gulp.task('deploy',function(){
         '.htaccess',
     ];
 
-    var globs4 = [
+    const globs4 = [
         'index.php',
     ];    
 
-    var indextxt="<?php chdir('"+folder+"'); include 'index.php';"
+    const indextxt="<?php chdir('"+folder+"'); include 'index.php';"
 
     globs=[];
     if(argv.f=='css'){
@@ -505,9 +521,9 @@ gulp.task('deploy',function(){
 
 
 // Generate Jsons for development
-gulp.task('components',function(){
+gulp.task('components',() => {
 
-  var geturl = 'http://localhost/frame/'+folder+'/runtime/start';
+  const geturl = 'http://localhost/frame/'+folder+'/runtime/start/'+clean;
   console.log(geturl);
   console.log('task components');
   request(geturl);    
