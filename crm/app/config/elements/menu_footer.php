@@ -1,16 +1,10 @@
 <?php 
 
 return [
-	[
-	'name'   => 'demiurgo',
-	'url'   => 'demiurgo'
-	],
-	[
-	'name'   => 'prodiserv',
-	'url'   => 'prodiserv'
-	],
-	[
-	'name'   => 'master',
-	'url'   => 'master'
-	],
+
+	(($start['devel'])?$start['devel']:'') => 'INICIO',
+	'servicios'                       		=> 'SERVICIOS',
+	'empresa'                         		=> 'EMPRESA',
+	'contactenos'                          => 'CONTÁCTENOS',
+
 ];

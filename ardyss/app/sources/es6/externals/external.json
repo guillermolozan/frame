@@ -1,4 +1,6 @@
 [
+"./work/app/sources/components/head/head.styl",
+"./work/app/sources/components/foot/foot.styl",
 "./work/app/sources/components/common/common.styl",
 "./work/app/sources/components/menu_left/menu_left.styl",
 "./work/app/sources/components/block_gallery/block_gallery.styl",

@@ -1,0 +1,6 @@
+{
+	"host":     "framecrm.info",
+	"user":     "frame",
+	"password": "platano",
+	"parallel": "3"
+}

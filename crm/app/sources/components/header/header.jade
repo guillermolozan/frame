@@ -1,0 +1,24 @@
+header.navbar-fixed
+
+	if(is_home)
+		h1 #{web_name}
+		-main = false
+
+	//- include ../../jade/includes/header_pre
+	nav
+		.container
+			
+			+button_side_nav()
+
+			//- div(class="phones hide-on-med-and-down")!= header_phones
+				
+			//- menu_top
+			//- div #{web_name} #{baseurl}
+			ul.menu.menu_top
+				li.brand-logo: a(href="#{link_home}",title="#{web_name}")
+					img(src="#{pub_img}#{logo}",title="#{web_name}",alt="#{web_name}")
+				+menu_items(menu_top)
+				
+
+//- menu_left
+include ../../jade/includes/menu_left

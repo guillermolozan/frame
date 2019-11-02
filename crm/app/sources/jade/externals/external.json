@@ -1,0 +1,9 @@
+[
+"./work/app/sources/components/head/head.jade",
+"./work/app/sources/components/foot/foot.jade",
+"./work/app/sources/components/common/common.jade",
+"./work/app/sources/components/menu_left/menu_left.jade",
+"./work/app/sources/components/block_gallery/block_gallery.jade",
+"./work/app/sources/components/block_post/block_post.jade",
+"./agro/app/sources/components/header_pre/header_pre.jade"
+]

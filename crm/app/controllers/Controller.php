@@ -6,62 +6,143 @@ use core\Elements as Elements;
 use core\Views as Views;
 use core\Server as Server;
 
-
 class Controller extends \core\Controller {
 
-	function __construct(){
 
-		parent::__construct();
+	function __construct($params){
 
-		global $start;
+		parent::__construct($params);
 
-		$this->theme    = $start['theme'];
+		$Page=$this->loadModel('Pages');
 
-		$this->static   = $start['static'];
+		// menu left
+		$groups=select(
+						"id,url,name",
+						"paginas_groups",
+						"where id in (9)
+						and visibilidad=1
+						order by weight desc",0);
 		
-		$this->module   = new Models($start["models"]);
+		foreach($groups as $group){
+
+			$replace_menu_pre[$group['url']]=[
+				'url'   =>'#',
+				'name'  =>$group['name'],
+				'items' =>$Page->getMenu(['item'=>$group['id'],'uri'=>$group['url']])
+			];
+
+		}	
+
+
 		
-		// $Modelos     = $mod->getModels();		
-		
-		$this->elements = new Elements($this->module);
-	
-	}
-
-	function index(){
-
-		$this->view = new Views( 
-
-			$this->theme.'/php',
-
+		$replace_menu_pre['productos-ardyss']=[
+			'url'   =>maskUrl('productos-ardyss'),
+			'name'  =>'PRODUCTOS ARDYSS',
+			'items' =>select('nombre as name,id,url','productos_subgrupos','where id_grupo=3 and visibilidad=1',0,
 			[
-			
-			//head
-				'head_title'   => $this->config['html_title'],
-				'base'         => Server::base(),
-				'ven_css'		=> $this->static.'/vendor/css/',
-				'pub_css'		=> $this->static.'/css/',
-			
-			//header and menu top
-				'logo'         => $this->config['img_logo'],
-				'link_home'		=> './',
-				'menu_top'     => $this->elements->getMenuTop(),
+				'url'=>['url'=>['productos-ardyss/category-{url}/{id}']],
+			])
 
-			//body
-				'pub_img'		=> $this->static.'/img/',
+		];
 
-			//footer
-				'menu_footer'  => $this->elements->getFooter(),
+		$replace_menu_pre['recomendados']=[
+			'url'   =>maskUrl('recomendados'),
+			'name'  =>'RECOMENDADOS',
+			'items' =>select('nombre as name,id,url','productos_subgrupos','where id_grupo=2 and visibilidad=1',0,
+			[
+				'url'=>['url'=>['recomendados/category-{url}/{id}']],
+			])
 
-			//foot
-				'ven_js'			=> $this->static.'/vendor/js/',
-				'pub_js'			=> $this->static.'/js/',			
+		];
+
+		$replace_menu_pre_top=$replace_menu_pre;
+
+		// prin($replace_menu_pre);
+
+		// $replace_menu=[];
+
+
+		//menu top
+			$this->menu_top=$this->elements->getMenu('menu_top',$replace_menu_pre_top,$params['uri']);
+
+
+		//menu left
+			$this->menu_left=$this->elements->getMenu('menu_left',$replace_menu_pre,$params['uri']);
+
+
+		//menu footer
+			$this->menu_footer=$this->elements->getMenu('menu_footer',$this->menu_footer);
+
+
+		
+      $this->view->assign(
+			[
+			// menus
+				'menu_top'     => $this->menu_top,
+
+            'menu_left'    => $this->menu_left,
+
+            'menu_footer' 	=> $this->menu_footer,
+
+         ]
+      );
+
+
+
+
+
+		//web
+		// $web=$this->elements->getFromFile('web');
+
+
+		//header_bg
+		// $header_bg=fila(
+		// 	"fecha_creacion,file",
+		// 	"bloques_fotos",
+		// 	"where nombre='logo'",
+		// 	0,
+		// 	[
+		// 		'img'=>['get_archivo'=>[
+		// 									'carpeta'=>'blofot_imas',
+		// 									'fecha'=>'{fecha_creacion}',
+		// 									'file'=>'{file}',
+		// 									'tamano'=>'0'
+		// 									]
+		// 								]	
+		// 	]									
+		// 	);
+
+		$this->view->assign(
+			[
+
+				'build_css'    => $this->view->vars['build_css'].'?'.$this->static_build,
+				'build_js'     => $this->view->vars['build_js'].'?'.$this->static_build,	
+
+				// 'logo'         => $this->config['img_logo'],
+				'logo'         => 'logo.jpg?'.$this->static_build,
+				'icon'       	=> 'ico.jpg?'.$this->static_build,
+
+				// 'header_bg'		=> $header_bg['img'],
+				
+				// 'header_phones'=> $web['header_phones'],
+
+            //footer
+				
+				//facebook
+				'opengraph'  => true,
+				
+				//gmap
+				'gmap_key'			 => 'AIzaSyDsA0HccVmhVLNFpys3BZZlmOemTq-peBA',
 
 			]
-			
+
 		);
 
-		$this->view->setOption('jadeCompiled',true);	
+
+		$this->view->setOption('jadeCompiled',true);
+
 
 	}
+
 
 }

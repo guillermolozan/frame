@@ -7,8 +7,6 @@ define('CORE','../work');
 
 require CORE.'/library/helpers.php';
 
-$start    = require APP.'/config/start.php';
-
 $autoload = require APP.'/config/autoload.php';
 
 spl_autoload_register(function ($class) {
@@ -28,18 +26,31 @@ use core\Config as Config;
 use core\Server as Server;
 use core\Connection as Connection;
 use core\Routes as Routes;
+use core\Urls as Urls;
 
 
+$starts    = require APP.'/config/start.php';
+$start = array_merge($starts,$starts[Server::environment()]); 
+unset($start['local']);
+unset($start['remote']);
 
 
 $conf = new Config($start['config']);
 $Config = $conf->getConfig(Server::environment());
 
 
+$link = Connection::connect($Config);
 
-$link = new Connection();
+
+$httpfiles = $Config['httpfiles'];
 
 
+$DIRECTORIO_IMAGENES=$Config['DIRECTORIO_IMAGENES'];
+
+
+$masks = new Urls();
+$maskUrls=$masks->getItems();
+// prin($maskUrls);
 
 $rou = new Routes();
 $rou->response();

@@ -59,6 +59,11 @@ return [
 	
 		// 'fake'	=>'fakeimg',
 
+	],
+
+	'setup' => [
+
+
 	]
 
 ];
