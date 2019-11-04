@@ -47,11 +47,16 @@ $httpfiles = $Config['httpfiles'];
 
 $DIRECTORIO_IMAGENES=$Config['DIRECTORIO_IMAGENES'];
 
-
 $masks = new Urls();
+
+
 $maskUrls=$masks->getItems();
+
+
 // prin($maskUrls);
 
+
 $rou = new Routes();
+
 $rou->response();
 

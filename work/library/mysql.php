@@ -71,10 +71,10 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 	if(isset($opciones['db'])){
 
 		global $Config;
-
+		
 		$olddb=$Config['MYSQL_DB'];
 
-		mysql_select_db($opciones['db'],$link);
+		mysqli_select_db($link,$opciones['db']);
 		
 		unset($opciones['db']);
 
@@ -95,7 +95,7 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 	}
 	$filas = array();
 	/*if(is_array($debug)){
-	 foreach ($debug as &$v) { $v = htmlentities(mysql_real_escape_string($v); }
+	 foreach ($debug as &$v) { $v = htmlentities(mysqli_real_escape_string($v); }
 	 		$consulta = vsprintf( "select $campos from $tabla $donde" , $debug );
 	 		} else {*/
 	if(enhay($donde,"MATCH")){
@@ -112,12 +112,11 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 	$consulta="select $campos from $tabla $donde";
 	// echo $consulta;
 	//}
-	$result=mysql_query($consulta,$link);
-	//$result=mysql_query($consulta,$link) or $error=mysql_error;
-	// prin($result);
-	@$total=mysql_num_rows($result);
+	$result=mysqli_query($link,$consulta);
+	if($debug){ prin($link); exit(); }
+	$total=mysqli_num_rows($result);
 	if($total>0){
-		while ($row = mysql_fetch_row($result)){
+		while ($row = mysqli_fetch_row($result)){
 			foreach ($camposA as $ee=>$cc) {
 				$row2[trim($cc)]=$row[$ee];
 			}
@@ -125,19 +124,21 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 			unset($row2);
 		}
 	}
+
 	if($debug==1){
 		prin($camposA);
 		prin($consulta);
 	}
 	if($debug==2){
-		$error=mysql_error();
+		$error=mysqli_error($link);
 		$success=($error=='')?1:0;
 		if($success){
 			prin(array('success'=>$success));
 		} else {
-			prin(array('success'=>$success,'error'=>mysql_error()));
+			prin(array('success'=>$success,'error'=>mysqli_error()));
 		}
 	}
+
 	if(sizeof($opciones)>0){
 		$filas2=array();
 		foreach($filas as $fila){
@@ -434,6 +435,7 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 			prin(array('total'=>$total,'rows'=>$filas));
 		}
 	}
+
 	$filas0=[];
 	foreach($filas as $ii=>$fila){
 		foreach($fila as $one=>$two){
@@ -452,7 +454,7 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 
 	if(isset($olddb)){
 
-		mysql_select_db($olddb,$link);
+		mysqli_select_db($link,$olddb);
 
 	}
 
@@ -533,17 +535,17 @@ function insert($campos_array,$tabla,$debug=0){
 		switch(trim($ll)){
 			case "NULL": $ppp[]="NULL"; break;
 			case "now()": $ppp[]="'".date("Y-m-d H:i:s")."'"; break;
-			default: $ppp[]="'".mysql_real_escape_string($ll)."'"; break;
+			default: $ppp[]="'".mysqli_real_escape_string($ll)."'"; break;
 		}
 	}
 	$consulta="insert into $tabla (". implode(",",$ccc) .") values (" .implode(",",$ppp). ")";
 	if($debug==1){
 		prin($consulta.";");
 	}
-	if(mysql_query($consulta,$link)){
-		$return =array('success'=>1,'id'=>mysql_insert_id());
+	if(mysqli_query($link,$consulta)){
+		$return =array('success'=>1,'id'=>mysqli_insert_id($link));
 	}
-	else { $return =array('success'=>0,'error'=>mysql_error());
+	else { $return =array('success'=>0,'error'=>mysqli_error($link));
 	}
 	if($debug==2){
 		prin($return);
@@ -562,17 +564,17 @@ function update($campos_array,$tabla,$where,$debug=0){
 			case "now()": $ppp[]="$tt='".date("Y-m-d H:i:s")."'"; break;
 			case "++": $ppp[]="$tt=$tt+1"; break;
 			case "--": $ppp[]="$tt=$tt-1"; break;
-			default: $ppp[]="$tt='".mysql_real_escape_string($ll)."'"; break;
+			default: $ppp[]="$tt='".mysqli_real_escape_string($ll)."'"; break;
 		}
 	}
 	$consulta="update $tabla set ". implode(",",$ppp) ." ".$where;
 	if($debug==1){
 		prin($consulta.";");
 	}
-	if(mysql_query($consulta,$link)){
+	if(mysqli_query($link,$consulta)){
 		$return =array('success'=>1);
 	}
-	else { $return =array('success'=>0,'error'=>mysql_error());
+	else { $return =array('success'=>0,'error'=>mysqli_error($link));
 	}
 	if($debug==2){
 		prin($return);
@@ -588,10 +590,10 @@ function delete($tabla,$where,$debug=0){
 	if($debug==1){
 		prin($consulta.";");
 	}
-	if(mysql_query($consulta,$link)){
+	if(mysqli_query($link,$consulta)){
 		$return =array('success'=>1);
 	}
-	else { $return =array('success'=>0,'error'=>mysql_error());
+	else { $return =array('success'=>0,'error'=>mysqli_error($link));
 	}
 	/*
 	 if($debug==1){
@@ -609,10 +611,10 @@ function truncate($tabla,$debug=0){
 	if($debug==1){
 		prin($consulta.";");
 	}
-	if(mysql_query($consulta,$link)){
+	if(mysqli_query($link,$consulta)){
 		$return =array('success'=>1);
 	}
-	else { $return =array('success'=>0,'error'=>mysql_error());
+	else { $return =array('success'=>0,'error'=>mysqli_error($link));
 	}
 	/*
 	 if($debug==1){
@@ -631,8 +633,8 @@ function contar($tabla,$donde,$debug=0){
 	if($debug==1){
 		prin($consulta);
 	}
-	$result=mysql_query($consulta,$link);
-	$row = mysql_fetch_row($result);
+	$result=mysqli_query($link,$consulta);
+	$row = mysqli_fetch_row($result);
 	return $row[0];
 
 }

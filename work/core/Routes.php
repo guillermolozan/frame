@@ -240,7 +240,7 @@ class Routes {
 		// echo "\$obj = new controllers\\".$this->controller."(\$par);";
 
 		// echo getcwd();
-		
+
 		eval("\$obj = new controllers\\".ucfirst($this->controller)."(\$par);");
 
 		$obj->$met($par);

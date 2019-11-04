@@ -8,7 +8,6 @@ use core\Server as Server;
 
 class Controller extends \core\Controller {
 
-
 	function __construct($params){
 
 		parent::__construct($params);

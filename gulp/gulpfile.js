@@ -136,26 +136,24 @@ var livedeploy= function(file){
 
 
 // Stylus
-gulp.task('stylus', () => {
-  
+const stylus_task = ()=>{
 
-  gulp.src(stylus_dir+'/app.styl')
-    .pipe(stylus({
-      'include css': true,
-      'compress': true
-    }))
-    .pipe(autoprefixer()) 
-    .pipe(gulp.dest(public_dir+'/css'))
-    .pipe(livereload());
+  return gulp.src(stylus_dir+'/app.styl')
+  .pipe(stylus({
+    'include css': true,
+    'compress': true
+  }))
+  .pipe(autoprefixer()) 
+  .pipe(gulp.dest(public_dir+'/css'))
+  .pipe(livereload());
 
-
-});
+};
 
 
 
 
 // Touch
-gulp.task('touch', () => {
+const touch_task = ()=>{
 
   var filetouch = app+'/touch.json';
   var touch=require(filetouch);
@@ -163,7 +161,7 @@ gulp.task('touch', () => {
   console.log("v:"+newtouch);
   writeFile.sync(filetouch, '{"v":"'+newtouch+'"}');
 
-});
+};
 
 
 
@@ -189,19 +187,20 @@ gulp.task('touch', () => {
 
 
 // Browserify
-gulp.task('browserify', () => {
-    browserify({
-      entries: es6_dir+'/app.js', 
-    })
-    .transform("babelify")
-    .bundle()
-    .pipe(source('app.js'))
-    .pipe(buffer())
-    .pipe(uglify())
-    .pipe(gulp.dest(public_dir+'/js'))
-    .pipe(livereload());
+const browserify_task = ()=>{
 
-});
+  browserify({
+    entries: es6_dir+'/app.js', 
+  })
+  .transform("babelify")
+  .bundle()
+  .pipe(source('app.js'))
+  .pipe(buffer())
+  .pipe(uglify())
+  .pipe(gulp.dest(public_dir+'/js'))
+  .pipe(livereload());
+
+};
 
 
 
@@ -229,17 +228,18 @@ gulp.task('browserify', () => {
     
 // });
 
+const email_inline_task = ()=>{
+    
+  return gulp.src(folder+'/app/views/php/email_*.php')
+  .pipe(inlineCss({
+      applyStyleTags : true,
+      applyLinkTags  : true,
+      removeStyleTags: true,
+      removeLinkTags : true
+  }))
+  .pipe(gulp.dest(folder+'/app/views/php/inline/'));
 
-gulp.task('email_inline', function() {
-    return gulp.src(folder+'/app/views/php/email_*.php')
-      .pipe(inlineCss({
-          applyStyleTags : true,
-          applyLinkTags  : true,
-          removeStyleTags: true,
-          removeLinkTags : true
-      }))
-      .pipe(gulp.dest(folder+'/app/views/php/inline/'));
-});
+};
 
 
 
@@ -248,7 +248,7 @@ gulp.task('email_inline', function() {
 
 
 // Jade2PHP
-gulp.task('jade2php', () => {
+const jade2php_task = ()=>{
 
   const command = 'jade2php --pretty --omit-php-runtime --omit-php-extractor  ' + folder + '/app/sources/jade/layout*.jade ' + folder + '/app/sources/jade/email*.jade --out ' + folder + '/app/views/php';
   console.log(command);
@@ -257,7 +257,7 @@ gulp.task('jade2php', () => {
     console.log(stderr);
   });
 
-});
+};
 
 
 
@@ -379,9 +379,6 @@ gulp.task('watch',[
 
 
 
-
-
-
 // Default
 gulp.task('default',
   [
@@ -392,11 +389,8 @@ gulp.task('default',
 
 
 
-
-
-
 //Deploy
-gulp.task('deploy',() => {
+const deploy_task = ()=>{
   
     const dconn = require(app+'/conn.json');
     dconn.log = gutil.log;
@@ -487,11 +481,11 @@ gulp.task('deploy',() => {
       .pipe(conn.newer(remotedir)) // only upload newer files 
       .pipe(conn.dest(remotedir));
 
-});
+};
 
 
 // Generate Jsons for development
-gulp.task('components',() => {
+const components_task = ()=>{
 
   const geturl = urlfolder+'/runtime/start/'+clean;
   console.log(geturl);
@@ -503,8 +497,21 @@ gulp.task('components',() => {
   });  
   // request(geturl);    
 
-});
+};
 
 
 
-module.exports = gulp
+exports.touch   = touch_task;
+exports.stylus  = stylus_task;
+exports.babel   = babel_task;
+exports.php     = jade2php_task;
+exports.watch   = watch_task;
+
+exports.components   = components_task;
+exports.deploy   = deploy_task;
+exports.email_inline   = email_inline_task;
+exports.browserify   = browserify_task;
+
+
+exports.default = gulp.series(stylus_task,babel_task,jade2php_task,watch_task);
+

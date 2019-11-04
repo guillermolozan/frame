@@ -23,6 +23,10 @@ class Controller {
 	var $analytics;
 	var $static_build;
 	var $show_view;
+	var $enviroment;
+	var $localhost;
+	var $remote;
+	var $allow_externals;
 
 	function __construct($params){
 
@@ -32,7 +36,7 @@ class Controller {
 
 		global $Config;
 
-		$this->params      =$params;
+		$this->params      = $params;
 				
 		// global $db;
 		
@@ -76,10 +80,13 @@ class Controller {
 
 		$this->enviroment  = Server::environment();
 
-		$this->localhost   = ($this->enviroment=='local')?1:0;;
+		$this->localhost   = ($this->enviroment=='local')?1:0;
+
+		$this->remote   = ($this->enviroment=='local')?0:1;
+
+		$this->allow_externals = (isset($start['allow_externals']))?$start['allow_externals']:$this->remote;
 
 		$this->show_view   = !(isset($params['noshow']));
-
 
 		// visitors
 		if($this->visitors){
@@ -88,6 +95,7 @@ class Controller {
 
 		}
 
+		
 		// version
 		$touchjson = file('touch.json');;
 		$touch = json_decode($touchjson[0],true);
@@ -109,8 +117,10 @@ class Controller {
 
 			$localhost=$_SERVER['HTTP_HOST'];
 
-
-			$menu_footer_proyectos=select("nombre as name,carpeta,calificacion","proyectos","where tipo_web=2 order by calificacion desc, fecha_acceso desc",0,
+			$menu_footer_proyectos=select(
+				"nombre as name,carpeta,calificacion",
+				"proyectos",
+				"where tipo_web=2 order by calificacion desc, fecha_acceso desc",0,
 				[
 					'db'      =>'panel',
 					'url'     =>'http://'.$_SERVER['HTTP_HOST'].'/frame/{carpeta}',
@@ -200,7 +210,7 @@ class Controller {
 			$this->data_test=true;
 
 		}
-
+		
 		// instance view
 		$this->view = new Views($this->views.'/php');
 
@@ -214,11 +224,12 @@ class Controller {
 				'uri'             => $params['uri'],
 				'enviroment'      => $this->enviroment,
 				'localhost'       => $this->localhost,
+				'allow_externals' => $this->allow_externals,
 				'params'          => $params,
 				'analytics'       => $this->analytics,
 				'main'            => true,
 				'email_test'      => $this->email_test,
-				'is_debug'			=> (
+				'is_debug'			     => (
 												isset($params['debug']) 
 												or isset($params['debugjson']) 
 												or isset($params['json']) 
@@ -294,14 +305,13 @@ class Controller {
 		// }
 
 		// return $visits;
-
-
+		$default="41023";
 		session_start();
 		$counter_name = "visitor.txt";
 		// Check if a text file exists. If not create one and initialize it to zero.
 		if (!file_exists($counter_name)) {
 		  $f = fopen($counter_name, "w");
-		  fwrite($f,"11023");
+		  fwrite($f,$default);
 		  fclose($f);
 		}
 		// Read the current value of our counter file
@@ -310,10 +320,12 @@ class Controller {
 		fclose($f);
 		// Has visitor been counted in this session?
 		// If not, increase counter value by one
-		if(!isset($_SESSION['hasVisited'])){
+		if(!isset($_SESSION['hasVisited']))
+		{
 		  $_SESSION['hasVisited']="yes";
 		  $counterVal++;
 		  $f = fopen($counter_name, "w");
+		//   fwrite($f, $default);
 		  fwrite($f, $counterVal);
 		  fclose($f); 
 		}

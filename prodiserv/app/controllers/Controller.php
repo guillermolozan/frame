@@ -13,7 +13,6 @@ class Controller extends \core\Controller {
 
 		parent::__construct($params);
 
-
 		$Page=$this->loadModel('Pages');
 
 		// menu left
@@ -23,7 +22,7 @@ class Controller extends \core\Controller {
 						"where id in (1,2,3,4,5,6,8,13,9)
 						and visibilidad=1
 						order by weight desc",0);
-
+		
 		foreach($groups_left as $group){
 
 			$replace_menu_left_pre[]=[

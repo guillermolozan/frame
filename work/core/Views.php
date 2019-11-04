@@ -35,6 +35,19 @@ Class Views {
 
 	}
 
+	public function concat($var,$val=NULL){
+
+		if(is_array($var) and $val==NULL ){
+			foreach($var as $index=>$value){
+				$this->vars[$index]=$this->vars[$index].' '.$value;				
+			}
+		} else {
+			$this->vars[$var]=$this->vars[$var].' '.$val;
+		}
+		return $this;
+
+	}
+
 	public function setOption ($var,$value){
 
 		$this->options[$var]=$value;
@@ -821,10 +834,9 @@ Class Views {
 			return;
 
 		}
+		
+			$file_out=APP."/".$this->views."/".$file.".php";
 
-		// prin('detalle');
-
-		$file_out=APP."/".$this->views."/".$file.".php";
 		// prin($file_out);
 
 		if($file_out=='app/views/php/inline/email_default.php'){
