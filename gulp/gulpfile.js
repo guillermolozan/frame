@@ -20,6 +20,7 @@ gulp tutorial
 // gulp
 const gulp         = require('gulp'),
       argv         = require('yargs').default('p','model').argv,
+      chalk        = require('chalk'),
       gutil        = require('gulp-util');
 
 // stylus
@@ -98,7 +99,6 @@ gutil.log(gutil.colors.bgRed(" DEVELOPMENT" + ( (activelivedeploy)?" AND DEPLOY"
 
 var varjson;
 
-
 var dconn = require(app+'/conn.json');
 dconn.log = gutil.log;
 
@@ -108,6 +108,7 @@ dconn.log = gutil.log;
 // console.log('burbuja');
 
 var remotedir=dconn.remotedir || '/public_html';
+
 
 var livedeploy= function(file){
 
@@ -127,16 +128,18 @@ var livedeploy= function(file){
 
 
 
-
-
-
-
-
-
-
-
-// Stylus
+/*
+ ######  ######## ##    ## ##       ##     ##  ###### 
+##    ##    ##     ##  ##  ##       ##     ## ##    ##
+##          ##      ####   ##       ##     ## ##
+ ######     ##       ##    ##       ##     ##  ######
+      ##    ##       ##    ##       ##     ##       ##
+##    ##    ##       ##    ##       ##     ## ##    ##
+ ######     ##       ##    ########  #######   ######
+*/
 const stylus_task = ()=>{
+
+  touch_task('css');
 
   return gulp.src(stylus_dir+'/app.styl')
   .pipe(stylus({
@@ -151,14 +154,21 @@ const stylus_task = ()=>{
 
 
 
-
-// Touch
-const touch_task = ()=>{
+/*
+########  #######  ##     ##  ######  ##     ##
+   ##    ##     ## ##     ## ##    ## ##     ##
+   ##    ##     ## ##     ## ##       ##     ##
+   ##    ##     ## ##     ## ##       #########
+   ##    ##     ## ##     ## ##       ##     ##
+   ##    ##     ## ##     ## ##    ## ##     ##
+   ##     #######   #######   ######  ##     ##
+*/
+const touch_task = (some=null) => {
 
   var filetouch = app+'/touch.json';
   var touch=require(filetouch);
   var newtouch = ++touch.v;
-  console.log("v:"+newtouch);
+  console.log(chalk.bgRed(" building "+some+" .... ")+chalk.blue(" v:"+newtouch));
   writeFile.sync(filetouch, '{"v":"'+newtouch+'"}');
 
 };
@@ -169,27 +179,20 @@ const touch_task = ()=>{
 
 
 
-
-
-
-
-// // Babel
-// gulp.task('babel', () => {
-//   gulp.src(es6_dir+'/*.js')
-//     .pipe(babel())
-//     .pipe(uglify())    
-//     .pipe(gulp.dest(public_dir+'/js'))
-//     .pipe(livereload());    
-// });
-
-
-
-
-
-// Browserify
+/*
+########  ########   #######  ##      ##  ######  ######## ########  #### ######## ##    ##
+##     ## ##     ## ##     ## ##  ##  ## ##    ## ##       ##     ##  ##  ##        ##  ##
+##     ## ##     ## ##     ## ##  ##  ## ##       ##       ##     ##  ##  ##         ####
+########  ########  ##     ## ##  ##  ##  ######  ######   ########   ##  ######      ##
+##     ## ##   ##   ##     ## ##  ##  ##       ## ##       ##   ##    ##  ##          ##
+##     ## ##    ##  ##     ## ##  ##  ## ##    ## ##       ##    ##   ##  ##          ##
+########  ##     ##  #######   ###  ###   ######  ######## ##     ## #### ##          ##
+*/
 const browserify_task = ()=>{
 
-  browserify({
+  touch_task('browserify');
+
+  return browserify({
     entries: es6_dir+'/app.js', 
   })
   .transform("babelify")
@@ -204,29 +207,7 @@ const browserify_task = ()=>{
 
 
 
-// // Jade2Html
-// gulp.task('jade2html',['json'], () => {
 
-//   var layouts=[];
-//   var i=0;
-//   for (var key in varjson) {
-//     layouts[i++]=jade_dir+'/'+key+'.jade';
-//   }
-//   console.log(layouts);
-//   gulp.src(layouts)
-//     .pipe(data(function(file) {
-//       var items = path.basename(file.path).split('.jade');
-//       return varjson[items[0]];
-//     }))
-//     .pipe(jade({
-//       'pretty': true,
-//     })) 
-
-//     .pipe(gulp.dest(html_dir))
-//     .pipe(wait(900))    
-//     .pipe(livereload());
-    
-// });
 
 const email_inline_task = ()=>{
     
@@ -247,30 +228,27 @@ const email_inline_task = ()=>{
 
 
 
-// Jade2PHP
+/*
+      ##    ###    ########  ########  #######  ########  ##     ## ########
+      ##   ## ##   ##     ## ##       ##     ## ##     ## ##     ## ##     ##
+      ##  ##   ##  ##     ## ##              ## ##     ## ##     ## ##     ##
+      ## ##     ## ##     ## ######    #######  ########  ######### ########
+##    ## ######### ##     ## ##       ##        ##        ##     ## ##
+##    ## ##     ## ##     ## ##       ##        ##        ##     ## ##
+ ######  ##     ## ########  ######## ######### ##        ##     ## ##
+*/
 const jade2php_task = ()=>{
 
   const command = 'jade2php --pretty --omit-php-runtime --omit-php-extractor  ' + folder + '/app/sources/jade/layout*.jade ' + folder + '/app/sources/jade/email*.jade --out ' + folder + '/app/views/php';
-  console.log(command);
-  exec(command, function(err, stdout, stderr) {
-    // console.log(stdout);
+  console.log(chalk.bgMagenta(" building php views  .... "));
+  // console.log(command);
+  return exec(command, function(err, stdout, stderr) {
     console.log(stderr);
   });
 
 };
 
 
-
-// var gulpJade = require('gulp-jade');
-// var jadePhpTwig = require('jade-php-twig');
-// gulp.task('jade', function () {
-//   return gulp.src(folder +'/app/sources/jade/layout_home.jade')
-//     .pipe(gulpJade({
-//       jade: jadePhpTwig(),
-//       pretty: true
-//     }))
-//     .pipe(gulp.dest(folder + '/app/views/php'))
-// })
 
 
 
@@ -304,40 +282,39 @@ const modifies = [
 ];
 
 
+
 const external_stylus = require(stylus_dir + '/externals/external.json');
 const external_jade = require(jade_dir + '/externals/external.json');
 const external_es6 = require(es6_dir + '/externals/external.json');
 
 
-// Watch
-gulp.task('watch',[
-  'stylus',
-  'browserify',
-  'jade2php',
-  'email_inline',
-  ], () => {
-  
-  livereload.listen();  
-  
-  // console.log(comp_dir+'/**/*.styl');
+/*
+##      ##    ###    ########  ######  ##     ##
+##  ##  ##   ## ##      ##    ##    ## ##     ##
+##  ##  ##  ##   ##     ##    ##       ##     ##
+##  ##  ## ##     ##    ##    ##       #########
+##  ##  ## #########    ##    ##       ##     ##
+##  ##  ## ##     ##    ##    ##    ## ##     ##
+ ###  ###  ##     ##    ##     ######  ##     ##
+*/
+const watch_task = () => {
 
+  hello_task();
 
+  livereload.listen();
 
-  //watch styl
-  gulp.watch([
-    comp_dir+'/**/*.styl',
-    stylus_dir+'/*.styl',
-    stylus_dir+'/**/*.styl',
-    work_stylus_dir+'/**/*.styl',
-    external_stylus
-    ], 
-    [
-      'stylus',
-      'touch',
-    ]
+  //watch stylus
+  gulp.watch(
+      [
+        comp_dir+'/**/*.styl',
+        stylus_dir+'/*.styl',
+        stylus_dir+'/**/*.styl',
+        work_stylus_dir+'/**/*.styl',
+        external_stylus
+      ]
+    ,
+    stylus_task
   );
-
-
 
   //watch browserify
   gulp.watch([
@@ -345,51 +322,65 @@ gulp.task('watch',[
     es6_dir+'/**/*.js',
     external_es6    
     ], 
-    [
-      'browserify',
-      'touch',
-    ]
+    browserify_task
   );
 
-
-
-  //watch jade2html and jade2php
-  gulp.watch([
-    comp_dir+'/**/*.jade',
-    work_jade_dir+'/**/*.jade',
-    jade_dir+'/**/*.jade',
-    external_jade
-    ], 
+  //watch jade
+  gulp.watch(
     [
-      'jade2php',
-      'email_inline',
-    ]
+      comp_dir+'/**/*.jade',
+      work_jade_dir+'/**/*.jade',
+      jade_dir+'/**/*.jade',
+      external_jade      
+    ],
+    jade2php_task
   );
 
+  /*
+  keys((ch, key)=> {
+    if (key.ctrl && key.name === 'p') {
+      console.log('pppppp');
+    }
+  })
+  */
+
+}
+
+/*
+##     ## ######## ##       ##        #######
+##     ## ##       ##       ##       ##     ##
+##     ## ##       ##       ##       ##     ##
+######### ######   ##       ##       ##     ##
+##     ## ##       ##       ##       ##     ##
+##     ## ##       ##       ##       ##     ##
+##     ## ######## ######## ########  #######
+*/
+const hello_task = ()=>{
   
+  return console.log(chalk.yellow(atg(argv.p,"3")));
+
+}
+
+// Watch
+if(false){
+
+    if(activelivedeploy)
+      gulp.watch(modifies, function(event){
+        livedeploy(event.path)
+      });
+
+}
 
 
-  if(activelivedeploy)
-    gulp.watch(modifies, function(event){
-      livedeploy(event.path)
-    });
-
-
-});
-
-
-
-// Default
-gulp.task('default',
-  [
-    'watch'
-  ]
-);
-
-
-
-
-//Deploy
+/*
+########  ######## ########  ##        #######  ##    ##
+##     ## ##       ##     ## ##       ##     ##  ##  ##
+##     ## ##       ##     ## ##       ##     ##   ####
+##     ## ######   ########  ##       ##     ##    ##
+##     ## ##       ##        ##       ##     ##    ##
+##     ## ##       ##        ##       ##     ##    ##
+########  ######## ##        ########  #######     ##
+*/
 const deploy_task = ()=>{
   
     const dconn = require(app+'/conn.json');
@@ -484,6 +475,15 @@ const deploy_task = ()=>{
 };
 
 
+/*
+ ######   #######  ##     ## ########   #######  ##    ## ######## ##    ## ########  ######
+##    ## ##     ## ###   ### ##     ## ##     ## ###   ## ##       ###   ##    ##    ##    ##
+##       ##     ## #### #### ##     ## ##     ## ####  ## ##       ####  ##    ##    ##
+##       ##     ## ## ### ## ########  ##     ## ## ## ## ######   ## ## ##    ##     ######
+##       ##     ## ##     ## ##        ##     ## ##  #### ##       ##  ####    ##          ##
+##    ## ##     ## ##     ## ##        ##     ## ##   ### ##       ##   ###    ##    ##    ##
+ ######   #######  ##     ## ##         #######  ##    ## ######## ##    ##    ##     ######
+*/
 // Generate Jsons for development
 const components_task = ()=>{
 
@@ -500,18 +500,18 @@ const components_task = ()=>{
 };
 
 
-
 exports.touch   = touch_task;
 exports.stylus  = stylus_task;
-exports.babel   = babel_task;
 exports.php     = jade2php_task;
 exports.watch   = watch_task;
-
-exports.components   = components_task;
-exports.deploy   = deploy_task;
-exports.email_inline   = email_inline_task;
 exports.browserify   = browserify_task;
 
 
-exports.default = gulp.series(stylus_task,babel_task,jade2php_task,watch_task);
+exports.components   = components_task;
+exports.deploy   = deploy_task;
+// exports.email_inline   = email_inline_task;
+
+
+// exports.default = gulp.series(stylus_task,jade2php_task,browserify_task,watch_task);
+exports.default = gulp.series(stylus_task,jade2php_task,browserify_task);
 
