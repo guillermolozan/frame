@@ -17,10 +17,35 @@ gulp deploy -p rinconcito|mconsultores -f css|img|js|vendor|public|controllers|v
 gulp tutorial
 */
 
+/*
+ ________ ________  ________  _____ ______   _______
+|\  _____\\   __  \|\   __  \|\   _ \  _   \|\  ___ \
+\ \  \__/\ \  \|\  \ \  \|\  \ \  \\\__\ \  \ \   __/|
+ \ \   __\\ \   _  _\ \   __  \ \  \\|__| \  \ \  \_|/__
+  \ \  \_| \ \  \\  \\ \  \ \  \ \  \    \ \  \ \  \_|\ \
+   \ \__\   \ \__\\ _\\ \__\ \__\ \__\    \ \__\ \_______\
+    \|__|    \|__|\|__|\|__|\|__|\|__|     \|__|\|_______|
+
+
+
+*/
+
+
+
+/*
+########  ######## ########  ######## ##    ## ########  ######## ##    ##  ######  #### ########  ######
+##     ## ##       ##     ## ##       ###   ## ##     ## ##       ###   ## ##    ##  ##  ##       ##    ##
+##     ## ##       ##     ## ##       ####  ## ##     ## ##       ####  ## ##        ##  ##       ##
+##     ## ######   ########  ######   ## ## ## ##     ## ######   ## ## ## ##        ##  ######    ######
+##     ## ##       ##        ##       ##  #### ##     ## ##       ##  #### ##        ##  ##             ##
+##     ## ##       ##        ##       ##   ### ##     ## ##       ##   ### ##    ##  ##  ##       ##    ##
+########  ######## ##        ######## ##    ## ########  ######## ##    ##  ######  #### ########  ######
+*/
 // gulp
 const gulp         = require('gulp'),
       argv         = require('yargs').default('p','model').argv,
       chalk        = require('chalk'),
+      atg          = require('ascii-text-generator');
       gutil        = require('gulp-util');
 
 // stylus
@@ -47,28 +72,20 @@ const request      = require('request');
 
 const ftp          = require('vinyl-ftp');
 
-//  const   watch        = require('gulp-watch'),
-//     jade         = require('gulp-jade'),
-//     babel        = require('gulp-babel'),
-//     sourcemaps   = require('gulp-sourcemaps'),
 
-
-//     data         = require('gulp-data'),
-//     path         = require('path'),
-//     wait         = require('gulp-wait'),
-//     // curl         = require('node-curl'),
-//     http         = require('http'),
-//     st           = require('st'),
-    
-//     // jade_php     = require('gulp-jade-for-php'),
-
-
-
-// gulp.env has been deprecated. Use your own CLI parser instead. We recommend using yargs or minimist. 
+/*
+##     ##    ###    ########   ######
+##     ##   ## ##   ##     ## ##    ##
+##     ##  ##   ##  ##     ## ##
+##     ## ##     ## ########   ######
+ ##   ##  ######### ##   ##         ##
+  ## ##   ##     ## ##    ##  ##    ##
+   ###    ##     ## ##     ##  ######
+*/
 
 const folder           = '../'+argv.p;
 const app              = './'+folder;
-const work             = './work';
+const work             = './../work';
 const urlfolder        = 'http://localhost/frame/' + argv.p;
 
 const comp_dir         = app+'/app/sources/components';
@@ -155,6 +172,28 @@ const stylus_task = ()=>{
 
 
 /*
+      ##    ###    ########  ########  #######  ########  ##     ## ########
+      ##   ## ##   ##     ## ##       ##     ## ##     ## ##     ## ##     ##
+      ##  ##   ##  ##     ## ##              ## ##     ## ##     ## ##     ##
+      ## ##     ## ##     ## ######    #######  ########  ######### ########
+##    ## ######### ##     ## ##       ##        ##        ##     ## ##
+##    ## ##     ## ##     ## ##       ##        ##        ##     ## ##
+ ######  ##     ## ########  ######## ######### ##        ##     ## ##
+*/
+const jade2php_task = ()=>{
+
+  const command = 'jade2php --pretty --omit-php-runtime --omit-php-extractor  ' + folder + '/app/sources/jade/layout*.jade ' + folder + '/app/sources/jade/email*.jade --out ' + folder + '/app/views/php';
+  console.log(chalk.bgMagenta(" building php views  .... "));
+  // console.log(command);
+  return exec(command, function(err, stdout, stderr) {
+    console.log(stderr);
+  });
+
+};
+
+
+
+/*
 ########  #######  ##     ##  ######  ##     ##
    ##    ##     ## ##     ## ##    ## ##     ##
    ##    ##     ## ##     ## ##       ##     ##
@@ -228,25 +267,6 @@ const email_inline_task = ()=>{
 
 
 
-/*
-      ##    ###    ########  ########  #######  ########  ##     ## ########
-      ##   ## ##   ##     ## ##       ##     ## ##     ## ##     ## ##     ##
-      ##  ##   ##  ##     ## ##              ## ##     ## ##     ## ##     ##
-      ## ##     ## ##     ## ######    #######  ########  ######### ########
-##    ## ######### ##     ## ##       ##        ##        ##     ## ##
-##    ## ##     ## ##     ## ##       ##        ##        ##     ## ##
- ######  ##     ## ########  ######## ######### ##        ##     ## ##
-*/
-const jade2php_task = ()=>{
-
-  const command = 'jade2php --pretty --omit-php-runtime --omit-php-extractor  ' + folder + '/app/sources/jade/layout*.jade ' + folder + '/app/sources/jade/email*.jade --out ' + folder + '/app/views/php';
-  console.log(chalk.bgMagenta(" building php views  .... "));
-  // console.log(command);
-  return exec(command, function(err, stdout, stderr) {
-    console.log(stderr);
-  });
-
-};
 
 
 
@@ -287,6 +307,25 @@ const external_stylus = require(stylus_dir + '/externals/external.json');
 const external_jade = require(jade_dir + '/externals/external.json');
 const external_es6 = require(es6_dir + '/externals/external.json');
 
+const all_watch_stylus=[
+  comp_dir+'/**/*.styl',
+  stylus_dir+'/*.styl',
+  stylus_dir+'/**/*.styl',
+  work_stylus_dir+'/**/*.styl'
+].concat(external_stylus);
+
+const all_watch_js=[
+  comp_dir+'/**/*.js',
+  es6_dir+'/**/*.js'
+  // external_es6    
+].concat(external_es6);
+
+const all_watch_jade=    [
+  comp_dir+'/**/*.jade',
+  work_jade_dir+'/**/*.jade',
+  jade_dir+'/**/*.jade'
+  // external_jade      
+].concat(external_jade);
 
 /*
 ##      ##    ###    ########  ######  ##     ##
@@ -299,42 +338,45 @@ const external_es6 = require(es6_dir + '/externals/external.json');
 */
 const watch_task = () => {
 
+
   hello_task();
 
   livereload.listen();
+  
+  console.log(chalk.yellow("watching stylus..."));
+  console.log(all_watch_stylus);
+
+  console.log(chalk.yellow("watching es6..."));
+  console.log(all_watch_js);
+  
+  console.log(chalk.yellow("watching jade..."));
+  console.log(all_watch_jade);
 
   //watch stylus
   gulp.watch(
-      [
-        comp_dir+'/**/*.styl',
-        stylus_dir+'/*.styl',
-        stylus_dir+'/**/*.styl',
-        work_stylus_dir+'/**/*.styl',
-        external_stylus
-      ]
+    all_watch_stylus
     ,
     stylus_task
   );
+  
 
   //watch browserify
-  gulp.watch([
-    comp_dir+'/**/*.js',
-    es6_dir+'/**/*.js',
-    external_es6    
-    ], 
+  gulp.watch(
+    all_watch_js
+    , 
     browserify_task
   );
 
+
   //watch jade
   gulp.watch(
-    [
-      comp_dir+'/**/*.jade',
-      work_jade_dir+'/**/*.jade',
-      jade_dir+'/**/*.jade',
-      external_jade      
-    ],
+    all_watch_jade
+    ,
     jade2php_task
   );
+  
+
+
 
   /*
   keys((ch, key)=> {
@@ -364,10 +406,10 @@ const hello_task = ()=>{
 // Watch
 if(false){
 
-    if(activelivedeploy)
-      gulp.watch(modifies, function(event){
-        livedeploy(event.path)
-      });
+  if(activelivedeploy)
+    gulp.watch(modifies, function(event){
+      livedeploy(event.path)
+    });
 
 }
 
@@ -489,15 +531,18 @@ const components_task = ()=>{
 
   const geturl = urlfolder+'/runtime/start/'+clean;
   console.log(geturl);
-  console.log('task components');
-  request(geturl, function(error, response, body) {
+
+  console.log(chalk.green('task components....'));
+
+  return request(geturl, function(error, response, body) {
     // console.log("error:", error); // Print the error if one occurred
     // console.log("statusCode:", response && response.statusCode); // Print the response status code if a response was received
-    console.log("body:", body); // Print the HTML for the Google homepage.
-  });  
+    // console.log(chalk.green("body:", body)); // Print the HTML for the Google homepage.
+  });
   // request(geturl);    
 
 };
+
 
 
 exports.touch   = touch_task;
@@ -512,6 +557,6 @@ exports.deploy   = deploy_task;
 // exports.email_inline   = email_inline_task;
 
 
-// exports.default = gulp.series(stylus_task,jade2php_task,browserify_task,watch_task);
-exports.default = gulp.series(stylus_task,jade2php_task,browserify_task);
+exports.default = gulp.series(components_task,stylus_task,jade2php_task,browserify_task,watch_task);
+// exports.default = gulp.series(stylus_task,jade2php_task,browserify_task);
 

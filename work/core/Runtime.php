@@ -349,9 +349,9 @@ $finish_components_es6
 
 		foreach($externals as $exter){
 
-			$external_jade[]='"./'.$exter['dir'].'/'.$exter['file'].'.jade"';
-			$external_stylus[]='"./'.$exter['dir'].'/'.$exter['file'].'.styl"';
-			$external_es6[]='"./'.$exter['dir'].'/'.$exter['file'].'.styl"';
+			$external_jade[]='"./../'.$exter['dir'].'/'.$exter['file'].'.jade"';
+			$external_stylus[]='"./../'.$exter['dir'].'/'.$exter['file'].'.styl"';
+			$external_es6[]='"./../'.$exter['dir'].'/'.$exter['file'].'.styl"';
 
 		}
 

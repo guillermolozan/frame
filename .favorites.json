@@ -1,0 +1,58 @@
+[
+    {
+        "type": "Directory",
+        "name": "/Applications/MAMP/htdocs/frame/sumarseg",
+        "parent_id": null,
+        "workspaceRoot": "/Applications/MAMP/htdocs/frame",
+        "workspacePath": "sumarseg",
+        "id": "iftO0sGVuy64Dg3K"
+    },
+    {
+        "type": "Directory",
+        "name": "/Applications/MAMP/htdocs/frame/ardyss",
+        "parent_id": null,
+        "workspaceRoot": "/Applications/MAMP/htdocs/frame",
+        "workspacePath": "ardyss",
+        "id": "Cpa18cDBGbhXWIfe"
+    },
+    {
+        "type": "Directory",
+        "name": "/Applications/MAMP/htdocs/frame/woorld",
+        "parent_id": null,
+        "workspaceRoot": "/Applications/MAMP/htdocs/frame",
+        "workspacePath": "woorld",
+        "id": "W6TGN4zSYQsEiXjg"
+    },
+    {
+        "type": "Directory",
+        "name": "/Applications/MAMP/htdocs/frame/work",
+        "parent_id": null,
+        "workspaceRoot": "/Applications/MAMP/htdocs/frame",
+        "workspacePath": "work",
+        "id": "PCiZOkGLYy87Jfuh"
+    },
+    {
+        "type": "Directory",
+        "name": "/Applications/MAMP/htdocs/frame/prodiserv",
+        "parent_id": null,
+        "workspaceRoot": "/Applications/MAMP/htdocs/frame",
+        "workspacePath": "prodiserv",
+        "id": "mvyJhpDzaM5Zcq3d"
+    },
+    {
+        "type": "Directory",
+        "name": "/Applications/MAMP/htdocs/frame/gulp",
+        "parent_id": null,
+        "workspaceRoot": "/Applications/MAMP/htdocs/frame",
+        "workspacePath": "gulp",
+        "id": "VbMGmHrnW7iRQ95d"
+    },
+    {
+        "type": "Directory",
+        "name": "/Applications/MAMP/htdocs/frame/agro",
+        "parent_id": null,
+        "workspaceRoot": "/Applications/MAMP/htdocs/frame",
+        "workspacePath": "agro",
+        "id": "EdGwMa9NKUlSY7nF"
+    }
+]

@@ -1,0 +1,12 @@
+[
+"./../work/app/sources/components/common/common.jade",
+"./../work/app/sources/components/menu_left/menu_left.jade",
+"./../work/app/sources/components/block_gallery/block_gallery.jade",
+"./../work/app/sources/components/block_post/block_post.jade",
+"./../agro/app/sources/components/header_pre/header_pre.jade",
+"./../agro/app/sources/components/header/header.jade",
+"./../agro/app/sources/components/block_gallery_videos/block_gallery_videos.jade",
+"./../onelimites/app/sources/components/product_detail/product_detail.jade",
+"./../onelimites/app/sources/components/products_reel/products_reel.jade",
+"./../asiste/app/sources/components/home_block_links/home_block_links.jade"
+]

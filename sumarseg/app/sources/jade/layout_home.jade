@@ -1,0 +1,42 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include includes/header
+		
+		include includes/banner
+
+		if (!localhost)
+			.home-facebook
+				.container: .fb-like(
+					data-layout='standard', 
+					data-action='like', 
+					data-size='small', 
+					data-show-faces='true', 
+					data-share='true')
+
+		//- productos ardyss
+		include includes/block_gallery_products
+
+		//- recomendados
+		include includes/home_block_importaciones
+
+		//- descuentos
+		include includes/home_block_descuentos
+
+		//- notas brochure social
+		include includes/home_block_notes
+
+		//- videos
+		include includes/block_gallery_videos
+
+		//- enlaces
+		.container
+			include includes/home_block_links
+
+		include includes/footer
+		include common/foot

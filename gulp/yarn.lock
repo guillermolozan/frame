@@ -256,6 +256,11 @@ array-unique@^0.3.2:
   resolved "https://registry.yarnpkg.com/array-unique/-/array-unique-0.3.2.tgz#a894b75d4bc4f6cd679ef3244a9fd8f46ae2d428"
   integrity sha1-qJS3XUvE9s1nnvMkSp/Y9Gri1Cg=
 
+ascii-text-generator@^1.0.5:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/ascii-text-generator/-/ascii-text-generator-1.0.5.tgz#fc0d74407e883185b103d37f2ae61ae41d9cf280"
+  integrity sha1-/A10QH6IMYWxA9N/KuYa5B2c8oA=
+
 asn1@~0.2.3:
   version "0.2.4"
   resolved "https://registry.yarnpkg.com/asn1/-/asn1-0.2.4.tgz#8d2475dfab553bb33e77b54e59e880bb8ce23136"
