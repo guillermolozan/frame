@@ -45,6 +45,8 @@ gulp tutorial
 const gulp         = require('gulp'),
       argv         = require('yargs').default('p','model').argv,
       chalk        = require('chalk'),
+      keys         = require('gulp-keylistener'),
+      // exit         = require('gulp-exit');
       atg          = require('ascii-text-generator');
       gutil        = require('gulp-util');
 
@@ -71,6 +73,8 @@ const inlineCss    = require('gulp-inline-css');
 const request      = require('request');
 
 const ftp          = require('vinyl-ftp');
+
+const restart      = require('gulp-restart');
 
 
 /*
@@ -107,7 +111,7 @@ const work_stylus_dir  = work+'/sources/stylus';
 const depl             = argv.d || 'no live';
 const clean            = argv.c || '';
 
-const activelivedeploy = (depl == 'live')?true:false;
+var activelivedeploy = (depl == 'live')?true:false;
 
 // console.log(depl);
 
@@ -127,7 +131,9 @@ dconn.log = gutil.log;
 var remotedir=dconn.remotedir || '/public_html';
 
 
-var livedeploy= function(file){
+const livedeploy_task= function(file){
+
+  if(activelivedeploy){
 
     // console.log(dconn);
     if (typeof(conn) == "undefined")
@@ -139,6 +145,12 @@ var livedeploy= function(file){
     return gulp.src([file],{base:'.',buffer:false})
       .pipe(conn.newer(remotedir)) // only upload newer files 
       .pipe(conn.dest(remotedir));
+
+  } else {
+
+    console.log('file no uploaded!');
+
+  }
 
 }
 
@@ -293,11 +305,11 @@ const modifies = [
   app+'/touch.json',
 
 
-  './work/core/**/*.php',
-  './work/data_test/**/*.php',
-  './work/library/**/*.php',
-  './work/vendor/**/*.+(css|js|php)',
-  '.htaccess'
+  './../work/core/**/*.php',
+  './../work/data_test/**/*.php',
+  './../work/library/**/*.php',
+  './../work/vendor/**/*.+(css|js|php)',
+  './../htaccess'
 
 ];
 
@@ -338,9 +350,6 @@ const all_watch_jade=    [
 */
 const watch_task = () => {
 
-
-  hello_task();
-
   livereload.listen();
   
   console.log(chalk.yellow("watching stylus..."));
@@ -377,14 +386,69 @@ const watch_task = () => {
   
 
 
+  gulp.watch(
+    [app+'/app/config/components.php']
+    , 
+    restart_task
+  );
 
-  /*
-  keys((ch, key)=> {
-    if (key.ctrl && key.name === 'p') {
-      console.log('pppppp');
+
+  gulp.watch(
+    modifies
+    ,
+    function(event){
+
+      livedeploy_task(event.path)
+
     }
+  );
+
+  
+  keys((ch, key)=> {
+    if (key.ctrl && key.name === 'l') {
+      if(activelivedeploy){
+
+        activelivedeploy=false;
+        gutil.log(gutil.colors.bgRed('live deploy desactivado'));
+        
+      } else {
+
+        activelivedeploy=true;
+        gutil.log(gutil.colors.bgGreen('live deploy activado'));
+        
+      }
+
+    }
+
+    if (key.ctrl && key.name === 'u') {
+
+      gutil.log(gutil.colors.bgGreen('uploading.....'));
+
+      deploy_task();
+
+    }
+
   })
-  */
+
+
+}
+
+/*
+########  ########  ######  ########    ###    ########  ########
+##     ## ##       ##    ##    ##      ## ##   ##     ##    ##
+##     ## ##       ##          ##     ##   ##  ##     ##    ##
+########  ######    ######     ##    ##     ## ########     ##
+##   ##   ##             ##    ##    ######### ##   ##      ##
+##    ##  ##       ##    ##    ##    ##     ## ##    ##     ##
+##     ## ########  ######     ##    ##     ## ##     ##    ##
+*/
+const restart_task = async() => {
+  
+  gutil.log(gutil.colors.bgRed("RESTARTING..............."));
+
+  restart();
+  
+  livereload();
 
 }
 
@@ -397,21 +461,12 @@ const watch_task = () => {
 ##     ## ##       ##       ##       ##     ##
 ##     ## ######## ######## ########  #######
 */
-const hello_task = ()=>{
+const hello_task = async ()=>{
   
   return console.log(chalk.yellow(atg(argv.p,"3")));
 
 }
 
-// Watch
-if(false){
-
-  if(activelivedeploy)
-    gulp.watch(modifies, function(event){
-      livedeploy(event.path)
-    });
-
-}
 
 
 /*
@@ -423,8 +478,9 @@ if(false){
 ##     ## ##       ##        ##       ##     ##    ##
 ########  ######## ##        ########  #######     ##
 */
-const deploy_task = ()=>{
-  
+const deploy_task = async()=>{
+
+
     const dconn = require(app+'/conn.json');
     dconn.log = gutil.log;
 
@@ -463,12 +519,12 @@ const deploy_task = ()=>{
     ];
 
     const globs3 = [
-        './work/core/**',
-        './work/data_test/**',
-        './work/library/**',
-        './work/vendor/**',
-        './work/public/**',
-        '.htaccess',
+        './../work/core/**',
+        './../work/data_test/**',
+        './../work/library/**',
+        './../work/vendor/**',
+        './../work/public/**',
+        './../.htaccess',
     ];
 
     const globs4 = [
@@ -505,11 +561,11 @@ const deploy_task = ()=>{
     } else {
       globs=globspc.concat(globspi).concat(globspj).concat(globspv).concat(globsc).concat(globsv).concat(globs2).concat(globs3);
     }
+    // console.log(globs);
 
 
     // using base = '.' will transfer everything to /public_html correctly 
     // turn off buffering in gulp.src for best performance 
- 
     return gulp.src(globs,{base:'.',buffer:false})
       .pipe(conn.newer(remotedir)) // only upload newer files 
       .pipe(conn.dest(remotedir));
@@ -545,6 +601,7 @@ const components_task = ()=>{
 
 
 
+
 exports.touch   = touch_task;
 exports.stylus  = stylus_task;
 exports.php     = jade2php_task;
@@ -557,6 +614,5 @@ exports.deploy   = deploy_task;
 // exports.email_inline   = email_inline_task;
 
 
-exports.default = gulp.series(components_task,stylus_task,jade2php_task,browserify_task,watch_task);
+exports.default = gulp.series(hello_task,components_task,stylus_task,jade2php_task,browserify_task,watch_task);
 // exports.default = gulp.series(stylus_task,jade2php_task,browserify_task);
-

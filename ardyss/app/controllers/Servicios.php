@@ -328,9 +328,9 @@ class Servicios extends \core\controllers\Pages {
 				'label'    =>'Mensaje',
 				'type'     =>'textarea',
 				'value' =>'Estoy interesado en el el producto '.$post['name'].'
-Por favor contacten conmigo.
-Gracias
-'],
+			Por favor contacten conmigo.
+			Gracias
+			'],
 
 		];
 
@@ -715,9 +715,9 @@ Gracias
 				'label'    =>'Mensaje',
 				'type'     =>'textarea',
 				'value' =>'Estoy interesado en el el producto '.$post['name'].'
-Por favor contacten conmigo.
-Gracias
-'],
+			Por favor contacten conmigo.
+			Gracias
+			'],
 
 		];
 

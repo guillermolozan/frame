@@ -5,7 +5,7 @@ return [
 	'name'	=>'Sumarseg',
 
 	'visitors'	=>false,
-
+	
 	'web'	=> [
 	
 		'name_short' =>'Sumarseg',
@@ -22,6 +22,10 @@ return [
 		// 'facebook'   =>'https://www.facebook.com/',
 		// 'youtube'    =>'https://www.youtube.com/',
 
+		'slogan' => 'Calzado Industrial en Perú, Lima - Calzado de Proteccion Botas de Seguridad',
+		'logo'	 => 'logo.png',
+		'ico'	 => 'ico.png',		
+
 	],
 
 	'local' => [
@@ -34,7 +38,7 @@ return [
 
 		'email_test'=>true,
 
-		'data_test'	=>true,		
+		// 'data_test'	=>true,		
 	
 		// 'fake'	=>'fakeimg',
 
@@ -54,6 +58,7 @@ return [
 	
 		// 'fake'	=>'fakeimg',		
 
-	]
+	],
+
 
 ];

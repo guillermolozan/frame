@@ -432,6 +432,7 @@ Class Views {
 
 				$dos=str_replace($tres['controller'],$controller_replace,$dos);
 
+
 				if($controller_exists){
 
 
@@ -560,9 +561,6 @@ Class Views {
 				
 
 				}
-		// $obj->$met();
-		// 
-				// $routes_items2[$uno_debug]=$dos;
 
 			}
 
@@ -600,6 +598,7 @@ Class Views {
 		}
 
 
+
 		if(isset($vars['params']['routes'])){
 
 			$routes = new Routes();
@@ -613,22 +612,23 @@ Class Views {
 
 				$dos=str_replace($tres['controller'],$controller_replace,$dos);
 
+				if(0)
 				if($controller_exists){
 
 					if(substr($tres['method'],0,1)!='$'){
 					
-					$met= str_replace('-','_',$tres['method']);
-					eval("\$obj = new controllers\\".ucfirst($tres['controller'])."();");
+						$met= str_replace('-','_',$tres['method']);
+						eval("\$obj = new controllers\\".ucfirst($tres['controller'])."();");
 
-					$method_exists=method_exists($obj,$met);
-					// prin($methos_exists);
+						$method_exists=method_exists($obj,$met);
+						// prin($methos_exists);
 
 
-					$method_replace=($method_exists)?
-					'<strong style="color:green;">'.$tres['method'].'</strong>':
-					'<strong style="color:red;">'.$tres['method'].'</strong>';
+						$method_replace=($method_exists)?
+						'<strong style="color:green;">'.$tres['method'].'</strong>':
+						'<strong style="color:red;">'.$tres['method'].'</strong>';
 
-					$dos=str_replace($tres['method'],$method_replace,$dos);
+						$dos=str_replace($tres['method'],$method_replace,$dos);
 
 					} else {
 
@@ -650,16 +650,12 @@ Class Views {
 					}
 
 				}
-		// $obj->$met();
-		// 
+	
 				$routes_items2[$uno_debug]=$dos;
 
 			}
 
-			// prin($routes_items2);
-			// foreach($routes_items2 as $uno=>$dos){
-			// 	echo $uno.'<br>';
-			// }
+
 
 			ob_start();
 
@@ -672,7 +668,7 @@ Class Views {
 			ob_end_clean();
 
 		}
-	
+		
 
 		if(isset($vars['params']['start'])){
 
@@ -699,14 +695,14 @@ Class Views {
 
 		if($_SESSION[$seo_link]=='1' or isset($vars['params']['getseo'])){
 
-		// prin($vars['canonical']);
-		// prin($vars['baseurl'].$vars['uri']);
+			// prin($vars['canonical']);
+			// prin($vars['baseurl'].$vars['uri']);
 
-		if($vars['canonical']==$vars['baseurl'].$vars['uri']){
-			$check = '<strong style="color:green;">cumple</strong>'; 
-		} else { 
-			$check = '<strong style="color:red;">no cumple</strong>'; 
-		}
+			if($vars['canonical']==$vars['baseurl'].$vars['uri']){
+				$check = '<strong style="color:green;">cumple</strong>'; 
+			} else { 
+				$check = '<strong style="color:red;">no cumple</strong>'; 
+			}
 
 			ob_start();
 
@@ -721,7 +717,7 @@ Class Views {
 					]
 				);
 
-				echo '<div><a rel="nofollow" class="btn right" style="display:none; position:absolute; right: 1em; top:60px;" href="'.$vars['uri'].'?'.$seo_link.'=0">salir</a></div>';
+				echo '<div><a rel="nofollow" class="btn right" style="display:; position:absolute; right: 1em; top:60px;" href="'.$vars['uri'].'?'.$seo_link.'=0">salir</a></div>';
 
 				$pre_output.=ob_get_contents();
 			
@@ -850,7 +846,7 @@ Class Views {
 			if($output) {
 				ob_start();
 			}
-			
+			// prin($vars);
 			// prin("show: $file_out");
 			require $file_out;
 

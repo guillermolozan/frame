@@ -608,6 +608,11 @@ cliui@^3.2.0:
     strip-ansi "^3.0.1"
     wrap-ansi "^2.0.0"
 
+clivi@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/clivi/-/clivi-0.1.2.tgz#debed06dc07a26d97f584ea187326d1f64363510"
+  integrity sha1-3r7QbcB6Jtl/WE6hhzJtH2Q2NRA=
+
 clone-buffer@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/clone-buffer/-/clone-buffer-1.0.0.tgz#e3e25b207ac4e701af721e2cb5a16792cac3dc58"
@@ -1041,6 +1046,13 @@ electron-to-chromium@^1.3.295:
   version "1.3.302"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.302.tgz#4c7ba3d56166507a56f7eb603fdde1ed701f5ac8"
   integrity sha512-1qConyiVEbj4xZRBXqtGR003+9tV0rJF0PS6aeO0Ln/UL637js9hdwweCl07meh/kJoI2N4W8q3R3g3F5z46ww==
+
+elementsJS@^0.9.30:
+  version "0.9.30"
+  resolved "https://registry.yarnpkg.com/elementsJS/-/elementsJS-0.9.30.tgz#9b3927ad94d1f2e06455152f56c766208a836557"
+  integrity sha1-mzknrZTR8uBkVRUvVsdmIIqDZVc=
+  dependencies:
+    clivi "^0.1.2"
 
 end-of-stream@^1.0.0, end-of-stream@^1.1.0:
   version "1.4.4"
@@ -1601,6 +1613,15 @@ gulp-inline-css@^3.4.0:
     plugin-error "^1.0.1"
     through2 "^3.0.1"
 
+gulp-keylistener@^0.1.11:
+  version "0.1.11"
+  resolved "https://registry.yarnpkg.com/gulp-keylistener/-/gulp-keylistener-0.1.11.tgz#0028ed8618790a76b59905765aabba23ae52b71e"
+  integrity sha1-ACjthhh5Cna1mQV2Wqu6I65Stx4=
+  dependencies:
+    elementsJS "^0.9.30"
+    gulp "^4.0.0"
+    keypress "^0.2.1"
+
 gulp-livereload@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/gulp-livereload/-/gulp-livereload-4.0.2.tgz#fc8a75c7511cd65afd2202cbcdc8bb0f8dde377b"
@@ -1613,6 +1634,11 @@ gulp-livereload@^4.0.2:
     readable-stream "^3.0.6"
     tiny-lr "^1.1.1"
     vinyl "^2.2.0"
+
+gulp-restart@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/gulp-restart/-/gulp-restart-0.1.1.tgz#3b51e085793e3e50c73fcec16706772a6b27bc18"
+  integrity sha1-O1HghXk+PlDHP87BZwZ3KmsnvBg=
 
 gulp-stylus@^2.7.0:
   version "2.7.0"
@@ -1651,7 +1677,7 @@ gulp-util@^3.0.8:
     through2 "^2.0.0"
     vinyl "^0.5.0"
 
-gulp@^4.0.2:
+gulp@^4.0.0, gulp@^4.0.2:
   version "4.0.2"
   resolved "https://registry.yarnpkg.com/gulp/-/gulp-4.0.2.tgz#543651070fd0f6ab0a0650c6a3e6ff5a7cb09caa"
   integrity sha512-dvEs27SCZt2ibF29xYgmnwwCYZxdxhQ/+LFWlbAW8y7jt68L/65402Lz3+CKy0Ov4rOs+NERmDq7YlZaDqUIfA==
@@ -2123,6 +2149,11 @@ just-debounce@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/just-debounce/-/just-debounce-1.0.0.tgz#87fccfaeffc0b68cd19d55f6722943f929ea35ea"
   integrity sha1-h/zPrv/AtozRnVX2cilD+SnqNeo=
+
+keypress@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/keypress/-/keypress-0.2.1.tgz#1e80454250018dbad4c3fe94497d6e67b6269c77"
+  integrity sha1-HoBFQlABjbrUw/6USX1uZ7YmnHc=
 
 kind-of@^1.1.0:
   version "1.1.0"

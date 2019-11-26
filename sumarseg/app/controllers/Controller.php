@@ -21,7 +21,7 @@ class Controller extends \core\Controller {
 						"where id in (9)
 						and visibilidad=1
 						order by weight desc",0);
-		
+
 		foreach($groups as $group){
 
 			$replace_menu_pre[$group['url']]=[
@@ -34,22 +34,22 @@ class Controller extends \core\Controller {
 
 
 		
-		$replace_menu_pre['productos-ardyss']=[
-			'url'   =>maskUrl('productos-ardyss'),
-			'name'  =>'PRODUCTOS ARDYSS',
+		$replace_menu_pre['productos1']=[
+			'url'   =>maskUrl('productos1'),
+			'name'  =>'PRODUCTOS 1',
 			'items' =>select('nombre as name,id,url','productos_subgrupos','where id_grupo=3 and visibilidad=1',0,
 			[
-				'url'=>['url'=>['productos-ardyss/category-{url}/{id}']],
+				'url'=>['url'=>['productos1/category-{url}/{id}']],
 			])
 
 		];
 
-		$replace_menu_pre['recomendados']=[
-			'url'   =>maskUrl('recomendados'),
-			'name'  =>'RECOMENDADOS',
+		$replace_menu_pre['productos2']=[
+			'url'   =>maskUrl('productos2'),
+			'name'  =>'PRODUCTOS 2',
 			'items' =>select('nombre as name,id,url','productos_subgrupos','where id_grupo=2 and visibilidad=1',0,
 			[
-				'url'=>['url'=>['recomendados/category-{url}/{id}']],
+				'url'=>['url'=>['productos2/category-{url}/{id}']],
 			])
 
 		];
@@ -77,7 +77,7 @@ class Controller extends \core\Controller {
       $this->view->assign(
 			[
 			// menus
-				'menu_top'     => $this->menu_top,
+			'menu_top'     => $this->menu_top,
 
             'menu_left'    => $this->menu_left,
 
@@ -118,8 +118,8 @@ class Controller extends \core\Controller {
 				'build_js'     => $this->view->vars['build_js'].'?'.$this->static_build,	
 
 				// 'logo'         => $this->config['img_logo'],
-				'logo'         => 'logo.jpg?'.$this->static_build,
-				'icon'       	=> 'ico.jpg?'.$this->static_build,
+				'logo'         => $this->view->vars['web_logo'].'?'.$this->static_build,
+				'icon'         => $this->view->vars['web_ico'].'?'.$this->static_build,
 
 				// 'header_bg'		=> $header_bg['img'],
 				

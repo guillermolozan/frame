@@ -132,7 +132,7 @@ if(sizeof($routes_lists)>0)
 if(sizeof($routes_group['Servicios'])>0)
 {
 	//all
-	$routes_return['/(productos|descuentos|importaciones)$'] 													='controller=Servicios&method=grid&level=$1';
+	$routes_return['/(productos1|productos2|descuentos|importaciones)$'] 													='controller=Servicios&method=grid&level=$1';
 	//grupo
 	$routes_return['/('.implode("|",$routes_group['Servicios']).')$'] 									='controller=Servicios&method=grid&level=1&grup=$1';
 	//categoría
@@ -140,7 +140,7 @@ if(sizeof($routes_group['Servicios'])>0)
 	//subcategoría
 	$routes_return['/('.implode("|",$routes_group['Servicios']).')/sub-category-(:any)/(:num)$'] ='controller=Servicios&method=grid&level=3&grup=$1&item=$3';
 	//detail
-	$routes_return['/(producto|descuento|importado)/(:any)/(:num)$'] 										='controller=Servicios&method=detail&level=$1&item=$3';
+	$routes_return['/(producto1|producto2|descuento|importado)/(:any)/(:num)$'] 										='controller=Servicios&method=detail&level=$1&item=$3';
 
 }
 

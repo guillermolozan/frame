@@ -54,5 +54,29 @@
         "workspaceRoot": "/Applications/MAMP/htdocs/frame",
         "workspacePath": "agro",
         "id": "EdGwMa9NKUlSY7nF"
+    },
+    {
+        "type": "Directory",
+        "name": "/Applications/MAMP/htdocs/frame/american",
+        "parent_id": null,
+        "workspaceRoot": "/Applications/MAMP/htdocs/frame",
+        "workspacePath": "american",
+        "id": "nuEZKgAP3Xew5Mh0"
+    },
+    {
+        "type": "Directory",
+        "name": "/Applications/MAMP/htdocs/frame/asiste",
+        "parent_id": null,
+        "workspaceRoot": "/Applications/MAMP/htdocs/frame",
+        "workspacePath": "asiste",
+        "id": "6aRjKxmFZT7oOCVW"
+    },
+    {
+        "type": "Directory",
+        "name": "/Applications/MAMP/htdocs/frame/consorcio",
+        "parent_id": null,
+        "workspaceRoot": "/Applications/MAMP/htdocs/frame",
+        "workspacePath": "consorcio",
+        "id": "TtwjiU2l5cMfh93C"
     }
 ]

@@ -7,7 +7,7 @@ return [
 	'header'                 => 'agro/header|es6',
 	
 	// 'home_block_notes'       => 'asiste/home_block_notes',	
-	'home_block_importaciones'       => 'home_block_importaciones|es6',
+	'home_block_importaciones'    => 'home_block_importaciones|es6',
 	'home_block_descuentos'       => 'home_block_descuentos|es6',
 	
 	
@@ -24,7 +24,7 @@ return [
 	'block_gallery_videos'   => 'agro/block_gallery_videos',
 
 
-	'product_detail'			 => 'onelimites/product_detail|es6',
+	'product_detail'	     => 'onelimites/product_detail|es6',
 
 	'form_consulta'			 => 'form_consulta',
 

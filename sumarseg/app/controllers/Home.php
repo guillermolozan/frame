@@ -386,7 +386,6 @@ class Home extends Controller {
          
 
 
-
 		// renders
 
 		$this->view->assign(
@@ -396,14 +395,7 @@ class Home extends Controller {
 				'title'      => $this->title,
 				
 				//head
-				// 'head_title' => $this->title . ( ($this->slogan)? ' - '.$this->slogan:'' ),
-				'head_title' => $this->title." :: Prendas remodeladoras, Body Magic, Camiseta Abdomen, Prendas Remodeladoras Ardyss, Fajas Moldeadoras Ardyss, Fajas Ardyss, Fajas Remodeladoras, Fajas Reductoras",
-	
-				
-				// 'head_title' => 'nada',
-
-
-				
+				'head_title' => $this->title . ( ($this->view->vars['web_slogan'])? ' - '.$this->view->vars['web_slogan']:'' ),				
 				
 				//menu
 				// 'menu_left'    => $this->menu_left,
