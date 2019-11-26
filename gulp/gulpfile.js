@@ -431,6 +431,12 @@ const watch_task = () => {
   })
 
 
+  if(activelivedeploy)
+    gutil.log(gutil.colors.bgGreen('live deploy activado'));
+  else
+    gutil.log(gutil.colors.bgRed('live deploy desactivado'));
+    
+
 }
 
 /*

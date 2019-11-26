@@ -245,7 +245,7 @@ $finish_components_es6
 
 // 		echo $components_dir."
 // ";
-
+		// prin($components);
 		foreach($components as $file=>$com0){
 
 			list($com,$option)=explode("|",$com0);
@@ -256,7 +256,11 @@ $finish_components_es6
 				// external
 				$name=$expl[1];
 				$directorio=$expl[0].'/'.$components_dir;
-				$externals[]=['dir'=>$directorio.'/'.$name,'file'=>$name];
+				$externals[]=[
+					'dir'=>$directorio.'/'.$name,
+					'file'=>$name,
+					'option'=>$option
+				];
 			}elseif($size==1){
 				// local
 				$name=$com;
@@ -347,13 +351,18 @@ $finish_components_es6
 			mkdir($external_dir_es6);
 
 
+		// prin($externals);
+
 		foreach($externals as $exter){
 
 			$external_jade[]='"./../'.$exter['dir'].'/'.$exter['file'].'.jade"';
 			$external_stylus[]='"./../'.$exter['dir'].'/'.$exter['file'].'.styl"';
-			$external_es6[]='"./../'.$exter['dir'].'/'.$exter['file'].'.styl"';
+			if($exter['option']=='es6')
+				$external_es6[]='"./../'.$exter['dir'].'/'.$exter['file'].'.js"';
 
 		}
+
+		// prin($external_es6);
 
 		file_put_contents($external_dir_jade.'/external.json',"[\n".implode($external_jade,",\n")."\n]");
 		file_put_contents($external_dir_stylus.'/external.json',"[\n".implode($external_stylus,",\n")."\n]");
