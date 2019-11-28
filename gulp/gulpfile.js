@@ -420,41 +420,41 @@ const watch_task = () => {
     gutil.log(gutil.colors.bgRed('live deploy desactivado'));
 
 
-  gulp.watch(
-    modifies
-    ,
-    function(path, stats) {
+  const watcher = gulp.watch(modifies);
 
-      live_deploy_task(path);
+  watcher.on('change', function(path, stats) {
 
-    }
-
-  );
-
+    live_deploy_task(path);
+    
+  });
 
 }
 
 const live_deploy_task= function(file){
 
+  const newfile='./'+file.replace("../", "");
+
   if(activelivedeploy){
 
-    newfiles='./'+file.replace(/..\//gi, "");
     // console.log(dconn);
     if (typeof(conn) == "undefined")
       conn = ftp.create(dconn);
 
-    console.log(newfiles+':file could be uploaded!');
+    // remotedir = dconn.remotedir || '/public_html';
+    // console.log(file);
+    console.log(newfile+' : file will be uploaded!');
 
     process.chdir('..');
 
-    gulp.src([file],{base:'.',buffer:false})
+    
+    gulp.src([newfile],{base:'.',buffer:false})
       .pipe(conn.newer(remotedir)) // only upload newer files 
       .pipe(conn.dest(remotedir));
     
     process.chdir('gulp');
   
   } else 
-    console.log(file+':file no uploaded!');
+    console.log(newfile+':file no uploaded!');
 
 }
 
