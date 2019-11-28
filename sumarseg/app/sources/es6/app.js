@@ -63,8 +63,8 @@
 require("../../../../work/app/sources/components/common/common.js")();
 require("../../../../work/app/sources/components/menu_left/menu_left.js")();
 require("../../../../work/app/sources/components/block_gallery/block_gallery.js")();
+require("../../../../sumarseg/app/sources/components/header/header.js")();
 require("../../../../sumarseg/app/sources/components/block_banner/block_banner.js")();
-require("../../../../agro/app/sources/components/header/header.js")();
 require("../../../../sumarseg/app/sources/components/home_block_importaciones/home_block_importaciones.js")();
 require("../../../../sumarseg/app/sources/components/home_block_descuentos/home_block_descuentos.js")();
 require("../../../../sumarseg/app/sources/components/gallery_products/gallery_products.js")();

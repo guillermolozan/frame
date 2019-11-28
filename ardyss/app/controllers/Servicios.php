@@ -1466,7 +1466,7 @@ class Servicios extends \core\controllers\Pages {
 
 			$url_item=($params['level']=='importaciones')?'importado':'descuento';
 
-			$tabla_campos=($params['level']=='importaciones')?"nombre as name,id,precio,moneda":"nombre as name,id,precio,moneda,oferta as subname";
+			$tabla_campos=($params['level']=='importaciones')?"nombre as name,id,precio,moneda":"nombre as name,id,precio,precio_oferta,moneda,oferta as subname";
 
 
 			$items_productos=select(
@@ -1481,7 +1481,6 @@ class Servicios extends \core\controllers\Pages {
 				'url'=>['url'=>[$url_item.'/{name}/{id}']],
 
 			]);
-			// prin($items_productos);
 
 			foreach($items_productos as $iii=> $prod){
 
@@ -1490,6 +1489,15 @@ class Servicios extends \core\controllers\Pages {
 					$items_productos[$iii]['precio']=(($prod['moneda']=='1')?'US$':'S/.').$prod['precio'];
 
 				$items_productos[$iii]['subname']=round($prod['subname']);
+
+
+				if($params['level']=='descuentos'){
+
+					$items_productos[$iii]['subname']=$items_productos[$iii]['precio']." -".round($prod['subname']);
+
+					$items_productos[$iii]['precio'] =(($prod['moneda']=='1')?'US$':'S/.').$prod['precio_oferta'];
+
+				}
 
 				$fotos=fila(
 					"id,fecha_creacion,file",
@@ -1512,6 +1520,7 @@ class Servicios extends \core\controllers\Pages {
 
 
 			}
+
 
 			// prin($items_productos);
 

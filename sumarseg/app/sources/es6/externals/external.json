@@ -2,8 +2,14 @@
 "./../work/app/sources/components/common/common.js",
 "./../work/app/sources/components/menu_left/menu_left.js",
 "./../work/app/sources/components/block_gallery/block_gallery.js",
-"./../agro/app/sources/components/header/header.js",
+"./../sumarseg/app/sources/components/header/header.js",
+"./../sumarseg/app/sources/components/block_banner/block_banner.js",
+"./../sumarseg/app/sources/components/home_block_importaciones/home_block_importaciones.js",
+"./../sumarseg/app/sources/components/home_block_descuentos/home_block_descuentos.js",
+"./../sumarseg/app/sources/components/gallery_products/gallery_products.js",
 "./../onelimites/app/sources/components/product_detail/product_detail.js",
+"./../sumarseg/app/sources/components/form_contact/form_contact.js",
 "./../onelimites/app/sources/components/products_reel/products_reel.js",
+"./../sumarseg/app/sources/components/home_block_notes/home_block_notes.js",
 "./../asiste/app/sources/components/home_block_links/home_block_links.js"
 ]

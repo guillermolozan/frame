@@ -1,0 +1,122 @@
+menu_logo      ='logo.png'
+
+menu_bg        =#357bb2
+menu_color     =white
+menu_font_size =.84em
+menu_height    =50px
+menu_bg_over   =color1
+menu_color_over=white
+
+// menu_bg        =rgba(black,.7)
+// menu_color     =white
+// menu_font_size =14px
+// menu_height    =38px
+// menu_bg_over   =rgba(white,.9)
+// menu_color_over=black
+
+
+header_bg()
+	&:after
+		content ""
+		width 422px
+		height 31px
+		z-index 0
+		margin 0 auto
+		position relative
+		display block
+		margin-top -31px
+
+
+
+header_customize()
+	header nav > .container > .menu_top > li.logo a
+		@media $small-medium
+			transform scale(.6) !important
+		@media $small
+			transform scale(.6) !important
+	@media $large
+		header
+			nav
+				> .container 
+					> .menu_top
+						> li
+							border-bottom 3px solid transparent
+							&.active,&:hover
+								border-bottom 3px solid #A6D644
+		body.headfixed
+			header
+				nav
+					// background menu_bg
+					background rgba(white,.9)
+					// box-shadow initial
+					> .container
+						> .menu_top
+							> li
+								> a
+									// color menu_color !important
+									color black !important
+								&.active,&:hover
+									background menu_bg_over
+									> a
+										color menu_color_over !important
+								&.logo
+									background initial !important
+									> a
+										width 120px
+										color transparent !important
+										transform scale(1,1.5)
+
+.prenav
+	@media $medium-small
+		display none
+	text-align center
+	transition all .6s
+	header_bg()
+	.container
+		transition inherit
+		display flex
+		line-height initial
+		align-items center
+		justify-content space-between
+		.promo
+			header_promo()
+		> a.logo
+			transition inherit
+			position relative
+			width auto
+			height auto
+			background transparent
+			flex-grow 0
+			display inline-block
+			margin 12px 0
+			text-align center
+			width 100%
+			@media $small-medium
+				display block
+				text-align center
+			a
+				padding 0
+				text-align left
+				@media $small-medium
+					text-align center
+				img
+					transition inherit
+					transform scale(1)
+			@media $small-medium
+				margin 0
+				img
+					height 50px
+			@media $large
+				img
+					width auto
+					height 80px
+	
+
+
+
+header_basic_long()
+
+
+header_customize()
+
+									

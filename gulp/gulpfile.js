@@ -89,6 +89,7 @@ const restart      = require('gulp-restart');
 
 const folder           = '../'+argv.p;
 const app              = './'+folder;
+const app2             = './'+argv.p;
 const work             = './../work';
 const urlfolder        = 'http://localhost/frame/' + argv.p;
 
@@ -131,28 +132,6 @@ dconn.log = gutil.log;
 var remotedir=dconn.remotedir || '/public_html';
 
 
-const livedeploy_task= function(file){
-
-  if(activelivedeploy){
-
-    // console.log(dconn);
-    if (typeof(conn) == "undefined")
-      conn = ftp.create(dconn);
-
-    // remotedir = dconn.remotedir || '/public_html';
-    console.log(file);
-
-    return gulp.src([file],{base:'.',buffer:false})
-      .pipe(conn.newer(remotedir)) // only upload newer files 
-      .pipe(conn.dest(remotedir));
-
-  } else {
-
-    console.log('file no uploaded!');
-
-  }
-
-}
 
 
 
@@ -320,20 +299,20 @@ const external_jade = require(jade_dir + '/externals/external.json');
 const external_es6 = require(es6_dir + '/externals/external.json');
 
 const all_watch_stylus=[
-  comp_dir+'/**/*.styl',
+  // comp_dir+'/**/*.styl',
   stylus_dir+'/*.styl',
   stylus_dir+'/**/*.styl',
   work_stylus_dir+'/**/*.styl'
 ].concat(external_stylus);
 
 const all_watch_js=[
-  comp_dir+'/**/*.js',
+  // comp_dir+'/**/*.js',
   es6_dir+'/**/*.js'
   // external_es6    
 ].concat(external_es6);
 
 const all_watch_jade=    [
-  comp_dir+'/**/*.jade',
+  // comp_dir+'/**/*.jade',
   work_jade_dir+'/**/*.jade',
   jade_dir+'/**/*.jade'
   // external_jade      
@@ -386,24 +365,28 @@ const watch_task = () => {
   
 
 
-  gulp.watch(
-    [app+'/app/config/components.php']
-    , 
-    restart_task
-  );
+  // gulp.watch(
+  //   [app+'/app/config/components.php']
+  //   , 
+  //   restart_task
+  // );
 
-
+  /*
   gulp.watch(
     modifies
     ,
+    live_deploy_task
     function(event){
-
-      livedeploy_task(event.path)
+      console.log(event);
+      // livedeploy_task(event.path)
 
     }
   );
+  */
+
 
   
+
   keys((ch, key)=> {
     if (key.ctrl && key.name === 'l') {
       if(activelivedeploy){
@@ -435,9 +418,46 @@ const watch_task = () => {
     gutil.log(gutil.colors.bgGreen('live deploy activado'));
   else
     gutil.log(gutil.colors.bgRed('live deploy desactivado'));
-    
+
+
+  gulp.watch(
+    modifies
+    ,
+    function(path, stats) {
+
+      live_deploy_task(path);
+
+    }
+
+  );
+
 
 }
+
+const live_deploy_task= function(file){
+
+  if(activelivedeploy){
+
+    newfiles='./'+file.replace(/..\//gi, "");
+    // console.log(dconn);
+    if (typeof(conn) == "undefined")
+      conn = ftp.create(dconn);
+
+    console.log(newfiles+':file could be uploaded!');
+
+    process.chdir('..');
+
+    gulp.src([file],{base:'.',buffer:false})
+      .pipe(conn.newer(remotedir)) // only upload newer files 
+      .pipe(conn.dest(remotedir));
+    
+    process.chdir('gulp');
+  
+  } else 
+    console.log(file+':file no uploaded!');
+
+}
+
 
 /*
 ########  ########  ######  ########    ###    ########  ########
@@ -475,6 +495,7 @@ const hello_task = async ()=>{
 
 
 
+
 /*
 ########  ######## ########  ##        #######  ##    ##
 ##     ## ##       ##     ## ##       ##     ##  ##  ##
@@ -495,42 +516,42 @@ const deploy_task = async()=>{
     const conn = ftp.create(dconn);
 
     const globspc = [     
-        app+'/public/css/app.css',
-        app+'/touch.json',
+        app2+'/public/css/app.css',
+        app2+'/touch.json',
     ];
     const globspi = [     
-        app+'/public/img/**',
+        app2+'/public/img/**',
     ];
     const globspj = [     
-        app+'/public/js/app.js',
-        app+'/touch.json',
+        app2+'/public/js/app.js',
+        app2+'/touch.json',
     ]; 
     const globspv = [     
-        app+'/public/font/**',
-        app+'/public/vendor/**',
+        app2+'/public/font/**',
+        app2+'/public/vendor/**',
     ];            
     const globsc = [     
-        app+'/app/controllers/**',
-        app+'/app/models/**',
+        app2+'/app/controllers/**',
+        app2+'/app/models/**',
     ];
     const globsv = [     
-        app+'/app/views/php/**',
+        app2+'/app/views/php/**',
     ];    
     const globs2 = [
-        app+'/app/config/**',        
-        // app+'/vendor/**',
-        app+'/.htaccess',
-        app+'/touch.json',
-        app+'/index.php',
+        app2+'/app/config/**',        
+        // app2+'/vendor/**',
+        app2+'/.htaccess',
+        app2+'/touch.json',
+        app2+'/index.php',
     ];
 
     const globs3 = [
-        './../work/core/**',
-        './../work/data_test/**',
-        './../work/library/**',
-        './../work/vendor/**',
-        './../work/public/**',
-        './../.htaccess',
+        './work/core/**',
+        './work/data_test/**',
+        './work/library/**',
+        './work/vendor/**',
+        './work/public/**',
+        './.htaccess',
     ];
 
     const globs4 = [
@@ -567,14 +588,22 @@ const deploy_task = async()=>{
     } else {
       globs=globspc.concat(globspi).concat(globspj).concat(globspv).concat(globsc).concat(globsv).concat(globs2).concat(globs3);
     }
-    // console.log(globs);
+    console.log(globs);
 
 
     // using base = '.' will transfer everything to /public_html correctly 
     // turn off buffering in gulp.src for best performance 
-    return gulp.src(globs,{base:'.',buffer:false})
+    console.log('directory: ' + process.cwd());
+
+    process.chdir('..');
+    
+    gulp.src(globs,{base:'.',buffer:false})
       .pipe(conn.newer(remotedir)) // only upload newer files 
       .pipe(conn.dest(remotedir));
+    
+    process.chdir('gulp');
+
+    // console.log('directory: ' + process.cwd());
 
 };
 
@@ -605,7 +634,36 @@ const components_task = ()=>{
 
 };
 
+/*
+ ######   ######## ########     ######   #######  ##     ## ########   #######  ##    ## ######## ##    ## ########  ######
+##    ##  ##          ##       ##    ## ##     ## ###   ### ##     ## ##     ## ###   ## ##       ###   ##    ##    ##    ##
+##        ##          ##       ##       ##     ## #### #### ##     ## ##     ## ####  ## ##       ####  ##    ##    ##
+##   #### ######      ##       ##       ##     ## ## ### ## ########  ##     ## ## ## ## ######   ## ## ##    ##     ######
+##    ##  ##          ##       ##       ##     ## ##     ## ##        ##     ## ##  #### ##       ##  ####    ##          ##
+##    ##  ##          ##       ##    ## ##     ## ##     ## ##        ##     ## ##   ### ##       ##   ###    ##    ##    ##
+ ######   ########    ##        ######   #######  ##     ## ##         #######  ##    ## ######## ##    ##    ##     ######
+*/
+const get_comp_task = async () => {
 
+  const comp_dir_from         = './../'+argv.q+'/app/sources/components';
+  const component = argv.c;
+
+  const comp_dir_from_jade =comp_dir_from+'/'+component+'/'+component+'.jade';
+  const comp_dir_from_styl =comp_dir_from+'/'+component+'/'+component+'.styl';
+  const comp_dir_from_es6 =comp_dir_from+'/'+component+'/'+component+'.js';
+
+  const comp_dir_to =comp_dir+'/'+component+'/';
+
+  gulp.src(comp_dir_from_jade)
+  .pipe(gulp.dest(comp_dir_to));
+
+  gulp.src(comp_dir_from_styl)
+  .pipe(gulp.dest(comp_dir_to));
+  
+  gulp.src(comp_dir_from_es6)
+  .pipe(gulp.dest(comp_dir_to));  
+
+};
 
 
 exports.touch   = touch_task;
@@ -616,6 +674,7 @@ exports.browserify   = browserify_task;
 
 
 exports.components   = components_task;
+exports.get_comp   = get_comp_task;
 exports.deploy   = deploy_task;
 // exports.email_inline   = email_inline_task;
 

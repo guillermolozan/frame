@@ -266,7 +266,15 @@ $finish_components_es6
 				$name=$com;
 				$directorio=$dir.'/'.$components_dir;
 				$local_components[]=$com;
+
+				$externals[]=[
+					'dir'=>$directorio.'/'.$name,
+					'file'=>$name,
+					'option'=>$option
+				];
+
 			}
+
 
 			$final_route=$directorio.'/'.$name;
 			
