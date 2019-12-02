@@ -12,6 +12,15 @@ function opciones($campos,$tabla,$donde,$debug=0){
 	return $Arr;
 }
 
+function getarray($campo,$tabla,$donde,$debug=0){
+	$array=select($campo,$tabla,$donde,$debug);
+	$Arr=array();
+	foreach($array as $arra){
+		$Arr[]=$arra[$campo];
+	}
+	return $Arr;
+}
+
 $ima_cats=[
 	'abstract',
 	'animals',
@@ -113,7 +122,7 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 	// echo $consulta;
 	//}
 	$result=mysqli_query($link,$consulta);
-	if($debug){ prin($link); exit(); }
+	// if($debug){ prin($link); exit(); }
 	$total=mysqli_num_rows($result);
 	if($total>0){
 		while ($row = mysqli_fetch_row($result)){
@@ -128,6 +137,7 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 	if($debug==1){
 		prin($camposA);
 		prin($consulta);
+		// prin($link);
 	}
 	if($debug==2){
 		$error=mysqli_error($link);
@@ -1847,7 +1857,11 @@ function procesar_llaves($fila,$string){
 
 function procesar_url($url,$debug=0){
 
-	// prin("|$url|");
+	$parts=explode("/",$url);
+	foreach($parts as $part){
+		$parts2[]=trim($part);
+	}
+	$url=implode("/",$parts2);
 
 	$from =['á','é','í','ó','ú','Á','É','Í','Ó','Ú','&','˜','¿','?'];
 	$to   =['a','e','i','o','u','A','E','I','O','U','','-','',''];

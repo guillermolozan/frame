@@ -62,14 +62,13 @@ figure.responsive-img
 
 // header
 header 
-	> nav
-		
-		background transparent url(imgs+'header_bg.png') repeat-x center bottom
+	@media $medium-small
+		nav 
+			background white url(imgs+'header_bg.png') repeat-x center bottom !important
 	.menu_top > li 
-		&.active
-			background-color color2 !important
+		&.active,&:hover
+			border-bottom-color white !important
 		> a 
-			font-size .9rem !important
 			font-family Roboto
 			font-weight normal !important
 		.submenu > li
@@ -79,7 +78,7 @@ header
 .headfixed
 	header 
 		> nav
-			background white bottom
+			background white url(imgs+'header_bg.png') repeat-x center bottom !important
 
 
 

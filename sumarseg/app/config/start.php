@@ -18,8 +18,10 @@ return [
 		'lon'        =>'-77.0383133',
 		
 		'whatsapp'   =>'981109152',
-		// 'twitter'    =>'https://twitter.com/',
-		// 'facebook'   =>'https://www.facebook.com/',
+		'instagram'  =>'https://www.instagram.com/instagram',
+		'instagram_page'  =>'instagram',
+		'facebook'   =>'https://www.facebook.com/facebook',
+		'facebook_page'   =>'facebook',
 		// 'youtube'    =>'https://www.youtube.com/',
 
 		'slogan' => 'Calzado Industrial en Perú, Lima - Calzado de Proteccion Botas de Seguridad',

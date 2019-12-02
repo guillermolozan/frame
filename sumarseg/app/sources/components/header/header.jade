@@ -12,12 +12,15 @@ header(class="navbar-fixed")
 
 	nav
 
-		+button_side_nav()
 
 		
 		.container
+			+button_side_nav()
+
 			//- menu_top
 			ul(class="menu menu_top")
+				li.brand-logo: a(href="#{link_home}",title="#{web_name}")
+					img(src="#{pub_img}#{logo}",title="#{web_name}",alt="#{web_name}")
 				+menu_items(menu_top)
 
 				

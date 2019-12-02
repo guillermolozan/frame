@@ -89,7 +89,6 @@ const restart      = require('gulp-restart');
 
 const folder           = '../'+argv.p;
 const app              = './'+folder;
-const app2             = './'+argv.p;
 const work             = './../work';
 const urlfolder        = 'http://localhost/frame/' + argv.p;
 
@@ -432,29 +431,19 @@ const watch_task = () => {
 
 const live_deploy_task= function(file){
 
-  const newfile='./'+file.replace("../", "");
-
   if(activelivedeploy){
 
     // console.log(dconn);
     if (typeof(conn) == "undefined")
       conn = ftp.create(dconn);
 
-    // remotedir = dconn.remotedir || '/public_html';
-    // console.log(file);
-    console.log(newfile+' : file will be uploaded!');
+    remotedir = dconn.remotedir || '/public_html';
 
-    process.chdir('..');
-
-    
-    gulp.src([newfile],{base:'.',buffer:false})
+    return gulp.src([file],{base:'..',buffer:false})
       .pipe(conn.newer(remotedir)) // only upload newer files 
       .pipe(conn.dest(remotedir));
-    
-    process.chdir('gulp');
-  
-  } else 
-    console.log(newfile+':file no uploaded!');
+      
+  } 
 
 }
 
@@ -507,7 +496,6 @@ const hello_task = async ()=>{
 */
 const deploy_task = async()=>{
 
-
     const dconn = require(app+'/conn.json');
     dconn.log = gutil.log;
 
@@ -516,46 +504,46 @@ const deploy_task = async()=>{
     const conn = ftp.create(dconn);
 
     const globspc = [     
-        app2+'/public/css/app.css',
-        app2+'/touch.json',
+        app+'/public/css/app.css',
+        app+'/touch.json',
     ];
     const globspi = [     
-        app2+'/public/img/**',
+        app+'/public/img/**',
     ];
     const globspj = [     
-        app2+'/public/js/app.js',
-        app2+'/touch.json',
+        app+'/public/js/app.js',
+        app+'/touch.json',
     ]; 
     const globspv = [     
-        app2+'/public/font/**',
-        app2+'/public/vendor/**',
+        app+'/public/font/**',
+        app+'/public/vendor/**',
     ];            
     const globsc = [     
-        app2+'/app/controllers/**',
-        app2+'/app/models/**',
+        app+'/app/controllers/**',
+        app+'/app/models/**',
     ];
     const globsv = [     
-        app2+'/app/views/php/**',
+        app+'/app/views/php/**',
     ];    
     const globs2 = [
-        app2+'/app/config/**',        
-        // app2+'/vendor/**',
-        app2+'/.htaccess',
-        app2+'/touch.json',
-        app2+'/index.php',
+        app+'/app/config/**',        
+        // app+'/vendor/**',
+        app+'/.htaccess',
+        app+'/touch.json',
+        app+'/index.php',
     ];
 
     const globs3 = [
-        './work/core/**',
-        './work/data_test/**',
-        './work/library/**',
-        './work/vendor/**',
-        './work/public/**',
-        './.htaccess',
+        './../work/core/**',
+        './../work/data_test/**',
+        './../work/library/**',
+        './../work/vendor/**',
+        './../work/public/**',
+        './../.htaccess',
     ];
 
     const globs4 = [
-        'index.php',
+        '../index.php',
     ];    
 
     const indextxt="<?php chdir('"+folder+"'); include 'index.php';"
@@ -588,22 +576,14 @@ const deploy_task = async()=>{
     } else {
       globs=globspc.concat(globspi).concat(globspj).concat(globspv).concat(globsc).concat(globsv).concat(globs2).concat(globs3);
     }
-    console.log(globs);
 
+    console.log(globs);
 
     // using base = '.' will transfer everything to /public_html correctly 
     // turn off buffering in gulp.src for best performance 
-    console.log('directory: ' + process.cwd());
-
-    process.chdir('..');
-    
-    gulp.src(globs,{base:'.',buffer:false})
+    return gulp.src(globs,{base:'..',buffer:false})
       .pipe(conn.newer(remotedir)) // only upload newer files 
       .pipe(conn.dest(remotedir));
-    
-    process.chdir('gulp');
-
-    // console.log('directory: ' + process.cwd());
 
 };
 
@@ -660,7 +640,7 @@ const get_comp_task = async () => {
   gulp.src(comp_dir_from_styl)
   .pipe(gulp.dest(comp_dir_to));
   
-  gulp.src(comp_dir_from_es6)
+  return gulp.src(comp_dir_from_es6)
   .pipe(gulp.dest(comp_dir_to));  
 
 };

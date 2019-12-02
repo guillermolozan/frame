@@ -282,7 +282,7 @@ class Controller extends \core\Controller {
 				'menu_top'         => $this->menu_top,
 				'menu_left'        => $this->menu_left,
 				// 'logo'          => $this->config['img_logo'],
-				'logo'             => 'logo.jpg?6',
+				'logo'             => 'logo-detallitos-mm.jpg?7',
 				// 'header_bg'     => $header_bg['img'],
 				// 'header_phones' => $web['header_phones'],
 				'icon'             => 'favicondetallitos.png',

@@ -4,7 +4,8 @@ article(class="card-panel galleries product_detail")
 		.col.s12.l6.main
 			//- h2 Descripción
 			h1 #{post.name}
-			h3 #{post.marca}
+			h3 #[strong CÓDIGO]: #{post.codigo}
+			h3 #[strong MARCA]: #{post.marca}
 			.fb-like(
 				data-layout='standard', 
 				data-action='like', 
@@ -13,9 +14,9 @@ article(class="card-panel galleries product_detail")
 				data-share='true')
 			div!= post.html
 			if(post.precio!='S/.')
-				.precio #{post.precio}
+				.precio #[strong PRECIO] : #{post.precio}
 			if(post.oferta!='')
-				.oferta #{post.oferta}
+				.oferta #{post.oferta}			
 
 			//- if post.adjunto
 			//- 	div

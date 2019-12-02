@@ -268,7 +268,7 @@ class Home extends Controller {
 
 				//head
 				// 'head_title'    => $this->title. ( ($this->slogan)?' - '.$this->slogan:'' ),
-				'head_title'    => $this->title." :: ".$this->slogan,
+				'head_title'    => $this->title." :: Tienda de regalos personalizados",
 
 				
 				//banner

@@ -30,7 +30,6 @@ class Servicios extends \core\controllers\Pages {
 
 	}
 
-
 	function emailFields($type="text"){
 
 		if($type=="html"){
@@ -85,7 +84,6 @@ class Servicios extends \core\controllers\Pages {
 		return $html;
 
 	}
-
 
 	function detail($params){
 
@@ -148,10 +146,10 @@ class Servicios extends \core\controllers\Pages {
 
 
 
-		$breadcrumb[]=[
-			'name' =>$name_items,
-			'url'  =>$url_items,
-		];
+		// $breadcrumb[]=[
+		// 	'name' =>$name_items,
+		// 	'url'  =>$url_items,
+		// ];
 
 
 		if(
@@ -172,11 +170,12 @@ class Servicios extends \core\controllers\Pages {
 		} else {
 
 			$post = fila(
-			        "id,id_grupo,id_subgrupo,id_filtro,nombre as name,marca,descripcion as html,moneda,tags,weight,
+			        "id,codigo,id_grupo,id_subgrupo,id_filtro,nombre as name,marca,descripcion as html,moneda,tags,weight,
 			        adjunto,fecha_creacion"
 			        ,$tabla_items
 			        ,"where id='".$params['item']."'"
-			        ,0
+					,0
+					/*
 			        ,[
 			        		'grupo'=>['fila'=>[
 			        				'id,nombre,url',
@@ -196,22 +195,18 @@ class Servicios extends \core\controllers\Pages {
 			        				'where id={id_filtro}'
 			        		]],
 
-							'url'=>['url'=>[$params['level'].'/{name}/{id}']],
+							'url'=>['url'=>[$params['level'].'/{name}/{id}']],				
 
-							// 'get_archivo'=>['get_archivo'=>[
-							// 				'carpeta'=>'atc_imas',
-							// 				'fecha'=>'{fecha_creacion}',
-							// 				'file'=>'{adjunto}',
-							// 				'tamano'=>'0'
-							// 				]]						
-
-			        ]
+					]
+					*/
 			);
+
+			$post['subcat']=fila('id,name as nombre,url,id_grupo','productos_groups','where id='.$post['id_grupo'],0);
+			$post['cat']=fila('id,nombre,url,id_grupo','productos_subgrupos','where id='.$post['subcat']['id_grupo'],0);
+			$post['grupo']=fila('id,nombre,url','productos_grupos','where id='.$post['cat']['id_grupo']);
 
 
 			$post['cat']['url']=procesar_url($post['grupo']['url']."/category-".$post['cat']['nombre']."/".$post['cat']['id']);
-
-
 			$post['subcat']['url']=procesar_url($post['grupo']['url']."/sub-category-".$post['subcat']['nombre']."/".$post['subcat']['id']);
 
 
@@ -224,8 +219,7 @@ class Servicios extends \core\controllers\Pages {
 				'name' =>$post['cat']['nombre'],
 				'url'  =>$post['cat']['url'],
 			];
-
-			if($post['subcat']['nombre'])
+	
 			$breadcrumb[]=[
 				'name' =>$post['subcat']['nombre'],
 				'url'  =>$post['subcat']['url'],
@@ -268,9 +262,17 @@ class Servicios extends \core\controllers\Pages {
 		 	]
 		);
 
+		
 
-
-		//form
+		/*
+		########  #######  ########  ##     ##
+		##       ##     ## ##     ## ###   ###
+		##       ##     ## ##     ## #### ####
+		######   ##     ## ########  ## ### ##
+		##       ##     ## ##   ##   ##     ##
+		##       ##     ## ##    ##  ##     ##
+		##        #######  ##     ## ##     ##
+		*/
 		$this->fields=[
 			'proyecto'=>[
 				// 'divclass' =>'col s12 l5',
@@ -328,9 +330,9 @@ class Servicios extends \core\controllers\Pages {
 				'label'    =>'Mensaje',
 				'type'     =>'textarea',
 				'value' =>'Estoy interesado en el el producto '.$post['name'].'
-Por favor contacten conmigo.
-Gracias
-'],
+				Por favor contacten conmigo.
+				Gracias
+			'],
 
 		];
 
@@ -460,6 +462,7 @@ Gracias
 											'img'  =>$post['fotos']['0']['img'],
 
 											'marca' =>$post['marca'],
+											'codigo' =>$post['codigo'],
 
 											// 'parts'=>'1',
 											// 
@@ -512,8 +515,6 @@ Gracias
 
 
 	}
-
-
 
 	function oldindex($params){	
 
@@ -715,9 +716,9 @@ Gracias
 				'label'    =>'Mensaje',
 				'type'     =>'textarea',
 				'value' =>'Estoy interesado en el el producto '.$post['name'].'
-Por favor contacten conmigo.
-Gracias
-'],
+				Por favor contacten conmigo.
+				Gracias
+			'],
 
 		];
 
@@ -879,8 +880,6 @@ Gracias
 
 	}
 
-
-
 	function grid($params){	
 
 
@@ -894,17 +893,24 @@ Gracias
 		$Page=$this->loadModel('Pages');
 
 
-		/////////////////////////////////////////////////////////////////////////////
-		////////////////////////////// LEFT MENU ////////////////////////////////////
-		/////////////////////////////////////////////////////////////////////////////
+		$urls_cat_array=getarray("url","productos_grupos","where visibilidad=1",0);
+		
+		if(in_array($params['level'],$urls_cat_array)){
+			$params['level']='1';
+		}
 
+		/*
+		##       ######## ######## ########    ##     ## ######## ##    ## ##     ##
+		##       ##       ##          ##       ###   ### ##       ###   ## ##     ##
+		##       ##       ##          ##       #### #### ##       ####  ## ##     ##
+		##       ######   ######      ##       ## ### ## ######   ## ## ## ##     ##
+		##       ##       ##          ##       ##     ## ##       ##  #### ##     ##
+		##       ##       ##          ##       ##     ## ##       ##   ### ##     ##
+		######## ######## ##          ##       ##     ## ######## ##    ##  #######
+		*/
 
 		// $group      =$Page->getGroup(['item'=>$id_grupo]);
-		// prin($params);
-		if(
-			$params['level']=='productos' 
-			// or $params['level']=='mas-vistos'
-		){
+		if($params['level']=='productos' ){
 
 
 			$menu =select('nombre as name,id,url','productos_grupos','where visibilidad=1',0,
@@ -926,8 +932,13 @@ Gracias
 			// prin($menu);
 
 
-		} elseif( in_array($params['level'],['1','2']) ){
+		} elseif( in_array($params['level'],['1','2','3']) ){
 
+			// prin($params);
+
+			if($params['level']=='1'){
+				$params['grup']=$params['uri'];
+			}
 
 			$Page->setConfig([
 							'items'=>[
@@ -943,7 +954,6 @@ Gracias
 
 			// prin($params);
 			$fila=fila('id,nombre,url','productos_grupos','where url="'.$params['grup'].'"',0);
-			// prin($fila);
 
 			$post['name']=$fila['nombre'];
 			$post['id']=$fila['id'];
@@ -962,7 +972,7 @@ Gracias
 
 
 			if( in_array($params['level'],['3']) )
-			$daditem=dato("id_subgrupo","productos_filtros","where id=".$params['item']);
+				$daditem=dato("id_grupo","productos_groups","where id=".$params['item']);
 
 			// prin($menu);
 
@@ -970,6 +980,8 @@ Gracias
 
 			// if( in_array($params['level'],['2','3']) )
 			foreach($menu as $iii=> $men){
+				
+				// prin([$params['level'],$daditem,$men['id']]);
 
 				if( 
 					( 
@@ -983,9 +995,9 @@ Gracias
 					)
 				)
 
-				$menu[$iii]['items']=select('nombre as name,id','productos_items','where visibilidad=1 and id_subgrupo='.$men['id'],0,
+				$menu[$iii]['items']=select('name,id','productos_groups','where visibilidad=1 and id_grupo='.$men['id'],0,
 						[
-							'url'=>['url'=>[$fila['url'].'/{name}/{id}']],
+							'url'=>['url'=>[$fila['url'].'/sub-category-{name}/{id}']],
 						]);
 
 			}
@@ -995,7 +1007,7 @@ Gracias
 
 			// prin($menu);
 
-			if( in_array($params['level'],['1','2']) ){
+			if( in_array($params['level'],['1','2','3']) ){
 
 				// prin($menu);
 
@@ -1029,7 +1041,7 @@ Gracias
 
 
 				if( in_array($params['level'],['3']) )
-				$daditem=dato("id_subgrupo","productos_filtros","where id=".$params['item']);
+				$daditem=dato("id_grupo","productos_groups","where id=".$params['item'],0);
 
 
 				// prin($menuleft);
@@ -1038,6 +1050,8 @@ Gracias
 
 				// if( in_array($params['level'],['2','3']) )
 				foreach($menuleft as $iii=> $men){
+					
+					// prin([$params['level'],$daditem,$men['id']]);
 
 					if( 
 						( 
@@ -1050,7 +1064,7 @@ Gracias
 						)
 					)
 
-					$menuleft[$iii]['items']=select('nombre as name,id','productos_filtros','where visibilidad=1 and id_subgrupo='.$men['id'],0,
+					$menuleft[$iii]['items']=select('name,id','productos_groups','where visibilidad=1 and id_grupo='.$men['id'],0,
 							[
 								'url'=>['url'=>[$fil['url'].'/{name}/{id}']],
 							]);
@@ -1059,7 +1073,7 @@ Gracias
 
 				// prin($menuleft);
 
-				if( in_array($params['level'],['1','2']) ){
+				if( in_array($params['level'],['1','2','3']) ){
 
 					// prin($menu);
 					$menuleftfinal[]=[
@@ -1080,8 +1094,6 @@ Gracias
 
 		}
 
-
-		// prin($menuleftfinal);
 
 
 		$menu       = $this->elements->getM($menu,$params['uri']);
@@ -1104,7 +1116,7 @@ Gracias
 		// 	}
 		// }
 
-      // prin($menu['items']);
+      	// prin($menu['items']);
 
 		$this->view->assign(['menu_post' => $menu['items']]);
 
@@ -1125,10 +1137,17 @@ Gracias
 		// unset($post['img']);
 
 		 
-		/////////////////////////////////////////////////////////////////////////////
-		////////////////////////////// BREADCRUMBS //////////////////////////////////
-		/////////////////////////////////////////////////////////////////////////////
-		
+
+		/*
+		########  ########  ########    ###    ########   ######  ########  ##     ## ##     ## ########   ######
+		##     ## ##     ## ##         ## ##   ##     ## ##    ## ##     ## ##     ## ###   ### ##     ## ##    ##
+		##     ## ##     ## ##        ##   ##  ##     ## ##       ##     ## ##     ## #### #### ##     ## ##
+		########  ########  ######   ##     ## ##     ## ##       ########  ##     ## ## ### ## ########   ######
+		##     ## ##   ##   ##       ######### ##     ## ##       ##   ##   ##     ## ##     ## ##     ##       ##
+		##     ## ##    ##  ##       ##     ## ##     ## ##    ## ##    ##  ##     ## ##     ## ##     ## ##    ##
+		########  ##     ## ######## ##     ## ########   ######  ##     ##  #######  ##     ## ########   ######
+		*/
+
 
 		if($params['level']=='productos'){
 
@@ -1137,9 +1156,9 @@ Gracias
 
 			$where = '1';
 
-			$canonical  =$Page->getCanonical([
-				'name'    =>'productos',
-			]);	
+			// $canonical  =$Page->getCanonical([
+			// 	'name'    =>'productos',
+			// ]);	
 
 
 			$breadcrumb[]=[
@@ -1169,7 +1188,7 @@ Gracias
 		} elseif($params['level']=='descuentos'){
 
 
-			$post['name']='Descuentos';
+			$post['name']='Ofertas';
 
 			$where = '1';
 
@@ -1183,35 +1202,30 @@ Gracias
 				'url'  =>maskUrl('descuentos'),
 			];
 
-		// } elseif($params['level']=='mas-vistos'){
-
-
-		// 	$post['name']='Más Vistos';
-
-		// 	$where = '1';
-
-		// 	$canonical  =$Page->getCanonical([
-		// 		'name'    =>'mas-vistos',
-		// 	]);	
-
-
 		} elseif($params['level']=='1'){
 
+			$post['name']=dato('nombre','productos_grupos','where url="'.$params['uri'].'"',0);
 
-			$post['name']=dato('nombre','productos_grupos','where url="'.$params['grup'].'"',0);
+			$post['url']=dato('url','productos_grupos','where url="'.$params['uri'].'"',0);
 
-			$post['url']=dato('url','productos_grupos','where url="'.$params['grup'].'"',0);
 
-			$where = " id_grupo=".$fila['id']." ";
+			$id_cat=dato('id','productos_grupos','where url="'.$params['uri'].'"',0);
+			// $where = " id_grupo=".$fila['id']." ";
+
+			$ideseses=getarray("id","productos_subgrupos","where id_grupo=".$id_cat);
+
+			$ideses=getarray("id","productos_groups","where id_grupo in (".implode(',',$ideseses).") ");
+			
+			$where = " id_grupo in (".implode(',',$ideses).") ";
 
 			$canonical  =$Page->getCanonical([
 				'name'    =>$post['name'],
 			]);
 
-			$breadcrumb[]=[
-				'name' =>'Productos',
-				'url'  =>maskUrl('productos'),
-			];
+			// $breadcrumb[]=[
+			// 	'name' =>'Productos',
+			// 	'url'  =>maskUrl('productos'),
+			// ];
 
 			$breadcrumb[]=[
 				'name' =>$post['name'],
@@ -1245,18 +1259,20 @@ Gracias
 
 			$post['url']=dato('url','productos_subgrupos','where id="'.$params['item'].'"',0);
 
-			$where = " id_subgrupo=".$params['item']." ";
+			$ideses=getarray("id","productos_groups","where id_grupo=".$params['item']);
 
+			$where = " id_grupo in (".implode(',',$ideses).") ";
+			
 			$canonical  =$Page->getCanonical([
 				'group'   =>$post['menu_name'],
 				'name'    =>'category-'.$post['name'],
 				'id'      =>$params['item'],
 			]);	
 
-			$breadcrumb[]=[
-				'name' =>'Productos',
-				'url'  =>maskUrl('productos'),
-			];
+			// $breadcrumb[]=[
+			// 	'name' =>'Productos',
+			// 	'url'  =>maskUrl('productos'),
+			// ];
 
 			$breadcrumb[]=[
 				'name' =>$post['menu_name'],
@@ -1271,18 +1287,17 @@ Gracias
 
 		} elseif($params['level']=='3'){
 
-
 			$post['menu_name']=dato('nombre','productos_grupos','where url="'.$params['grup'].'"',0);
 
 			$post['menu_url']=dato('url','productos_grupos','where url="'.$params['grup'].'"',0);
 
-			$post['name']=dato('nombre','productos_filtros','where id="'.$params['item'].'"',0);
+			$post['name']=dato('name','productos_groups','where id="'.$params['item'].'"',0);
 
-			$id_sub=dato('id_subgrupo','productos_filtros','where id="'.$params['item'].'"',0);
+			$id_sub=dato('id_grupo','productos_groups','where id="'.$params['item'].'"',0);
 			
 			$name_sub=dato('nombre','productos_subgrupos','where id="'.$id_sub.'"',0);
 
-			$where = " id_filtro=".$params['item']." ";
+			$where = " id_grupo=".$params['item']." ";
 
 			$canonical  =$Page->getCanonical([
 				'group'   =>$post['menu_name'],
@@ -1290,10 +1305,10 @@ Gracias
 				'id'      =>$params['item'],
 			]);
 
-			$breadcrumb[]=[
-				'name' =>'Productos',
-				'url'  =>maskUrl('productos'),
-			];
+			// $breadcrumb[]=[
+			// 	'name' =>'Productos',
+			// 	'url'  =>maskUrl('productos'),
+			// ];
 
 			$breadcrumb[]=[
 				'name' =>$post['menu_name'],
@@ -1315,10 +1330,15 @@ Gracias
 
 
 
-		/////////////////////////////////////////////////////////////////////////////
-		/////////////////////////////////// GRID ///////////////////////////////////
-		/////////////////////////////////////////////////////////////////////////////
-		
+		/*
+		 ######   ########  #### ########
+		##    ##  ##     ##  ##  ##     ##
+		##        ##     ##  ##  ##     ##
+		##   #### ########   ##  ##     ##
+		##    ##  ##   ##    ##  ##     ##
+		##    ##  ##    ##   ##  ##     ##
+		 ######   ##     ## #### ########
+		*/
 		if($params['level']=='productos'){
 
 			//Grupos
@@ -1395,9 +1415,10 @@ Gracias
 
 
 
-		} elseif($params['level']=='2'){
+		} elseif(in_array($params['level'],['1','2','3'])){
 
-		   $grupos_array=get_valores("id","url","productos_grupos","");
+			
+			$grupos_array=get_valores("id","url","productos_grupos","");
 
 			$items_productos=select(
 			"nombre as name,id,precio,moneda,id_grupo",
@@ -1414,13 +1435,13 @@ Gracias
 
 			foreach($items_productos as $iii=> $prod){
 
-
+				// precio
 				if(trim($prod['precio'])!='')
 					$items_productos[$iii]['precio']=(($prod['moneda']=='1')?'US$':'S/.').$prod['precio'];
 
 
 				$items_productos[$iii]['url']=procesar_url($grupos_array[$prod['id_grupo']].'/'.$prod['name'].'/'.$prod['id']);
-
+				// prin($items_productos[$iii]['url']);
 
 				$fotos=fila(
 					"id,fecha_creacion,file",
@@ -1452,10 +1473,8 @@ Gracias
 
 
 
-		} elseif(
-			$params['level']=='importaciones'
-			or $params['level']=='descuentos'
-		){
+
+		} elseif($params['level']=='importaciones' or $params['level']=='descuentos'){
 
 
 			$tabla_items=($params['level']=='importaciones')?'productos_items_impor':'productos_items_descu';
@@ -1522,57 +1541,8 @@ Gracias
 			unset($menu['items']);
 
 
- 		} else {
+ 		} 
 
-
-			$items_productos=select(
-			"nombre as name,id,precio,moneda",
-			"productos_items",
-			"where $where
-			and visibilidad=1
-			order by weight desc
-			limit 0,100",
-			0,[
-
-				'url'=>['url'=>['producto/{name}/{id}']],
-
-			]);
-
-			foreach($items_productos as $iii=> $prod){
-
-
-				if(trim($prod['precio'])!='')
-					$items_productos[$iii]['precio']=(($prod['moneda']=='1')?'US$':'S/.').$prod['precio'];
-
-
-				$fotos=fila(
-					"id,fecha_creacion,file",
-					"productos_fotos",
-					"where id_item=".$prod['id'],
-					0,
-					[
-						'img'=>['get_archivo'=>[
-													'carpeta'=>'profot_imas',
-													'fecha'=>'{fecha_creacion}',
-													'file'=>'{file}',
-													'tamano'=>'0'
-													]
-												],
-						]
-
-				);
-				$items_productos[$iii]['img']=$fotos['img'];
-
-
-			}
-
-
-			$head_description =$Page->getDescription($post,items2string($items_productos));
-			
-			$head_keywords 	=$Page->getKeywords($post,items2string($items_productos));
-
-
-		}
 
 
 		// foreach($items_productos as $ii=>$item){

@@ -1,3 +1,4 @@
+include ../../jade/includes/whatsapp_button
 footer
 	.container.row
 
@@ -7,25 +8,32 @@ footer
 
 		.col.s12.l6.third
 			ul.menu
-				if(!localhost)
-					li.footer-fb
-						.fb-like(
-							data-href="#{baseurl}",
-							data-layout='standard', 
-							data-action='like', 
-							data-size='small', 
-							data-show-faces='true', 
-							data-share='true')
+				//- if(!localhost)
+				//- 	li.footer-fb
+				//- 		.fb-like(
+				//- 			data-href="#{baseurl}",
+				//- 			data-layout='standard', 
+				//- 			data-action='like', 
+				//- 			data-size='small', 
+				//- 			data-show-faces='true', 
+				//- 			data-share='true')
 				if(web_facebook)
 					li(class="facebook circle") 
 						a(title="Facebook",target="_blank",href="#{web_facebook}") #{web_facebook_page}
+				if(web_instagram)
+					li(class="instagram circle") 
+						a(title="Facebook",target="_blank",href="#{web_instagram}") #{web_instagram_page}						
 				if(web_email)
 					li(class="email circle") 
 						a(title="Email",target="_blank",href="#{web_email}") #{web_email}
-				li
-					span.corp WhatsApp: #[strong 949732138]
-				li.visa
-					span Aceptamos Visa
+				if(web_whatsapp)
+					li: span.corp WhatsApp: #[strong #{web_whatsapp}]
+				if(web_address)
+					li: span.corp Dirección: #[strong #{web_address}]	
+				li: span.corp Telefonos: #[strong  (01) 605-2255 / 605-2256 ]										
+				li: span.corp Correo: #[strong  ventas@sumarseg.com – informes@sumarseg.com ]										
+				//- li.visa
+				//- 	span Aceptamos Visa
 
 
 			//- bucle de menu

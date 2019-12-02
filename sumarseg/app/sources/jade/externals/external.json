@@ -11,12 +11,11 @@
 "./../sumarseg/app/sources/components/page_post/page_post.jade",
 "./../sumarseg/app/sources/components/block_gallery_products/block_gallery_products.jade",
 "./../sumarseg/app/sources/components/gallery_products/gallery_products.jade",
-"./../agro/app/sources/components/block_gallery_videos/block_gallery_videos.jade",
 "./../onelimites/app/sources/components/product_detail/product_detail.jade",
 "./../sumarseg/app/sources/components/form_consulta/form_consulta.jade",
 "./../sumarseg/app/sources/components/form_contact/form_contact.jade",
 "./../sumarseg/app/sources/components/footer/footer.jade",
 "./../onelimites/app/sources/components/products_reel/products_reel.jade",
-"./../sumarseg/app/sources/components/home_block_notes/home_block_notes.jade",
-"./../asiste/app/sources/components/home_block_links/home_block_links.jade"
+"./../asiste/app/sources/components/home_block_links/home_block_links.jade",
+"./../sumarseg/app/sources/components/whatsapp_button/whatsapp_button.jade"
 ]

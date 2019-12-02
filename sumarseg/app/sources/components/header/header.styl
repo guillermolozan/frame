@@ -1,10 +1,10 @@
 menu_logo      ='logo.png'
 
-menu_bg        =#357bb2
+menu_bg        =#1a1f8f
 menu_color     =white
 menu_font_size =.84em
 menu_height    =50px
-menu_bg_over   =color1
+menu_bg_over   =#da251b
 menu_color_over=white
 
 // menu_bg        =rgba(black,.7)
@@ -29,6 +29,8 @@ header_bg()
 
 
 header_customize()
+	header nav a.button-collapse i
+		color red
 	header nav > .container > .menu_top > li.logo a
 		@media $small-medium
 			transform scale(.6) !important
@@ -43,6 +45,8 @@ header_customize()
 							border-bottom 3px solid transparent
 							&.active,&:hover
 								border-bottom 3px solid #A6D644
+						> li.brand-logo
+							display none
 		body.headfixed
 			header
 				nav
@@ -66,9 +70,27 @@ header_customize()
 										color transparent !important
 										transform scale(1,1.5)
 
+	@media $small-medium
+		header
+			nav
+				> .container 
+					> .menu_top
+						text-align center
+						> li.brand-logo
+							display: block;
+							margin: 0 auto;
+							position: relative;
+							width: 100%
+							img
+								height 50px
+
+
 .prenav
 	@media $medium-small
 		display none
+		// position: absolute;
+		// width: 100%;
+		// margin-top: 13px;
 	text-align center
 	transition all .6s
 	header_bg()
@@ -78,8 +100,6 @@ header_customize()
 		line-height initial
 		align-items center
 		justify-content space-between
-		.promo
-			header_promo()
 		> a.logo
 			transition inherit
 			position relative
@@ -106,6 +126,10 @@ header_customize()
 				margin 0
 				img
 					height 50px
+			@media $small
+				margin 0
+				img
+					height 38px
 			@media $large
 				img
 					width auto
@@ -119,4 +143,22 @@ header_basic_long()
 
 header_customize()
 
-									
+
+.menu_top
+	> li > a
+		font-size 14px !important
+	li.facebook > a
+		icomoon('e673')
+		&:before
+			text-align center
+			font-size 1.5em
+			// position relative
+	li.instagram > a
+		icomoon('ea92')
+		&:before
+			font-size 1.4em
+			text-align center
+			// position relative
+
+
+

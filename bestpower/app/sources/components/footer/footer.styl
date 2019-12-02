@@ -5,10 +5,57 @@
 	color pre_footer_textcolor
 	p
 		color inherit !important
+	ul.menu 
+		display flex
+		width 100%
+		&:before
+			content ""
+			flex-grow 1
+			order 1
+		> li
+			height 30px
+			line-height @height
+			padding-left 0.3em
+			padding-right 0.3em
+			font-weight 400
+			flex-grow 0
+			white-space nowrap
+			// vertical-align middle
+			// text-align right
+			// order 1
+			i
+				display inline-block
+				height initial
+				line-height initial
+				font-size inherit
+			a
+				color inherit
+				font-weight inherit
+			&:before
+				margin-right 0.5em
+			&.facebook a
+				icomoon('e660')
+			&.twitter a
+				icomoon('e66c')
+			&.instagram a
+				icomoon('ea92')						
+			&.youtube a
+				icomoon('e674')					
+			&.whatsapp
+				icomoon('e900')
+				font-size 1.05em
+				font-weight bold
+				color white
+			&.phone
+				icomoon('e620')
+				order 11
+			&.email
+				icomoon('e679')
+				order 12		
 	strong 
 		color pre_footer_textcolor
 		font-weight 700 !important
-			
+
 
 footer
 	background-color footer_bgcolor

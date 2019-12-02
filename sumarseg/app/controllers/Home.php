@@ -11,105 +11,121 @@ class Home extends Controller {
 	}
 
 	function index($params){
-      
-      
 
-		// Banner
+
+
+		/*
+		########     ###    ##    ## ##    ## ######## ########
+		##     ##   ## ##   ###   ## ###   ## ##       ##     ##
+		##     ##  ##   ##  ####  ## ####  ## ##       ##     ##
+		########  ##     ## ## ## ## ## ## ## ######   ########
+		##     ## ######### ##  #### ##  #### ##       ##   ##
+		##     ## ##     ## ##   ### ##   ### ##       ##    ##
+		########  ##     ## ##    ## ##    ## ######## ##     ##
+		*/
 		$Banner=$this->loadModel('Banners');
-      $banner=$Banner->getItems();
-      
-      $this->view->assign(["banner" => $banner]);
+		$banner=$Banner->getItems();
+		
+		$this->view->assign(["banner" => $banner]);
 
 
+		if(0){
+			
+			// Downloads
+			$Downloads=$this->loadModel('Banners');
+			$Downloads->setConfig([
+				// 'items'=>['fields'=>'fecha_creacion,file,name,url,adjunto'],
+				'items'=>['fields'=>'fecha_creacion,file,name,url'],
+			]);
+			$downloads=$Downloads->getItems(['item'=>'descargas']);      
 
-            
-   	// Downloads
-		$Downloads=$this->loadModel('Banners');
-      $Downloads->setConfig([
-         // 'items'=>['fields'=>'fecha_creacion,file,name,url,adjunto'],
-         'items'=>['fields'=>'fecha_creacion,file,name,url'],
-      ]);
-      $downloads=$Downloads->getItems(['item'=>'descargas']);      
+			foreach($downloads as $iii=>$ddd){
 
-      foreach($downloads as $iii=>$ddd){
-
-         // $downloads[$iii]['url']='download/'.get_imagen('doc_fil',$ddd['fecha_creacion'],$ddd['adjunto']);
-         $downloads[$iii]['url']=maskUrl('download/'.$ddd['url']);
-
-      }
-      $this->view->assign(["downloads" => $downloads]);
-
-      // prin($downloads);
-
-
-
-		//productos ardyss
-			$items_productos=select(
-			"nombre as name,id_subgrupo,id,precio,moneda",
-			'productos_items',
-			"where 1
-			and visibilidad=1 ".
-			" and ver_home=1 ".
-			" and id_grupo=3 ".
-			" order by weight desc ".
-			" limit 24 ",
-         0);
-         
-
-			foreach($items_productos as $oo=>$itm)
-			{
-				$id_grupo=dato("id_grupo","productos_subgrupos","where id=".$itm['id_subgrupo']);
-				// prin($id_grupo);
-				$name_grupo=dato("url","productos_grupos","where id=".$id_grupo);
-
-				$items_productos[$oo]['url']=procesar_url($name_grupo.'/'.trim($itm['name']).'/'.$itm['id']);
-
-				$items=filas("id","productos_items","where id_filtro=".$itm['id'],0);
-				
-
-				$items_productos[$oo]['precio']=(($itm['moneda']=='1')?'US$':'S/.').$itm['precio'];
-
-
-				$items_productos_fotos=fila(
-					"id,fecha_creacion,file",
-					'productos_fotos',
-					"where id_item=".$itm['id'],
-					0,
-					[
-						'img'=>['get_archivo'=>[
-													'carpeta'=>'profot_imas',
-													'fecha'=>'{fecha_creacion}',
-													'file'=>'{file}',
-													'tamano'=>'0'
-													]
-												],
-						]
-
-				);
-				// prin($items_productos_fotos);
-				$items_productos[$oo]['img']=$items_productos_fotos['img'];
+				// $downloads[$iii]['url']='download/'.get_imagen('doc_fil',$ddd['fecha_creacion'],$ddd['adjunto']);
+				$downloads[$iii]['url']=maskUrl('download/'.$ddd['url']);
 
 			}
+			$this->view->assign(["downloads" => $downloads]);
+
+		}
 
 
-		// foreach($items_productos as $ii=>$item){
+		/*
+		##       #### ##    ## ########    ###     ######
+		##        ##  ###   ## ##         ## ##   ##    ##
+		##        ##  ####  ## ##        ##   ##  ##
+		##        ##  ## ## ## ######   ##     ##  ######
+		##        ##  ##  #### ##       #########       ##
+		##        ##  ##   ### ##       ##     ## ##    ##
+		######## #### ##    ## ######## ##     ##  ######
+		*/
 
-		// 	list($uno,$url,$id)=explode("/",$item['url']);
-		// 	$url=select_dato("url","productos_items","where id=".$id);
-		// 	$items_productos[$ii]['url']=$url.".html";
+		//subcategorias de productos 1
+		$id_productos1=3;
+		$name_productos1=dato("nombre","productos_grupos","where id=$id_productos1");
+		$ids_categorias_productos1=getarray("id","productos_subgrupos","where id_grupo=$id_productos1",0);
+		// $ids_subcategorias_productos2=getarray("id","productos_groups","where id_grupo in (".implode(',',$ids_categorias_productos1).")");
 
-		// }
+		$items_productos1=select(
+			"nombre as name,id,url,id_grupo",
+			'productos_subgrupos',
+			"where 1
+			and visibilidad=1 ".
+			// " and ver_home=1 ".
+			" and id_grupo=".$id_productos1." ".
+			// " order by weight desc ".
+			" limit 24 ",
+			0
+		);
+
+		
+
+		foreach($items_productos1 as $oo=>$itm)
+		{
+			// link
+			$id_grupo=dato("id_grupo","productos_subgrupos","where id=".$itm['id_grupo'],0);
+			$name_grupo=dato("url","productos_grupos","where id=".$id_grupo);
+			$name_grupo='productos1';
+			$items_productos1[$oo]['url']=procesar_url($name_grupo.'/category-'.trim($itm['name']).'/'.$itm['id']);
+
+
+			// foto
+			$id_subcategoria=dato("id","productos_groups","where id_grupo=".$itm['id']);
+
+			$items=filas("id","productos_items","where id_grupo = ".$id_subcategoria,0);
+			
+			$items_productos_fotos1=fila(
+				"id,fecha_creacion,file",
+				'productos_fotos',
+				"where id_item=".$items[0]['id'],
+				0,
+				[
+					'img'=>['get_archivo'=>[
+												'carpeta'=>'profot_imas',
+												'fecha'=>'{fecha_creacion}',
+												'file'=>'{file}',
+												'tamano'=>'0'
+												]
+											],
+					]
+
+			);
+			$items_productos1[$oo]['img']=$items_productos_fotos1['img'];
+
+		}
+
+
 
 
 		$lineas=[
-			'name'=>'Productos Ardyss',
-			'items'=>$items_productos,
+			'name'=>$name_productos1,
+			'items'=>$items_productos1,
 			// 'more'=>[
    //          'name' => 'ver más',
    //          'url' => 'productos'
    //       ]
 		];
-
+		
 		$this->view->assign(["lineas" => $lineas]);
 
 
@@ -119,62 +135,92 @@ class Home extends Controller {
 
 
 
-		//recomendados
-			$items_productos=select(
-			"nombre as name,id,precio,moneda",
-			'productos_items',
+		/*
+		########  ########  ######   #######  ##     ## ######## ##    ## ########     ###    ########   #######   ######
+		##     ## ##       ##    ## ##     ## ###   ### ##       ###   ## ##     ##   ## ##   ##     ## ##     ## ##    ##
+		##     ## ##       ##       ##     ## #### #### ##       ####  ## ##     ##  ##   ##  ##     ## ##     ## ##
+		########  ######   ##       ##     ## ## ### ## ######   ## ## ## ##     ## ##     ## ##     ## ##     ##  ######
+		##   ##   ##       ##       ##     ## ##     ## ##       ##  #### ##     ## ######### ##     ## ##     ##       ##
+		##    ##  ##       ##    ## ##     ## ##     ## ##       ##   ### ##     ## ##     ## ##     ## ##     ## ##    ##
+		##     ## ########  ######   #######  ##     ## ######## ##    ## ########  ##     ## ########   #######   ######
+		*/
+		
+		//subcategorias de productos 2
+		$id_productos2=2;
+		$name_productos2=dato("nombre","productos_grupos","where id=$id_productos2");
+		$ids_categorias_productos2=getarray("id","productos_subgrupos","where id_grupo=$id_productos2");
+		// $ids_subcategorias_productos2=getarray("id","productos_groups","where id_grupo in (".implode(',',$ids_categorias_productos2).")");
+		// prin($ids_subcategorias_productos2);
+
+		$items_productos2=select(
+			"nombre as name,id,url,id_grupo",
+			'productos_subgrupos',
 			"where 1
-			and id_grupo=2
-			and visibilidad=1
-			and ver_home=1
-			limit 0,20",
-			0,[
+			and visibilidad=1 ".
+			// " and ver_home=1 ".
+			" and id_grupo=".$id_productos2." ".
+			// " order by weight desc ".
+			" limit 24 ",
+			0
+		);
+		// prin($items_productos2);
 
-				'url'=>['url'=>['recomendados/{name}/{id}']],
+		
 
-			]);
-
-			foreach($items_productos as $iii=> $prod){
-
-				$items_productos[$iii]['precio']=(($prod['moneda']=='1')?'US$':'S/.').$prod['precio'];
-
-				$items_productos[$iii]['foto']=fila(
-					"id,fecha_creacion,file",
-					'productos_fotos',
-					"where id_item=".$prod['id'],
-					0,
-					[
-						'img'=>['get_archivo'=>[
-													'carpeta'=>'profot_imas',
-													'fecha'=>'{fecha_creacion}',
-													'file'=>'{file}',
-													'tamano'=>'0'
-													]
-												],
-						]
-
-				);
+		foreach($items_productos2 as $oo=>$itm)
+		{
+			// link
+			$id_grupo=dato("id_grupo","productos_subgrupos","where id=".$itm['id_grupo'],0);
+			$name_grupo=dato("url","productos_grupos","where id=".$id_grupo);
+			$name_grupo='productos2';
+			$items_productos2[$oo]['url']=procesar_url($name_grupo.'/category-'.trim($itm['name']).'/'.$itm['id']);
 
 
-			}
+			// foto
+			$id_subcategoria=dato("id","productos_groups","where id_grupo=".$itm['id']);
+
+			$items=filas("id","productos_items","where id_grupo = ".$id_subcategoria,0);
+			
+			$items_productos_fotos2=fila(
+				"id,fecha_creacion,file",
+				'productos_fotos',
+				"where id_item=".$items[0]['id'],
+				0,
+				[
+					'img'=>['get_archivo'=>[
+												'carpeta'=>'profot_imas',
+												'fecha'=>'{fecha_creacion}',
+												'file'=>'{file}',
+												'tamano'=>'0'
+												]
+											],
+					]
+
+			);
+			$items_productos2[$oo]['img']=$items_productos_fotos2['img'];
+
+		}
 
 
-		// foreach($items_productos as $ii=>$item){
-
-		// 	list($uno,$url,$id)=explode("/",$item['url']);
-		// 	$url=select_dato("url","productos_items","where id=".$id);
-		// 	$items_productos[$ii]['url']=$url.".html";
-
-		// }
 
 
+		$importaciones=[
+			'name'=>$name_productos2,
+			'items'=>$items_productos2,
+			'more'=>[
+				'name' => 'ver más',
+				'url' => 'productos2'
+			]
+		];
+		
+		/*
 		$importaciones=[];
 		$importaciones['name']='Recomendados';
 		$importaciones['url']=maskUrl('recomendados');
 		$importaciones['more']=[
             'name' => 'ver más',
             'url' => maskUrl('recomendados')
-      ];
+    	];
 
 		foreach($items_productos as $oo=>$itm){
 			$importaciones['items'][$oo]=[
@@ -184,6 +230,7 @@ class Home extends Controller {
 				'precio' =>$itm['precio'],
 			];
 		}
+		*/
 
 
 		$this->view->assign(["importaciones" => $importaciones]);
@@ -195,7 +242,15 @@ class Home extends Controller {
 
 
 
-		//descuentos
+		/*
+		 #######  ######## ######## ########  ########    ###     ######
+		##     ## ##       ##       ##     ##    ##      ## ##   ##    ##
+		##     ## ##       ##       ##     ##    ##     ##   ##  ##
+		##     ## ######   ######   ########     ##    ##     ##  ######
+		##     ## ##       ##       ##   ##      ##    #########       ##
+		##     ## ##       ##       ##    ##     ##    ##     ## ##    ##
+		 #######  ##       ######## ##     ##    ##    ##     ##  ######
+		*/
 			$items_productos=select(
 			"nombre as name,id,precio,moneda,precio_oferta,oferta as subname",
 			'productos_items_descu',
@@ -237,7 +292,7 @@ class Home extends Controller {
 			}
 
 		$descuentos=[];
-		$descuentos['name']='Descuentos';
+		$descuentos['name']='Ofertas';
 		$descuentos['url']=maskUrl('descuentos');
 		$descuentos['more']=[
             'name' => 'ver más',
@@ -267,7 +322,15 @@ class Home extends Controller {
 
 
 
-		// menu
+		/*
+		##     ## ######## ##    ## ##     ##
+		###   ### ##       ###   ## ##     ##
+		#### #### ##       ####  ## ##     ##
+		## ### ## ######   ## ## ## ##     ##
+		##     ## ##       ##  #### ##     ##
+		##     ## ##       ##   ### ##     ##
+		##     ## ######## ##    ##  #######
+		*/
 		$menu =select('nombre as name,id,url','productos_grupos','where visibilidad=1',0,
 				[
 					'url'=>['url'=>['{url}']],
@@ -312,7 +375,15 @@ class Home extends Controller {
 
 
 
-		//links
+		/*
+		##       #### ##    ## ##    ##  ######
+		##        ##  ###   ## ##   ##  ##    ##
+		##        ##  ####  ## ##  ##   ##
+		##        ##  ## ## ## #####     ######
+		##        ##  ##  #### ##  ##         ##
+		##        ##  ##   ### ##   ##  ##    ##
+		######## #### ##    ## ##    ##  ######
+		*/
 		$Links=$this->loadModel('Links');
 
 		$Links->setConfig([
@@ -320,73 +391,34 @@ class Home extends Controller {
 				]);
 
 		$links=$Links->getLinks();	
-
+		$links['name']='Marcas';
+		
 		$this->view->assign(["links" => $links]);
 
 
 
 
-		//news
-		$NewsOne=$this->loadModel('Pages',[
-													'items'=>[
-														'filter'=>'and id_grupo=3',
-														]
-													]);
-
-		//noticias generales
-		$news=$NewsOne->getLinks();	
-
-		$news['name']='Notas de Interés';
-		$news['more']['name']='ver mas notas de interés';
-		$news['more']['url']=$news['items'][0]['url'];
-
-		$this->view->assign(["noticias" => $news]);
-
-
-
-
-		//brochure
-		// $brochure=[
-		// 	'img'=>'brochure2.png',
-		// 	'file'=>'brochure-asiste.pdf',
-      // ];
-      
-      // $this->view->assign(["brochure" => $brochure]);
-
-
-
-
-		//social
-		$social='https://www.facebook.com/prendas.ardyss';
-
-		$this->view->assign(["social" => $social]);
 
 
 
 
 
-		// videos
-		$Videos=$this->loadModel('Videos');
 
-			$gallery=$Videos->getItem([
-				'item'  =>'1',
-				'limit' =>'0,4',
-				// 'type'  =>'videos'
-			]);
-			// prin($gallery);
 
-			$gallery['more']=[
-				'url'  =>maskUrl('videos'),
-				'name' =>'galería de videos'
-			];
-
-		$this->view->assign(["block_gallery_videos" => $gallery]);
 
 
          
 
 
-		// renders
+		/*
+		######## #### ##    ##    ###    ##       ##       ##    ##
+		##        ##  ###   ##   ## ##   ##       ##        ##  ##
+		##        ##  ####  ##  ##   ##  ##       ##         ####
+		######    ##  ## ## ## ##     ## ##       ##          ##
+		##        ##  ##  #### ######### ##       ##          ##
+		##        ##  ##   ### ##     ## ##       ##          ##
+		##       #### ##    ## ##     ## ######## ########    ##
+		*/
 
 		$this->view->assign(
 			[

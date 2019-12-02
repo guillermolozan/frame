@@ -2,27 +2,27 @@
 
 return [
 
-	'name'	=>'Detallitos Mathias',
+	'name'	=>'Detallitos MM',
 
 	'web'		=>[
 		
-		'name_short' =>'Detallitos Mathias',
+		'name_short' =>'Detallitos MM',
 		
-		'email'      =>'informes@detallitosmathias.com',
+		'email'      =>'informes@detallitosmm.com',
 
-		'email_venta'=>'ventas@detallitosmathias.com',
+		'email_venta'=>'ventas@detallitosmm.com',
 
-		'phone'      =>'732-2570 | 987971848',
+		'phone'      =>'987971848 | 986125623',
 
-		'address'    =>' Galería La Molina I Tienda 9 - Av. La Molina 1033, La Molina (Ref. Frente a metro de la Molina)',
+		'address'    =>' Galería La Molina I Tda. 10 - 11 - Av. La Molina 1033, La Molina (Ref. Frente a metro de la Molina)',
 		
-		'twitter'    =>'https://twitter.com',
+		'instagram'    =>'https://www.instagram.com/detallitossmm/',
 		
-		'facebook'   =>'https://www.facebook.com/detallitosmathias',
+		'facebook'   =>'https://www.facebook.com/Detallitos-MM-Tienda-de-regalos-personalizados-232699693851653/',
 
 		'whatsapp'   =>'987971848',
 
-		'email_admin'=>'informes@detallitosmathias.com,servicios@prodiserv.com,ventas@detallitosmathias.com',
+		'email_admin'=>'informes@detallitosmm.com,servicios@prodiserv.com,ventas@detallitosmm.com',
 
 	],
 

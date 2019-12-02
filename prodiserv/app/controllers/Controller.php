@@ -8,7 +8,6 @@ use core\Server as Server;
 
 class Controller extends \core\Controller {
 
-
 	function __construct($params){
 
 		parent::__construct($params);
@@ -21,7 +20,9 @@ class Controller extends \core\Controller {
 						"paginas_groups",
 						"where id in (1,2,3,4,5,6,8,13,9)
 						and visibilidad=1
-						order by weight desc",0);
+						order by weight desc",
+						0
+					);
 		
 		foreach($groups_left as $group){
 
@@ -32,6 +33,7 @@ class Controller extends \core\Controller {
 			];
 
 		}
+
 
 		$replace_menu_left=[
 			$replace_menu_left_pre[0],
@@ -58,7 +60,6 @@ class Controller extends \core\Controller {
 				'where'=>'id in (1,2,3,4,5,6,8)'
 			]
 		);
-
 	
 
 		foreach($groups_top as $group)
@@ -224,17 +225,17 @@ class Controller extends \core\Controller {
 				'build_css'        => $this->view->vars['build_css'].'?'.$this->static_build,
 				'build_js'         => $this->view->vars['build_js'].'?'.$this->static_build,		
 			//header and menu top
-				'menu_top'     => $this->menu_top,
-				'menu_left'    => $this->menu_left,
+				'menu_top'     	   => $this->menu_top,
+				'menu_left'    	   => $this->menu_left,
 				// 'logo'         => $this->config['img_logo'],
-				'logo'         => 'logo.jpg?1',
+				'logo'         	   => 'logo.jpg?1',
 				// 'header_bg'		=> $header_bg['img'],
 				// 'header_phones'=> $web['header_phones'],
-				'icon'       => 'icon.jpg',
+				'icon'      	   => 'icon.jpg',
 			//prefooter
-				'menu_prefooter'=>$prefooter,
+				'menu_prefooter'   =>$prefooter,
 			//footer
-				'menu_footer'  => $this->menu_footer,
+				'menu_footer'      => $this->menu_footer,
 
 
 			]

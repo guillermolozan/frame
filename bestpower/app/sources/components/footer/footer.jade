@@ -9,6 +9,16 @@ section.footerpre2
 					if(web_phone)
 						| Oficina : 
 						span!= web_phone
+					ul.menu
+						if(web_facebook)
+							li.facebook: a(target="_blank",href="#{web_facebook}")
+						if(web_youtube)
+							li.youtube: a(target="_blank",href="#{web_youtube}")
+						if(web_twitter)
+							li.twitter: a(target="_blank",href="#{web_twitter}")
+						if(web_instagram)
+							li.instagram: a(target="_blank",href="#{web_instagram}")
+												
 			div(class="col s12 l4") 
 				p #[strong Dirección]:#[br]
 					| #{web_address}#[br]
@@ -23,7 +33,8 @@ footer
 				//- bucle de menu
 
 			ul.right.menu
-				li: a Copyright #{web_name_short} 2017
+				li: a Copyright #{web_name_short} 2020
 				+menu_items(menu_footer)
 				//- if(visiters)
 					li #{visiters} visitas
+							

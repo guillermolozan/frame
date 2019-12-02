@@ -55,6 +55,9 @@
         $(".dates_all").hide();
         $(".dates_"+vall).show();
     });
+
+    // tengo que describir este fenomeno
+    $(".collapsible-header.active").addClass('active-fixed');
     
 
 
@@ -71,7 +74,6 @@ require("../../../../sumarseg/app/sources/components/gallery_products/gallery_pr
 require("../../../../onelimites/app/sources/components/product_detail/product_detail.js")();
 require("../../../../sumarseg/app/sources/components/form_contact/form_contact.js")();
 require("../../../../onelimites/app/sources/components/products_reel/products_reel.js")();
-require("../../../../sumarseg/app/sources/components/home_block_notes/home_block_notes.js")();
 require("../../../../asiste/app/sources/components/home_block_links/home_block_links.js")();
 // Finish Components
 

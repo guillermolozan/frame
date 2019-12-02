@@ -29,6 +29,8 @@ $routes_pages	= get_valores("id","url","paginas");
 // $routes_galleries	=['distinciones','certificaciones','galeria-fotos','galeria-videos'];
 
 
+
+
 $routes_group['Servicios']   = get_valores("id","url","productos_grupos","where 1",0);
 
 // prin($routes_group['Servicios']);
@@ -100,12 +102,13 @@ if(sizeof($routes_lists)>0)
 		$routes_return=array_merge($routes_return,[
 			
 			// grid
-			'/'.$rout['grid'].'$' 									=> 'controller='.$rout['controller'].'&method=grid',
-			'/'.$rout['grid'].'-pag-(:num)$' 					=> 'controller='.$rout['controller'].'&method=grid&pag=$1',
+			'/'.$rout['grid'].'$' 							=> 'controller='.$rout['controller'].'&method=grid',
+			'/'.$rout['grid'].'-pag-(:num)$' 				=> 'controller='.$rout['controller'].'&method=grid&pag=$1',
 		
 			// grid by group
-			'/'.$rout['grid'].'-(:any)/(:num)$' 				=> 'controller='.$rout['controller'].'&method=grid&item=$2',
+			'/'.$rout['grid'].'-(:any)/(:num)$' 			=> 'controller='.$rout['controller'].'&method=grid&item=$2',
 			'/'.$rout['grid'].'-(:any)/(:num)/pag-(:num)$' 	=> 'controller='.$rout['controller'].'&method=grid&item=$2&pag=$3',
+
 		]);
 
 		if($rout['detail'])
@@ -132,7 +135,7 @@ if(sizeof($routes_lists)>0)
 if(sizeof($routes_group['Servicios'])>0)
 {
 	//all
-	$routes_return['/(productos1|productos2|descuentos|importaciones)$'] 													='controller=Servicios&method=grid&level=$1';
+	$routes_return['/(productos1|productos2|descuentos|importaciones|productos)$'] 													='controller=Servicios&method=grid&level=$1';
 	//grupo
 	$routes_return['/('.implode("|",$routes_group['Servicios']).')$'] 									='controller=Servicios&method=grid&level=1&grup=$1';
 	//categoría

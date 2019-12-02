@@ -12,6 +12,15 @@ class Controller extends \core\Controller {
 
 		parent::__construct($params);
 
+		/*
+		##     ## ######## ##    ## ##     ##
+		###   ### ##       ###   ## ##     ##
+		#### #### ##       ####  ## ##     ##
+		## ### ## ######   ## ## ## ##     ##
+		##     ## ##       ##  #### ##     ##
+		##     ## ##       ##   ### ##     ##
+		##     ## ######## ##    ##  #######
+		*/
 		$Page=$this->loadModel('Pages');
 
 		// menu left
@@ -33,26 +42,65 @@ class Controller extends \core\Controller {
 		}	
 
 
-		
+		// menu producto1 y producto1
+		$id_productos1=3;
 		$replace_menu_pre['productos1']=[
 			'url'   =>maskUrl('productos1'),
-			'name'  =>'PRODUCTOS 1',
-			'items' =>select('nombre as name,id,url','productos_subgrupos','where id_grupo=3 and visibilidad=1',0,
-			[
-				'url'=>['url'=>['productos1/category-{url}/{id}']],
-			])
+			'name'  =>dato("nombre","productos_grupos","where id=".$id_productos1),
+			// categorias producto1
+			'items' =>select(
+				'nombre as name,id,url',
+				'productos_subgrupos',
+				'where id_grupo='.$id_productos1.' and visibilidad=1',0,
+				[
+					'url'=>['url'=>['productos1/category-{url}/{id}']],
+				]
+			)
 
 		];
 
+		$id_productos2=2;
 		$replace_menu_pre['productos2']=[
 			'url'   =>maskUrl('productos2'),
-			'name'  =>'PRODUCTOS 2',
-			'items' =>select('nombre as name,id,url','productos_subgrupos','where id_grupo=2 and visibilidad=1',0,
-			[
-				'url'=>['url'=>['productos2/category-{url}/{id}']],
-			])
+			'name'  =>dato("nombre","productos_grupos","where id=".$id_productos2),
+			// categorias producto2
+			'items' =>select(
+				'nombre as name,id,url',
+				'productos_subgrupos',
+				'where id_grupo='.$id_productos2.' and visibilidad=1',
+				0,
+				[
+					'url'=>['url'=>['productos2/category-{url}/{id}']],
+				]
+			)
 
 		];
+
+		// subcategorias productos 1 y 2
+		foreach([
+			'productos1',
+			'productos2'
+			] as $group){
+
+			foreach($replace_menu_pre[$group]['items'] as $iii=>$iitem){
+				
+				$replace_menu_pre[$group]['items'][$iii]['items']=select(
+					'name,id,url',
+					'productos_groups',
+					'where id_grupo='.$replace_menu_pre[$group]['items'][$iii]['id'].' and visibilidad=1',
+					0,
+					[
+						'url'=>['url'=>[$group.'/sub-category-{url}/{id}']],
+					]
+				);
+		
+			}
+		}
+
+	
+
+		// prin($replace_menu_pre['productos1']);
+
 
 		$replace_menu_pre_top=$replace_menu_pre;
 
@@ -126,7 +174,8 @@ class Controller extends \core\Controller {
 				// 'header_phones'=> $web['header_phones'],
 
             //footer
-				
+				'theme_color'		 => '#0e4e87',
+
 				//facebook
 				'opengraph'  => true,
 				

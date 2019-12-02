@@ -23,7 +23,7 @@
 				margin-top 0px
 				font-size 1.2rem !important
 			display block !important
-			color #346284
+			color #000071
 		@media $small-medium
 			article.card-panel
 				margin-top 0px !important
@@ -102,16 +102,21 @@
 	&.p-grid
 		#menu_left
 			.collection-item 
+				padding 10px
+				a
 				.collapsible-header
 					font-weight normal
-					font-size 13px
-					background #346284
+					font-size 15px
+					line-height 1.5rem
+					min-height: 1.5rem;
+					padding: .9em 1em .9em 1em
+					// background pink
+					&.active,&.active-fixed
+						background #da251b !important
 				.collapsible-body ul li a
 					font-size 13px				
 					font-weight normal
-				&.active
-					.collapsible-header
-						background color2 !important
+					padding: .3em 1em .3em 1em
 			ul >
 				li.active
 					> a
@@ -149,7 +154,7 @@
 					font-size 1.1em
 				.card-title
 					// display none
-					height 30px
+					height 60px
 					overflow hidden
 					text-align center
 					@media $small
@@ -184,13 +189,13 @@
 					padding-left 0
 		.menu_post
 			.collection-item
-				
 				> a
-					font-weight bold
+					font-weight normal
 					text-transform uppercase
 					font-family Roboto
 					color white !important
-					background #346284
+					background #000071
+					font-size 13px
 					// padding 0 0 0 1em !important
 					// height 1.5em
 					// line-height 2.2em
@@ -203,7 +208,7 @@
 					background #fff
 					> a
 						// font-weight bold
-						background color2
+						background #da251b
 						color #fff !important
 				> .submenu,> .collapsible-body
 					> li

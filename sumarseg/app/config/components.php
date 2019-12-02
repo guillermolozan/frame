@@ -14,16 +14,12 @@ return [
 	
 	'page_post'              => 'page_post',
 
-	// 'block_gallery_clients'  => 'block_gallery_clients',
 	
+	// 'block_gallery_products' => 'woorld/block_gallery_products',
 	'block_gallery_products' => 'block_gallery_products',
-	
-	// 'block_gallery_videos'   => 'block_gallery_videos',
-	
+		
 	
 	'gallery_products'       => 'gallery_products|es6',
-	'block_gallery_videos'   => 'agro/block_gallery_videos',
-
 
 	'product_detail'	     => 'onelimites/product_detail|es6',
 
@@ -36,8 +32,8 @@ return [
 
 	'products_reel'			 => 'onelimites/products_reel|es6',
 
-
-	'home_block_notes'		 => 'home_block_notes|es6',
 	'home_block_links'       => 'asiste/home_block_links|es6',
+
+	'whatsapp_button'       => 'whatsapp_button',
 
 ];
