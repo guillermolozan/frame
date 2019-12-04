@@ -910,7 +910,7 @@ function get_imagen( $carpeta, $fecha_bd, $file, $tamano=NULL){
 	$img = str_replace("http://","[http]",$img);
 	$img = str_replace("///","/",$img);
 	$img = str_replace("//","/",$img);
-	$img = str_replace("[http]","http://",$img);
+	$img = str_replace("[http]","//",$img);
 
 	return $img;
 

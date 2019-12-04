@@ -49,7 +49,6 @@ $DIRECTORIO_IMAGENES=$Config['DIRECTORIO_IMAGENES'];
 
 $masks = new Urls();
 
-
 $maskUrls=$masks->getItems();
 
 

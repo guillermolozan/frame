@@ -13,7 +13,6 @@ class Home extends Controller {
 	function index($params){
       
       
-
 		// Banner
 		$Banner=$this->loadModel('Banners');
       $banner=$Banner->getItems();

@@ -19,9 +19,9 @@ return [
 		
 		'whatsapp'   =>'981109152',
 		'instagram'  =>'https://www.instagram.com/instagram',
-		'instagram_page'  =>'instagram',
-		'facebook'   =>'https://www.facebook.com/facebook',
-		'facebook_page'   =>'facebook',
+		'instagram_page'  =>'/instagram',
+		'facebook'   =>'https://www.facebook.com/SUMARSEG',
+		'facebook_page'   =>'/SUMARSEG',
 		// 'youtube'    =>'https://www.youtube.com/',
 
 		'slogan' => 'Calzado Industrial en Perú, Lima - Calzado de Proteccion Botas de Seguridad',

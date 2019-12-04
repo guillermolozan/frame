@@ -329,10 +329,9 @@ class Servicios extends \core\controllers\Pages {
 				'class'    =>'validate',
 				'label'    =>'Mensaje',
 				'type'     =>'textarea',
-				'value' =>'Estoy interesado en el el producto '.$post['name'].'
-				Por favor contacten conmigo.
-				Gracias
-			'],
+				'value'    =>"Estoy interesado en el el producto ".$post['name']."\n".
+				"Por favor contacten conmigo.\n".
+				"Gracias"],
 
 		];
 

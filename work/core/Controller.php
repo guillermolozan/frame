@@ -263,6 +263,7 @@ class Controller {
 				//abs			
 				'pub_img_abs'     => str_replace('/./','/',Server::baseUrl().$this->static.'/img/'),
 				'pub_img_abs_rem' => str_replace('/./','/',$Config['httpfiles'].Server::directory().$this->static.'/img/'),
+				'url_rem'		  => str_replace('/./','/',$Config['httpfiles']),
 				//footer
 				'visiters'        => (isset($visits))?$visits:null,
 				'current_year'    => date("Y"),

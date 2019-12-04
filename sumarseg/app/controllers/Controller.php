@@ -41,46 +41,28 @@ class Controller extends \core\Controller {
 
 		}	
 
-
-		// menu producto1 y producto1
-		$id_productos1=3;
-		$replace_menu_pre['productos1']=[
-			'url'   =>maskUrl('productos1'),
-			'name'  =>dato("nombre","productos_grupos","where id=".$id_productos1),
-			// categorias producto1
-			'items' =>select(
-				'nombre as name,id,url',
-				'productos_subgrupos',
-				'where id_grupo='.$id_productos1.' and visibilidad=1',0,
-				[
-					'url'=>['url'=>['productos1/category-{url}/{id}']],
-				]
-			)
-
-		];
-
-		$id_productos2=2;
-		$replace_menu_pre['productos2']=[
-			'url'   =>maskUrl('productos2'),
-			'name'  =>dato("nombre","productos_grupos","where id=".$id_productos2),
-			// categorias producto2
-			'items' =>select(
-				'nombre as name,id,url',
-				'productos_subgrupos',
-				'where id_grupo='.$id_productos2.' and visibilidad=1',
-				0,
-				[
-					'url'=>['url'=>['productos2/category-{url}/{id}']],
-				]
-			)
-
-		];
-
-		// subcategorias productos 1 y 2
 		foreach([
-			'productos1',
-			'productos2'
-			] as $group){
+			'productos1'=>3,
+			'productos2'=>2
+		] as $group=>$idd){
+
+			// menu producto1 y producto1
+			$producto=fila("nombre,url","productos_grupos","where id=".$idd);
+	
+			$replace_menu_pre[$group]=[
+				'url'   =>$producto['url'],
+				'name'  =>$producto['nombre'],
+				// categorias producto1
+				'items' =>select(
+					'nombre as name,id,url',
+					'productos_subgrupos',
+					'where id_grupo='.$idd.' and visibilidad=1',0,
+					[
+						'url'=>['url'=>[$producto['url'].'/category-{url}/{id}']],
+					]
+				)
+
+			];
 
 			foreach($replace_menu_pre[$group]['items'] as $iii=>$iitem){
 				
@@ -90,12 +72,30 @@ class Controller extends \core\Controller {
 					'where id_grupo='.$replace_menu_pre[$group]['items'][$iii]['id'].' and visibilidad=1',
 					0,
 					[
-						'url'=>['url'=>[$group.'/sub-category-{url}/{id}']],
+						'url'=>['url'=>[$producto['url'].'/sub-category-{url}/{id}']],
 					]
 				);
 		
-			}
+			}			
+
 		}
+
+		if($this->view->vars['web_facebook'])
+			$replace_menu_pre['facebook']=[
+				'url'   =>$this->view->vars['web_facebook'],
+				// 'name'  =>'Facebook',
+				'class' =>'facebook',
+				'target'=>'_blank'
+			];
+	
+		if($this->view->vars['web_instagram'])
+			$replace_menu_pre['instagram']=[
+				'url'   =>$this->view->vars['web_instagram'],
+				// 'name'  =>'Youtube',
+				'class' =>'instagram',
+				'target'=>'_blank'
+			];
+
 
 	
 

@@ -29,26 +29,6 @@ class Home extends Controller {
 		$this->view->assign(["banner" => $banner]);
 
 
-		if(0){
-			
-			// Downloads
-			$Downloads=$this->loadModel('Banners');
-			$Downloads->setConfig([
-				// 'items'=>['fields'=>'fecha_creacion,file,name,url,adjunto'],
-				'items'=>['fields'=>'fecha_creacion,file,name,url'],
-			]);
-			$downloads=$Downloads->getItems(['item'=>'descargas']);      
-
-			foreach($downloads as $iii=>$ddd){
-
-				// $downloads[$iii]['url']='download/'.get_imagen('doc_fil',$ddd['fecha_creacion'],$ddd['adjunto']);
-				$downloads[$iii]['url']=maskUrl('download/'.$ddd['url']);
-
-			}
-			$this->view->assign(["downloads" => $downloads]);
-
-		}
-
 
 		/*
 		##       #### ##    ## ########    ###     ######
@@ -62,7 +42,10 @@ class Home extends Controller {
 
 		//subcategorias de productos 1
 		$id_productos1=3;
-		$name_productos1=dato("nombre","productos_grupos","where id=$id_productos1");
+		$productos1=fila("nombre,url","productos_grupos","where id=$id_productos1");
+		$name_productos1=$productos1['nombre'];
+		$url_productos1=$productos1['url'];
+
 		$ids_categorias_productos1=getarray("id","productos_subgrupos","where id_grupo=$id_productos1",0);
 		// $ids_subcategorias_productos2=getarray("id","productos_groups","where id_grupo in (".implode(',',$ids_categorias_productos1).")");
 
@@ -82,11 +65,11 @@ class Home extends Controller {
 
 		foreach($items_productos1 as $oo=>$itm)
 		{
+
 			// link
 			$id_grupo=dato("id_grupo","productos_subgrupos","where id=".$itm['id_grupo'],0);
-			$name_grupo=dato("url","productos_grupos","where id=".$id_grupo);
-			$name_grupo='productos1';
-			$items_productos1[$oo]['url']=procesar_url($name_grupo.'/category-'.trim($itm['name']).'/'.$itm['id']);
+			
+			$items_productos1[$oo]['url']=procesar_url($url_productos1.'/category-'.trim($itm['name']).'/'.$itm['id']);
 
 
 			// foto
@@ -147,7 +130,10 @@ class Home extends Controller {
 		
 		//subcategorias de productos 2
 		$id_productos2=2;
-		$name_productos2=dato("nombre","productos_grupos","where id=$id_productos2");
+		$productos2=fila("url,nombre","productos_grupos","where id=$id_productos2");
+		$name_productos2=$productos2['nombre'];
+		$url_productos2=$productos2['url'];
+
 		$ids_categorias_productos2=getarray("id","productos_subgrupos","where id_grupo=$id_productos2");
 		// $ids_subcategorias_productos2=getarray("id","productos_groups","where id_grupo in (".implode(',',$ids_categorias_productos2).")");
 		// prin($ids_subcategorias_productos2);
@@ -171,9 +157,8 @@ class Home extends Controller {
 		{
 			// link
 			$id_grupo=dato("id_grupo","productos_subgrupos","where id=".$itm['id_grupo'],0);
-			$name_grupo=dato("url","productos_grupos","where id=".$id_grupo);
-			$name_grupo='productos2';
-			$items_productos2[$oo]['url']=procesar_url($name_grupo.'/category-'.trim($itm['name']).'/'.$itm['id']);
+
+			$items_productos2[$oo]['url']=procesar_url($url_productos2.'/category-'.trim($itm['name']).'/'.$itm['id']);
 
 
 			// foto

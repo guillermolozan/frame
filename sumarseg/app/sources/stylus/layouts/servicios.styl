@@ -113,10 +113,39 @@
 					// background pink
 					&.active,&.active-fixed
 						background #da251b !important
-				.collapsible-body ul li a
-					font-size 13px				
-					font-weight normal
-					padding: .3em 1em .3em 1em
+				.collapsible-body ul li 
+					> a
+						font-size 13px				
+						font-weight normal
+						padding: .3em 1em .3em 1em
+					&.active 
+						position relative
+						padding-right 14px
+						// > a
+						// 	icomoon('e654')
+						// 	&:before
+						// 		float right
+						// 		color red
+						// 		font-size 43px
+						// 		margin-right -45px
+						&:before
+							position absolute
+							right 8px
+							top 0
+							content ""
+							background-color red
+							width 5px
+							height 28px
+							border-left 2px solid #000071
+						&:after
+							position absolute
+							right 0
+							top 0
+							content ""
+							border-left: 8px solid red;
+							border-top: 14px solid transparent;
+							border-bottom: @border-top;
+							
 			ul >
 				li.active
 					> a

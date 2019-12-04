@@ -440,7 +440,7 @@ const live_deploy_task= function(file){
     remotedir = dconn.remotedir || '/public_html';
 
     return gulp.src([file],{base:'..',buffer:false})
-      .pipe(conn.newer(remotedir)) // only upload newer files 
+      // .pipe(conn.newer(remotedir)) // only upload newer files 
       .pipe(conn.dest(remotedir));
       
   } 
@@ -598,7 +598,7 @@ const deploy_task = async()=>{
  ######   #######  ##     ## ##         #######  ##    ## ######## ##    ##    ##     ######
 */
 // Generate Jsons for development
-const components_task = ()=>{
+const components_task  = async () => {
 
   const geturl = urlfolder+'/runtime/start/'+clean;
   console.log(geturl);

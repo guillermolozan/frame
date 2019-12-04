@@ -76,9 +76,9 @@ class Banners extends \core\Models {
 		);
 
 
-
 		$banner=array_map(function($value){
 
+			$value['url']=str_replace([$this->view->vars['url_rem']],['/'],$value['url']);
 			$class=['left-align','right-align','center-align'];
 			$value['class']=$class[array_rand($class)];
 			return $value;
