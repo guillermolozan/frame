@@ -40,6 +40,9 @@ return [
 
 		'email_test'=>true,
 
+		// 'image_devel'=>'thinking.png',
+		'image_devel'=>'random',
+
 		// 'data_test'	=>true,		
 	
 		// 'fake'	=>'fakeimg',

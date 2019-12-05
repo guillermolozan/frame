@@ -889,10 +889,16 @@ function get_imagen( $carpeta, $fecha_bd, $file, $tamano=NULL){
 
 	}
 
-	if($start['image_devel'] ){
+	if($start['image_devel']){
 
+		if($start['image_devel']=='random'){
+			$images_devel=['thinking.png','star.png','tongue.png','happy.png'];
+			shuffle($images_devel);
+			return "../work/sources/img/".$images_devel[0];
+
+		}
 		// return "panel/img/devel.jpg";
-		return "../work/resources/img/pixel.png";
+		return "../work/sources/img/".$start['image_devel'];
 
 	}
 

@@ -219,6 +219,7 @@ AddDefaultCharset utf-8
 
     # conviente la url a HTTPS
     RewriteCond %{SERVER_PORT} ^80$
+    RewriteCond %{HTTP_HOST} !=localhost [NC]
     RewriteRule ^(.*)$ https://%{SERVER_NAME}%{REQUEST_URI} [L,R]   
 
 </IfModule>
