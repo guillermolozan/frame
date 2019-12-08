@@ -7,6 +7,8 @@ menu_height    =50px
 menu_bg_over   =#da251b
 menu_color_over=white
 
+
+
 // menu_bg        =rgba(black,.7)
 // menu_color     =white
 // menu_font_size =14px
@@ -28,61 +30,78 @@ header_bg()
 
 
 
-header_customize()
-	header nav a.button-collapse i
-		color red
-	header nav > .container > .menu_top > li.logo a
-		@media $small-medium
-			transform scale(.6) !important
-		@media $small
-			transform scale(.6) !important
-	@media $large
+
+
+
+	
+
+
+
+header_basic_long()
+
+
+header nav a.button-collapse i
+	color menu_bg_over
+header nav > .container > .menu_top > li.logo a
+	@media $small-medium
+		transform scale(.6) !important
+	@media $small
+		transform scale(.6) !important
+@media $large
+	header
+		nav
+			> .container 
+				> .menu_top
+					> li.brand-logo
+						display none
+	// ##     ## ########    ###    ########  ######## #### ##     ## ######## ########
+	// ##     ## ##         ## ##   ##     ## ##        ##   ##   ##  ##       ##     ##
+	// ##     ## ##        ##   ##  ##     ## ##        ##    ## ##   ##       ##     ##
+	// ######### ######   ##     ## ##     ## ######    ##     ###    ######   ##     ##
+	// ##     ## ##       ######### ##     ## ##        ##    ## ##   ##       ##     ##
+	// ##     ## ##       ##     ## ##     ## ##        ##   ##   ##  ##       ##     ##
+	// ##     ## ######## ##     ## ########  ##       #### ##     ## ######## ########
+	body.headfixed
 		header
 			nav
-				> .container 
+				// background menu_bg
+				background rgba(white,.9)
+				box-shadow inset 0 -12px 10px rgba(black,.5) !important
+				// box-shadow initial
+				> .container
 					> .menu_top
 						> li
-							border-bottom 3px solid transparent
+							padding 0 10px
+							> a
+								color black
 							&.active,&:hover
-								border-bottom 3px solid #A6D644
-						> li.brand-logo
-							display none
-		body.headfixed
-			header
-				nav
-					// background menu_bg
-					background rgba(white,.9)
-					// box-shadow initial
-					> .container
-						> .menu_top
-							> li
+								background menu_bg_over
+								box-shadow inset 0 -12px 10px rgba(black,.5) !important
 								> a
-									// color menu_color !important
-									color black !important
-								&.active,&:hover
-									background menu_bg_over
-									> a
-										color menu_color_over !important
-								&.logo
-									background initial !important
-									> a
-										width 120px
-										color transparent !important
-										transform scale(1,1.5)
+									color menu_color_over !important
+							&.logo
+								background initial !important
+								> a
+									width 120px
+									color transparent !important
+									transform scale(1,1.5)
 
-	@media $small-medium
-		header
-			nav
-				> .container 
-					> .menu_top
-						text-align center
-						> li.brand-logo
-							display: block;
-							margin: 0 auto;
-							position: relative;
-							width: 100%
-							img
-								height 50px
+@media $small-medium
+	header
+		nav
+			> .container 
+				> .menu_top
+					text-align center
+					display flex
+					> li.brand-logo
+						display: block;
+						margin: 0 auto;
+						position: relative;
+						flex-grow 1
+						img
+							height 50px
+					
+
 
 
 .prenav
@@ -93,7 +112,7 @@ header_customize()
 		// margin-top: 13px;
 	text-align center
 	transition all .6s
-	header_bg()
+	// header_bg()
 	.container
 		transition inherit
 		display flex
@@ -134,31 +153,9 @@ header_customize()
 				img
 					width auto
 					height 80px
-	
 
 
 
-header_basic_long()
-
-
-header_customize()
-
-
-.menu_top
-	> li > a
-		font-size 14px !important
-	li.facebook > a
-		icomoon('e673')
-		&:before
-			text-align center
-			font-size 1.5em
-			// position relative
-	li.instagram > a
-		icomoon('ea92')
-		&:before
-			font-size 1.4em
-			text-align center
-			// position relative
 
 
 

@@ -12,7 +12,7 @@ return [
 		'slogan' => 'Calzado Industrial en Perú, Lima - Calzado de Proteccion Botas de Seguridad',
 
 		'logo'	 => 'logo.png',
-		'ico'	 => 'ico.png',	
+		'ico'	 => 'favicon.ico',	
 		
 		
 		'email'      =>'informes@sumarseg.com',

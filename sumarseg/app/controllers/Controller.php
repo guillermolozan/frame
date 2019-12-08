@@ -81,7 +81,7 @@ class Controller extends \core\Controller {
 		}
 
 		if($this->view->vars['web_facebook'])
-			$replace_menu_pre['facebook']=[
+			$replace_menu_pre_top['facebook']=[
 				'url'   =>$this->view->vars['web_facebook'],
 				// 'name'  =>'Facebook',
 				'class' =>'facebook',
@@ -89,9 +89,9 @@ class Controller extends \core\Controller {
 			];
 	
 		if($this->view->vars['web_instagram'])
-			$replace_menu_pre['instagram']=[
+			$replace_menu_pre_top['instagram']=[
 				'url'   =>$this->view->vars['web_instagram'],
-				// 'name'  =>'Youtube',
+				// 'name'  =>'Instagram',
 				'class' =>'instagram',
 				'target'=>'_blank'
 			];
@@ -108,7 +108,7 @@ class Controller extends \core\Controller {
 
 
 		//menu top
-			$this->menu_top=$this->elements->getMenu('menu_top',$replace_menu_pre,$params['uri']);
+			$this->menu_top=$this->elements->getMenu('menu_top',array_merge($replace_menu_pre,$replace_menu_pre_top),$params['uri']);
 
 
 		//menu left
