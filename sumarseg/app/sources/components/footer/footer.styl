@@ -1,8 +1,12 @@
+footer_bgcolor = black
+footer_textcolor = white
+footer_textcolor2 = #aaa
+footer_ico = footer_bgcolor
 footer
-	background #000
+	background footer_bgcolor
 	height auto
 	margin-top 0px !important
-	padding-bottom 2em
+	padding-bottom .5em
 	// display none
 	// overflow hidden
 	@media $small-medium	
@@ -16,7 +20,7 @@ footer
 				max-width initial
 				width 300px
 			a,span
-				color white
+				color footer_textcolor
 			> li
 				float none
 				line-height 2em
@@ -35,22 +39,19 @@ footer
 		// 		border-bottom 1px solid #999
 		.third
 			margin-top .5em
-			.corp strong
-				color white
+			strong, strong > a
+				color footer_textcolor2
 				font-weight bold
-				font-size 18px
-			.visa
-				// display none
-				span
-					height 40px
-					display block
-					background url(imgs+'header-visa.jpeg') no-repeat center left
-					width auto
-					// height 40px
-					// background-size 50%
-					padding-left 80px
-					padding-top 5px
-					margin-top 10px
+				// font-size 18px
+			// .visa
+			// 	span
+			// 		height 40px
+			// 		display block
+			// 		background url(imgs+'header-visa.jpeg') no-repeat center left
+			// 		width auto
+			// 		padding-left 80px
+			// 		padding-top 5px
+			// 		margin-top 10px
 			li.circle
 				postion relative
 				padding-left 50px
@@ -61,7 +62,6 @@ footer
 					z-index 1
 					left 0
 					width 30px
-					
 				&:after
 					content ""
 					margin-right .5em
@@ -78,21 +78,22 @@ footer
 				&:before
 					font-size 1.5em
 					top 0px
-					color black
+					color footer_ico
 			li.instagram
 				icomoon('ea92')
 				&:before
 					font-size 1.4em
 					top 2px
 					left 2px
-					color black
+					color footer_ico
 			li.email
 				icomoon('e679')
 				&:before
 					font-size 1.3em
 					top 3px
 					left 2px
-					color black
+					color footer_ico
 			li.footer-fb
 				padding-bottom 20px
 				overflow hidden
+

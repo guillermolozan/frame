@@ -53,7 +53,7 @@ class Controller extends \core\Controller {
 
 		//menu footer
 			$this->menu_footer=$this->elements->getMenu('menu_footer',$this->menu_footer);
-
+		
 
 
 

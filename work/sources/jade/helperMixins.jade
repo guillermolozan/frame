@@ -217,3 +217,31 @@ mixin video_responsive(video)
 		li(class="video-container")
 			+video_youtube(video.code)
 
+//- emails
+mixin render_email(email)
+	a(href="mailto:#{email}",title="email") #{email}
+
+mixin render_emails(emails)
+	each email,index in emails
+		if(index==0)
+			+render_email(email)
+		else
+			span  / 
+			+render_email(email)
+
+//- whatsapp
+mixin render_whatsapp(wa)
+	a(class!=attributes.class,title="whatsapp",target="_blank",href="https://api.whatsapp.com/send?phone=51#{wa}") #{wa}
+
+//- phones
+mixin render_phone(phone)
+	a(href="tel:#{phone}",title="teléfono") #{phone}
+
+mixin render_phones(phones)
+	each phone,index in phones
+		if(index==0)
+			+render_phone(phone)
+		else
+			span  - 
+			+render_phone(phone)
+

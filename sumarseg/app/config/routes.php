@@ -1,6 +1,6 @@
 <?php
 
-$routes_return = [];
+$routes_return = require('../work/app/config/routes.php');;
 
 // ITEMS
 $productos_items=get_valores("id","url","productos_items");
@@ -63,17 +63,11 @@ $routes_forms =['contactenos'];
 
 
 
-
 $routes_return=array_merge($routes_return,[
-
-	//home
-	'/'. (($start['devel'])?$start['devel']:'') .'$'       	=> 'controller=Home&method=index',
-		
 
 	/* forms */
 	'/(contactenos)$' 													=> 'controller=Forms&method=$1',
-
-		
+	
 ]);
 
 //forms
@@ -148,7 +142,4 @@ if(sizeof($routes_group['Servicios'])>0)
 }
 
 
-
-
 return $routes_return;
-

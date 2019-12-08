@@ -29,6 +29,7 @@ return [
 	'form_contact'           => 'form_contact|es6',
 	
 	'footer'                 => 'footer',
+	'footer_post'            => 'footer_post',
 
 	'products_reel'			 => 'onelimites/products_reel|es6',
 

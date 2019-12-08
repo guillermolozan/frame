@@ -83,12 +83,13 @@ class Runtime {
 
 		$geturl='http:'.str_replace('frame','sistemapanel',Server::base()).'panel/maquina.php?accion=importdb&tablas=';
 
-		echo "$geturl
-";
+		echo "$geturl\n";
 		// echo file_get_contents($geturl);
 
 	}
 
+	
+	
 	function start($params){
 
 
@@ -418,9 +419,9 @@ $finish_components_es6
 
 		// foreach($urls as $url){
 
-	 //    	$_SERVER['REQUEST_URI']=str_replace('//','/',str_replace('/runtime/jsons',"/".$url."/",$runtimejson))."?array";
-	 //    	// prin($_SERVER['REQUEST_URI']);
-	 //    	$route->response();
+	 	//    	$_SERVER['REQUEST_URI']=str_replace('//','/',str_replace('/runtime/jsons',"/".$url."/",$runtimejson))."?array";
+	 	//    	// prin($_SERVER['REQUEST_URI']);
+	 	//    	$route->response();
 
 		// }
 		// // echo json_encode($vars_array);
@@ -440,8 +441,7 @@ $finish_components_es6
 				// echo substr($filess,-6)."<br>";
 				$direccc="../".$dir."/".$components_dir."/".$filess;
 				if(file_exists($direccc)){
-// 					echo "rename $direccc
-// ";
+
 					rename($direccc,$direccc."_trash");
 				}
 				// echo '<br>';

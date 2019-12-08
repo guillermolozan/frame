@@ -9,8 +9,16 @@ return [
 	'web'	=> [
 	
 		'name_short' =>'Sumarseg',
+		'slogan' => 'Calzado Industrial en Perú, Lima - Calzado de Proteccion Botas de Seguridad',
+
+		'logo'	 => 'logo.png',
+		'ico'	 => 'ico.png',	
+		
+		
 		'email'      =>'informes@sumarseg.com',
+		'emails'     =>['ventas@sumarseg.com','informes@sumarseg.com'],
 		'phone'      =>'(+511) 605-2255',
+		'phones'	 =>['(01) 605-2255','605-2256'],
 		'mobile'     =>'981109152',
 
 		'address'    =>'Mz. E Lt. 34 Los Olivos de Pro - Los Olivos - Lima',
@@ -18,15 +26,16 @@ return [
 		'lon'        =>'-77.0383133',
 		
 		'whatsapp'   =>'981109152',
+
 		'instagram'  =>'https://www.instagram.com/instagram',
 		'instagram_page'  =>'/instagram',
+
 		'facebook'   =>'https://www.facebook.com/SUMARSEG',
 		'facebook_page'   =>'/SUMARSEG',
 		// 'youtube'    =>'https://www.youtube.com/',
 
-		'slogan' => 'Calzado Industrial en Perú, Lima - Calzado de Proteccion Botas de Seguridad',
-		'logo'	 => 'logo.png',
-		'ico'	 => 'ico.png',		
+		
+
 
 	],
 
@@ -46,6 +55,10 @@ return [
 		// 'data_test'	=>true,		
 	
 		// 'fake'	=>'fakeimg',
+		'devel' =>"desarrollo",
+		'comming' =>"true",
+
+
 
 	],
 

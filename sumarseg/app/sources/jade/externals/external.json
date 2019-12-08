@@ -15,6 +15,7 @@
 "./../sumarseg/app/sources/components/form_consulta/form_consulta.jade",
 "./../sumarseg/app/sources/components/form_contact/form_contact.jade",
 "./../sumarseg/app/sources/components/footer/footer.jade",
+"./../sumarseg/app/sources/components/footer_post/footer_post.jade",
 "./../onelimites/app/sources/components/products_reel/products_reel.jade",
 "./../asiste/app/sources/components/home_block_links/home_block_links.jade",
 "./../sumarseg/app/sources/components/whatsapp_button/whatsapp_button.jade"

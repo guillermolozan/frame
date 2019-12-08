@@ -191,6 +191,13 @@ class Routes {
 
 		}
 
+		if($uri=='/runtime/comming')
+		{
+
+			return $this->output('controller=Runtime&method=comming');
+
+		}			
+
 		header("HTTP/1.0 404 Not Found");
 		
 		include('../404.html');

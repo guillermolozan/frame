@@ -39,7 +39,7 @@ class Controller extends \core\Controller {
 				'items' =>$Page->getMenu(['item'=>$group['id'],'uri'=>$group['url']])
 			];
 
-		}	
+		}
 
 		foreach([
 			'productos1'=>3,
@@ -102,15 +102,13 @@ class Controller extends \core\Controller {
 		// prin($replace_menu_pre['productos1']);
 
 
-		$replace_menu_pre_top=$replace_menu_pre;
-
 		// prin($replace_menu_pre);
 
 		// $replace_menu=[];
 
 
 		//menu top
-			$this->menu_top=$this->elements->getMenu('menu_top',$replace_menu_pre_top,$params['uri']);
+			$this->menu_top=$this->elements->getMenu('menu_top',$replace_menu_pre,$params['uri']);
 
 
 		//menu left
@@ -118,9 +116,7 @@ class Controller extends \core\Controller {
 
 
 		//menu footer
-			$this->menu_footer=$this->elements->getMenu('menu_footer',$this->menu_footer);
-
-
+			$this->menu_footer=$this->elements->getMenu('menu_footer',$replace_menu_pre);
 		
       $this->view->assign(
 			[

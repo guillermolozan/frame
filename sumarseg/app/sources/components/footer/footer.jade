@@ -4,7 +4,7 @@ footer
 
 		.col.s12.l6.first
 			ul.menu
-				+menu_items(menu_top)
+				+menu_items(menu_footer)
 
 		.col.s12.l6.third
 			ul.menu
@@ -22,18 +22,16 @@ footer
 						a(title="Facebook",target="_blank",href="#{web_facebook}") #{web_facebook_page}
 				if(web_instagram)
 					li(class="instagram circle") 
-						a(title="Facebook",target="_blank",href="#{web_instagram}") #{web_instagram_page}						
+						a(title="Instagram",target="_blank",href="#{web_instagram}") #{web_instagram_page}						
 				if(web_email)
 					li(class="email circle") 
-						a(title="Email",target="_blank",href="#{web_email}") #{web_email}
+						+render_email(web_email)
 				if(web_whatsapp)
-					li: span.corp WhatsApp: #[strong #{web_whatsapp}]
+					li: span.corp WhatsApp: #[strong #[+render_whatsapp(web_whatsapp)]]
 				if(web_address)
 					li: span.corp Dirección: #[strong #{web_address}]	
-				li: span.corp Telefonos: #[strong  (01) 605-2255 / 605-2256 ]										
-				li: span.corp Correo: #[strong  ventas@sumarseg.com – informes@sumarseg.com ]										
+				li: span.corp Telefonos: #[strong #[+render_phones(web_phones)]]
+				li: span.corp Correo: #[strong #[+render_emails(web_emails)]]
 				//- li.visa
 				//- 	span Aceptamos Visa
-
-
-			//- bucle de menu
+include ../../jade/includes/footer_post

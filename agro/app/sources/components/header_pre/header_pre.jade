@@ -11,9 +11,9 @@ section.header_pre.hide-on-med-and-down
 				if(web_instagram)
 					li.instagram: a(target="_blank",href="#{web_instagram}")
 				if(web_whatsapp)
-					li.whatsapp!= web_whatsapp					
+					li.whatsapp: +render_whatsapp(web_whatsapp)
 				if(web_phone)
-					li.phone!= web_phone
+					li.phone: +render_phone(web_phone)
 				if(web_email)
-					li.email!= web_email
+					li.email: +render_email(web_email)
 					

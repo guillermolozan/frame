@@ -13,9 +13,8 @@ class Forms extends \core\controllers\Forms {
 
 		$this->admin_emails=[
 
-			'contacto@ardyss.com.pe',
-			'croman@prodiserv.com',
-			// 'servicios@prodiserv.com',
+			'contacto@sumarseg.com',
+			'servicios@prodiserv.com',
 			'guillermolozan@gmail.com',
 		
 		];
@@ -34,10 +33,9 @@ class Forms extends \core\controllers\Forms {
 				'address' =>'Av. Arenales 1737 Lince Centro Comerial Arenales Tda. 2-9',
 				'phone'   =>'Delivery 266-2715 / 987-703-261',
 				*/
-				'text'    =>"<strong>".$this->view->vars['web_name']."</strong><br>
-".$this->view->vars['web_address']."<br>
-Celular: ".$this->view->vars['web_phone']."
-"
+				'text'    =>"<strong>".$this->view->vars['web_name']."</strong><br>\n"
+				.$this->view->vars['web_address']."<br>\n"
+				."Celular: ".$this->view->vars['web_phone']."\n"
 				];
 
 		$this->fields=[

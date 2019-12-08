@@ -69,6 +69,8 @@ class Controller {
 		$this->menu_left   = [];	
 		
 		$this->menu_footer = [];	
+
+		$this->menu_prodiserv = [];
 		
 		$this->email_test  = (isset($start['email_test']))?$start['email_test']:false;
 		$this->data_test   = (isset($start['data_test']))?$start['data_test']:false;
@@ -101,15 +103,17 @@ class Controller {
 		$touch = json_decode($touchjson[0],true);
 		$this->static_build=$touch['v'];
 
+
 		//menu footer
-			$this->menu_footer['prodiserv']=[
-								'name'   => 'by prodiserv',
-								'url'    => 'http://prodiserv.com',
-								'aclass' => 'prodiserv',
-								'target' => '_blank',
-								'class'	=> 'menu_prodiserv',
-								'rel'		=> 'external',
-								];
+		$this->menu_footer['prodiserv']=[
+			'name'   => 'by prodiserv',
+			'url'    => 'http://prodiserv.com',
+			'aclass' => 'prodiserv',
+			'target' => '_blank',
+			'class'	 => 'menu_prodiserv',
+			'rel'	 => 'external',
+		];
+		
 
 
 		if($this->enviroment=='local'){
@@ -203,6 +207,8 @@ class Controller {
 
 		}
 
+		// menu prodiserv
+		$this->menu_prodiserv=$this->menu_footer['prodiserv'];
 
 
 		if(isset($this->params['medidas'])){
@@ -262,7 +268,7 @@ class Controller {
 				
 				//abs			
 				'pub_img_abs'     => str_replace('/./','/',Server::baseUrl().$this->static.'/img/'),
-				'pub_img_abs_rem' => str_replace('/./','/',$Config['httpfiles'].Server::directory().$this->static.'/img/'),
+				'pub_img_abs_rem' => str_replace('/./','/',$Config['httpfiles'].Server::directory().'/'.$this->static.'/img/'),
 				'url_rem'		  => str_replace('/./','/',$Config['httpfiles']),
 				//footer
 				'visiters'        => (isset($visits))?$visits:null,
@@ -276,6 +282,8 @@ class Controller {
 				
 				//
 				'canonical'       => '',
+
+				'by_prodiserv'	  => [$this->menu_prodiserv]
 
 			]
 
@@ -348,6 +356,30 @@ class Controller {
 
 		return $obj;		
 
+	}
+
+
+	function comming(){
+		
+		// prin($this->view->vars);
+
+		if($this->view->vars['web_address']) $vars['address']=$this->view->vars['web_address'];
+		if($this->view->vars['web_phone']) $vars['phone']=$this->view->vars['web_phone'];
+		if($this->view->vars['web_email']) $vars['email']=$this->view->vars['web_email'];
+		if($this->view->vars['web_facebook']) $vars['facebook']=$this->view->vars['web_facebook'];
+		if($this->view->vars['web_instagram']) $vars['instagram']=$this->view->vars['web_instagram'];
+		if($this->view->vars['web_whatsapp']) $vars['whatsapp']=$this->view->vars['web_whatsapp'];
+
+		$this->view->assign(
+			array_merge(
+			[				
+				'title'      => $this->title,
+			],
+			$vars)
+		);
+
+		$this->view->render('layout_comming');
+	
 	}
 
 

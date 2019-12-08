@@ -15,6 +15,7 @@
 "./../sumarseg/app/sources/components/form_consulta/form_consulta.styl",
 "./../sumarseg/app/sources/components/form_contact/form_contact.styl",
 "./../sumarseg/app/sources/components/footer/footer.styl",
+"./../sumarseg/app/sources/components/footer_post/footer_post.styl",
 "./../onelimites/app/sources/components/products_reel/products_reel.styl",
 "./../asiste/app/sources/components/home_block_links/home_block_links.styl",
 "./../sumarseg/app/sources/components/whatsapp_button/whatsapp_button.styl"
