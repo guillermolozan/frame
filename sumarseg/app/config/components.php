@@ -17,6 +17,8 @@ return [
 	
 	// 'block_gallery_products' => 'woorld/block_gallery_products',
 	'block_gallery_products' => 'block_gallery_products',
+
+	'block_gallery_videos'   => 'agro/block_gallery_videos',
 		
 	
 	'gallery_products'       => 'gallery_products|es6',

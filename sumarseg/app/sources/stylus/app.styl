@@ -18,12 +18,17 @@ load_imgs          = '../../../public/img/'
 // colors
 angle              =0deg
 
-color1             =#000 + angle //red
+color_white		   =#eee
+color_black		   =#111
+
+color1             =color_black + angle //red
 color2             =#000082 + angle //blue
-color3             =#0aa4f4 + angle //grey
+color3             =#da251b + angle //grey
+
 color4             =skyblue + angle //black
 color5             =#014087 + angle
 color6             =#40b3ff + angle
+
 
 
 
@@ -40,7 +45,7 @@ container 			 = maxwide
 
 
 // blocks
-body_color         =#FFF
+body_color         =white
 
 // logo
 // logo_img_path	 =load_imgs+'logo.jpg'
@@ -51,12 +56,17 @@ body_color         =#FFF
 //header
 // header_img_path	 =load_imgs+'header-bg.jpg'
 // header_bg          =transparent url(imgs+'logo-2.png') no-repeat left
-header_height      =182
+// header_height      =182
+
 
 //menu_top
-menu_top_bgcolor   =color1
-menu_top_textcolor =white
-menu_top_height 	 =42px
+menu_top_bgcolor   =color2
+menu_top_textcolor =color_white
+menu_top_bgcolor_over   =color3
+menu_top_textcolor_over =color_white
+menu_top_height    =50px
+menu_top_font_size 	   =14px
+
 
 
 
@@ -82,17 +92,20 @@ logo_customize()
 main_bgcolor       =transparent
 
 
+// footer_pre
+// footer_pre_bgcolor =color3
+// footer_pre_textcolor=white
 
-pre_footer_bgcolor =color3
-pre_footer_textcolor=white
-
-//footer
-
-footer_bgcolor     =black
-footer_textcolor   =white
-footer_height 	 	 =41px
+//footers
+footer_bgcolor = color_black
+footer_textcolor = color_white
+footer_textcolor2 = darken(color_white,25)
+// footer_height 	   =auto
 
 
+// footer_post
+footer_post_bgcolor = lighten(color_black,10)
+footer_post_textcolor = darken(color_white,25)
 
 
 // work
@@ -103,14 +116,8 @@ footer_height 	 	 =41px
 @import 'blocks/*'
 
 
-
-
 //layouts
 @import 'layouts/*'
-
-
-
-
 
 
 // Begin Components
@@ -125,6 +132,7 @@ footer_height 	 	 =41px
 @import '../../../../sumarseg/app/sources/components/home_block_descuentos/home_block_descuentos.styl'
 @import '../../../../sumarseg/app/sources/components/page_post/page_post.styl'
 @import '../../../../sumarseg/app/sources/components/block_gallery_products/block_gallery_products.styl'
+@import '../../../../agro/app/sources/components/block_gallery_videos/block_gallery_videos.styl'
 @import '../../../../sumarseg/app/sources/components/gallery_products/gallery_products.styl'
 @import '../../../../onelimites/app/sources/components/product_detail/product_detail.styl'
 @import '../../../../sumarseg/app/sources/components/form_consulta/form_consulta.styl'

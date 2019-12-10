@@ -27,7 +27,7 @@ class Controller extends \core\Controller {
 		$groups=select(
 						"id,url,name",
 						"paginas_groups",
-						"where id in (9)
+						"where id in (9,3)
 						and visibilidad=1
 						order by weight desc",0);
 
@@ -80,21 +80,23 @@ class Controller extends \core\Controller {
 
 		}
 
-		if($this->view->vars['web_facebook'])
-			$replace_menu_pre_top['facebook']=[
-				'url'   =>$this->view->vars['web_facebook'],
-				// 'name'  =>'Facebook',
-				'class' =>'facebook',
-				'target'=>'_blank'
-			];
+		$replace_menu_pre_top=[];
+
+		// if($this->view->vars['web_facebook'])
+		// 	$replace_menu_pre_top['facebook']=[
+		// 		'url'   =>$this->view->vars['web_facebook'],
+		// 		// 'name'  =>'Facebook',
+		// 		'class' =>'facebook',
+		// 		'target'=>'_blank'
+		// 	];
 	
-		if($this->view->vars['web_instagram'])
-			$replace_menu_pre_top['instagram']=[
-				'url'   =>$this->view->vars['web_instagram'],
-				// 'name'  =>'Instagram',
-				'class' =>'instagram',
-				'target'=>'_blank'
-			];
+		// if($this->view->vars['web_instagram'])
+		// 	$replace_menu_pre_top['instagram']=[
+		// 		'url'   =>$this->view->vars['web_instagram'],
+		// 		// 'name'  =>'Instagram',
+		// 		'class' =>'instagram',
+		// 		'target'=>'_blank'
+		// 	];
 
 
 	

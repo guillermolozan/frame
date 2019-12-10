@@ -137,6 +137,7 @@ Class Emails {
 			$phpMail->FromName   = $this->vars['web_name'];
 
 			$phpMail->Subject    = $subject;
+			if(trim($subject)=='') prin('asunto vacio');
 			// $phpMail->AltBody    = 'altbody';
 			$phpMail->MsgHTML($html_email);
 			$phpMail->CharSet	  = "utf-8";

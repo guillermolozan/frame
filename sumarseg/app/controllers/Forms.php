@@ -11,17 +11,11 @@ class Forms extends \core\controllers\Forms {
 
 		parent::__construct($params);
 
-		$this->admin_emails=[
-
-			'contacto@sumarseg.com',
-			'servicios@prodiserv.com',
-			'guillermolozan@gmail.com',
-		
-		];
+		$this->admin_emails=$this->view->vars['web_email_admin'];
 
 	}
 
-	function contactenos($params){
+	function contactenos($params=null){
 
 		$this->name = "Contáctenos";
 
@@ -85,7 +79,7 @@ class Forms extends \core\controllers\Forms {
 
 			$sended=$email->send(
 				implode(',',$this->admin_emails),
-				"Mensaje de Contáctenos",
+				"Mensaje de Contactenos",
 				[
 					'name_right' =>$this->view->vars['web_name'],
 					'title'      =>"Contacto",
@@ -110,8 +104,9 @@ class Forms extends \core\controllers\Forms {
 					'name'		 =>$this->name.' para usuario'
 				]
 			);
-
+			
 			if($sended){	$this->setMessage($email);		} 
+			// if($sended_response){	$this->setMessage($email);		} 
 
 
 			insert(
@@ -140,7 +135,7 @@ class Forms extends \core\controllers\Forms {
 
 				'title' 			=> $this->name,
 				
-				'message'		=> $message,
+				'message'		=> $this->message,
 
 				'fields1'			=> [
 					$fields_reformated[0],

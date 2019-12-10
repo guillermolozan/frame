@@ -1,10 +1,13 @@
-footer_bgcolor = black
-footer_textcolor = white
-footer_textcolor2 = #aaa
+// footer_bgcolor = black
+// footer_textcolor = white
+// footer_textcolor2 = #aaa
 footer_ico = footer_bgcolor
+footer_height =auto
+
+
 footer
 	background footer_bgcolor
-	height auto
+	height footer_height
 	margin-top 0px !important
 	padding-bottom .5em
 	// display none
@@ -24,6 +27,8 @@ footer
 			> li
 				float none
 				line-height 2em
+				> a
+					font-size 13px
 		// .first,.second
 		// 	@media $large
 		// 		position relative

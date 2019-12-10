@@ -17,6 +17,7 @@ return [
 		
 		'email'      =>'informes@sumarseg.com',
 		'emails'     =>['ventas@sumarseg.com','informes@sumarseg.com'],
+
 		'phone'      =>'(+511) 605-2255',
 		'phones'	 =>['(01) 605-2255','605-2256'],
 		'mobile'     =>'981109152',
@@ -35,6 +36,7 @@ return [
 		// 'youtube'    =>'https://www.youtube.com/',
 
 		
+		'email_admin'=>'ventas@sumarseg.com,wtavara@prodiserv.com,guillermolozan@gmail.com',
 
 
 	],
@@ -50,13 +52,13 @@ return [
 		'email_test'=>true,
 
 		// 'image_devel'=>'thinking.png',
-		'image_devel'=>'random',
+		// 'image_devel'=>'random',
 
 		// 'data_test'	=>true,		
 	
 		// 'fake'	=>'fakeimg',
-		'devel' =>"desarrollo",
-		'comming' =>"true",
+		// 'devel' =>"desarrollo",
+		// 'comming' =>"true",
 
 
 
@@ -71,6 +73,9 @@ return [
 		'static' =>"./sumarseg/public",
 
 		'devel' =>"desarrollo",
+
+		// 'email_test'=>true,
+
 
 		// 'data_test'	=>true,		
 	

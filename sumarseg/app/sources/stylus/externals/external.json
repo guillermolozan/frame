@@ -10,6 +10,7 @@
 "./../sumarseg/app/sources/components/home_block_descuentos/home_block_descuentos.styl",
 "./../sumarseg/app/sources/components/page_post/page_post.styl",
 "./../sumarseg/app/sources/components/block_gallery_products/block_gallery_products.styl",
+"./../agro/app/sources/components/block_gallery_videos/block_gallery_videos.styl",
 "./../sumarseg/app/sources/components/gallery_products/gallery_products.styl",
 "./../onelimites/app/sources/components/product_detail/product_detail.styl",
 "./../sumarseg/app/sources/components/form_consulta/form_consulta.styl",

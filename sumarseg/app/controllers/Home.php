@@ -386,6 +386,33 @@ class Home extends Controller {
 
 
 
+		/*
+		##     ## #### ########  ########  #######   ######
+		##     ##  ##  ##     ## ##       ##     ## ##    ##
+		##     ##  ##  ##     ## ##       ##     ## ##
+		##     ##  ##  ##     ## ######   ##     ##  ######
+		 ##   ##   ##  ##     ## ##       ##     ##       ##
+		  ## ##    ##  ##     ## ##       ##     ## ##    ##
+		   ###    #### ########  ########  #######   ######
+		*/
+		$Videos=$this->loadModel('Videos');
+
+			$gallery=$Videos->getItem([
+				'item'  =>'1',
+				'limit' =>'0,4',
+				// 'type'  =>'videos'
+			]);
+
+			$gallery['name']='galería de videos';
+			// prin($gallery);
+
+			$gallery['more']=[
+				'url'  =>maskUrl('videos'),
+				'name' =>'ver más'
+			];
+
+		$this->view->assign(["block_gallery_videos" => $gallery]);
+
 
 
 

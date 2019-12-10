@@ -35,3 +35,18 @@ header
 						text-decoration: none
 			> li.facebook
 				top -3px
+@media $large
+	body.headfixed
+		header
+			nav
+				background rgba(menu_bg_over,.9) !important
+				> .container
+					> .menu_top
+						> li
+							padding 0 10px
+							> a
+								color white 
+							&.active,&:hover
+								background rgba(white,.9)	
+								> a
+									color black !important

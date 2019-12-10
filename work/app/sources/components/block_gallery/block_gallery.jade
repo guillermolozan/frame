@@ -21,7 +21,8 @@ if(gallery.items)
 					if(item.name)
 						.card-content
 							if (gallery.type=='videos')
-								a(class="venobox btn",data-type="youtube",href="//youtu.be/#{item.video}") #{item.name}
+								a(class="btn",data-lity,href="//youtu.be/#{item.video}") #{item.name}
+								//- a(class="venobox btn",data-type="youtube",href="//youtu.be/#{item.video}") #{item.name}
 							else
 								if(item.url)
 									if(item.target)

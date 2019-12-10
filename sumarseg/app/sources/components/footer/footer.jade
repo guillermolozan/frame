@@ -2,11 +2,10 @@ include ../../jade/includes/whatsapp_button
 footer
 	.container.row
 
-		.col.s12.l6.first
+		.col.s12.l4.first
 			ul.menu
 				+menu_items(menu_footer)
-
-		.col.s12.l6.third
+		.col.s12.l4.third
 			ul.menu
 				//- if(!localhost)
 				//- 	li.footer-fb
@@ -26,6 +25,8 @@ footer
 				if(web_email)
 					li(class="email circle") 
 						+render_email(web_email)
+		.col.s12.l4.two
+			ul.menu
 				if(web_whatsapp)
 					li: span.corp WhatsApp: #[strong #[+render_whatsapp(web_whatsapp)]]
 				if(web_address)
@@ -34,4 +35,6 @@ footer
 				li: span.corp Correo: #[strong #[+render_emails(web_emails)]]
 				//- li.visa
 				//- 	span Aceptamos Visa
+
+
 include ../../jade/includes/footer_post
