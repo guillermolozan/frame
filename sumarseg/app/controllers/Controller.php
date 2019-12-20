@@ -114,11 +114,11 @@ class Controller extends \core\Controller {
 
 
 		//menu left
-			$this->menu_left=$this->elements->getMenu('menu_left',$replace_menu_pre,$params['uri']);
+			$this->menu_left=$this->elements->getMenu('menu_left',array_merge($replace_menu_pre,$replace_menu_pre_top),$params['uri']);
 
 
 		//menu footer
-			$this->menu_footer=$this->elements->getMenu('menu_footer',$replace_menu_pre);
+			$this->menu_footer=$this->elements->getMenu('menu_footer',array_merge($replace_menu_pre,$replace_menu_pre_top));
 		
       $this->view->assign(
 			[

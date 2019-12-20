@@ -42,7 +42,7 @@ class Videos extends \core\Models {
 			[
 				'video'=>['dato'=>['video','galleries_videos_videos','where id_grupo={id}']],
 
-				'img'=>'http://i.ytimg.com/vi/{video}/mqdefault.jpg',
+				'img'=>'https://i.ytimg.com/vi/{video}/mqdefault.jpg',
 
 				'url'=>['url'=>['galeria-videos-{name}/{id}']],
 

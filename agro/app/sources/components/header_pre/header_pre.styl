@@ -1,41 +1,38 @@
 .header_pre
 	nav
 		// height 40px
-		background-color darken(white,5)
-		color black
+		background-color color_white
+		color color_black
 		box-shadow initial
 		// border-bottom 1px solid #ddd
 		.container
 			> ul.menu 
 				display flex
 				width 100%
+				padding 0px
 				&:before
 					content ""
 					flex-grow 1
 					order 1
 				> li
+					// background red
 					height 30px
 					line-height @height
-					padding-left 0.3em
-					padding-right 0.3em
+					padding 0 .3em .2em .3em
 					font-weight 400
 					flex-grow 0
 					white-space nowrap
 					// vertical-align middle
 					// text-align right
 					// order 1
-					i
-						display inline-block
-						height initial
-						line-height initial
-						font-size inherit
 					a
 						color inherit
 						font-weight inherit
-						display inline-block
-						padding-left 1px
-					&:before
-						margin-right 0.5em
+						display flex
+						align-items center
+						&:before
+							color inherit
+							padding 0 .3em
 					&.facebook a
 						icomoon('e660')
 					&.twitter a
@@ -44,15 +41,28 @@
 						icomoon('ea92')						
 					&.youtube a
 						icomoon('e674')					
-					&.whatsapp
+					&.whatsapp a
 						icomoon('e900')
-						font-size 1.05em
-						font-weight bold
-					&.phone
+					&.phone a
 						icomoon('e620')
+					&.email a
+						icomoon('e679')
+			//  #######  ########  ########  ######## ########
+			// ##     ## ##     ## ##     ## ##       ##     ##
+			// ##     ## ##     ## ##     ## ##       ##     ##
+			// ##     ## ########  ##     ## ######   ########
+			// ##     ## ##   ##   ##     ## ##       ##   ##
+			// ##     ## ##    ##  ##     ## ##       ##    ##
+			//  #######  ##     ## ########  ######## ##     ##
+			> ul.menu
+				> li
+					&.phone
 						order 11
 					&.email
-						icomoon('e679')
 						order 12
+					&.instagram
+						order 99
+					&.facebook
+						order 100
 
 

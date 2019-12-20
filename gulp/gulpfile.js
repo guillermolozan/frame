@@ -539,38 +539,39 @@ const deploy_task = async()=>{
         './../work/library/**',
         './../work/vendor/**',
         './../work/public/**',
+        './../work/sources/img/**',
         './../.htaccess',
     ];
 
     const globs4 = [
-        '../index.php',
+        './../index.php',
     ];    
 
     const indextxt="<?php chdir('"+folder+"'); include 'index.php';"
 
     globs=[];
-    if(argv.f=='css'){
+    if(argv.a=='css'){
       globs=globspc;
-    } else if(argv.f=='img'){
+    } else if(argv.a=='img'){
       globs=globspi;
-    } else if(argv.f=='js'){
+    } else if(argv.a=='js'){
       globs=globspj;
-    } else if(argv.f=='vendor'){
+    } else if(argv.a=='vendor'){
       globs=globspv;    
-    } else if(argv.f=='public'){
+    } else if(argv.a=='public'){
       globs=globspc.concat(globspi).concat(globspj).concat(globspv)
-    } else if(argv.f=='controllers'){
+    } else if(argv.a=='controllers'){
       globs=globsc;
-    } else if(argv.f=='views'){
+    } else if(argv.a=='views'){
       globs=globsv;      
-    } else if(argv.f=='config') {
+    } else if(argv.a=='config') {
       globs=globs2;
-    } else if(argv.f=='work') {
+    } else if(argv.a=='work') {
       globs=globs3;
-    } else if(argv.f=='index') {
+    } else if(argv.a=='index') {
       writeFile.sync('index.php', indextxt);
       globs=globs4;
-    } else if(argv.f=='install') {
+    } else if(argv.a=='install') {
       writeFile.sync('index.php', indextxt);
       globs=globspc.concat(globs4).concat(globspi).concat(globspj).concat(globspv).concat(globsc).concat(globsv).concat(globs2).concat(globs3);
     } else {

@@ -1,0 +1,23 @@
+.whatsapp_button
+    position fixed
+    bottom 40px
+    right 30px
+    background #a4cf3d
+    width 60px
+    height 60px
+    line-height @height
+    border-radius 50%
+    display grid
+    justify-content center
+    border 1px solid #000
+    z-index 1
+    color transparent
+    font-size 0px
+    &:before
+        content '\e900'
+        font-family icomoon
+        font-size 66px
+        color #fff
+        text-shadow 5px 5px 15px #666 
+    &:hover
+        text-decoration none   

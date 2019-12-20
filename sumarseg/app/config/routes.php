@@ -1,12 +1,18 @@
 <?php
 
-$routes_return = require('../work/app/config/routes.php');;
 
 // ITEMS
 $productos_items=get_valores("id","url","productos_items");
 foreach($productos_items as $ii=>$url)
 {
 	$routes_return['/'.$url.'.html'.'$']='controller=Servicios&method=detail&level=producto&item='.$ii;
+}
+
+// ITEMS OFERTAS
+$productos_items=get_valores("id","url","productos_items_descu");
+foreach($productos_items as $ii=>$url)
+{
+	$routes_return['/oferta-'.$url.'.html'.'$']='controller=Servicios&method=detail&level=descuento&item='.$ii;
 }
 
 
@@ -64,7 +70,10 @@ $routes_forms =['contactenos'];
 
 
 $routes_return=array_merge($routes_return,[
-
+	
+	//home
+	'/'. (($start['devel'])?$start['devel']:'') .'$'       	=> 'controller=Home&method=index',
+	
 	/* forms */
 	'/(contactenos)$' 													=> 'controller=Forms&method=$1',
 	

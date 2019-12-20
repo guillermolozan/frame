@@ -6,7 +6,6 @@ class Photos extends \controllers\Controller {
 
 	function grid(){
 
-
 		$Photos=$this->loadModel('Photos');
 
 		$gallery=$Photos->getItems();
@@ -20,12 +19,10 @@ class Photos extends \controllers\Controller {
 							'name'  =>$gallery['name'],
 							'html'  =>$gallery['html'],							
 							'items' =>$gallery['items'],
-							]
+						]
 
-			]
+		]);
 
-		);
-	
 	}
 
 

@@ -1,0 +1,1 @@
+<?php chdir('../meca'); include 'index.php';

@@ -1,0 +1,14 @@
+[
+"./../work/app/sources/components/common/common.js",
+"./../work/app/sources/components/menu_left/menu_left.js",
+"./../work/app/sources/components/block_gallery/block_gallery.js",
+"./../meca/app/sources/components/header/header.js",
+"./../meca/app/sources/components/block_banner/block_banner.js",
+"./../meca/app/sources/components/home_block_importaciones/home_block_importaciones.js",
+"./../meca/app/sources/components/home_block_descuentos/home_block_descuentos.js",
+"./../meca/app/sources/components/gallery_products/gallery_products.js",
+"./../onelimites/app/sources/components/product_detail/product_detail.js",
+"./../meca/app/sources/components/form_contact/form_contact.js",
+"./../onelimites/app/sources/components/products_reel/products_reel.js",
+"./../asiste/app/sources/components/home_block_links/home_block_links.js"
+]

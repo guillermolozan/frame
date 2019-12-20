@@ -22,10 +22,10 @@ return [
 		'phones'	 =>['(01) 605-2255','605-2256'],
 		'mobile'     =>'981109152',
 
-		'address'    =>'Mz. E Lt. 34 Los Olivos de Pro - Los Olivos - Lima',
-		'lat'        =>'-12.0819534',
-		'lon'        =>'-77.0383133',
-		
+		'address'    =>'Calle 106 Lote 15 A.H. Los Norteños - Los Olivos - Lima',
+		'lat'        =>'-11.9519656',
+		'lon'        =>'-77.0826401',
+
 		'whatsapp'   =>'981109152',
 
 		'instagram'  =>'https://www.instagram.com/instagram',
@@ -72,7 +72,7 @@ return [
 
 		'static' =>"./sumarseg/public",
 
-		'devel' =>"desarrollo",
+		// 'devel' =>"desarrollo",
 
 		// 'email_test'=>true,
 

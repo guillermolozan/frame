@@ -102,6 +102,7 @@ class Home extends Controller {
 
 		$lineas=[
 			'name'=>$name_productos1,
+			'url'=>$url_productos1,
 			'items'=>$items_productos1,
 			// 'more'=>[
    //          'name' => 'ver más',
@@ -192,9 +193,10 @@ class Home extends Controller {
 		$importaciones=[
 			'name'=>$name_productos2,
 			'items'=>$items_productos2,
+			'url'=>$url_productos2,
 			'more'=>[
 				'name' => 'ver más',
-				'url' => 'productos2'
+				'url'=>$url_productos2,
 			]
 		];
 		
@@ -403,13 +405,19 @@ class Home extends Controller {
 				// 'type'  =>'videos'
 			]);
 
+			$gallery2=$Videos->getItems();
+
 			$gallery['name']='galería de videos';
-			// prin($gallery);
+		
+			$gallery['items']=$gallery2['items'];
+
+			unset($gallery['type']);
 
 			$gallery['more']=[
 				'url'  =>maskUrl('videos'),
 				'name' =>'ver más'
 			];
+
 
 		$this->view->assign(["block_gallery_videos" => $gallery]);
 

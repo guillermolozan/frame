@@ -99,22 +99,13 @@ class Servicios extends \core\controllers\Pages {
 				$campos_items ="id,nombre as name,marca,descripcion as html,moneda,tags,weight,
 			        adjunto,fecha_creacion";
 			break;
-			case "importado":
-				$tabla_items ='productos_items_impor';
-				$tabla_fotos ='productos_fotos_impor';
-				$dir_fotos   ='profot2_imas';
-				$name_items  ='IMPORTACIONES';
-				$url_items   ='importaciones';
-				$campos_items ="id,nombre as name,marca,descripcion as html,moneda,tags,weight,
-			        adjunto,fecha_creacion";			
-			break;
 			case "descuento":
 				$tabla_items ='productos_items_descu';
 				$tabla_fotos ='productos_fotos_descu';
 				$dir_fotos   ='profot3_imas';
 				$name_items  ='DESCUENTOS';
 				$url_items   ='descuentos';
-				$campos_items ="id,nombre as name,marca,descripcion as html,moneda,tags,weight,oferta,
+				$campos_items ="id,nombre as name,marca,descripcion as html,moneda,tags,weight,oferta,precio,precio_oferta,
 			        adjunto,fecha_creacion";
 			break;
 		}
@@ -134,7 +125,7 @@ class Servicios extends \core\controllers\Pages {
 
 		$head_description =$Page->getDescription();
 
-		$head_keywords 	=$Page->getKeywords();
+		$head_keywords 	  =$Page->getKeywords();
 
 		$head_title       =$Page->getTitle();
 
@@ -154,7 +145,6 @@ class Servicios extends \core\controllers\Pages {
 
 		if(
 			$params['level']=='descuento' 
-			or $params['level']=='importado' 
 			){
 
 			$post = fila(
@@ -164,6 +154,15 @@ class Servicios extends \core\controllers\Pages {
 			        ,0
 			        ,[
 							'url'=>['url'=>[$params['level'].'/{name}/{id}']],
+
+
+							'get_archivo'=>['get_archivo'=>[
+								'carpeta'=>'atc_imas',
+								'fecha'=>'{fecha_creacion}',
+								'file'=>'{adjunto}',
+								'tamano'=>'0'
+								]]		
+					
 			        ]
 			);
 
@@ -175,6 +174,14 @@ class Servicios extends \core\controllers\Pages {
 			        ,$tabla_items
 			        ,"where id='".$params['item']."'"
 					,0
+					,[
+						'get_archivo'=>['get_archivo'=>[
+							'carpeta'=>'atc_imas',
+							'fecha'=>'{fecha_creacion}',
+							'file'=>'{adjunto}',
+							'tamano'=>'0'
+							]]
+					]
 
 			);
 
@@ -220,23 +227,27 @@ class Servicios extends \core\controllers\Pages {
 		$breadcrumb=$this->elements->getBreadcrumb($breadcrumb);
 
 
-
 		$post['precio']=(($post['moneda']=='1')?'US$':'S/.').$post['precio'];
+		
+
+		if($post['precio_oferta'])
+			$post['precio_oferta']=(($post['moneda']=='1')?'US$':'S/.').$post['precio_oferta'];
+
 
 		$post['fotos']=select(
-				'id,file,fecha_creacion',
+				'id,file,fecha_creacion,weight',
 				$tabla_fotos,
-				'where id_item='.$post['id'],
+				'where id_item='.$post['id']." order by weight desc",
 				0,
-		 	[
-				'img'=>['get_archivo'=>[
-											'carpeta'=>$dir_fotos,
-											'fecha'=>'{fecha_creacion}',
-											'file'=>'{file}',
-											'tamano'=>'0'
-											]
-										]	
-		 	]
+				[
+					'img'=>['get_archivo'=>[
+												'carpeta'=>$dir_fotos,
+												'fecha'=>'{fecha_creacion}',
+												'file'=>'{file}',
+												'tamano'=>'0'
+												]
+											]	
+				]
 		);
 
 
@@ -392,11 +403,11 @@ class Servicios extends \core\controllers\Pages {
 		}
 
 
-		foreach($this->menu_left as $iii=>$ite){
-			if(in_array($ite['url'],['productos','importaciones','descuentos'])){
-				unset($this->menu_left[$iii]);
-			}
-		}
+		// foreach($this->menu_left as $iii=>$ite){
+		// 	if(in_array($ite['url'],['productos','importaciones','descuentos'])){
+		// 		unset($this->menu_left[$iii]);
+		// 	}
+		// }
 
 
 
@@ -418,7 +429,7 @@ class Servicios extends \core\controllers\Pages {
 		$this->menu_left=$this->elements->getMenu($this->menu_left,[$menu],$params['uri']);
 
 
-		// prin($breadcrumb);
+		// prin($post);
 
 		$this->view->assign([
 				
@@ -433,6 +444,8 @@ class Servicios extends \core\controllers\Pages {
 			'post'             => [
 											'name' =>$post['name'],
 											'html' =>$post['html'],
+											'precio' =>$post['precio'],
+											'precio_oferta' =>$post['precio_oferta'],
 											'precio' =>$post['precio'],
 											'img'  =>$post['fotos']['0']['img'],
 
@@ -490,7 +503,6 @@ class Servicios extends \core\controllers\Pages {
 
 
 	}
-
 
 	function grid($params){	
 
@@ -575,7 +587,7 @@ class Servicios extends \core\controllers\Pages {
 			
 			// prin($params['level']);
 
-			$menu =select('nombre as name,id','productos_subgrupos','where visibilidad=1 and id_grupo='.$id_grupo,0,
+			$menu =select('nombre as name,id','productos_subgrupos','where visibilidad=1 and id_grupo='.$id_grupo.' order by weight desc',0,
 					[
 						'url'=>['url'=>[$fila['url'].'/category-{name}/{id}']],
 					]);
@@ -607,7 +619,7 @@ class Servicios extends \core\controllers\Pages {
 					)
 				)
 
-				$menu[$iii]['items']=select('name,id','productos_groups','where visibilidad=1 and id_grupo='.$men['id'],0,
+				$menu[$iii]['items']=select('name,id','productos_groups','where visibilidad=1 and id_grupo='.$men['id'].' order by weight desc',0,
 						[
 							'url'=>['url'=>[$fila['url'].'/sub-category-{name}/{id}']],
 						]);
@@ -646,7 +658,7 @@ class Servicios extends \core\controllers\Pages {
 				
 				// prin($params['level']);
 
-				$menuleft =select('nombre as name,id','productos_subgrupos','where visibilidad=1 and id_grupo='.$fil['id'],0,
+				$menuleft =select('nombre as name,id','productos_subgrupos','where visibilidad=1 and id_grupo='.$fil['id'].' order by weight desc',0,
 						[
 							'url'=>['url'=>[$fil['url'].'/category-{name}/{id}']],
 						]);
@@ -676,7 +688,7 @@ class Servicios extends \core\controllers\Pages {
 						)
 					)
 
-					$menuleft[$iii]['items']=select('name,id','productos_groups','where visibilidad=1 and id_grupo='.$men['id'],0,
+					$menuleft[$iii]['items']=select('name,id','productos_groups','where visibilidad=1 and id_grupo='.$men['id'].' order by weight desc',0,
 							[
 								'url'=>['url'=>[$fil['url'].'/{name}/{id}']],
 							]);
@@ -1097,7 +1109,7 @@ class Servicios extends \core\controllers\Pages {
 
 			$url_item=($params['level']=='importaciones')?'importado':'descuento';
 
-			$tabla_campos=($params['level']=='importaciones')?"nombre as name,id,precio,moneda":"nombre as name,id,precio,moneda,oferta as subname";
+			$tabla_campos=($params['level']=='importaciones')?"nombre as name,id,precio,moneda":"nombre as name,id,precio,precio_oferta,moneda,oferta as subname";
 
 
 			$items_productos=select(
@@ -1109,7 +1121,7 @@ class Servicios extends \core\controllers\Pages {
 			limit 0,100",
 			0,[
 
-				'url'=>['url'=>[$url_item.'/{name}/{id}']],
+				'url'=>['url'=>['descuentos/{name}/{id}']],
 
 			]);
 			// prin($items_productos);
@@ -1121,6 +1133,16 @@ class Servicios extends \core\controllers\Pages {
 					$items_productos[$iii]['precio']=(($prod['moneda']=='1')?'US$':'S/.').$prod['precio'];
 
 				$items_productos[$iii]['subname']=round($prod['subname']);
+
+
+				if($params['level']=='descuentos'){
+
+					$items_productos[$iii]['subname']="-".round($prod['subname']);
+
+					$items_productos[$iii]['precio_oferta'] =(($prod['moneda']=='1')?'US$':'S/.').$prod['precio_oferta'];
+					$items_productos[$iii]['precio'] =(($prod['moneda']=='1')?'US$':'S/.').$prod['precio'];
+
+				}
 
 				$fotos=fila(
 					"id,fecha_creacion,file",
@@ -1144,7 +1166,6 @@ class Servicios extends \core\controllers\Pages {
 
 			}
 
-			// prin($items_productos);
 
 			$head_description =$Page->getDescription($post,items2string($items_productos));
 			
@@ -1174,9 +1195,9 @@ class Servicios extends \core\controllers\Pages {
 		$head_title       =$Page->getTitle($post);
 
 
-		$this->menu_left=$this->elements->getMenu($this->menu_left,$menuleftfinal['items'],$params['uri']);
+		// $this->menu_left=$this->elements->getMenu($this->menu_left,$menuleftfinal['items'],$params['uri']);
 
-		$this->view->assign(['menu_left'    => $this->menu_left,]);
+		// $this->view->assign(['menu_left'    => $this->menu_left,]);
 
 
 		//Asign vars for view
@@ -1199,6 +1220,7 @@ class Servicios extends \core\controllers\Pages {
 											
 											'img'       =>$post['img'],
 											
+
 											'parts'     =>'1'
 										],
 		

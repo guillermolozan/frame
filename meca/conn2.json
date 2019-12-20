@@ -1,0 +1,6 @@
+{
+	"host":     "mecatronicsystems.com",
+	"user":     "mecatron",
+	"password": "prodiserv",
+	"parallel": "3"
+}

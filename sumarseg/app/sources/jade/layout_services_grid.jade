@@ -86,10 +86,18 @@ html(lang="es")
 													.card-content
 														.card-title: a(href="#{productos_item.url}",title="#{productos_item.name}") #{productos_item.name}
 													.card-action
-														if(productos_item.subname!='')
-															span.subname #{productos_item.subname}
-														if(productos_item.precio!='S/.')
-															span.precio #{productos_item.precio}
+														if(productos_item.precio_oferta)
+															if(productos_item.subname!='')
+																span.subname #{productos_item.subname}
+															if(productos_item.precio!='')
+																span.precio #{productos_item.precio}
+															if(productos_item.precio_oferta!='S/.')
+																span.precio_oferta #{productos_item.precio_oferta}
+														else
+															if(productos_item.subname!='')
+																span.subname #{productos_item.subname}
+															if(productos_item.precio!='S/.')
+																span.precio #{productos_item.precio}
 
 						if(grupos)
 							section.line_grupos

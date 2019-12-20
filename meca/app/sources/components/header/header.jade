@@ -1,0 +1,28 @@
+header.navbar-fixed
+
+	if(is_home)
+		h1 #{web_name}
+		-main = false
+
+	include ../../jade/includes/header_pre
+
+	.prenav
+		.container
+			a.logo(href="#{link_home}",
+				title="#{web_name}")
+				img(src="#{pub_img}#{logo}",
+					title="#{web_name}",
+					alt="#{web_name}")
+
+	nav
+		.container
+			+button_side_nav()
+			//- menu_top
+			ul.menu.menu_top
+				li.brand-logo: a(href="#{link_home}",title="#{web_name}")
+					img(src="#{pub_img}#{logo}",title="#{web_name}",alt="#{web_name}")
+				+menu_items(menu_top)
+
+				
+//- menu_left
+include ../../jade/includes/menu_left

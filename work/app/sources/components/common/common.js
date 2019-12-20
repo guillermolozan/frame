@@ -100,7 +100,7 @@ if(is_debug){
 // FORM
 ////////////////////
 
-$('select').material_select();
+// $('select').material_select();
 
 $('textarea').trigger('autoresize');
 

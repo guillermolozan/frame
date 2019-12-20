@@ -189,7 +189,7 @@
 					@media $small
 						font-size .8em
 				.card-action
-					height 23px
+					height 50px
 					text-align center
 					.subname
 						display block
@@ -473,7 +473,7 @@
 			// .input-field
 			// 	margin-top .1rem
 				
-.p-descuentos,.p-importaciones
+.p-descuentos
 	&.p-grid
 		.breadcrumb
 			display none
@@ -482,3 +482,25 @@
 			display block
 		.cabecera
 			margin-bottom 0
+		.card-action
+			.precio
+				display inline !important
+				margin 20px !important
+				text-decoration line-through
+				color grey
+			.subname
+				display inline !important
+				margin 20px !important
+				color black !important
+			.precio_oferta
+				display block
+				color #000082
+.p-descuento
+	&.p-detail
+		.product_detail
+			.precio
+				&.tachado
+					color grey
+					font-size 15px
+					text-decoration line-through
+

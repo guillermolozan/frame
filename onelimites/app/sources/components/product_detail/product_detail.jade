@@ -1,5 +1,5 @@
 //- article.card-panel.product_detail
-article(class="card-panel galleries product_detail")
+article.card-panel.galleries.product_detail
 	.row
 		.col.s12.l6.main
 			//- h2 Descripción
@@ -13,21 +13,27 @@ article(class="card-panel galleries product_detail")
 				data-show-faces='false', 
 				data-share='true')
 			div!= post.html
-			if(post.precio!='S/.')
-				.precio #[strong PRECIO] : #{post.precio}
-			if(post.oferta!='')
-				.oferta #{post.oferta}			
-
-			//- if post.adjunto
-			//- 	div
-			//- 		a(href="#{post.adjunto}",class="waves-effect waves-light btn-large right-align download") #[i] Descargar Ficha Técnica
+			if(post.precio_oferta)
+				if(post.precio!='S/.')
+					.precio.tachado #[strong PRECIO] : #{post.precio}
+				if(post.oferta!='')
+					.oferta #[strong OFERTA] #{post.oferta}
+				if(post.precio_oferta!='S/.')
+					.precio_oferta #[strong PRECIO CON DESCUENTO] : #{post.precio_oferta}
+			else
+				if(post.precio!='S/.')
+					.precio #[strong PRECIO] : #{post.precio}
+			if post.adjunto
+				div
+					a(target="_blank",
+						href="#{post.adjunto}",
+						class="waves-effect waves-light btn-large right-align download") #[i] Descargar Ficha Técnica
 
 		.col.s12.l6.fotos
 			.row
 				.col.s3.m2.train
 					each foto in fotos
 						div: a: img(src="#{foto.img}")
-
-				div(class="col s9 m10 foto")
+				.col.s9.m10.foto
 					a(class="zoom",href="#{fotos[0].img}")
 						img.responsive-img(src="#{fotos[0].img}")

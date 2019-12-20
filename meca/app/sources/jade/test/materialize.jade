@@ -1,0 +1,238 @@
+.container
+  
+  h3(class="center header text-teal") MATERIALIZE
+
+  .section   
+    div(class="valign-demo valign-wrapper blue",style="height:500px;")
+      h5(class="center white-text",style="width: 100%;") 
+        | alineado horizontal y vertical en color blue
+
+//- experiments
+
+.divider
+.container
+  .section   
+    h2.header.text-teal Menú
+    nav(class="red",role="navigation")
+      div(class="nav-wrapper container")
+        ul(class="right ")
+          - list = ["Boton 1","Boton 2","Boton 3","Boton 4","Boton 5"]
+          each item in list
+            li
+              a(href="#")
+                i(class="mdi-file-cloud right")
+                | #{item}
+
+            
+.divider
+.container
+  .section   
+    h2 Botones
+    a(class="col s12 m3 btn dropdown-button blue darken-2",href="#",data-activates="dropdown2")
+      i(class="mdi-navigation-arrow-drop-down right")
+      | Boton 1
+    a(class="col s12 m3 btn dropdown-button",href="#",data-activates="dropdown3") 
+      i(class="mdi-navigation-arrow-drop-down right")
+      | Boton 2
+    a(class="col s12 m3 btn")
+      i(class="mdi-file-cloud right")
+      | Boton 3
+    a(class="col s12 m3 btn")
+      i(class="mdi-file-cloud right")
+      | Boton 4
+
+
+    ul(id="dropdown2",class="dropdown-content")
+      li: a(href="#") boton A #[span(class="badge") 1]
+      li: a(href="#") boton B #[span(class="new badge") 1]  
+      li: a(href="#") boton C  
+
+    ul(id="dropdown3",class="dropdown-content")
+      li: a(href="#") boton a #[span(class="badge") 1]
+      li: a(href="#") boton b #[span(class="new badge") 1]  
+      li: a(href="#") boton c   
+
+
+
+
+     
+
+
+  
+  //- .video-container
+    iframe(width="853",height="480",src="//www.youtube.com/embed/Q8TXgCzxEnw?rel=0",frameborder="0",allowfullscreen=true)
+    
+  //- - var text = "One common flaw weve seen in many frameworks is a lack of support for truly responsive text. While elements on the page resize fluidly, text still resizes on a fixed basis. To ameliorate this problem, for text heavy pages, we've created a class that fluidly scales text size and line-height to optimize readability for the user. Line length stays between 45-80 characters and line height scales to be larger on smaller screens.To see Flow Text in action, slowly resize your browser and watch the size of this text body change! Use the button above to toggle off/on flow-text to see the difference!"
+  //- blockquote #{text}
+  //-   p.flow-text titulo
+
+.divider
+.container
+  .section 
+    h2 Alineación vertical
+    div(class="valign-wrapper cuadro card-panel cyan accent-6",style="height:250px;")
+      h5(class="center white-text",style="width: 100%;") This should be vertically 90
+
+
+
+  .divider
+  .section     
+  div(class="section center-align")
+    h5 hola hola hola
+    p uno dos tres
+
+
+
+  .divider
+  .section 
+    h5 hola hola
+    p uno dos tres
+
+
+
+.divider
+.container
+  h2 MENU
+nav(class="brown",role="navigation")
+  div(class="nav-wrapper container")
+    a(id="logo-container",href="#",class="brand-logo") LOGO
+
+    ul(class="right hide-on-med-and-down")
+      - list = ["uno","dos","tres","cuatro"]
+      each item in list
+        li: a(href="#")= item
+    
+    ul(id="nav-mobile",class="side-nav")
+      - list = ["one","two","three","four"]
+      each item in list
+        li: a(href="#")= item
+
+    a(href="#",data-activates="nav-mobile",class="button-collapse")
+      i(class="mdi-navigation-menu")
+
+
+.section
+  .container
+    h2 PARALAX
+  //- PARALAX
+  div(class="parallax-container")
+    div(class="section no-pad-bot valign-wrapper")
+      .container
+        br
+        br
+        h2(class="header center teal-text text-lighten-2") Parallax Template
+        div(class="row center")
+          h5(class="header col s12 light") A 0 modern responsive front-end framework based on Material Design
+        div(class="row center")
+          a(href="#",id="download-button",class="btn-large waves-effect waves-light teal lighten-1") Get Started
+        br
+        br
+    .parallax
+      img(src="#{pub_img}bg/mb-bg-fb-01.jpg",alt="Unsplashed background img 2")
+
+
+
+
+  //- contenido 
+  .container
+    .section
+      .row
+        - for (var x = 0; x < 3; x++)
+          div(class="col s12 m4")
+            .icon-block
+              h2(class="center brown-text")
+                i.mdi-image-flash-on
+              h5.center Speeds up development
+              p(class="light") We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.
+
+
+
+  //- paralax 3
+  div(class="parallax-container valign-wrapper")
+    div(class="section no-pad-bot")
+      .container
+        div(class="row center")
+          h2(class="header col s12 light") A 1 modern responsive front-end framework based on Material Design
+    .parallax
+      img(src="#{pub_img}bg/mb-bg-fb-03.jpg",alt="Unsplashed background img 2")
+
+
+  //- paralax 2
+  .container
+    .section
+      .row
+        div(class="col s12 center")
+          h3
+            i(class="mdi-content-send brown-text")
+          h4 Contact Us
+          p(class="left-align light") Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+
+
+
+  div(class="parallax-container valign-wrapper")
+    div(class="section no-pad-bot")
+      .container
+        div(class="row center")
+          h2(class="header col s12 light") A 2 modern responsive front-end framework based on Material Design
+    .parallax
+      img(src="#{pub_img}bg/mb-bg-fb-02.jpg",alt="Unsplashed background img 3")
+
+
+
+
+.section
+  .container
+    h2 FOOTER
+  footer(class="teal")
+    .container
+      .row
+        div(class="col l6 s12")
+          h5.white-text Company Bio
+          p(class="grey-text text-lighten-4") We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.
+
+        div(class="col l3 s12")
+          h5.white-text Settings
+          ul
+            - list = ["one","two","three","four"]
+            each item in list    
+              li
+                a.white-text(href="#") link #{item}
+              
+        div(class="col l3 s12")
+          h5.white-text Connect
+          ul
+            - list = ["one","two","three","four"]
+            each item in list    
+              li
+                a.white-text(href="#") link #{item}
+
+      .footer-copyright 
+      | Made by #[a(class="brown-text text-lighten-3",href="#") Materialize]
+
+
+
+
+
+
+
+.section
+  .container
+    h2 CARDS
+
+    div(class="card-panel blue-text text-darken-2") EL DIA DE LA MARMOTA
+      .row
+        - for( var x=0; x<12; x++)
+          div(class="col s12 m6 l4") 
+            div(class="card-panel z-depth-3 red lighten-1-4 white-text text-darken-2 left-align")
+              div(class="row valign-wrapper")
+                div(class="col s6") 
+                  img(class="responsive-img ",src="#{pub_img}#{logo}")
+                div(class="col s6") This is a square image. Add the "circle" class to it to make it appear circular. por que tenemos que ser serios a la vez amigables
+
+    a(class="btn-floating btn-large waves-effect waves-light blue lighten-1")
+        i(class="mdi-content-add")                
+
+
+
+
+

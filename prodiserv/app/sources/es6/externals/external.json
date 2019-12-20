@@ -1,10 +1,7 @@
 [
-"./work/app/sources/components/common/common.styl",
-"./work/app/sources/components/menu_left/menu_left.styl",
-"./work/app/sources/components/block_gallery/block_gallery.styl",
-"./work/app/sources/components/block_post/block_post.styl",
-"./work/app/sources/components/block_banner/block_banner.styl",
-"./agro/app/sources/components/header_pre/header_pre.styl",
-"./asiste/app/sources/components/home_block_notes/home_block_notes.styl",
-"./consorcio/app/sources/components/block_gallery_clients/block_gallery_clients.styl"
+"./../work/app/sources/components/common/common.js",
+"./../work/app/sources/components/menu_left/menu_left.js",
+"./../work/app/sources/components/block_gallery/block_gallery.js",
+"./../work/app/sources/components/block_banner/block_banner.js",
+"./../prodiserv/app/sources/components/header/header.js"
 ]
