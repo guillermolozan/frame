@@ -59,7 +59,7 @@ class Server {
 
 	public static function baseUrl(){
 
-		return ((inString('',$_SERVER['SERVER_PROTOCOL']))?'http:':'https:' ). self::base();
+		return ( ($_SERVER['HTTP_X_HTTPS']=='1')?'https:':'http:' ). self::base();
 
 	}
 

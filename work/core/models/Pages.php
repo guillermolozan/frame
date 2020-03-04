@@ -333,6 +333,12 @@ class Pages extends \core\Models {
 
 		// prin($params);
 
+		if($params['deep']==null)
+			$params['deep']=1;
+		else
+			$params['deep']=$params['deep']+1;
+
+		
 
 			$where =' where visibilidad=1 and ';
 
@@ -349,6 +355,9 @@ class Pages extends \core\Models {
 						and visibilidad=1
 						order by weight desc",0);
 
+		// if($debug)						
+		// 	prin($groups);
+
 		return $groups;
 
 
@@ -356,10 +365,16 @@ class Pages extends \core\Models {
 
 	function getMenu($params=[],$debug=0){
 
-
 		$config=$this->getConfig();
 
 		$params=array_merge($this->params,$params);
+
+
+		if($params['deep']==null)
+			$params['deep']=1;
+		else
+			$params['deep']=$params['deep']+1;
+
 
 		// if($debug){
 
@@ -437,6 +452,9 @@ class Pages extends \core\Models {
 		// prin($params);
 		// prin($items);
 
+		if($debug)
+			prin($params);
+		
 
 		foreach($items as $ii=>$item){
 
@@ -450,6 +468,8 @@ class Pages extends \core\Models {
 			$url = procesar_url($group.trim($item['name'])."/".$item['id']);
 
 			if("/"==substr($url, 0,1)) $url=substr($url,1);
+
+	
 			
 			$items[$ii]['url'] = maskUrl($url);
 
@@ -471,39 +491,90 @@ class Pages extends \core\Models {
 
 		}
 
+
+		
+			
 		if($params['sub']!=''){
 
 			$items_groups=$this->getMenuGroup([
+
+				'uri'  =>$params['uri'].'/'.$group['url'],
+
+				'deep' =>$params['deep'],
 
 				'where'=>procesar_llaves(
 					[
 						'id_grupo'=>$params['item']
 					],
-					$params['sub'])
+					$params['sub']
+					)
 
-			]);
+				],$debug);
 
 
+			
+			if($debug){
+				prin('sub');
+				prin($items_groups);
+			}
 			// prin($group);
 
 
 			foreach($items_groups as $rr=>$group){
 
 				$items_groups[$rr]['url']='#';
-
 				$items_groups[$rr]['items']=$this->getMenu(
 					[
 						'item' =>$group['id'],
 						'uri'  =>$params['uri'].'/'.$group['url'],
-						// 'sub'	 => "id_grupo={id_grupo}"
+						'deep' =>$params['deep'],
+						// 'sub'	 => "id_grupo={id_grupo}",
 						// 'items'=>$Page->getMenu(
 						// 	[
 						// 		'item' =>$group['id'],
 						// 		'uri'  =>'pagina',
 						// 	]
 						// )
-					]
+					],$debug
 				);
+
+				$items_groups[$rr]['items']=$this->getMenuGroup(
+					[
+						'where'=>'id_grupo = '.$group['id']
+					],$debug
+				);
+
+
+				if($debug)
+					prin($items_groups[$rr]['items']);
+
+
+				foreach($items_groups[$rr]['items'] as $rr2=>$group2){
+
+					$items_groups[$rr]['items'][$rr2]['url']='#';
+
+					if($debug){
+						prin('submenu');
+						prin($params['uri'].'/'.$group['url']);
+					}
+						
+					$items_groups[$rr]['items'][$rr2]['items']=$this->getMenu(
+						[
+							'item' =>$group2['id'],
+							'uri'  =>$params['uri'].'/'.$group['url'].'/'.$group2['url'],
+							'deep' =>$params['deep'],
+							// 'sub'	 => "id_grupo={id_grupo}",
+							// 'items'=>$Page->getMenu(
+							// 	[
+							// 		'item' =>$group['id'],
+							// 		'uri'  =>'pagina',
+							// 	]
+							// )
+						],$debug
+					);
+
+				}
+
 
 			}
 

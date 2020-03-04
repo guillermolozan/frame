@@ -174,7 +174,8 @@ class Home extends Controller {
 
 				//head
 				// 'head_title'    => $this->title. ( ($this->slogan)?' - '.$this->slogan:'' ),
-				'head_title'    => $this->slogan." :: ".$this->title,
+				// 'head_title'    => $this->slogan." :: ".$this->title,
+				'head_title'    => "Diseño Desarrollo Implementación y Capacitación de CRM, Páginas Web, Alquiler de Dominio y Hosting en Lima Perú :: ".$this->title,
 
 				'head_description'=>'En PRODISERV nos especializamos en desarrollo de páginas web, sistemas crm y erp, aplicativos, dominio, hosting, marketing digital e ingeniería comercial',
 

@@ -153,6 +153,7 @@ mixin menu_collection(items)
 				ul(class="submenu")
 					+menu_items(men_item.items)
 
+
 mixin menu_items(items)
 
 	each men_item in items
@@ -163,6 +164,28 @@ mixin menu_items(items)
 				ul(class="submenu ")
 					+menu_items(men_item.items)
 
+
+mixin menu_collection_advanced(items)
+
+	each men_item in items
+		li(class="collection-item #{men_item.class}")
+			+link_item(men_item)
+			if(men_item.items)
+				ul(class="submenu collapsible collapsible-accordion")
+					+menu_items_advanced(men_item.items)
+
+
+mixin menu_items_advanced(items)
+
+	each men_item in items
+		li(class="#{men_item.class} collapse collection-item")
+			a(class="collapsible-header #{men_item.class}") #{men_item.name}
+			//- +link_item(men_item)
+			if(men_item.items)
+				//- ul(class="submenu z-depth-5")
+				.collapsible-body
+					ul(class="submenu ")
+						+menu_items(men_item.items)
 
 
 mixin menu_items_collapsible(items)

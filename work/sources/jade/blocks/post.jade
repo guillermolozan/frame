@@ -8,8 +8,15 @@ if(post)
 					.card-title
 						h2 #{group_post}
 					
-				ul(class="menu_post collection")
-					+menu_collection(menu_post)
+				//- ul(class="menu_post collection")
+					//- +menu_collection(menu_post)
+				ul(class="menu_post collection collapsible collapsible-accordion",id="menu_left")
+					+menu_collection_advanced(menu_post)
+				//- 	//- +menu_items_collapsible(menu_post)
+				//- 	//- +menu_collection(menu_post)
+				//- 	//- +menu_items_nocollapsible(menu_post)
+				//- 	each menu_items in menu_post
+				//- 		+menu_items_collapsible(menu_items.items)					
 
 		div(class=menu_post?"col m12 l9":"col s12")
 

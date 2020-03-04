@@ -15,49 +15,65 @@ class Controller extends \core\Controller {
 		$Page=$this->loadModel('Pages');
 
 		// menu left
+		/*
 		$groups_left=select(
 						"id,url,name",
 						"paginas_groups",
-						"where id in (1,2,3,4,5,6,8,13,9)
+						"where id in (1,2,3,4,5,6,8,13,9,32)
 						and visibilidad=1
 						order by weight desc",
 						0
 					);
+		*/
 		
+		$groups_left=$Page->getMenuGroup(
+			[
+				'where'=>'id in (1,2,3,4,5,6,8,32)',
+				// 'where'=>'id in (4)'
+			]
+		);		
+		
+
 		foreach($groups_left as $group){
 
+			$has_home=hay("paginas","where visibilidad=1 and weight='-1' and id_grupo=".$group['id'],0);
+
 			$replace_menu_left_pre[]=[
-				'url'   =>'#',
+				'url'   =>($has_home)?$group['url']:'#',
 				'name'  =>$group['name'],
-				'items' =>$Page->getMenu(['item'=>$group['id'],'uri'=>'pagina'])
+				'items' =>$Page->getMenu([
+					'item'=>$group['id'],
+					'uri'=>'pagina',
+					'sub'	 => "id_grupo={id_grupo}",
+				],0)
 			];
 
 		}
 
-
 		$replace_menu_left=[
-			$replace_menu_left_pre[0],
-			$replace_menu_left_pre[1],
-			$replace_menu_left_pre[6],
-			$replace_menu_left_pre[2],
-			$replace_menu_left_pre[3],
-			$replace_menu_left_pre[4],
-			$replace_menu_left_pre[5],
-			$replace_menu_left_pre[8],
-			$replace_menu_left_pre[7],
+			$replace_menu_left_pre[1], // nosotros
+			$replace_menu_left_pre[0], // tavara
+			$replace_menu_left_pre[4], // academy
+			$replace_menu_left_pre[2], // paginas web
+			$replace_menu_left_pre[7], // hosting
+			$replace_menu_left_pre[5], // marketing
+			$replace_menu_left_pre[6], // servicios empresariales
+			$replace_menu_left_pre[3], // crm erp
 		];
 
-		$replace_menu_left['contactenos']='CONTÁCTENOS';
+		// $replace_menu_left['contactenos']='CONTÁCTENOS';
 
 		$this->menu_left=$this->elements->getMenu('menu_left',$replace_menu_left,$params['uri']);
 
-
+		
+		// prin($this->menu_left);exit();
 
 		// menu top
 
 		$groups_top=$Page->getMenuGroup(
 			[
-				'where'=>'id in (1,2,3,4,5,6,8)'
+				'where'=>'id in (1,2,3,4,5,6,8,32)',
+				// 'where'=>'id in (4)'
 			]
 		);
 	
@@ -65,22 +81,23 @@ class Controller extends \core\Controller {
 		foreach($groups_top as $group)
 		{
 
-			
+			$has_home=hay("paginas","where visibilidad=1 and weight='-1' and id_grupo=".$group['id'],0);
+
 			$replace_menu_top_pre[]=[
-				'url'   =>'#',
+				'url'   =>($has_home)?$group['url']:'#',
 				'name'  =>$group['name'],
 				'items' =>$Page->getMenu(
 					[
 						'item' =>$group['id'],
 						'uri'  =>$group['url'],
 						'sub'	 => "id_grupo={id_grupo}",
-					]
-				)
+					],0
+				),
 			];
 
+		}
 
-		}	
-
+		// prin($replace_menu_top_pre);
 
 
 		// $replace_menu_top_pre[3]['items'][0]['items'][]=$replace_menu_top_pre[3];
@@ -90,19 +107,22 @@ class Controller extends \core\Controller {
 		// prin($replace_menu_top_pre);
 
 
+		$replace_menu_top_pre[0]['name']='Ing. Walter Távara';
+		
 
 		$replace_menu_top=[
-			$replace_menu_top_pre[0],
-			$replace_menu_top_pre[1],
-			$replace_menu_top_pre[6],
-			$replace_menu_top_pre[2],
-			$replace_menu_top_pre[3],
-			$replace_menu_top_pre[4],
-			$replace_menu_top_pre[5],
+			$replace_menu_top_pre[1], // nosotros
+			$replace_menu_top_pre[0], // tavara
+			$replace_menu_top_pre[4], // academy
+			$replace_menu_top_pre[2], // paginas web
+			$replace_menu_top_pre[7], // hosting
+			$replace_menu_top_pre[5], // marketing
+			$replace_menu_top_pre[6], // servicios empresariales
+			$replace_menu_top_pre[3], // crm erp
 		];
 
 
-		$replace_menu_top['contactenos']='CONTÁCTENOS';
+		// $replace_menu_top['contactenos']='CONTÁCTENOS';
 
 		$this->menu_top=$this->elements->getMenu('menu_top',$replace_menu_top,$params['uri']);		
 
@@ -226,7 +246,7 @@ class Controller extends \core\Controller {
 				'build_js'         => $this->view->vars['build_js'].'?'.$this->static_build,		
 			//header and menu top
 				'menu_top'     	   => $this->menu_top,
-				'menu_left'    	   => $this->menu_left,
+				'menu_left'    	   => $this->menu_top,
 				// 'logo'         => $this->config['img_logo'],
 				'logo'         	   => 'logo.jpg?1',
 				// 'header_bg'		=> $header_bg['img'],
@@ -234,6 +254,9 @@ class Controller extends \core\Controller {
 				'icon'      	   => 'icon.jpg',
 			//prefooter
 				'menu_prefooter'   =>$prefooter,
+
+				'theme_color'		 => '#0e4e87',
+
 			//footer
 				'menu_footer'      => $this->menu_footer,
 

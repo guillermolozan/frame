@@ -2,7 +2,7 @@
 
 
 // $routes_pages	= get_valores("id","url","paginas");
-$routes_grouppages   = get_valores("id","url","paginas_groups","where url not in ('email-marketing')");
+$routes_grouppages   = get_valores("id","url","paginas_groups","where id_grupo is null and url not in ('email-marketing')",0);
 
 $routes_grouppages[] ='pagina';
 // prin($routes_grouppages);
@@ -74,6 +74,7 @@ if(sizeof($routes_pages)>0)
 //pages
 if(sizeof($routes_grouppages)>0){
 	$routes_return['/('.implode("|",$routes_grouppages).')/(:any)/(:num)$'] 		='controller=Pages&item=$3';
+	$routes_return['/('.implode("|",$routes_grouppages).')$'] 		='controller=Pages&item=home';
 }
 
 

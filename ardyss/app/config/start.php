@@ -19,8 +19,10 @@ return [
 		
 		'whatsapp'   =>'949732138',
 		// 'twitter'    =>'https://twitter.com/',
-		'facebook'   =>'https://www.facebook.com/prendas.ardyss/',
-		'facebook_page'   =>'/prendas.ardyss',
+		// 'facebook'   =>'https://www.facebook.com/prendas.ardyss/',
+		// 'facebook_page'   =>'/prendas.ardyss',
+		'facebook'   =>'https://web.facebook.com/ardyssdeperu',
+		'facebook_page'   =>'/ardyssdeperu',		
 		// 'youtube'    =>'https://www.youtube.com/',
 
 	],

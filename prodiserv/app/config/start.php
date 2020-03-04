@@ -20,8 +20,8 @@ return [
 		
 		// 'lat'     	 =>'-12.019271',
 		// 'lon'     	 =>'-76.930764',		
-		'twitter'    =>'https://twitter.com/',
-		'facebook'   =>'https://www.facebook.com/',
+		// 'twitter'    =>'https://twitter.com/',
+		'facebook'   =>'https://web.facebook.com/prodiserv',
 		// 'youtube'    =>'https://www.youtube.com/',
 
 	],

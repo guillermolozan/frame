@@ -468,8 +468,9 @@ class Servicios extends \core\controllers\Pages {
 			
 			'group_post'    => $producto['grupo']['url'],
 						
-			'canonical'     => $this->view->vars['baseurl'].$post['url'],
-			
+			// 'canonical'     => $this->view->vars['baseurl'].$post['url'],
+			'canonical'     => $params['uri'],
+
 			// 'banner'     => $banner,
 
 			'breadcrumb'	 => $breadcrumb,

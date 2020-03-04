@@ -1,30 +1,35 @@
-section.footerpre1
-	.container.row
+include ../../jade/includes/whatsapp_button
+//- section.footerpre1
+//- 	.container.row
 
-		each item in menu_prefooter
+//- 		//- each item in menu_prefooter
 
-			ul(class="#{item.ulcss}")
+//- 		//- 	ul(class="#{item.ulcss}")
 
-				each sub in item.items
-					if(sub.url=='#')
-						li: h3 #{sub.name}
-					else
-						li: +link_item(sub)
+//- 		//- 		each sub in item.items
+//- 		//- 			if(sub.url=='#')
+//- 		//- 				li: h3 #{sub.name}
+//- 		//- 			else
+//- 		//- 				li: +link_item(sub)
+		
+//- 		.col.s12.l1.foto
+//- 			| #[img.responsive-img(src="#{pub_img}/mg-ing-walter-tavara-aviles.png")]
+//- 		.col.s12.l11
+//- 			| #[strong.ceo C.E.O.]#[br]
+//- 			| #[strong.mg Mg. Ing. Walter Távara Avilés]#[br]
+//- 			//- | Más de 10 años de experiencia apoyando a generar más negocios a las PYMES y desarrollando Planes de Negocio, estrategias comerciales, lanzamiento de nuevos productos, manejo de fuerzas de ventas, prospección inteligente de clientes, ventas consultivas de servicios. Ingeniero Comercial especializado en Marketing, Ventas, CRM y ERP, Coaching y SoftSkills, con Post Grado en Gestión Estratégica Empresarial. Diplomado en Gerencia de RR. HH. Diplomado en Docencia. Catedrático y C.E.O. PRODISERV.#[br]#[br]
+//- 			| Más de 10 años de experiencia apoyando a generar más negocios a las PYMES, ayudando a lograr sus objetivos de ventas, desarrollando Planes de Negocio, estrategias comerciales, lanzamiento de nuevos productos, manejo de fuerzas de ventas, prospección inteligente de clientes, ventas consultivas de servicios. Ing. Comercial especializado en Marketing, Ventas, CRM/ERP, Coaching y SoftSkills. Post Grado en Gestión Estratégica Empresarial. Diplomado en Gerencia de RR. HH. Diplomado en Docencia. Catedrático y C.E.O. PRODISERV.#[br]#[br]
 
-		a(class="icom facebook",target="_blank",title="Facebook - Prodiserv",href="https://www.facebook.com/prodiserv")
+//- 		a(class="icom facebook",target="_blank",title="Facebook - Prodiserv",href="https://www.facebook.com/prodiserv")
 
-		a(class="icom twitter",target="_blank",title="Twitter - Prodiserv",href="https://twitter.com/prodiserv")
+//- 		//- a(class="icom twitter",target="_blank",title="Twitter - Prodiserv",href="https://twitter.com/prodiserv")
 
 section.footerpre2
 	.container.row
-		.col.s12.l4
-			p.ceo #[strong C.E.O.]#[br]
-				| Ing. Walter Távara#[br]
-				| #[strong Nuestro servicio se basa en que tu crecimiento y confianza garantizan nuestro crecimiento.]
-		.col.s12.l4
+		.col.s12.l6
 			p #[strong Teléfono]:#[br]
 				| WhatsApp : 998920047
-		.col.s12.l4
+		.col.s12.l6
 			p #[strong Email]:#[br]
 				//- | Av. Arenales 1724 Dpto.509 Lince#[br]
 				| servicios@prodiserv.com
@@ -34,7 +39,7 @@ footer
 		nav(class="transparent z-depth-0")
 			ul
 				//- li: a ©2015 #{web_name}
-				li: a © 2009-2018 #{web_name}
+				li: a © 2009-2020 #{web_name}
 				//- bucle de menu
 
 			ul(class="right menu")

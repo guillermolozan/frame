@@ -356,7 +356,7 @@ class Home extends Controller {
 
 
 		//social
-		$social='https://www.facebook.com/prendas.ardyss';
+		$social='https://web.facebook.com/ardyssdeperu';
 
 		$this->view->assign(["social" => $social]);
 

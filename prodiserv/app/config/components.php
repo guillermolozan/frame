@@ -3,7 +3,7 @@ return [
 
 	'banner'                => 'work/block_banner|es6',
 	
-	'header_pre'            => 'agro/header_pre',
+	'header_pre'            => 'header_pre',
 	'header'                => 'header|es6',
 	
 	
@@ -13,5 +13,6 @@ return [
 	
 	
 	'footer'                => 'footer',
+	'whatsapp_button'       => 'meca/whatsapp_button',
 
 ];

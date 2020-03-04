@@ -107,9 +107,11 @@ class Pages extends \controllers\Controller {
 
 			// if( is_numeric($id_grupo) and $id_grupo>0){ $post['id_grupo']=$id_grupo; }
 
+
+			$post['id_grupo']=$Page->getIdGroup(['id_grupo'=>$post['id_grupo']]);
+			$post['id_grupo']=$Page->getIdGroup(['id_grupo'=>$post['id_grupo']]);
 			$post['id_grupo']=$Page->getIdGroup(['id_grupo'=>$post['id_grupo']]);
 
-			// prin($post['id_grupo']);
 
 			$groups_top=$Page->getMenuGroup(['where'=>'id='.$post['id_grupo']]);
 			// prin($groups_top);
@@ -129,6 +131,9 @@ class Pages extends \controllers\Controller {
 				// 	)
 				// ];
 
+				// prin('hard');
+
+				
 
 				$menu=$Page->getMenu(
 					[
@@ -148,7 +153,6 @@ class Pages extends \controllers\Controller {
 			
 			$menu       =$this->elements->getM($menu,$this->params['uri']);
 			
-			// prin($menu);
 
 			$canonical  =$Page->getCanonical([
 
