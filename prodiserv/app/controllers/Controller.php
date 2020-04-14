@@ -107,7 +107,7 @@ class Controller extends \core\Controller {
 		// prin($replace_menu_top_pre);
 
 
-		$replace_menu_top_pre[0]['name']='Ing. Walter Távara';
+		// $replace_menu_top_pre[0]['name']='Ing. Walter Távara';
 		
 
 		$replace_menu_top=[

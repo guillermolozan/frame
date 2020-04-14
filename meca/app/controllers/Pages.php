@@ -14,7 +14,12 @@ class Pages extends \core\controllers\Pages {
 
 	function index($params){
 		
-		parent::index(array_merge($params,['with_gallery'=>1]));
+		parent::index(array_merge($params,
+			[
+				'with_gallery'	=>1,
+				'with_form'		=>1,
+			]
+		));
 		
 		$this->view->assign(
 			[
@@ -23,9 +28,30 @@ class Pages extends \core\controllers\Pages {
 				'ul_class'=>'block_gallery_products row',
 			]
 		);
-		// parent::split();
 
-		// prin($this->collapsible($this->view->vars['post']['html']));
+
+		$fila=fila(
+			"pdf,fecha_creacion",
+			"paginas",
+			"where id=".$params['item'],
+			0,
+			[
+				'pdf'=>['get_archivo'=>[
+					'carpeta'=>'pdf_fil',
+					'fecha'=>'{fecha_creacion}',
+					'file'=>'{pdf}',
+					'tamano'=>'0'
+					]
+				],
+			]			
+		);
+
+		$this->view->vars['post']['pdf']=$fila['pdf'];
+		
+		$this->view->assign([	
+			'post'       => $this->view->vars['post']
+		]);
+
 
 		//render the view
 		$this->view->render(

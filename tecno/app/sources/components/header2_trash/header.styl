@@ -1,0 +1,161 @@
+menu_logo      ='logo.png'
+
+
+// menu_font_size =.84em
+// menu_height    =50px
+// menu_bg        =#1a1f8f
+// menu_color     =white
+// menu_bg_over   =#da251b
+// menu_color_over=white
+
+
+menu_font_size =menu_top_font_size
+menu_height    =menu_top_height
+menu_bg        =menu_top_bgcolor
+menu_color     =menu_top_textcolor
+menu_bg_over   =menu_top_bgcolor_over
+menu_color_over=menu_top_textcolor_over
+
+
+header_bg()
+	&:after
+		content ""
+		width 422px
+		height 31px
+		z-index 0
+		margin 0 auto
+		position relative
+		display block
+		margin-top -31px
+
+
+
+
+
+
+	
+
+
+
+header_basic_long()
+
+
+header nav a.button-collapse i
+	color menu_bg_over
+header nav > .container > .menu_top > li.logo a
+	@media $small-medium
+		transform scale(.6) !important
+	@media $small
+		transform scale(.6) !important
+@media $large
+	header
+		nav
+			> .container 
+				> .menu_top
+					> li.brand-logo
+						display none
+	// ##     ## ########    ###    ########  ######## #### ##     ## ######## ########
+	// ##     ## ##         ## ##   ##     ## ##        ##   ##   ##  ##       ##     ##
+	// ##     ## ##        ##   ##  ##     ## ##        ##    ## ##   ##       ##     ##
+	// ######### ######   ##     ## ##     ## ######    ##     ###    ######   ##     ##
+	// ##     ## ##       ######### ##     ## ##        ##    ## ##   ##       ##     ##
+	// ##     ## ##       ##     ## ##     ## ##        ##   ##   ##  ##       ##     ##
+	// ##     ## ######## ##     ## ########  ##       #### ##     ## ######## ########
+	body.headfixed
+		header
+			nav
+				// background menu_bg
+				background rgba(white,.9)
+				box-shadow inset 0 -12px 10px rgba(black,.5) !important
+				// box-shadow initial
+				> .container
+					> .menu_top
+						> li
+							padding 0 10px
+							> a
+								color black
+							&.active,&:hover
+								background menu_bg_over
+								box-shadow inset 0 -12px 10px rgba(black,.5) !important
+								> a
+									color menu_color_over !important
+							&.logo
+								background initial !important
+								> a
+									width 120px
+									color transparent !important
+									transform scale(1,1.5)
+
+@media $small-medium
+	header
+		nav
+			> .container 
+				> .menu_top
+					text-align center
+					display flex
+					> li.brand-logo
+						display: block;
+						margin: 0 auto;
+						position: relative;
+						flex-grow 1
+						img
+							height 50px
+					
+
+
+
+.prenav
+	@media $medium-small
+		display none
+		// position: absolute;
+		// width: 100%;
+		// margin-top: 13px;
+	text-align center
+	transition all .6s
+	// header_bg()
+	.container
+		transition inherit
+		display flex
+		line-height initial
+		align-items center
+		justify-content space-between
+		> a.logo
+			transition inherit
+			position relative
+			width auto
+			height auto
+			background transparent
+			flex-grow 0
+			display inline-block
+			margin 12px 0
+			text-align center
+			width 100%
+			@media $small-medium
+				display block
+				text-align center
+			a
+				padding 0
+				text-align left
+				@media $small-medium
+					text-align center
+				img
+					transition inherit
+					transform scale(1)
+			@media $small-medium
+				margin 0
+				img
+					height 50px
+			@media $small
+				margin 0
+				img
+					height 38px
+			@media $large
+				img
+					width auto
+					height 80px
+
+
+
+
+
+

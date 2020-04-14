@@ -15,6 +15,9 @@ header
 					margin 0
 					img
 						height 38px !important
+			&.der2
+				@media $medium-small
+					display none !important
 			&.facebook > a
 				icomoon('e673')
 				&:before
@@ -38,15 +41,18 @@ header
 @media $large
 	body.headfixed
 		header
+			height auto !important
 			nav
-				background rgba(color_white,.9) !important
+				background #006699 !important
 				> .container
 					> .menu_top
 						> li
-							padding 0 10px
+							padding 0 0px
+							&.brand-logo
+								transform scale(1) !important							
 							> a
 								color color_black 
-							&.active,&:hover
-								background rgba(color2,.9)	
-								> a
-									color color_white !important
+							// &.active,&:hover
+							// 	background rgba(color2,.9)	
+							// 	> a
+							// 		color color_white !important

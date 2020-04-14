@@ -372,11 +372,14 @@ class Home extends Controller {
 		$Links=$this->loadModel('Links');
 
 		$Links->setConfig([
-					'items'=>['fields'=>'name,url,fecha_creacion,file'],
+					'items'=>[
+						'fields'=>'name,url,fecha_creacion,file',
+						'target'=>'_blank'
+					],
 				]);
 
 		$links=$Links->getLinks();	
-		$links['name']='Marcas';
+		$links['name']='Enlaces';
 		
 		$this->view->assign(["links" => $links]);
 
@@ -402,18 +405,22 @@ class Home extends Controller {
 				'limit' =>'0,4',
 				// 'type'  =>'videos'
 			]);
-			
 
-			// $gallery['name']='galería de videos';
-			// prin($gallery);
+			$gallery2=$Videos->getItems();
+
+			$gallery['name']='galería de videos';
+		
+			$gallery['items']=$gallery2['items'];
+
+			unset($gallery['type']);
 
 			$gallery['more']=[
 				'url'  =>maskUrl('videos'),
 				'name' =>'ver más'
 			];
 
-		$this->view->assign(["block_gallery_videos" => $gallery]);
 
+		$this->view->assign(["block_gallery_videos" => $gallery]);
 
 
 

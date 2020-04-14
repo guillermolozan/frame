@@ -50,7 +50,6 @@ class Pages extends \controllers\Controller {
 		$head_title       =$Page->getTitle($post);
 
 
-
 		$this->view->assign([
 				
 			'head_title'       => $head_title,
@@ -96,7 +95,20 @@ class Pages extends \controllers\Controller {
 
 			}
 
-			$breadcrumb =$Page->getBreadcrumb(['item'=>$post['id_grupo'],'id'=>$this->params['item']]);
+
+			if($params['with_form']){
+			
+				// prin('debe tener formulario');
+
+			}
+
+
+			$breadcrumb =$Page->getBreadcrumb(
+				[
+					'item'=>$post['id_grupo'],
+					'id'=>$this->params['item']
+				]
+			);
 			
 			// prin($post['id_grupo']);
 			// $menu       =$Page->getMenu(['item'=>$post['id_grupo']]);

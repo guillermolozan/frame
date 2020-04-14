@@ -1,0 +1,17 @@
+div(id="cotizar",class="col l12 scrollspy form_consulta")
+	article(class="card-panel")
+		h2 Consultar
+		//- p Si desea más información acerca del proyecto #{post.name} por favor ingrese sus datos y nos pondremos en contacto con usted:
+		form(method="POST",name="contact")
+			.row
+				.col.l6.m12.s12
+					+form('frm',fields1)
+				.col.l6.m12.s12
+					+form('frm',fields2)
+					+input_submit('ENVIAR')
+		//- 	+form('contact',contact)
+		//- 	//- +form('contact',contact)
+		//- 	//- div(class="input-field col s12 l12")
+		//- 		button(class="btn waves-effect waves-blue",type="submit") ENVIAR
+		//- 	+input_submit('ENVIAR')
+		//- //- div(class="col s12 l4")		

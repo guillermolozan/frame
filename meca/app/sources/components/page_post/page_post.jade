@@ -49,6 +49,11 @@ if(post)
 						div.center-align
 							img(src="#{post.img}",class="responsive-img")
 
+				
+				if(post.pdf)
+					h3 
+						a(href="#{post.pdf}",target="_blank") Descargar PDF
+
 				-li_class = "s12 m6 l6"
 				include ../../jade/includes/block_gallery.jade
 

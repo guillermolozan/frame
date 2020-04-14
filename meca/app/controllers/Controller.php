@@ -25,6 +25,63 @@ class Controller extends \core\Controller {
 
 		// menu left
 		$groups=select(
+			"id,url,name",
+			"paginas_groups",
+			"where id in (9)
+			and visibilidad=1
+			order by weight desc",0);
+
+		foreach($groups as $group){
+
+			$replace_menu_pre[$group['url']]=[
+				'url'   =>'#',
+				'name'  =>$group['name'],
+				'items' =>$Page->getMenu(['item'=>$group['id'],'uri'=>$group['url']])
+			];
+
+		}
+
+		foreach([
+			'productos1'=>3,
+			// 'productos2'=>2
+		] as $group=>$idd){
+
+			// menu producto1 y producto1
+			$producto=fila("nombre,url","productos_grupos","where id=".$idd);
+	
+			$replace_menu_pre[$group]=[
+				'url'   =>$producto['url'],
+				'name'  =>$producto['nombre'],
+				// categorias producto1
+				'items' =>select(
+					'nombre as name,id,url',
+					'productos_subgrupos',
+					'where id_grupo='.$idd.' and visibilidad=1',0,
+					[
+						'url'=>['url'=>[$producto['url'].'/category-{url}/{id}']],
+					]
+				)
+
+			];
+
+			foreach($replace_menu_pre[$group]['items'] as $iii=>$iitem){
+				
+				$replace_menu_pre[$group]['items'][$iii]['items']=select(
+					'name,id,url',
+					'productos_groups',
+					'where id_grupo='.$replace_menu_pre[$group]['items'][$iii]['id'].' and visibilidad=1',
+					0,
+					[
+						'url'=>['url'=>[$producto['url'].'/sub-category-{url}/{id}']],
+					]
+				);
+		
+			}			
+
+		}
+
+
+		$groups=select(
 						"id,url,name",
 						"paginas_groups",
 						"where id in (9,3)

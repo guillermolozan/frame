@@ -1,1 +1,1 @@
-<?php chdir('../meca'); include 'index.php';
+<?php chdir('../tecno'); include 'index.php';
