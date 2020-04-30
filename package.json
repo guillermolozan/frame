@@ -25,7 +25,7 @@
     "gutil": "^1.6.4",
     "http": "0.0.0",
     "jade2php": "^1.2.1",
-    "jquery": "^2.1.4",
+    "jquery": "^3.5.0",
     "materialize-css": "^0.97.1",
     "node-curl": "^0.3.3",
     "path": "^0.11.14",
