@@ -169,7 +169,8 @@ mixin menu_collection_advanced(items)
 
 	each men_item in items
 		li(class="collection-item #{men_item.class}")
-			+link_item(men_item)
+			if(men_item.url)
+				+link_item(men_item)
 			if(men_item.items)
 				ul(class="submenu collapsible collapsible-accordion")
 					+menu_items_advanced(men_item.items)

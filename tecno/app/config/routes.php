@@ -58,9 +58,15 @@ $routes_lists = [
 	// 	'detail'     =>'producto',
 	// 	'controller' =>'PagesPhotos',
 	// ]
+	[
+		'grid'       =>'posts',
+		'detail'     =>'post',
+		'controller' =>'Posts',
+		'pipe'		 =>'/'
+	],
 ];
 
-$routes_forms =['contactenos'];
+$routes_forms =['contactenos','suscribete'];
 
 
 

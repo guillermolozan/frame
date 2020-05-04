@@ -66,7 +66,7 @@
 require("../../../../work/app/sources/components/common/common.js")();
 require("../../../../work/app/sources/components/menu_left/menu_left.js")();
 require("../../../../work/app/sources/components/block_gallery/block_gallery.js")();
-require("../../../../prodiserv/app/sources/components/header/header.js")();
+require("../../../../tecno/app/sources/components/header/header.js")();
 require("../../../../tecno/app/sources/components/block_banner/block_banner.js")();
 require("../../../../tecno/app/sources/components/home_block_libros/home_block_libros.js")();
 require("../../../../tecno/app/sources/components/home_block_ventas/home_block_ventas.js")();

@@ -3,8 +3,9 @@
 return [
 
 	(($start['devel'])?$start['devel']:'') => 'Inicio',
-	// 'libros'                      => 'Libros',
-	// 'ventas'                      => 'Ventas',
+	
+	// 'libros'                      => 'Ventas',
+	'ventas'                      => 'Ventas',
 	'blogs'                      => 'Blogs',
 
 	// 'quienes-somos'                        => 'QUIENES SOMOS',
@@ -13,8 +14,9 @@ return [
 	// 'productos1'                     => 'PRODUCTOS 1',
 	// 'productos2'                      => 'PRODUCTOS 2',
 	// 'descuentos'                      => 'OFERTAS',
-	// 'videos'                      => 'VIDEOS',
+	'videos'                      => 'Videos',
 	// 'servicios'                   => 'Servicios',
 	'suscribete'                  => 'Suscríbete',
-	'contactenos'                  => 'Contáctenos',
+	// 'contactenos'                  => 'Contáctenos',
+		
 ];

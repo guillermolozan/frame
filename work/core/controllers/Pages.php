@@ -145,7 +145,7 @@ class Pages extends \controllers\Controller {
 
 				// prin('hard');
 
-				
+				// prin($group);
 
 				$menu=$Page->getMenu(
 					[
@@ -178,7 +178,7 @@ class Pages extends \controllers\Controller {
 
 			$this->view->assign([
 				
-				'menu_post'  => $menu['items'],
+				'menu_post'  => ['items'=>$menu],
 								
 				'group_post' => $group,
 				

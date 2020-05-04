@@ -4,19 +4,23 @@ return [
 	[
 		'name'  =>'Inicio',
 		'url'   =>((isset($start['devel']))?$start['devel']:''),
-		'class' =>'logo'
+		'class' =>'logo ocultar_sin_headfixed',
+	],
+	[
+		'name'  =>'Inicio',
+		'url'   =>((isset($start['devel']))?$start['devel']:''),
 	],
 	// 'quienes-somos'                        => 'QUIENES SOMOS',
-	'libros'                      => 'Libros',
+	// 'libros'                      => 'Ventas',
 	'ventas'                      => 'Ventas',
 	'blogs'                       => 'Blogs',
 	// 'productos1'                     => 'PRODUCTOS 1',
 	// 'productos2'                      => 'PRODUCTOS 2',
 	// 'descuentos'                      => 'OFERTAS',
-	// 'videos'                   => 'VIDEOS',
+	'videos'                   => 'Videos',
 	// 'servicios'                   => 'Servicios',
 	'suscribete'                  => 'Suscríbete',
-	'contactenos'                  => 'Contáctenos',
+	// 'contactenos'                  => 'Contáctenos',
 
 	// 'facebook'=>[
 	// 	'url'   =>'https://www.facebook.com',

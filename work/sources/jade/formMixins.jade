@@ -131,7 +131,7 @@ mixin simple_input_select(name,line,clas)
 	div(class="#{clas}")
 		//- label #{line.name}
 		select(class="browser-default",id="#{name}_#{line.name}",name="#{line.name}")
-			option(value="",disabled,selected) Seleccione #{line.name}
+			option(value="",disabled,selected) #{line.label}
 			each item in line.options
 				option(value="#{item}") #{item}
 

@@ -4,7 +4,7 @@
 "./../work/app/sources/components/block_gallery/block_gallery.jade",
 "./../work/app/sources/components/block_post/block_post.jade",
 "./../prodiserv/app/sources/components/header_pre/header_pre.jade",
-"./../prodiserv/app/sources/components/header/header.jade",
+"./../tecno/app/sources/components/header/header.jade",
 "./../tecno/app/sources/components/block_banner/block_banner.jade",
 "./../tecno/app/sources/components/home_block_libros/home_block_libros.jade",
 "./../tecno/app/sources/components/home_block_ventas/home_block_ventas.jade",

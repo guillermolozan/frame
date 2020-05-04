@@ -35,27 +35,6 @@ class Home extends Controller {
 
 
 		/*
-		##       #### ########  ########   #######   ######
-		##        ##  ##     ## ##     ## ##     ## ##    ##
-		##        ##  ##     ## ##     ## ##     ## ##
-		##        ##  ########  ########  ##     ##  ######
-		##        ##  ##     ## ##   ##   ##     ##       ##
-		##        ##  ##     ## ##    ##  ##     ## ##    ##
-		######## #### ########  ##     ##  #######   ######
-		*/
-		
-		$libros=$this->view->vars['menu_top']['1'];
-		$libros['items'][0]['img']='tecno/public/img/icono-manuales.jpg';
-		$libros['items'][1]['img']='tecno/public/img/icono-descargar-pdf.jpg';
-		$libros['items'][2]['img']='tecno/public/img/icono-youtube.jpg';
-		
-		// prin($libros);
-
-		$this->view->assign(["libros" => $libros]);
-
-
-
-		/*
 		##     ## ######## ##    ## ########    ###     ######
 		##     ## ##       ###   ##    ##      ## ##   ##    ##
 		##     ## ##       ####  ##    ##     ##   ##  ##
@@ -64,13 +43,68 @@ class Home extends Controller {
 		  ## ##   ##       ##   ###    ##    ##     ## ##    ##
 		   ###    ######## ##    ##    ##    ##     ##  ######
 		*/
-
+		
 		$ventas=$this->view->vars['menu_top']['2'];
-		$ventas['items'][0]['img']='tecno/public/img/icono-libros.jpg';
-		$ventas['items'][1]['img']='tecno/public/img/icono-cursos.jpg';
-		$ventas['items'][2]['img']='tecno/public/img/icono-servicios.jpg';
+		$ventas['items'][0]['img']=$this->view->vars['pub_img_abs'].'/icono-libros.jpg';
 
-		$this->view->assign(["ventas" => $ventas]);
+
+		$ventas['items'][1]['img']=$this->view->vars['pub_img_abs'].'/icono-cursos.jpg';
+
+		$grupos=opciones("id,name as nombre","paginas_groups","where id_grupo=33",0);
+		$item_curso=fila("id,weight,name,id_grupo","paginas","where id_grupo in (select id from paginas_groups where id_grupo=33) order by weight desc limit 0,1",0);
+
+		$ventas['items'][1]['url']=procesar_url($grupos[$item_curso['id_grupo']]."/".$item_curso['name']."/".$item_curso['id']);
+
+		unset($ventas['items'][1]['items']);
+
+		$ventas['items'][2]['img']=$this->view->vars['pub_img_abs'].'/icono-servicios.jpg';
+		$ventas['items'][2]['url']=$ventas['items'][2]['items'][0]['url'];
+
+		unset($ventas['items'][2]['items']);
+
+
+		$this->view->assign(["libros" => $ventas]);
+
+
+
+	
+
+
+		/*
+		##     ## #### ########  ########  #######   ######
+		##     ##  ##  ##     ## ##       ##     ## ##    ##
+		##     ##  ##  ##     ## ##       ##     ## ##
+		##     ##  ##  ##     ## ######   ##     ##  ######
+		 ##   ##   ##  ##     ## ##       ##     ##       ##
+		  ## ##    ##  ##     ## ##       ##     ## ##    ##
+		   ###    #### ########  ########  #######   ######
+		*/
+		$Videos=$this->loadModel('Videos');
+
+			// $gallery=$Videos->getItem([
+			// 	'item'  =>'1',
+			// 	'limit' =>'0,4',
+			// 	// 'type'  =>'videos'
+			// ]);
+
+
+			$gallery2=$Videos->getItems([
+				'limit' =>'0,4',
+			]);
+
+			$gallery['name']='galería de videos';
+		
+			$gallery['items']=$gallery2['items'];
+
+			unset($gallery['type']);
+
+			$gallery['more']=[
+				'url'  =>maskUrl('videos'),
+				'name' =>'ver más'
+			];
+
+
+		$this->view->assign(["block_gallery_videos" => $gallery]);
 
 
 

@@ -9,9 +9,11 @@ class Videos extends \core\Models {
 
 	}
 
-	function getItems(){
+	function getItems($params=[]){
 
-		$params=$this->params;
+		$params=array_merge($this->params,$params);
+
+		// $params=$this->params;
 
 
 		$name='Galerías de Videos';
@@ -37,7 +39,9 @@ class Videos extends \core\Models {
 			'galleries_videos',
 			"where 
 			visibilidad=1
-			order by weight desc ",
+			order by weight desc "
+			.(($params['limit'])?'limit '.$params['limit']:"limit 0,100")
+			,
 			0,
 			[
 				'video'=>['dato'=>['video','galleries_videos_videos','where id_grupo={id}']],

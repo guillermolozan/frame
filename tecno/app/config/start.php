@@ -9,16 +9,16 @@ return [
 	'web'	=> [
 	
 		'name_short' =>'Tecnología de Pintado',
-		'slogan' => 'Calzado Industrial en Perú, Lima - Calzado de Proteccion Botas de Seguridad',
+		// 'slogan' => 'Calzado Industrial en Perú, Lima - Calzado de Proteccion Botas de Seguridad',
 
 		'logo'	 => 'logo.png',
-		'ico'	 => 'ico.png',	
+		'ico'	 => 't3.png',	
 		
 		
-		'email'      =>'info@tecnologiadepintado.com',
+		'email'      =>'contacto@tecnologiadepintado.com',
 		'emails'     =>[
 							// 'ventas@tecnologiadepintado.com',
-							'info@tecnologiadepintado.com'
+							'contacto@tecnologiadepintado.com'
 						],
 
 		// 'phone'      =>'(+51) 978227725',
@@ -42,7 +42,7 @@ return [
 		// 'youtube'    =>'https://www.youtube.com/',
 
 		
-		'email_admin'=>'info@mecatronicsystems.com,wtavara@prodiserv.com,guillermolozan@gmail.com',
+		'email_admin'=>'contacto@tecnologiadepintado.com,wtavara@prodiserv.com,guillermolozan@gmail.com',
 
 
 	],

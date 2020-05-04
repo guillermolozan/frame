@@ -78,5 +78,13 @@
         "workspaceRoot": "/Applications/MAMP/htdocs/frame",
         "workspacePath": "consorcio",
         "id": "TtwjiU2l5cMfh93C"
+    },
+    {
+        "type": "Directory",
+        "name": "/Applications/MAMP/htdocs/frame/tecno",
+        "parent_id": null,
+        "workspaceRoot": "/Applications/MAMP/htdocs/frame",
+        "workspacePath": "tecno",
+        "id": "5maDihgnLK8tIF4H"
     }
 ]

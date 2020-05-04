@@ -299,9 +299,13 @@ class Servicios extends \core\controllers\Pages {
 			],	
 
 			'medio'=>[
-				'label'=>'¿Por qué medio nos encontró?',
+				'label'=>'Seleccione medio de pago',
 				'type'  =>'select',
-				'options'=>['Web','Periódico','Revista','Televisión','Panel Publicitario','Un conocido nos recomendó','Otros']
+				'options'=>[
+					'Depósito a cuenta',
+					'Pago Link',
+					'Pago Efectivo contra entrega',
+				]
 			],	
 
 			'email'=>[
@@ -433,7 +437,6 @@ class Servicios extends \core\controllers\Pages {
 		// prin($menu);
 
 		$this->menu_left=$this->elements->getMenu($this->menu_left,[$menu],$params['uri']);
-
 
 		// prin($breadcrumb);
 

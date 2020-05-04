@@ -25,10 +25,13 @@ class Controller extends \core\Controller {
 
 
 	
+		// $replace_menu_pre['libros']=[
+		// 	'url'	=>'ventas/category-libros/19',
+		// 	'name'  =>'LIBROS',
+		// ];
 
 
-
-
+		/*
 
 		// Manuales y Pdfs
 		$replace_menu_pre['libros']=[
@@ -48,7 +51,7 @@ class Controller extends \core\Controller {
 			'url' => 'videos'
 		];
 
-
+		*/
 		
 
 
@@ -72,18 +75,17 @@ class Controller extends \core\Controller {
 				// 'where'=>'id in (4)'
 			]
 		);		
-		// prin($groups);
 
 		foreach($groups as $group){
 
 			// $has_home=hay("paginas","where visibilidad=1 and weight='-1' and id_grupo=".$group['id'],0);
 			// prin($group['id']);
 			$replace_menu_pre_sub2[]=[
-				'url'   =>$group['url'],
+				'url'   =>'#',
 				'name'  =>$group['name'],
 				'items' =>$Page->getMenu([
 					'item'=>$group['id'],
-					'uri'=>'pagina',
+					'uri'=>'cursos',
 					'sub'	 => "id_grupo={id_grupo}",
 				]
 				,0
@@ -122,32 +124,24 @@ class Controller extends \core\Controller {
 
 					
 		$replace_menu_pre['blogs']=[
+			'url' =>'#',
 			'name'=>'Blog',
-			'items'=>[
+			'items'=>select(
+				'id,name',
+				'projects_groups',
+				'where 1
+				order by weight desc',
+				"0:menu de categorias",
 				[
-					'name' => 'Categoría 1',
-					'url' => 'categoria-1',
-					'url' => '#',
-				],
-				[
-					'name' => 'Categoría 2',
-					'url' => 'categoria-2',
-					'url' => '#',
-				],
-				[
-					'name' => 'Categoría 3',
-					'url' => 'categoria-3',
-					'url' => '#',
-				],								
-			]
-
+					'url'=>['url'=>['posts-{name}/{id}']],
+				]
+			)						
 		];
+
+		
 		
 
-		$replace_menu_pre_footer=$replace_menu_pre;
-		unset($replace_menu_pre_footer['ventas']);
-		unset($replace_menu_pre_footer['libros']);
-		unset($replace_menu_pre_footer['blogs']);
+
 		
 		//menu top
 			$this->menu_top=$this->elements->getMenu('menu_top',array_merge($replace_menu_pre),$params['uri']);
@@ -158,6 +152,10 @@ class Controller extends \core\Controller {
 
 
 		//menu footer
+			
+			$replace_menu_pre_footer=$replace_menu_pre;
+			
+
 			$this->menu_footer=$this->elements->getMenu('menu_footer',array_merge($replace_menu_pre_footer));
 		
       $this->view->assign(
@@ -212,7 +210,7 @@ class Controller extends \core\Controller {
 				// 'header_phones'=> $web['header_phones'],
 
             //footer
-				'theme_color'		 => '#0e4e87',
+				'theme_color'		 => '#000000',
 
 				//facebook
 				'opengraph'  => true,

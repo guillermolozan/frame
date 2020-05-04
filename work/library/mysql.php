@@ -9,6 +9,9 @@ function opciones($campos,$tabla,$donde,$debug=0){
 	foreach($array as $arra){
 		$Arr[$arra['id']]=$arra['nombre'];
 	}
+	if($debug==2){
+		prin($Arr);
+	}
 	return $Arr;
 }
 
@@ -65,6 +68,10 @@ $ima_tams=[
 
 function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 
+	// if($debug==0 or $debug==1) $title='';
+	// else 
+	list($debug,$title)=explode(":",$debug);
+		
 	$Tabla=$tabla;
 
 	global $link;
@@ -134,20 +141,16 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 		}
 	}
 
-	if($debug==1){
-		prin($camposA);
-		prin($consulta);
-		// prin($link);
-	}
-	if($debug==2){
-		$error=mysqli_error($link);
-		$success=($error=='')?1:0;
-		if($success){
-			prin(array('success'=>$success));
-		} else {
-			prin(array('success'=>$success,'error'=>mysqli_error()));
-		}
-	}
+
+	// if($debug==2){
+	// 	$error=mysqli_error($link);
+	// 	$success=($error=='')?1:0;
+	// 	if($success){
+	// 		prin(array('success'=>$success),'Select Error');
+	// 	} else {
+	// 		prin(array('success'=>$success,'error'=>mysqli_error()),'Select Error');
+	// 	}
+	// }
 
 	if(sizeof($opciones)>0){
 		$filas2=array();
@@ -205,7 +208,7 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 									$campus
 									,$tabla
 									,procesar_llaves($fila2,$donde)
-									,$debug
+									,"$debug:Sub Foto"
 									,array_merge($ouou,[
 										'fecha_creacion'=>'null',
 										'file'=>'null',
@@ -436,15 +439,72 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 			}
 			$filas2[]=$fila2;
 		}
-		if($debug==3){
-			prin(array('total'=>$total,'rows'=>$filas,'final'=>$filas2));
-		}
+		// if($debug==3){
+		// 	prin(array(
+		// 		'total'=>$total,
+		// 		'rows'=>$filas,
+		// 		'final'=>$filas2),
+		// 		'Select Result');
+		// }
+		$filas0=$filas;
 		$filas=$filas2;
+
 	} else {
-		if($debug==3){
-			prin(array('total'=>$total,'rows'=>$filas));
-		}
+
+		$filas0=$filas;
+		// if($debug==3){
+		// 	prin(array(
+		// 		'total'=>$total,
+		// 		'rows'=>$filas
+		// 	),'Select Result');
+		// }
+
 	}
+
+	if($debug==1 or $debug==2 or $debug==3){
+		
+		$error=mysqli_error($link);
+		$success=($error=='')?"1":"0";
+		$prins=[
+			'fields'=>$camposA,
+			'sql'=>str_replace(["\n","\t","  "]," ",$consulta),
+			'success'=>$success,
+		];
+		
+		if($success==0){
+
+			$prins=array_merge($prins,['error'=>$error]);
+
+		} else {
+
+			if($total>0){
+
+				$prins=array_merge($prins,['rows'=>['total'=>$total,'pre'=>$filas0,'post'=>$filas2]]);
+
+			} else {
+
+				$prins=array_merge($prins,['rows'=>['total'=>$total]]);
+				
+			}
+
+		}	
+		prin(
+			$prins,
+			"<span style='color:#da8367;'>$title</span> : Select Debug",
+			[
+				'resaltados'=>['select','where','from','order by','limit']
+			]
+		);
+		// prin($link);
+	}
+	// if($debug==3){
+	// 	prin(array(
+	// 		'total'=>$total,
+	// 		'rows'=>$filas0,
+	// 		'final'=>$filas2,
+	// 	),
+	// 		'Select Result');
+	// }	
 
 	$filas0=[];
 	foreach($filas as $ii=>$fila){
@@ -474,6 +534,7 @@ function select($campos,$tabla,$donde="",$debug=0,$opciones=NULL,&$concat=NULL){
 
 
 function select_fila($campos,$tabla,$donde,$debug=0,$opciones=NULL){
+
 	$matriz=select($campos,$tabla,$donde,$debug,$opciones);
 	if(sizeof($matriz)>0) {
 		$fila = $matriz[0];
@@ -1142,7 +1203,7 @@ function redir($url){
 
 }
 
-
+/*
 function prin($array,$bg=NULL){
 
 	if($_SERVER['HTTP_X_REQUESTED_WITH']=='XMLHttpRequest' and 0){
@@ -1152,6 +1213,71 @@ function prin($array,$bg=NULL){
 	}
 
 }
+*/
+
+function prin($array,$title=NULL,$params=[]){
+
+	if($_SERVER['HTTP_X_REQUESTED_WITH']=='XMLHttpRequest' and 0){
+
+		echo print_r($array);
+
+	} else {
+
+		// echo '<pre>';print_r($params);echo '</pre>';
+
+		$open=(is_null($params['open']))?true:$params['open'];
+
+
+		
+		$random=rand();
+		$size=sizeof($array);
+		$from1=[
+			'Array',
+			'[',
+			']',
+			'(',
+			')',			
+			'=>'
+		];
+		$to1=[
+			'<span style="color:#666666;">Array</span>',
+			'<span style="color:#666666;">[</span><span style="color:#dcdda7;font-weight:bold;">',
+			'</span><span style="color:#666666;">]</span>',
+			'<span style="color:#666666;">(</span>',
+			'<span style="color:#666666;">)</span>',
+			'<span style="color:#75b6e0;">=></span>'
+		];
+		foreach($params['resaltados'] as $resaltado){
+			$from2[]="$resaltado";
+			$to2[]='<span style="color:#ca63c7;">'.$resaltado.'</span>';
+		}
+		echo "<div style='display:";
+		echo ";background-color:#000000 !important;color:#f0b193 !important;padding-bottom:4px !important;border-bottom:1px solid #333;'>";
+		if($size>1 or $title){
+
+			echo "<a style='cursor:pointer;font-size:14px ;color:";
+			echo ($open)?'#5097d3':'#f0b193';
+			echo ";text-decoration:none;padding:5px 2px;display:block;' 
+			onclick=\"if(document.getElementById('pre_$random').style.display=='none'){document.getElementById('pre_$random').style.display='';this.style.color='#5097d3';} else {document.getElementById('pre_$random').style.display='none';this.style.color='#f0b193';}\">";
+			echo "&nbsp;- ";
+			if ($title)
+				echo "$title ";
+			echo "( $size )";
+			echo "</a>";
+
+		}
+		echo "<pre id='pre_$random' style='font-size:16px;display:";
+		echo ($open)?'':'none';
+		echo ";background-color:inherit !important;color:inherit !important;margin-bottom:0;'>"; 
+		$array = str_replace($from1,$to1,print_r($array,true)); 
+		if($params['resaltados'])
+			$array = str_replace($from2,$to2,print_r($array,true)); 
+		echo $array;
+		echo "</pre></div>";
+	}
+
+}
+
 
 function paginacion_items($parametros,$items){
 
@@ -1861,7 +1987,7 @@ function procesar_llaves($fila,$string){
 }
 
 
-function procesar_url($url,$debug=0){
+function procesar_url($url){
 
 	$parts=explode("/",$url);
 	foreach($parts as $part){
@@ -1873,13 +1999,14 @@ function procesar_url($url,$debug=0){
 	$to   =['a','e','i','o','u','A','E','I','O','U','','-','',''];
 	
 	$url  =str_replace([' /','/ ','.',',',';',':'],[' ',' ','','','',''],trim($url));
-	
-	$url  =strtolower(str_replace($from,$to,$url));
-	$url  =urlencode($url);
-	$url  =str_replace(['+','%2F','---','--'],['-','/','-','-'],$url);
 
-	// return $url;
-	return maskUrl($url);
+	$url  =strtolower(str_replace($from,$to,$url));
+
+	$url  =urlencode($url);
+
+	$url  =str_replace(['+','%2F','---','--'],['-','/','-','-'],$url);
+		
+	return maskUrl($url,$debug);
 
 }
 
@@ -1887,7 +2014,8 @@ function procesar_url($url,$debug=0){
 function maskUrl($url){
 
 	global $maskUrls;
-	if($maskUrls[$url]) return $maskUrls[$url];
+
+	if($maskUrls[$url] and $maskUrls[$url]!='.html') return $maskUrls[$url];
 	return $url;
 	// return "url-aun-no-definida.html";
 

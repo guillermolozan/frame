@@ -2,7 +2,7 @@
 "./../work/app/sources/components/common/common.js",
 "./../work/app/sources/components/menu_left/menu_left.js",
 "./../work/app/sources/components/block_gallery/block_gallery.js",
-"./../prodiserv/app/sources/components/header/header.js",
+"./../tecno/app/sources/components/header/header.js",
 "./../tecno/app/sources/components/block_banner/block_banner.js",
 "./../tecno/app/sources/components/home_block_libros/home_block_libros.js",
 "./../tecno/app/sources/components/home_block_ventas/home_block_ventas.js",

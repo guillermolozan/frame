@@ -2,7 +2,7 @@
 return [
 	
 	'header_pre'             => 'prodiserv/header_pre',
-	'header'                 => 'prodiserv/header|es6',
+	'header'                 => 'header|es6',
 
 	'banner'                 => 'block_banner|es6',
 
