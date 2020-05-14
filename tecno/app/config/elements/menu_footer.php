@@ -5,7 +5,7 @@ return [
 	(($start['devel'])?$start['devel']:'') => 'Inicio',
 	
 	// 'libros'                      => 'Ventas',
-	'ventas'                      => 'Ventas',
+	'ventas'                      => 'Productos',
 	'blogs'                      => 'Blogs',
 
 	// 'quienes-somos'                        => 'QUIENES SOMOS',
@@ -16,7 +16,8 @@ return [
 	// 'descuentos'                      => 'OFERTAS',
 	'videos'                      => 'Videos',
 	// 'servicios'                   => 'Servicios',
-	'suscribete'                  => 'Suscríbete',
+	// 'suscribete'                  => 'Suscríbete',
+	'contactenos'                  => 'Contáctenos',
 	// 'contactenos'                  => 'Contáctenos',
 		
 ];

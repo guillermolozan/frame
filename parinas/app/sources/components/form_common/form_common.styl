@@ -1,0 +1,68 @@
+.form_common
+	h1
+		text-align center
+		padding-bottom 1em
+	form
+		// margin-top 4em
+		padding-bottom 2em
+		label
+			color #666
+			font-size 1em
+		input, textarea, select
+			border 1px solid #ccc !important
+			// padding .5em .5em !important
+			box-sizing border-box !important
+			height auto !important
+			display block
+			width 100%
+			height 34px !important
+			padding 0 .5em !important
+			// margin-bottom 0px
+			// background-color lighten(#ECECEC,3)
+			// border-bottom 0
+			// border-left 10px solid @background-color
+			// font-weight 400
+			// border-radius 5px
+			// box-sizing border-box !important
+			// padding-left .5em !important
+			&:focus
+				// border-bottom 0
+				box-shadow none
+			&::placeholder
+				color #8c8c8c
+		select
+			font-size 1em
+			&:focus
+				outline initial
+		textarea
+			padding-top .5em
+			padding-bottom .5em
+		button.submit
+			// float right
+			// background-color #63BDBD
+			margin-right -7px
+		.leyenda
+			color #aaa
+		.group
+			text-align left
+			color #333
+	.form_pre
+		color #666
+		font-size 1.1em
+		.fecha
+			color #000
+		@media $large
+			.fecha,.direccion
+				padding-bottom 1em
+				border-bottom 1px solid #ccc
+				margin-bottom 1em
+			.ruc
+				text-align right
+.picker__box
+	display flex
+	flex-direction column 
+	.picker__date-display
+		display none
+	.picker__footer
+		width 100% !important
+

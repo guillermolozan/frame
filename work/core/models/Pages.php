@@ -458,7 +458,7 @@ class Pages extends \core\Models {
 			// ]
 		);
 
-
+		
 
 		// prin($config['items']);
 		// prin($params);

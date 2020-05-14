@@ -72,7 +72,7 @@ Class Views {
 			
 		}
 
-
+		$this->vars['layout']=$file;
 		//fix vars
 		$this->vars['head_title']=($this->vars['head_title_strict']!='')?$this->vars['head_title_strict']:mb_ucwords($this->vars['head_title']);
 
@@ -194,6 +194,7 @@ Class Views {
 			$pre_output='';
 			$pre_output.='<li class="nounder"><a><b style="color:green;">Controller :</b> <strong>'.$vars['controller'].'</strong></a></li>';
 			$pre_output.='<li class="nounder"><a><b style="color:green;">Method :</b> <strong>'.$vars['method'].'</strong></a></li>';
+			$pre_output.='<li class="nounder"><a><b style="color:green;">Layout :</b> <strong>'.$vars['layout'].'</strong></a></li>';
 
 			$pre_output.='<li '.((isset($vars['params']['debug']))?'class="active"':'').'><a id="debnu" href="'.$vars['uri'].'?debug#">debug</a></li>'; 
 

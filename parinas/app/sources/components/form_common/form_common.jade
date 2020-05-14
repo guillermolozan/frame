@@ -1,0 +1,22 @@
+div(class="col s12 scrollspy form_common")
+	article.card-panel.z-depth-5
+		h1 #{title}
+		
+		.row.form_pre
+			.fecha.col.s12 Fecha: #{web_fecha}
+			.empresa.col.s12.l6 EMPRESA: #{web_razonsocial}
+			.ruc.col.s12.l6 RUC: #{web_ruc}
+			.direccion.col.s12 DIRECCIÓN: #{web_address}
+		//- p Si desea más información acerca del proyecto #{post.name} por favor ingrese sus datos y nos pondremos en contacto con usted:
+		form.row(method="POST",name="#{name}")
+			+simple_form(name,fields)
+			//- | <div><label><input name="group1" type="radio" checked=""><span>Red</span></label></div>
+			//- | <div><label><input name="group1" type="radio"><span>Yellow</span></label></div>
+
+			//- +form('contact',contact)
+			//- div(class="input-field col s12 l12")
+				button(class="btn waves-effect waves-blue",type="submit") ENVIAR
+			.col.s12.l6.leyenda (1) RECLAMO: Disconformidad relacionada a los productos o servicios.
+			.col.s12.l6.leyenda (2) QUEJA: Disconformidad no relacionada a los productos o servicios, descontento respecto a la atención al publico.
+			.col.s12.center: +input_submit(button)
+		//- div(class="col s12 l4")		

@@ -36,13 +36,14 @@ class Posts extends Controller {
 				]
 			);
 
-			$menu=$this->elements->getMenu($menu,[$menu],$params['uri']);
+			$menu       =$this->elements->getM($menu,$this->params['uri']);
 
 			$items=select(
 				'id,name,fecha_creacion,text,fecha,file',
 				'projects',
-				'where id_grupo='.$post['id']."
-				order by weight desc",
+				'where 1 '.
+				' and id_grupo='.$post['id'].' '.
+				" order by weight desc",
 				"0:lista de proyectos by grupo=".$post['id'],
 				[
 				
@@ -61,6 +62,8 @@ class Posts extends Controller {
 
 				]
 			);
+
+	
 
 		} else {
 
@@ -132,7 +135,7 @@ class Posts extends Controller {
 
 		//post
 		$post=fila(
-			"id,name,html,fecha,fecha_creacion,file",
+			"id,name,html,fecha,fecha_creacion,file,id_grupo",
 			"projects",
 			"where id='".$params['item']."'",
 			0,
@@ -161,7 +164,16 @@ class Posts extends Controller {
 				'url'=>['url'=>['posts-{name}/{id}']],
 			]
 		);
+		
+		foreach($menu as $ii=>$menu_item){
+			if($menu_item['id']==$post['id_grupo']){
+				$menu[$ii]['class']='active';
+			}
+		}
+		
+		$menu       =$this->elements->getM($menu,$this->params['uri']);
 
+		// prin($menu);
 
 		//asing vars
 		$this->view->assign(

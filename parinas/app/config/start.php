@@ -6,6 +6,8 @@ return [
 
 	'visitors'	=>false,
 
+	// 'googleFonts'=>'Orbitron',
+
 	'web'	=> [
 	
 		'name_short' =>'Hotel Punta Parinas',

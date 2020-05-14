@@ -53,8 +53,8 @@ class Forms extends \controllers\Controller {
 
 	}
 
- 	function processFields(){
- 		
+ 	function processFields($options=[]){
+
 		$fields3=[];
 
 		foreach($this->fields as $name=>$item)
@@ -64,6 +64,11 @@ class Forms extends \controllers\Controller {
 			$fields2['name']=$name;
 
 			if(!isset($item['type']))	$fields2['type']='text';
+
+			if(!isset($fields2['placeholder']))	$fields2['placeholder']=$fields2['label'];
+			
+			if(!isset($fields2['autocomplete']))	$fields2['autocomplete']='nope';
+
 
 			if(!isset($item['class'])){
 			
@@ -84,6 +89,12 @@ class Forms extends \controllers\Controller {
 			if($fields2['required']=='1'){
 
 				$fields2['label']=$fields2['label']."*";
+
+			}
+
+			foreach($options['all'] as $one=>$two){
+
+				$fields2[$one]=$two;
 
 			}
 

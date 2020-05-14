@@ -7,4 +7,5 @@ return [
 	'habitaciones'                       	=> 'HABITACIONES',
 	'galeria-fotos-hotel/2'                => 'GALERÍA',	
 	'contactenos'                     		=> 'CONTÁCTENOS',
+	'reclamaciones'                          => 'LIBRO DE RECLAMACIONES',
 ];

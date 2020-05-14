@@ -39,15 +39,15 @@ class Forms extends \core\controllers\Forms {
 				'label' =>'Nombre',
 			],
 
-			'dni'=>[
-				'label'=>'DNI o Pasaporte',
-			],
+			// 'dni'=>[
+			// 	'label'=>'DNI o Pasaporte',
+			// ],
 
-			'medio'=>[
-				'label'=>'¿Por qué medio nos encontró?',
-				'type'  =>'select',
-				'options'=>['Web','Periódico','Revista','Televisión','Panel Publicitario','Un conocido nos recomendó','Otros']
-			],		
+			// 'medio'=>[
+			// 	'label'=>'¿Por qué medio nos encontró?',
+			// 	'type'  =>'select',
+			// 	'options'=>['Web','Periódico','Revista','Televisión','Panel Publicitario','Un conocido nos recomendó','Otros']
+			// ],		
 
 			'telefono'=>[
 				'class' =>'validate',
@@ -142,11 +142,9 @@ class Forms extends \core\controllers\Forms {
 					$fields_reformated[0],
 					$fields_reformated[1],
 					$fields_reformated[2],
-					$fields_reformated[3],
-					$fields_reformated[4]
 				],
 
-				'fields2'			=> [$fields_reformated[5]],
+				'fields2'			=> [$fields_reformated[3]],
 
 				'map'				=> $map,
 

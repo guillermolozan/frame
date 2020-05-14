@@ -36,7 +36,6 @@ class Controller extends \core\Controller {
 			];
 
 		}	
-
 		$habitaciones=select(
 						"id,name",
 						"projects",
@@ -52,6 +51,7 @@ class Controller extends \core\Controller {
 			'items' =>$habitaciones
 		];
 
+
 		// prin($replace_menu_pre);
 
 		// $replace_menu=[];
@@ -64,11 +64,10 @@ class Controller extends \core\Controller {
 		//menu left
 			$this->menu_left=$this->elements->getMenu('menu_left',$replace_menu_pre,$params['uri']);
 
-
+		
 		//menu footer
 			$this->menu_prefooter=$this->elements->getMenu('menu_footer',$replace_menu_pre,$params['uri']);
-
-
+			unset($this->menu_prefooter[5]);
 
 		//web
 		$web=$this->elements->getFromFile('web');

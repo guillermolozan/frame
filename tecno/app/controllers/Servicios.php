@@ -728,7 +728,7 @@ class Servicios extends \core\controllers\Pages {
 
 
 		$menu       = $this->elements->getM($menu,$params['uri']);
-
+		// prin($menu);
 		// prin($menuleftfinal);
 
 		$menuleftfinal       = $this->elements->getM($menuleftfinal,$params['uri']);
@@ -747,9 +747,9 @@ class Servicios extends \core\controllers\Pages {
 		// 	}
 		// }
 
-      	// prin($menu['items']);
+      	// prin($menu['items']['0']['items']['0']);
 
-		$this->view->assign(['menu_post' => $menu['items']]);
+		$this->view->assign(['menu_post' => $menu['items']['0']['items']['0']]);
 
 
 

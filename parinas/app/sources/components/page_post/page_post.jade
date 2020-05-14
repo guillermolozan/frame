@@ -8,9 +8,11 @@ article.page_post
 						.card-title
 							h2 #{group_post}
 						
-					ul.menu_post.collection
-						+menu_collection(menu_post)
+					//- ul.menu_post.collection
+					//- 	+menu_collection(menu_post)
 
+					ul(class="menu_post collection collapsible collapsible-accordion",id="menu_left")
+						+menu_collection_advanced(menu_post)
 
 			div(class=menu_post?"col m12 l9":"col s12")
 

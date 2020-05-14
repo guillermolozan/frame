@@ -14,7 +14,6 @@ class Routes {
 
 	function __construct(){
 
-
 		global $start;
 		
 		$this->routes = require APP.'/config/routes.php';
@@ -61,7 +60,7 @@ class Routes {
 		$vars0 = SERVER::getVarArray();
 		
 		$vars=array_merge($out,$vars0);
-
+		
 		unset($vars['controller']);
 
 		unset($vars['method']);

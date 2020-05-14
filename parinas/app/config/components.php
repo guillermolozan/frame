@@ -35,6 +35,8 @@ return [
 	'gallery_products'       => 'gallery_products|es6',
 	// FORM CONTACT
 	'form_contact'           => 'form_contact|es6',
+	// FORM RECLAMACION
+	'form_common'           => 'form_common|es6',
 
 
 ];

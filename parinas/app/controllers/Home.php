@@ -406,6 +406,8 @@ class Home extends Controller {
 				//bievenido
 				"post"       => $welcome,
 
+				"popup"       => true,
+
 															
 			]
 

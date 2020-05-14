@@ -71,7 +71,7 @@ return [
 
 		'static' =>"./tecno/public",
 
-		'devel' =>"desarrollo",
+		// 'devel' =>"desarrollo",
 
 		// 'data_test'	=>true,		
 	

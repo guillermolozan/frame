@@ -1998,12 +1998,13 @@ function procesar_url($url){
 	$from =['á','é','í','ó','ú','Á','É','Í','Ó','Ú','&','˜','¿','?'];
 	$to   =['a','e','i','o','u','A','E','I','O','U','','-','',''];
 	
-	$url  =str_replace([' /','/ ','.',',',';',':'],[' ',' ','','','',''],trim($url));
+	$url  =str_replace([' /','/ ','.',',',';',':','%'],[' ',' ','','','','',''],trim($url));
 
 	$url  =strtolower(str_replace($from,$to,$url));
 
-	$url  =urlencode($url);
-
+	// $url  =urlencode($url);
+	$url  =str_replace([' '],['-'],$url);
+	
 	$url  =str_replace(['+','%2F','---','--'],['-','/','-','-'],$url);
 		
 	return maskUrl($url,$debug);
@@ -2012,7 +2013,7 @@ function procesar_url($url){
 
 
 function maskUrl($url){
-
+	
 	global $maskUrls;
 
 	if($maskUrls[$url] and $maskUrls[$url]!='.html') return $maskUrls[$url];

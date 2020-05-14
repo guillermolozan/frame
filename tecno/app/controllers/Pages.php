@@ -13,14 +13,16 @@ class Pages extends \core\controllers\Pages {
 
 
 	function index($params){
-		
+
 		parent::index(array_merge($params,
 			[
 				'with_gallery'	=>1,
 				'with_form'		=>1,
 			]
 		));
-		
+
+		// prin($this->view->vars['menu_post']['items']);
+
 		$this->view->assign(
 			[
 				'type'=>'photos',
@@ -46,10 +48,18 @@ class Pages extends \core\controllers\Pages {
 			]			
 		);
 
+		// prin($params);
+
+		// $menu_post=$this->view->vars['menu_post']['items'];
+
+
+		// prin($this->view->vars['menu_post']);
+
 		$this->view->vars['post']['pdf']=$fila['pdf'];
 		
 		$this->view->assign([	
-			'post'       => $this->view->vars['post']
+			'post'       => $this->view->vars['post'],
+			// 'menu_post'  => $menu_post
 		]);
 
 

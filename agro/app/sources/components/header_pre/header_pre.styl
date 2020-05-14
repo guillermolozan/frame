@@ -17,11 +17,13 @@
 				> li
 					// background red
 					height 30px
-					line-height @height
-					padding 0 .3em .2em .3em
+					// line-height @height
+					// padding 0 .3em .2em .3em
 					font-weight 400
 					flex-grow 0
 					white-space nowrap
+					display flex
+					align-items center
 					// vertical-align middle
 					// text-align right
 					// order 1
@@ -43,10 +45,17 @@
 						icomoon('e674')					
 					&.whatsapp a
 						icomoon('e900')
-					&.phone a
-						icomoon('e620')
-					&.email a
-						icomoon('e679')
+					&.phone 
+						display flex
+						align-items center
+						a
+							padding-left 0
+							icomoon('e620')
+					&.email 
+						a
+							icomoon('e679')
+							padding-left 0
+
 			//  #######  ########  ########  ######## ########
 			// ##     ## ##     ## ##     ## ##       ##     ##
 			// ##     ## ##     ## ##     ## ##       ##     ##
@@ -63,6 +72,6 @@
 					&.instagram
 						order 99
 					&.facebook
-						order 100
+						order 0
 
 

@@ -154,17 +154,15 @@ class Pages extends \controllers\Controller {
 						'sub'	 => "id_grupo={id_grupo}",
 					]
 				);
-
+				
 			}				
-
+			
 			// if($post['id_grupo']==4){
 			// 	prin($menu);
 			// }
-
 			$group      =$Page->getGroup(['item'=>$post['id_grupo']]);
 			
 			$menu       =$this->elements->getM($menu,$this->params['uri']);
-			
 
 			$canonical  =$Page->getCanonical([
 
@@ -178,7 +176,7 @@ class Pages extends \controllers\Controller {
 
 			$this->view->assign([
 				
-				'menu_post'  => ['items'=>$menu],
+				'menu_post'  => $menu,
 								
 				'group_post' => $group,
 				

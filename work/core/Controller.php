@@ -90,6 +90,8 @@ class Controller {
 
 		$this->show_view   = !(isset($params['noshow']));
 
+		// $this->googleFonts   = ($start['googleFonts'])?$start['googleFonts']:'Roboto';
+
 		// visitors
 		if($this->visitors){
 
@@ -249,6 +251,7 @@ class Controller {
 				'base'            => Server::base(),
 				'baseurl'         => Server::baseUrl(),
 				'work_ven_css'    => '../../../../work/public/vendor/css/',
+				'base_work_ven_css'=> '../work/public/vendor/css/',
 				'ven_css'         => $this->static.'/vendor/css/',
 				'pub_css'         => $this->static.'/css/',
 				

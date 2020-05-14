@@ -12,14 +12,15 @@ return [
 	],
 	// 'quienes-somos'                        => 'QUIENES SOMOS',
 	// 'libros'                      => 'Ventas',
-	'ventas'                      => 'Ventas',
+	'ventas'                      => 'Productos',
 	'blogs'                       => 'Blogs',
 	// 'productos1'                     => 'PRODUCTOS 1',
 	// 'productos2'                      => 'PRODUCTOS 2',
 	// 'descuentos'                      => 'OFERTAS',
 	'videos'                   => 'Videos',
 	// 'servicios'                   => 'Servicios',
-	'suscribete'                  => 'Suscríbete',
+	// 'suscribete'                  => 'Suscríbete',
+	'contactenos'                  => 'Contáctenos',
 	// 'contactenos'                  => 'Contáctenos',
 
 	// 'facebook'=>[

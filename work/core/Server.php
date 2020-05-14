@@ -74,7 +74,8 @@ class Server {
 
 	public static function completeUrl(){
 
-		return ((inString('',$_SERVER['SERVER_PROTOCOL']))?'http://':'https://' ). $_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
+		$REQUEST_URI=rawurldecode($_SERVER['REQUEST_URI']);
+		return ((inString('',$_SERVER['SERVER_PROTOCOL']))?'http://':'https://' ). $_SERVER['HTTP_HOST'].$REQUEST_URI;
 
 	}
 

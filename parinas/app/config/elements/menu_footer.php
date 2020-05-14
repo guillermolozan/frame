@@ -6,5 +6,6 @@ return [
 	'servicios'                       		=> 'SERVICIOS',
 	'empresa'                         		=> 'EMPRESA',
 	'contactenos'                          => 'CONTÁCTENOS',
+	'reclamaciones'                          => 'LIBRO DE RECLAMACIONES',
 
 ];

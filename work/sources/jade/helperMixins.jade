@@ -167,26 +167,33 @@ mixin menu_items(items)
 
 mixin menu_collection_advanced(items)
 
-	each men_item in items
-		li(class="collection-item #{men_item.class}")
-			if(men_item.url)
+	each men_item in items.items
+		if(men_item.items)
+			li(class="#{men_item.class}  collapsible collapse collapsible-accordion")
+				a(class="collapsible-header #{men_item.class}") #{men_item.name}
+				.collapsible-body
+					ul(class="submenu ")
+						+menu_items(men_item.items)
+		else if(men_item.url && men_item.url!='#')
+			li(class="collection-item #{men_item.class}")
 				+link_item(men_item)
-			if(men_item.items)
-				ul(class="submenu collapsible collapsible-accordion")
-					+menu_items_advanced(men_item.items)
+					//- if(men_item.items.items)
+					//- 	+menu_items_advanced(men_item)
+					//- else
+					//- 	+menu_collection(men_item)
+						//- +menu_items_advanced(men_item.items)
 
 
 mixin menu_items_advanced(items)
 
-	each men_item in items
+	each men_item in items.items
 		li(class="#{men_item.class} collapse collection-item")
 			a(class="collapsible-header #{men_item.class}") #{men_item.name}
 			//- +link_item(men_item)
-			if(men_item.items)
 				//- ul(class="submenu z-depth-5")
-				.collapsible-body
-					ul(class="submenu ")
-						+menu_items(men_item.items)
+			.collapsible-body
+				ul(class="submenu ")
+					+menu_items(men_item.items)
 
 
 mixin menu_items_collapsible(items)

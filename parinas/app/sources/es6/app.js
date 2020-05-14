@@ -1,83 +1,57 @@
-(($)=>{$(()=>{
+(($) => {
+	$(() => {
+		require('./fix')();
 
+		// require("./materialize/scrollspy")();
 
-    require("./fix")();
+		// materialize slider
+		// require("./materialize/sidenav")();
 
+		// materialize slider
+		// require("./materialize/slider")();
 
-    // require("./materialize/scrollspy")();
+		require('./materialize/modal')();
 
+		// plugin for google maps
+		// require("./map")();
 
-    // materialize slider
-    // require("./materialize/sidenav")();
+		// menu fixed
+		// require("./headfixed")();
 
+		// parallax
+		// require("./materialize/parallax")();
 
-    // materialize slider
-    // require("./materialize/slider")();
+		// require("./lightbox")();
 
+		// lightbox for video
+		// require("./venobox")();
 
-    // require("./materialize/modal")();
+		// lightbox for photos
+		// require("./magnific-popup")();
 
+		//remove href when href=#
+		$('a[href=#]').removeAttr('href');
 
-    // plugin for google maps
-    // require("./map")();
+		// //selectdate
+		// $("#select_date").on("change", (e) => {
+		//     var vall=$(e.target).val();
+		//     $(".dates_all").hide();
+		//     $(".dates_"+vall).show();
+		// });
 
+		// @author Rich Adams <rich@richadams.me>
 
+		// Implements a triple-click event. Click (or touch) three times within 1s on the element to trigger.
 
-    // menu fixed
-    // require("./headfixed")();
+		// Usage
+		// $(function()
+		// {
+		//     $("#one").bind("tripleclick", function() { $("#debug").append("\nروی عنصر 1 ، سه بار کلیک شد"); });
+		//     $("#two").on("tripleclick", function()   { $("#debug").append("\nروی عنصر 2 ، سه بار کلیک شد"); });
+		//     $("#three").on("tripleclick",{ threshold: 5000 }, function()   { $("#debug").append("\nروی عنصر 3 ، سه بار کلیک شد"); });
+		// });
 
-
-
-    // parallax
-    // require("./materialize/parallax")();
-
-
-
-    // require("./lightbox")();
-
-
-
-    // lightbox for video
-    // require("./venobox")();
-
-
-    // lightbox for photos
-    // require("./magnific-popup")();
-
-
-    //remove href when href=#
-    $("a[href=#]").removeAttr('href');
-
-
-    // //selectdate 
-    // $("#select_date").on("change", (e) => {
-    //     var vall=$(e.target).val();
-    //     $(".dates_all").hide();
-    //     $(".dates_"+vall).show();
-    // });
-    
-
-
-// @author Rich Adams <rich@richadams.me>
-
-// Implements a triple-click event. Click (or touch) three times within 1s on the element to trigger.
-
-
-
-
-
-
-
-// Usage
-// $(function() 
-// {
-//     $("#one").bind("tripleclick", function() { $("#debug").append("\nروی عنصر 1 ، سه بار کلیک شد"); });
-//     $("#two").on("tripleclick", function()   { $("#debug").append("\nروی عنصر 2 ، سه بار کلیک شد"); });
-//     $("#three").on("tripleclick",{ threshold: 5000 }, function()   { $("#debug").append("\nروی عنصر 3 ، سه بار کلیک شد"); });
-// });
-
-
-// Begin Components
+		// Begin Components
 require("../../../../work/app/sources/components/common/common.js")();
 require("../../../../work/app/sources/components/menu_left/menu_left.js")();
 require("../../../../work/app/sources/components/block_gallery/block_gallery.js")();
@@ -89,7 +63,7 @@ require("../../../../asiste/app/sources/components/home_block_links/home_block_l
 require("../../../../parinas/app/sources/components/block_habitacion/block_habitacion.js")();
 require("../../../../parinas/app/sources/components/gallery_products/gallery_products.js")();
 require("../../../../parinas/app/sources/components/form_contact/form_contact.js")();
+require("../../../../parinas/app/sources/components/form_common/form_common.js")();
 // Finish Components
-
-});
+	});
 })(jQuery);

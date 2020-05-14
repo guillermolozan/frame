@@ -9,7 +9,7 @@ use core\Server as Server;
 class Controller extends \core\Controller {
 
 	function __construct($params){
-
+		
 		parent::__construct($params);
 
 		/*
@@ -59,7 +59,7 @@ class Controller extends \core\Controller {
 		$replace_menu_pre['ventas']=[
 			// 'url'   =>maskUrl('libros'),
 			'url'	=>'ventas',
-			'name'  =>'Ventas',
+			'name'  =>'Productos',
 			'items' =>select('nombre as name,id,url','productos_subgrupos','where id_grupo=5 and visibilidad=1',0,
 			[
 				'url'=>['url'=>['ventas/category-{url}/{id}']],

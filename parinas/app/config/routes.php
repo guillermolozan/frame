@@ -29,7 +29,7 @@ $routes_lists = [
 	]
 ];
 
-$routes_forms =['contactenos','reservar'];
+$routes_forms =['contactenos','reservar','reclamaciones'];
 
 
 

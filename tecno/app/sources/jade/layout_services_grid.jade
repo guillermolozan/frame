@@ -47,13 +47,13 @@ html(lang="es")
 
 					if menu_post
 						div(class="col s12 l3")
+							.card-title: h2 #{menu_post.name}
 							//- ul(class="menu_post collection collapsible collapsible-accordion",id="menu_left")
 							ul(class="menu_post collection collapsible collapsible-accordion",id="menu_left")
 								//- +menu_items_collapsible(menu_post)
 								//- +menu_collection(menu_post)
 								//- +menu_items_nocollapsible(menu_post)
-								each menu_items in menu_post
-									+menu_items_collapsible(menu_items.items)
+								+menu_collection_advanced(menu_post)
 						-class_row_main="l9"
 						-class_row_item="m4"
 					else
