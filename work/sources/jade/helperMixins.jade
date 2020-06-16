@@ -170,7 +170,7 @@ mixin menu_collection_advanced(items)
 	each men_item in items.items
 		if(men_item.items)
 			li(class="#{men_item.class}  collapsible collapse collapsible-accordion")
-				a(class="collapsible-header #{men_item.class}") #{men_item.name}
+				a(class="collapsible-header #{men_item.class}") #{men_item.name} 
 				.collapsible-body
 					ul(class="submenu ")
 						+menu_items(men_item.items)

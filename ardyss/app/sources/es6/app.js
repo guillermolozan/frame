@@ -64,6 +64,7 @@ require("../../../../work/app/sources/components/common/common.js")();
 require("../../../../work/app/sources/components/menu_left/menu_left.js")();
 require("../../../../work/app/sources/components/block_gallery/block_gallery.js")();
 require("../../../../ardyss/app/sources/components/block_banner/block_banner.js")();
+require("../../../../ardyss/app/sources/components/block_banner2/block_banner2.js")();
 require("../../../../ardyss/app/sources/components/header/header.js")();
 require("../../../../ardyss/app/sources/components/home_block_importaciones/home_block_importaciones.js")();
 require("../../../../ardyss/app/sources/components/home_block_descuentos/home_block_descuentos.js")();

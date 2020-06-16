@@ -1,0 +1,25 @@
+.container
+	.post
+		@media $small-medium
+			> .col
+				width 100% !important
+		&.card
+			box-shadow initial
+			display flex
+			flex-direction row
+			@media $small-medium
+				flex-direction column
+			.card-title
+				h1
+					padding-left 0
+			.text
+				font-size 1.1em
+				p 
+					font-weight 300
+					strong
+						font-weight 400
+			.card-image
+				margin-top 2em
+				order -1
+				@media $small-medium
+					order 3

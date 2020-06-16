@@ -1,36 +1,29 @@
 <?php
-$dataJson=file("data.json",true);
-$data=json_decode($dataJson);
-echo '<pre>';
-print_r($data[0]);
-echo '</pre>';
-exit();
+
+$data = json_decode(file_get_contents("data.json"),true);
+
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
     <?php include("head.php"); ?>
-    <body class="p-posts p-grid p-1">
+
+    <body>
+
         <main class="container row">
-            <div class="wide">
-                <div class="post">
-                    <div class="col m12">
-                        <article class="card-panel">
-                            <div class="card-title">
-                                <h1><span>Tecnología</span></h1>
-                            </div>
-                            <div class="productos_item row">
-                                <ul class="col s12">
-                                    <?php 
-                                        foreach($data as $i=>$item){
-                                            include("post_item.php"); 
-                                        } 
-                                    ?>
-                                </ul>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </div>
+
+            <h1>Tecnología</h1>
+
+            <ul class="col s12">
+                <?php 
+                    foreach($data as $i=>$item){
+
+                        include("post_item.php"); 
+
+                    } 
+                ?>
+            </ul>
+
         </main>
     </body>
 </html>

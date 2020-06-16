@@ -2,6 +2,7 @@
 return [
 
 	'banner'                 => 'block_banner|es6',
+	'banner2'                 => 'block_banner2|es6',
 	
 	'header_pre'             => 'agro/header_pre',
 	'header'                 => 'header|es6',

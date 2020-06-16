@@ -62,6 +62,7 @@ Class Views {
 
 		global $start;
 
+		$component_link='component';
 		$seo_link='seo';
 		$tool_link='tool';
 		$info_link='info';
@@ -831,8 +832,16 @@ Class Views {
 			return;
 
 		}
+
+		if(isset($vars['params']['component'])){
+
+			$file_out=APP."/".$this->views."/layout_components.php";
 		
+		} else {
+
 			$file_out=APP."/".$this->views."/".$file.".php";
+
+		}
 
 		// prin($file_out);
 

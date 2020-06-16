@@ -4,5 +4,25 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"peacock.color": "#490e10",
+		"workbench.colorCustomizations": {
+			"activityBar.activeBackground": "#741619",
+			"activityBar.activeBorder": "#1d8619",
+			"activityBar.background": "#741619",
+			"activityBar.foreground": "#e7e7e7",
+			"activityBar.inactiveForeground": "#e7e7e799",
+			"activityBarBadge.background": "#1d8619",
+			"activityBarBadge.foreground": "#e7e7e7",
+			"statusBar.background": "#490e10",
+			"statusBar.border": "#490e10",
+			"statusBar.foreground": "#e7e7e7",
+			"statusBarItem.hoverBackground": "#741619",
+			"titleBar.activeBackground": "#490e10",
+			"titleBar.activeForeground": "#e7e7e7",
+			"titleBar.border": "#490e10",
+			"titleBar.inactiveBackground": "#490e1099",
+			"titleBar.inactiveForeground": "#e7e7e799"
+		}
+	}
 }

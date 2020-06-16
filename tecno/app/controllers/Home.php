@@ -35,28 +35,39 @@ class Home extends Controller {
 
 
 		/*
-		##     ## ######## ##    ## ########    ###     ######
-		##     ## ##       ###   ##    ##      ## ##   ##    ##
-		##     ## ##       ####  ##    ##     ##   ##  ##
-		##     ## ######   ## ## ##    ##    ##     ##  ######
-		 ##   ##  ##       ##  ####    ##    #########       ##
-		  ## ##   ##       ##   ###    ##    ##     ## ##    ##
-		   ###    ######## ##    ##    ##    ##     ##  ######
+		########  ########   #######  ########  ##     ##  ######  ########  #######   ######
+		##     ## ##     ## ##     ## ##     ## ##     ## ##    ##    ##    ##     ## ##    ##
+		##     ## ##     ## ##     ## ##     ## ##     ## ##          ##    ##     ## ##
+		########  ########  ##     ## ##     ## ##     ## ##          ##    ##     ##  ######
+		##        ##   ##   ##     ## ##     ## ##     ## ##          ##    ##     ##       ##
+		##        ##    ##  ##     ## ##     ## ##     ## ##    ##    ##    ##     ## ##    ##
+		##        ##     ##  #######  ########   #######   ######     ##     #######   ######
 		*/
 		
+		// libros
 		$ventas=$this->view->vars['menu_top']['2'];
 		$ventas['items'][0]['img']=$this->view->vars['pub_img_abs'].'/icono-libros.jpg';
 
-
+		// cursos
 		$ventas['items'][1]['img']=$this->view->vars['pub_img_abs'].'/icono-cursos.jpg';
+		
+		$ventas_cursos=$ventas['items'][1];
+		foreach($ventas_cursos['items'] as $ventas_cursos_grupo){
+			foreach($ventas_cursos_grupo['items'] as $ventas_cursos_item){
+				$ventas_cursos_items=$ventas_cursos_item;
+				break;
+			}
+		}
+		// prin($ventas_cursos_items);
+		// $grupos=opciones("id,name as nombre","paginas_groups","where id_grupo=33",0);
+		// $item_curso=fila("id,weight,name,id_grupo","paginas","where id_grupo in (select id from paginas_groups where id_grupo=33) order by weight desc limit 0,1",0);
 
-		$grupos=opciones("id,name as nombre","paginas_groups","where id_grupo=33",0);
-		$item_curso=fila("id,weight,name,id_grupo","paginas","where id_grupo in (select id from paginas_groups where id_grupo=33) order by weight desc limit 0,1",0);
-
-		$ventas['items'][1]['url']=procesar_url($grupos[$item_curso['id_grupo']]."/".$item_curso['name']."/".$item_curso['id']);
+		$ventas['items'][1]['url']=$ventas_cursos_items['url'];
+		// procesar_url($grupos[$item_curso['id_grupo']]."/".$item_curso['name']."/".$item_curso['id']);
 
 		unset($ventas['items'][1]['items']);
 
+		// servicios
 		$ventas['items'][2]['img']=$this->view->vars['pub_img_abs'].'/icono-servicios.jpg';
 		$ventas['items'][2]['url']=$ventas['items'][2]['items'][0]['url'];
 

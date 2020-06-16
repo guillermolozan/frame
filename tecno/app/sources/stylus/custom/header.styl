@@ -1,18 +1,23 @@
+// color_modificado = lighten(#1a2462,10)
+color_modificado = #052F6C
+
 // header
 header
-	background black
+	background color_modificado
 	.prenav .container > a.logo
 		text-align center
 	> nav 
 		background-color red !important
 		@media $medium-small
-			background-color black !important
+			background-color color_modificado !important
 		.button-collapse
 			color #fff
 	@media $medium-small
 		box-shadow inset 0 -5px 10px rgba(black,.5) !important
 	.menu_top 
 		> li 
+			&.active,&:hover
+				background color_modificado !important
 			> a 
 				font-family Roboto
 				font-weight bold !important
@@ -57,7 +62,7 @@ header
 		header
 			height auto !important
 			nav
-				background black !important
+				background color_modificado !important
 				> .container
 					> .menu_top
 						> li
@@ -70,3 +75,8 @@ header
 							// 	background rgba(color2,.9)	
 							// 	> a
 							// 		color color_white !important
+footer
+	background color_modificado !important
+
+// .home_block_libros
+// 	background color_modificado !important

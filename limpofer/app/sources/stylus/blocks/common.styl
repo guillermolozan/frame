@@ -1,0 +1,202 @@
+  // body {
+  //   display: flex;
+  //   min-height: 100vh;
+  //   flex-direction: column;
+  // }
+
+
+body
+	> section 
+		// width 100%
+		// text-align center
+		margin-bottom 0px
+		// color #000
+		font-size 1.1em
+		// margin-top 10px
+
+h1,h2,h3
+	color color1
+	font-weight 700
+	font-family Roboto
+	
+h1,h2
+	font-size 1.5rem !important
+h3
+	font-size 1.2rem !important
+		
+
+.btn
+	background-color color2
+	color white
+	height 40px		
+	line-height @height
+	border-radius 8px
+	&:hover
+		background-color color2
+		// text-decoration none
+
+
+
+.collection
+	.collection-item
+		a
+			color color1
+			text-transform uppercase
+			display block
+			font-weight 400
+		&.active
+			background-color color2
+			color white
+			a
+				color inherit
+
+
+
+	
+figure.responsive-img
+	img
+		width 100% !important
+		
+
+
+
+// header
+header 
+	> nav
+		
+		background transparent url(imgs+'header_bg.png') repeat-x center bottom
+	.menu_top > li 
+		&.active
+			background-color color2 !important
+		> a 
+			font-size .9rem !important
+			font-family Roboto
+			font-weight normal !important
+		.submenu > li
+			border-bottom 1px solid color2
+
+
+.headfixed
+	header 
+		> nav
+			background white bottom
+
+
+
+					
+//footer
+					
+
+
+// GRID ITEM
+.card.producto
+	margin auto auto 1em auto
+	box-shadow none
+	// background-color lighten(#ccc,18)
+	background-color #fff
+	transition background-color .5s, box-shadow .5s
+	border 1px solid #999
+	&:hover
+		background-color #fff
+	@media $small
+		margin-bottom 2em
+	&:hover
+		box-shadows()
+	@media $medium-large
+		max-width 230px
+	.card-image
+		@media $large
+			padding 4px
+		@media $medium-large
+			height 230px
+			// overflow hidden
+		@media $small
+			padding 0px
+		vertical-align middle
+		text-align center
+		> a
+			display inline
+			img
+				// width 100%
+				height 100%
+				object-fit contain
+				
+	.card-content,.card-action
+		padding 0px 5px 0 .7em
+	.card-content
+		.card-title 
+			line-height 30px
+			a
+				@media $medium-large
+					font-size 13px
+					line-height 1.6em
+					height @line-height*2
+					overflow hidden
+					margin-top 1em
+				color black
+				text-transform uppercase
+				font-weight 500
+				font-family Roboto					
+	.card-action
+		text-align left
+		border-top 0
+		font-weight bold
+		font-family Roboto
+		padding-bottom .4em
+		// font-weight bold
+		// font-family Roboto
+			
+.line_grupos
+	background #ececec
+	.container
+		transition margin-top 1s
+	.anchor
+		position absolute
+		width 1px
+		height 1px
+		// top 51px
+		top 96px
+		@media $small-medium
+			top 6px
+			@media $small
+				top -97px
+		// border 1px solid #000
+		background transparent
+	.collection
+		border 0
+		.collection-item
+			margin-top 0
+			margin-bottom 0
+			padding-bottom 0
+			padding-top 0
+			background transparent
+			@media $small-medium
+				text-align center
+		h2 
+			padding 0
+			margin-bottom 10px
+			@media $small
+				text-align center
+			a 
+				color black
+				// Open+Sans|Roboto|Dosis|Neucha|Montserrat
+				// font-family Orbitron
+				font-weight 100
+				text-transform uppercase
+		.badge
+			float right
+			background color1
+			color white
+			padding .3em 1em
+			margin-top 1em
+			margin-bottom 1em
+	&.mas_vistos
+		background #5d5d5d
+		h2 a
+			color #fff
+		.badge
+			background white
+			color black
+
+
+				

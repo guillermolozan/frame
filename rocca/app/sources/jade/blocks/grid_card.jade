@@ -1,0 +1,52 @@
+-items  = grid.items
+-name   = grid.name
+-sub    = grid.sub
+-more   = grid.more
+
+if(items)
+	div(class="grid scrollspy")
+		
+		if(main)
+			h1: +item(grid)
+			-main=false
+		else
+			h2: +item(grid)
+
+		if(grid.sub)
+			h3 #{grid.sub}
+
+		ul
+			each item in grid.items
+				li(class="#{responsive}") 
+					div(class="card")
+
+						+img_item(item)
+
+						if(item.img)
+							-res="col s12 m8 l8"
+						else
+							-res="col s12"
+						div(class="#{res}")
+
+							if(item.pre)
+								h6 #{item.pre}
+
+							h4: +item(item)
+
+							if(item.sub)
+								h5 #{item.sub}
+
+							if(item.text)
+								p #{item.text}
+								
+							if(item.html)
+								div!= item.html
+
+		if(grid.more)
+			a(class="more",href="#{grid.more.url}") #{grid.more.name}
+
+
+
+
+
+

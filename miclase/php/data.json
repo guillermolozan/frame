@@ -1,57 +1,57 @@
 [
 	{
 		"id": "12",
-		"name": "Mart\u00edn Vizcarra ampl\u00eda cuarentena hasta el pr\u00f3ximo 24 de mayo",
+		"title": "Mart\u00edn Vizcarra ampl\u00eda cuarentena hasta el pr\u00f3ximo 24 de mayo",
 		"fecha_creacion": "2020-05-08 19:09:14",
 		"text": "Este viernes el presidente de la Rep\u00fablica, Mart\u00edn Vizcarra, anunci\u00f3 que Estado de Emergencia se extiende hasta el 24 de mayo.",
 		"fecha": "2020-05-08 00:00:00",
 		"file": "profot_1588982953_670x394.png",
-		"img": "//tecnologiadepintado.com/imagenes_dir/profot_imas/2020/05/08/profot_1588982953_670x394.png",
+		"photo": "//tecnologiadepintado.com/imagenes_dir/profot_imas/2020/05/08/profot_1588982953_670x394.png",
 		"url": "post-martin-vizcarra-amplia-cuarentena-hasta-el-proximo-24-de-mayo/12",
-		"sub": "Viernes, 8 de Mayo de 2020"
+		"date": "Viernes, 8 de Mayo de 2020"
 	},
 	{
 		"id": "6",
-		"name": "EL EXITO - Pasos para crear tu propia empresa",
+		"title": "EL EXITO - Pasos para crear tu propia empresa",
 		"fecha_creacion": "2020-04-29 18:55:07",
 		"text": "1.- LA IDEA\nEn primer lugar, antes de invertir dinero o dedicar tiempo y esfuerzos a una empresa, hay que considerar si el proyecto que se pretende poner en funcionamiento tiene posibilidades en el mercado y si se adapta a los conocimientos y habilidades del emprendedor.",
 		"fecha": "2020-01-01 00:00:00",
 		"file": "profot_1588204507_309x163.jpg",
-		"img": "//tecnologiadepintado.com/imagenes_dir/profot_imas/2020/04/29/profot_1588204507_309x163.jpg",
+		"photo": "//tecnologiadepintado.com/imagenes_dir/profot_imas/2020/04/29/profot_1588204507_309x163.jpg",
 		"url": "post-el-exito-pasos-para-crear-tu-propia-empresa/6",
-		"sub": "Mi\u00e9rcoles, 1 de Enero de 2020"
+		"date": "Mi\u00e9rcoles, 1 de Enero de 2020"
 	},
 	{
 		"id": "5",
-		"name": "EL EXITO ",
+		"title": "EL EXITO ",
 		"fecha_creacion": "2020-04-29 18:51:06",
 		"text": "El \u00e9xito en la vida es algo particular que implica poder ser consciente de lo que uno desea, lo que uno anhela y lo que uno est\u00e1 dispuesto a hacer para alcanzar aquello que se quiere lograr.",
 		"fecha": "2020-05-09 00:00:00",
 		"file": "profot_1588204266_650x387.jpg",
-		"img": "//tecnologiadepintado.com/imagenes_dir/profot_imas/2020/04/29/profot_1588204266_650x387.jpg",
+		"photo": "//tecnologiadepintado.com/imagenes_dir/profot_imas/2020/04/29/profot_1588204266_650x387.jpg",
 		"url": "post-el-exito/5",
-		"sub": "S\u00e1bado, 9 de Mayo de 2020"
+		"date": "S\u00e1bado, 9 de Mayo de 2020"
 	},
 	{
 		"id": "9",
-		"name": "Congreso promulga ley que permite el retiro del 25% de los fondos de las AFP",
+		"title": "Congreso promulga ley que permite el retiro del 25% de los fondos de las AFP",
 		"fecha_creacion": "2020-04-30 12:22:37",
 		"text": " Congreso promulga ley que permite el retiro del 25% de los fondos de las AFP\nPresidente de la Rep\u00fablica no se pronunci\u00f3 dentro del plazo legal y Parlamento qued\u00f3 habilitado para promulgaci\u00f3n. Norma entra en vigencia un d\u00eda despu\u00e9s de su publicaci\u00f3n.",
 		"fecha": "2020-04-30 00:00:00",
 		"file": "profot_1588267356_977x521.jpg",
-		"img": "//tecnologiadepintado.com/imagenes_dir/profot_imas/2020/04/30/profot_1588267356_977x521.jpg",
+		"photo": "//tecnologiadepintado.com/imagenes_dir/profot_imas/2020/04/30/profot_1588267356_977x521.jpg",
 		"url": "post-congreso-promulga-ley-que-permite-el-retiro-del-25-de-los-fondos-de-las-afp/9",
-		"sub": "Jueves, 30 de Abril de 2020"
+		"date": "Jueves, 30 de Abril de 2020"
 	},
 	{
 		"id": "7",
-		"name": "Google publicar\u00e1 juegos interactivos a diario para ayudar durante el aislamiento",
+		"title": "Google publicar\u00e1 juegos interactivos a diario para ayudar durante el aislamiento",
 		"fecha_creacion": "2020-04-29 19:06:40",
 		"text": "Este martes Google anunci\u00f3 su intenci\u00f3n de publicar algunos de sus doodle m\u00e1s emblem\u00e1ticos con juegos interactivos para que los usuarios se puedan entretener mientras permanecen en aislamiento domiciliario por el coronavirus. ",
 		"fecha": "2020-05-09 00:00:00",
 		"file": "profot_1588205199_974x523.jpg",
-		"img": "//tecnologiadepintado.com/imagenes_dir/profot_imas/2020/04/29/profot_1588205199_974x523.jpg",
+		"photo": "//tecnologiadepintado.com/imagenes_dir/profot_imas/2020/04/29/profot_1588205199_974x523.jpg",
 		"url": "post-google-publicara-juegos-interactivos-a-diario-para-ayudar-durante-el-aislamiento/7",
-		"sub": "S\u00e1bado, 9 de Mayo de 2020"
+		"date": "S\u00e1bado, 9 de Mayo de 2020"
 	}
 ]

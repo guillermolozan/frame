@@ -13,6 +13,7 @@ html(lang="es")
 		//- include blocks/image.jade
 
 		main(class="container row")
+		
 			//- .wide
 			div(class="post project")
 				+card_sended(message)
@@ -39,17 +40,18 @@ html(lang="es")
 					//- 		h1 #{post.name}
 					//- 		-main=false
 							
-
-					div(class="col s12 l12")
-						h1 #{post.name}
-						-main=false
 				.row
 
 					if menu_post
 						div(class="col s12 l3")
+						
+							if(group_post)
+								.card-title: h2 #{group_post}
+							//- ul(class="menu_post collection collapsible collapsible-accordion",id="menu_left")
 							//- ul(class="menu_post collection collapsible collapsible-accordion",id="menu_left")
 							ul(class="menu_post collection collapsible collapsible-accordion",id="menu_left")
-								+menu_items_collapsible(menu_post)
+								+menu_collection_advanced(menu_post)
+								//- +menu_items_collapsible(menu_post)
 								//- +menu_collection(menu_post)
 								//- +menu_items_nocollapsible(menu_post)
 						-class_row_main="l9"
@@ -74,6 +76,9 @@ html(lang="es")
 
 						if(items)
 							div(class="productos_item")
+								div(class="col s12 l12")
+									h1 #{post.name}
+									-main=false
 								ul(class="col s12")
 									.row
 										each productos_item in items

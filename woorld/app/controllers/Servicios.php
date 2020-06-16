@@ -323,10 +323,10 @@ class Servicios extends \core\controllers\Pages {
 				'class'    =>'validate',
 				'label'    =>'Mensaje',
 				'type'     =>'textarea',
-				'value' =>'Estoy interesado en el el producto '.$post['name'].'
-Por favor contacten conmigo.
-Gracias
-'],
+				'value' =>'Estoy interesado en el el producto '.$post['name']."\n".
+					"Por favor contacten conmigo.\n".
+					"Gracias\n"
+				],
 
 		];
 
@@ -699,10 +699,10 @@ Gracias
 				'class'    =>'validate',
 				'label'    =>'Mensaje',
 				'type'     =>'textarea',
-				'value' =>'Estoy interesado en el el producto '.$post['name'].'
-Por favor contacten conmigo.
-Gracias
-'],
+				'value' =>'Estoy interesado en el el producto '.$post['name']." \n".
+				"Por favor contacten conmigo.\n".
+				"Gracias"
+				],
 
 		];
 
@@ -879,13 +879,21 @@ Gracias
 
 
 
-		/*LEFT MENU*/
-
+		/*
+		##       ######## ######## ########    ##     ## ######## ##    ## ##     ##
+		##       ##       ##          ##       ###   ### ##       ###   ## ##     ##
+		##       ##       ##          ##       #### #### ##       ####  ## ##     ##
+		##       ######   ######      ##       ## ### ## ######   ## ## ## ##     ##
+		##       ##       ##          ##       ##     ## ##       ##  #### ##     ##
+		##       ##       ##          ##       ##     ## ##       ##   ### ##     ##
+		######## ######## ##          ##       ##     ## ######## ##    ##  #######
+		*/
 
 		// $group      =$Page->getGroup(['item'=>$id_grupo]);
 		// prin($params);
 		if(
 			$params['level']=='productos' 
+			
 			// or $params['level']=='mas-vistos'
 		){
 
@@ -905,7 +913,7 @@ Gracias
 						]);
 
 			}
-
+			// prin("productos");
 			// prin($menu);
 
 
@@ -1057,10 +1065,42 @@ Gracias
 		}
 
 
-		// prin($menuleftfinal);
+		/*
+		##     ##    ###     ######  ##    ##
+		##     ##   ## ##   ##    ## ##   ##
+		##     ##  ##   ##  ##       ##  ##
+		######### ##     ## ##       #####
+		##     ## ######### ##       ##  ##
+		##     ## ##     ## ##    ## ##   ##
+		##     ## ##     ##  ######  ##    ##
+		*/
+
+		$menu =select('nombre as name,id,url','productos_grupos','where visibilidad=1',0,
+		[
+			'url'=>['url'=>['{url}']],
+		]);
 
 
+		// if(0)
+		foreach($menu as $iii=> $men){
 
+			$menu[$iii]['items']=select('nombre as name,id','productos_subgrupos','where visibilidad=1 and id_grupo='.$men['id'],0,
+			[
+				'url'=>['url'=>[$men['url'].'/category-{name}/{id}']],
+			]);
+
+			foreach($menu[$iii]['items'] as $jjj=> $menj){
+
+				$menu[$iii]['items'][$jjj]['items']=select('nombre as name,id','productos_filtros','where visibilidad=1 and id_subgrupo='.$menj['id'],0,
+				[
+					'url'=>['url'=>[$men['url'].'/sub-category-{name}/{id}']],
+				]);
+	
+			}				
+
+		}		
+
+		// prin($menu);
 		$menu       = $this->elements->getM($menu,$params['uri']);
 		$menuleftfinal       = $this->elements->getM($menuleftfinal,$params['uri']);
 
@@ -1570,19 +1610,20 @@ Gracias
 
 			'grupos'				 => $grupos_items,
 
-			'menu_post'  	    => $menu['items'],
+			'menu_post'  	    => $menu,
 
 			'menu_left'    => $this->menu_left,
 
+
 		]);
 
-
+		// prin($menu);
 		// prin($post);
 			
 
 
 
-
+		$group="productos";
 
 
 		$this->view->assign([

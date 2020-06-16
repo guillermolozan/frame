@@ -61,7 +61,9 @@ const browserify = require('browserify'),
 	babelify = require('babelify'),
 	uglify = require('gulp-uglify'),
 	source = require('vinyl-source-stream'),
-	buffer = require('vinyl-buffer');
+	buffer = require('vinyl-buffer'),
+	webpack = require('webpack-stream');
+	
 
 const exec = require('child_process').exec;
 
@@ -72,6 +74,9 @@ const request = require('request');
 const ftp = require('vinyl-ftp');
 
 const restart = require('gulp-restart');
+
+const fs = require('fs');
+const ini = require('ini');
 
 /*
 ##     ##    ###    ########   ######
@@ -85,6 +90,7 @@ const restart = require('gulp-restart');
 
 const folder = '../' + argv.p;
 const app = './' + folder;
+
 const work = './../work';
 const urlfolder = 'http://localhost/frame/' + argv.p;
 
@@ -144,6 +150,7 @@ const stylus_task = () => {
 		)
 		.pipe(autoprefixer())
 		.pipe(gulp.dest(public_dir + '/css'))
+		// .on('error',gutil.log)
 		.pipe(livereload());
 };
 
@@ -167,7 +174,7 @@ const jade2php_task = () => {
 		'/app/views/php';
 	console.log(chalk.bgMagenta(' building php views  .... '));
 	// console.log(command);
-	return exec(command, function(err, stdout, stderr) {
+	return exec(command, function (err, stdout, stderr) {
 		console.log(stderr);
 	});
 };
@@ -189,6 +196,42 @@ const touch_task = (some = null) => {
 	writeFile.sync(filetouch, '{"v":"' + newtouch + '"}');
 };
 
+/*
+##      ## ######## ########  ########     ###     ######  ##    ##
+##  ##  ## ##       ##     ## ##     ##   ## ##   ##    ## ##   ##
+##  ##  ## ##       ##     ## ##     ##  ##   ##  ##       ##  ##
+##  ##  ## ######   ########  ########  ##     ## ##       #####
+##  ##  ## ##       ##     ## ##        ######### ##       ##  ##
+##  ##  ## ##       ##     ## ##        ##     ## ##    ## ##   ##
+ ###  ###  ######## ########  ##        ##     ##  ######  ##    ##
+*/
+const webpack_task = () => {
+	touch_task('WEBPACK ');
+
+	return gulp
+		.src(es6_dir + '/app.js')
+		.pipe(
+			webpack({
+				mode: 'development',
+				// mode:'production',
+				module: {
+					rules: [
+						{
+							test: /\.(js)$/,
+							exclude: /node_modules/,
+							use: ['babel-loader']
+						}
+					]
+				},
+				output: {
+					filename: 'app.js'
+				}
+			})
+		)
+		// .on('error',gutil.log)
+		.pipe(gulp.dest(public_dir + '/js'))
+		.pipe(livereload());
+};
 /*
 ########  ########   #######  ##      ##  ######  ######## ########  #### ######## ##    ##
 ##     ## ##     ## ##     ## ##  ##  ## ##    ## ##       ##     ##  ##  ##        ##  ##
@@ -300,8 +343,8 @@ const watch_task = () => {
 	//watch stylus
 	gulp.watch(all_watch_stylus, stylus_task);
 
-	//watch browserify
-	gulp.watch(all_watch_js, browserify_task);
+	//watch webpack
+	gulp.watch(all_watch_js, webpack_task);
 
 	//watch jade
 	gulp.watch(all_watch_jade, jade2php_task);
@@ -348,12 +391,12 @@ const watch_task = () => {
 
 	const watcher = gulp.watch(modifies);
 
-	watcher.on('change', function(path, stats) {
+	watcher.on('change', function (path, stats) {
 		live_deploy_task(path);
 	});
 };
 
-const live_deploy_task = function(file) {
+const live_deploy_task = function (file) {
 	if (activelivedeploy) {
 		// console.log(dconn);
 		if (typeof conn == 'undefined') conn = ftp.create(dconn);
@@ -362,7 +405,7 @@ const live_deploy_task = function(file) {
 
 		return (
 			gulp
-				.src([ file ], { base: '..', buffer: false })
+				.src([file], { base: '..', buffer: false })
 				// .pipe(conn.newer(remotedir)) // only upload newer files
 				.pipe(conn.dest(remotedir))
 		);
@@ -409,19 +452,30 @@ const hello_task = async () => {
 ########  ######## ##        ########  #######     ##
 */
 const deploy_task = async () => {
-	const dconn = require(app + '/conn.json');
+
+	const sp_folder = '../../sistemapanel/' + argv.p + '/panel/';
+	const sp_config = sp_folder+'/config/config.ini';
+	const sp_ini= ini.parse(fs.readFileSync(sp_config, 'utf-8'))
+
+	const dconn={
+		"host":     sp_ini.REMOTE_FTP.ftp_files_host,
+		"user":     sp_ini.REMOTE_FTP.ftp_files_user,
+		"password": sp_ini.REMOTE_FTP.ftp_files_pass,
+		"parallel": "3"
+	};
+	// const dconn = require(app + '/conn.json');
 	dconn.log = gutil.log;
 
 	const remotedir = dconn.remotedir || '/public_html';
 
 	const conn = ftp.create(dconn);
 
-	const globspc = [ app + '/public/css/app.css', app + '/touch.json' ];
-	const globspi = [ app + '/public/img/**' ];
-	const globspj = [ app + '/public/js/app.js', app + '/touch.json' ];
-	const globspv = [ app + '/public/font/**', app + '/public/vendor/**' ];
-	const globsc = [ app + '/app/controllers/**', app + '/app/models/**' ];
-	const globsv = [ app + '/app/views/php/**' ];
+	const globspc = [app + '/public/css/app.css', app + '/touch.json'];
+	const globspi = [app + '/public/img/**'];
+	const globspj = [app + '/public/js/app.js', app + '/touch.json'];
+	const globspv = [app + '/public/font/**', app + '/public/vendor/**'];
+	const globsc = [app + '/app/controllers/**', app + '/app/models/**'];
+	const globsv = [app + '/app/views/php/**'];
 	const globs2 = [
 		app + '/app/config/**',
 		// app+'/vendor/**',
@@ -440,7 +494,7 @@ const deploy_task = async () => {
 		'./../.htaccess'
 	];
 
-	const globs4 = [ './../index.php' ];
+	const globs4 = ['./../index.php'];
 
 	const indextxt = "<?php chdir('" + folder + "'); include 'index.php';";
 
@@ -514,7 +568,7 @@ const components_task = async () => {
 
 	console.log(chalk.green('task components....'));
 
-	return request(geturl, function(error, response, body) {
+	return request(geturl, function (error, response, body) {
 		// console.log("error:", error); // Print the error if one occurred
 		// console.log("statusCode:", response && response.statusCode); // Print the response status code if a response was received
 		// console.log(chalk.green("body:", body)); // Print the HTML for the Google homepage.
@@ -552,12 +606,13 @@ exports.touch = touch_task;
 exports.stylus = stylus_task;
 exports.php = jade2php_task;
 exports.watch = watch_task;
-exports.browserify = browserify_task;
+// exports.browserify = browserify_task;
+exports.webpack = webpack_task;
 
 exports.components = components_task;
 exports.get_comp = get_comp_task;
 exports.deploy = deploy_task;
 // exports.email_inline   = email_inline_task;
 
-exports.default = gulp.series(hello_task, components_task, stylus_task, jade2php_task, browserify_task, watch_task);
+exports.default = gulp.series(hello_task, components_task, stylus_task, jade2php_task, webpack_task, watch_task);
 // exports.default = gulp.series(stylus_task,jade2php_task,browserify_task);

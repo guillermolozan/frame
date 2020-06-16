@@ -210,7 +210,7 @@ class Controller extends \core\Controller {
 				// 'header_phones'=> $web['header_phones'],
 
             //footer
-				'theme_color'		 => '#000000',
+				'theme_color'		 => '#052F6C',
 
 				//facebook
 				'opengraph'  => true,

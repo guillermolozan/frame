@@ -4,6 +4,7 @@
 "./../work/app/sources/components/block_gallery/block_gallery.jade",
 "./../work/app/sources/components/block_post/block_post.jade",
 "./../ardyss/app/sources/components/block_banner/block_banner.jade",
+"./../ardyss/app/sources/components/block_banner2/block_banner2.jade",
 "./../agro/app/sources/components/header_pre/header_pre.jade",
 "./../ardyss/app/sources/components/header/header.jade",
 "./../ardyss/app/sources/components/home_block_importaciones/home_block_importaciones.jade",

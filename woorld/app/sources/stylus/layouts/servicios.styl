@@ -1,8 +1,10 @@
 .p-servicios
-	
 
 	h1
-		display none
+		display block
+		margin-top 0
+		margin-bottom .1em
+		text-align center
 	ol.breadcrumb
 		padding-left 0
 		// @media $small-medium
@@ -32,14 +34,31 @@
 			display flex
 			flex-direction column-reverse
 		.train
+			// border 1px solid green !important
 			width 100%
+			height 160px
+			// overflow visible
 			// vertical-align top
-			div
-				width 19%
+			div 
+				border 1px solid #ccc
+				max-width 33%
 				margin-right 1%
 				display inline-block
 				vertical-align middle
-				max-height 160px
+				height 160px
+				overflow hidden
+				margin-left 1px
+				a
+					// border 10px solid yellow !important
+					height inherit
+					display flex
+					align-items center
+					justify-content center
+					padding 1px
+					img 
+						height auto
+						max-height 100%
+						margin 0 !important
 		.foto
 			width 100%
 			float none !important
@@ -61,28 +80,72 @@
 
 	&.p-grid
 		#menu_left
-			ul >
-				li.active
-					> a
-						background lighten(grey,45)
-						color black			
-			@media $small-medium
-				display none
-			ul.submenu
-				padding-left 1em
-				li.active
-					> a
-						background grey
+			// border 1px solid red
+			padding 0
+			margin 0
+			border 0
+			box-shadow none
+			li.collapsible.collapsible-accordion
+				overflow visible
+				margin 0
+				margin-bottom .5em
+				border 0
+				// box-shadow none
+				a.collapsible-header
+					border 0
+					padding-left 1em
+					border 1px solid #ccc
+					&.active
+						background #ee484d
+						border-color #ee484d
+						// background linear-gradient(to top, #ee484d 90%,#ccc)
 						color white
-		.line_grupos
-			.collection-item
-				border-bottom 2px solid #aaa
-				@media $small
-					padding-top 2em
-					h2
-						padding-bottom 1em
+				div.collapsible-body
+					border 0
+					border 1px solid #ccc
+					padding 1em 1em 1em 0
+					ul.submenu
+						padding-left 1em
+						> li 
+							> a
+								padding 5px 1em
+								margin 0
+								display block
+					> ul.submenu
+						> li 
+							background white
+							> a 
+								font-size 1em
+								margin-bottom 10px
+								background darken(white,5)
+								// border 1px solid red
+							&.active > a
+								background darken(white,5)
+								color #ee484d
+							> ul.submenu
+								> li 
+									> a
+										font-size .8em
+										margin-bottom 3px
+										// border 1px solid yellow
+									&.active > a
+										// background darken(white,10)
+										color #ee484d
 					
 				
+		
+			> li.collection-item
+				border 1px solid #ccc
+				// border 1px solid #000
+				padding .5em
+				> a
+					padding .5em !important
+				&.active
+					background white
+					> a
+						background darken(white,5)
+						// background #000
+						color #ee484d
 		// .productos_itemm
 		.responsive
 			padding-bottom 1px
@@ -129,7 +192,7 @@
 				padding-left 45px
 				@media $small-medium
 					padding-left 0
-		.menu_post
+		.menu_post_trash
 			.collection-item
 				
 				> a
@@ -349,7 +412,8 @@
 			
 
 	.card-title h2
-		padding 1.3em 0 .4em
+		padding 0
+		margin 0 0 .7em 0
 		font-size 1.7em
 
 	article.card-panel
