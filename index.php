@@ -1,1 +1,1 @@
-<?php chdir('ardyss'); include 'index.php';
+<?php chdir('clean'); include 'index.php';

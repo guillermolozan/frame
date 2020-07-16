@@ -1,0 +1,38 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include includes/header
+		
+		include includes/banner
+
+		//- me gusta
+		if (!localhost)
+			.home-facebook
+				.container: .fb-like(
+					data-layout='standard', 
+					data-action='like', 
+					data-size='small', 
+					data-show-faces='true', 
+					data-share='true')
+
+		//- libros
+		include includes/home_block_libros
+
+		//- ventas
+		//- include includes/home_block_ventas
+
+
+		//- videos
+		include includes/block_gallery_videos
+
+		//- enlaces
+		.container
+			include includes/home_block_links
+
+		include includes/footer
+		include common/foot

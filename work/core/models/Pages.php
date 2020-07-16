@@ -12,7 +12,6 @@ class Pages extends \core\Models {
 	}
 
 
-
 	function getConfig(){
 
 		$config=[

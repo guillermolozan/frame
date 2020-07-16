@@ -87,11 +87,12 @@ mixin input_date(name,line,clas)
 mixin input_text(name,line,clas)
 	div(class="input-field #{clas}")
 		if line.required
-			input(required,id="#{name}_#{name}",name="#{line.name}",type="#{line.type}",class="#{line.class}",value="#{line.value}",oninvalid="this.setCustomValidity('El campo no puede estar vació')")
+			//- input(required,id="#{name}_#{name}",name="#{line.name}",type="#{line.type}",class="#{line.class}",value="#{line.value}",oninvalid="this.setCustomValidity('El campo no puede estar vació')")
+			input(required,id="#{name}_#{name}",name="#{line.name}",type="#{line.type}",class="#{line.class}",value="#{line.value}")
 		else if line.disabled
 			input(disabled,id="#{name}_#{line.name}",name="#{line.name}",type="#{line.type}",class="#{line.class}",value="#{line.value}")
 		else
-			input(disabled,id="#{name}_#{line.name}",name="#{line.name}",type="#{line.type}",class="#{line.class}",value="#{line.value}")
+			input(id="#{name}_#{line.name}",name="#{line.name}",type="#{line.type}",class="#{line.class}",value="#{line.value}")
 		label(for="#{name}_#{line.name}") #{line.label}
 
 mixin input_file(name,line,clas)

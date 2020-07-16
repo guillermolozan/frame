@@ -13,14 +13,18 @@ class ControlSlider {
 
     this.slider=options.container;
     this.externalControls=options.externalControls;
-    this.autostart = options.autostart || true;
+    this.autostart = options.autostart
     this.useControls = options.useControls || false;
     this.wait = options.wait || 5;
 
-    this.selector_container='.slider_container';
-    this.selector_controls='.slider_controls';
     this.move=this.move.bind(this); // hack
     this.moveByButton=this.moveByButton.bind(this); // hack
+    this.next=this.next.bind(this); // hack
+    this.prev=this.prev.bind(this); // hack
+
+    this.selector_container='.slider_container';
+    this.selector_controls='.slider_controls';
+
     this.container=this.slider.querySelector(this.selector_container)
     this.interval=null;
     this.contador=0;
@@ -43,12 +47,30 @@ class ControlSlider {
       .forEach(item=>{
         item.addEventListener("click",this.moveByButton)
       });
+    this.slider.querySelector('.slider_button_left')
+      .addEventListener("click",this.prev);
+    this.slider.querySelector('.slider_button_right')
+      .addEventListener("click",this.next);
+    this.externalControls.querySelectorAll('.slider_exterternal_control')
+      .forEach(item=>{
+        item.addEventListener("click",this.moveByButton)
+      });
   }
   moveByButton(ev){
     let index = IndexForSiblings.get(ev.currentTarget);
     this.contador=index;
     this.moveTo(index);
     this.restart();
+  }
+  next(){
+    let index_next=(this.contador==this.itemsCount - 1)? 0 :this.contador+1;
+    this.contador=index_next;
+    this.moveTo(index_next)  
+  }
+  prev(){
+    let index_prev=(this.contador==0)? (this.itemsCount - 1) :this.contador-1;
+    this.contador=index_prev;
+    this.moveTo(index_prev)
   }
   buildControls(){
     if (!this.useControls) return;
@@ -57,6 +79,12 @@ class ControlSlider {
       if(i==0) control.classList.add('active');
       this.slider.querySelector(this.selector_controls+' ul').appendChild(control);
     }
+    let buttonLeft=document.createElement("a");
+    buttonLeft.classList.add('slider_button_left');
+    this.slider.appendChild(buttonLeft);
+    let buttonRight=document.createElement("a");
+    buttonRight.classList.add('slider_button_right');
+    this.slider.appendChild(buttonRight);
     this.bindEvents();
   }
   move() {
@@ -65,15 +93,30 @@ class ControlSlider {
     this.moveTo(this.contador);
   }
   resetIndicator(){
-    this.slider.querySelectorAll(this.selector_controls+' li.active')
+
+    this.slider.querySelectorAll('.slider_slide')
     .forEach( item => item.classList.remove('active') );
+    
+    this.slider.querySelectorAll(this.selector_controls+' li')
+    .forEach( item => item.classList.remove('active') );
+
+    this.externalControls.querySelectorAll('.slider_exterternal_control')
+    .forEach( item => item.classList.remove('active') );    
+
   }
   moveTo(index){
     let left = index*100;
     this.resetIndicator();
     this.container.style.left='-'+left+'%';
+
+    this.slider.querySelector('.slider_slide:nth-child('+(index+1)+')').classList.add('active')
+
     if (!this.useControls) return;
-      this.slider.querySelector(this.selector_controls+' li:nth-child('+(index+1)+')').classList.add('active')
+
+    this.slider.querySelector(this.selector_controls+' li:nth-child('+(index+1)+')').classList.add('active')
+
+    this.externalControls.querySelector(' .slider_exterternal_control:nth-child('+(index+1)+')').classList.add('active')
+
   }
 
 }
@@ -190,6 +233,75 @@ class ControlCalendar {
 
 }
 
+class ControlModal {
+  constructor(options){
+    this.container = options.container;
+    this.bindEvents();
+    this.launchModal()
+  }
+  bindEvents(){
+    this.container.addEventListener('click',()=>this.launchModal());
+  }
+
+  launchModal(){
+
+    document.body.classList.add('modeModal');
+
+    let modalContainer=document.createElement("div");
+    modalContainer.setAttribute("id", "modal-container");
+    document.body.appendChild(modalContainer);    
+
+    let backModal=document.createElement("div");
+    backModal.classList.add('backModal');
+    backModal.addEventListener('click',()=>this.destroyModal());
+    modalContainer.appendChild(backModal);
+
+    let divModal=document.createElement("div");
+    divModal.classList.add('controModal');
+    divModal.classList.add('modal');
+    // divModal.setAttribute("id", "div-modal");
+    divModal.innerHTML=`<div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>`;
+
+    modalContainer.appendChild(divModal);
+
+    // document.getElementById('div-modal').innerHTML=`hola`;
+
+    /*  
+    let divButtonClose=document.createElement("a");
+    divButtonClose.classList.add('btn');
+    divButtonClose.classList.add('btn-danger');
+    divButtonClose.textContent='X';
+    divButtonClose.addEventListener('click',()=>this.destroyModal());
+    divModal.appendChild(divButtonClose);
+    */
+    // divModal.setAttribute("id", "idModal");
+
+  }
+
+  destroyModal(){
+
+    document.body.classList.remove('modeModal');
+    document.querySelector('#modal-container').remove();
+  
+  }
+
+}
 module.exports = ()=>{
   
   new ControlSlider({
@@ -207,6 +319,53 @@ module.exports = ()=>{
       console.log(date);
     }
   });
+
+  new ControlModal({
+    container:document.querySelector("#modal_link")
+  })
+  window.onload = () => {
+
+    let pinged=false;
+    let nav=document.querySelector('nav');
+    let coords = nav.getBoundingClientRect()
+    let stickyScrollPoint = coords.top;
+    console.log(stickyScrollPoint);
+    // let stickyScrollPoint = document.querySelector(".anchor").offsetHeight;
+    
+    // console.log(stickyScrollPoint);
+
+    function pingToTop(){
+      if(pinged) return;
+      nav.classList.add('pined');
+      pinged=true;
+
+    }
+    function unPingFromTop(){
+      if(!pinged) return;
+      nav.classList.remove('pined');
+      pinged=false;
+    }
+    window.addEventListener('scroll',function(ev){
+      
+      let coords = nav.getBoundingClientRect()
+      // console.log(window.scrollY +' === '+stickyScrollPoint)
+      if(window.scrollY<stickyScrollPoint){ 
+
+        return unPingFromTop() 
+      
+      }
+      
+      if(coords.top<=0){
+
+        // stickyScrollPoint = coords.top;
+        // console.log(coords)
+        return pingToTop();
+
+      } 
+
+    });
+
+  }
 
 }
 

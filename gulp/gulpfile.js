@@ -25,9 +25,6 @@ gulp tutorial
   \ \  \_| \ \  \\  \\ \  \ \  \ \  \    \ \  \ \  \_|\ \
    \ \__\   \ \__\\ _\\ \__\ \__\ \__\    \ \__\ \_______\
     \|__|    \|__|\|__|\|__|\|__|\|__|     \|__|\|_______|
-
-
-
 */
 
 /*
@@ -58,25 +55,25 @@ const writeFile = require('write');
 
 // browserify;
 const browserify = require('browserify'),
-	babelify = require('babelify'),
-	uglify = require('gulp-uglify'),
-	source = require('vinyl-source-stream'),
-	buffer = require('vinyl-buffer'),
-	webpack = require('webpack-stream');
+	babelify        = require('babelify'),
+	uglify          = require('gulp-uglify'),
+	source          = require('vinyl-source-stream'),
+	buffer          = require('vinyl-buffer'),
+	webpack         = require('webpack-stream');
 	
 
-const exec = require('child_process').exec;
+const exec       = require('child_process').exec;
 
-const inlineCss = require('gulp-inline-css');
+const inlineCss  = require('gulp-inline-css');
 
-const request = require('request');
+const request    = require('request');
 
-const ftp = require('vinyl-ftp');
+const ftp        = require('vinyl-ftp');
 
-const restart = require('gulp-restart');
+const restart    = require('gulp-restart');
 
-const fs = require('fs');
-const ini = require('ini');
+const fs         = require('fs');
+const ini        = require('ini');
 
 /*
 ##     ##    ###    ########   ######
@@ -172,10 +169,11 @@ const jade2php_task = () => {
 		'/app/sources/jade/email*.jade --out ' +
 		folder +
 		'/app/views/php';
-	console.log(chalk.bgMagenta(' building php views  .... '));
 	// console.log(command);
 	return exec(command, function (err, stdout, stderr) {
 		console.log(stderr);
+		console.log(chalk.bgMagenta(' building php views  .... '));
+		// return livereload();
 	});
 };
 
@@ -496,7 +494,7 @@ const deploy_task = async () => {
 
 	const globs4 = ['./../index.php'];
 
-	const indextxt = "<?php chdir('" + folder + "'); include 'index.php';";
+	const indextxt = "<?php chdir('" + folder.replace('../','') + "'); include 'index.php';";
 
 	globs = [];
 	if (argv.a == 'css') {
@@ -518,10 +516,14 @@ const deploy_task = async () => {
 	} else if (argv.a == 'work') {
 		globs = globs3;
 	} else if (argv.a == 'index') {
-		writeFile.sync('index.php', indextxt);
-		globs = globs4;
+		writeFile.sync('../index.php', indextxt);
+		globs = globs4
+			.concat([
+				'./../.htaccess',
+				'./../404.html'
+			]);
 	} else if (argv.a == 'install') {
-		writeFile.sync('index.php', indextxt);
+		writeFile.sync('../index.php', indextxt);
 		globs = globspc
 			.concat(globs4)
 			.concat(globspi)

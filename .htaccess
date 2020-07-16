@@ -213,6 +213,7 @@ AddDefaultCharset utf-8
 # Option 1: rewrite www.example.com → example.com
 
 <IfModule mod_rewrite.c>
+
     RewriteCond %{HTTPS} !=on
     RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
     RewriteRule ^ http://%1%{REQUEST_URI} [R=301,L]
@@ -590,3 +591,7 @@ FileETag None
 # RewriteRule ^maqueta$ maqueta/index.html [L,r=301]
 # RewriteRule ^comming$ index.php?modulo=comming [L]
 # </IfModule>
+
+<IfModule mime_module>
+  AddHandler application/x-httpd-ea-php73 .php .php7 .phtml
+</IfModule>

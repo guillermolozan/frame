@@ -1,0 +1,19 @@
+-gallery=ventas
+-ul_class='responsive'
+
+.home_block_ventas
+	.container
+		h2!= gallery.name
+		.row
+			each men_item in gallery.items
+				div(class="col s12 m4")
+					.card
+						.card-image
+							+img_item(men_item)
+						.card-content
+							h4: +item(men_item)
+							div!= men_item.html
+							p= men_item.text						
+							//- +post_item(men_item,true,'h4')
+							a.mas(href="#{men_item.url}") ver más
+							

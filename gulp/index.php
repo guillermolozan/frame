@@ -1,1 +1,0 @@
-<?php chdir('../tecno'); include 'index.php';

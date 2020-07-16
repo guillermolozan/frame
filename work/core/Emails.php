@@ -28,6 +28,64 @@ Class Emails {
 
 	}
 
+	function emailFields($type="text",$fields){
+
+		if($type=="html"){
+
+			$html="<table>";
+
+			foreach($fields as $name=>$item)
+			{	
+				switch($item['type']){
+					case "textarea":
+						$html.=
+							"<tr><th><br>".
+							$item['label'].
+							":</th></tr>".
+							"<tr><td>".
+							$_POST[$name].
+							"</td></tr>";
+					break;
+					default:
+						$html.=
+							"<tr><th>".
+							$item['label']."</th>".
+							"<td>: ".
+							$_POST[$name].
+							"</td></tr>";
+					break;
+				}	
+			}
+
+			$html.="</table>";
+
+		} elseif($type=="text"){
+
+			$html="\n\n";
+
+			foreach($fields as $name=>$item)
+			{	
+				switch($item['type']){
+					case "textarea":
+						$html.=$item['label'].":\n".$_POST[$name]."\n\n";
+					break;
+					default:
+						$html.=$item['label'].": ".$_POST[$name]."\n\n";
+					break;
+				}	
+			}
+
+			$html.="\n\n";
+
+		}
+
+		return $html;
+
+	}
+
+
+
+
 	function send($emails,$subject,$vars=[],$opt=[]){
 
 		// prin($vars);
@@ -40,7 +98,6 @@ Class Emails {
 
 		$email_dir = APP.$this->email_test_folder;
 
-		
 		$view_email= new \core\Views($this->views.'/inline');
 		// assing vars inline
 		$view_email->assign(
@@ -85,18 +142,18 @@ Class Emails {
 			// 	}
 			// }
 
-			$html_email=$html_email."<div class='preemail'>
-			<table>
-			<tr><td><b>SUBJECT:</b></td><td>".$subject."</td></tr>
-			<tr><td><b>FROM:</b></td><td>".$this->vars['web_name']."</td></tr>
-			<tr><td><b>TO:</b></td><td>".$emails."</td></tr>
-			</table></div>
-			<style>
-/*.preemail { background:#C34D4D;padding: 1em 0;color:#fff;}*/
-.preemail table { text-align:left; margin:0 auto; font-size: 13px; }
-.preemail table td { color:inherit; padding: 2px 1em; }
-			</style>
-			";
+			$html_email=$html_email."<div class='preemail'>\n".
+			"<table>\n".
+			"<tr><td><b>SUBJECT:</b></td><td>".$subject."</td></tr>\n".
+			"<tr><td><b>FROM:</b></td><td>".$this->vars['web_name']."</td></tr>\n".
+			"<tr><td><b>TO:</b></td><td>".$emails."</td></tr>\n".
+			"</table></div>\n".
+			"<style>\n".
+			"/*.preemail { background:#C34D4D;padding: 1em 0;color:#fff;}*/\n".
+			".preemail table { text-align:left; margin:0 auto; font-size: 13px; }\n".
+			".preemail table td { color:inherit; padding: 2px 1em; }\n".
+			"</style>\n".
+			"";
 
 			$file=$email_dir."/".str_replace(' ','_',$name).'.html';
 			$f1=fopen($file,"w+");

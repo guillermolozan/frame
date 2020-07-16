@@ -117,7 +117,7 @@ class Routes {
 		);
 
 		// prin(SERVER::host());
-		
+
 
 		if($uri=='') $uri='/$';
 
@@ -196,7 +196,7 @@ class Routes {
 			return $this->output('controller=Runtime&method=comming');
 
 		}			
-
+		
 		header("HTTP/1.0 404 Not Found");
 		
 		include('../404.html');
@@ -218,6 +218,7 @@ class Routes {
 
 	function response(){
 
+		
 		if($this->disabled) exit();
 
 		$this->render();

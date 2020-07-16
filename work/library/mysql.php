@@ -2057,6 +2057,22 @@ function processFields($fields){
 
 			}
 
+			if(false){
+
+				if($fields2['value']=='')
+					if($fields2['type']=='email'){
+						$fields2['value']="lorem@ipsum.com";
+					} elseif($fields2['type']=='tel'){
+						$fields2['value']="999888777";	
+					} elseif($fields2['type']=='textarea'){
+						$fields2['value']=$fields2['label'].str_repeat(" lorem ipsum ",6);	
+					} else {
+						$fields2['value']=$fields2['label']." lorem ipsum";
+					}
+				
+
+			}
+			
 			$fields3[]=$fields2;
 		}
 

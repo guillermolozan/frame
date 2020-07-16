@@ -1,0 +1,14 @@
+[
+"./../work/app/sources/components/common/common.js",
+"./../work/app/sources/components/menu_left/menu_left.js",
+"./../work/app/sources/components/block_gallery/block_gallery.js",
+"./../clean/app/sources/components/header/header.js",
+"./../clean/app/sources/components/block_banner/block_banner.js",
+"./../clean/app/sources/components/home_block_libros/home_block_libros.js",
+"./../clean/app/sources/components/home_block_ventas/home_block_ventas.js",
+"./../clean/app/sources/components/gallery_products/gallery_products.js",
+"./../onelimites/app/sources/components/product_detail/product_detail.js",
+"./../clean/app/sources/components/form_contact/form_contact.js",
+"./../onelimites/app/sources/components/products_reel/products_reel.js",
+"./../asiste/app/sources/components/home_block_links/home_block_links.js"
+]

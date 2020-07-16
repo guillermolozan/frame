@@ -1,4 +1,5 @@
 
+// @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'
 
 // banner
 .custom_slider
@@ -20,10 +21,10 @@
 		> .slider_slide
 			display flex
 			flex-direction column
-			min-width 100%
 			align-items center
 			align-content center
-			width 100%
+			min-width 100%
+			// width 100%
 			> *
 				display block
 			img
@@ -38,6 +39,7 @@
 				// object-fit content
 				// height 200px
 			// margin-right -4px
+	
 	> .slider_controls ul
 		padding 0px
 		text-align center
@@ -50,35 +52,52 @@
 			list-style-type none
 			background-color: #444
 			width 20px
-			height 20px
+			height @width
 			border-radius 50%
-			margin-right: 5px
+			margin-right: 1em
 			cursor pointer
 			display inline-block
 			&.active
 				background-color skyblue
+	> .slider_button_left, > .slider_button_right
+		--button:70px
+		position absolute
+		width var(--button)
+		height var(--button)
+		top calc(50% - var(--button)/2 )
+		border-radius 50%;
+		background red	
+		cursor pointer
+	> .slider_button_left
+		left 20px;
+	> .slider_button_right
+		right 20px
+
+		
 
 .slider_external_controls ul
 	width 100%
-	width 200px
 	display flex
 	flex-direction row
-	flex-direction column
-	// flex-wrap: wrap
 	li
-		border 1px solid black
-		margin .5em
+		border 1px solid white
+		margin 1em
 		text-align center
 		background black
 		// max-width 150px
-		height 120px
+		max-height 100px
+		min-height 50px
+		overflow hidden
 		display flex
 		align-items center
 		align-content center
+		cursor pointer
+		&.active
+			border-color yellow
 		img
 			width 100%
 			display block
-
+// calendar
 .custom_calendar
 	font-family Roboto
 	display inline-block
@@ -113,4 +132,40 @@
 		padding 6px
 		&:hover
 			background-color: #db3b61
+// nav
+nav 
+	transition all 1s
+	&.pined
+		position: fixed
+		top 0px
+		left 0
+
+.modeModal
+	overflow hidden
+	#modal-container
+		position absolute
+		width 100%
+		height 100%
+		display flex
+		justify-content center
+		align-items center
+		.backModal
+			background rgba(black,.8)
+			z-index 5
+			width 100%
+			height 100vh
+			position absolute
+		.controModal
+			z-index 6
+			// background black
+			max-width 500px
+			width 100%
+			height 95vh
+			// border 1px solid white
+			min-height 300px
+			position relative
+			display block
+			max-height 95vh
+
+			// position absolute
 

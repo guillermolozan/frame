@@ -1,3 +1,7 @@
+
+a.btn#modal_link MODAL
+
+
 if(banner)
 	.custom_slider
 		.slider_container
@@ -11,18 +15,18 @@ if(banner)
 
 .slider_external_controls: ul
 	each item in banner
-		li: img(src="#{item.img}")
+		li.slider_exterternal_control: img(src="#{item.img}")
 
 h2 CALENDAR
 .custom_calendar
 
-
-nav: .nav-wrapper
-	a.brand-logo(href='#') Logo
-	ul#nav-mobile.right.hide-on-med-and-down
-		li: a(href='sass.html') Sass
-		li: a(href='badges.html') Components
-		li: a(href='collapsible.html') JavaScript
+.container
+	nav: .nav-wrapper
+		a.brand-logo(href='#') Logo
+		ul#nav-mobile.right.hide-on-med-and-down
+			li: a(href='sass.html') Sass
+			li: a(href='badges.html') Components
+			li: a(href='collapsible.html') JavaScript
 
 p hola
 p hola

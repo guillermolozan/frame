@@ -385,5 +385,28 @@ class Controller {
 	
 	}
 
+	function setMessage($files_test,$msg=false){
 
+		$msg=($msg)?$msg:$this->default_message;
+
+		$this->message=$msg;
+
+		// prin($this->email);
+
+		if($this->view->vars['email_test']){
+ 
+			$this->message.= '<ul><li>pruebas</li>';
+			foreach($files_test as $fils){
+				$this->message.='<li><a target="_black" href="'.$fils['link'].'">'.$fils['link'].'</a></li>';
+			}
+			$this->message.='</ul>';
+	
+		}
+
+		$this->view->assign([
+			'message'       => $this->message,
+		]);
+
+	}
+	
 }

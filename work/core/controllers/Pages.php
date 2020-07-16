@@ -36,6 +36,9 @@ class Pages extends \controllers\Controller {
 	}
 
 
+
+
+
 	function index($params){
 
 
@@ -56,19 +59,19 @@ class Pages extends \controllers\Controller {
 			
 			'head_description' => $head_description,
 
-			'head_keywords' 	 => $head_keywords,
+			'head_keywords'    => $head_keywords,
 			
 			'title'            => $post['name'],
 			
 			'post'             => [
-											'name' =>$post['name'],
+				'name' =>$post['name'],
 
-											'html' =>$post['html'],
+				'html' =>$post['html'],
 
-											'img'  =>$post['img'],
+				'img'  =>$post['img'],
 
-											'parts'=>'1'
-										],
+				'parts'=>'1'
+			],
 		
 		]);
 
@@ -95,10 +98,114 @@ class Pages extends \controllers\Controller {
 
 			}
 
-
 			if($params['with_form']){
 			
-				// prin('debe tener formulario');
+				$this->fields=[
+					'page_name'=>[
+						'label'    =>'Título de Página',
+						'value'    =>$post['name'],
+						'hidden'   =>'1',
+					],
+					'page_url'=>[
+						'label'    =>'Url de Página',
+						'value'    =>$this->view->vars['base'].$this->view->vars['uri'],
+						'hidden'   =>'1',
+					],					
+					'nombre'=>[
+						'class'    =>'validate',
+						'label'    =>'Nombres y Apellidos',
+						'required' =>'1',				
+					],
+					'telefono'=>[
+						'label'    =>'Teléfono ',
+						'required' =>'1',
+						'type'     =>'tel',
+					],
+					'ciudad'=>[
+						'label'    =>'Ciudad',
+					],
+					'email'=>[
+						'class'    =>'validate',
+						'label'    =>'Email',
+						'type'     =>'email',
+						'required' =>'1',
+					],
+					'comentario'=>[
+						'divclass' =>'col s12 l12',
+						'class'    =>'validate',
+						'label'    =>'Mensaje',
+						'type'     =>'textarea',
+						'value' =>'Estoy interesado en el el producto '.$post['name']."\n".
+							"Por favor contacten conmigo.\n".
+							"Gracias\n".
+							""
+					],
+				];
+
+				if($_SERVER['REQUEST_METHOD']=='POST'){
+		
+					$email= new \controllers\Emails($this->view);
+
+					
+					$sended=$email->send(
+						
+						$this->view->vars['web_email_admin'],
+						"Mensaje de Cotización",
+						[
+							'name_right' =>$this->view->vars['web_name'],
+							'title'      =>"Consulta",
+							'subtitle'   =>'Se recibió un mensaje desde la web '.$this->view->vars['web_name'],
+							'html'       =>$email->emailFields('html',$this->fields)
+						],
+						[
+							'name'		 =>$this->view->vars['uri'].' para administrador'
+						]
+
+					);
+
+					$sended_response=$email->send(
+						$_POST['email'],
+						"Mensaje de Cotización",
+						[
+							'name_right' =>$this->view->vars['web_name'],
+							'title'      =>"Cotización",
+							// 'subtitle'   =>'Se recibió un mensaje desde la web '.$this->view->vars['web_name'],
+							'html'       =>"<p>Gracias por escribirnos, en breve estaremos poniéndonos en contacto con usted</p>"
+						],
+						[
+							'name'		 =>$this->view->vars['uri'].' para usuario'
+						]
+					);
+		
+
+					if($sended){	
+						$this->setMessage($email->files_test);	
+					} 
+					// else { echo 'noooo'; }
+		
+					if(0)
+					insert(
+						array_merge(
+							[
+								'fecha_creacion' =>'now()',
+								'fecha'          =>'now()',
+							],
+						$this->insertFields()
+						),
+						"contacto");
+		
+					// prin($this->message);
+		
+				}		
+		
+				$fields_reformated=processFields($this->fields);
+
+				$this->view->assign([	
+					'form_fields'    =>$fields_reformated,
+					'form_name'      =>'page',
+					'form_button'    =>'ENVIAR',
+					'form_title'     =>'Consulta',
+				]);
 
 			}
 
@@ -177,11 +284,8 @@ class Pages extends \controllers\Controller {
 			$this->view->assign([
 				
 				'menu_post'  => $menu,
-								
 				'group_post' => $group,
-				
 				'breadcrumb' => $breadcrumb,
-				
 				'canonical'  => $canonical,
 
 			]);
