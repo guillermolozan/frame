@@ -75,6 +75,8 @@ require("../../../../onelimites/app/sources/components/product_detail/product_de
 require("../../../../clean/app/sources/components/form_contact/form_contact.js")();
 require("../../../../onelimites/app/sources/components/products_reel/products_reel.js")();
 require("../../../../asiste/app/sources/components/home_block_links/home_block_links.js")();
+require("../../../../clean/app/sources/components/block_habitacion/block_habitacion.js")();
+require("../../../../clean/app/sources/components/home_block_importaciones/home_block_importaciones.js")();
 // Finish Components
 
 });

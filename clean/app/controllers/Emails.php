@@ -6,7 +6,7 @@ class Emails extends \core\Emails {
 
 	var $vars          = [];
 	var $test          = false;
-	var $logo          = 'logo.png';
+	var $logo          = 'clean-logo.jpg';
 	var $logo_height   = '70px';
 	var $from_email    = 'ventas@sumarseg.com';
 	

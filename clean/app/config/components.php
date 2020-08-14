@@ -10,6 +10,8 @@ return [
 	'home_block_libros'    => 'home_block_libros|es6',
 	'home_block_ventas'    => 'home_block_ventas|es6',
 
+	'home_block_welcome'   => 'home_block_welcome',
+	
 	// 'home_block_notes'       => 'asiste/home_block_notes',	
 	// 'home_block_importaciones'    => 'home_block_importaciones|es6',
 	// 'home_block_descuentos'       => 'home_block_descuentos|es6',
@@ -40,6 +42,13 @@ return [
 
 	'home_block_links'       => 'asiste/home_block_links|es6',
 
-	'whatsapp_button'       => 'whatsapp_button',
+	'whatsapp_button'        => 'whatsapp_button',
+
+	// HOME HABITACIONES / PRODUCTS ITEMS
+	'block_habitaciones'	 => 'block_habitaciones',
+	// BLOCK HABITACION
+	'block_habitacion'		 => 'block_habitacion|es6',	
+
+	'home_block_importaciones'=> 'home_block_importaciones|es6',
 
 ];

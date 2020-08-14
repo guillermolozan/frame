@@ -10,16 +10,17 @@ return [
 		'name'  =>'Inicio',
 		'url'   =>((isset($start['devel']))?$start['devel']:''),
 	],
-	// 'quienes-somos'                        => 'QUIENES SOMOS',
-	// 'libros'                      => 'Ventas',
-	'ventas'                      => 'Productos',
+
+	'empresa'                        => 'EMPRESA',
+	
+	'servicios'                      => 'SERVICIOS',
+	
+	'productos'                      => 'PRODUCTOS',
+
 	'blogs'                       => 'Blogs',
-	// 'productos1'                     => 'PRODUCTOS 1',
-	// 'productos2'                      => 'PRODUCTOS 2',
-	// 'descuentos'                      => 'OFERTAS',
+
 	'videos'                   => 'Videos',
-	// 'servicios'                   => 'Servicios',
-	// 'suscribete'                  => 'Suscríbete',
+
 	'contactenos'                  => 'Contáctenos',
 	// 'contactenos'                  => 'Contáctenos',
 

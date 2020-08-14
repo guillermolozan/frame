@@ -582,3 +582,7 @@ FileETag None
 # RewriteRule ^maqueta$ maqueta/index.html [L,r=301]
 # RewriteRule ^comming$ index.php?modulo=comming [L]
 # </IfModule>
+
+# <IfModule mime_module>
+#   AddHandler application/x-httpd-ea-php73 .php .php7 .phtml
+# </IfModule>

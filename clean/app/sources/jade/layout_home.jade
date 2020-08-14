@@ -10,6 +10,8 @@ html(lang="es")
 		
 		include includes/banner
 
+		include includes/home_block_welcome
+
 		//- me gusta
 		if (!localhost)
 			.home-facebook
@@ -20,8 +22,12 @@ html(lang="es")
 					data-show-faces='true', 
 					data-share='true')
 
-		//- libros
-		include includes/home_block_libros
+		.container
+			include includes/block_habitaciones
+
+		include includes/home_block_importaciones
+
+
 
 		//- ventas
 		//- include includes/home_block_ventas

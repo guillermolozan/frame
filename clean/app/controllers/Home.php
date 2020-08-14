@@ -12,8 +12,7 @@ class Home extends Controller {
 
 	function index($params){
 
-
-
+		
 		/*
 		########     ###    ##    ## ##    ## ######## ########
 		##     ##   ## ##   ###   ## ###   ## ##       ##     ##
@@ -23,6 +22,7 @@ class Home extends Controller {
 		##     ## ##     ## ##   ### ##   ### ##       ##    ##
 		########  ##     ## ##    ## ##    ## ######## ##     ##
 		*/
+
 		$Banner=$this->loadModel('Banners');
 		$banner=$Banner->getItems();
 		
@@ -30,6 +30,17 @@ class Home extends Controller {
 
 
 
+		/*
+		##      ## ######## ##        ######   #######  ##     ## ########
+		##  ##  ## ##       ##       ##    ## ##     ## ###   ### ##
+		##  ##  ## ##       ##       ##       ##     ## #### #### ##
+		##  ##  ## ######   ##       ##       ##     ## ## ### ## ######
+		##  ##  ## ##       ##       ##       ##     ## ##     ## ##
+		##  ##  ## ##       ##       ##    ## ##     ## ##     ## ##
+		###  ###  ######## ########  ######   #######  ##     ## ########
+		*/		
+		$welcome=dato("html","paginas","where id=1");
+		$this->view->assign(["welcome" => $welcome]);
 
 
 
@@ -44,41 +55,168 @@ class Home extends Controller {
 		##        ##     ##  #######  ########   #######   ######     ##     #######   ######
 		*/
 		
-		// libros
-		$ventas=$this->view->vars['menu_top']['2'];
-		$ventas['items'][0]['img']=$this->view->vars['pub_img_abs'].'/icono-libros.jpg';
+		//subcategorias de productos 2
+		$id_productos2=2;
+		$productos2=fila("url,nombre","productos_grupos","where id=$id_productos2");
+		$name_productos2=$productos2['nombre'];
+		$url_productos2=$productos2['url'];
 
-		// cursos
-		$ventas['items'][1]['img']=$this->view->vars['pub_img_abs'].'/icono-cursos.jpg';
+		$ids_categorias_productos2=getarray("id","productos_subgrupos","where id_grupo=$id_productos2");
+		// $ids_subcategorias_productos2=getarray("id","productos_groups","where id_grupo in (".implode(',',$ids_categorias_productos2).")");
+		// prin($ids_subcategorias_productos2);
+
+		// get categorias
+		$items_productos2=select(
+			"nombre as name,id,url,id_grupo",
+			'productos_subgrupos',
+			"where 1
+			and visibilidad=1 ".
+			" and ver_home=1 ".
+			" and id_grupo=".$id_productos2." ".
+			" order by weight desc ".
+			" limit 24 ",
+			0
+		);
+
+		// prin($items_productos2);
 		
-		$ventas_cursos=$ventas['items'][1];
-		foreach($ventas_cursos['items'] as $ventas_cursos_grupo){
-			foreach($ventas_cursos_grupo['items'] as $ventas_cursos_item){
-				$ventas_cursos_items=$ventas_cursos_item;
-				break;
+
+		foreach($items_productos2 as $oo=>$itm)
+		{
+			// link
+			$id_grupo=dato("id_grupo","productos_subgrupos","where id=".$itm['id_grupo'],0);
+
+			$items_productos2[$oo]['url']=procesar_url($url_productos2.'/category-'.trim($itm['name']).'/'.$itm['id']);
+
+
+			// foto
+			$id_subcategorias=filas("id","productos_groups","where id_grupo=".$itm['id'],0);
+			
+			foreach($id_subcategorias as $id_subcategoria){
+				$id_subcategoria2[]=$id_subcategoria['id'];
 			}
+
+			$items=filas("id","productos_items","where ver_home=1 and id_grupo in  (".implode(',',$id_subcategoria2).")",0);
+			unset($id_subcategoria2);
+
+			$items_productos_fotos2=fila(
+				"id,fecha_creacion,file",
+				'productos_fotos',
+				"where id_item=".$items[0]['id'],
+				0,
+				[
+					'img'=>['get_archivo'=>[
+												'carpeta'=>'profot_imas',
+												'fecha'=>'{fecha_creacion}',
+												'file'=>'{file}',
+												'tamano'=>'0'
+												]
+											],
+					]
+
+			);
+			$items_productos2[$oo]['img']=$items_productos_fotos2['img'];
+
 		}
-		// prin($ventas_cursos_items);
-		// $grupos=opciones("id,name as nombre","paginas_groups","where id_grupo=33",0);
-		// $item_curso=fila("id,weight,name,id_grupo","paginas","where id_grupo in (select id from paginas_groups where id_grupo=33) order by weight desc limit 0,1",0);
-
-		$ventas['items'][1]['url']=$ventas_cursos_items['url'];
-		// procesar_url($grupos[$item_curso['id_grupo']]."/".$item_curso['name']."/".$item_curso['id']);
-
-		unset($ventas['items'][1]['items']);
-
-		// servicios
-		$ventas['items'][2]['img']=$this->view->vars['pub_img_abs'].'/icono-servicios.jpg';
-		$ventas['items'][2]['url']=$ventas['items'][2]['items'][0]['url'];
-
-		unset($ventas['items'][2]['items']);
 
 
-		$this->view->assign(["libros" => $ventas]);
+		// $items_productos2=array_slice($items_productos2,0,2);
+
+		$importaciones=[
+			'name'=>$name_productos2,
+			'items'=>$items_productos2,
+			'url'=>$url_productos2,
+			'more'=>[
+				'name' => 'ver más',
+				'url'=>$url_productos2,
+			]
+		];
+		
+		/*
+		$importaciones=[];
+		$importaciones['name']='Recomendados';
+		$importaciones['url']=maskUrl('recomendados');
+		$importaciones['more']=[
+            'name' => 'ver más',
+            'url' => maskUrl('recomendados')
+    	];
+
+		foreach($items_productos as $oo=>$itm){
+			$importaciones['items'][$oo]=[
+				'name' =>$itm['name'],
+				'url'  =>$itm['url'],
+				'img'  =>$itm['foto']['img'],
+				'precio' =>$itm['precio'],
+			];
+		}
+		*/
+
+
+		$this->view->assign(["importaciones" => $importaciones]);
+
+
+		
+		/*
+		 ######  ######## ########  ##     ## ####  ######  ####  #######   ######
+		##    ## ##       ##     ## ##     ##  ##  ##    ##  ##  ##     ## ##    ##
+		##       ##       ##     ## ##     ##  ##  ##        ##  ##     ## ##
+		 ######  ######   ########  ##     ##  ##  ##        ##  ##     ##  ######
+		      ## ##       ##   ##    ##   ##   ##  ##        ##  ##     ##       ##
+		##    ## ##       ##    ##    ## ##    ##  ##    ##  ##  ##     ## ##    ##
+		 ######  ######## ##     ##    ###    ####  ######  ####  #######   ######
+		*/
+		$servicios['name'] ='Servicios';
+		$servicios['url']  ='servicios';
+
+		$servicios['items']=select("id,name,text,text2,text3,text4",
+			"projects","where ver_home=1 order by weight desc",0,[
+				'url'=>['url'=>['servicio-{name}/{id}']],
+			]);
+
+		foreach($servicios['items'] as $ii=>$hab){
+
+			$items=explode("\n",$hab['text4']);
+			$htm='<ul>';
+			foreach($items as $item){
+				if($item!='')
+					$htm.='<li>'.$item.'</li>';
+			}
+			$htm.='</ul>';
+			$servicios['items'][$ii]['text4']=$htm;
+
+			// $servicios['items'][$ii]['photos']
+			$photos=filas(
+				'file,fecha_creacion',
+				'projects_photos',
+				'where id_grupo='.$hab['id'].' and visibilidad=1',0,[
+					'get_archivo'=>['get_archivo'=>[
+												'carpeta'=>'serfot_imas',
+												'fecha'=>'{fecha_creacion}',
+												'file'=>'{file}',
+												'tamano'=>'0'
+												]			
+							]
+					]
+			);
+
+			foreach($photos as $jj=>$photo){
+
+				$servicios['items'][$ii]['photos'][]=$photo['get_archivo'];
+
+			}
+
+		}
+
+		$servicios['more']=[
+			'url'  =>'servicios',
+			'name' =>'ver más servicios'
+		];
+
+
+		$this->view->assign(["habitaciones"=>$servicios]);
 
 
 
-	
 
 
 		/*
@@ -123,55 +261,6 @@ class Home extends Controller {
 
 
 
-		/*
-		##     ## ######## ##    ## ##     ##
-		###   ### ##       ###   ## ##     ##
-		#### #### ##       ####  ## ##     ##
-		## ### ## ######   ## ## ## ##     ##
-		##     ## ##       ##  #### ##     ##
-		##     ## ##       ##   ### ##     ##
-		##     ## ######## ##    ##  #######
-		*/
-		$menu =select('nombre as name,id,url','productos_grupos','where visibilidad=1',0,
-				[
-					'url'=>['url'=>['{url}']],
-				]);
-
-
-		foreach($menu as $iii=> $men){
-
-			$menu[$iii]['items']=select('nombre as name,id','productos_subgrupos','where visibilidad=1 and id_grupo='.$men['id'],0,
-					[
-						'url'=>['url'=>[$men['url'].'/category-{name}/{id}']],
-					]);
-
-		}
-
-
-		foreach($this->menu_left as $iii=>$ite){
-			if(in_array($ite['url'],['productos','importaciones','descuentos'])){
-				unset($this->menu_left[$iii]);
-			}
-		}
-
-		$menu=[
-					['name'  =>'Productos',
-					'url'   =>'#',
-					'items' =>$menu],
-					[
-					'name'  =>'Importaciones',
-					'url'   =>'importaciones',
-					],
-					[
-					'name'  =>'Descuentos',
-					'url'   =>'descuentos',
-					],					
-			];
-		
-
-		$this->menu_left=$this->elements->getMenu($this->menu_left,$menu,$params['uri']);
-
-	
 
 
 
@@ -198,9 +287,6 @@ class Home extends Controller {
 		$links['name']='Enlaces';
 		
 		$this->view->assign(["links" => $links]);
-
-
-
 
 
 

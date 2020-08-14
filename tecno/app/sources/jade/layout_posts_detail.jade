@@ -48,6 +48,12 @@ html(lang="es")
 											-main=false
 										else
 											h2: +item(post)
+								.fb-like(
+									data-layout='standard', 
+									data-action='like', 
+									data-size='small', 
+									data-show-faces='false', 
+									data-share='true')
 								if post.imgfirst
 									if(post.img)
 										div.center-align

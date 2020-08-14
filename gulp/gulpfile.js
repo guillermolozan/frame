@@ -384,8 +384,10 @@ const watch_task = () => {
 		}
 	});
 
-	if (activelivedeploy) gutil.log(gutil.colors.bgGreen('live deploy activado'));
-	else gutil.log(gutil.colors.bgRed('live deploy desactivado'));
+	if (activelivedeploy) 
+		gutil.log(gutil.colors.bgGreen('live deploy activado'));
+	else 
+		gutil.log(gutil.colors.bgRed('live deploy desactivado'));
 
 	const watcher = gulp.watch(modifies);
 
@@ -394,6 +396,15 @@ const watch_task = () => {
 	});
 };
 
+/*
+##       #### ##     ## ######## ########  ######## ########  ##        #######  ##    ##
+##        ##  ##     ## ##       ##     ## ##       ##     ## ##       ##     ##  ##  ##
+##        ##  ##     ## ##       ##     ## ##       ##     ## ##       ##     ##   ####
+##        ##  ##     ## ######   ##     ## ######   ########  ##       ##     ##    ##
+##        ##   ##   ##  ##       ##     ## ##       ##        ##       ##     ##    ##
+##        ##    ## ##   ##       ##     ## ##       ##        ##       ##     ##    ##
+######## ####    ###    ######## ########  ######## ##        ########  #######     ##
+*/
 const live_deploy_task = function (file) {
 	if (activelivedeploy) {
 		// console.log(dconn);
@@ -550,10 +561,14 @@ const deploy_task = async () => {
 	// turn off buffering in gulp.src for best performance
 	return gulp
 		.src(globs, { base: '..', buffer: false })
+		// .pipe(prueba())
 		.pipe(conn.newer(remotedir)) // only upload newer files
 		.pipe(conn.dest(remotedir));
 };
-
+// const prueba = (ele)=>{
+// 	console.log(ele);
+// 	return ele;
+// }
 /*
  ######   #######  ##     ## ########   #######  ##    ## ######## ##    ## ########  ######
 ##    ## ##     ## ###   ### ##     ## ##     ## ###   ## ##       ###   ##    ##    ##    ##

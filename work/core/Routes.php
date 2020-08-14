@@ -89,7 +89,6 @@ class Routes {
 
 	function render(){
 
-
 		global $Config;
 
 		global $start;
@@ -119,7 +118,9 @@ class Routes {
 		// prin(SERVER::host());
 
 
+
 		if($uri=='') $uri='/$';
+
 
 
 		$this->uri=$uri;
@@ -128,7 +129,7 @@ class Routes {
 		if(isset($this->routes[$uri]))
 		{
 			if(substr($this->routes[$uri],0,4)=='302:'){
-
+				
 				header("Location: ".substr($this->routes[$uri],4)); 
 
 			} elseif(substr($this->routes[$uri],0,4)=='301:'){

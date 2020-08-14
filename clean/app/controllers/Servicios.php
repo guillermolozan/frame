@@ -179,7 +179,7 @@ class Servicios extends \core\controllers\Pages {
 		} else {
 
 			$post = fila(
-			        "id,codigo,id_grupo,id_subgrupo,id_filtro,nombre as name,marca,descripcion as html,moneda,tags,weight,
+			        "id,precio,codigo,id_grupo,id_subgrupo,id_filtro,nombre as name,marca,descripcion as html,moneda,tags,weight,
 			        adjunto,fecha_creacion"
 			        ,$tabla_items
 			        ,"where id='".$params['item']."'"
@@ -238,7 +238,7 @@ class Servicios extends \core\controllers\Pages {
 
 
 
-		$post['precio']=(($post['moneda']=='1')?'US$':'S/.').$post['precio'];
+		$post['precio']=(($post['moneda']=='1')?'US$':'S/.').number_format($post['precio'],2);
 
 		$post['fotos']=select(
 				'id,file,fecha_creacion,weight',
@@ -298,15 +298,15 @@ class Servicios extends \core\controllers\Pages {
 				'label'    =>'Ciudad',
 			],	
 
-			'medio'=>[
-				'label'=>'Seleccione medio de pago',
-				'type'  =>'select',
-				'options'=>[
-					'Depósito a cuenta',
-					'Pago Link',
-					'Pago Efectivo contra entrega',
-				]
-			],	
+			// 'medio'=>[
+			// 	'label'=>'Seleccione medio de pago',
+			// 	'type'  =>'select',
+			// 	'options'=>[
+			// 		'Depósito a cuenta',
+			// 		'Pago Link',
+			// 		'Pago Efectivo contra entrega',
+			// 	]
+			// ],	
 
 			'email'=>[
 				// 'divclass' =>'col s12 l6',			
@@ -334,7 +334,12 @@ class Servicios extends \core\controllers\Pages {
 
 
 		$fields_reformated=processFields($this->fields);
-
+		$this->view->assign([	
+			'form_fields'    =>$fields_reformated,
+			'form_name'      =>'service',
+			'form_button'    =>'ENVIAR',
+			'form_title'     =>'Consulta',
+		]);
 		// prin($this->view->vars);
 		// 
 		if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -585,7 +590,7 @@ class Servicios extends \core\controllers\Pages {
 
 			// prin($params);
 			$fila=fila('id,nombre,url','productos_grupos','where url="'.$params['grup'].'"',0);
-
+			
 			$post['name']=$fila['nombre'];
 			$post['id']=$fila['id'];
 
@@ -594,7 +599,10 @@ class Servicios extends \core\controllers\Pages {
 			
 			// prin($params['level']);
 
-			$menu =select('nombre as name,id','productos_subgrupos','where visibilidad=1 and id_grupo='.$id_grupo.' order by weight desc',0,
+			$menu =select(
+					'nombre as name,id',
+					'productos_subgrupos','where visibilidad=1 and id_grupo='.$id_grupo.' order by weight desc',
+					0,
 					[
 						'url'=>['url'=>[$fila['url'].'/category-{name}/{id}']],
 					]);
@@ -606,9 +614,8 @@ class Servicios extends \core\controllers\Pages {
 				$daditem=dato("id_grupo","productos_groups","where id=".$params['item']);
 
 			// prin($menu);
-
 			// prin($params);
-
+			
 			// if( in_array($params['level'],['2','3']) )
 			foreach($menu as $iii=> $men){
 				
@@ -626,7 +633,9 @@ class Servicios extends \core\controllers\Pages {
 					)
 				)
 
-				$menu[$iii]['items']=select('name,id','productos_groups','where visibilidad=1 and id_grupo='.$men['id'].' order by weight desc',0,
+				$menu[$iii]['items']=select(
+						'name,id','productos_groups','where visibilidad=1 and id_grupo='.$men['id'].' order by weight desc',
+						0,
 						[
 							'url'=>['url'=>[$fila['url'].'/sub-category-{name}/{id}']],
 						]);
@@ -635,8 +644,6 @@ class Servicios extends \core\controllers\Pages {
 
 
 
-
-			// prin($menu);
 
 			if( in_array($params['level'],['1','2','3']) ){
 
@@ -648,7 +655,7 @@ class Servicios extends \core\controllers\Pages {
 					'items' =>$menu,
 					'class' =>'active'
 				]];
-
+				// prin($menu);
 
 			}
 
@@ -728,7 +735,9 @@ class Servicios extends \core\controllers\Pages {
 
 
 		$menu       = $this->elements->getM($menu,$params['uri']);
-		// prin($menu);
+
+		
+
 		// prin($menuleftfinal);
 
 		$menuleftfinal       = $this->elements->getM($menuleftfinal,$params['uri']);
@@ -749,7 +758,7 @@ class Servicios extends \core\controllers\Pages {
 
       	// prin($menu['items']['0']['items']['0']);
 
-		$this->view->assign(['menu_post' => $menu['items']['0']['items']['0']]);
+		$this->view->assign(['menu_post' => $menu['items']['0']]);
 
 
 
@@ -1009,7 +1018,7 @@ class Servicios extends \core\controllers\Pages {
 
 
 					if(trim($prod['precio'])!='')
-						$grupos_items[$ii]['items'][$iii]['precio']=(($prod['moneda']=='1')?'US$':'S/.').$prod['precio'];
+						$grupos_items[$ii]['items'][$iii]['precio']=(($prod['moneda']=='1')?'US$':'S/.').number_format($prod['precio'],2);
 
 
 					$fotos=fila(
@@ -1068,7 +1077,7 @@ class Servicios extends \core\controllers\Pages {
 
 				// precio
 				if(trim($prod['precio'])!='')
-					$items_productos[$iii]['precio']=(($prod['moneda']=='1')?'US$':'S/.').$prod['precio'];
+					$items_productos[$iii]['precio']=(($prod['moneda']=='1')?'US$':'S/.').number_format($prod['precio'],2);
 
 
 				$items_productos[$iii]['url']=procesar_url($grupos_array[$prod['id_grupo']].'/'.$prod['name'].'/'.$prod['id']);

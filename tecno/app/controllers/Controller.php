@@ -218,6 +218,9 @@ class Controller extends \core\Controller {
 				//gmap
 				'gmap_key'			 => 'AIzaSyDsA0HccVmhVLNFpys3BZZlmOemTq-peBA',
 
+				// smartlook
+				'smartlook'			 => '7f72aa0f7b8343f8ad60ca354f54f3cbe9a304c2',
+
 			]
 
 		);

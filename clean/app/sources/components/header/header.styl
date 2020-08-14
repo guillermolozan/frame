@@ -1,11 +1,12 @@
-menu_logo      ='logo.png'
+menu_logo      ='clean-logo.jpg'
+menu_logo_bg   =#50dffa
 
-menu_bg        =#357bb2
+menu_bg        =#000
 menu_color     =white
 menu_font_size =.84em
 menu_height    =50px
-menu_bg_over   =color1
-menu_color_over=white
+menu_bg_over   =white
+menu_color_over=#000
 
 // menu_bg        =rgba(black,.7)
 // menu_color     =white
@@ -15,7 +16,8 @@ menu_color_over=white
 // menu_color_over=black
 
 header_bg()
-	background url(imgs+'header-bg-bottom_line.jpg') repeat-x bottom
+	// background url(imgs+'header-bg-bottom_line.jpg') repeat-x bottom
+	background menu_logo_bg
 	&:after
 		content ""
 		width 422px
@@ -80,20 +82,28 @@ header_promo()
 		display none !important
 
 header_customize()
-	header nav > .container > .menu_top > li.logo a
-		@media $small-medium
-			transform scale(.6)
-		@media $small
-			transform scale(.6)
+	header 
+		// @media $small-medium
+		// 	height 200px
+		nav > .container > .menu_top 
+			@media $small-medium
+				height 64px
+			> li.logo a
+				@media $small-medium
+					transform scale(1.4) !important
+				@media $small
+					transform scale(1.4) !important
 	@media $large
 		header
 			nav
 				> .container 
+					// border 1px solid yellow
 					> .menu_top
+						// border 1px solid orange
 						> li
 							border-bottom 3px solid transparent
 							&.active,&:hover
-								border-bottom 3px solid #A6D644
+								border-bottom 3px solid #50dffa
 						.submenu > li
 							&.active,&:hover
 								background menu_bg
@@ -106,24 +116,35 @@ header_customize()
 			header
 				nav
 					// background menu_bg
-					background rgba(white,.9)
+					// background rgba(white,.9)
 					// box-shadow initial
+					// background menu_logo_bg
+					background menu_logo_bg 
 					> .container
+						// border 1px solid yellow
+						// background menu_logo_bg
 						> .menu_top
+							// border 1px solid orange
 							> li
 								> a
 									// color menu_color !important
+									// padding 0 1rem
 									color black !important
 								&.active,&:hover
 									background menu_bg_over
+									border-bottom 3px solid #000
 									> a
 										color menu_color_over !important
 								&.logo
 									background initial !important
+									padding 0 0rem
 									> a
-										width 120px
+										padding 0 !important
+										width 200px
 										color transparent !important
-										transform scale(1,1.5)
+										transform scale(1)
+									&.active,&:hover
+										border-bottom-color transparent
 
 .prenav
 	@media $medium-small

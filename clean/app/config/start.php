@@ -2,26 +2,85 @@
 
 return [
 
-	'name'	=>'weclean',
+	'name'	=>'We Clean',
 
 	'visitors'	=>false,
 
 	'web'	=> [
 	
-		'name_short' =>'weclean',
-		'email'      =>'info@weclean.pe',
-		'phone'      =>'(+511) 333 - 3333',
-		'mobile'     =>'999-999-999',
+		'name_short' =>'We Clean',
+		'slogan' => 'Fumigaciones y Desinfecciones',
 
-		'address'    =>'Av. Arenales 1724 Dpto 509 Lince',
-		'lat'        =>'-12.0819534',
-		'lon'        =>'-77.0383133',
+		'logo'	 => 'clean-logo.jpg',
+		'ico'	 => 'clean-ico.jpg',	
+
+		/*
+		######## ##     ##    ###    #### ##        ######
+		##       ###   ###   ## ##    ##  ##       ##    ##
+		##       #### ####  ##   ##   ##  ##       ##
+		######   ## ### ## ##     ##  ##  ##        ######
+		##       ##     ## #########  ##  ##             ##
+		##       ##     ## ##     ##  ##  ##       ##    ##
+		######## ##     ## ##     ## #### ########  ######
+		*/
+		'email'      =>'info@weclean.pe',
+		'emails'     =>[
+			'info@weclean.pe'
+		],
+
+		/*
+		########  ##     ##  #######  ##    ## ########  ######
+		##     ## ##     ## ##     ## ###   ## ##       ##    ##
+		##     ## ##     ## ##     ## ####  ## ##       ##
+		########  ######### ##     ## ## ## ## ######    ######
+		##        ##     ## ##     ## ##  #### ##             ##
+		##        ##     ## ##     ## ##   ### ##       ##    ##
+		##        ##     ##  #######  ##    ## ########  ######
+		*/
+		'phone'      =>'966797804',
+		'phones'      =>[
+			'966797804'
+		],
+
+		'mobile'     =>'966797804',
+
+		'whatsapp'   =>'966797804',
+
+		/*
+
+		  ####  ######  ####
+		 #    # #      #    #
+		 #      #####  #    #
+		 #  ### #      #    #
+		 #    # #      #    #
+		  ####  ######  ####
+
+		*/
+		'address'    =>'Av. Rivera Navarrete 765 San Isidro',
+
+		'lat'        =>'-12.0946069',
+		'lon'        =>'-77.0261886',
 		
-		'whatsapp'   =>'999-999-999',
+		/*
+		 ######   #######   ######  ####    ###    ##
+		##    ## ##     ## ##    ##  ##    ## ##   ##
+		##       ##     ## ##        ##   ##   ##  ##
+		 ######  ##     ## ##        ##  ##     ## ##
+		      ## ##     ## ##        ##  ######### ##
+		##    ## ##     ## ##    ##  ##  ##     ## ##
+		 ######   #######   ######  #### ##     ## ########
+		*/
 		'twitter'    =>'https://twitter.com/',
-		'facebook'   =>'https://www.facebook.com/',
 		'youtube'    =>'https://www.youtube.com/',
 
+
+		'facebook'   =>'https://web.facebook.com/',
+		'facebook_page'   =>'/',
+
+		
+		'email_admin'=>'info@weclean.pe,wtavara@prodiserv.com,guillermolozan@gmail.com',
+
+		
 	],
 
 	'local' => [
@@ -49,6 +108,8 @@ return [
 		'static' =>"./clean/public",
 
 		'devel' =>"desarrollo",
+
+		// 'image_devel'=>true,
 
 		// 'data_test'	=>true,		
 	

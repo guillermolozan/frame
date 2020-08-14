@@ -306,10 +306,6 @@ class Products extends \core\controllers\Pages {
 	}
 
 
-
-
-
-
 	function grid($params){	
 
 

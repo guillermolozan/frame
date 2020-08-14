@@ -1,5 +1,5 @@
 // color_modificado = lighten(#1a2462,10)
-color_modificado = #052F6C
+color_modificado = #234a86
 
 // header
 header
@@ -7,9 +7,10 @@ header
 	.prenav .container > a.logo
 		text-align center
 	> nav 
-		background-color red !important
+		opacity 1
+		// background-color red !important
 		@media $medium-small
-			background-color color_modificado !important
+			background-color menu_logo_bg !important
 		.button-collapse
 			color #fff
 	@media $medium-small
@@ -17,12 +18,12 @@ header
 	.menu_top 
 		> li 
 			&.active,&:hover
-				background color_modificado !important
+				// background color_modificado !important
 			> a 
 				font-family Roboto
 				font-weight bold !important
-				padding-left 3em !important
-				padding-right 3em !important
+				padding-left 1em !important
+				padding-right 1em !important
 				font-size 15px !important
 			.submenu > li
 				border-bottom 1px solid color2
@@ -62,7 +63,7 @@ header
 		header
 			height auto !important
 			nav
-				background color_modificado !important
+				// background color_modificado !important
 				> .container
 					> .menu_top
 						> li
@@ -70,13 +71,13 @@ header
 							&.brand-logo
 								transform scale(1) !important							
 							> a
-								color white !important
+								color #000 !important
 							// &.active,&:hover
 							// 	background rgba(color2,.9)	
 							// 	> a
 							// 		color color_white !important
 footer
-	background color_modificado !important
+	background #000 !important
 
 // .home_block_libros
 // 	background color_modificado !important

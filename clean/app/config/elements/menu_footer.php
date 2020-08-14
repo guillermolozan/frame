@@ -2,22 +2,18 @@
 
 return [
 
-	(($start['devel'])?$start['devel']:'') => 'Inicio',
+	(($start['devel'])?$start['devel']:'') => 'INICIO',
 	
-	// 'libros'                      => 'Ventas',
-	'ventas'                      => 'Productos',
-	'blogs'                      => 'Blogs',
+	'empresa'                        => 'EMPRESA',
+	
+	'servicios'                      => 'SERVICIOS',
+	
+	'productos'                      => 'PRODUCTOS',
 
-	// 'quienes-somos'                        => 'QUIENES SOMOS',
-	// 'servicios'                        => 'SERVICIOS',
-	// 'libros'                      => 'Libros',
-	// 'productos1'                     => 'PRODUCTOS 1',
-	// 'productos2'                      => 'PRODUCTOS 2',
-	// 'descuentos'                      => 'OFERTAS',
-	'videos'                      => 'Videos',
-	// 'servicios'                   => 'Servicios',
-	// 'suscribete'                  => 'Suscríbete',
-	'contactenos'                  => 'Contáctenos',
-	// 'contactenos'                  => 'Contáctenos',
-		
+	'blogs'                      	 => 'BLOGS',
+
+	'videos'                   		 => 'VIDEOS',
+
+	'contactenos'                    => 'CONTÁCTENOS',
+
 ];

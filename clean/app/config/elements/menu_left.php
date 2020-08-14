@@ -3,20 +3,30 @@
 return [
 	(($start['devel'])?$start['devel']:'') => 'Inicio',
 	
-	// 'libros'                      => 'Ventas',
-	'ventas'                      => 'Productos',
-	'blogs'                      => 'Blogs',
+	'empresa'                        => 'EMPRESA',
+	
+	'servicios'                      => 'SERVICIOS',
+	
+	'productos'                      => 'PRODUCTOS',
 
-	// 'quienes-somos'                        => 'QUIENES SOMOS',
-	// 'servicios'                        => 'SERVICIOS',
-	// 'libros'                      => 'Libros',
-	// 'productos1'                     => 'PRODUCTOS 1',
-	// 'productos2'                      => 'PRODUCTOS 2',
-	// 'descuentos'                      => 'OFERTAS',
-	'videos'                      => 'Videos',
-	// 'servicios'                   => 'Servicios',
-	// 'suscribete'                  => 'Suscríbete',
+	'blogs'                       => 'Blogs',
+
+	'videos'                   => 'Videos',
+
 	'contactenos'                  => 'Contáctenos',
 	// 'contactenos'                  => 'Contáctenos',
-		
+
+	// 'facebook'=>[
+	// 	'url'   =>'https://www.facebook.com',
+	// 	// 'name'  =>'Facebook',
+	// 	'class' =>'facebook',
+	// 	'target'=>'_blank'
+	// ],
+
+	// 'instagram'=>[
+	// 	'url'   =>'https://www.instagram.com',
+	// 	// 'name'  =>'Youtube',
+	// 	'class' =>'instagram',
+	// 	'target'=>'_blank'
+	// ],	
 ];

@@ -8,6 +8,7 @@
 "./../clean/app/sources/components/block_banner/block_banner.jade",
 "./../clean/app/sources/components/home_block_libros/home_block_libros.jade",
 "./../clean/app/sources/components/home_block_ventas/home_block_ventas.jade",
+"./../clean/app/sources/components/home_block_welcome/home_block_welcome.jade",
 "./../clean/app/sources/components/page_post/page_post.jade",
 "./../clean/app/sources/components/block_gallery_products/block_gallery_products.jade",
 "./../agro/app/sources/components/block_gallery_videos/block_gallery_videos.jade",
@@ -19,5 +20,8 @@
 "./../clean/app/sources/components/footer_post/footer_post.jade",
 "./../onelimites/app/sources/components/products_reel/products_reel.jade",
 "./../asiste/app/sources/components/home_block_links/home_block_links.jade",
-"./../clean/app/sources/components/whatsapp_button/whatsapp_button.jade"
+"./../clean/app/sources/components/whatsapp_button/whatsapp_button.jade",
+"./../clean/app/sources/components/block_habitaciones/block_habitaciones.jade",
+"./../clean/app/sources/components/block_habitacion/block_habitacion.jade",
+"./../clean/app/sources/components/home_block_importaciones/home_block_importaciones.jade"
 ]

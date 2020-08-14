@@ -10,5 +10,7 @@
 "./../onelimites/app/sources/components/product_detail/product_detail.js",
 "./../clean/app/sources/components/form_contact/form_contact.js",
 "./../onelimites/app/sources/components/products_reel/products_reel.js",
-"./../asiste/app/sources/components/home_block_links/home_block_links.js"
+"./../asiste/app/sources/components/home_block_links/home_block_links.js",
+"./../clean/app/sources/components/block_habitacion/block_habitacion.js",
+"./../clean/app/sources/components/home_block_importaciones/home_block_importaciones.js"
 ]

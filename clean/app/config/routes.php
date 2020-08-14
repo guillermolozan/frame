@@ -64,6 +64,13 @@ $routes_lists = [
 		'controller' =>'Posts',
 		'pipe'		 =>'/'
 	],
+
+	[
+		'grid'       =>'servicios',
+		'detail'     =>'servicio',
+		'controller' =>'Products',
+	],
+
 ];
 
 $routes_forms =['contactenos','suscribete'];

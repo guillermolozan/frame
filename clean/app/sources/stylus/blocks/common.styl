@@ -64,25 +64,43 @@ h3
 			font-weight 400
 			font-size 0.85em
 			background-color initial !important
-			color #357bb2
+			// color #357bb2
 			// color color5
-		.submenu
-			li
-				// padding-left 20px
-				a
-					padding 3px 7px 3px 0px
-					// padding-bottom 9px
-					background-color white !important
-					color black
-					border-bottom 1px solid #e0
-			> .active
+	.submenu
+		padding-left .5em !important
+		li
+			a
+				padding 3px 7px 3px 10px !important
+				// padding-bottom 9px
+				background-color white !important
+				// color black
+				// border-bottom 1px solid #e0
+			&.active
 				color initial
 				> a
 					margin-top 1px
-					// background-color lighten(black,10) !important
+					background-color lighten(black,95) !important
 					// background-color color3 !important
 					color red !important
 					font-weight bold
+					position relative
+					&:before
+						position absolute
+						right 8px
+						top 0
+						content ""
+						background-color red
+						width 5px
+						height 28px
+						border-left 2px solid color2
+					&:after
+						position absolute
+						right 0
+						top 0
+						content ""
+						border-left: 8px solid red;
+						border-top: 14px solid transparent;
+						border-bottom: @border-top;
 	.active
 		color white
 		background-color initial !important

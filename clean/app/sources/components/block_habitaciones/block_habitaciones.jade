@@ -1,0 +1,15 @@
+.block_habitaciones
+
+	-items=habitaciones
+	//- -ul_class=false
+	//- -li_class='col s12'
+	+title(items)
+	//- if(items.items)
+	ul(class="row #{ul_class} ")
+		each item in items.items
+			include ../../jade/includes/block_habitacion
+			
+	+more(items)
+
+-ul_class=false
+-li_class=false			

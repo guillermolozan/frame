@@ -21,4 +21,10 @@ ga('send', 'pageview');
   js = d.createElement(s); js.id = id;
   js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.6&appId=276802375855277";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script><?php endif ?></body></html>
+}(document, 'script', 'facebook-jssdk'));
+</script><?php endif ?><?php if ($smartlook && !$localhost) : ?><script>window.smartlook||(function(d) {
+var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+})(document);
+smartlook('init', '<?php echo htmlspecialchars($smartlook) ?>');</script><?php endif ?></body></html>

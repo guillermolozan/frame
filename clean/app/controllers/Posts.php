@@ -20,14 +20,14 @@ class Posts extends Controller {
 
 			$post=fila(
 				"id,name",
-				"projects_groups",
+				"posts_groups",
 				"where id='".$params['item']."'",
 				"0:Datos de 1 post by item id=".$params['item']
 			);
 
 			$menu=select(
 				'id,name',
-				'projects_groups',
+				'posts_groups',
 				'where 1
 				order by weight desc',
 				"0:menu de categorias",
@@ -40,7 +40,7 @@ class Posts extends Controller {
 
 			$items=select(
 				'id,name,fecha_creacion,text,fecha,file',
-				'projects',
+				'posts_items',
 				'where 1 '.
 				' and id_grupo='.$post['id'].' '.
 				" order by weight desc",
@@ -49,7 +49,7 @@ class Posts extends Controller {
 				
 					'img'=>[
 						'get_archivo'=>[
-							'carpeta'=>'profot_imas',
+							'carpeta'=>'postfot_imas',
 							'fecha'=>'{fecha_creacion}',
 							'file'=>'{file}',
 							'tamano'=>'0'
@@ -71,15 +71,15 @@ class Posts extends Controller {
 
 			$items=select(
 				'id,name,fecha_creacion,text,fecha',
-				'projects',
+				'posts_items',
 				'where 1
 				order by weight desc',
-				'1:lista de projects',
+				'1:lista de posts_items',
 				[
 
 				'img'=>['foto'=>[
-							'file,fecha_creacion|projects_photos|where id_grupo={id}',
-							'profot_imas',
+							'file,fecha_creacion|posts_photos|where id_grupo={id}',
+							'postfot_imas',
 							['get_archivo'=>'0']
 							]],
 
@@ -100,12 +100,12 @@ class Posts extends Controller {
 
 		},$items);
 
-
+		
 		//asing vars
 		$this->view->assign(
 			[
 				'head_title'=> $post['name'].' | '.$this->title,
-				'projects'=>[
+				'posts_items'=>[
 
 					'name'=>$post['name'],
 					'items'=>$items,
@@ -136,14 +136,14 @@ class Posts extends Controller {
 		//post
 		$post=fila(
 			"id,name,html,fecha,fecha_creacion,file,id_grupo",
-			"projects",
+			"posts_items",
 			"where id='".$params['item']."'",
 			0,
 			[
 				'sub'=>['fecha'=>['{fecha}','2']],
 				'img'=>[
 					'get_archivo'=>[
-						'carpeta'=>'profot_imas',
+						'carpeta'=>'postfot_imas',
 						'fecha'=>'{fecha_creacion}',
 						'file'=>'{file}',
 						'tamano'=>'0'
@@ -156,7 +156,7 @@ class Posts extends Controller {
 
 		$menu=select(
 			'id,name',
-			'projects_groups',
+			'posts_groups',
 			'where 1
 			order by weight desc',
 			"0:menu de categorias",
