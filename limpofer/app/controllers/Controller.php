@@ -34,22 +34,22 @@ class Controller extends \core\Controller {
 
 
 		
-		$replace_menu_pre['productos-ardyss']=[
-			'url'   =>maskUrl('productos-ardyss'),
-			'name'  =>'PRODUCTOS ARDYSS',
+		$replace_menu_pre['productos']=[
+			'url'   =>maskUrl('productos'),
+			'name'  =>'PRODUCTOS',
 			'items' =>select('nombre as name,id,url','productos_subgrupos','where id_grupo=3 and visibilidad=1',0,
 			[
-				'url'=>['url'=>['productos-ardyss/category-{url}/{id}']],
+				'url'=>['url'=>['productos/category-{url}/{id}']],
 			])
 
 		];
 
-		$replace_menu_pre['recomendados']=[
-			'url'   =>maskUrl('recomendados'),
-			'name'  =>'RECOMENDADOS',
+		$replace_menu_pre['letras']=[
+			'url'   =>maskUrl('letras'),
+			'name'  =>'LETRAS',
 			'items' =>select('nombre as name,id,url','productos_subgrupos','where id_grupo=2 and visibilidad=1',0,
 			[
-				'url'=>['url'=>['recomendados/category-{url}/{id}']],
+				'url'=>['url'=>['letras/category-{url}/{id}']],
 			])
 
 		];
@@ -110,7 +110,6 @@ class Controller extends \core\Controller {
 		// 								]	
 		// 	]									
 		// 	);
-
 		$this->view->assign(
 			[
 
@@ -118,8 +117,8 @@ class Controller extends \core\Controller {
 				'build_js'     => $this->view->vars['build_js'].'?'.$this->static_build,	
 
 				// 'logo'         => $this->config['img_logo'],
-				'logo'         => 'logo.jpg?'.$this->static_build,
-				'icon'       	=> 'ico.jpg?'.$this->static_build,
+				'logo'         => $this->view->vars['web_logo'].'?'.$this->static_build,
+				'icon'       	=> $this->view->vars['web_ico'].'?'.$this->static_build,
 
 				// 'header_bg'		=> $header_bg['img'],
 				
@@ -128,7 +127,7 @@ class Controller extends \core\Controller {
             //footer
 				
 				//facebook
-				'opengraph'  => true,
+				// 'opengraph'  => true,
 				
 				//gmap
 				'gmap_key'			 => 'AIzaSyDsA0HccVmhVLNFpys3BZZlmOemTq-peBA',

@@ -8,11 +8,18 @@
 
 .header_pre
 	nav
-		background #46BEEC url(imgs+'header-bg2.png?1') repeat-y center top !important
+		// background #f12c24 url(imgs+'header-bg2.png?3') repeat-y center top !important
+		background-color #f12c24 
+		// background-color #fff333	 
+		background-image url(imgs+'header-bg2.png?3')
+		background-repeat repeat-y
+		background-position right top
 		color white
 		.container
 			height 42px
-			background #46BEEC url(imgs+'header-bg1.png?3') no-repeat right top
+			background #f12c24 url(imgs+'header-bg1.png?3') no-repeat right top
+			background-size 186px 100%
+			// color black
 			ul.menu
 				display flex
 				li 
@@ -37,14 +44,16 @@
 					margin-right 50px
 					background-repeat no-repeat
 					background-position center left
+					order -1 !important
 					&:before
 						content "" !important
 				li.phone
+					display none
 					padding-left 300px
 					order 1 !important
 					padding-left 60px !important
 					padding-right 40px !important
-					background-image url(imgs+'header-visa.jpeg')
+					// background-image url(imgs+'header-visa.jpeg')
 					background-repeat no-repeat
 					background-position center left
 					// width 64px
@@ -60,6 +69,7 @@
 					// 	width auto
 					&:after
 						content "Aceptamos Visa" !important	
+						content "" !important	
 						color white
 						font-size 16px
 						font-style italic
@@ -86,10 +96,12 @@
 					// display none
 				li.whatsapp
 					order 101 !important
-					color #fff !important
+					color #000 !important
 					font-size 19px !important
 					padding-left 20px !important
 					padding-right 20px !important
 					font-size 18px			
 					&:before
 						font-size 21px
+					a:before	
+						content '\e900' !important

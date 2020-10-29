@@ -1,0 +1,22 @@
+div(id="cotizar",class="col s12 l8 offset-l2  scrollspy form_consulta")
+	article(class="card-panel")
+		
+		if message
+			+card_sended(message)
+
+		if form_title
+			h2 #{form_title}
+		//- p Si desea más información acerca del proyecto #{post.name} por favor ingrese sus datos y nos pondremos en contacto con usted:
+		form(method="POST",name=form_name)
+			.row
+				//- .col.l6.m12.s12
+				//- 	+form('frm',fields1)
+				//- .col.l6.m12.s12
+				//- 	+form('frm',fields2)
+				//- 	+input_submit('ENVIAR')
+				+form(form_name,form_fields)
+				//- +form('contact',contact)
+				//- div(class="input-field col s12 l12")
+					button(class="btn waves-effect waves-blue",type="submit") ENVIAR
+				+input_submit(form_button)
+		//- //- div(class="col s12 l4")		

@@ -1,0 +1,48 @@
+.link_prodiserv { font-size: 9px; font-family: Arial,Verdana,sans-serif; color:#999999; font-weight: bold; text-decoration:none}
+a.link_prodiserv:hover { font-size: 9px; font-family: Arial,Verdana,sans-serif; color:#ffffff; text-decoration:none}
+
+.camiones { font-size: 13px; font-family: Arial,sans-serif; color:#000000; text-decoration:none}
+a.camiones:hover { font-size: 13px; font-family: Arial,sans-serif; color:#ff0000; text-decoration:none}
+
+.ficha_tecnica { font-size: 14px; font-family: Arial,sans-serif; color:#ff0000; text-decoration:none}
+a.ficha_tecnica:hover { font-size: 15px; font-family: Arial,sans-serif; color:#000000; text-decoration:none}
+
+.ver_mas_productos { font-size: 14px; font-family: Arial,sans-serif; color:#ff0000; text-decoration:none}
+a.ver_mas_productos:hover { font-size: 14px; font-family: Arial,sans-serif; color:#000000; text-decoration:none}
+
+.link_menu { font-size: 13px; font-family: Arial,sans-serif; color:#000000; text-decoration:none}
+a.link_menu:hover { font-size: 13px; font-family: Arial,sans-serif; color:#ff0000; text-decoration:none}
+
+.link_menu_activado { font-size: 13px; font-family: Arial,sans-serif; color:#ff0000; text-decoration:none}
+a.link_menu_activado:hover { font-size: 13px; font-family: Arial,sans-serif; color:#000000; text-decoration:none}
+
+.menu2 {font-weight: bold;font-size: 13px; font-family: Arial,sans-serif;text-decoration:none;color:#000000}
+a.menu2:hover{ font-weight: bold;font-size: 13px; font-family: Arial,sans-serif; color:#000000; text-decoration:underline}
+
+.menu3 {font-size: 12px; font-family: Arial,sans-serif; color:#ffffff; text-decoration:underline}
+a.menu3:hover{ font-size: 12px; font-family: Arial,sans-serif; color:#99FF00}
+
+.link_menu_p { font-size: 13px; font-family: Arial,sans-serif; color:#000000; font-weight: bold; text-decoration:none}
+a.link_menu_p:hover { font-size: 13px; font-family: Arial,sans-serif; color:#ff0000; text-decoration:none}
+
+.link_menu_s { font-size: 12px; font-family: Tahoma, Arial,sans-serif; color:#ffffff; text-decoration:none; font-weight: bold;}
+a.link_menu_s:hover { font-size: 12px; font-family: Tahoma, Arial,sans-serif; color:#99FF00; text-decoration:none}
+
+.b-activado { font-size: 12px; font-family: Tahoma, Arial,sans-serif; color:#99FF00; text-decoration:none; font-weight: bold;}
+a.b-activado:hover { font-size: 12px; font-family: Tahoma, Arial,sans-serif; color:#99FF00; text-decoration:none}
+
+.link_menu_s_acti { font-size: 13px; font-family: Arial,sans-serif; color:#ffcc00; text-decoration:none; font-weight: bold;}
+a.link_menu_s_acti:hover { font-size: 13px; font-family: Arial,sans-serif; color:#ffcc00; text-decoration:none}
+
+.link_activo { font-size: 13px; font-family: Arial,sans-serif; color:#ffcc00; text-decoration:none; font-weight: bold;}
+a.link_activo:hover { font-size: 13px; font-family: Arial,sans-serif; color:#ffffff; text-decoration:none}
+
+.link_videos { font-size: 12px; font-family: Arial,sans-serif; color:#ffffff; text-decoration:none}
+a.link_videos:hover { font-size: 12px; font-family: Arial,sans-serif; color:#ffff00; text-decoration:none}
+
+.link_titulos { font-size: 12px; font-family: Arial,sans-serif; color:#ffffff; font-weight: bold; text-decoration:none}
+a.link_titulos:hover { font-size: 12px; font-family: Arial,sans-serif; color:#ffff00; text-decoration:none}
+
+.link_mailto { font-size: 11px; font-family: Century Gothic,sans-serif; color:#666666; font-weight: bold; text-decoration:none}
+a.link_mailto:hover { font-size: 11px; font-family: Century Gothic,sans-serif; color:#ff0000; text-decoration:none}
+

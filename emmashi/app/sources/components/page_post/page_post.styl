@@ -1,0 +1,52 @@
+.container
+	.post
+		@media $small-medium
+			> .col
+				width 100% !important
+		&.card
+			box-shadow initial
+			display flex
+			flex-direction row
+			@media $small-medium
+				flex-direction column
+			.card-title
+				h1
+					padding-left 0
+			.text
+				font-size 1.1em
+				p 
+					font-weight 300
+					strong
+						font-weight 400
+			.card-image
+				margin-top 2em
+				order -1
+				@media $small-medium
+					order 3
+	.gallery
+		.card
+			overflow hidden
+			over_shadow()
+			.card-image		
+				@media $large-medium
+					height 250px
+					fit_image(@height)
+			.card-content
+				position absolute
+				background color2
+				color white
+				width 100%
+				padding 0
+				vertical-align middle
+				height 70px
+				transition bottom .5s
+				display flex
+				align-items center
+				justify-content center
+				opacity .8
+				bottom 0px
+				@media $large-medium
+					bottom -150px
+			&:hover
+				.card-content
+					bottom 0px

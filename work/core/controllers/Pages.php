@@ -232,9 +232,14 @@ class Pages extends \controllers\Controller {
 			$post['id_grupo']=$Page->getIdGroup(['id_grupo'=>$post['id_grupo']]);
 
 
-			$groups_top=$Page->getMenuGroup(['where'=>'id='.$post['id_grupo']]);
-			// prin($groups_top);
+			// $post['id_grupo']=47;
+			// prin($post['id_grupo']);
 
+
+			$groups_top=$Page->getMenuGroup(['where'=>'id='.$post['id_grupo']]);
+
+
+			// prin($groups_top);
 			foreach($groups_top as $group)
 			{				
 
@@ -260,12 +265,13 @@ class Pages extends \controllers\Controller {
 						'uri'  =>maskUrl($group['url']),
 						'sub'	 => "id_grupo={id_grupo}",
 					]
+					,0
 				);
-				
-			}				
+
+			}
 			
 			// if($post['id_grupo']==4){
-			// 	prin($menu);
+				// prin($menu);
 			// }
 			$group      =$Page->getGroup(['item'=>$post['id_grupo']]);
 			

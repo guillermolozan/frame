@@ -1,0 +1,72 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}") 
+
+		include includes/header
+
+		//- include blocks/breadcrumb.jade
+
+		//- include blocks/image.jade
+
+		main(class="container row")
+			//- .wide
+			div(class="post project")
+				+card_sended(message)
+
+				.row
+
+					div(class="col s12 l12")
+						.block_habitaciones
+							-habitacion_item=post
+							h2 #{habitacion_item.name}
+							//- include includes/block_habitacion
+							.block_habitacion.detail_habitacion
+								.row
+									.galle.col.s12.m7
+										.col
+											.foto
+												a(class="zoom",href="#{habitacion_item.photos[0]}")
+													img(class="responsive-img",src="#{habitacion_item.photos[0]}")
+												.orange
+												a(class="name",href="#{habitacion_item.url}") #{habitacion_item.name}
+												a(class="more btn",href="#{habitacion_item.url}") VER MAS >
+											.train
+												each foto in habitacion_item.photos
+													div: a: img(class="responsive-img",src="#{foto}")
+
+									.text.col.s12.m5
+										.col
+											ul.collapsible(data-collapsible="accordion")
+												li
+													.collapsible-header Resumen del Servicio
+													.collapsible-body: p #{habitacion_item.text}
+												li
+													.collapsible-header Equipos
+													.collapsible-body: p #{habitacion_item.text2}
+												li
+													.collapsible-header Productos
+													.collapsible-body: p #{habitacion_item.text3}
+												li
+													.collapsible-header.active Precio
+													.collapsible-body.servicios!=habitacion_item.text4
+											//- .reservar 
+											//- 	//- div RESERVE SU ESTANCIA
+											//- 	a(class="btn",href="#{habitacion_item.url}#cotizar") COTIZAR
+
+
+
+						include includes/form_consulta
+
+
+		//- .actions
+		//- 	ul
+		//- 		li: a(class="call",href="tel:01#{post.phone}") Llamar
+		//- 		li: a(class="email",href="mailto:#{post.email}",target="_top") Email
+		include includes/footer.jade
+
+		include common/foot.jade
+

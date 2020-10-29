@@ -1,0 +1,12 @@
+[
+"./../work/app/sources/components/common/common.js",
+"./../work/app/sources/components/menu_left/menu_left.js",
+"./../work/app/sources/components/block_gallery/block_gallery.js",
+"./../aquasan/app/sources/components/header/header.js",
+"./../aquasan/app/sources/components/block_banner/block_banner.js",
+"./../aquasan/app/sources/components/gallery_products/gallery_products.js",
+"./../onelimites/app/sources/components/product_detail/product_detail.js",
+"./../aquasan/app/sources/components/form_contact/form_contact.js",
+"./../aquasan/app/sources/components/footer_special/footer_special.js",
+"./../aquasan/app/sources/components/block_habitacion/block_habitacion.js"
+]

@@ -1,0 +1,55 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+	link(href="https://successagency.com/di/coming-soon-demo/dark-night-2/tools/style.css",type="text/css",rel="stylesheet",media="screen,projection")
+	link(href="https://fonts.googleapis.com/css?family=Cabin|Alatsi&display=swap",rel="stylesheet")
+	//- - fondo = 'brown'
+	//- - color = 'white'
+	//- - colorResaltado = 'yellow'
+	//- - palito = '#333'
+	//- - variable = '#303030'
+	- fondo = 'white'
+	- color = 'black'
+	- colorResaltado = 'red'
+	- palito = '#333'
+	- variable = '#303030'	
+	body(class="#{classbody}")
+		#shim
+		#content
+			.logo_box
+				h1 #{title}
+			.main_box
+				h2
+					| Proximamente nuestro nuevo website.
+					br
+					span Mientras tanto contántece con nosotros
+				ul.info
+					li
+						h3 T
+						p: +render_phone(phone)
+					li
+						h3 W
+						p: +render_whatsapp(whatsapp)
+					li
+						h3 D
+						p #{address}
+					li
+						h3 E
+						p: +render_email(email)
+					li
+						h3 S
+						p.social
+							//- a.tw(href='#')
+							a.fb(href='#')
+							//- a.li(href='#')
+		style.
+			* { font-family: 'Cabin' !important; color:#{color} !important; }
+			h1 { font-family: 'Alatsi' !important; font-size:50px !important;  }
+			h2 { color:#{colorResaltado} !important;  }
+			h3 { color:#{palito} !important;  }
+			h3 p { color:#{color} !important;  }
+			.logo_box { border-right-color:#{variable} !important; }
+			body { background-color: #{fondo} !important; }
+		include common/foot

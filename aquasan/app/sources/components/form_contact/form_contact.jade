@@ -1,0 +1,43 @@
+if(map.lat && map.lon)
+	-div_map_class='l6 m12 s12'
+else
+	-div_map_class='l6 offset-l3 m12 s12'
+
+.form_contact
+	.row: .col.s12
+		+card_sended(message)
+	.row
+		if(map.lat && map.lon)
+			div(class="col l6 m12 s12")
+				p
+					| Oficina: #{web_phone} #[br]
+					| Celular: 979227848 #[br]
+					| Correo 1: mesadepartes@aquasan.com.pe #[br]
+					//- | Correo 2: gerencia@aquasan.com.pe #[br]
+					//- | Correo 3: salazar@aquasan.com.pe #[br]
+					if(web_phone && false)
+						| Teléfono: #{web_phone} #[br]
+					if(web_email && false)
+						| E-mail: #{web_email} #[br]
+					if(web_address)
+						| Dirección: #{web_address} #[br]
+					div(id="map",
+						data-name="#{map.name}",
+						data-lat="#{map.lat}",
+						data-lon="#{map.lon}",
+						data-text="#{map.text}")
+
+		div(class="col #{div_map_class} form")
+			form(method="post",name="frm")
+				if(main)
+					h1 #{title}
+				else
+					h2 #{title}
+					-main=false
+
+				+form('frm',fields1)
+				+form('frm',fields2)
+				//- |	<div class="input-field col s12"><select id="frm_medio" name="medio"><option value="" disabled="disabled" selected="selected">¿Por qué medio nos encontró?</option><option value="Web">Web		</option><option value="Periódico">Periódico		</option><option value="Revista">Revista		</option><option value="Televisión">Televisión		</option><option value="Panel Publicitario">Panel Publicitario		</option><option value="Un conocido nos recomendó">Un conocido nos recomendó		</option><option value="Otros">Otros		</option></select></div>
+				+input_submit('ENVIAR')
+
+

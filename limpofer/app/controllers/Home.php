@@ -42,7 +42,7 @@ class Home extends Controller {
 
 
 
-		//productos ardyss
+		//productos
 			$items_productos=select(
 			"nombre as name,id_subgrupo,id,precio,moneda",
 			'productos_items',
@@ -101,7 +101,7 @@ class Home extends Controller {
 
 
 		$lineas=[
-			'name'=>'Productos Ardyss',
+			'name'=>'Productos',
 			'items'=>$items_productos,
 			// 'more'=>[
    //          'name' => 'ver más',
@@ -395,8 +395,8 @@ class Home extends Controller {
 				'title'      => $this->title,
 				
 				//head
-				// 'head_title' => $this->title . ( ($this->slogan)? ' - '.$this->slogan:'' ),
-				'head_title' => $this->title." :: Prendas remodeladoras, Body Magic, Camiseta Abdomen, Prendas Remodeladoras Ardyss, Fajas Moldeadoras Ardyss, Fajas Ardyss, Fajas Remodeladoras, Fajas Reductoras",
+				'head_title' => $this->title . ( ($this->slogan)? ' - '.$this->slogan:'' ),
+				// 'head_title' => $this->title." :: Prendas remodeladoras, Body Magic, Camiseta Abdomen, Prendas Remodeladoras Ardyss, Fajas Moldeadoras Ardyss, Fajas Ardyss, Fajas Remodeladoras, Fajas Reductoras",
 	
 				
 				// 'head_title' => 'nada',

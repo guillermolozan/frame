@@ -1,0 +1,83 @@
+// color_modificado = lighten(#1a2462,10)
+color_modificado = #234a86
+
+// header
+header
+	background color_modificado
+	.prenav .container > a.logo
+		text-align center
+	> nav 
+		opacity 1
+		// background-color red !important
+		@media $medium-small
+			background-color menu_logo_bg !important
+		.button-collapse
+			color #fff
+	@media $medium-small
+		box-shadow inset 0 -5px 10px rgba(black,.5) !important
+	.menu_top 
+		> li 
+			&.active,&:hover
+				// background color_modificado !important
+			> a 
+				font-family Roboto
+				font-weight bold !important
+				padding-left 1em !important
+				padding-right 1em !important
+				font-size 15px !important
+			.submenu > li
+				border-bottom 1px solid color2
+			&.brand-logo
+				@media $small
+					margin 0
+					img
+						height 38px !important
+			&.der2
+				@media $medium-small
+					display none !important
+			&.facebook > a
+				icomoon('e673')
+				&:before
+					font-size 1.5em
+			&.instagram > a
+				icomoon('ea92')
+				&:before
+					font-size 1.4em
+			@media $medium-small
+				&.logo a
+					transform scale(1) !important
+	@media $small-medium
+		nav > .container .menu_top
+			> li.facebook,> li.instagram
+				display: block;
+				a
+					color menu_bg_over
+					padding 0 .7em
+					font-size 13px
+					&:hover
+						text-decoration: none
+			> li.facebook
+				top -3px
+@media $large
+	body.headfixed
+		header
+			height auto !important
+			nav
+				// background color_modificado !important
+				> .container
+					> .menu_top
+						> li
+							padding 0 0px
+							&.brand-logo
+								transform scale(1) !important							
+							> a
+								color #000 !important
+							// &.active,&:hover
+							// 	background rgba(color2,.9)	
+							// 	> a
+							// 		color color_white !important
+footer
+	background #000 !important
+
+// .home_block_libros
+// 	background color_modificado !important

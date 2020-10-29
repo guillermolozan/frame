@@ -13,8 +13,8 @@ class Forms extends \core\controllers\Forms {
 
 		$this->admin_emails=[
 
-			'contacto@ardyss.com.pe',
-			'croman@prodiserv.com',
+			'ventas@cslimpofer.com',
+			// 'croman@prodiserv.com',
 			// 'servicios@prodiserv.com',
 			'guillermolozan@gmail.com',
 		

@@ -1,0 +1,12 @@
+
+# Options -MultiViews
+
+<IfModule mod_rewrite.c>
+
+	Options +FollowSymLinks -MultiViews
+	# RewriteBase frame/statics/transvelsac/
+	RewriteEngine On
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^contactenos.html$ /contact.php [L,P,NC]	
+</IfModule>

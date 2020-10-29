@@ -1,0 +1,218 @@
+.block_habitacion	
+	padding 0 .7rem 1em !important
+	width 100%
+	h3
+		text-align center
+	.noshow
+		display none
+	&:after
+		content ""
+		height 2px
+		width 95%
+		background #666
+		display block
+		margin 0px auto 20px
+	&:last-child:after
+		display none
+	&:last-child
+		> .row
+			margin-bottom 0
+	> .row
+		.galle
+			.foto
+				position relative
+				.zoom
+					display block
+				// arrows
+				.slider
+					.sy-pager
+						display none
+					.sy-slide
+						height 370px !important
+						overflow hidden
+						@media $small
+							height 210px !important
+					.sy-controls
+						visibility visible
+						z-index
+						.sy-prev > a:after,.sy-next > a:after
+							transform scale(1);
+							border-radius 0
+							opacity .8
+							// background color2
+							// color white
+							// height 15px
+							// line-height 18px
+							// width 13px
+							// font-size 13px
+							// transform scale(2,4);
+							// content "\e651"
+							// color black
+							content ""
+							width 28px
+							height 61px
+							// line-height @height
+							// font-size 40px
+							background url(imgs+'flecha.png') no-repeat 0px 0px
+							// background-color lightblue
+							// transform rotate(0deg) scale(2,4)
+						.sy-next > a:after
+							transform rotate(180deg)
+							// transform scale(2,4);
+							// content "\e654"
+				// a.zoom
+				.orange
+					display none
+					position absolute
+					bottom 0px
+					width 35%
+					height 55px
+					opacity .3
+					background #50dffa !important
+					// background url(imgs+'water.png') no-repeat 0px 10px
+					@media $small
+						display none
+						height 70px
+						background-position center 0px
+					// display none
+				.name
+					display none
+					position absolute
+					bottom 7px
+					left 0px
+					width 35%
+					text-align center
+					// font-size 26px
+					text_border(#fff)
+					font-size 25px
+					color #000 !important
+					font-weight bold
+					font-family arial
+					@media $small
+						text-align center
+						width 100%
+						left 0
+						bottom 0
+				.more
+					position absolute
+					color black
+					bottom 20px
+					right 15px
+					border-radius 0
+					border 1px solid #000
+					background-color #50dffa
+					// font-size 26px
+					// text_border(#fff)
+					font-size 20px
+					color #000 !important
+					height 35px
+					line-height @height
+					padding 0 10px
+					// opacity .8
+					@media $small
+						display none
+					// font-weight bold
+					// font-family arial						
+			.train
+				> div
+					width 25%
+					float left
+					margin-right 3px
+		.text
+			// reset
+			.collapsible
+				box-shadow initial
+				border 0
+				> li
+					.collapsible-header
+						border 0
+					.collapsible-body
+						border 0
+			//custom
+			h3
+				font-size 1.5em !important
+			.collapsible
+				> li
+					.collapsible-header
+						// border 1px solid red
+						padding-left 0px
+						font-weight bold
+						font-size 16px
+						// height auto
+						height 34px
+						overflow hidden
+						word-break break-all
+						&:hover
+							text-decoration underline
+						&:before
+							content "+"
+							background #e86f29
+							// background url(imgs+'hab-plus.png') no-repeat left center
+							width 27px
+							height @width
+							line-height @width
+							border-radius 50%
+							color white
+							font-size 28px
+							text-align center
+							float left
+							margin 8px 10px 5px 5px
+							background color2
+							transition all .3s
+							// margin-right 10px
+					.collapsible-body
+						border 0	
+						padding 0 10px
+						p
+							text-align: justify
+					&.active .collapsible-header:before
+						transform rotate(45deg)
+						// background color4
+			.servicios
+				ul
+					margin-left 20px
+					li
+						// background url(imgs+'hab-item.png') no-repeat left center
+						&:before
+							// padding-left 10px
+							font-family icomoon
+							content "\e686"
+							margin-right 10px
+			.servicio
+				color #036896
+				font-size 1.3rem
+				margin-left .3.5em
+				text-transform: none
+				font-weight bold
+			.reservar
+				padding 15px 15px 0
+				text-align left
+				@media $small
+					text-align center
+				> div
+					color #333
+					border-bottom 1px solid #333
+					padding-bottom 5px
+					margin-bottom 20px
+					text-align left
+					font-weight bold
+				.btn
+					background #cfcfcf
+					color #000
+					font-weight bold
+					width 150px
+					height 40px
+					line-height @height
+					
+
+.p-home,.p-habitaciones
+	.block_habitacion
+		.train
+			visibility hidden
+			> div
+				width 1% !important
+				float left
+				margin-right 3px
+					
+.p-products.p-detail .more
+	display none

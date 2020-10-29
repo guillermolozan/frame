@@ -168,14 +168,15 @@ mixin menu_items(items)
 mixin menu_collection_advanced(items)
 
 	each men_item in items.items
+		- men_item_class = men_item.class
 		if(men_item.items)
-			li(class="#{men_item.class}  collapsible collapse collapsible-accordion")
-				a(class="collapsible-header #{men_item.class}") #{men_item.name} 
+			li(Class="#{men_item_class}  collapsible collapse collapsible-accordion")
+				a(Class="collapsible-header #{men_item_class}") #{men_item.name}
 				.collapsible-body
 					ul(class="submenu ")
 						+menu_items(men_item.items)
 		else if(men_item.url && men_item.url!='#')
-			li(class="collection-item #{men_item.class}")
+			li(Class="collection-item #{men_item_class}")
 				+link_item(men_item)
 					//- if(men_item.items.items)
 					//- 	+menu_items_advanced(men_item)

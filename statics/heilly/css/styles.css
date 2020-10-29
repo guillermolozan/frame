@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.slide {
+	background-color:#fff;
+	width:950px;
+	height:440px;
+	float:center;
+	margin:0px;
+	padding:0px;
+
+}
+
+
+.bannerlogos {
+	display:block;
+	background-color: #f0f0f0;
+	width:960px;
+	height:60px;
+	margin: 0px auto;
+}
+

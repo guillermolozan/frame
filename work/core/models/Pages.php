@@ -389,6 +389,7 @@ class Pages extends \core\Models {
 			$params['deep']=$params['deep']+1;
 
 
+
 		// if($debug){
 
 		// 	prin([
@@ -457,14 +458,14 @@ class Pages extends \core\Models {
 			// ]
 		);
 
-		
+
 
 		// prin($config['items']);
 		// prin($params);
 		// prin($items);
 
 		if($debug)
-			prin($params);
+			prin($params,'params');
 		
 		
 		foreach($items as $ii=>$item){
@@ -530,8 +531,7 @@ class Pages extends \core\Models {
 
 			
 			if($debug){
-				prin('sub');
-				prin($items_groups);
+				prin($items_groups,'sub');
 			}
 			// prin($group);
 
@@ -550,7 +550,7 @@ class Pages extends \core\Models {
 				
 
 				if($debug)
-					prin($items_groups[$rr]['items']);
+					prin($items_groups[$rr]['items'],'sub');
 
 
 				foreach($items_groups[$rr]['items'] as $rr2=>$group2){
@@ -558,8 +558,7 @@ class Pages extends \core\Models {
 					$items_groups[$rr]['items'][$rr2]['url']='#';
 
 					if($debug){
-						prin('submenu');
-						prin($params['uri'].'/'.$group['url']);
+						prin($params['uri'].'/'.$group['url'],'submenu');
 					}
 						
 					$items_groups[$rr]['items'][$rr2]['items']=$this->getMenu(
@@ -579,6 +578,7 @@ class Pages extends \core\Models {
 
 				}
 
+				if(0)
 				$items_groups[$rr]['items']=array_merge($this->getMenu(
 					[
 						'item' =>$group['id'],

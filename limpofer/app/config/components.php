@@ -2,6 +2,7 @@
 return [
 
 	'banner'                 => 'block_banner|es6',
+	'banner2'                 => 'block_banner2|es6',
 	
 	'header_pre'             => 'agro/header_pre',
 	'header'                 => 'header|es6',
@@ -21,7 +22,7 @@ return [
 	'block_gallery_videos'   => 'agro/block_gallery_videos',
 
 
-	'product_detail'			 => 'onelimites/product_detail|es6',
+	'product_detail'		 => 'onelimites/product_detail|es6',
 
 	'form_consulta'			 => 'form_consulta',
 

@@ -1,0 +1,24 @@
+header(class="navbar-fixed")
+
+	if(is_home)
+		h1 #{web_name}
+		-main = false
+
+	//- include ../../jade/includes/header_pre
+
+	.prenav
+		.container
+			a(href="#{link_home}",class="logo",title="#{web_name}"): img(src="#{pub_img}#{logo}",title="#{web_name}",alt="#{web_name}")
+	nav
+
+		+button_side_nav()
+
+		
+		.container
+			//- menu_top
+			ul(class="menu menu_top")
+				+menu_items(menu_top)
+
+				
+//- menu_left
+include ../../jade/includes/menu_left

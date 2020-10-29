@@ -1,0 +1,108 @@
+// footer_bgcolor = black
+// footer_textcolor = white
+// footer_textcolor2 = #aaa
+footer_ico = footer_bgcolor
+footer_height =auto
+
+
+footer
+	background footer_bgcolor
+	height footer_height
+	margin-top 0px !important
+	padding-bottom .5em
+	// display none
+	// overflow hidden
+	@media $small-medium	
+		padding-left 1em
+		padding-right 1em
+		height auto
+	.container
+		.menu
+			.submenu
+				min-width initial
+				max-width initial
+				width 300px
+			a,span
+				color footer_textcolor
+			> li
+				float none
+				line-height 2em
+				> a
+					font-size 13px
+					// text-transform uppercase
+		// .first,.second
+		// 	@media $large
+		// 		position relative
+		// 		&:after
+		// 			content ""
+		// 			width 2px
+		// 			height 140px
+		// 			background #999 
+		// 			position absolute
+		// 			right 30px
+		// 			top 1.3em
+		// 	@media $small-medium
+		// 		border-bottom 1px solid #999
+		.first
+			li
+				line-height 25px
+		.third
+			margin-top .5em
+			strong, strong > a
+				color footer_textcolor2
+				font-weight bold
+				// font-size 18px
+			// .visa
+			// 	span
+			// 		height 40px
+			// 		display block
+			// 		background url(imgs+'header-visa.jpeg') no-repeat center left
+			// 		width auto
+			// 		padding-left 80px
+			// 		padding-top 5px
+			// 		margin-top 10px
+			li.circle
+				postion relative
+				padding-left 50px
+				padding-bottom 1em
+				&:before
+					text-align center
+					position absolute
+					z-index 1
+					left 0
+					width 30px
+				&:after
+					content ""
+					margin-right .5em
+					border-radius 50%
+					// border 1px solid color2
+					background white
+					width 34px
+					height @width
+					display inline-block
+					position absolute
+					left 0
+			li.facebook
+				icomoon('e673')
+				&:before
+					font-size 1.5em
+					top 0px
+					color footer_ico
+			li.instagram
+				icomoon('ea92')
+				&:before
+					font-size 1.4em
+					top 2px
+					left 2px
+					color footer_ico
+			li.email
+				icomoon('e679')
+				&:before
+					font-size 1.3em
+					top 3px
+					left 2px
+					color footer_ico
+			li.footer-fb
+				padding-bottom 20px
+				overflow hidden
+

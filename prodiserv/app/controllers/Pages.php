@@ -21,10 +21,8 @@ class Pages extends \core\controllers\Pages {
 
 	function index($params){
 		
-
-
 		parent::index($params);
-
+		
 		$parts=explode('/',$params['uri']);
 
 		if($parts[0]=='ing-walter-tavara-aviles'){
@@ -33,15 +31,14 @@ class Pages extends \core\controllers\Pages {
 			// prin($this->view->vars['head_title']);
 			$this->view->assign(
 				[
-					'head_title'    => $parts2[0]." | Ing. Walter Tavara",
+					'head_title'    => $parts2[0]." | Mg. Ing. Walter Távara Avilés",
+					'icon'      	   => 'icon9.jpg',
 				]
 			);
+			
 		}
-
 		//render the view
 		$this->view->render('layout_pages');
-
-
 
 	}
 

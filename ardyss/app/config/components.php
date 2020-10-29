@@ -22,7 +22,7 @@ return [
 	'block_gallery_videos'   => 'agro/block_gallery_videos',
 
 
-	'product_detail'			 => 'onelimites/product_detail|es6',
+	'product_detail'		 => 'onelimites/product_detail|es6',
 
 	'form_consulta'			 => 'form_consulta',
 

@@ -21,11 +21,12 @@ class Pages extends \core\controllers\Pages {
 		##       ##     ## ##    ##  ##     ##
 		##        #######  ##     ## ##     ##
 		*/
+
 		$this->fields=[
 			'proyecto'=>[
 				// 'divclass' =>'col s12 l5',
-				'label'    =>'Producto',
-				'value'    =>$post['name'],
+				'label'    =>'Servicio',
+				'value'    =>$this->view->vars['post']['name'],
 				'hidden'   =>'1',
 				// 'disabled' =>'1'
 			],
@@ -77,10 +78,10 @@ class Pages extends \core\controllers\Pages {
 				'class'    =>'validate',
 				'label'    =>'Mensaje',
 				'type'     =>'textarea',
-				'value' =>'Estoy interesado en el el producto '.$post['name'].'
-			Por favor contacten conmigo.
-			Gracias
-			'],
+				'value' =>"Estoy interesado en el el servicio ". $this->view->vars['post']['name'] ."\n".
+			"Por favor contacten conmigo.\n".
+			"Gracias\n"
+			],
 
 		];
 
@@ -142,8 +143,16 @@ class Pages extends \core\controllers\Pages {
 
 		}		
 
+		// $this->view->assign([	
+		// 	'contact'       =>$fields_reformated,
+		// ]);
+		
+
 		$this->view->assign([	
-			'contact'       =>$fields_reformated,
+			'form_fields'    =>$fields_reformated,
+			'form_name'      =>'service',
+			'form_button'    =>'ENVIAR',
+			'form_title'     =>'Consulta',
 		]);
 
 
@@ -158,6 +167,9 @@ class Pages extends \core\controllers\Pages {
 				'with_form'		=>1,
 			]
 		));
+
+
+		// prin($this->view->vars['post']);
 
 		// prin($this->view->vars['menu_post']['items']);
 
@@ -190,7 +202,7 @@ class Pages extends \core\controllers\Pages {
 
 		// $menu_post=$this->view->vars['menu_post']['items'];
 
-		// $this->index_form();
+		$this->index_form();
 
 		// prin($this->view->vars['menu_post']);
 

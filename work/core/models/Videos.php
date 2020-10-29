@@ -38,8 +38,9 @@ class Videos extends \core\Models {
 			"id,name",
 			'galleries_videos',
 			"where 
-			visibilidad=1
-			order by weight desc "
+			visibilidad=1 "
+			.(($params['where'])?$params['where']:" ")
+			." order by weight desc "
 			.(($params['limit'])?'limit '.$params['limit']:"limit 0,100")
 			,
 			0,
@@ -65,7 +66,6 @@ class Videos extends \core\Models {
 
 
 	}
-
 
 	function getItem($params=[]){
 
@@ -133,8 +133,6 @@ class Videos extends \core\Models {
 	
 
 	}
-
-
 
 	function getVideo($params=[]){
 

@@ -2,26 +2,88 @@
 
 return [
 
-	'name'	=>'cslimpofer',
+	'name'	=>'SCL IMPORTRADE INSUTRIAL SRL',
 
 	'visitors'	=>false,
 
 	'web'	=> [
 	
-		'name_short' =>'cslimpofer',
-		'email'      =>'info@cslimpofer.com',
-		'phone'      =>'(+511) 333 - 3333',
-		'mobile'     =>'999-999-999',
+		'name_short' =>'IMPORTRADE',
+		'slogan' => 'Importacion y comercio industrial',
 
-		'address'    =>'Av. Arenales 1724 Dpto 509 Lince',
-		'lat'        =>'-12.0819534',
-		'lon'        =>'-77.0383133',
+		'logo'	 => 'logo_limpo4.png',
+		// 'logo'	 => 'logo_limpo2.png',
+		'ico'	 => 'logo_limpo.jpg',	
+
+		/*
+		######## ##     ##    ###    #### ##        ######
+		##       ###   ###   ## ##    ##  ##       ##    ##
+		##       #### ####  ##   ##   ##  ##       ##
+		######   ## ### ## ##     ##  ##  ##        ######
+		##       ##     ## #########  ##  ##             ##
+		##       ##     ## ##     ##  ##  ##       ##    ##
+		######## ##     ## ##     ## #### ########  ######
+		*/
+		'email'      =>'ventas@cslimpofer.com',
+		'emails'     =>[
+			'ventas@cslimpofer.com',
+			'compras@cslimpofer.com'
+		],
+
+		/*
+		########  ##     ##  #######  ##    ## ########  ######
+		##     ## ##     ## ##     ## ###   ## ##       ##    ##
+		##     ## ##     ## ##     ## ####  ## ##       ##
+		########  ######### ##     ## ## ## ## ######    ######
+		##        ##     ## ##     ## ##  #### ##             ##
+		##        ##     ## ##     ## ##   ### ##       ##    ##
+		##        ##     ##  #######  ##    ## ########  ######
+		*/
+		'phone'      =>'994026637',
+		'phones'      =>[
+			'994026637'
+		],
+
+		'mobile'     =>'994026637',
+
+		'whatsapp'   =>'994026637',
+
+		/*
+
+		  ####  ######  ####
+		 #    # #      #    #
+		 #      #####  #    #
+		 #  ### #      #    #
+		 #    # #      #    #
+		  ####  ######  ####
+
+		*/
+		'address'    =>'CAL. CONOCOCHA 498 DPTO. 201 URB. COVIDA ET. UNO LOS OLIVOS',
+		'lat'        =>'-11.9920654',
+		'lon'        =>'-77.0750046',
 		
-		'whatsapp'   =>'999-999-999',
-		'twitter'    =>'https://twitter.com/',
-		'facebook'   =>'https://www.facebook.com/',
-		'youtube'    =>'https://www.youtube.com/',
+		/*
+		 ######   #######   ######  ####    ###    ##
+		##    ## ##     ## ##    ##  ##    ## ##   ##
+		##       ##     ## ##        ##   ##   ##  ##
+		 ######  ##     ## ##        ##  ##     ## ##
+		      ## ##     ## ##        ##  ######### ##
+		##    ## ##     ## ##    ##  ##  ##     ## ##
+		 ######   #######   ######  #### ##     ## ########
+		*/
 
+		/*
+		'twitter'    =>'https://twitter.com/',
+		'youtube'    =>'https://www.youtube.com/',
+		*/
+		
+		// 'facebook'   =>'https://web.facebook.com/',
+		// 'facebook_page'   =>'/',
+		
+		
+		'email_admin'=>'ventas@cslimpofer.com,guillermolozan@gmail.com',
+
+		
 	],
 
 	'local' => [
@@ -31,6 +93,10 @@ return [
 		'models' =>APP."/../../../sistemapanel/limpofer/panel/config/tablas.php",
 	
 		'static' =>"public",
+
+		'image_devel'=>true,
+		// 'image_devel'=>'thinking.png',
+		// 'image_devel'=>'random',
 
 		'email_test'=>true,
 
@@ -49,6 +115,8 @@ return [
 		'static' =>"./limpofer/public",
 
 		'devel' =>"desarrollo",
+
+		'image_devel'=>true,
 
 		// 'data_test'	=>true,		
 	

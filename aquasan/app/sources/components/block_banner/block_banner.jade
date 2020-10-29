@@ -1,0 +1,20 @@
+if(banner)
+	.slider-container
+		.slider
+			ul.slides
+				each item in banner
+					li
+						if !item.url || item.url=='pagina//'
+							img(class="desktop",src="#{item.img}")
+						else
+							a(href="#{item.url}"): img(aclass="desktop",src="#{item.img}")
+						if item.name
+							.name #{item.name}
+
+
+if(banner_imagen || banner_absolute)
+	figure.responsive-img
+		if(banner_imagen)
+			img(alt="banner",src="#{pub_img}#{banner_imagen}")
+		if(banner_absolute)
+			img(src="#{banner_absolute}")

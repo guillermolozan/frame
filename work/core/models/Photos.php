@@ -47,23 +47,21 @@ class Photos extends \core\Models {
 
 		$config=$this->getConfig();
 
-
 		$name=$config['name'];
 
+		
+		// //only for data test
+		// if($this->data_test){
 
-		//only for data test
-		if($this->data_test){
+		// 	return $this->data_tests->getData([
+		// 		// 'type'  =>'photos',
+		// 		'name'  =>$name,
+		// 		'items' =>'gallery?img&dims=700x700&name=photo 700x700&number=13&url=galeria-fotos'
+		// 	]);
 
-			return $this->data_tests->getData([
-				// 'type'  =>'photos',
-				'name'  =>$name,
-				'items' =>'gallery?img&dims=700x700&name=photo 700x700&number=13&url=galeria-fotos'
-			]);
-
-		}
-		//
-
-
+		// }
+		// //
+		// prin($config);
 
 		// prin(__METHOD__);
 

@@ -1,1 +1,1 @@
-<?php chdir('clean'); include 'index.php';
+<?php chdir('inca'); include 'index.php';

@@ -8,7 +8,7 @@ class Emails extends \core\Emails {
 	var $test          = false;
 	var $logo          = 'logo.jpg';
 	var $logo_height   = '70px';
-	var $from_email 	 = 'no-reply@prodiserv.com';
+	var $from_email 	 = 'no-reply@cslimpofer.com';
 	
 	var $smtp_Host     = 'mail.incaclick.com';
 	var $smtp_Username = 'prueba@incaclick.com';

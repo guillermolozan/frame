@@ -75,6 +75,9 @@ const restart    = require('gulp-restart');
 const fs         = require('fs');
 const ini        = require('ini');
 
+const fileExists = require('file-exists');
+
+
 /*
 ##     ##    ###    ########   ######
 ##     ##   ## ##   ##     ## ##    ##
@@ -116,14 +119,42 @@ gutil.log(gutil.colors.bgRed(' DEVELOPMENT' + (activelivedeploy ? ' AND DEPLOY' 
 
 var varjson;
 
-var dconn = require(app + '/conn.json');
+
+var config;
+var config_dir;
+if(fileExists.sync(app + '/config.json')){
+	config=require(app + '/config.json');
+	config_dir=config.dir;
+} else {
+	config_dir=argv.p;
+}
+
+const sp_folder = '../../sistemapanel/' + config_dir + '/panel/';
+const sp_config = sp_folder+'config/config.ini';
+const sp_ini= ini.parse(fs.readFileSync(sp_config, 'utf-8'))
+
+const dconn={
+	"host":     sp_ini.REMOTE_FTP.ftp_files_host,
+	"user":     sp_ini.REMOTE_FTP.ftp_files_user,
+	"password": sp_ini.REMOTE_FTP.ftp_files_pass,
+	"parallel": "3"
+};
 dconn.log = gutil.log;
 
-// console.log(dconn.host);
-// console.log(dconn.remotedir);
-// console.log('burbuja');
 
-var remotedir = dconn.remotedir || '/public_html';
+
+ 
+fileExists('/index.html', (err, exists) => console.log(exists)) // OUTPUTS: true or false
+ 
+fileExists('/index.html').then(exists => {
+  console.log(exists) // OUTPUTS: true or false
+})
+
+// // console.log(dconn.host);
+// // console.log(dconn.remotedir);
+// // console.log('burbuja');
+
+// var remotedir = dconn.remotedir || '/public_html';
 
 /*
  ######  ######## ##    ## ##       ##     ##  ###### 
@@ -375,6 +406,7 @@ const watch_task = () => {
 				activelivedeploy = true;
 				gutil.log(gutil.colors.bgGreen('live deploy activado'));
 			}
+			// console.log('activelivedeploy '+activelivedeploy);
 		}
 
 		if (key.ctrl && key.name === 'u') {
@@ -407,6 +439,7 @@ const watch_task = () => {
 */
 const live_deploy_task = function (file) {
 	if (activelivedeploy) {
+		// console.log(dconn);
 		// console.log(dconn);
 		if (typeof conn == 'undefined') conn = ftp.create(dconn);
 
@@ -462,16 +495,9 @@ const hello_task = async () => {
 */
 const deploy_task = async () => {
 
-	const sp_folder = '../../sistemapanel/' + argv.p + '/panel/';
-	const sp_config = sp_folder+'/config/config.ini';
-	const sp_ini= ini.parse(fs.readFileSync(sp_config, 'utf-8'))
+	// const config_dir=(config.dir)?config.dir:argv.p;
+	// console.log('config_dir:'+config_dir);
 
-	const dconn={
-		"host":     sp_ini.REMOTE_FTP.ftp_files_host,
-		"user":     sp_ini.REMOTE_FTP.ftp_files_user,
-		"password": sp_ini.REMOTE_FTP.ftp_files_pass,
-		"parallel": "3"
-	};
 	// const dconn = require(app + '/conn.json');
 	dconn.log = gutil.log;
 

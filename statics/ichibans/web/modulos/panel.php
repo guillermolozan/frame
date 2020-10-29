@@ -1,0 +1,72 @@
+<?php 
+
+/*OPCIONES-START*/
+$OpcionesTabla['productos_subgrupos']['ver_home']['1']='si';
+$OpcionesTabla['productos_subgrupos']['ver_home']['0']='no';
+$OpcionesTabla['productos_items']['moneda']['1']='Dólares Americanos';
+$OpcionesTabla['productos_items']['moneda']['2']='Nuevos Soles';
+$OpcionesTabla['productos_items']['oferta']['1']='Si';
+$OpcionesTabla['productos_items']['oferta']['0']='No';
+$OpcionesTabla['productos_stock']['transmision']['0']='MT';
+$OpcionesTabla['productos_stock']['transmision']['1']='AT';
+$OpcionesTabla['clientes']['genero']['1']='M';
+$OpcionesTabla['clientes']['genero']['2']='F';
+$OpcionesTabla['ventas_mensajes']['tipo']['1']='enviado';
+$OpcionesTabla['ventas_mensajes']['tipo']['2']='recibido';
+$OpcionesTabla['ventas_cuentas']['enabled']['1']='si';
+$OpcionesTabla['ventas_cuentas']['enabled']['0']='no';
+$OpcionesTabla['campains']['enviar_texto']['1']='si';
+$OpcionesTabla['campains']['enviar_texto']['0']='no';
+$OpcionesTabla['campains']['enviar_firma']['1']='si';
+$OpcionesTabla['campains']['enviar_firma']['0']='no';
+$OpcionesTabla['campains']['publicado']['0']='no';
+$OpcionesTabla['campains']['publicado']['1']='si';
+$OpcionesTabla['campains_fotos']['bloque']['1']='una columna';
+$OpcionesTabla['campains_fotos']['bloque']['2']='doble columna';
+$OpcionesTabla['lista_envio']['enviado']['1']='si';
+$OpcionesTabla['lista_envio']['enviado']['0']='no';
+$OpcionesTabla['lista_envio']['linkeado']['1']='si';
+$OpcionesTabla['lista_envio']['linkeado']['0']='no';
+$OpcionesTabla['emails_items']['enabled']['1']='si';
+$OpcionesTabla['emails_items']['enabled']['0']='no';
+$OpcionesTabla['emails_items']['tipo_disabled']['1']='por el sistema';
+$OpcionesTabla['emails_items']['tipo_disabled']['2']='por el administrador';
+$OpcionesTabla['emails_items']['tipo_disabled']['3']='por el usuario';
+$OpcionesTabla['emails_items']['comprobado']['1']='si';
+$OpcionesTabla['emails_items']['comprobado']['0']='no';
+$OpcionesTabla['cuentas']['proveedor']['1']='godaddy - calandriapromociones.info';
+$OpcionesTabla['cuentas']['proveedor']['2']='aplus';
+$OpcionesTabla['cuentas']['proveedor']['3']='godaddy - ofertastravel.info';
+$OpcionesTabla['cuentas']['proveedor']['5']='hostgator - calandriatravel.net';
+$OpcionesTabla['cuentas']['proveedor']['6']='godaddy - travelofertas.info';
+$OpcionesTabla['cuentas']['proveedor']['10']='travelofertas.info HG';
+$OpcionesTabla['cuentas']['proveedor']['11']='ofertastravel.info HG';
+$OpcionesTabla['cuentas']['proveedor']['12']='cajamarcatravel.info HG';
+$OpcionesTabla['cuentas']['proveedor']['13']='eshoradeviajar.com HG';
+$OpcionesTabla['cuentas']['proveedor']['14']='calandriatravel.net HG';
+$OpcionesTabla['cuentas']['proveedor']['15']='introducingperu.com HG';
+$OpcionesTabla['cuentas']['enabled']['1']='si';
+$OpcionesTabla['cuentas']['enabled']['0']='no';
+$OpcionesTabla['usuarios']['genero']['1']='Hombre';
+$OpcionesTabla['usuarios']['genero']['2']='Mujer';
+$OpcionesTabla['usuarios']['forma_contacto']['1']='periódico';
+$OpcionesTabla['usuarios']['forma_contacto']['2']='revista';
+$OpcionesTabla['usuarios']['forma_contacto']['3']='guía telefónica';
+$OpcionesTabla['usuarios']['forma_contacto']['4']='radio';
+$OpcionesTabla['usuarios']['forma_contacto']['5']='poster';
+$OpcionesTabla['usuarios']['forma_contacto']['6']='web';
+$OpcionesTabla['usuarios']['forma_contacto']['7']='eventos/promociones';
+$OpcionesTabla['usuarios']['forma_contacto']['8']='recomendaciones';
+$OpcionesTabla['usuarios']['forma_contacto']['9']='precio cliente';
+$OpcionesTabla['usuarios']['forma_contacto']['10']='no sabe / otros';
+$OpcionesTabla['usuarios']['promociones']['1']='Si';
+$OpcionesTabla['usuarios']['promociones']['0']='No';
+$OpcionesTabla['pedidos']['envgen_intervalo_entrega']['1']='Entre 7am y 10:30am';
+$OpcionesTabla['pedidos']['envgen_intervalo_entrega']['2']='Entre 9am y 11:30am';
+$OpcionesTabla['pedidos']['envgen_intervalo_entrega']['3']='Entre 8am y 12:30am';
+$OpcionesTabla['pedidos']['envgen_intervalo_entrega']['4']='Entre 2pm y 5:30pm';
+$OpcionesTabla['pedidos']['envgen_intervalo_entrega']['5']='Entre 6:00pm y 8pm';
+$OpcionesTabla['pedidos']['envgen_intervalo_entrega']['6']='Entre 6:00am y 8am (Horario Especial)';
+/*OPCIONES-END*/
+
+?>

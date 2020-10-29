@@ -16,6 +16,8 @@ class Routes {
 
 		global $start;
 		
+		$routes_return=[];
+
 		$this->routes = require APP.'/config/routes.php';
 
 		$this->add_route(['/meta'=>'controller=Meta&method=index']);
@@ -122,8 +124,11 @@ class Routes {
 		if($uri=='') $uri='/$';
 
 
-
 		$this->uri=$uri;
+
+		// prin($this->uri); 
+		// prin($this->routes); 
+		// exit();
 
 		// Is there a literal match?  If so we're done
 		if(isset($this->routes[$uri]))
@@ -223,7 +228,7 @@ class Routes {
 		if($this->disabled) exit();
 
 		$this->render();
-
+		
 		$met= str_replace('-','_',$this->method);
 
 		$par= $this->params;
@@ -244,7 +249,7 @@ class Routes {
 		$par['controller'] =ucfirst($this->controller);
 		
 		$par['method']     =$this->method;
-
+		
 		// echo "\$obj = new controllers\\".$this->controller."(\$par);";
 
 		// echo getcwd();

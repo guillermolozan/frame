@@ -43,7 +43,7 @@ class Posts extends Controller {
 				'projects',
 				'where 1 '.
 				' and id_grupo='.$post['id'].' '.
-				" order by weight desc",
+				" order by fecha desc",
 				"0:lista de proyectos by grupo=".$post['id'],
 				[
 				

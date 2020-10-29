@@ -1,0 +1,232 @@
+menu_logo      ='aquasan-small.png'
+menu_logo_bg   =#fff
+
+menu_bg        =#50dffa
+menu_color     =black
+menu_font_size =.84em
+menu_height    =30px
+menu_bg_over   =white
+menu_color_over=#000
+
+// menu_bg        =rgba(black,.7)
+// menu_color     =white
+// menu_font_size =14px
+// menu_height    =38px
+// menu_bg_over   =rgba(white,.9)
+// menu_color_over=black
+
+header_bg()
+	// background url(imgs+'header-bg-bottom_line.jpg') repeat-x bottom
+	background menu_logo_bg
+	&:after
+		content ""
+		width 422px
+		height 31px
+		background url(imgs+'header-bg-bottom.jpg') no-repeat
+		z-index 0
+		margin 0 auto
+		position relative
+		display block
+		margin-top -31px
+		
+header_promo()
+	z-index 1000
+	// transition inherit
+	transition inherit
+	transform rotate(9deg)
+	display block
+	heigh auto
+	&:hover
+		transform rotate(-9deg)
+		background-color inherit
+	a.btn
+		position relative
+		border-radius 2px 12px 12px 2px
+		font-size 22px
+		height 55px
+		line-height @height
+		width auto
+		box-shadow initial
+		font-weight 700
+		padding 0 .8em
+		// background #D8385E
+		background-color color3 !important
+		text_border(black)
+		&:before
+			content ""
+			background inherit
+			height 46px
+			width @height
+			position absolute
+			border-radius 30%
+			left -23px
+			top 4px
+			transform rotate(45deg)
+			z-index -1
+		&:after
+			content ""
+			height 15px
+			width @height
+			border-radius 50%
+			background white
+			position absolute
+			z-index 2
+			left -15px
+			top 18px
+		&:hover
+			text-decoration none
+			background-color color1 !important
+
+@media $large
+	.ocultar_sin_headfixed
+		display none !important
+
+header_customize()
+	header 
+		// @media $small-medium
+		// 	height 200px
+		nav > .container > .menu_top 
+			@media $small-medium
+				height 56px
+			> li.logo a
+				@media $small-medium
+					transform scale(1.4) !important
+				@media $small
+					transform scale(.8) !important
+			@media $large
+				> li.logo
+					display none !important
+					& + li
+						display none !important
+
+
+	@media $large
+		header
+			nav
+				> .container 
+					// border 1px solid yellow
+					> .menu_top
+						// border 1px solid orange
+						> li
+							display flex
+							align-content center
+							text-align center
+							// border-bottom 3px solid transparent
+							a
+								font-size 13px !important
+								// padding 0 4px !important
+								font-weight normal !important
+								padding-left .5em !important
+								padding-right .5em !important
+							// &.active,&:hover
+							// 	border-bottom 3px solid #50dffa
+						.submenu > li
+							&.active,&:hover
+								background menu_bg
+								> a
+									color menu_color !important
+
+		body.headfixed
+			.ocultar_sin_headfixed
+				display block !important
+			header
+				nav
+					// background menu_bg
+					// background rgba(white,.9)
+					// box-shadow initial
+					// background menu_logo_bg
+					// background menu_logo_bg 
+					background #50dffa
+					> .container
+						// border 1px solid yellow
+						// background menu_logo_bg
+						> .menu_top
+							// border 1px solid orange
+							> li
+								> a
+									// color menu_color !important
+									// padding 0 1rem
+									color black !important
+								&.active,&:hover
+									background menu_bg_over
+									border-bottom 3px solid #000
+									> a
+										color menu_color_over !important
+								&.logo
+									background initial !important
+									padding 0 0rem
+									> a
+										padding 0 !important
+										// width 200px
+										color transparent !important
+										transform scale(1)
+									&.active,&:hover
+										border-bottom-color transparent
+
+.prenav
+	@media $medium-small
+		display none
+	text-align center
+	transition all .6s
+	background-color #fff !important
+	header_bg()
+	.container
+		transition inherit
+		display flex
+		line-height initial
+		align-items center
+		justify-content space-between
+		.promo
+			header_promo()
+		> a.logo
+			transition inherit
+			position relative
+			width auto
+			height auto
+			background transparent
+			flex-grow 0
+			display inline-block
+			// margin 12px 0
+			margin 5px 0
+			text-align left
+			width 100%
+			
+			@media $small-medium
+				display block
+				text-align center
+			a
+				padding 0
+				text-align left
+				@media $small-medium
+					text-align center
+				img
+					transition inherit
+					transform scale(1)
+			@media $small-medium
+				margin 0
+				img
+					height 50px
+			@media $large
+				display flex
+				justify-content center
+				align-items center
+				// text-decoration underline
+				img
+					width auto
+					height 65px
+					margin-right 10px
+					// transform scale(.6)
+				&:after
+					content "Aquasan Ingenieros SAC"
+					color black
+					font-size 48px
+					text-transform: uppercase
+					font-family: Oswald
+
+
+
+header_basic_long()
+
+
+header_customize()
+

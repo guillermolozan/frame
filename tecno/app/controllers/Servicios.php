@@ -334,7 +334,20 @@ class Servicios extends \core\controllers\Pages {
 
 
 		$fields_reformated=processFields($this->fields);
-
+		$this->view->assign([	
+			// 'form_fields'    =>[
+			// 	$fields_reformated[0],
+			// 	$fields_reformated[1],
+			// 	$fields_reformated[2],
+			// 	$fields_reformated[3],
+			// 	$fields_reformated[4],
+			// 	$fields_reformated[5]
+			// ],
+			'form_fields'=>$fields_reformated,
+			'form_name'      =>'service',
+			'form_button'    =>'ENVIAR',
+			'form_title'     =>'Consulta',
+		]);
 		// prin($this->view->vars);
 		// 
 		if($_SERVER['REQUEST_METHOD']=='POST'){
@@ -483,17 +496,6 @@ class Servicios extends \core\controllers\Pages {
 			
 			//form
 			// 'contact'       =>$fields_reformated,
-			'fields1'			=> [
-				$fields_reformated[0],
-				$fields_reformated[1],
-				$fields_reformated[2],
-				$fields_reformated[3],
-				$fields_reformated[4],
-				$fields_reformated[5]
-			],
-
-			'fields2'			=> [$fields_reformated[6]],
-
 
 			'message'       => $this->message,
 
@@ -505,6 +507,7 @@ class Servicios extends \core\controllers\Pages {
 
 		]);
 
+		
 
 		$this->view->render('layout_services_detail');
 
@@ -749,7 +752,8 @@ class Servicios extends \core\controllers\Pages {
 
       	// prin($menu['items']['0']['items']['0']);
 
-		$this->view->assign(['menu_post' => $menu['items']['0']['items']['0']]);
+		  $this->view->assign(['menu_post' => $menu['items']['0']['items']['0']]);
+		//   $this->view->assign(['menu_post' => $menu['items']['0']]);
 
 
 

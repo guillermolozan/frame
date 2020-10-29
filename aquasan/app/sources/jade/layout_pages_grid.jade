@@ -1,0 +1,70 @@
+include common/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}")
+
+		include includes/header
+		
+
+		//- include includes/banner
+
+		-li_class='s12 m6 l4'		
+		main.container.row
+			.wide
+				//- section(class="block_gallery gallery_products #{gallery.type}")
+				section(class="block_pages block_gallery  #{gallery.type}")
+					.container
+						if(gallery.name)
+							if(main)
+								h1: +item(gallery)
+								-main=false
+							else
+								h2: +item(gallery)
+
+						if(gallery.items)
+							ul(class="row gallery #{gallery.type} items #{ul_class} ")
+								each item in gallery.items
+									li(class="col #{li_class}")
+										.card
+											.card-image
+												if (gallery.type=='videos')
+													//- +img_venobox(item)
+													+img_lifty(item)
+												else if (gallery.type=='photos')
+													+img_magnific(item)
+												else
+													+img_item(item)
+											if(item.name)
+												.card-content
+													if (gallery.type=='videos')
+														a(class="btn",data-lity,href="//youtu.be/#{item.video}") #{item.name}
+														//- a(class="venobox btn",data-type="youtube",href="//youtu.be/#{item.video}") #{item.name}
+													else
+														if(item.url)
+															if(item.target)
+																a(class="btn name",href="#{item.url}",target="#{item.target}") #{item.name}
+															else
+																a(class="btn name",href="#{item.url}") #{item.name}
+														else
+															.name #{item.name}
+														if(item.subname)
+															.subname(style=" background-color: #{item.color};") #{item.subname}
+														
+
+													if(item.precio)
+														.precio #{item.precio}
+													if(item.precio_oferta)
+														.precio_oferta #{item.precio_oferta}
+
+						if(gallery.more)
+							.row.center.more
+								a(class="btn",href="#{gallery.more.url}") #{gallery.more.name}
+
+						-ul_class=false
+						-li_class=false
+		
+		include includes/footer.jade
+		include common/foot.jade

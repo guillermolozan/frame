@@ -269,8 +269,16 @@ class Servicios extends \core\controllers\Pages {
 		);
 
 
-
-		//form
+-
+		/*
+		########  #######  ########  ##     ##
+		##       ##     ## ##     ## ###   ###
+		##       ##     ## ##     ## #### ####
+		######   ##     ## ########  ## ### ##
+		##       ##     ## ##   ##   ##     ##
+		##       ##     ## ##    ##  ##     ##
+		##        #######  ##     ## ##     ##
+		*/
 		$this->fields=[
 			'proyecto'=>[
 				// 'divclass' =>'col s12 l5',
@@ -334,11 +342,10 @@ class Servicios extends \core\controllers\Pages {
 
 		];
 
-
+		
 		$fields_reformated=processFields($this->fields);
 
-		// prin($this->view->vars);
-		// 
+
 		if($_SERVER['REQUEST_METHOD']=='POST'){
 
 			$email= new \controllers\Emails($this->view);

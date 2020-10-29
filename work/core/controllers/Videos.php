@@ -31,7 +31,7 @@ class Videos extends \controllers\Controller {
 
 	function detail(){
 
-
+		
 		$Videos=$this->loadModel('Videos');
 
 

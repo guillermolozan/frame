@@ -39,9 +39,9 @@ module.exports = ()=>{
 
     	requirejs(['lity.min'],()=>{
 
-      	loadCss('lity.min.css');
+      		loadCss('lity.min.css');
 
-   	});
+   		});
 
    }
 

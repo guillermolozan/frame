@@ -1,0 +1,40 @@
+.footer_special
+	.container.row
+		.col.s12.l4
+			.card: .card-content.z-depth-4.ubicacion
+				h4 Ubicación
+				a(href="contactenos"): img.responsive-img(src="#{pub_img}map.png",title="#{web_name} ubicación",alt="#{web_name} ubicación")
+			
+		//- .col.s12.l4
+		//- 	.card: .card-content.z-depth-4
+		//- 		h4 Galería
+		//- 		.slider
+		//- 			if(footer_special.banner)
+		//- 				ul.slides2
+		//- 					each item in footer_special.banner
+		//- 						li
+		//- 							if !item.url || item.url=='pagina//'
+		//- 								img(class="desktop",src="#{item.img}")
+		//- 							else
+		//- 								a(href="#{item.url}"): img(aclass="desktop",src="#{item.img}")
+		.col.s12.l4
+			.card: .card-content.z-depth-4.video_insti
+				h4 #{footer_special.name}
+				+img_lifty(footer_special)
+				//- iframe(frameborder='0',
+					scrolling='no',
+					marginheight='0',
+					marginwidth='0',
+					width='100%',
+					type='text/html',
+					src="https://www.youtube.com/embed/#{footer_special.video}?autoplay=0&fs=1&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0")
+		.col.s12.l4
+			.card: .card-content.z-depth-4.contacta
+				h4 Contácta con nosotros
+				div #[strong Oficina] : 053 632170	
+				div #[strong Celular] : 979227848	
+				div #[strong Correo 1] : mesadepartes@aquasan.com.pe
+				div #[strong Correo 2] : gerencia@aquasan.com.pe	
+				//- div #[strong Correo 3] : jsalazar@aquasan.com.pe	
+				div #[strong Dirección] : Urb. Nylon San Pedro A-8 ILO	
+				div.contactenos: a(href="contactenos") Haga su consulta

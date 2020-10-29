@@ -1,0 +1,2852 @@
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+<HTML>
+<HEAD> 
+    
+    <TITLE>DESTINOS MUNDIALES - Home</TITLE>
+
+
+
+
+
+
+
+
+
+
+
+    <SCRIPT language="JavaScript" src="style\extranet_destinos.js"></SCRIPT>
+
+
+    <LINK href="style\extranet_destinos.css" type="text/css" rel="stylesheet">
+<META http-equiv="Content-Type" content="text/html; charset=windows-1252">
+ <STYLE type="text/css">
+.style1 {
+font-family: Verdana, Arial, Helvetica, sans-serif; color: #C81D16; font-style: normal; font-size: 10px; font-variant: normal
+}
+
+
+
+
+.style6 {
+font-weight: bold; font-size: 14px
+}
+.style8 {
+font-family: Verdana, Arial, Helvetica, sans-serif; font-weight: bold; font-style: normal; font-variant: normal
+}
+.style9 {
+font-size: 13px
+}
+.style10 {
+font-size: 30px
+}
+.style11 {
+color: #FF0000
+
+
+
+}
+</STYLE>
+
+
+
+<SCRIPT language="JavaScript" type="text/JavaScript">
+<!--
+
+function flashit(){
+					if (!document.all)
+						return
+						if (myexample.style.borderColor=="yellow")
+							myexample.style.borderColor="lime"
+						else
+							myexample.style.borderColor="yellow"
+						}
+						
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+
+function  abrir( paquete, grupo, dsc_hotel , fechas ,ls_tipo_chd ){
+	var url ="pag_muestra_rangos_paquete.jsp?paquete=" +paquete+" &grupo_paquete="+ grupo +"&tipo_chd="+ls_tipo_chd +"&texto="+dsc_hotel +" " +fechas ;
+	window.showModalDialog( url,"","dialogHeight: 200px; dialogWidth: 200px; edge: sunken ; center: Yes; help: No; resizable: No; status: No;unadorned: no");	
+	}
+	
+	function mostrarinfoadichotel(paquete,grupo,dsc_hotel,tipo_hab){
+
+
+	var url ="pag_muestra_info_habitaciones.jsp?paquete=" +paquete+" &grupo_paquete="+ grupo +"&tipo_habitacion="+tipo_hab +"&nombre_paquete="+dsc_hotel;
+	window.showModalDialog( url,"","dialogHeight: 180px; dialogWidth: 300px; edge: sunken ; center: Yes; help: No; resizable: No; status: No;unadorned: no");
+}
+//-->
+</SCRIPT>
+
+</HEAD>
+ 	
+<SCRIPT  language="JavaScript">
+function regresar(){
+	var strURL = "pag_listado_paquetes.jsp";
+	document.location.href=strURL;
+}
+function cambiar( modo ){
+ var strURL = "pag_paquete_info_regula.jsp";
+			strURL += "?Sel="+modo;
+			strURL += "&h="+1309892825468;
+document.getElementById("ifra_info").Document.location=strURL
+}
+function ver(){
+	var url  = document._ctl0.s_url.value
+return url;
+}
+function enviar_email(){
+	document._ctl0.submit();
+}
+</SCRIPT>
+<SCRIPT language="JavaScript">
+function extraer(tipo_tarifario, id_codigo, id_item)
+{
+     var strURL = "";
+     var strURL = "Servlet_Obtiene_Texto?as_tarifario="+tipo_tarifario;
+     strURL += "&as_codigo="+id_codigo;
+     strURL += "&as_item="+id_item;
+
+     launch(strURL,"ventana",630,550);
+
+}
+</SCRIPT>
+
+<SCRIPT language="JavaScript">
+function evalua_click( obj , id_codigo , iditem, id_tarifario ){
+	 if ( obj ){ // checked true
+		var  envio = id_codigo+'/'+iditem+'/'+id_tarifario
+		var url='Servlet_Obtiene_Texto?as_codigo='+id_codigo+'&as_item='+iditem+'&as_tarifario='+id_tarifario;
+//		alert( url )
+		window.showModalDialog( url,"","dialogHeight: 520px; dialogWidth: 778px; edge: Raised; center: Yes; help: No; resizable: Yes; status: No;");
+	//launch( url , 'imp_pax' , 778 , 520 );
+	 }
+}
+</SCRIPT>
+
+<BODY onLoad="MM_preloadImages('images/imprimir_off.jpg','images/cerrar_off.jpg','images/enviar_email_off.jpg')">
+
+
+
+
+
+<FORM id="_ctl0" name="_ctl0" action="pag_envio_mail.jsp" method="post" >
+
+<INPUT type="hidden" name="codigo_agencia_firma" value='15405'><!-- CODIGO DE LA AGENCIA  -->
+<INPUT type="hidden" name="mail_counter"  value=''><!--  CORREO DE LA AGENCIA -->
+<INPUT type="hidden" name="e_mail"  value='elisarocca@calandriatravel.com'><!--  CORREO DE LA AGENCIA -->
+<INPUT type="hidden" name="nombre_counter"  value='Elisa Rocca'><!-- NOMBRE DE LA COUNTER-  -->
+<INPUT type="hidden" name="nombre_agencia"  value='CALANDRIA TRAVEL S.A.C.'><!-- NOMBRE DE LA AGENCIA-  -->
+<INPUT type="hidden" name="tipo_correo" value="2">
+<SCRIPT language="JavaScript">
+//document.write( '<input name="url"  type="hidden" value="' + location.href +'">' ) el url se armara con estos parametros
+</SCRIPT>
+<INPUT type="hidden" name="id_paquete" value ="12657" >
+<INPUT type="hidden" name="id_aerea"  value="CM">
+<INPUT type="hidden" name="transportador_nombre" value ="">
+<INPUT type="hidden" name="mes"  value="7">
+<INPUT type="hidden" name="mes_fin"  value="8">
+<INPUT type="hidden" name="anio" value="2011">
+<INPUT type="hidden" name="fecha"  value="00">
+<INPUT type="hidden" name="pres" value="0">
+<INPUT type="hidden" name="id_tipo_tarifario" value="1">
+<INPUT type="hidden" name="gastosad" value="0.00" >
+<INPUT type="hidden" name="tipo_paq" value="03" >
+<INPUT type="hidden" name="sel" value="1">
+<INPUT type="hidden" name="h" value="900" >
+<INPUT type="hidden" name="grupos" value="">
+<INPUT type="hidden" name="orden" value="3">
+<INPUT type="hidden" name="categorias" value="1.00">
+<INPUT type="hidden" name="subcodigo" value="0">
+<INPUT type="hidden" name="numero_cotizacion" value="0">
+<INPUT type="hidden" name="correo_counter_ag"  value='elisarocca@calandriatravel.com'><!--  CORREO DE LA AGENCIA -->
+<INPUT name="bo" type="hidden" value="0">
+<INPUT type="hidden" name="codigo_agencia" value='15405'><!-- CODIGO DE LA AGENCIA  -->
+<INPUT type="hidden" name="muestra_nchs" value="1"><!-- CODIGO DE LA AGENCIA  -->
+<INPUT type="hidden" name="muestra_thabs" value="sgl,dbl,tpl,qua,chd,ch2,cadic"><!-- CODIGO DE LA AGENCIA  -->
+<INPUT type="hidden" name="varimgtd" value="0">
+<INPUT type="hidden" name="vartd" value="0">	
+<INPUT type="hidden" name="varpaxtd" value="0">
+<INPUT type="hidden" name="envia_es_cliente_interno" value="0">
+<INPUT type="hidden" name="tipo_importe" value="1">
+
+
+
+
+
+  <TABLE width="100%" border="0" align="left" cellPadding="0" cellSpacing="0">
+    <TBODY>
+      <TR> 
+        <TD height="52"><TABLE width="100%" border="0" cellspacing="0" cellpadding="0">
+            <TR> 
+              <TD width="20%" height="73"> <TABLE width="39%" border="0" cellspacing="0" cellpadding="0">
+                  <TR> 
+                    <TD width="32%" height="73"> 
+                      	
+	
+	<IMG src="images/logo_dm.jpg">
+					 
+                    </TD>
+                    <TD width="2%" valign="bottom"><TABLE height="100%" cellPadding="0" width="97%" border="0">
+                        <TBODY>
+                          <TR> 
+                            <TD width="100%" height="44" vAlign="top">&nbsp; </TD>
+                          </TR>
+                        </TBODY>
+                      </TABLE></TD>
+                    <TD width="2%" valign="bottom">&nbsp;</TD>
+                    <TD width="64%" valign="bottom" ><DIV align="center"> 
+                      </DIV></TD>
+                  </TR>
+                </TABLE></TD>
+              <TD width="80%" valign="bottom"><DIV align="right"></DIV></TD>
+            </TR>
+          </TABLE></TD>
+      </TR>
+      <TR> 
+        <TD height="52"><TABLE cellspacing="0" cellpadding="0" width="760" border="0">
+            <TBODY>
+              <TR> 
+                <TD>&nbsp; </TD>
+              </TR>
+              <TR> 
+                <TD height="18"> <TABLE width="37%" border="0" align="right" cellpadding="1" cellspacing="0">
+                    <TR> 
+					
+
+				
+			
+			
+				
+			  <TD width="24%"><A href="#"  onClick="javascript:window.print();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image31','','images/imprimir_off_v2.jpg',1)"><IMG src="images%5Cimprimir_on_v2.jpg" alt="Imprimir" name="Image31" width="85" height="26" border="0" id="Image31"></A></TD>
+			  <TD width="51%"><A href="#" onMouseOut="MM_swapImgRestore()" onClick="javascript:window.close();" onMouseOver="MM_swapImage('Image41','','images/cerrar_off_v2.jpg',1)"><IMG src="images%5Ccerrar_on_v2.jpg" alt="Cerrar" name="Image41" width="85" height="26" border="0" id="Image41"></A></TD>
+			</TR>
+		  </TABLE> 
+                  <DIV align="right"><A href="#"  onClick="javascript:window.print();" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image31','','images/imprimir_off.jpg',1)"> 
+                    </A><A href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image3','','images/imprimir_off.jpg',1)"> 
+                    </A></DIV></TD>
+              </TR>
+			  
+			  
+			  <TR>
+										      <DIV align="center">
+											  											  
+									            
+									            <IMG src="images/titulo_progLocura_B.gif" > 
+												
+												
+												<IMG src="images/OF_DE_TMO_ DE_REP_DOM.jpg">
+												
+																																		
+  
+											  </DIV>
+											</TR>
+            </tbody>
+          </TABLE></TD>
+      </TR>
+      <TR> 
+        <TD height="52"> 
+          <!-- Tabla General de
+                                                    Datos-->
+          
+          <TABLE width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
+            <TR> 
+              <TD width="23%"> <DIV align="right" class="style6"><STRONG> Nombre del Paquete : </STRONG></DIV></TD>
+              <TD class="textoNegro style9"> 
+                Promoción Princess Hotels con Copa
+
+                <SPAN class="style8"></SPAN> 
+                <INPUT name="nom_hotel_envia"  type="hidden" value="Promoción Princess Hotels con Copa"> 
+                <INPUT name="asunto"  type="hidden" value="Promoción Princess Hotels con Copa"> 
+                
+                <DIV align="right"> </DIV>
+                <DIV align="left"></DIV></TD>
+              <TD width="5%" class="textoGuinda"> 
+                <!-- -->
+                
+              </TD>
+              <TD width="18%"><DIV align="right"><STRONG></STRONG><SPAN class="style6"><STRONG> 
+			  
+			  	N&deg; 
+                  de Noches :
+				  
+				  </STRONG></SPAN><STRONG></STRONG></DIV></TD>
+              <TD width="9%" class="textoNegro style10">
+			    
+			  3 
+			  				  
+			  </TD>
+            </TR>
+            <TR> 
+              <TD> <DIV align="right" class="style6"><STRONG> Ciudad : </STRONG></DIV></TD>
+              <TD width="45%" class="textoNegro style9"> Punta Cana </TD>
+              <TD>&nbsp;</TD>
+              <TD><DIV align="right"></DIV></TD>
+              <TD><DIV align="left"></DIV>
+                <DIV align="left" class="textoNegro"></DIV></TD>
+            </TR>
+          </TABLE>
+          
+          <!-- Fin de Escribir La Tabla -->
+          <DIV align="left" class="textoNegro"></DIV></TD>
+      </TR>
+      <TR> 
+        <TD width="52%" align="left" valign="top"> <TABLE width="100%" height="14%" border="0" cellPadding="0" cellSpacing="0" class="textoTituloAzul" id="Table1">
+		
+		
+            <TBODY>
+              <TR vAlign="top" bgcolor="#515A71"> 
+			  
+			  
+			  
+                <TD height="20" colSpan="4"> <DIV align="justify"> 
+                    <TABLE width="100%" border="0" cellpadding="0">
+                      <TR> 
+                        <TD width="57%" height="13" valign="top" class="textoTituloBlanco"> 
+                          Incluye </TD>
+                        <TD width="43%" class="textoTituloBlanco"> <DIV align="right"></DIV></TD>
+                      </TR>
+                    </TABLE>
+                  </DIV></TD>
+              </TR>
+              <TR> 
+                <TD height="67"> <DIV align="left"></DIV>
+                  <TABLE width="100%" height="54" border="0" cellpadding="0" cellspacing="0">
+                    
+                    
+                    <TR> 
+                      <TD width="3%" height="18"  > <DIV align="center"> - </DIV></TD>
+                      <TD width="55%" height="18" class="textoNegro"> 
+                        
+                        Boleto Aéreo :Lima/ Punta Cana/Lima 
+                        
+                        <BR> </TD>
+                      <TD width="1%" height="18"> 
+                        
+                      </TD>
+                      <TD width="41%" height="18"> </TD>
+                    </TR>
+                    <!---------------------------------------------------------->
+					 
+							
+							
+							
+							 
+                                                                     
+                    
+                    
+                    <TR> 
+                      <TD width="3%" height="18"  > <DIV align="center"> - </DIV></TD>
+                      <TD width="55%" height="18" class="textoNegro"> 
+                        
+                        Traslado Aeropuerto Punta Cana/ Hotel Punta Cana/ Aeropuerto Punta Cana (Serv. Regular) 
+                        
+                        <BR> </TD>
+                      <TD width="1%" height="18"> 
+                        
+                      </TD>
+                      <TD width="41%" height="18"> </TD>
+                    </TR>
+                    <!---------------------------------------------------------->
+					 
+                    
+                    <TR> 
+                      <TD width="3%" height="18"  > <DIV align="center"> - </DIV></TD>
+                      <TD width="55%" height="18" class="textoNegro"> 
+                        
+                        Sistema de alimentación según el hotel seleccionado 
+                        
+                        <BR> </TD>
+                      <TD width="1%" height="18"> 
+                        
+                      </TD>
+                      <TD width="41%" height="18"> </TD>
+                    </TR>
+                    <!---------------------------------------------------------->
+					 
+                    
+                    <TR> 
+                      <TD width="3%" height="18"  > <DIV align="center"> - </DIV></TD>
+                      <TD width="55%" height="18" class="textoNegro"> 
+                        
+                        3 noches de alojamiento en el hotel seleccionado 
+                        
+                        <BR> </TD>
+                      <TD width="1%" height="18"> 
+                        
+                      </TD>
+                      <TD width="41%" height="18"> </TD>
+                    </TR>
+                    <!---------------------------------------------------------->
+					 
+                    
+                    <TR> 
+                      <TD width="3%" height="18"  > <DIV align="center"> - </DIV></TD>
+                      <TD width="55%" height="18" class="textoNegro"> 
+                        
+                        Impuesto de Salida del Aeropuerto de Lima (T.U.U.A) de $ 30.74 (HW) 
+                        
+                        <BR> </TD>
+                      <TD width="1%" height="18"> 
+                        
+                      </TD>
+                      <TD width="41%" height="18"> </TD>
+                    </TR>
+                    <!---------------------------------------------------------->
+					 
+                    
+                    <TR> 
+                      <TD width="3%" height="18"  > <DIV align="center"> - </DIV></TD>
+                      <TD width="55%" height="18" class="textoNegro"> 
+                        
+                        Impuesto de Seguridad Punta Cana al boleto USD 141.60 (Q) - Autorizado 
+                        
+                        <BR> </TD>
+                      <TD width="1%" height="18"> 
+                        
+                      </TD>
+                      <TD width="41%" height="18"> </TD>
+                    </TR>
+                    <!---------------------------------------------------------->
+					 
+                    
+                    <TR> 
+                      <TD width="3%" height="18"  > <DIV align="center"> - </DIV></TD>
+                      <TD width="55%" height="18" class="textoNegro"> 
+                        
+                        Impuesto Dominicano USD 82.60 (XT) 
+                        
+                        <BR> </TD>
+                      <TD width="1%" height="18"> 
+                        
+                      </TD>
+                      <TD width="41%" height="18"> </TD>
+                    </TR>
+                    <!---------------------------------------------------------->
+					 
+                    
+                    <TR> 
+                      <TD width="3%" height="18"  > <DIV align="center"> - </DIV></TD>
+                      <TD width="55%" height="18" class="textoNegro"> 
+                        
+                        Impuesto de Turismo Peruano  DY $15.00 
+                        
+                        <BR> </TD>
+                      <TD width="1%" height="18"> 
+                        
+                      </TD>
+                      <TD width="41%" height="18"> </TD>
+                    </TR>
+                    <!---------------------------------------------------------->
+					 
+                    
+                    <!--                                          </TABLE> -->
+                    
+                    <INPUT name="id_tipo_tarifario" type="hidden" value="1">
+                    
+                    
+                    <!--                                          <TABLE width="100%" height="18" border="0" cellpadding="0" cellspacing="0"> -->
+                    <!-- INICIO DE TABLA -->
+               
+                    <!-- FIN DE TABLA-->
+                    
+			
+			
+			      
+                                                                     
+			
+			
+			
+			
+			
+			
+                    <TR> 
+                      <TD height="18" >&nbsp;</TD>
+                      <TD height="18" >&nbsp;</TD>
+                      <TD></TD>
+                      <TD><DIV align="right" class="textoTituloGuinda">
+	                    <DIV align="center">
+	                        											 
+				              <IMG src="images/inc5.gif"> 
+  
+				          
+                        </DIV>
+                      </DIV></TD>
+                    </TR>
+                  </TABLE></TD>
+              </TR>
+            </TBODY>
+			
+          </TABLE> 
+          <BR>
+		  		
+          <BR> <TABLE width="100%" border="0" cellPadding="0" cellSpacing="0" class="textoTituloAzul" id="Table1">
+            <TBODY>
+              <TR vAlign="top" bgcolor="#A50404" > 
+                <TD colSpan="4"> <DIV align="justify"> 
+                    <P class="textoTituloBlanco"> Alternativas de Alojamiento</P>
+                  </DIV></TD>
+              </TR>
+              <TR> 
+                <TD> <CENTER>
+                    <CENTER>
+                      <DIV align="left"></DIV>
+					  
+					  
+					  
+					  
+                      <TABLE width="100%" border="0" cellpadding="0" cellspacing="2">
+                        <TR> 
+                          <TD> <SPAN id="HotelesPromocion_control1_lblbcadena"> 
+                            </SPAN> <TABLE width="100%" border="0" cellspacing="0" bgcolor="#FFFFFF">
+                              <TR> 
+                                <TD valign="top" class="textoTituloGuinda"> 
+                                  <SPAN id="HotelesPromocion_control1_lblbcadena"> 
+                                  </SPAN> 
+								  
+			<TABLE >
+			
+				
+	<TR>
+		<TD>
+		
+	<TABLE>
+		<TR>							
+			<TD  colspan="6" class="textoGuinda">
+				Tropical Princess (4*) / Todo Incluido / Superior / Revision Tarifas Verano 2011
+			</TD>
+		</TR>
+		<TR>
+			<TD colspan="6" class="prueba2">
+				03/08/2011 31/08/2011
+			</TD>				
+		</TR>
+				
+
+
+
+
+		<TR>
+			<TD class="textoInferriorAzul">SGL</TD>
+			<TD class="textoNegro">US$ 
+						
+			877
+			
+						
+			</TD><TD class="textoNegro">S./ 2516</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 94</TD> <TD class="textoNegro">S./ 271</TD>										
+		    
+		</TR>
+    
+		<TR>
+			<TD class="textoInferriorAzul">DBL</TD>
+			<TD class="textoNegro">US$ 
+						
+			755
+						
+			</TD><TD class="textoNegro">S./ 2167</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 57</TD> <TD class="textoNegro">S./ 164</TD>												
+		    
+		</TR>
+
+		<TR>
+			<TD class="textoInferriorAzul">TPL</TD>
+			<TD class="textoNegro">US$ 
+						
+			741
+						
+			</TD><TD class="textoNegro">S./ 2128</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 53</TD> <TD class="textoNegro">S./ 151</TD>					
+		    
+		</TR>
+
+
+	
+		<TR>
+			<TD class="textoInferriorAzul">QUA</TD>
+			<TD class="textoNegro">US$ 
+						
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;
+						
+			
+			</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>						
+		    
+		</TR>	
+		
+							
+	<TR>
+	<TD class="textoInferriorAzul">CHD</TD>
+			
+			
+			
+			<TD class="textoNegro">US$ 
+						
+			578
+			
+						
+			<A href='javascript:abrir("12657","1","Tropical Princess (4*) / Todo Incluido / Superior / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","0");'><FONT size="1">Edad</FONT></A>	</TD><TD class="textoNegro">S./ 1658 <A href='javascript:abrir("12657","1","Tropical Princess (4*) / Todo Incluido / Superior / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","0");'><FONT size="1">Edad</FONT></A>	</TD>
+				
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+		
+		
+			<TD class="textoNegro">FREE</TD> <TD class="textoNegro">FREE</TD>
+			
+		
+				
+		 
+		 		
+		 
+		</TR>
+					
+		<TR>
+			<TD class="textoInferriorAzul">CH2</TD>
+			
+		
+		
+		
+		
+			
+		
+		<TD class="textoNegro">US$ 
+					
+		578
+		
+				
+			
+			 <A href='javascript:abrir("12657","1","Tropical Princess (4*) / Todo Incluido / Superior / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","1");'><FONT size="1">Edad</FONT></A> </TD> <TD class="textoNegro">S./ 1658 <A href='javascript:abrir("12657","1","Tropical Princess (4*) / Todo Incluido / Superior / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","1");'><FONT size="1">Edad</FONT></A> </TD>
+			 	
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+		
+		
+			<TD class="textoNegro">FREE</TD> <TD class="textoNegro">FREE</TD>
+			
+		
+		
+		 
+		 		
+		</TR>	
+				
+	</TABLE>
+				
+	<TR>
+		<TD>
+		
+	<TABLE>
+		<TR>							
+			<TD  colspan="6" class="textoGuinda">
+				Caribe Club Princess (4+) / Todo Incluido / Superior / Revision Tarifas Verano 2011
+			</TD>
+		</TR>
+		<TR>
+			<TD colspan="6" class="prueba2">
+				03/08/2011 31/08/2011
+			</TD>				
+		</TR>
+				
+
+
+
+
+		<TR>
+			<TD class="textoInferriorAzul">SGL</TD>
+			<TD class="textoNegro">US$ 
+						
+			888
+			
+						
+			</TD><TD class="textoNegro">S./ 2549</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 98</TD> <TD class="textoNegro">S./ 282</TD>										
+		    
+		</TR>
+    
+		<TR>
+			<TD class="textoInferriorAzul">DBL</TD>
+			<TD class="textoNegro">US$ 
+						
+			765
+						
+			</TD><TD class="textoNegro">S./ 2196</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 60</TD> <TD class="textoNegro">S./ 173</TD>												
+		    
+		</TR>
+
+		<TR>
+			<TD class="textoInferriorAzul">TPL</TD>
+			<TD class="textoNegro">US$ 
+						
+			750
+						
+			</TD><TD class="textoNegro">S./ 2152</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 55</TD> <TD class="textoNegro">S./ 159</TD>					
+		    
+		</TR>
+
+
+	
+		<TR>
+			<TD class="textoInferriorAzul">QUA</TD>
+			<TD class="textoNegro">US$ 
+						
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;
+						
+			
+			</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>						
+		    
+		</TR>	
+		
+							
+	<TR>
+	<TD class="textoInferriorAzul">CHD</TD>
+			
+			
+			
+			<TD class="textoNegro">US$ 
+						
+			578
+			
+						
+			<A href='javascript:abrir("12657","9","Caribe Club Princess (4+) / Todo Incluido / Superior / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","0");'><FONT size="1">Edad</FONT></A>	</TD><TD class="textoNegro">S./ 1658 <A href='javascript:abrir("12657","9","Caribe Club Princess (4+) / Todo Incluido / Superior / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","0");'><FONT size="1">Edad</FONT></A>	</TD>
+				
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+		
+		
+			<TD class="textoNegro">FREE</TD> <TD class="textoNegro">FREE</TD>
+			
+		
+				
+		 
+		 		
+		 
+		</TR>
+					
+		<TR>
+			<TD class="textoInferriorAzul">CH2</TD>
+			
+		
+		
+		
+		
+			
+		
+		<TD class="textoNegro">US$ 
+					
+		578
+		
+				
+			
+			 <A href='javascript:abrir("12657","9","Caribe Club Princess (4+) / Todo Incluido / Superior / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","1");'><FONT size="1">Edad</FONT></A> </TD> <TD class="textoNegro">S./ 1658 <A href='javascript:abrir("12657","9","Caribe Club Princess (4+) / Todo Incluido / Superior / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","1");'><FONT size="1">Edad</FONT></A> </TD>
+			 	
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+		
+		
+			<TD class="textoNegro">FREE</TD> <TD class="textoNegro">FREE</TD>
+			
+		
+		
+		 
+		 		
+		</TR>	
+				
+	</TABLE>
+				
+	<TR>
+		<TD>
+		
+	<TABLE>
+		<TR>							
+			<TD  colspan="6" class="textoGuinda">
+				Caribe Club Princess (4+) / Todo Incluido / Caribe Suite / Revision Tarifas Verano 2011
+			</TD>
+		</TR>
+		<TR>
+			<TD colspan="6" class="prueba2">
+				03/08/2011 31/08/2011
+			</TD>				
+		</TR>
+				
+
+
+
+
+		<TR>
+			<TD class="textoInferriorAzul">SGL</TD>
+			<TD class="textoNegro">US$ 
+						
+			920
+			
+						
+			</TD><TD class="textoNegro">S./ 2641</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 109</TD> <TD class="textoNegro">S./ 312</TD>										
+		    
+		</TR>
+    
+		<TR>
+			<TD class="textoInferriorAzul">DBL</TD>
+			<TD class="textoNegro">US$ 
+						
+			799
+						
+			</TD><TD class="textoNegro">S./ 2293</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 72</TD> <TD class="textoNegro">S./ 206</TD>												
+		    
+		</TR>
+
+		<TR>
+			<TD class="textoInferriorAzul">TPL</TD>
+			<TD class="textoNegro">US$ 
+						
+			784
+						
+			</TD><TD class="textoNegro">S./ 2251</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 67</TD> <TD class="textoNegro">S./ 192</TD>					
+		    
+		</TR>
+
+
+	
+		<TR>
+			<TD class="textoInferriorAzul">QUA</TD>
+			<TD class="textoNegro">US$ 
+						
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;
+						
+			
+			</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>						
+		    
+		</TR>	
+		
+							
+	<TR>
+	<TD class="textoInferriorAzul">CHD</TD>
+			
+			
+			
+			<TD class="textoNegro">US$ 
+						
+			578
+			
+						
+			<A href='javascript:abrir("12657","3","Caribe Club Princess (4+) / Todo Incluido / Caribe Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","0");'><FONT size="1">Edad</FONT></A>	</TD><TD class="textoNegro">S./ 1658 <A href='javascript:abrir("12657","3","Caribe Club Princess (4+) / Todo Incluido / Caribe Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","0");'><FONT size="1">Edad</FONT></A>	</TD>
+				
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+		
+		
+			<TD class="textoNegro">FREE</TD> <TD class="textoNegro">FREE</TD>
+			
+		
+				
+		 
+		 		
+		 
+		</TR>
+					
+		<TR>
+			<TD class="textoInferriorAzul">CH2</TD>
+			
+		
+		
+		
+		
+			
+		
+		<TD class="textoNegro">US$ 
+					
+		578
+		
+				
+			
+			 <A href='javascript:abrir("12657","3","Caribe Club Princess (4+) / Todo Incluido / Caribe Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","1");'><FONT size="1">Edad</FONT></A> </TD> <TD class="textoNegro">S./ 1658 <A href='javascript:abrir("12657","3","Caribe Club Princess (4+) / Todo Incluido / Caribe Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","1");'><FONT size="1">Edad</FONT></A> </TD>
+			 	
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+		
+		
+			<TD class="textoNegro">FREE</TD> <TD class="textoNegro">FREE</TD>
+			
+		
+		
+		 
+		 		
+		</TR>	
+				
+	</TABLE>
+				
+	<TR>
+		<TD>
+		
+	<TABLE>
+		<TR>							
+			<TD  colspan="6" class="textoGuinda">
+				Caribe Club Princess (4+) / Todo Incluido / Honeymoon Suite / Revision Tarifas Verano 2011
+			</TD>
+		</TR>
+		<TR>
+			<TD colspan="6" class="prueba2">
+				03/08/2011 31/08/2011
+			</TD>				
+		</TR>
+				
+
+
+
+
+		<TR>
+			<TD class="textoInferriorAzul">SGL</TD>
+			<TD class="textoNegro">US$ 
+						
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			
+						
+			</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>										
+		    
+		</TR>
+    
+		<TR>
+			<TD class="textoInferriorAzul">DBL</TD>
+			<TD class="textoNegro">US$ 
+						
+			815
+						
+			</TD><TD class="textoNegro">S./ 2339</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 77</TD> <TD class="textoNegro">S./ 221</TD>												
+		    
+		</TR>
+
+		<TR>
+			<TD class="textoInferriorAzul">TPL</TD>
+			<TD class="textoNegro">US$ 
+						
+			&nbsp;&nbsp;&nbsp;&nbsp;
+						
+			</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>					
+		    
+		</TR>
+
+
+	
+		<TR>
+			<TD class="textoInferriorAzul">QUA</TD>
+			<TD class="textoNegro">US$ 
+						
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;
+						
+			
+			</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>						
+		    
+		</TR>	
+		
+							
+	<TR>
+	<TD class="textoInferriorAzul">CHD</TD>
+					
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			
+				
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+		
+		
+			
+		
+				
+		 
+		 		
+		 
+		</TR>
+					
+		<TR>
+			<TD class="textoInferriorAzul">CH2</TD>
+			
+		
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+		
+		
+		
+		
+			 	
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+		
+		
+			
+		
+		
+		 
+		 		
+		</TR>	
+				
+	</TABLE>
+				
+	<TR>
+		<TD>
+		
+	<TABLE>
+		<TR>							
+			<TD  colspan="6" class="textoGuinda">
+				Bavaro Princess (5*) / Todo Incluido / Bungalow Suite / Revision Tarifas Verano 2011
+			</TD>
+		</TR>
+		<TR>
+			<TD colspan="6" class="prueba2">
+				03/08/2011 31/08/2011
+			</TD>				
+		</TR>
+				
+
+
+
+
+		<TR>
+			<TD class="textoInferriorAzul">SGL</TD>
+			<TD class="textoNegro">US$ 
+						
+			956
+			
+						
+			</TD><TD class="textoNegro">S./ 2743</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 121</TD> <TD class="textoNegro">S./ 346</TD>										
+		    
+		</TR>
+    
+		<TR>
+			<TD class="textoInferriorAzul">DBL</TD>
+			<TD class="textoNegro">US$ 
+						
+			835
+						
+			</TD><TD class="textoNegro">S./ 2396</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 84</TD> <TD class="textoNegro">S./ 240</TD>												
+		    
+		</TR>
+
+		<TR>
+			<TD class="textoInferriorAzul">TPL</TD>
+			<TD class="textoNegro">US$ 
+						
+			814
+						
+			</TD><TD class="textoNegro">S./ 2336</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 77</TD> <TD class="textoNegro">S./ 220</TD>					
+		    
+		</TR>
+
+
+	
+		<TR>
+			<TD class="textoInferriorAzul">QUA</TD>
+			<TD class="textoNegro">US$ 
+						
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;
+						
+			
+			</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>						
+		    
+		</TR>	
+		
+							
+	<TR>
+	<TD class="textoInferriorAzul">CHD</TD>
+			
+			
+			
+			<TD class="textoNegro">US$ 
+						
+			578
+			
+						
+			<A href='javascript:abrir("12657","11","Bavaro Princess (5*) / Todo Incluido / Bungalow Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","0");'><FONT size="1">Edad</FONT></A>	</TD><TD class="textoNegro">S./ 1658 <A href='javascript:abrir("12657","11","Bavaro Princess (5*) / Todo Incluido / Bungalow Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","0");'><FONT size="1">Edad</FONT></A>	</TD>
+				
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+		
+		
+			<TD class="textoNegro">FREE</TD> <TD class="textoNegro">FREE</TD>
+			
+		
+				
+		 
+		 		
+		 
+		</TR>
+					
+		<TR>
+			<TD class="textoInferriorAzul">CH2</TD>
+			
+		
+		
+		
+		
+			
+		
+		<TD class="textoNegro">US$ 
+					
+		578
+		
+				
+			
+			 <A href='javascript:abrir("12657","11","Bavaro Princess (5*) / Todo Incluido / Bungalow Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","1");'><FONT size="1">Edad</FONT></A> </TD> <TD class="textoNegro">S./ 1658 <A href='javascript:abrir("12657","11","Bavaro Princess (5*) / Todo Incluido / Bungalow Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","1");'><FONT size="1">Edad</FONT></A> </TD>
+			 	
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+		
+		
+			<TD class="textoNegro">FREE</TD> <TD class="textoNegro">FREE</TD>
+			
+		
+		
+		 
+		 		
+		</TR>	
+				
+	</TABLE>
+				
+	<TR>
+		<TD>
+		
+	<TABLE>
+		<TR>							
+			<TD  colspan="6" class="textoGuinda">
+				Punta Cana Princess (5*) / Todo Incluido / Deluxe Suite / Revision Tarifas Verano 2011
+			</TD>
+		</TR>
+		<TR>
+			<TD colspan="6" class="prueba2">
+				03/08/2011 31/08/2011
+			</TD>				
+		</TR>
+				
+
+
+
+
+		<TR>
+			<TD class="textoInferriorAzul">SGL</TD>
+			<TD class="textoNegro">US$ 
+						
+			956
+			
+						
+			</TD><TD class="textoNegro">S./ 2743</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 121</TD> <TD class="textoNegro">S./ 346</TD>										
+		    
+		</TR>
+    
+		<TR>
+			<TD class="textoInferriorAzul">DBL</TD>
+			<TD class="textoNegro">US$ 
+						
+			835
+						
+			</TD><TD class="textoNegro">S./ 2396</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 84</TD> <TD class="textoNegro">S./ 240</TD>												
+		    
+		</TR>
+
+		<TR>
+			<TD class="textoInferriorAzul">TPL</TD>
+			<TD class="textoNegro">US$ 
+						
+			814
+						
+			</TD><TD class="textoNegro">S./ 2336</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 77</TD> <TD class="textoNegro">S./ 220</TD>					
+		    
+		</TR>
+
+
+	
+		<TR>
+			<TD class="textoInferriorAzul">QUA</TD>
+			<TD class="textoNegro">US$ 
+						
+			
+			804
+						
+			
+			</TD><TD class="textoNegro">S./ 2306</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 73</TD> <TD class="textoNegro">S./ 210</TD>						
+		    
+		</TR>	
+		
+							
+	<TR>
+	<TD class="textoInferriorAzul">CHD</TD>
+					
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			
+				
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+		
+		
+			
+		
+				
+		 
+		 		
+		 
+		</TR>
+					
+		<TR>
+			<TD class="textoInferriorAzul">CH2</TD>
+			
+		
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+		
+		
+		
+		
+			 	
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+		
+		
+			
+		
+		
+		 
+		 		
+		</TR>	
+				
+	</TABLE>
+				
+	<TR>
+		<TD>
+		
+	<TABLE>
+		<TR>							
+			<TD  colspan="6" class="textoGuinda">
+				Caribe Club Princess (4+) / Todo Incluido / Royal Suite / Revision Tarifas Verano 2011
+			</TD>
+		</TR>
+		<TR>
+			<TD colspan="6" class="prueba2">
+				03/08/2011 31/08/2011
+			</TD>				
+		</TR>
+				
+
+
+
+
+		<TR>
+			<TD class="textoInferriorAzul">SGL</TD>
+			<TD class="textoNegro">US$ 
+						
+			969
+			
+						
+			</TD><TD class="textoNegro">S./ 2782</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 125</TD> <TD class="textoNegro">S./ 359</TD>										
+		    
+		</TR>
+    
+		<TR>
+			<TD class="textoInferriorAzul">DBL</TD>
+			<TD class="textoNegro">US$ 
+						
+			850
+						
+			</TD><TD class="textoNegro">S./ 2440</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 89</TD> <TD class="textoNegro">S./ 255</TD>												
+		    
+		</TR>
+
+		<TR>
+			<TD class="textoInferriorAzul">TPL</TD>
+			<TD class="textoNegro">US$ 
+						
+			835
+						
+			</TD><TD class="textoNegro">S./ 2398</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 84</TD> <TD class="textoNegro">S./ 241</TD>					
+		    
+		</TR>
+
+
+	
+		<TR>
+			<TD class="textoInferriorAzul">QUA</TD>
+			<TD class="textoNegro">US$ 
+						
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;
+						
+			
+			</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>						
+		    
+		</TR>	
+		
+							
+	<TR>
+	<TD class="textoInferriorAzul">CHD</TD>
+			
+			
+			
+			<TD class="textoNegro">US$ 
+						
+			578
+			
+						
+			<A href='javascript:abrir("12657","7","Caribe Club Princess (4+) / Todo Incluido / Royal Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","0");'><FONT size="1">Edad</FONT></A>	</TD><TD class="textoNegro">S./ 1658 <A href='javascript:abrir("12657","7","Caribe Club Princess (4+) / Todo Incluido / Royal Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","0");'><FONT size="1">Edad</FONT></A>	</TD>
+				
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+		
+		
+			<TD class="textoNegro">FREE</TD> <TD class="textoNegro">FREE</TD>
+			
+		
+				
+		 
+		 		
+		 
+		</TR>
+					
+		<TR>
+			<TD class="textoInferriorAzul">CH2</TD>
+			
+		
+		
+		
+		
+			
+		
+		<TD class="textoNegro">US$ 
+					
+		578
+		
+				
+			
+			 <A href='javascript:abrir("12657","7","Caribe Club Princess (4+) / Todo Incluido / Royal Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","1");'><FONT size="1">Edad</FONT></A> </TD> <TD class="textoNegro">S./ 1658 <A href='javascript:abrir("12657","7","Caribe Club Princess (4+) / Todo Incluido / Royal Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","1");'><FONT size="1">Edad</FONT></A> </TD>
+			 	
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+		
+		
+			<TD class="textoNegro">FREE</TD> <TD class="textoNegro">FREE</TD>
+			
+		
+		
+		 
+		 		
+		</TR>	
+				
+	</TABLE>
+				
+	<TR>
+		<TD>
+		
+	<TABLE>
+		<TR>							
+			<TD  colspan="6" class="textoGuinda">
+				Bavaro Princess (5*) / Todo Incluido / Honeymoon Spa / Revision Tarifas Verano 2011
+			</TD>
+		</TR>
+		<TR>
+			<TD colspan="6" class="prueba2">
+				03/08/2011 31/08/2011
+			</TD>				
+		</TR>
+				
+
+
+
+
+		<TR>
+			<TD class="textoInferriorAzul">SGL</TD>
+			<TD class="textoNegro">US$ 
+						
+			1009
+			
+						
+			</TD><TD class="textoNegro">S./ 2897</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 138</TD> <TD class="textoNegro">S./ 397</TD>										
+		    
+		</TR>
+    
+		<TR>
+			<TD class="textoInferriorAzul">DBL</TD>
+			<TD class="textoNegro">US$ 
+						
+			889
+						
+			</TD><TD class="textoNegro">S./ 2551</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 102</TD> <TD class="textoNegro">S./ 292</TD>												
+		    
+		</TR>
+
+		<TR>
+			<TD class="textoInferriorAzul">TPL</TD>
+			<TD class="textoNegro">US$ 
+						
+			&nbsp;&nbsp;&nbsp;&nbsp;
+						
+			</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>					
+		    
+		</TR>
+
+
+	
+		<TR>
+			<TD class="textoInferriorAzul">QUA</TD>
+			<TD class="textoNegro">US$ 
+						
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;
+						
+			
+			</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>						
+		    
+		</TR>	
+		
+							
+	<TR>
+	<TD class="textoInferriorAzul">CHD</TD>
+					
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			
+				
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+		
+		
+			
+		
+				
+		 
+		 		
+		 
+		</TR>
+					
+		<TR>
+			<TD class="textoInferriorAzul">CH2</TD>
+			
+		
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+		
+		
+		
+		
+			 	
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+		
+		
+			
+		
+		
+		 
+		 		
+		</TR>	
+				
+	</TABLE>
+				
+	<TR>
+		<TD>
+		
+	<TABLE>
+		<TR>							
+			<TD  colspan="6" class="textoGuinda">
+				Punta Cana Princess (5*) / Todo Incluido / Honeymoon Suite / Revision Tarifas Verano 2011
+			</TD>
+		</TR>
+		<TR>
+			<TD colspan="6" class="prueba2">
+				03/08/2011 31/08/2011
+			</TD>				
+		</TR>
+				
+
+
+
+
+		<TR>
+			<TD class="textoInferriorAzul">SGL</TD>
+			<TD class="textoNegro">US$ 
+						
+			&nbsp;&nbsp;&nbsp;&nbsp;
+			
+						
+			</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>										
+		    
+		</TR>
+    
+		<TR>
+			<TD class="textoInferriorAzul">DBL</TD>
+			<TD class="textoNegro">US$ 
+						
+			889
+						
+			</TD><TD class="textoNegro">S./ 2551</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 102</TD> <TD class="textoNegro">S./ 292</TD>												
+		    
+		</TR>
+
+		<TR>
+			<TD class="textoInferriorAzul">TPL</TD>
+			<TD class="textoNegro">US$ 
+						
+			&nbsp;&nbsp;&nbsp;&nbsp;
+						
+			</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>					
+		    
+		</TR>
+
+
+	
+		<TR>
+			<TD class="textoInferriorAzul">QUA</TD>
+			<TD class="textoNegro">US$ 
+						
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;
+						
+			
+			</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>						
+		    
+		</TR>	
+		
+							
+	<TR>
+	<TD class="textoInferriorAzul">CHD</TD>
+					
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			
+				
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+		
+		
+			
+		
+				
+		 
+		 		
+		 
+		</TR>
+					
+		<TR>
+			<TD class="textoInferriorAzul">CH2</TD>
+			
+		
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+		
+		
+		
+		
+			 	
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+		
+		
+			
+		
+		
+		 
+		 		
+		</TR>	
+				
+	</TABLE>
+				
+	<TR>
+		<TD>
+		
+	<TABLE>
+		<TR>							
+			<TD  colspan="6" class="textoGuinda">
+				Bavaro Princess (5*) / Todo Incluido / Platinum Suite / Revision Tarifas Verano 2011
+			</TD>
+		</TR>
+		<TR>
+			<TD colspan="6" class="prueba2">
+				03/08/2011 31/08/2011
+			</TD>				
+		</TR>
+				
+
+
+
+
+		<TR>
+			<TD class="textoInferriorAzul">SGL</TD>
+			<TD class="textoNegro">US$ 
+						
+			1024
+			
+						
+			</TD><TD class="textoNegro">S./ 2940</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 144</TD> <TD class="textoNegro">S./ 412</TD>										
+		    
+		</TR>
+    
+		<TR>
+			<TD class="textoInferriorAzul">DBL</TD>
+			<TD class="textoNegro">US$ 
+						
+			905
+						
+			</TD><TD class="textoNegro">S./ 2597</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 107</TD> <TD class="textoNegro">S./ 307</TD>												
+		    
+		</TR>
+
+		<TR>
+			<TD class="textoInferriorAzul">TPL</TD>
+			<TD class="textoNegro">US$ 
+						
+			884
+						
+			</TD><TD class="textoNegro">S./ 2538</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ 100</TD> <TD class="textoNegro">S./ 287</TD>					
+		    
+		</TR>
+
+
+	
+		<TR>
+			<TD class="textoInferriorAzul">QUA</TD>
+			<TD class="textoNegro">US$ 
+						
+			
+			&nbsp;&nbsp;&nbsp;&nbsp;
+						
+			
+			</TD><TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>
+			
+			<TD class="textoInferriorAzul">NA</TD>	
+			<TD class="textoNegro">US$ &nbsp;&nbsp;&nbsp;&nbsp;</TD> <TD class="textoNegro">S./ &nbsp;&nbsp;&nbsp;&nbsp;</TD>						
+		    
+		</TR>	
+		
+							
+	<TR>
+	<TD class="textoInferriorAzul">CHD</TD>
+			
+			
+			
+			<TD class="textoNegro">US$ 
+						
+			578
+			
+						
+			<A href='javascript:abrir("12657","15","Bavaro Princess (5*) / Todo Incluido / Platinum Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","0");'><FONT size="1">Edad</FONT></A>	</TD><TD class="textoNegro">S./ 1658 <A href='javascript:abrir("12657","15","Bavaro Princess (5*) / Todo Incluido / Platinum Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","0");'><FONT size="1">Edad</FONT></A>	</TD>
+				
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+		
+		
+			<TD class="textoNegro">FREE</TD> <TD class="textoNegro">FREE</TD>
+			
+		
+				
+		 
+		 		
+		 
+		</TR>
+					
+		<TR>
+			<TD class="textoInferriorAzul">CH2</TD>
+			
+		
+		
+		
+		
+			
+		
+		<TD class="textoNegro">US$ 
+					
+		578
+		
+				
+			
+			 <A href='javascript:abrir("12657","15","Bavaro Princess (5*) / Todo Incluido / Platinum Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","1");'><FONT size="1">Edad</FONT></A> </TD> <TD class="textoNegro">S./ 1658 <A href='javascript:abrir("12657","15","Bavaro Princess (5*) / Todo Incluido / Platinum Suite / Revision Tarifas Verano 2011","03/08/2011 31/08/2011","1");'><FONT size="1">Edad</FONT></A> </TD>
+			 	
+		
+		<TD class="textoInferriorAzul">NA</TD>	
+		
+		
+		
+		
+			<TD class="textoNegro">FREE</TD> <TD class="textoNegro">FREE</TD>
+			
+		
+		
+		 
+		 		
+		</TR>	
+				
+	</TABLE>
+			<BR>
+				</TD>				
+			</TR>
+	</TABLE>
+			        </TD>
+                              </TR>
+                          </TABLE></TD>
+                        </TR>
+                      </TABLE>
+                    </CENTER>
+                    <SPAN id="HotelesPromocion_control1_lblbcadena"></SPAN> </CENTER></TD>
+              </TR>
+            </TBODY>
+          </TABLE>
+		  <BR>  
+		  
+			
+			
+									 
+
+									 
+									 
+									 
+									 
+									   
+									 
+									
+									
+									
+									  
+									
+									  
+									
+									
+									  
+										  
+
+								  
+								  
+          <TABLE width="100%" border="0" cellspacing="4" cellpadding="2">
+            <TR> 
+              <TD bgcolor="#515A71" class="textoTituloBlanco">INFORMACION IMPORTANTE</TD>
+            </TR>
+            <TR> 
+              <TD class="textoNegro"> 
+                
+                
+                
+                
+                ********** INFO PASAJERO **********<BR> 
+                
+                
+                INFORMACIÓN IMPORTANTE SOBRE LOS SERVICIOS SOLICITADOS<BR> 
+                
+                
+                <BR> 
+                
+                
+                *REFERENTE AL BOLETO:<BR> 
+                
+                
+                *Pre-compra de 3 días. Para reservas creadas 08 días o más antes de la salida del vuelo, el boleto debe emitirse hasta 03 días después de creada la reserva. Reservas creadas con 07 días de anticipación a la salida, ticket debe ser emitido 24 horas después de creado la reserva cumpliendo con su pre-compra.<BR> 
+                
+                
+                ***Tarifa aplica solo para PERUANOS o RESIDENTES en Perú.<BR> 
+                
+                
+                -Primer stop en Panamá, sólo paga el impuesto Panameño FZ $40.00<BR> 
+                
+                
+                -Tarifas no endosables, no reembolsables.<BR> 
+                
+                
+                -Estadía mínima requerida de 03 días y máximo 21 días.<BR> 
+                
+                
+                <BR> 
+                
+                
+                REFERENTE HOTEL Y SERVICIOS:<BR> 
+                
+                
+                -En la mayoría de los hoteles del Caribe la disposición de las camas son 2 camas dobles, ya sea que tomen hab. doble / triple ó cuadruple en el caso que el hotel lo permita . Los paxs deberán acomodarse en las 2 <BR> 
+                
+                
+                camas dobles.<BR> 
+                
+                
+                <BR> 
+                
+                
+                Princess Hotels - Cortesías incluidas:<BR> 
+                
+                
+                -Habitación matrimonial (sujeto a disponibilidad)<BR> 
+                
+                
+                -Plato de frutas<BR> 
+                
+                
+                -Una botella de ron<BR> 
+                
+                
+                -Decoración especial de la habitación.<BR> 
+                
+                
+                -Servicio de descubierta diaria.<BR> 
+                
+                
+                -Invitación al Cocktail Luna de Miel y foto conmemorativa.<BR> 
+                
+                
+                -Invitación a la Cena romántica para todos los novios.<BR> 
+                
+                
+                -Late check out libre de cargos (sujeto a disponibilidad).<BR> 
+                
+                
+                *En la reserva y voucher deberán especificar "LUNA DE MIEL". Los clientes deben presentar a la llegada su certificado de matrimonio con una vigencia no superior a 60 días, de realizado el matrimonio. <BR> 
+                
+                
+                <BR> 
+                
+                
+                -REFERENTE A LOS TRASLADOS:<BR> 
+                
+                
+                Se otorgan servicios regulares, esto quiere decir que es en base a grupos de pasajeros por destino. <BR> 
+                
+                
+                El pasajero debe tener en cuenta que ya sea para los traslados como para las excursiones, deberán esperar al transportista en el lugar y horario establecido por el operador.<BR> 
+                
+                
+                En este caso, el operador para los trasldos es Otium, ellos lo esperan a la salida de aduanas con un cartel con el logo de Destinos Mundiales y les indicarán a que bus deben dirigirse y llevar su equpaje por cuenta propia . Ya sea para los traslados, como para las excursiones en caso las hubiera contratado , el operado le fijará  un lugar y hora en que pasaran a buscarlos. <BR> 
+                
+                
+                *Si el pasajero no cumple con estos horarios, el transportista no esta en la obligación de esperar o buscar al pasajero. Este continuará con su ruta programada.  Por tanto, si el pasajero incumple con los horarios y no accede a algún servicio, no se aceptarán reclamaciones ni  reembolsos hacia la entidad prestadora de servicio.<BR> 
+                
+                
+                *La empresa no reconocerá derecho de devolución alguno, por el uso de servicios de terceros, ajenos al servicio contratado y que no hayan sido autorizados previamente por escrito por la empresa.<BR> 
+                
+                
+                <BR> 
+                
+                
+                -INFORMACIÓN DE LOS TIPOS DE HABITACIÓN<BR> 
+                
+                
+                <BR> 
+                
+                
+                Hotel Punta Cana Princess "Sólo para adulto".<BR> 
+                
+                
+                HAB. DELUXE SUITES:<BR> 
+                
+                
+                - 2 camas Dobles o 1 cama King.<BR> 
+                
+                
+                - Baño completo con bañera y ducha.<BR> 
+                
+                
+                - Secador de cabello.<BR> 
+                
+                
+                - Plancha y tabla de planchar.<BR> 
+                
+                
+                - Caja fuerte en la habitación (sin cargo).<BR> 
+                
+                
+                - Abanico de techo.<BR> 
+                
+                
+                - TV por cable.<BR> 
+                
+                
+                - Mini bar (agua, refrescos, cerveza), reposición diaria.<BR> 
+                
+                
+                - Cafetera eléctrica.<BR> 
+                
+                
+                - Aire acondicionado.<BR> 
+                
+                
+                - Balcón.<BR> 
+                
+                
+                - 2 Teléfonos en la Habitación.<BR> 
+                
+                
+                <BR> 
+                
+                
+                HAB. HONEYMOON SUITES: <BR> 
+                
+                
+                - 1 cama King.<BR> 
+                
+                
+                - Área de sala de estar y Jacuzzi.<BR> 
+                
+                
+                - Baño completo con bañera y ducha.<BR> 
+                
+                
+                - Secador de cabello.<BR> 
+                
+                
+                - Plancha y tabla de planchar.<BR> 
+                
+                
+                - Caja fuerte en la habitación (sin cargo).<BR> 
+                
+                
+                - Abanico de techo.<BR> 
+                
+                
+                - TV por cable.<BR> 
+                
+                
+                - Mini bar (agua, refrescos, cerveza), reposición diaria.<BR> 
+                
+                
+                - Cafetera eléctrica.<BR> 
+                
+                
+                - Aire acondicionado.<BR> 
+                
+                
+                - Balcón.<BR> 
+                
+                
+                - 2 Teléfonos en la habitación.<BR> 
+                
+                
+                - 24 Horas de servicio de habitaciones ( Room Service).<BR> 
+                
+                
+                - Cesta de frutas a la llegada.<BR> 
+                
+                
+                - 1 botella de ron.<BR> 
+                
+                
+                - 1 Masaje de 20 minutos (por persona, por semana).<BR> 
+                
+                
+                - 1 Masaje Romántico de 20 minutos (por pareja, por semana).<BR> 
+                
+                
+                - 1 Desayuno en la habitación (por pareja, por semana).<BR> 
+                
+                
+                - 1 Cena romántica, en un restaurante del Punta Cana Princess (por pareja, por semana).<BR> 
+                
+                
+                - 1 Cena gourmet en restaurante La Cava o Pescador (por pareja, por semana).<BR> 
+                
+                
+                - Clases privadas de merengue y español.<BR> 
+                
+                
+                - Check-in y check-out privados.<BR> 
+                
+                
+                <BR> 
+                
+                
+                Hotel Bávaro Princess .<BR> 
+                
+                
+                HAB. BUNGALOW SUITE <BR> 
+                
+                
+                - 588 Suites en villas.<BR> 
+                
+                
+                - 2 camas Twin o 1 cama King.<BR> 
+                
+                
+                - Baño completo con ducha.<BR> 
+                
+                
+                - Secador de cabello.<BR> 
+                
+                
+                - Caja fuerte en la habitación (sin cargo).<BR> 
+                
+                
+                - Abanico de techo.<BR> 
+                
+                
+                - TV por cable.<BR> 
+                
+                
+                - Mini bar (agua, refrescos, cerveza nacional), reposición diaria.<BR> 
+                
+                
+                - Cafetera eléctrica.<BR> 
+                
+                
+                - Plancha y Tabla de Planchar.<BR> 
+                
+                
+                - Aire acondicionado.<BR> 
+                
+                
+                - Balcón / terraza.<BR> 
+                
+                
+                - Teléfono en la Habitación.<BR> 
+                
+                
+                <BR> 
+                
+                
+                HAB.HONEYMOON SPA SUITE <BR> 
+                
+                
+                - 40 Suites en villas.<BR> 
+                
+                
+                - 1 cama king.<BR> 
+                
+                
+                - Baño completo con ducha.<BR> 
+                
+                
+                - Jacuzzi.<BR> 
+                
+                
+                - Secador de cabello.<BR> 
+                
+                
+                - Caja fuerte en la habitación (sin cargo).<BR> 
+                
+                
+                - Abanico de techo.<BR> 
+                
+                
+                - TV por cable.<BR> 
+                
+                
+                - Plancha y Tabla de Planchar.<BR> 
+                
+                
+                - Mini bar (agua, refrescos, cerveza nacional) reposición diaria.<BR> 
+                
+                
+                - Cafetera eléctrica.<BR> 
+                
+                
+                - Aire acondicionado.<BR> 
+                
+                
+                - Balcón o Terraza.<BR> 
+                
+                
+                - 1 Paraguas en la habitación.<BR> 
+                
+                
+                - Teléfono en la Habitación.<BR> 
+                
+                
+                - 24 Horas Room Service.<BR> 
+                
+                
+                - Check in privado<BR> 
+                
+                
+                - Atenciones a la llegada (Frutas y Ron)<BR> 
+                
+                
+                - Descubierta diaria.<BR> 
+                
+                
+                - Uso de batas y pantuflas durante la estadía.<BR> 
+                
+                
+                - 2 Toallas de playa en la Habitación (uso durante la estadía).<BR> 
+                
+                
+                - 1 Cena romántica (por persona, por semana) con foto conmemorativa.<BR> 
+                
+                
+                - 1 Cena Restaurante "Licey" (por persona por semana)<BR> 
+                
+                
+                - 20 minutos de jacuzzi externo (persona, por semana)<BR> 
+                
+                
+                - 20 minutos de masajes románticos (persona/semana)<BR> 
+                
+                
+                - Late Check Out sujeto a disponibilidad.<BR> 
+                
+                
+                - Regalo sorpresa.<BR> 
+                
+                
+                <BR> 
+                
+                
+                HAB.PLATINUM SUITE<BR> 
+                
+                
+                - 96 Suites en villas.<BR> 
+                
+                
+                - 1 Cama King.<BR> 
+                
+                
+                - Baño completo con ducha y jacuzzi.<BR> 
+                
+                
+                - Área de Living, área de comedor en desnivel.<BR> 
+                
+                
+                - Balcón / Terraza.<BR> 
+                
+                
+                - Television plasma 32".<BR> 
+                
+                
+                - TV por cable.<BR> 
+                
+                
+                - DVD.<BR> 
+                
+                
+                - Radio despertador<BR> 
+                
+                
+                - Bar de bebidas alcohólicas.<BR> 
+                
+                
+                - Mini bar (agua, refresco, cerveza nacional), reposición diaria.<BR> 
+                
+                
+                - Cafetera.<BR> 
+                
+                
+                - 1 Paraguas en la habitación.<BR> 
+                
+                
+                - 1 Teléfono en la Habitación.<BR> 
+                
+                
+                - Plancha y tabla de planchar.<BR> 
+                
+                
+                - Caja fuerte en la habitación (sin cargo).<BR> 
+                
+                
+                - Secador de cabello.<BR> 
+                
+                
+                - Ventilador de Techo.<BR> 
+                
+                
+                - Aire Acondicionado.<BR> 
+                
+                
+                - Alójese en 1 y disfrute 4 (Servicio de Transporte a los Hoteles Punta Cana Princess, Caribe Club Princess y Tropical Princess). Uso total de 14 restaurantes a la carta, 4 buffets, 1 buffet de lujo, 19 bares (2 con<BR> 
+                
+                
+                música en vivo), 6 piscinas, 4 snack bares y 3 Teatros.<BR> 
+                
+                
+                - Brazalete Platinum.<BR> 
+                
+                
+                - Check in privado, toallas húmedas a la llegada.<BR> 
+                
+                
+                - Servicios de Conserje localizado en el Platinum Club Lounge.<BR> 
+                
+                
+                - Selección de DVD en el Platinum Club Lounge.<BR> 
+                
+                
+                - Periódicos internacionales en el Platinum Club Lounge.<BR> 
+                
+                
+                - Internet ilimitado en el Platinum Club Lounge.<BR> 
+                
+                
+                - Desayuno continental y picaderas en el Platinum Club Lounge.<BR> 
+                
+                
+                - Club de Playa con hamacas de lujo y servicio de camareros para bebidas.<BR> 
+                
+                
+                - Servicio de descubierta diaria.<BR> 
+                
+                
+                - 2 toallas de playa en la Habitación (uso durante al estadía)<BR> 
+                
+                
+                - Uso de batas durante la estadía.<BR> 
+                
+                
+                - Uso de pantuflas durante la estadía.<BR> 
+                
+                
+                - 1 Cena incluida en el Restaurant Gourmet "Licey" para adultos y niños (por persona por semana).<BR> 
+                
+                
+                - Bebidas nacionales, internacionales y premium en los bares del Hotel (Licores añejos y vinos no incluidos).<BR> 
+                
+                
+                (Disco Lancelot sólo bebidas nacionales).<BR> 
+                
+                
+                - Reserva telefónicas para los restaurantes a la carta.<BR> 
+                
+                
+                - 24 Horas de Room Service.<BR> 
+                
+                
+                - Precio especial en los Green Fee de los campos de golf afiliados.<BR> 
+                
+                
+                - 10% de descuento en todos los tratamientos del Spa.<BR> 
+                
+                
+                - 20 minutos de Masajes (por persona, por semana).<BR> 
+                
+                
+                - Introducción al buceo en la piscina (1 lección por persona por estadía).<BR> 
+                
+                
+                - 1 Caja de 3 cigarros (por habitación, por semana)<BR> 
+                
+                
+                - 1 Bolso Playero Princess.<BR> 
+                
+                
+                - Amenidades de Lujo en la Habitación.<BR> 
+                
+                
+                <BR> 
+                
+                
+                Hotel Tropical Princess<BR> 
+                
+                
+                HAB.SUPERIOR <BR> 
+                
+                
+                - 1 cama King ó 2 camas Dobles.<BR> 
+                
+                
+                - Baño completo con bañera y ducha.<BR> 
+                
+                
+                - Secador de cabello.<BR> 
+                
+                
+                - Caja fuerte en la habitación (con cargo).<BR> 
+                
+                
+                - Abanico de techo.<BR> 
+                
+                
+                - TV por satélite.<BR> 
+                
+                
+                - Mini bar (agua, refrescos) reposición diaria.<BR> 
+                
+                
+                - Aire acondicionado.<BR> 
+                
+                
+                - Balcón.<BR> 
+                
+                
+                - Teléfono en la Habitación.<BR> 
+                
+                
+                <BR> 
+                
+                
+                Hotel Caribe Club Princess<BR> 
+                
+                
+                HAB.SUPERIOR<BR> 
+                
+                
+                - 1 cama King ó 2 camas Dobles.<BR> 
+                
+                
+                - Baño completo con ducha.<BR> 
+                
+                
+                - Secador de cabello.<BR> 
+                
+                
+                - Caja fuerte en la habitación (con cargo).<BR> 
+                
+                
+                - Abanico de techo.<BR> 
+                
+                
+                - TV por satélite.<BR> 
+                
+                
+                - Mini bar (agua, refrescos), reposición diaria.<BR> 
+                
+                
+                - Aire acondicionado.<BR> 
+                
+                
+                - Balcón.<BR> 
+                
+                
+                - Teléfono en la Habitación.<BR> 
+                
+                
+                <BR> 
+                
+                
+                HAB.SUITES DE LUNA DE MIEL<BR> 
+                
+                
+                - 1 cama King.<BR> 
+                
+                
+                - Área de sala de estar y jacuzzi.<BR> 
+                
+                
+                - Baño completo con bañera y ducha.<BR> 
+                
+                
+                - Secador de cabello.<BR> 
+                
+                
+                - Plancha y tabla de planchar.<BR> 
+                
+                
+                - Caja fuerte en la habitación (con cargo).<BR> 
+                
+                
+                - Abanico de techo.<BR> 
+                
+                
+                - TV por satélite.<BR> 
+                
+                
+                - Mini bar (agua, refrescos, cerveza), reposición diaria.<BR> 
+                
+                
+                - Cafetera eléctrica.<BR> 
+                
+                
+                - Aire acondicionado.<BR> 
+                
+                
+                - Balcón.<BR> 
+                
+                
+                - Teléfono en la habitación.<BR> 
+                
+                
+                - 24 Horas de servicio de habitaciones (Room Service).<BR> 
+                
+                
+                - Cesta de frutas a la llegada.<BR> 
+                
+                
+                - 1 botella de ron.<BR> 
+                
+                
+                - 1 Masaje sueco de 20 minutos (por persona, por estadía).<BR> 
+                
+                
+                - 1 Masaje romántico de 20 minutos (por persona, por estadía).<BR> 
+                
+                
+                - 1 Desayuno en la habitación (por persona, por estadía).<BR> 
+                
+                
+                - 1 Cena romántica, los clientes escogen el lugar (por persona por estadía).<BR> 
+                
+                
+                - 1 Cena en "La Cava" o "El Pescador" (por persona, por estadía).<BR> 
+                
+                
+                - Clases privadas de merengue y español.<BR> 
+                
+                
+                - Check-in y check-out privados.<BR> 
+                
+                
+                <BR> 
+                
+                
+                HAB.CARIBE SUITE <BR> 
+                
+                
+                - 1 cama King ó 2 camas Dobles.<BR> 
+                
+                
+                - Área de sala de estar.<BR> 
+                
+                
+                - Baño completo con bañera y ducha.<BR> 
+                
+                
+                - Secador de cabello.<BR> 
+                
+                
+                - Plancha y tabla de planchar.<BR> 
+                
+                
+                - Caja fuerte en la habitación (con cargo).<BR> 
+                
+                
+                - Abanico de techo.<BR> 
+                
+                
+                - TV por satélite.<BR> 
+                
+                
+                - Mini bar (agua, refrescos, cerveza) reposición diaria.<BR> 
+                
+                
+                - Cafetera eléctrica.<BR> 
+                
+                
+                - Aire acondicionado.<BR> 
+                
+                
+                - Balcón.<BR> 
+                
+                
+                - Teléfono en la habitación.<BR> 
+                
+                
+                <BR> 
+                
+                
+                HAB.ROYAL SUITES <BR> 
+                
+                
+                - 1 cama King.<BR> 
+                
+                
+                - 2 Plantas (1ª planta con sala de estar, sofá cama y área de comedor con TV, 2ª planta habitación con<BR> 
+                
+                
+                área de jacuzzi).<BR> 
+                
+                
+                - 2 Baños completos.<BR> 
+                
+                
+                - Secador de cabello.<BR> 
+                
+                
+                - Plancha y tabla de planchar.<BR> 
+                
+                
+                - Caja fuerte en la habitación (con cargo).<BR> 
+                
+                
+                - Abanico de techo.<BR> 
+                
+                
+                - TV por satélite con DVD, y otra TV en la habitación.<BR> 
+                
+                
+                - Mini bar (agua, refrescos, cerveza) reposición diaria.<BR> 
+                
+                
+                - Cafetera eléctrica.<BR> 
+                
+                
+                - Aire acondicionado.<BR> 
+                
+                
+                - Balcón.<BR> 
+                
+                
+                - 2 Teléfonos en la habitación.<BR> 
+                
+                
+                - 24 Horas de servicio de habitaciones (Room Service).<BR> 
+                
+                
+                - Cesta de frutas a la llegada y con reposición diaria.<BR> 
+                
+                
+                - 3 Masajes suecos de 20 minutos (por persona, por estadía).<BR> 
+                
+                
+                - 3 Cenas en "La Cava" o "El Pescador" (por persona, por estadía).<BR> 
+                
+                
+                - Late Check-out (sujeto a disponibilidad).<BR> 
+                
+                
+                - Clases privadas de merengue y español.<BR> 
+                
+                
+                - Servicio de cuidado de niños (sujeto a disponibilidad).<BR> 
+                
+                
+                - Foto de recuerdo en el lugar que el cliente escoja.<BR> 
+                
+                
+                - Regalo de bienvenida.<BR> 
+                
+                
+                - Check-in y check-out privados.<BR> 
+                
+                
+                <BR> 
+                
+                
+                 <BR> 
+                
+                
+                ********** INFO AGENCIA **********<BR> 
+                
+                
+                INFORMACIÓN IMPORTANTE SOBRE LOS SERVICIOS SOLICITADOS<BR> 
+                
+                
+                <BR> 
+                
+                
+                *REFERENTE AL BOLETO:<BR> 
+                
+                
+                *Pre-compra de 3 días. Para reservas creadas 08 días o más antes de la salida del vuelo, el boleto debe emitirse hasta 03 días después de creada la reserva. Reservas creadas con 07 días de anticipación a la salida, ticket debe ser emitido 24 horas después de creado la reserva cumpliendo con su pre-compra.<BR> 
+                
+                
+                -Reservas aereas tienen que estar confirmadas en CLASE "T" (Válido también en clase "S", adicionando $ 70.00 de suplemento por cambio de clase).<BR> 
+                
+                
+                ***Tarifa aplica sólo para PERUANOS o RESIDENTES en Perú. Al momento de emitir los boletos deberan <BR> 
+                
+                
+                presentar copia del DNI o carnet de Extranjería, sin excepciones. En caso no se acredite la residencia en el <BR> 
+                
+                
+                Perú, se podra negar el embarque o se cobrará al pasajero un nuevo boleto ida y vuelta con tarifa publicada y en la clase disponible el día del vuelo. Las tarifas netas son NO reembolsable. **<BR> 
+                
+                
+                -Primer stop en Panamá ,sólo paga el impuesto Panameño FZ $40.00.<BR> 
+                
+                
+                -Tarifas no endosables, no reembolsables.<BR> 
+                
+                
+                -Las tarifas son válidas en la ruta publicada más directa. Si la ruta publicada no esta disponible, entonces la ruta no es aplicable.<BR> 
+                
+                
+                -Estadía mínima requerida de 03 días y máximo 21 días.<BR> 
+                
+                
+                -Todas las rutas deben estar confirmadas.<BR> 
+                
+                
+                -Penalidad por cambios tiene un recargo de $125.00, consultar restricciones.<BR> 
+                
+                
+                <BR> 
+                
+                
+                REFERENTE HOTEL Y SERVICIOS:<BR> 
+                
+                
+                -En la mayoría de los hoteles del Caribe la disposición de las camas son 2 camas dobles, ya sea que tomen hab. doble / triple ó cuadruple en el caso que el hotel lo permita . Los paxs deberán acomodarse en las 2 <BR> 
+                
+                
+                camas dobles.<BR> 
+                
+                
+                <BR> 
+                
+                
+                Princess Hotels - Cortesías incluidas:<BR> 
+                
+                
+                -Habitación matrimonial (sujeto a disponibilidad)<BR> 
+                
+                
+                -Plato de frutas<BR> 
+                
+                
+                -Una botella de ron<BR> 
+                
+                
+                -Decoración especial de la habitación.<BR> 
+                
+                
+                -Servicio de descubierta diaria.<BR> 
+                
+                
+                -Invitación al Cocktail Luna de Miel y foto conmemorativa.<BR> 
+                
+                
+                -Invitación a la Cena romántica para todos los novios.<BR> 
+                
+                
+                -Late check out libre de cargos (sujeto a disponibilidad).<BR> 
+                
+                
+                *En la reserva y voucher deberán especificar "LUNA DE MIEL". Los clientes deben presentar a la llegada su certificado de matrimonio con una vigencia no superior a 60 días, de realizado el matrimonio. <BR> 
+                
+                
+                <BR> 
+                
+                
+                -REFERENTE A LOS TRASLADOS:<BR> 
+                
+                
+                Se otorgan servicios regulares, esto quiere decir que es en base a grupos de pasajeros por destino. <BR> 
+                
+                
+                El pasajero debe tener en cuenta que ya sea para los traslados como para las excursiones, deberán esperar al transportista en el lugar y horario establecido por el operador.<BR> 
+                
+                
+                En este caso, el operador para los trasldos es Otium, ellos lo esperan a la salida de aduanas con un cartel con el logo de Destinos Mundiales y les indicarán a que bus deben dirigirse y llevar su equpaje por cuenta propia . Ya sea para los traslados, como para las excursiones en caso las hubiera contratado , el operado le fijará  un lugar y hora en que pasaran a buscarlos. <BR> 
+                
+                
+                *Si el pasajero no cumple con estos horarios, el transportista no esta en la obligación de esperar o buscar al pasajero. Este continuará con su ruta programada.  Por tanto, si el pasajero incumple con los horarios y no accede a algún servicio, no se aceptarán reclamaciones ni  reembolsos hacia la entidad prestadora de servicio.<BR> 
+                
+                
+                *La empresa no reconocerá derecho de devolución alguno, por el uso de servicios de terceros, ajenos al servicio contratado y que no hayan sido autorizados previamente por escrito por la empresa.<BR> 
+                
+                
+              </TD>
+            </TR>
+          </TABLE>
+                               <ol>
+					                      <li class="style1">
+					                        <div align="left">Precios sujetos a cambios sin previo aviso.					</div>
+					                      </li>
+					                      <li class="style1">
+					                        <div align="left">Precios incluyen impuestos y cargos obligatorios para emisi&oacute;n segun los vigentes al						
+						                      
+							                      05/07/2011
+.					                        </div>
+					                      </li>
+					                      <li class="style1">
+					                        <div align="left"> Tarifas sujetas a confirmaci&oacute;n de la reserva. </div>
+					                      </li>
+					                      <li class="style1">
+					                        <div align="left">Todos los precios est&aacute;n expresados en D&oacute;lares Americanos por persona. </div>
+					                      </li>
+					                      <li class="style1">
+					                        <div align="left">Los precios deben ser confirmados una vez solicitada la reserva.</div>
+	                        </li>
+					                      <li class="style1">
+				                            <div align="left">Antes de la emisi&oacute;n del boleto a&eacute;reo, en caso que el paquete lo incluya, se deber&aacute;n reconfirmar los impuestos del boleto y los locales, debido a que los precios de los impuestos est&aacute;n sujetos a constantes variaciones.</div>
+                            </li>
+		                  </ol>
+				</TD>
+      </TR>
+	  
+	  
+	   
+    </TBODY>
+	
+	
+  </TABLE>
+  
+  <INPUT type="hidden" name="varmostraropcion" value="0">
+  <INPUT type="hidden" name="cambio_firma" value="0">
+</FORM>
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,90 @@
+@charset "utf-8";
+/* CSS Document */
+body {
+		font-family:Verdana, Arial, Helvetica, sans-serif;
+		font-size:11px;
+		font-weight:;
+    	background: #fff;
+    	margin: 0; 
+    	padding: 0;
+    	text-align: center; 
+    	color: #000000;
+    }
+    #container {
+    	width: 1100px;  
+    	background: #FFFFFF;
+    	margin: 0 auto;
+		border:1px solid #3b81b4;
+       	text-align: left; 
+    }
+    #header {
+		height:130px;
+     	padding: 0 10px 0 10px;
+		position:relative;
+		border:#006699 1xp solid;
+		color:#fff;
+    }
+    #mainContent {
+		width:1170px;
+		height:auto;
+    	background: #FFFFFF;
+		padding:10px 15px;
+    }
+    #footer {
+		background-image:url(../images/footer.png);
+		background-repeat:repeat-x;
+		height:85px;
+    	padding: 0 10px;
+		margin-top:30px; 
+    }
+	#datos{
+		background-color:#deeef7;
+		border:1px solid #cdcdcd;
+		width:978px;
+		height:12px;
+		padding:10px;
+	}
+    .title{border:#000 solid 1px; background-color:#cdcdcd; color:#000; font-weight:700; padding:5px 5px;}
+	.titulo{padding:5px; background-color:#cdcdcd; color:#fff; font:Verdana, Arial, Helvetica, sans-serif; font-size:12px; font-weight:700;}
+	.tdcont{border:#cdcdcd solid 1px; padding:2px 0;}
+	.logo{float:left; width:260px; margin-top:10px; padding:15px 0; background-image:url(../infoline.png); background-repeat:no-repeat; height:56px;}
+	.guia{float:right; margin-top:10px; margin-left:20px; width:200px; color:#006699; border: 1px solid #000000; -moz-border-radius: 7x; padding: 10px;}
+	.tienda{float:left; margin-top:10px; margin-left:10px; width:700px; color:#006699;}
+	.img{ border:none; margin-top:10px;}
+	 a{ text-decoration:none;}
+/*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+
+	.solidblockmenu {
+		float:right;
+		margin:25px 0 0 0;
+		text-align:center;
+		padding-right:290px;
+		
+	}
+	.solidblockmenu a{
+		float:center;
+		list-style: none;
+		color: #45a9d7;
+		text-decoration: none;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size: 10px;
+	}
+
+	.solidblockmenu  a:hover, .solidblockmenu  .current{
+		color:#c8cacb;
+		text-decoration:none;
+		list-style: none;
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size: 10px;
+	}
+	a.link {
+		font-family: Verdana, Arial, Helvetica, sans-serif;
+		font-size: 10px;
+		color:#45a9d7;
+		text-decoration:none;
+	}
+	
+	a.linkshover{
+		text-decoration:none;
+	}
+
