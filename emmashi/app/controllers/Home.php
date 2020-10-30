@@ -23,11 +23,13 @@ class Home extends Controller {
 		########  ##     ## ##    ## ##    ## ######## ##     ##
 		*/
 
+		
 		$Banner=$this->loadModel('Banners');
-		$banner=$Banner->getItems();
+		$banner=$Banner->getItems(['item'=>$this->this_banner]);
 		
 		$this->view->assign(["banner" => $banner]);
 
+	
 
 
 
@@ -42,104 +44,86 @@ class Home extends Controller {
 		##        ##     ##  #######  ########   #######   ######     ##     #######   ######
 		*/
 		
-		//subcategorias de productos 2
-		$id_productos2=2;
-		$productos2=fila("url,nombre","productos_grupos","where id=$id_productos2");
-		$name_productos2=$productos2['nombre'];
-		$url_productos2=$productos2['url'];
+		$importaciones['name'] =$this->other_web;
+		$importaciones['url']  =$this->other_url.'modelos';
+		$importaciones['target'] = "_blank";
 
-		$ids_categorias_productos2=getarray("id","productos_subgrupos","where id_grupo=$id_productos2");
-		// $ids_subcategorias_productos2=getarray("id","productos_groups","where id_grupo in (".implode(',',$ids_categorias_productos2).")");
-		// prin($ids_subcategorias_productos2);
+		$importaciones['items']=select(
+			[
+				"id",
+				"nombre as name",
+				// "descripcion as text",
+				// "ficha as text2",
+				"id_grupo",
+				"id_tipo"
+			],
+			"productos_items",
+			" where 1 ".
+			" and id_grupo=".$this->other_group." ".
+			// " abd ver_home=1 ".
+			// " order by weight desc".
+			"",
+			0,
+			[
+				'url'=>['url'=>['modelo-{name}/{id}']],
+			]);
 
-		// get categorias
-		$items_productos2=select(
-			"nombre as name,id,url,id_grupo",
-			'productos_subgrupos',
-			"where 1
-			and visibilidad=1 ".
-			" and ver_home=1 ".
-			" and id_grupo=".$id_productos2." ".
-			" order by weight desc ".
-			" limit 24 ",
-			0
-		);
+		foreach($importaciones['items'] as $ii=>$hab){
 
-		// prin($items_productos2);
-		
-
-		foreach($items_productos2 as $oo=>$itm)
-		{
-			// link
-			$id_grupo=dato("id_grupo","productos_subgrupos","where id=".$itm['id_grupo'],0);
-
-			$items_productos2[$oo]['url']=procesar_url($url_productos2.'/category-'.trim($itm['name']).'/'.$itm['id']);
-
-
-			// foto
-			$id_subcategorias=filas("id","productos_groups","where id_grupo=".$itm['id'],0);
-			
-			foreach($id_subcategorias as $id_subcategoria){
-				$id_subcategoria2[]=$id_subcategoria['id'];
+			$marca=dato("nombre","productos_grupos","where id=".$hab['id_grupo']);
+			$tipo=dato("nombre","productos_tipos","where id=".$hab['id_tipo']);
+			$importaciones['items'][$ii]['name']="$marca $tipo ".$hab['name'];
+						
+			$items=explode("\n",$hab['text4']);
+			$htm='<ul>';
+			foreach($items as $item){
+				if($item!='')
+					$htm.='<li>'.$item.'</li>';
 			}
+			$htm.='</ul>';
+			$importaciones['items'][$ii]['text4']=$htm;
 
-			$items=filas("id","productos_items","where ver_home=1 and id_grupo in  (".implode(',',$id_subcategoria2).")",0);
-			unset($id_subcategoria2);
-
-			$items_productos_fotos2=fila(
-				"id,fecha_creacion,file",
+			// $importaciones['items'][$ii]['photos']
+			$photos=filas(
+				'file,fecha_creacion',
 				'productos_fotos',
-				"where id_item=".$items[0]['id'],
+				'where id_item='.$hab['id'].' and visibilidad=1  limit 0,1',
 				0,
 				[
-					'img'=>['get_archivo'=>[
-												'carpeta'=>'profot_imas',
+					'get_archivo'=>['get_archivo'=>[
+												'carpeta'=>'profot_fot',
 												'fecha'=>'{fecha_creacion}',
 												'file'=>'{file}',
 												'tamano'=>'0'
-												]
-											],
+												]			
+							]
 					]
-
 			);
-			$items_productos2[$oo]['img']=$items_productos_fotos2['img'];
+
+			foreach($photos as $jj=>$photo){
+
+				$importaciones['items'][$ii]['img']=$photo['get_archivo'];
+
+				
+
+			}
+
+			$importaciones['items'][$ii]['url']=$this->other_url.$hab['url'];
+			$importaciones['items'][$ii]['target'] = "_blank";
 
 		}
 
 
-		// $items_productos2=array_slice($items_productos2,0,2);
-
-		$importaciones=[
-			'name'=>$name_productos2,
-			'items'=>$items_productos2,
-			'url'=>$url_productos2,
-			'more'=>[
-				'name' => 'ver más',
-				'url'=>$url_productos2,
-			]
-		];
 		
-		/*
-		$importaciones=[];
-		$importaciones['name']='Recomendados';
-		$importaciones['url']=maskUrl('recomendados');
-		$importaciones['more']=[
-            'name' => 'ver más',
-            'url' => maskUrl('recomendados')
-    	];
+		// $importaciones['more']=[
+		// 	'url'  =>'modelos',
+		// 	'name' =>'ver más modelos'
+		// ];
 
-		foreach($items_productos as $oo=>$itm){
-			$importaciones['items'][$oo]=[
-				'name' =>$itm['name'],
-				'url'  =>$itm['url'],
-				'img'  =>$itm['foto']['img'],
-				'precio' =>$itm['precio'],
-			];
-		}
-		*/
+		// prin($importaciones);
 
+		$this->view->assign(["importaciones"=>$importaciones]);
 
-		$this->view->assign(["importaciones" => $importaciones]);
 
 
 		
@@ -155,13 +139,32 @@ class Home extends Controller {
 		$servicios['name'] ='Modelos';
 		$servicios['url']  ='modelos';
 
-		$servicios['items']=select("id,name,text,text2,text3,text4",
-			"projects","where ver_home=1 order by weight desc",0,[
+		$servicios['items']=select(
+			[
+				"id",
+				"nombre as name",
+				"descripcion as text",
+				"ficha as text2",
+				"id_grupo",
+				"id_tipo"
+			],
+			"productos_items",
+			" where 1 ".
+			" and id_grupo=".$this->this_group." ".
+			// " abd ver_home=1 ".
+			// " order by weight desc".
+			"",
+			0,
+			[
 				'url'=>['url'=>['modelo-{name}/{id}']],
 			]);
 
 		foreach($servicios['items'] as $ii=>$hab){
 
+			$marca=dato("nombre","productos_grupos","where id=".$hab['id_grupo']);
+			$tipo=dato("nombre","productos_tipos","where id=".$hab['id_tipo']);
+			$servicios['items'][$ii]['name']="$marca $tipo ".$hab['name'];
+						
 			$items=explode("\n",$hab['text4']);
 			$htm='<ul>';
 			foreach($items as $item){
@@ -174,10 +177,12 @@ class Home extends Controller {
 			// $servicios['items'][$ii]['photos']
 			$photos=filas(
 				'file,fecha_creacion',
-				'projects_photos',
-				'where id_grupo='.$hab['id'].' and visibilidad=1',0,[
+				'productos_fotos',
+				'where id_item='.$hab['id'].' and visibilidad=1',
+				0,
+				[
 					'get_archivo'=>['get_archivo'=>[
-												'carpeta'=>'serfot_imas',
+												'carpeta'=>'profot_fot',
 												'fecha'=>'{fecha_creacion}',
 												'file'=>'{file}',
 												'tamano'=>'0'
@@ -194,10 +199,10 @@ class Home extends Controller {
 
 		}
 
-		$servicios['more']=[
-			'url'  =>'servicios',
-			'name' =>'ver más servicios'
-		];
+		// $servicios['more']=[
+		// 	'url'  =>'modelos',
+		// 	'name' =>'ver más modelos'
+		// ];
 
 
 		$this->view->assign(["habitaciones"=>$servicios]);
@@ -225,6 +230,7 @@ class Home extends Controller {
 
 
 			$gallery2=$Videos->getItems([
+				'where'  =>' and id_grupo='.$this->this_group,
 				'limit' =>'0,4',
 			]);
 

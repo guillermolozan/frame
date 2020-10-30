@@ -9,6 +9,8 @@ return [
 
 	'web'	=> [
 	
+		'folder' => 'emmashi',
+
 		'name_short' =>'Shineray',
 		'slogan' => 'Vehículos Shineray',
 
@@ -98,7 +100,7 @@ return [
 
 		'data_test'	=>true,		
 	
-		'image_devel'=>true,
+		// 'image_devel'=>true,
 
 		// 'fake'	=>'fakeimg',
 

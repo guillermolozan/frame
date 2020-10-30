@@ -10,6 +10,7 @@ class Products extends \core\controllers\Pages {
 
 	}
 
+
 	function setMessage($email,$msg=false){
 
 		$msg=($msg)?$msg:$this->default_message;
@@ -95,15 +96,25 @@ class Products extends \core\controllers\Pages {
 
 		//habitacion
 		$servicio=fila(
-			"id,name,text,text2,text3,text4",
-			"projects",
+			[
+				"id",
+				"nombre as name",
+				"descripcion as text",
+				"ficha as text2",
+				"id_tipo",
+				"id_grupo"
+			],
+			// "id,name,text,text2,text3,text4",
+			"productos_items",
 			"where id=".$params['item'],
 			0,
 			[
-				'url'=>['url'=>['habitacion-{name}/{id}']],
+				'url'=>['url'=>['modelo-{name}/{id}']],
 			]);
 
-
+			$marca=dato("nombre","productos_grupos","where id=".$servicio['id_grupo']);
+			$tipo=dato("nombre","productos_tipos","where id=".$servicio['id_tipo']);
+			$servicio['name']="$marca $tipo ".$servicio['name'];
 
 			$items=explode("\n",$servicio['text4']);
 			$htm='<ul>';
@@ -115,9 +126,9 @@ class Products extends \core\controllers\Pages {
 			$servicio['text4']=$htm;
 
 			// $servicio['photos']
-			$photos=filas('file,fecha_creacion','projects_photos','where id_grupo='.$servicio['id'].' and visibilidad=1',0,[
+			$photos=filas('file,fecha_creacion','productos_fotos','where id_item='.$servicio['id'].' and visibilidad=1',0,[
 					'get_archivo'=>['get_archivo'=>[
-												'carpeta'=>'serfot_imas',
+												'carpeta'=>'profot_fot',
 												'fecha'=>'{fecha_creacion}',
 												'file'=>'{file}',
 												'tamano'=>'0'
@@ -137,7 +148,6 @@ class Products extends \core\controllers\Pages {
 
 
 		$post=$servicio;
-
 
 
 		/*
@@ -326,16 +336,21 @@ class Products extends \core\controllers\Pages {
 
 	function grid($params){	
 
-
-
-
 		//servicios
-		$habitaciones['name'] ='Servicios';
-		$habitaciones['url']  ='servicios';
+		$habitaciones['name'] ='Modelos';
+		$habitaciones['url']  ='modelos';
 
-		$habitaciones['items']=select("id,name,text,text2,text3,text4",
-			"projects","where 1 ",0,[
-				'url'=>['url'=>['servicio-{name}/{id}']],
+		$habitaciones['items']=select(
+			["id","nombre as name","descripcion as text","ficha as text2"],
+			"productos_items",
+			" where 1 ".
+			" and id_grupo=".$this->this_group." ".
+			// " abd ver_home=1 ".
+			// " order by weight desc".
+			"",
+			0,
+			[
+				'url'=>['url'=>['modelo-{name}/{id}']],
 			]);
 
 		foreach($habitaciones['items'] as $ii=>$hab){
@@ -352,10 +367,10 @@ class Products extends \core\controllers\Pages {
 			// $habitaciones['items'][$ii]['photos']
 			$photos=filas(
 				'file,fecha_creacion',
-				'projects_photos',
-				'where id_grupo='.$hab['id'].' and visibilidad=1',0,[
+				'productos_fotos',
+				'where id_item='.$hab['id'].' and visibilidad=1',0,[
 					'get_archivo'=>['get_archivo'=>[
-												'carpeta'=>'serfot_imas',
+												'carpeta'=>'profot_fot',
 												'fecha'=>'{fecha_creacion}',
 												'file'=>'{file}',
 												'tamano'=>'0'

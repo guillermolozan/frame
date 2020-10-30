@@ -28,7 +28,7 @@
 					.sy-pager
 						display none
 					.sy-slide
-						height 370px !important
+						// height 370px !important
 						overflow hidden
 						@media $small
 							height 210px !important
@@ -68,7 +68,7 @@
 					width 35%
 					height 55px
 					opacity .3
-					background #50dffa !important
+					background #d31d2b !important
 					// background url(imgs+'water.png') no-repeat 0px 10px
 					@media $small
 						display none
@@ -95,16 +95,15 @@
 						bottom 0
 				.more
 					position absolute
-					color black
 					bottom 20px
 					right 15px
 					border-radius 0
 					border 1px solid #000
-					background-color #50dffa
+					background-color #000
 					// font-size 26px
 					// text_border(#fff)
 					font-size 20px
-					color #000 !important
+					color #fff !important
 					height 35px
 					line-height @height
 					padding 0 10px
@@ -179,7 +178,7 @@
 							content "\e686"
 							margin-right 10px
 			.servicio
-				color #036896
+				color color2
 				font-size 1.3rem
 				margin-left .3.5em
 				text-transform: none
@@ -203,6 +202,16 @@
 					width 150px
 					height 40px
 					line-height @height
+			.ficha
+				td
+					padding-top 2px
+					padding-bottom 2px
+					vertical-align: top
+					&:nth-child(1)
+						font-weight bold
+						white-space nowrap
+				tr:nth-child(odd)
+					background: #e5e1e1
 					
 
 .p-home,.p-habitaciones

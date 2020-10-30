@@ -11,11 +11,11 @@ return [
 		'url'   =>((isset($start['devel']))?$start['devel']:''),
 	],
 
-	'productos'                => 'Productos',
+	// 'modelos'                => 'Modelos',
 
-	'videos'                   => 'Videos',
+	// 'videos'                   => 'Videos',
 
-	'contactenos'                  => 'Contáctenos',
+	// 'contactenos'                  => 'Contáctenos',
 
 	// 'facebook'=>[
 	// 	'url'   =>'https://www.facebook.com',

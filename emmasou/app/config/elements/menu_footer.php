@@ -4,16 +4,16 @@ return [
 
 	(($start['devel'])?$start['devel']:'') => 'INICIO',
 	
-	'empresa'                        => 'EMPRESA',
+	// 'empresa'                        => 'EMPRESA',
 	
-	'servicios'                      => 'SERVICIOS',
+	// 'servicios'                      => 'SERVICIOS',
 	
-	'productos'                      => 'PRODUCTOS',
+	// 'productos'                      => 'PRODUCTOS',
 
-	'blogs'                      	 => 'BLOGS',
+	// 'blogs'                      	 => 'BLOGS',
 
-	'videos'                   		 => 'VIDEOS',
+	// 'videos'                   		 => 'VIDEOS',
 
-	'contactenos'                    => 'CONTÁCTENOS',
+	// 'contactenos'                    => 'CONTÁCTENOS',
 
 ];

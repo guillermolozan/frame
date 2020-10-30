@@ -110,7 +110,7 @@ return [
 
 		'static' =>"./aquasan/public",
 
-		'devel' =>"desarrollo",
+		'devel' =>"",
 
 		// 'image_devel'=>true,
 

@@ -3,17 +3,17 @@
 return [
 	(($start['devel'])?$start['devel']:'') => 'Inicio',
 	
-	'empresa'                        => 'EMPRESA',
+	// 'empresa'                        => 'EMPRESA',
 	
-	'servicios'                      => 'SERVICIOS',
+	// 'servicios'                      => 'SERVICIOS',
 	
-	'productos'                      => 'PRODUCTOS',
+	// 'productos'                      => 'PRODUCTOS',
 
-	'blogs'                       => 'Blogs',
+	// 'blogs'                       => 'Blogs',
 
-	'videos'                   => 'Videos',
+	// 'videos'                   => 'Videos',
 
-	'contactenos'                  => 'Contáctenos',
+	// 'contactenos'                  => 'Contáctenos',
 	// 'contactenos'                  => 'Contáctenos',
 
 	// 'facebook'=>[

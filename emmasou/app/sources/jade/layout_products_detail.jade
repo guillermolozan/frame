@@ -22,11 +22,11 @@ html(lang="es")
 					div(class="col s12 l12")
 						.block_habitaciones
 							-habitacion_item=post
-							h2 #{habitacion_item.name}
+							h1 #{habitacion_item.name}
 							//- include includes/block_habitacion
 							.block_habitacion.detail_habitacion
 								.row
-									.galle.col.s12.m7
+									.galle.col.s12.m6
 										.col
 											.foto
 												a(class="zoom",href="#{habitacion_item.photos[0]}")
@@ -38,21 +38,20 @@ html(lang="es")
 												each foto in habitacion_item.photos
 													div: a: img(class="responsive-img",src="#{foto}")
 
-									.text.col.s12.m5
+									.text.col.s12.m6
 										.col
 											ul.collapsible(data-collapsible="accordion")
 												li
-													.collapsible-header Resumen del Servicio
-													.collapsible-body: p #{habitacion_item.text}
+													.collapsible-header.active Descripción
+													.collapsible-body: p!= habitacion_item.text
 												li
-													.collapsible-header Equipos
-													.collapsible-body: p #{habitacion_item.text2}
+													.collapsible-header Ficha
+													.collapsible-body.ficha: p!= habitacion_item.text2
 												li
-													.collapsible-header Productos
+													.collapsible-header Garántías
 													.collapsible-body: p #{habitacion_item.text3}
 												li
-													.collapsible-header.active Precio
-													.collapsible-body.servicios!=habitacion_item.text4
+													a.collapsible-header(href="#{habitacion_item.url}#cotizar") Cotizar
 											//- .reservar 
 											//- 	//- div RESERVE SU ESTANCIA
 											//- 	a(class="btn",href="#{habitacion_item.url}#cotizar") COTIZAR

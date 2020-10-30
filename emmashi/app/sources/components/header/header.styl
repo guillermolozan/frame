@@ -1,13 +1,16 @@
-menu_logo      ='clean-logo.jpg'
-menu_logo_bg   =#50dffa
+menu_logo      ='logo-shi.png'
+menu_logo_bg   =#fff
 menu_logo_height=50px
 
-menu_bg        =#000
+menu_bg        =#24252b
 menu_color     =white
 menu_font_size =.84em
 menu_height    =50px
+
 menu_bg_over   =white
 menu_color_over=#000
+
+
 
 // menu_bg        =rgba(black,.7)
 // menu_color     =white
@@ -91,9 +94,9 @@ header_customize()
 				height 64px
 			> li.logo a
 				@media $small-medium
-					transform scale(1.4) !important
+					transform scale(1) !important
 				@media $small
-					transform scale(1.4) !important
+					transform scale(1) !important
 	@media $large
 		header
 			nav
@@ -104,7 +107,7 @@ header_customize()
 						> li
 							border-bottom 3px solid transparent
 							&.active,&:hover
-								border-bottom 3px solid #50dffa
+								border-bottom 3px solid #d31d2b
 						.submenu > li
 							&.active,&:hover
 								background menu_bg

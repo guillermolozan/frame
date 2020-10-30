@@ -66,8 +66,8 @@ $routes_lists = [
 	],
 
 	[
-		'grid'       =>'servicios',
-		'detail'     =>'servicio',
+		'grid'       =>'modelos',
+		'detail'     =>'modelo',
 		'controller' =>'Products',
 	],
 

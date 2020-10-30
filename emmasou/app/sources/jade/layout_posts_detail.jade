@@ -11,43 +11,17 @@ html(lang="es")
 		//- include blocks/breadcrumb.jade
 
 		//- include blocks/image.jade
-
 		main.container.row
 			.wide
 				article.page_post
 				if(post)
 					div(class="post")
-						if(menu_post)
-							div(class="col s3 hide-on-med-and-down")
-
-								if(group_post)
-									.card-title
-										h2 #{group_post}
-									
-								//- ul(class="menu_post collection")
-									//- +menu_collection(menu_post)
-								ul(class="menu_post collection collapsible collapsible-accordion",id="menu_left")
-									+menu_collection_advanced(menu_post)
-
-						div(class=menu_post?"col m12 l9":"col s12")
-							if post.titleout
-								div(class="card-title")
-									if(main)
-										h1: +item(post)
-										-main=false
-									else
-										h2: +item(post)
-
+						div("col s12")
 							article.card-panel
 								if(post.sub)
 									h3 #{post.sub}							
-								if !post.titleout
-									.card-title
-										if(main)
-											h1: +item(post)
-											-main=false
-										else
-											h2: +item(post)
+								.card-title
+									h1: +item(post)
 								if post.imgfirst
 									if(post.img)
 										div.center-align

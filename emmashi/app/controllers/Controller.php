@@ -18,10 +18,37 @@ class Controller extends \core\Controller {
 		Yb      Yb   dP 88 Y88   88   88""    dPYb    88
 		 YboodP  YbodP  88  Y8   88   888888 dP  Yb   88
 		*/
-		$this->this_group=1;
-		$this->other_group=2;
 
+		if($this->view->vars['web_folder']=='emmashi'){
 
+			$this->this_group=2;
+			$this->other_group=1;
+			$this->this_banner="banner_shi";
+			$this->other_web="Modelos Soueast";
+
+			if($this->view->vars['enviroment']=='local'){
+				$this->other_url="//localhost/frame/emmasou/";
+			} else {
+				$this->other_url="//soueast.com.pe/";
+			}
+
+		}
+		elseif($this->view->vars['web_folder']=='emmasou'){
+
+			$this->this_group=1;
+			$this->other_group=2;
+			$this->this_banner="banner_sou";
+			$this->other_web="Modelos Shineray";
+			
+			if($this->view->vars['enviroment']=='local'){
+				$this->other_url="//localhost/frame/emmashi/";
+			} else {
+				$this->other_url="//shineray.com.pe/";
+			}
+
+		}		
+
+		
 		/*
 		##     ## ######## ##    ## ##     ##
 		###   ### ##       ###   ## ##     ##

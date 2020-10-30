@@ -9,6 +9,8 @@ return [
 
 	'web'	=> [
 	
+		'folder' => 'emmasou',
+		
 		'name_short' =>'Soueast',
 		'slogan' => 'Vehículos Soueast',
 
