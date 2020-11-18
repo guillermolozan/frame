@@ -6,10 +6,15 @@ script(type='text/javascript').
 	var is_debug 	  =#{is_debug};
 	//- var Materialize;
 //- script(src="https://code.jquery.com/jquery-2.1.1.min.js")
-script(src="#{ven_js}jquery-2.1.4.min.js")
+
+if (use_jquery)
+	script(src="#{ven_js}jquery-2.1.4.min.js")
+
 //- script(type='text/javascript').
 //- 	var slider;
-script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js")
+if (framework_css=='materialize')
+	script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js")
+
 //- script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.6/js/materialize.min.js")
 //- script(src="#{ven_js}materialize.min.js")
 
@@ -25,11 +30,12 @@ script(src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materia
 //- 	});
 //- 	});
 
+
 script(src="#{ven_js}loadcss.js")
 script(src="#{ven_js}require.js",data-main="#{work_ven_js}")
 script(src="#{pub_js}#{build_js}")
 
-if analytics && !localhost
+if analytics && !localhost && false
 	script.
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -38,6 +44,14 @@ if analytics && !localhost
 		ga('create', '#{analytics}', 'auto');
 		ga('send', 'pageview');
 
+if analytics && !localhost
+	//- - analytics_url='https://www.googletagmanager.com/gtag/js?id='+analytics
+	script(src="https://www.googletagmanager.com/gtag/js?id=#{analytics}",async)
+	script.
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+		gtag('config', '#{analytics}');
 if opengraph
 	div(id="fb-root")
 	script.

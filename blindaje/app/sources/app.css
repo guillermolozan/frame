@@ -1,0 +1,28 @@
+
+
+// Begin Components
+@import '../../../../work/app/sources/components/common/common.'
+@import '../../../../blindaje/app/sources/components/header/header.'
+@import '../../../../blindaje/app/sources/components/menu/menu.'
+@import '../../../../blindaje/app/sources/components/banner/banner.'
+@import '../../../../blindaje/app/sources/components/page_post/page_post.'
+@import '../../../../blindaje/app/sources/components/form_consulta/form_consulta.'
+@import '../../../../blindaje/app/sources/components/footer/footer.'
+@import '../../../../blindaje/app/sources/components/pre_footer/pre_footer.'
+@import '../../../../blindaje/app/sources/components/whatsapp_button/whatsapp_button.'
+// Finish Components
+
+
+
+//* Begin Components */
+@import "../../../../work/app/sources/components/common/common.";
+@import "../../../../blindaje/app/sources/components/header/header.";
+@import "../../../../blindaje/app/sources/components/menu/menu.";
+@import "../../../../blindaje/app/sources/components/banner/banner.";
+@import "../../../../blindaje/app/sources/components/page_post/page_post.";
+@import "../../../../blindaje/app/sources/components/form_consulta/form_consulta.";
+@import "../../../../blindaje/app/sources/components/footer/footer.";
+@import "../../../../blindaje/app/sources/components/pre_footer/pre_footer.";
+@import "../../../../blindaje/app/sources/components/whatsapp_button/whatsapp_button.";
+//* Finish Components */
+

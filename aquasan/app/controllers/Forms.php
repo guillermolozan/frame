@@ -76,9 +76,11 @@ class Forms extends \core\controllers\Forms {
 
 
 			$email= new \controllers\Emails($this->view);
-
+			// prin($this->admin_emails);
+			// exit();
 			$sended=$email->send(
-				implode(',',$this->admin_emails),
+				// implode(',',$this->admin_emails),
+				$this->admin_emails,
 				"Mensaje de Contactenos",
 				[
 					'name_right' =>$this->view->vars['web_name'],
@@ -105,10 +107,10 @@ class Forms extends \core\controllers\Forms {
 				]
 			);
 			
-			if($sended){	$this->setMessage($email);		} 
+			if($sended){	$this->setMessage($email,"Mensaje enviado exitosamente");		} 
 			// if($sended_response){	$this->setMessage($email);		} 
 
-
+			if(0)
 			insert(
 				array_merge(
 					[

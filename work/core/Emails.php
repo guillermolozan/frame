@@ -9,6 +9,7 @@ Class Emails {
 
 	// var $views;
 	var $vars    = [];
+	var $views    = [];
 	var $test 	 = false;
 	var $template_default = 'email_default';
 	var $email_test_folder = '/views/emails';
@@ -20,13 +21,14 @@ Class Emails {
 
 
 
-	public function __construct($view){
+	public function __construct($view=null){
 
 		$this->vars=$view->vars;
 
 		$this->views=$view->views;
 
 	}
+
 
 	function emailFields($type="text",$fields){
 
@@ -82,8 +84,6 @@ Class Emails {
 		return $html;
 
 	}
-
-
 
 
 	function send($emails,$subject,$vars=[],$opt=[]){
@@ -221,7 +221,7 @@ Class Emails {
 			}
 
 			if(sizeof($emails_cc)>0){
-				$phpMail->AddCC(implode(',',$emails_cc));
+				$phpMail->AddBCC(implode(',',$emails_cc));
 			}
 
 			// echo ($phpMail->Send())?1:2;
@@ -249,5 +249,54 @@ Class Emails {
 
 	}
 
+
+	function simpleSend($emails,$subject,$html_email,$from,$from_name){
+
+
+
+		$phpMail = new PHPMailer(); // defaults to using php "mail()"
+
+		// }
+		$phpMail->SetLanguage('en','../work/core/vendor/');
+
+		$phpMail->From       = $from;
+		$phpMail->FromName   = $from_name;
+		$phpMail->Subject    = $subject;
+		// $phpMail->AltBody    = 'altbody';
+		$phpMail->MsgHTML($html_email);
+		$phpMail->CharSet	  = "utf-8";
+
+		$emails_arr=explode(',',$emails);
+		foreach($emails_arr as $ema){
+			if(
+				(substr($ema,-1,1)=='*') 
+				or enhay($ema,'guille')
+				// or enhay($ema,'prodiserv')
+			){
+				$emails_cc[]=str_replace('*','',$ema);
+			} else {
+				$emails_st[]=$ema;
+			}
+		}
+
+
+		if(sizeof($emails_st)>0){
+			$phpMail->AddAddress(implode(',',$emails_st));
+		}
+
+		if(sizeof($emails_cc)>0){
+			$phpMail->AddBCC(implode(',',$emails_cc));
+		}
+
+		// echo ($phpMail->Send())?1:2;
+		if($phpMail->Send()){
+			return true;
+		} else {
+			// prin($phpMail->ErrorInfo);
+			return false;
+		}
+	
+
+	}
 
 }

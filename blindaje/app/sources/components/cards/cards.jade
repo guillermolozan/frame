@@ -1,0 +1,9 @@
+//-  dP""b8    db    88""Yb 8888b.  .dP"Y8
+//- dP   `"   dPYb   88__dP  8I  Yb `Ybo."
+//- Yb       dP__Yb  88"Yb   8I  dY o.`Y8b
+//-  YboodP dP""""Yb 88  Yb 8888Y"  8bodP'
+section.cards(class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 py-3 w-full px-2 lg:px-0 order-last")
+    each item in planes.items
+        div(class="bg-primary text-white p-4 rounded-2xl text-center text-sm border-black border-2")
+            h2(class="text-secondary uppercase font-black  mb-3") #{item.name}
+            != item.html

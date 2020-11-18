@@ -26,9 +26,9 @@ return [
 		##       ##     ## ##     ##  ##  ##       ##    ##
 		######## ##     ## ##     ## #### ########  ######
 		*/
-		'email'      =>'ventas@ambacar.pe',
+		'email'      =>'eatocha@ambacar.pe ',
 		'emails'     =>[
-			'ventas@ambacar.pe'
+			'eatocha@ambacar.pe '
 		],
 
 		/*
@@ -81,7 +81,7 @@ return [
 		'facebook_page'   =>'/ambacar.pe',
 
 		
-		'email_admin'=>'ventas@ambacar.pe,wtavara@prodiserv.com,guillermolozan@gmail.com',
+		'email_admin'=>'eatocha@ambacar.pe ,wtavara@prodiserv.com,guillermolozan@gmail.com',
 
 		
 	],

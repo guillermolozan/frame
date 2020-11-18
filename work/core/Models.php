@@ -18,6 +18,8 @@ class Models {
 		
 		$this->view       =$scope->view;
 
+		$this->pipe       =$scope->pipe;
+
 		$this->config     =[];
 
 	}

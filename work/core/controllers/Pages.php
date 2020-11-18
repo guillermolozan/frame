@@ -51,8 +51,7 @@ class Pages extends \controllers\Controller {
 		$head_keywords    =$Page->getKeywords($post);
 		
 		$head_title       =$Page->getTitle($post);
-
-
+		
 		$this->view->assign([
 				
 			'head_title'       => $head_title,

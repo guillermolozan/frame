@@ -1,0 +1,77 @@
+@layer components {
+
+    /*
+    888888  dP"Yb  88""Yb 8b    d8
+    88__   dP   Yb 88__dP 88b  d88
+    88""   Yb   dP 88"Yb  88YbdP88
+    88      YbodP  88  Yb 88 YY 88
+    */
+    form .form_field {
+
+        @apply mb-2 w-full;
+
+        & label {
+
+            @apply flex flex-wrap items-center;
+    
+            & > span { /* LABEL */
+                @apply block mb-1 pr-4 font-bold w-full text-primary ;
+            }
+            @screen lg {
+                & > span {
+
+                    @apply text-right mb-0 w-5/12 ;
+
+                }
+            }
+            /* INPUTS */
+            & .form_input {
+
+                @apply w-full appearance-none border-2 py-1 px-2 text-black leading-tight border-primary;
+                
+                /* @screen lg {
+
+                    @apply border-black;
+                
+                } */
+                &:focus {
+                    @apply outline-none bg-white border-blue-400;
+                }
+            }
+
+            @screen lg {
+                & .form_input {
+                    @apply w-7/12 py-0;
+                }
+            }            
+            /* TEXTAREA */
+            & textarea.form_input {
+                @apply h-24;
+            }
+            /* SELECT  */
+            & select.form_input {
+                @apply h-auto;
+            } 
+            & select.form_input:after {
+                content:'&#9660;';
+            }        
+
+    
+        }
+        & button {
+            @apply bg-blue-600 text-white font-semibold py-1 px-4 border border-gray-400 rounded shadow;
+            &:hover {
+                @apply bg-blue-800;
+            }
+            &:disabled {
+                @apply opacity-50 cursor-not-allowed; 
+            }            
+            @screen lg {
+                & {
+                    @apply py-3;
+                }
+            }
+        }
+    }
+
+}

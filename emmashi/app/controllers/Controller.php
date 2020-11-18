@@ -19,6 +19,12 @@ class Controller extends \core\Controller {
 		 YboodP  YbodP  88  Y8   88   888888 dP  Yb   88
 		*/
 
+		/*
+		.dP"Y8 88  88 88 88b 88 888888 88""Yb    db    Yb  dP
+		`Ybo." 88  88 88 88Yb88 88__   88__dP   dPYb    YbdP
+		o.`Y8b 888888 88 88 Y88 88""   88"Yb   dP__Yb    8P
+		8bodP' 88  88 88 88  Y8 888888 88  Yb dP""""Yb  dP
+		*/
 		if($this->view->vars['web_folder']=='emmashi'){
 
 			$this->this_group=2;
@@ -33,6 +39,12 @@ class Controller extends \core\Controller {
 			}
 
 		}
+		/*
+		.dP"Y8  dP"Yb  88   88 888888    db    .dP"Y8 888888
+		`Ybo." dP   Yb 88   88 88__     dPYb   `Ybo."   88
+		o.`Y8b Yb   dP Y8   8P 88""    dP__Yb  o.`Y8b   88
+		8bodP'  YbodP  `YbodP' 888888 dP""""Yb 8bodP'   88
+		*/
 		elseif($this->view->vars['web_folder']=='emmasou'){
 
 			$this->this_group=1;
@@ -77,6 +89,7 @@ class Controller extends \core\Controller {
 			"where
 			visibilidad=1 ".
 			" and id_grupo=".$this->this_group." ".
+			" and ver_home=1 ".
 			// " order by weight desc"
 			"",
 			0,
@@ -99,11 +112,16 @@ class Controller extends \core\Controller {
 			];			
 		}
 		// VIDEOS
-		$replace_menu_pre[]=[
-			'url'  =>'videos',
-			'name' =>'Videos'
-		];	
+		// $replace_menu_pre[]=[
+		// 	'url'  =>'videos',
+		// 	'name' =>'Videos'
+		// ];	
 		// CONTACTENOS
+		$replace_menu_pre[]=[
+			'url'  =>'modelos',
+			'name' =>'+ Modelos'
+		];	
+
 		$replace_menu_pre[]=[
 			'url'  =>'contactenos',
 			'name' =>'Contáctenos'

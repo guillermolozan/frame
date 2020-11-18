@@ -1,0 +1,25 @@
+
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+
+
+
+@import './common.css';
+
+
+
+
+
+
+
+
+/* Begin Components */
+@import '../../../../blindaje/app/sources/components/menu/menu.css';
+@import '../../../../blindaje/app/sources/components/form_consulta/form_consulta.css';
+@import '../../../../blindaje/app/sources/components/cards/cards.css';
+/* Finish Components */
+

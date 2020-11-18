@@ -139,6 +139,7 @@ class Pages extends \core\Models {
 
 	}
 
+
 	function getBreadcrumb($params=[]){
 
 		global $start;
@@ -191,6 +192,7 @@ class Pages extends \core\Models {
 
 	}
 
+	
 	function getLinks($params=['num'=>'7']){
 
 		$config=$this->getConfig();
@@ -242,7 +244,6 @@ class Pages extends \core\Models {
 	}
 
 
-
 	function getIdGroup($params=[]){
 
 		$config=$this->getConfig();
@@ -275,13 +276,15 @@ class Pages extends \core\Models {
 
 	}
 
+
 	function getTitle($post=null){
 
 		$post=($post)?$post:$this->post;
 		// return ucfirst(strtolower(trim($post['name'])))." | ".$this->title;
-		return trim($post['name'])." | ".$this->title;
+		return trim($post['name'])." ".$this->pipe." ".$this->title;
 
 	}
+
 
 	function getDescription($post=null,$more=null){
 
@@ -305,6 +308,7 @@ class Pages extends \core\Models {
 
 	}
 
+
 	function getKeywords($post=null,$more=null){
 
 		$post=($post)?$post:$this->post;
@@ -319,6 +323,7 @@ class Pages extends \core\Models {
 		return implode(",",array_keys(extractCommonWords($text)));
 
 	}
+
 
 	function getCanonical($array){
 		// prin($array);
@@ -337,6 +342,7 @@ class Pages extends \core\Models {
 		return maskUrl($url.substr($url2,1));
 
 	}
+
 
 	function getMenuGroup($params=[],$debug=0){
 

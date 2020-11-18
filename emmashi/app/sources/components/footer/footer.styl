@@ -44,8 +44,20 @@ footer
 		// 	@media $small-medium
 		// 		border-bottom 1px solid #999
 		.first
-			li
-				line-height 25px
+			.menu
+				li
+					line-height 25px
+					margin-right .5em
+					display inline-block
+					a
+						text-transform: uppercase
+					&:after
+						content "/"
+						margin-left .5em
+						color white
+					&:last-child
+						&:after
+							content ""
 		.third
 			margin-top .5em
 			strong, strong > a

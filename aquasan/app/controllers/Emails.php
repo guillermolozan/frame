@@ -6,9 +6,9 @@ class Emails extends \core\Emails {
 
 	var $vars          = [];
 	var $test          = false;
-	var $logo          = 'aquasan-logo.png';
+	var $logo          = 'aquasan-small.png';
 	var $logo_height   = '70px';
-	var $from_email    = 'ventas@sumarseg.com';
+	var $from_email    = 'mesadepartes@aquasan.com.pe';
 	
 	var $smtp_Host     = 'mail.incaclick.com';
 	var $smtp_Username = 'prueba@incaclick.com';

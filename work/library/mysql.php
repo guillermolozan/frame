@@ -606,7 +606,7 @@ function insert($campos_array,$tabla,$debug=0){
 		switch(trim($ll)){
 			case "NULL": $ppp[]="NULL"; break;
 			case "now()": $ppp[]="'".date("Y-m-d H:i:s")."'"; break;
-			default: $ppp[]="'".mysqli_real_escape_string($ll)."'"; break;
+			default: $ppp[]="'".mysqli_real_escape_string($link,$ll)."'"; break;
 		}
 	}
 	$consulta="insert into $tabla (". implode(",",$ccc) .") values (" .implode(",",$ppp). ")";
@@ -635,7 +635,7 @@ function update($campos_array,$tabla,$where,$debug=0){
 			case "now()": $ppp[]="$tt='".date("Y-m-d H:i:s")."'"; break;
 			case "++": $ppp[]="$tt=$tt+1"; break;
 			case "--": $ppp[]="$tt=$tt-1"; break;
-			default: $ppp[]="$tt='".mysqli_real_escape_string($ll)."'"; break;
+			default: $ppp[]="$tt='".mysqli_real_escape_string($link,$ll)."'"; break;
 		}
 	}
 	$consulta="update $tabla set ". implode(",",$ppp) ." ".$where;
@@ -1278,6 +1278,10 @@ function prin($array,$title=NULL,$params=[]){
 
 }
 
+function prinx($array,$title=NULL,$params=[]){
+	prin($array,$title,$params);
+	exit();
+}
 
 function paginacion_items($parametros,$items){
 

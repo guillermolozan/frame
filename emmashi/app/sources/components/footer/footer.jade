@@ -2,39 +2,40 @@ include ../../jade/includes/whatsapp_button
 footer
 	.container.row
 
-		.col.s12.l4.first
+		.col.s12.l8.first
 			ul.menu
 				+menu_items(menu_footer)
-		.col.s12.l4.third
-			ul.menu
-				//- if(!localhost)
-				//- 	li.footer-fb
-				//- 		.fb-like(
-				//- 			data-href="#{baseurl}",
-				//- 			data-layout='standard', 
-				//- 			data-action='like', 
-				//- 			data-size='small', 
-				//- 			data-show-faces='true', 
-				//- 			data-share='true')
-				if(web_facebook)
-					li(class="facebook circle") 
-						a(title="Facebook",target="_blank",href="#{web_facebook}") #{web_facebook_page}
-				if(web_instagram)
-					li(class="instagram circle") 
-						a(title="Instagram",target="_blank",href="#{web_instagram}") #{web_instagram_page}						
-				if(web_email)
-					li(class="email circle") 
-						+render_email(web_email)
+		//- .col.s12.l4.third
+		//- 	ul.menu
+		//- 		//- if(!localhost)
+		//- 		//- 	li.footer-fb
+		//- 		//- 		.fb-like(
+		//- 		//- 			data-href="#{baseurl}",
+		//- 		//- 			data-layout='standard', 
+		//- 		//- 			data-action='like', 
+		//- 		//- 			data-size='small', 
+		//- 		//- 			data-show-faces='true', 
+		//- 		//- 			data-share='true')
+		//- 		if(web_facebook)
+		//- 			li(class="facebook circle2") 
+		//- 				a(title="Facebook",target="_blank",href="#{web_facebook}") #{web_facebook_page}
+		//- 		if(web_instagram)
+		//- 			li(class="instagram circle") 
+		//- 				a(title="Instagram",target="_blank",href="#{web_instagram}") #{web_instagram_page}						
+		//- 		if(web_email)
+		//- 			li(class="email circle2") 
+		//- 				+render_email(web_email)
 		.col.s12.l4.two
 			ul.menu
-				if(web_whatsapp)
+				if(web_whatsapp && false)
 					li: span.corp WhatsApp: #[strong #[+render_whatsapp(web_whatsapp)]]
 				if(web_address)
 					li: span.corp Dirección: #[strong #{web_address}]	
-				li: span.corp Telefonos: #[strong #[+render_phones(web_phones)]]
+				li: span.corp Celular: #[strong #[+render_phones(web_phones)]]
 				li: span.corp Correo: #[strong #[+render_emails(web_emails)]]
 				//- li.visa
 				//- 	span Aceptamos Visa
 
 
-include ../../jade/includes/footer_post
+if (localhost)
+	include ../../jade/includes/footer_post

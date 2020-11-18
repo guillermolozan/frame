@@ -1,0 +1,42 @@
+include common/includes.jade
+doctype html
+html(
+	lang="es",
+	class="text-gray-900 antialiased leading-tight bg-primary "
+	)
+
+	include common/head.jade
+
+	body(class="#{classbody}",
+		class=" relative container mx-auto bg-white lg:px-2 pt-16 lg:pt-3 lg:pb-2 flex flex-wrap contnt-start items-start "
+		)
+		
+		include includes/header
+
+		include includes/menu
+
+		include includes/banner
+
+		//- 88""Yb 88      dP"Yb   dP"Yb  88   88 888888       .d
+		//- 88__dP 88     dP   Yb dP   Yb 88   88 88__       .d88
+		//- 88""Yb 88  .o Yb   dP Yb b dP Y8   8P 88""         88
+		//- 88oodP 88ood8  YbodP   `"YoYo `YbodP' 888888       88
+		article.bloque1.html(
+			class="w-full md:w-1/2 lg:w-5/12 text-justify text-sm  px-6 order-first flex items-center flex-wrap h-40 ")
+			!= post.html
+
+
+		//- 88""Yb 88      dP"Yb   dP"Yb  88   88 888888     oP"Yb.
+		//- 88__dP 88     dP   Yb dP   Yb 88   88 88__       "' dP'
+		//- 88""Yb 88  .o Yb   dP Yb b dP Y8   8P 88""         dP'
+		//- 88oodP 88ood8  YbodP   `"YoYo `YbodP' 888888     .d8888
+		main.bloque2.html(
+			class="order-last px-4 text-justify")
+			!= post.html2
+
+		//- bloque 3
+		include includes/pre_footer
+
+		include includes/footer
+
+		//- include common/foot

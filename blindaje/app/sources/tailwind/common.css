@@ -1,0 +1,24 @@
+@layer components {
+
+    /*
+    88  88 888888 8b    d8 88
+    88  88   88   88b  d88 88
+    888888   88   88YbdP88 88  .o
+    88  88   88   88 YY 88 88ood8
+    */
+    .html {
+        & p {
+            @apply pb-3 w-full;
+        }
+        & ul {
+            @apply mb-4 list-disc pl-5;
+        }
+        & h3 {
+            @apply font-bold mb-2;
+        }
+        & h4 {
+            @apply font-bold;
+        }
+    }
+
+}

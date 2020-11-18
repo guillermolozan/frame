@@ -50,6 +50,8 @@ class Runtime {
 
 
 	}
+
+
 	function generatejsons($params){
 
 		global $vars_array;
@@ -88,11 +90,23 @@ class Runtime {
 
 	}
 
-	
-	
+
 	function start($params){
 
+		$proy=[
+			'framework_css' => 'materialize',
+    		'build_css' 	=> 'app.css',
+			'extension_css' => 'styl',
+			'source_dir_css'=>'stylus',
+		];
 
+		$proy_file='project.json';
+		if(file_exists($proy_file)){
+			$proyjson = implode("",file($proy_file));
+			$proy = json_decode($proyjson,true);
+		}
+		
+		
 		$touch_file='touch.json';
 		if(!file_exists($touch_file))
 			file_put_contents($touch_file,'{"v":"1"}');
@@ -111,7 +125,7 @@ class Runtime {
 		$host='http:'.Server::base();
 
 		$file_components=APP.'/config/components.php';
-		$file_components_work='../work/app/config/components.php';
+		$file_components_work='../work/app/config/'.$proy['framework_css'].'_components.php';
 		
 		if(!file_exists($file_components))
 			// echo "crear $file_components \n";
@@ -133,7 +147,7 @@ return [
 
 
 		$jade_dir         = APP.'/sources/jade';
-		$stylus_dir       = APP.'/sources/stylus';
+		$stylus_dir       = APP.'/sources/'.$proy['source_dir_css'];
 		$es6_dir          = APP.'/sources/es6';
 		$components_dir   = APP.'/sources/components';
 		
@@ -142,13 +156,13 @@ return [
 		$jade_common      = $jade_dir.'/common';
 		
 		
-		$stylus_file      = $stylus_dir."/app.styl";
-		$es6_file         = $es6_dir."/app.js";
+		$stylus_file      = $stylus_dir."/".$proy['build_css'];
+		$es6_file         = $es6_dir."/".$proy['source_file_js'];
 		
 		$read_stylus_file =implode("",file($stylus_file));
 
-		$start_components_stylus='// Begin Components';
-		$finish_components_stylus='// Finish Components';
+		$start_components_stylus='/* Begin Components */';
+		$finish_components_stylus='/* Finish Components */';
 
 		// echo getcwd().'<br>';
 
@@ -289,7 +303,7 @@ $finish_components_es6
 
 
 			$final_jade   =$final_route.'/'.$name.'.jade';
-			$final_stylus =$final_route.'/'.$name.'.styl';
+			$final_stylus =$final_route.'/'.$name.'.'.$proy['extension_css'];
 			$final_es6    =$final_route.'/'.$name.'.js';
 
 
@@ -315,13 +329,16 @@ $finish_components_es6
 
 
 			// STYLUS
-			if(!file_exists("../".$final_stylus))
-				file_put_contents("../".$final_stylus,"");
-			$stylus_lines.="@import '".$relative_stylus.$final_stylus."'\n";
+			if(enhay($option,'css')){
 
+				if(!file_exists("../".$final_stylus))
+					file_put_contents("../".$final_stylus,"");
+				$stylus_lines.="@import '".$relative_stylus.$final_stylus."';\n";
+
+			}
 
 			// ES6
-			if($option=='es6'){
+			if(enhay($option,'es6')){
 
 				if(!file_exists("../".$final_es6))
 					file_put_contents("../".$final_es6,"module.exports = ()=>{
@@ -365,8 +382,9 @@ $finish_components_es6
 		foreach($externals as $exter){
 
 			$external_jade[]='"./../'.$exter['dir'].'/'.$exter['file'].'.jade"';
-			$external_stylus[]='"./../'.$exter['dir'].'/'.$exter['file'].'.styl"';
-			if($exter['option']=='es6')
+			if(enhay($exter['option'],'css'))
+				$external_stylus[]='"./../'.$exter['dir'].'/'.$exter['file'].'.'.$proy['extension_css'].'"';
+			if(enhay($exter['option'],'es6'))
 				$external_es6[]='"./../'.$exter['dir'].'/'.$exter['file'].'.js"';
 
 		}

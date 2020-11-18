@@ -1,0 +1,14 @@
+[
+"./../work/app/sources/components/common/common.styl",
+"./../work/app/sources/components/menu_left/menu_left.styl",
+"./../work/app/sources/components/block_gallery/block_gallery.styl",
+"./../work/app/sources/components/block_post/block_post.styl",
+"./../blindaje/app/sources/components/header/header.styl",
+"./../blindaje/app/sources/components/menu/menu.styl",
+"./../blindaje/app/sources/components/banner/banner.styl",
+"./../blindaje/app/sources/components/page_post/page_post.styl",
+"./../blindaje/app/sources/components/form_consulta/form_consulta.styl",
+"./../blindaje/app/sources/components/footer/footer.styl",
+"./../blindaje/app/sources/components/pre_footer/pre_footer.styl",
+"./../blindaje/app/sources/components/whatsapp_button/whatsapp_button.styl"
+]

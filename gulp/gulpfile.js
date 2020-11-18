@@ -45,9 +45,17 @@ const gulp = require('gulp'),
 	atg = require('ascii-text-generator'),
 	gutil = require('gulp-util');
 
-// stylus
+// stylus, postcss and tailwind
 const stylus = require('gulp-stylus'),
 	autoprefixer = require('gulp-autoprefixer'),
+	poststylus = require('poststylus'),
+	postcss = require('gulp-postcss'),
+	tailwindcss = require('tailwindcss'),
+	cssnano = require('cssnano'),
+	postcssEasyImport = require('postcss-easy-import'),
+	cssnested = require('postcss-nesting'),
+	purgecss = require("@fullhuman/postcss-purgecss"),
+	// atImport = require('postcss-import'),
 	livereload = require('gulp-livereload');
 
 // touch
@@ -61,6 +69,7 @@ const browserify = require('browserify'),
 	buffer          = require('vinyl-buffer'),
 	webpack         = require('webpack-stream');
 	
+const execute 	= require('gulp-exec');
 
 const exec       = require('child_process').exec;
 
@@ -76,6 +85,9 @@ const fs         = require('fs');
 const ini        = require('ini');
 
 const fileExists = require('file-exists');
+
+// const framework_css='stylus';
+const framework_css='tailwind';
 
 
 /*
@@ -97,6 +109,7 @@ const urlfolder = 'http://localhost/frame/' + argv.p;
 const comp_dir = app + '/app/sources/components';
 
 const stylus_dir = app + '/app/sources/stylus';
+const tailwind_dir = app + '/app/sources/tailwind';
 const es6_dir = app + '/app/sources/es6';
 
 const jade_dir = app + '/app/sources/jade';
@@ -127,6 +140,14 @@ if(fileExists.sync(app + '/config.json')){
 	config_dir=config.dir;
 } else {
 	config_dir=argv.p;
+}
+
+var source_file_js;
+if(fileExists.sync(app + '/project.json')){
+	config=require(app + '/project.json');
+	source_file_js=config.source_file_js;
+} else {
+	source_file_js='app.js';
 }
 
 const sp_folder = '../../sistemapanel/' + config_dir + '/panel/';
@@ -183,6 +204,77 @@ const stylus_task = () => {
 };
 
 /*
+########    ###    #### ##       ##      ## #### ##    ## ########
+   ##      ## ##    ##  ##       ##  ##  ##  ##  ###   ## ##     ##
+   ##     ##   ##   ##  ##       ##  ##  ##  ##  ####  ## ##     ##
+   ##    ##     ##  ##  ##       ##  ##  ##  ##  ## ## ## ##     ##
+   ##    #########  ##  ##       ##  ##  ##  ##  ##  #### ##     ##
+   ##    ##     ##  ##  ##       ##  ##  ##  ##  ##   ### ##     ##
+   ##    ##     ## #### ########  ###  ###  #### ##    ## ########
+*/
+const tailwind_task= () => {
+
+
+	touch_task('tailwind');
+  
+	return gulp
+		.src(tailwind_dir + '/app.css')
+		// .pipe(
+		// 	stylus({
+		// 		'include css': true,
+		// 		// compress: false
+		// 	})
+		// )	
+		
+		.pipe(postcss([
+			
+			postcssEasyImport,
+
+			tailwindcss(tailwind_dir+'/tailwind.config.js'),
+			
+			autoprefixer,
+			cssnested,
+			
+			purgecss({
+				content: all_watch_jade,
+				defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+				safelist: ['active']
+			}),
+		
+			cssnano,
+
+		]))
+		
+	  	// .pipe(postcss([tailwindcss]))
+		.pipe(gulp.dest(public_dir + '/css'))
+		.pipe(livereload());
+
+};
+
+const tailwind_task_posible = () => {
+	touch_task('tailwind');
+
+    var processors = [
+		tailwindcss,
+        autoprefixer,
+        cssnano
+	];
+
+	return gulp
+		.src(tailwind_dir + '/tw.styl')
+        .pipe(stylus({
+            use: [
+                poststylus(processors)
+            ]
+        }))		
+	  .pipe(gulp.dest(public_dir + '/css'))
+	  .pipe(livereload());
+
+};
+
+
+
+/*
       ##    ###    ########  ########  #######  ########  ##     ## ########
       ##   ## ##   ##     ## ##       ##     ## ##     ## ##     ## ##     ##
       ##  ##   ##  ##     ## ##              ## ##     ## ##     ## ##     ##
@@ -192,20 +284,57 @@ const stylus_task = () => {
  ######  ##     ## ########  ######## ######### ##        ##     ## ##
 */
 const jade2php_task = () => {
+	/*
 	const command =
 		'jade2php --pretty --omit-php-runtime --omit-php-extractor  ' +
 		folder +
 		'/app/sources/jade/layout*.jade ' +
-		folder +
-		'/app/sources/jade/email*.jade --out ' +
+		// folder +
+		// '/app/sources/jade/email*.jade ' +
+		' --out ' +
 		folder +
 		'/app/views/php';
+	*/
 	// console.log(command);
+	/*
 	return exec(command, function (err, stdout, stderr) {
 		console.log(stderr);
 		console.log(chalk.bgMagenta(' building php views  .... '));
-		// return livereload();
+		return livereload();
 	});
+	*/
+	var optionsExec = {
+		continueOnError: false, // default = false, true means don't emit error event
+		pipeStdout: false, // default = false, true means stdout is written to file.contents
+	  };
+	var reportOptions = {
+		err: true, // default = true, false means don't write err
+		stderr: true, // default = true, false means don't write stderr
+		stdout: true // default = true, false means don't write stdout
+	};
+	return gulp
+		.src(jade_dir+'/layout*.jade' )
+		/**/
+		.pipe(
+			execute(
+				file=>`jade2php --pretty --omit-php-runtime --omit-php-extractor `+
+					`${file.path} ` +
+					` --out ${folder}/app/views/php`
+				,optionsExec)
+			)
+		/**/
+		/*
+		.pipe(
+			execute(
+				file=>`jade2php --pretty --omit-php-runtime --omit-php-extractor `+
+					`${file.path} ` +
+					` --out ${folder}/app/views/php`
+				,optionsExec)
+			)
+		*/
+		.pipe(execute.reporter(reportOptions));
+		// .pipe(livereload());
+
 };
 
 /*
@@ -237,8 +366,10 @@ const touch_task = (some = null) => {
 const webpack_task = () => {
 	touch_task('WEBPACK ');
 
+	// var app_source = ()'app.js'
+
 	return gulp
-		.src(es6_dir + '/app.js')
+		.src(es6_dir + '/' + source_file_js)
 		.pipe(
 			webpack({
 				mode: 'development',
@@ -324,9 +455,16 @@ const modifies = [
 	'./../htaccess'
 ];
 
+const external_tailwind = require(tailwind_dir + '/externals/external.json');
 const external_stylus = require(stylus_dir + '/externals/external.json');
 const external_jade = require(jade_dir + '/externals/external.json');
 const external_es6 = require(es6_dir + '/externals/external.json');
+
+const all_watch_tailwind = [
+	tailwind_dir + '/*.css',
+	tailwind_dir + '/*/*.css',
+	'tailwind.config.js',
+].concat(external_tailwind);
 
 const all_watch_stylus = [
 	// comp_dir+'/**/*.styl',
@@ -357,11 +495,18 @@ const all_watch_jade = [
 ##  ##  ## ##     ##    ##    ##    ## ##     ##
  ###  ###  ##     ##    ##     ######  ##     ##
 */
+
 const watch_task = () => {
 	livereload.listen();
 
-	console.log(chalk.yellow('watching stylus...'));
-	console.log(all_watch_stylus);
+	if(framework_css=='stylus'){
+		console.log(chalk.yellow('watching stylus...'));
+		console.log(all_watch_stylus);
+	}
+	if(framework_css=='tailwind'){
+		console.log(chalk.yellow('watching tailwind...'));
+		console.log(all_watch_tailwind);
+	}	
 
 	console.log(chalk.yellow('watching es6...'));
 	console.log(all_watch_js);
@@ -369,8 +514,15 @@ const watch_task = () => {
 	console.log(chalk.yellow('watching jade...'));
 	console.log(all_watch_jade);
 
-	//watch stylus
-	gulp.watch(all_watch_stylus, stylus_task);
+	if(framework_css=='stylus'){
+		//watch stylus
+		gulp.watch(all_watch_stylus, stylus_task);
+	}
+
+	if(framework_css=='tailwind'){
+		//watch stylus
+		gulp.watch(all_watch_tailwind, tailwind_task);
+	}	
 
 	//watch webpack
 	gulp.watch(all_watch_js, webpack_task);
@@ -516,6 +668,7 @@ const deploy_task = async () => {
 		// app+'/vendor/**',
 		app + '/.htaccess',
 		app + '/touch.json',
+		app + '/project.json',
 		app + '/index.php'
 	];
 
@@ -657,5 +810,5 @@ exports.get_comp = get_comp_task;
 exports.deploy = deploy_task;
 // exports.email_inline   = email_inline_task;
 
-exports.default = gulp.series(hello_task, components_task, stylus_task, jade2php_task, webpack_task, watch_task);
-// exports.default = gulp.series(stylus_task,jade2php_task,browserify_task);
+// exports.default = gulp.series(hello_task, components_task, stylus_task, jade2php_task, webpack_task, watch_task);
+exports.default = gulp.series(hello_task, components_task, tailwind_task, jade2php_task, webpack_task, watch_task);

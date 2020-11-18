@@ -26,6 +26,7 @@ class Controller {
 	var $enviroment;
 	var $localhost;
 	var $remote;
+	var $pipe;
 	var $allow_externals;
 
 	function __construct($params){
@@ -48,7 +49,9 @@ class Controller {
 		
 		$this->views       = (isset($start['views']))?$start['views']:'views';
 
-		$this->analytics   = (isset($start['analytics']))?$start['analytics']:'analytics';
+		// $this->analytics   = (isset($start['analytics']))?$start['analytics']:'analytics';
+		
+		$this->analytics   = (isset($start['analytics']))?$start['analytics']:false;
 		
 		$this->static      = $start['static'];
 
@@ -99,6 +102,7 @@ class Controller {
 
 		}
 
+		$this->pipe = "|";
 		
 		// version
 		$touchjson = file('touch.json');;
@@ -221,7 +225,7 @@ class Controller {
 		
 		// instance view
 		$this->view = new Views($this->views.'/php');
-
+		
 		// assing vars
 		$this->view->assign(
 			[
@@ -247,14 +251,19 @@ class Controller {
 											)?1:0,
 				
 				//head
-				'build_css'       => 'app.css',
 				'base'            => Server::base(),
 				'baseurl'         => Server::baseUrl(),
 				'work_ven_css'    => '../../../../work/public/vendor/css/',
 				'base_work_ven_css'=> '../work/public/vendor/css/',
 				'ven_css'         => $this->static.'/vendor/css/',
 				'pub_css'         => $this->static.'/css/',
-				
+
+				'framework_css'   => ( $start['project']['framework_css'] ) ?  $start['project']['framework_css'] : 'materialize',
+				'build_css'       => ( $start['project']['build_css'] ) ?  $start['project']['build_css'] : 'app.css',
+
+				'use_jquery'   => ( isset($start['project']['use_jquery']) ) ?  $start['project']['use_jquery'] : "1",
+
+
 				'icon'            => 'icon.png',
 				'head_title'      => $this->title,
 				
@@ -292,6 +301,7 @@ class Controller {
 
 		);
 
+		
 		unset($params['controller']);
 
 		unset($params['method']);

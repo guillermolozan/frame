@@ -145,12 +145,14 @@ class Home extends Controller {
 				"nombre as name",
 				"descripcion as text",
 				"ficha as text2",
+				"texto2 as text3",
 				"id_grupo",
 				"id_tipo"
 			],
 			"productos_items",
 			" where 1 ".
 			" and id_grupo=".$this->this_group." ".
+			" and ver_home=1 ".
 			// " abd ver_home=1 ".
 			// " order by weight desc".
 			"",
@@ -199,10 +201,10 @@ class Home extends Controller {
 
 		}
 
-		// $servicios['more']=[
-		// 	'url'  =>'modelos',
-		// 	'name' =>'ver más modelos'
-		// ];
+		$servicios['more']=[
+			'url'  =>'modelos',
+			'name' =>'ver más modelos'
+		];
 
 
 		$this->view->assign(["habitaciones"=>$servicios]);
@@ -229,16 +231,19 @@ class Home extends Controller {
 			// ]);
 
 
-			$gallery2=$Videos->getItems([
-				'where'  =>' and id_grupo='.$this->this_group,
+			$gallery2=$Videos->getItem([
+				'item' =>$this->this_group ,
+				// 'where'  =>' and id_grupo='.$this->this_group,
 				'limit' =>'0,4',
 			]);
 
 			$gallery['name']='galería de videos';
+			
+			$gallery['type']='videos';
 		
 			$gallery['items']=$gallery2['items'];
 
-			unset($gallery['type']);
+			// unset($gallery['type']);
 
 			$gallery['more']=[
 				'url'  =>maskUrl('videos'),

@@ -16,15 +16,18 @@ class Videos extends \core\controllers\Videos {
 
 
 		$Videos=$this->loadModel('Videos');
-
-		$gallery=$Videos->getItems(['where'  =>' and id_grupo='.$this->this_group]);
+		
+		$gallery=$Videos->getItem([
+			// 'where'  =>' and id_grupo='.$this->this_group
+			'item' =>$this->this_group ,	
+		]);
 
 		$this->view->assign([
 
 			'head_title'=> $gallery['name'].' | '.$this->title,
 
 			'gallery'=>[
-							// 'type'  =>'photos',
+							'type'  =>'videos',
 							'name'  =>$gallery['name'],
 							'items' =>$gallery['items'],
 							]

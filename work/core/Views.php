@@ -181,7 +181,11 @@ Class Views {
 			<ul class="menu">'.
 			$pre_output.
 			'</ul></nav>
-			<style>body { padding-top: 50px; }</style>';
+			<style>
+			body { padding-top: 50px; padding-top:0 !important ;}
+			.debug_menu , .pre_output { display:block; width:100%; }
+			.menu { display:flex; width:100%; justify-content:space-between; }
+			</style>';
 
 		}
 
@@ -223,7 +227,11 @@ Class Views {
 			<ul class="menu">'.
 			$pre_output.
 			'</ul></nav>
-			<style>body { padding-top: 50px; }</style>';
+			<style>
+			body { padding-top: 50px; padding-top:0 !important ;}
+			.debug_menu , .pre_output { display:block; width:100%; }
+			.menu { display:flex; width:100%; justify-content:space-between; }
+			</style>';
 
 		}
 

@@ -1,0 +1,54 @@
+include common/includes.jade
+doctype html
+html(
+	lang="es",
+	class="text-gray-900 antialiased leading-tight bg-primary "
+	)
+
+	include common/head.jade
+
+	body(class="#{classbody}",
+		class=" relative container mx-auto bg-white lg:px-2 pt-16 lg:pt-3 lg:pb-2 flex flex-wrap contnt-start items-start "
+		)
+		
+		include includes/header
+
+		include includes/menu
+
+		include includes/banner
+
+
+		//- 8b    d8    db    88 88b 88
+		//- 88b  d88   dPYb   88 88Yb88
+		//- 88YbdP88  dP__Yb  88 88 Y88
+		//- 88 YY 88 dP""""Yb 88 88  Y8
+		figure.bloque1.html(class="w-full md:w-1/2 lg:w-5/12 text-justify text-sm px-6 order-first flex items-center flex-wrap h-40 ")
+			img(class=" m-auto pb-2",
+				src="#{pub_img}contactenos.jpg")
+
+		//- 888888  dP"Yb  88""Yb 8b    d8
+		//- 88__   dP   Yb 88__dP 88b  d88
+		//- 88""   Yb   dP 88"Yb  88YbdP88
+		//- 88      YbodP  88  Yb 88 YY 88
+		div(class="bg-gray-200 order-last flex flex-wrap ")
+
+			include includes/form_consulta
+
+			main.html(class="py-8 w-full md:w-1/2 px-6")
+				
+				h3 Contáctenos
+
+				ul
+					li Necesitas un presupuesto de servicio, ENTONCES hablamos de ello, TE AYUDAREMOS!
+					li Llene nuestro formulario, enviándonos información sobre sus datos y las necesidades que Usted requiere.
+					li Oficina : (01) 444-3550
+					li Celular: 985-833-322
+					li informes@blindajeautosperu.com
+					li Lima - Perú
+
+
+		//- include includes/pre_footer
+
+		include includes/footer
+
+		//- include common/foot

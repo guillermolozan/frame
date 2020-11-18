@@ -81,7 +81,7 @@ return [
 		'facebook_page'   =>'/',
 
 		
-		'email_admin'=>'mesadepartes@aquasan.com.pe,gerencia@aquasan.com.pe,jsalazar@aquasan.com.pe,wtavara@prodiserv.com,guillermolozan@gmail.com',
+		'email_admin'=>'mesadepartes@aquasan.com.pe,gerencia@aquasan.com.pe,wtavara@prodiserv.com*,guillermolozan@gmail.com*',
 
 		
 	],
@@ -112,11 +112,16 @@ return [
 
 		'devel' =>"",
 
-		// 'image_devel'=>true,
+		'image_devel'=>true,
 
 		// 'data_test'	=>true,		
 	
 		// 'fake'	=>'fakeimg',		
+
+		// 'analytics'=>"UA-67792309-1",
+
+		'analytics'=>"G-H0Y6S3CEVD"
+
 
 	]
 

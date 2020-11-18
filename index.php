@@ -1,1 +1,1 @@
-<?php chdir('inca'); include 'index.php';
+<?php chdir('blindaje'); include 'index.php';

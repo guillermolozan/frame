@@ -5,6 +5,9 @@
 		},
 		{
 			"path": "../sistemapanel"
+		},
+		{
+			"path": "../hammer"
 		}
 	],
 	"settings": {
@@ -24,6 +27,7 @@
 			"titleBar.activeForeground": "#e7e7e7",
 			"titleBar.inactiveBackground": "#490e1099",
 			"titleBar.inactiveForeground": "#e7e7e799"
-		}
+		},
+		"svg.preview.background": "transparent"
 	}
 }

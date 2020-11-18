@@ -77,6 +77,7 @@ class Controller extends \core\Controller {
 			"where
 			visibilidad=1 ".
 			" and id_grupo=".$this->this_group." ".
+			" and ver_home=1 ".
 			// " order by weight desc"
 			"",
 			0,
@@ -99,10 +100,16 @@ class Controller extends \core\Controller {
 			];			
 		}
 		// VIDEOS
+		// $replace_menu_pre[]=[
+		// 	'url'  =>'videos',
+		// 	'name' =>'Videos'
+		// ];	
+
 		$replace_menu_pre[]=[
-			'url'  =>'videos',
-			'name' =>'Videos'
+			'url'  =>'modelos',
+			'name' =>'+ Modelos'
 		];	
+				
 		// CONTACTENOS
 		$replace_menu_pre[]=[
 			'url'  =>'contactenos',
