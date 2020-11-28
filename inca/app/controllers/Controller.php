@@ -12,6 +12,9 @@ class Controller extends \core\Controller {
 		
 		parent::__construct($params);
 
+		$this->pipe = "::";
+
+
 		/*
 		##     ## ######## ##    ## ##     ##
 		###   ### ##       ###   ## ##     ##
@@ -21,193 +24,31 @@ class Controller extends \core\Controller {
 		##     ## ##       ##   ### ##     ##
 		##     ## ######## ##    ##  #######
 		*/
-		$Page=$this->loadModel('Pages');
-
-
-		/*
-		888888 8b    d8 88""Yb 88""Yb 888888 .dP"Y8    db
-		88__   88b  d88 88__dP 88__dP 88__   `Ybo."   dPYb
-		88""   88YbdP88 88"""  88"Yb  88""   o.`Y8b  dP__Yb
-		888888 88 YY 88 88     88  Yb 888888 8bodP' dP""""Yb
-		*/
-		$groups=select(
-			"id,url,name",
-			"paginas_groups",
-			"where id in (3)
-			and visibilidad=1
-			order by weight desc",0);
-
-		foreach($groups as $group){
-
-			$replace_menu_pre[$group['url']]=[
-				'url'   =>'#',
-				'name'  =>strtoupper($group['name']),
-				'items' =>$Page->getMenu(['item'=>$group['id'],'uri'=>$group['url']])
-			];
-
-		}
-
-		/*
-		.dP"Y8 888888 88""Yb Yb    dP 88  dP""b8 88  dP"Yb  .dP"Y8
-		`Ybo." 88__   88__dP  Yb  dP  88 dP   `" 88 dP   Yb `Ybo."
-		o.`Y8b 88""   88"Yb    YbdP   88 Yb      88 Yb   dP o.`Y8b
-		8bodP' 888888 88  Yb    YP    88  YboodP 88  YbodP  8bodP'
-		*/
-	
-		$servicios=select(
-			"id,name",
-			"projects",
-			"where
-			visibilidad=1
-			order by weight desc",0,[
-			'url'=>['url'=>['servicio-{name}/{id}']],
-			]);
-
-		$replace_menu_pre['servicios']=[
-		'url'   =>'#',
-		'name'  =>'SERVICIOS',
-		'items' =>$servicios
-		];
-
-		/*
-		88""Yb 88""Yb  dP"Yb  8888b.  88   88  dP""b8 888888  dP"Yb  .dP"Y8
-		88__dP 88__dP dP   Yb  8I  Yb 88   88 dP   `"   88   dP   Yb `Ybo."
-		88"""  88"Yb  Yb   dP  8I  dY Y8   8P Yb        88   Yb   dP o.`Y8b
-		88     88  Yb  YbodP  8888Y"  `YbodP'  YboodP   88    YbodP  8bodP'
-		*/
-
-		foreach([
-			'productos'=>2,
-			// 'productos2'=>2
-		] as $group=>$idd){
-
-			// menu producto1 y producto1
-			$producto=fila(
-				"nombre,url",
-				"productos_grupos",
-				"where id=".$idd,
-				0
-			);
-	
-			$replace_menu_pre[$group]=[
-				'url'   =>$producto['url'],
-				'name'  =>$producto['nombre'],
-				// categorias producto1
-				'items' =>select(
-					'nombre as name,id,url',
-					'productos_subgrupos',
-					'where id_grupo='.$idd.' and visibilidad=1',
-					0,
-					[
-						'url'=>['url'=>[$producto['url'].'/category-{url}/{id}']],
-					]
-				)
-
-			];
-
-			foreach($replace_menu_pre[$group]['items'] as $iii=>$iitem){
-				
-				$replace_menu_pre[$group]['items'][$iii]['items']=select(
-					'name,id,url',
-					'productos_groups',
-					'where id_grupo='.$replace_menu_pre[$group]['items'][$iii]['id'].' and visibilidad=1',
-					0,
-					[
-						'url'=>['url'=>[$producto['url'].'/sub-category-{url}/{id}']],
-					]
-				);
-		
-			}			
-
-		}		
-
-
-		// $replace_menu_pre['libros']=[
-		// 	'url'	=>'ventas/category-libros/19',
-		// 	'name'  =>'LIBROS',
-		// ];
-
-
-		/*
-
-		// Manuales y Pdfs
-		$replace_menu_pre['libros']=[
-			// 'url'   =>maskUrl('libros'),
-			'url'	=>'libros',
-			'name'  =>'LIBROS',
-			'items' =>select('nombre as name,id,url','productos_subgrupos','where id_grupo=4 and visibilidad=1',0,
-			[
-				'url'=>['url'=>['libros/category-{url}/{id}']],
-			])
-
-		];
-		
-		// videos
-		$replace_menu_pre['libros']['items'][]=[
-			'name' => 'Videos',
-			'url' => 'videos'
-		];
-
-		*/
-				
-
-
-
-
-
-
-		/*
-		88""Yb 88      dP"Yb   dP""b8
-		88__dP 88     dP   Yb dP   `"
-		88""Yb 88  .o Yb   dP Yb  "88
-		88oodP 88ood8  YbodP   YboodP
-		*/		
-		$replace_menu_pre['blogs']=[
-			'url' =>'#',
-			'name'=>'BLOG',
-			'items'=>select(
-				'id,name',
-				'posts_groups',
-				'where 1
-				order by weight desc',
-				"0:menu de categorias",
-				[
-					'url'=>['url'=>['posts-{name}/{id}']],
-				]
-			)						
-		];
-
-		
-		
-
-
-		
 		//menu top
-			$this->menu_top=$this->elements->getMenu('menu_top',array_merge($replace_menu_pre),$params['uri']);
-
-
-		//menu left
-			$this->menu_left=$this->elements->getMenu('menu_left',array_merge($replace_menu_pre),$params['uri']);
-
-
-		//menu footer
+		$this->menu_top=$this->elements->getMenu('menu_top',[],$params['uri']);
 			
-			$replace_menu_pre_footer=$replace_menu_pre;
+		// //menu left
+		// 	$this->menu_left=$this->elements->getMenu('menu_left',array_merge($replace_menu_pre),$params['uri']);
+
+
+		// //menu footer
+			
+		// 	$replace_menu_pre_footer=$replace_menu_pre;
 			
 
-			$this->menu_footer=$this->elements->getMenu('menu_footer',array_merge($replace_menu_pre_footer));
+		// 	$this->menu_footer=$this->elements->getMenu('menu_footer',array_merge($replace_menu_pre_footer));
 		
-      $this->view->assign(
-			[
+		$this->view->assign(
+		[
 			// menus
 			'menu_top'     => $this->menu_top,
 
-            'menu_left'    => $this->menu_left,
+			// 'menu_left'    => $this->menu_left,
 
-            'menu_footer' 	=> $this->menu_footer,
+			// 'menu_footer' 	=> $this->menu_footer,
 
-         ]
-      );
+		]
+		);
 
 
 
@@ -248,14 +89,23 @@ class Controller extends \core\Controller {
 				
 				// 'header_phones'=> $web['header_phones'],
 
-            //footer
-				'theme_color'		 => '#000000',
+				/*
+				8b    d8  dP"Yb  88""Yb 88 88     888888
+				88b  d88 dP   Yb 88__dP 88 88     88__
+				88YbdP88 Yb   dP 88""Yb 88 88  .o 88""
+				88 YY 88  YbodP  88oodP 88 88ood8 888888
+				*/
+				'theme_color'		 => '#065f99',
 
-				//facebook
-				'opengraph'  => true,
+				/*
+				888888    db     dP""b8 888888 88""Yb  dP"Yb   dP"Yb  88  dP
+				88__     dPYb   dP   `" 88__   88__dP dP   Yb dP   Yb 88odP
+				88""    dP__Yb  Yb      88""   88""Yb Yb   dP Yb   dP 88"Yb
+				88     dP""""Yb  YboodP 888888 88oodP  YbodP   YbodP  88  Yb
+				*/
+				// 'opengraph'  => true,
 				
-				//gmap
-				'gmap_key'			 => 'AIzaSyDsA0HccVmhVLNFpys3BZZlmOemTq-peBA',
+			
 
 			]
 

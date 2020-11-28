@@ -66,6 +66,11 @@ return [
 	'setup' => [
 
 
+	],
+
+	'panel'=> [
+		'Servicios|detail'=>['productos_items'],
+		'Pages|index'=>['paginas'],
 	]
 
 ];

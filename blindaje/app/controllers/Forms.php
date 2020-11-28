@@ -17,6 +17,56 @@ class Forms extends \core\controllers\Forms {
 
 	function contactenos($params=null){
 
+
+
+		/*
+		########   #######   ######  ########
+		##     ## ##     ## ##    ##    ##
+		##     ## ##     ## ##          ##
+		########  ##     ##  ######     ##
+		##        ##     ##       ##    ##
+		##        ##     ## ##    ##    ##
+		##         #######   ######     ##
+		*/		
+
+		$this->invert_title=true;
+
+		$Page=$this->loadModel('Pages');
+
+		// con este codigo obtenemos urls meta desription y meta keywords
+		$Page->setConfig([
+			'items'=>[
+				'fields' =>$Page->getConfig()['items']['fields'].",html2,url,title,meta_description,meta_keywords",
+			],
+			'debug'=>0
+		]);
+
+		$post             =$Page->getPage(['item'=>'5']);
+		$head_description =$Page->getDescription();
+
+		$head_keywords    =$Page->getKeywords();
+
+		// $canonical  	  =$Page->getCanonical();			
+		$canonical  	  =$this->view->vars['baseurl'].'contactenos';			
+				
+		$head_title       =$Page->getTitle();
+
+		$this->view->assign([
+
+			'head_title' 	   => $head_title,
+
+			'head_description' => $head_description,
+
+			'head_keywords'    => $head_keywords,
+
+			'canonical'   	   => $canonical,
+
+		]);
+
+		$this->view->assign(["post" => $post]);
+
+
+		
 		$this->name = "Contáctenos";
 
 		$map=[
@@ -137,9 +187,9 @@ class Forms extends \core\controllers\Forms {
 
 			[
 				//head
-				'head_title'   => $this->name.' '.$this->pipe.' '.$this->title,
+				// 'head_title'   => $this->name.' '.$this->pipe.' '.$this->title,
 
-				'title' 			=> $this->name,
+				'title' 		=> "clic". $this->name,
 				
 				'message'		=> $this->message,
 

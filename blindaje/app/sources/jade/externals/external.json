@@ -2,7 +2,6 @@
 "./../blindaje/app/sources/components/header/header.jade",
 "./../blindaje/app/sources/components/menu/menu.jade",
 "./../blindaje/app/sources/components/banner/banner.jade",
-"./../blindaje/app/sources/components/page_post/page_post.jade",
 "./../blindaje/app/sources/components/form_consulta/form_consulta.jade",
 "./../blindaje/app/sources/components/cards/cards.jade",
 "./../blindaje/app/sources/components/footer/footer.jade",

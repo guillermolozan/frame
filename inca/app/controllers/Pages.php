@@ -158,6 +158,9 @@ class Pages extends \core\controllers\Pages {
 
 	function index($params){
 
+
+		$params['item']=dato('id',"paginas","where url='".$params['item']."'");
+
 		parent::index(array_merge($params,
 			[
 				'with_gallery'	=>1,
@@ -175,35 +178,35 @@ class Pages extends \core\controllers\Pages {
 			]
 		);
 
-
 		$fila=fila(
-			"pdf,fecha_creacion",
+			"pdf,fecha_creacion,html2,html3",
 			"paginas",
 			"where id=".$params['item'],
-			0,
-			[
-				'pdf'=>['get_archivo'=>[
-					'carpeta'=>'pdf_fil',
-					'fecha'=>'{fecha_creacion}',
-					'file'=>'{pdf}',
-					'tamano'=>'0'
-					]
-				],
-			]			
+			0		
 		);
 
 		// prin($params);
 
 		// $menu_post=$this->view->vars['menu_post']['items'];
 
-		$this->index_form();
+		// $this->index_form();
 
 		// prin($this->view->vars['menu_post']);
 
-		$this->view->vars['post']['pdf']=$fila['pdf'];
+		// $this->view->vars['post']['pdf']=$fila['pdf'];
+		$this->view->vars['post']['html2']=$fila['html2'];
+
+		$this->view->vars['post']['html3']=$fila['html3'];
 		
-		$this->view->assign([	
+		$this->view->assign([
+
 			'post'       => $this->view->vars['post'],
+
+			'more_metas' =>str_replace("\n","",'
+				<meta name="language" content="Español,Ingles">
+				<meta name="Subject" content="Blindaje Autos Perú">
+				<meta name="revisit-after" content="1 days">
+			')
 			// 'menu_post'  => $menu_post
 		]);
 

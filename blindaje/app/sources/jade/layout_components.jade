@@ -1,0 +1,54 @@
+include common/includes.jade
+doctype html
+html(
+	lang="es",
+	class="text-gray-900 antialiased leading-tight bg-primary "
+	)
+
+	include common/head.jade
+
+	body(class="#{classbody}",
+		class=" relative container mx-auto bg-white lg:px-2 py-2 h-screen flex flex-wrap content-start items-start "
+		)
+		
+		//- BEGIN
+		style.
+			.nav-components { padding-top:10px; display: flex;justify-content: space-between;flex-wrap: wrap;width:100%;bacgkround:#ccc;order:-9999; }
+			.nav-components a { display:inline-block; padding:3px 7px; margin:1px; background:teal; color:white; }
+			.nav-components a.active,.nav-components a:hover { background:black; color:yellow; }
+		div(class='nav-components')
+			a(href='',style='background-color:red;') Inicio
+			a#nc_header(href="#{uri}?component=header") header
+			a#nc_menu(href="#{uri}?component=menu") menu
+			a#nc_banner(href="#{uri}?component=banner") banner
+			a#nc_form_consulta(href="#{uri}?component=form_consulta") form_consulta
+			a#nc_cards(href="#{uri}?component=cards") cards
+			a#nc_footer(href="#{uri}?component=footer") footer
+			a#nc_pre_footer(href="#{uri}?component=pre_footer") pre_footer
+			a#nc_whatsapp_button(href="#{uri}?component=whatsapp_button") whatsapp_button
+		if _GET['component']=='header'
+			script document.getElementById('nc_header').classList.add('active');
+			include includes/header.jade
+		if _GET['component']=='menu'
+			script document.getElementById('nc_menu').classList.add('active');
+			include includes/menu.jade
+		if _GET['component']=='banner'
+			script document.getElementById('nc_banner').classList.add('active');
+			include includes/banner.jade
+		if _GET['component']=='form_consulta'
+			script document.getElementById('nc_form_consulta').classList.add('active');
+			include includes/form_consulta.jade
+		if _GET['component']=='cards'
+			script document.getElementById('nc_cards').classList.add('active');
+			include includes/cards.jade
+		if _GET['component']=='footer'
+			script document.getElementById('nc_footer').classList.add('active');
+			include includes/footer.jade
+		if _GET['component']=='pre_footer'
+			script document.getElementById('nc_pre_footer').classList.add('active');
+			include includes/pre_footer.jade
+		if _GET['component']=='whatsapp_button'
+			script document.getElementById('nc_whatsapp_button').classList.add('active');
+			include includes/whatsapp_button.jade
+		//- FINISH
+		include common/foot

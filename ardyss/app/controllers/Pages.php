@@ -14,6 +14,7 @@ class Pages extends \core\controllers\Pages {
 
 	function index($params){
 		
+
 		parent::index($params);
 		
 		// parent::split();

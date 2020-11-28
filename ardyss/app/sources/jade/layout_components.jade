@@ -4,8 +4,98 @@ html(lang="es")
 
 	include common/head.jade
 
-	body(class="#{classbody}",style="background:black;")
+	body(class="#{classbody}")
 		
-		include includes/banner2
-
+		//- BEGIN
+		style.
+			.nav-components { padding-top:10px; display: flex;justify-content: space-between;flex-wrap: wrap;width:100%;bacgkround:#ccc;order:-9999; }
+			.nav-components a { display:inline-block; padding:3px 7px; margin:1px; background:teal; color:white; }
+			.nav-components a.active,.nav-components a:hover { background:black; color:yellow; }
+		div(class='nav-components')
+			a(href='',style='background-color:red;') Inicio
+			a#nc_common(href="#{uri}?component=common") common
+			a#nc_menu_left(href="#{uri}?component=menu_left") menu_left
+			a#nc_block_gallery(href="#{uri}?component=block_gallery") block_gallery
+			a#nc_block_post(href="#{uri}?component=block_post") block_post
+			a#nc_banner(href="#{uri}?component=banner") banner
+			a#nc_banner2(href="#{uri}?component=banner2") banner2
+			a#nc_header_pre(href="#{uri}?component=header_pre") header_pre
+			a#nc_header(href="#{uri}?component=header") header
+			a#nc_home_block_importaciones(href="#{uri}?component=home_block_importaciones") home_block_importaciones
+			a#nc_home_block_descuentos(href="#{uri}?component=home_block_descuentos") home_block_descuentos
+			a#nc_page_post(href="#{uri}?component=page_post") page_post
+			a#nc_block_gallery_products(href="#{uri}?component=block_gallery_products") block_gallery_products
+			a#nc_gallery_products(href="#{uri}?component=gallery_products") gallery_products
+			a#nc_block_gallery_videos(href="#{uri}?component=block_gallery_videos") block_gallery_videos
+			a#nc_product_detail(href="#{uri}?component=product_detail") product_detail
+			a#nc_form_consulta(href="#{uri}?component=form_consulta") form_consulta
+			a#nc_form_contact(href="#{uri}?component=form_contact") form_contact
+			a#nc_footer(href="#{uri}?component=footer") footer
+			a#nc_products_reel(href="#{uri}?component=products_reel") products_reel
+			a#nc_home_block_notes(href="#{uri}?component=home_block_notes") home_block_notes
+			a#nc_home_block_links(href="#{uri}?component=home_block_links") home_block_links
+		if _GET['component']=='common'
+			script document.getElementById('nc_common').classList.add('active');
+			include includes/common.jade
+		if _GET['component']=='menu_left'
+			script document.getElementById('nc_menu_left').classList.add('active');
+			include includes/menu_left.jade
+		if _GET['component']=='block_gallery'
+			script document.getElementById('nc_block_gallery').classList.add('active');
+			include includes/block_gallery.jade
+		if _GET['component']=='block_post'
+			script document.getElementById('nc_block_post').classList.add('active');
+			include includes/block_post.jade
+		if _GET['component']=='banner'
+			script document.getElementById('nc_banner').classList.add('active');
+			include includes/banner.jade
+		if _GET['component']=='banner2'
+			script document.getElementById('nc_banner2').classList.add('active');
+			include includes/banner2.jade
+		if _GET['component']=='header_pre'
+			script document.getElementById('nc_header_pre').classList.add('active');
+			include includes/header_pre.jade
+		if _GET['component']=='header'
+			script document.getElementById('nc_header').classList.add('active');
+			include includes/header.jade
+		if _GET['component']=='home_block_importaciones'
+			script document.getElementById('nc_home_block_importaciones').classList.add('active');
+			include includes/home_block_importaciones.jade
+		if _GET['component']=='home_block_descuentos'
+			script document.getElementById('nc_home_block_descuentos').classList.add('active');
+			include includes/home_block_descuentos.jade
+		if _GET['component']=='page_post'
+			script document.getElementById('nc_page_post').classList.add('active');
+			include includes/page_post.jade
+		if _GET['component']=='block_gallery_products'
+			script document.getElementById('nc_block_gallery_products').classList.add('active');
+			include includes/block_gallery_products.jade
+		if _GET['component']=='gallery_products'
+			script document.getElementById('nc_gallery_products').classList.add('active');
+			include includes/gallery_products.jade
+		if _GET['component']=='block_gallery_videos'
+			script document.getElementById('nc_block_gallery_videos').classList.add('active');
+			include includes/block_gallery_videos.jade
+		if _GET['component']=='product_detail'
+			script document.getElementById('nc_product_detail').classList.add('active');
+			include includes/product_detail.jade
+		if _GET['component']=='form_consulta'
+			script document.getElementById('nc_form_consulta').classList.add('active');
+			include includes/form_consulta.jade
+		if _GET['component']=='form_contact'
+			script document.getElementById('nc_form_contact').classList.add('active');
+			include includes/form_contact.jade
+		if _GET['component']=='footer'
+			script document.getElementById('nc_footer').classList.add('active');
+			include includes/footer.jade
+		if _GET['component']=='products_reel'
+			script document.getElementById('nc_products_reel').classList.add('active');
+			include includes/products_reel.jade
+		if _GET['component']=='home_block_notes'
+			script document.getElementById('nc_home_block_notes').classList.add('active');
+			include includes/home_block_notes.jade
+		if _GET['component']=='home_block_links'
+			script document.getElementById('nc_home_block_links').classList.add('active');
+			include includes/home_block_links.jade
+		//- FINISH
 		include common/foot

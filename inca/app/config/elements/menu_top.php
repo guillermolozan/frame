@@ -2,39 +2,16 @@
 
 return [
 	[
-		'name'  =>'Inicio',
-		'url'   =>((isset($start['devel']))?$start['devel']:''),
-		'class' =>'logo ocultar_sin_headfixed',
-	],
-	[
-		'name'  =>'Inicio',
+		'name'  =>'INICIO',
 		'url'   =>((isset($start['devel']))?$start['devel']:''),
 	],
 
-	'empresa'                        => 'EMPRESA',
+	'blindaje_de_autos_peru'         => 'PRESENTACIÓN',
 	
 	'servicios'                      => 'SERVICIOS',
 	
-	'productos'                      => 'PRODUCTOS',
+	'accesorios'                     => 'ACCESORIOS',
 
-	'blogs'                       => 'Blogs',
-
-	'videos'                   => 'Videos',
-
-	'contactenos'                  => 'Contáctenos',
-	// 'contactenos'                  => 'Contáctenos',
-
-	// 'facebook'=>[
-	// 	'url'   =>'https://www.facebook.com',
-	// 	// 'name'  =>'Facebook',
-	// 	'class' =>'facebook',
-	// 	'target'=>'_blank'
-	// ],
-
-	// 'instagram'=>[
-	// 	'url'   =>'https://www.instagram.com',
-	// 	// 'name'  =>'Youtube',
-	// 	'class' =>'instagram',
-	// 	'target'=>'_blank'
-	// ],		
+	'contactenos'                    => 'CONTÁCTENOS',
+	
 ];

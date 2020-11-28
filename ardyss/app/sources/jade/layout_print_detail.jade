@@ -1,0 +1,26 @@
+include ../../../../work/sources/jade/includes.jade
+doctype html
+html(lang="es")
+
+	include common/head.jade
+
+	body(class="#{classbody}") 
+		
+
+		main(class="container row")
+
+			.first
+				h1 Cotización #{cotizacion}
+				a.btn.imprimir(onClick='window.print();return false;') IMPRIMIR
+			//- .wide
+			div(class="post project")
+
+				.row
+	
+					.col.s12.l12
+						include includes/product_detail
+
+					//- include includes/form_consulta
+
+		include common/foot.jade
+

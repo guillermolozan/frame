@@ -19,6 +19,8 @@ class Models {
 		$this->view       =$scope->view;
 
 		$this->pipe       =$scope->pipe;
+		
+		$this->invert_title=$scope->invert_title;
 
 		$this->config     =[];
 

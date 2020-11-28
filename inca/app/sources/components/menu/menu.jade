@@ -1,0 +1,26 @@
+//- 8b    d8 888888 88b 88 88   88
+//- 88b  d88 88__   88Yb88 88   88
+//- 88YbdP88 88""   88 Y88 Y8   8P
+//- 88 YY 88 888888 88  Y8 `YbodP'
+nav(class="w-full lg:w-2/12 order-first")
+    ul(class="px-1 lg:px-0 mb-3 lg:mb-0")
+        each item in menu_top
+            li(class="mt-1 lg:mt-2",class="#{item.class}")
+                a.arrow(class=" leading-auto bg-primary text-white  py-3 lg:py-0  px-6 lg:px-0 lg:text-right font-black lg:font-bold text-xs hover:underline hover:text-secondary flex content-between items-center ",
+                    rel="#{item.rel}",
+                    title="#{item.name}",
+                    class="#{item.aclass}",
+                    target="#{item.target}",
+                    href="#{item.url}")
+                        svg(class="hidden lg:inline-block fill-current text-white h-6",
+                            viewBox="0 0 17 25")
+                            g(stroke="none")
+                                path(d="m-0.0625,-0.13086l17.1875,12.72665c0,0.05793 -11.98283,12.58681 -11.98283,12.52888c0,0.05793 -5.20467,-0.06992 -5.20467,-0.12785")
+                                
+                        div(class="flex-grow ") #{item.name} 
+                        svg(class="hidden lg:inline-block fill-current text-white h-6",
+                            viewBox="0 0 17 25")
+                            g(stroke="none")
+                                path(d="m17.27921,11.75027l0.34616,16.75036l-13.50039,-3.28439")
+                                path(d="m-0.00018,-0.13114l17.37556,0.06934l-0.25741,12.24956")
+

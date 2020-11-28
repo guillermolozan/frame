@@ -157,32 +157,24 @@ class Pages extends \core\controllers\Pages {
 
 
 	function index($params){
-
-
-		$params['item']=dato('id',"paginas","where url='".$params['item']."'");
+		
+		$this->invert_title = true;
 
 		parent::index(array_merge($params,
 			[
-				'with_gallery'	=>1,
-				'with_form'		=>1,
+				'with_gallery'	=>0,
+				'with_form'		=>0,
 			]
 		));
 
 		// prin($this->view->vars['menu_post']['items']);
 
-		$this->view->assign(
-			[
-				'type'=>'photos',
-				'item_responsive'=>'col s12 m6 l6',
-				'ul_class'=>'block_gallery_products row',
-			]
-		);
 
 		$fila=fila(
-			"pdf,fecha_creacion,html2,html3",
+			"html2,html3",
 			"paginas",
 			"where id=".$params['item'],
-			0		
+			0	
 		);
 
 		// prin($params);

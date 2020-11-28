@@ -42,7 +42,41 @@ class Home extends Controller {
 		##        ##     ## ##    ##    ##
 		##         #######   ######     ##
 		*/		
-		$post=fila("html,html3,name,meta_description","paginas","where id=1");
+
+		$this->invert_title=true;
+
+		$Page=$this->loadModel('Pages');
+
+		// con este codigo obtenemos urls meta desription y meta keywords
+		$Page->setConfig([
+			'items'=>[
+				'fields' =>$Page->getConfig()['items']['fields'].",url,meta_description,meta_keywords",
+			],
+			'debug'=>0
+		]);
+
+		$post             =$Page->getPage(['item'=>'1']);
+		
+		$head_description =$Page->getDescription();
+
+		$head_keywords    =$Page->getKeywords();
+
+		$canonical  	  =$Page->getCanonical();			
+				
+		$head_title       =$Page->getTitle();
+
+		$this->view->assign([
+
+			'head_title' 	   => $head_title,
+
+			'head_description' => $head_description,
+
+			'head_keywords'    => $head_keywords,
+
+			'canonical'   	   => $canonical,
+
+		]);
+
 		$this->view->assign(["post" => $post]);
 
 
@@ -74,7 +108,7 @@ class Home extends Controller {
 			// 		$htm.='<li>'.$item.'</li>';
 			// }
 			// $htm.='</ul>';
-			// $planes['items'][$ii]['text4']=$htm;
+			$planes['items'][$ii]['html']=str_replace('http://','//',$hab['html']);
 
 			// $planes['items'][$ii]['photos']
 			$photos=filas(
@@ -147,11 +181,8 @@ class Home extends Controller {
 				//head
 				// 'head_title' => $this->title . ( ($this->view->vars['web_slogan'])? ' '.$this->pipe.' '.$this->view->vars['web_slogan']:'' ),				
 				
-				'head_title' => $this->title . ( ($post["name"])? ' '.$this->pipe.' '.$post["name"]:'' ),				
+				// 'head_title' => $this->title . ( ($post["name"])? ' '.$this->pipe.' '.$post["name"]:'' ),				
 
-				// 'head_description' =>  ( ($this->view->vars['web_description'])? $this->view->vars['web_description']:'' ),				
-				'head_description' => $post["meta_description"],
-				
 				//menu
 				// 'menu_left'    => $this->menu_left,
 

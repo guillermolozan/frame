@@ -10,7 +10,7 @@ return [
 
 
 	
-	'page_post'              => 'page_post',
+	// 'page_post'              => 'page_post',
 
 
 	'form_consulta'			 => 'form_consulta|css',

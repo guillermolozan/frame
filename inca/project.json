@@ -1,0 +1,9 @@
+{
+	"framework_css" : "tailwind",
+	"build_css"     : "app.css",
+	"extension_css" : "css",
+	"source_dir_css": "tailwind",
+	"use_jquery" : "0",
+	"source_file_js"     : "app2.0.js"
+
+}

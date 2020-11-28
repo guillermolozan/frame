@@ -86,6 +86,9 @@ Class Views {
 
 		extract($vars);
 
+		list($pad,$two)=explode('/panel',$start['models']);
+		$panel=$pad."/panel";
+
 		// prin($vars);
 		//buscar dentro del array, los indices 'url'
 		// function lokkingfor($vass){
@@ -114,8 +117,6 @@ Class Views {
 		// }
 		
 		// prin(lokkingfor($vars));
-
-		// prin($vars['params']);
 
 
 		if(isset($vars['params'][$tool_link])){
@@ -155,11 +156,10 @@ Class Views {
 		}
 
 
-
-		if(
+		if($_SESSION[$info_link]=='1'
 			// $vars['localhost']=='1' and 
-			$_SESSION[$info_link]=='1'
 			){
+
 
 			$pre_output='';
 			foreach([
@@ -170,6 +170,8 @@ Class Views {
 			$pre_output.='<li '.((isset($vars['params'][$uuu]))?'class="active"':'').'><a href="'.$vars['uri'].'?'.$uuu.'">'.$ooo.'</a></li>';
 			}
 			$pre_output.='<li '.((isset($vars['params']['forms']))?'class="active"':'').'><a id="debemail" href="'.$vars['uri'].'?forms#">forms</a></li>'; 
+			
+			$pre_output.='<li><a target="_blank" href="'.$panel.'">panel</a></li>'; 
 
 			$pre_output.=$out.'
 			</li>
@@ -183,18 +185,20 @@ Class Views {
 			'</ul></nav>
 			<style>
 			body { padding-top: 50px; padding-top:0 !important ;}
-			.debug_menu , .pre_output { display:block; width:100%; }
-			.menu { display:flex; width:100%; justify-content:space-between; }
+			.debug_menu { display:block; width:100%; } 
+			.pre_output { display:block; width:100%; position:relative; }
+			.debug_menu .menu { display:flex; width:100%; justify-content:space-between; }
+			.debug_menu .menu :hover a,
+			.debug_menu .menu .active a { color:teal; }
 			</style>';
 
 		}
 
 
-
-		if(
+		if($_SESSION[$tool_link]=='1'
 			// $vars['localhost']=='1' and 
-			$_SESSION[$tool_link]=='1'
 			){
+
 
 			$pre_output='';
 			$pre_output.='<li class="nounder"><a><b style="color:green;">Controller :</b> <strong>'.$vars['controller'].'</strong></a></li>';
@@ -206,7 +210,8 @@ Class Views {
 			foreach([
 				'getseo'     =>'seo',
 				'css'        =>'css',
-				'components' =>'components',
+				'sources' 	 =>'sources',
+				'component'  =>'components',
 				'start'      =>'vars',
 				'routes'     =>'routes',
 			] as $uuu=>$ooo){
@@ -214,11 +219,11 @@ Class Views {
 			}
 
 			$pre_output.='<li '.((isset($vars['params']['forms']))?'class="active"':'').'><a id="debemail" href="'.$vars['uri'].'?forms#">forms</a></li>'; 
+			$pre_output.='<li><a target="_blank" href="'.$panel.'">panel</a></li>'; 
 
 			$pre_output.=$out.'
 			</li>
-			<li class="right" style="margin-right:5px;">
-			<a rel="nofollow" href="'.$vars['uri'].'?'.$tool_link.'=0">X</a></li>';
+			<li class="right" style="margin-right:5px;">			<a rel="nofollow" href="'.$vars['uri'].'?'.$tool_link.'=0">X</a></li>';
 			if($vars['localhost']=='1'){
 				$pre_output.='<li class="right" id="debug_submenu"></li>';
 			}
@@ -228,9 +233,12 @@ Class Views {
 			$pre_output.
 			'</ul></nav>
 			<style>
-			body { padding-top: 50px; padding-top:0 !important ;}
-			.debug_menu , .pre_output { display:block; width:100%; }
-			.menu { display:flex; width:100%; justify-content:space-between; }
+			body { padding-top: 0px; }
+			.pre_output { display:block; width:100%; padding-top:0px; position:relative; }
+			.debug_menu { display:block; width:100%;  }
+			.debug_menu .menu { display:flex; width:100%; justify-content:space-between; }
+			.debug_menu .menu :hover a,
+			.debug_menu .menu .active a { color:teal; }
 			</style>';
 
 		}
@@ -254,6 +262,7 @@ Class Views {
 			redir(($_SERVER['REDIRECT_URL'])?$_SERVER['REDIRECT_URL']:$vars['link_home']);
 
 		}
+
 
 		if(isset($vars['params']['css'])){
 
@@ -327,11 +336,25 @@ Class Views {
 
 		}
 	
-		if(isset($vars['params']['components'])){
+		if(isset($vars['params']['sources'])){
+
+			$proy=[
+				'framework_css' => 'materialize',
+				'build_css' 	=> 'app.css',
+				'extension_css' => 'styl',
+				'source_dir_css'=>'stylus',
+			];
+	
+			$proy_file='project.json';
+			if(file_exists($proy_file)){
+				$proyjson = implode("",file($proy_file));
+				$proy = json_decode($proyjson,true);
+			}
 
 
 			$components=require APP.'/config/components.php';
-			$components_work= require '../work/app/config/components.php';
+
+			$components_work= require '../work/app/config/'.$proy['framework_css'].'_components.php';
 
 			$items_components=array_merge($components_work,$components);
 
@@ -367,7 +390,7 @@ Class Views {
 
 
 				$final_jade   =$final_route.'/'.$name.'.jade';
-				$final_stylus =$final_route.'/'.$name.'.styl';
+				$final_stylus =$final_route.'/'.$name.'.'.$proy['extension_css'];
 				$final_es6    =$final_route.'/'.$name.'.js';
 
 				foreach($menu_footer as $bb){
@@ -394,10 +417,13 @@ Class Views {
 					$com0=str_replace($predir,"<a href='".$menu_footer_a[$predir]."' style='color:green;font-weight:bold;'>".$predir."</a>",$com0);
 				}
 
-				$compotext =$com0."<br><textarea style='width:700px;height:5em;background:white;'>";
+				$compotext ="<a href='?component=".$lii."' style='color:teal;font-weight:bold;'>".$com0."</a>";
+				$compotext.="<br><textarea style='width:700px;height:5em;background:white;'>";
 				$compotext.=$final_jade."\n";
-				$compotext.=$final_stylus."\n";
-				if($option=='es6'){
+				if(enhay($option,'css') or $proy['framework_css']=='materialize' ){
+					$compotext.=$final_stylus."\n";
+				}
+				if(enhay($option,'es6')){
 					$compotext.=$final_es6;
 				}
 				$compotext.="</textarea>";
@@ -421,6 +447,7 @@ Class Views {
 			ob_end_clean();
 
 		}
+
 
 		if(isset($vars['params']['forms'])){
 
@@ -608,7 +635,6 @@ Class Views {
 		}
 
 
-
 		if(isset($vars['params']['routes'])){
 
 			$routes = new Routes();
@@ -678,7 +704,7 @@ Class Views {
 			ob_end_clean();
 
 		}
-		
+
 
 		if(isset($vars['params']['start'])){
 
@@ -703,10 +729,16 @@ Class Views {
 
 		}
 
+
 		if($_SESSION[$seo_link]=='1' or isset($vars['params']['getseo'])){
 
+			// $method_exists=method_exists($obj,$met);
+
+			// $obj->$met();			
+
 			// prin($vars['canonical']);
-			// prin($vars['baseurl'].$vars['uri']);
+			// prin($vars['baseurl']);
+			// prinx($vars['baseurl'].$vars['uri']);
 
 			if($vars['canonical']==$vars['baseurl'].$vars['uri']){
 				$check = '<strong style="color:green;">cumple</strong>'; 
@@ -722,12 +754,31 @@ Class Views {
 					'description' =>$vars['head_description'],
 					'keywords'    =>$vars['head_keywords'],
 					'canonical'   =>$vars['canonical'] .' '.$check,
-					'uri'   		  =>$vars['uri']
+					'url'   	 =>$vars['uri']
 					// 'cookie'		  =>$_COOKIE,
 					]
 				);
+				list($pad,$two)=explode('/panel',$start['models']);
 
-				echo '<div><a rel="nofollow" class="btn right" style="display:; position:absolute; right: 1em; top:60px;" href="'.$vars['uri'].'?'.$seo_link.'=0">salir</a></div>';
+				if(isset($start['panel'][$vars['params']['controller']."|".$vars['params']['method']])){
+
+					// prin($vars['params']);
+					$cav=$start['panel'][$vars['params']['controller']."|".$vars['params']['method']];
+
+					echo '<div><a rel="nofollow" target="_blank" class="btn right py-2 px-3 rounded-2xl " style="background-color:navy; display:; position:absolute; right: 100px; bottom:10px;color:white;" 
+					href="';
+					echo $pad.'/panel/formulario_quick.php?L='.
+					( ($vars['params']['item']!='')?$vars['params']['item']:$cav[1] ). 
+					'&OT='.$cav[0].
+					'&parent=&ran=1&accion=update';
+					// echo $pad.'/panel/custom/'.$start['panel'][$vars['params']['controller']."|".$vars['params']['method']].'.php?i='.$vars['params']['item'];
+					echo '"
+					>lapiz</a></div>';
+
+
+				}
+
+				echo '<div><a rel="nofollow" class="btn right right py-2 px-3 rounded-2xl " style="background-color:teal; display:; position:absolute; right: 1em; bottom:10px;color:white;" href="'.$vars['uri'].'?'.$seo_link.'=0">salir</a></div>';
 
 				$pre_output.=ob_get_contents();
 			
@@ -763,7 +814,7 @@ Class Views {
 
 				}
 
-				echo '<div><a rel="nofollow" class="btn right" style="display:none;position:absolute; right: 1em; top:60px;" href="'.$vars['uri'].'">salir</a></div>';		
+				echo '<div><a rel="nofollow" class="btn right" style="display:none;position:absolute; right: 1em; bottom:10px;" href="'.$vars['uri'].'">salir</a></div>';		
 
 				$pre_output.=ob_get_contents();
 
@@ -840,7 +891,7 @@ Class Views {
 			return;
 
 		}
-
+		
 		if(isset($vars['params']['component'])){
 
 			$file_out=APP."/".$this->views."/layout_components.php";

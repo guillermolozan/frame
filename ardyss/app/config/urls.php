@@ -14,7 +14,7 @@ $urls_return = [];
 
    foreach($items as $oo=>$itm)
    {
-      $urls_return[procesar_url($grupos_array[$itm['id_grupo']].'/'.trim($itm['nombre']).'/'.$itm['id'])]=$itm['url'].'.html';
+      $urls_return[procesar_url($grupos_array[$itm['id_grupo']].'/'.trim($itm['nombre']).'/'.$itm['id'])]=$itm['url'].'';
    }
 
 
@@ -29,9 +29,8 @@ $urls_return = [];
 
    foreach($items as $oo=>$itm)
    {
-      $urls_return[procesar_url($grupos_array[$itm['id_grupo']].'/'.trim($itm['nombre']).'/'.$itm['id'])]=$itm['url'].'.html';
+      $urls_return[procesar_url($grupos_array[$itm['id_grupo']].'/'.trim($itm['nombre']).'/'.$itm['id'])]=$itm['url'].'';
    }
-
 
 
 return $urls_return;

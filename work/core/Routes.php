@@ -126,13 +126,15 @@ class Routes {
 
 		$this->uri=$uri;
 
-		// prin($this->uri); 
 		// prin($this->routes); 
+		// prin($this->uri); 
+		// prinx($this->routes[$uri]);
 		// exit();
 
 		// Is there a literal match?  If so we're done
 		if(isset($this->routes[$uri]))
 		{
+			
 			if(substr($this->routes[$uri],0,4)=='302:'){
 				
 				header("Location: ".substr($this->routes[$uri],4)); 

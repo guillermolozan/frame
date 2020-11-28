@@ -1252,7 +1252,7 @@ function prin($array,$title=NULL,$params=[]){
 			$to2[]='<span style="color:#ca63c7;">'.$resaltado.'</span>';
 		}
 		echo "<div style='display:";
-		echo ";background-color:#000000 !important;color:#f0b193 !important;padding-bottom:4px !important;border-bottom:1px solid #333;'>";
+		echo ";background-color:#000000 !important;color:#f0b193 !important;padding-bottom:4px !important;border-bottom:1px solid #333;order:-9999;width:100%;'>";
 		if($size>1 or $title){
 
 			echo "<a style='cursor:pointer;font-size:14px ;color:";

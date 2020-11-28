@@ -197,13 +197,15 @@ class Home extends Controller {
 		//descuentos
 			$items_productos=select(
 			"nombre as name,id,precio,moneda,precio_oferta,oferta as subname",
-			'productos_items_descu',
+			'productos_items',
 			"where 1
+			and id_grupo=4
+			and id_subgrupo=7
 			and visibilidad=1
 			limit 0,8",
 			0,[
 
-				'url'=>['url'=>['descuento/{name}/{id}']],
+				'url'=>['url'=>['descuentos/{name}/{id}']],
 
 			]);
 
@@ -217,12 +219,12 @@ class Home extends Controller {
 
 				$items_productos[$iii]['foto']=fila(
 					"id,fecha_creacion,file",
-					'productos_fotos_descu',
+					'productos_fotos',
 					"where id_item=".$prod['id'],
 					0,
 					[
 						'img'=>['get_archivo'=>[
-													'carpeta'=>'profot3_imas',
+													'carpeta'=>'profot_imas',
 													'fecha'=>'{fecha_creacion}',
 													'file'=>'{file}',
 													'tamano'=>'0'
@@ -383,7 +385,43 @@ class Home extends Controller {
 
 
          
+		$Page=$this->loadModel('Pages');
 
+		// con este codigo obtenemos urls meta desription y meta keywords
+		$Page->setConfig([
+			'items'=>[
+				'fields' =>$Page->getConfig()['items']['fields'].",title,url,meta_description,meta_keywords",
+			],
+			'debug'=>0
+		]);
+
+		/*
+		88""Yb  dP"Yb  .dP"Y8 888888
+		88__dP dP   Yb `Ybo."   88
+		88"""  Yb   dP o.`Y8b   88
+		88      YbodP  8bodP'   88
+		*/
+		$post             =$Page->getPage(['item'=>'1']);
+		
+		$head_description =$Page->getDescription();
+
+		$head_keywords    =$Page->getKeywords();
+
+		$canonical  	  =$Page->getCanonical();			
+				
+		$head_title       =$Page->getTitle();
+				
+		$this->view->assign([
+
+			'head_title' 	   => $head_title,
+
+			'head_description' => $head_description,
+
+			'head_keywords'    => $head_keywords,
+
+			'canonical'   	   => $canonical,
+
+		]);
 
 
 		// renders
@@ -396,7 +434,7 @@ class Home extends Controller {
 				
 				//head
 				// 'head_title' => $this->title . ( ($this->slogan)? ' - '.$this->slogan:'' ),
-				'head_title' => $this->title." :: Prendas remodeladoras, Body Magic, Camiseta Abdomen, Prendas Remodeladoras Ardyss, Fajas Moldeadoras Ardyss, Fajas Ardyss, Fajas Remodeladoras, Fajas Reductoras",
+				// 'head_title' => $this->title." :: Prendas remodeladoras, Body Magic, Camiseta Abdomen, Prendas Remodeladoras Ardyss, Fajas Moldeadoras Ardyss, Fajas Ardyss, Fajas Remodeladoras, Fajas Reductoras",
 	
 				
 				// 'head_title' => 'nada',

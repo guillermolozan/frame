@@ -27,6 +27,7 @@ class Controller {
 	var $localhost;
 	var $remote;
 	var $pipe;
+	var $invert_title;
 	var $allow_externals;
 
 	function __construct($params){
@@ -104,6 +105,8 @@ class Controller {
 
 		$this->pipe = "|";
 		
+		$this->invert_title = false;
+
 		// version
 		$touchjson = file('touch.json');;
 		$touch = json_decode($touchjson[0],true);

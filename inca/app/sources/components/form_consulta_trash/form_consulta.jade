@@ -1,0 +1,12 @@
+form(class="w-full md:w-1/2 text-sm text-black py-8 px-6 md:order-last lg:pr-6 ",
+	method="POST",
+	name=form_name)
+
+	+simple_form('frm',form_fields)
+
+	.form_field(class="flex justify-center lg:justify-end ")
+		#recap
+		
+	.form_field(class="text-center ")
+		button#submit_button(disabled) ENVIAR
+	+form_recaptcha('recap','submit_button',recaptcha)

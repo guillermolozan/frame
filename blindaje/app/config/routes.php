@@ -16,11 +16,16 @@ foreach($productos_items as $ii=>$url)
 }
 */
 
-// PAGES
+/*
+88""Yb    db     dP""b8 888888 .dP"Y8
+88__dP   dPYb   dP   `" 88__   `Ybo."
+88"""   dP__Yb  Yb  "88 88""   o.`Y8b
+88     dP""""Yb  YboodP 888888 8bodP'
+*/
 $pages_items=get_valores("id","url","paginas");
 foreach($pages_items as $ii=>$url)
 {
-	$routes_return['/'.$url.'.html'.'$']='controller=Pages&item='.$ii;
+	$routes_return['/'.$url]='controller=Pages&item='.$ii;
 }
 
 
@@ -37,7 +42,7 @@ $routes_pages	= get_valores("id","url","paginas");
 
 
 
-$routes_group['Servicios']   = get_valores("id","url","productos_grupos","where 1",0);
+// $routes_group['Servicios']   = get_valores("id","url","productos_grupos","where 1",0);
 
 // prin($routes_group['Servicios']);
 
@@ -165,6 +170,5 @@ if(sizeof($routes_group['Servicios'])>0)
 	$routes_return['/(producto1|producto2|descuento|importado)/(:any)/(:num)$'] 										='controller=Servicios&method=detail&level=$1&item=$3';
 
 }
-
 
 return $routes_return;

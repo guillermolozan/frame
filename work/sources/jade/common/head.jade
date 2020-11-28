@@ -28,11 +28,14 @@ head
 	//- meta keywords
 	if(head_keywords)
 		meta(name="keywords",content="#{head_keywords}")
+		meta(http-equiv="keywords",content="#{head_keywords}")
 	//- facebook opengraph
 	if(opengraph)
-		meta(name="og:url",content="#{baseurl}#{canonical}")
-		meta(name="og:type",content="website")
+		//- meta(name="og:url",content="#{baseurl}#{canonical}")
+		//- meta(name="og:url",content="#{canonical}")
+		meta(name="og:url",content="#{canonical}")
 		meta(name="og:title",content="#{head_title}")
+		meta(name="og:type",content="website")
 		//- meta(name="og:description",content="#{og_description}")
 		//- meta(name="og:image",content="#{og_image}")
 	if(theme_color)
@@ -52,4 +55,4 @@ head
 		!= more_metas
 
 if(pre_output)
-	.pre_output(style="background:#eee;order:-9999;")!= pre_output
+	.pre_output(style="background:#eee;order:-9999;width:100%;position:relative;")!= pre_output

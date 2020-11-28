@@ -98,6 +98,7 @@ class Runtime {
     		'build_css' 	=> 'app.css',
 			'extension_css' => 'styl',
 			'source_dir_css'=>'stylus',
+			"source_file_js"=>"app.js",
 		];
 
 		$proy_file='project.json';
@@ -158,6 +159,7 @@ return [
 		
 		$stylus_file      = $stylus_dir."/".$proy['build_css'];
 		$es6_file         = $es6_dir."/".$proy['source_file_js'];
+		$components_jade_file= $jade_dir."/layout_components.jade";
 		
 		$read_stylus_file =implode("",file($stylus_file));
 
@@ -196,6 +198,9 @@ $finish_components_stylus
 
 		}
 
+
+		$start_components_jade='//- BEGIN';
+		$finish_components_jade='//- FINISH';
 
 
 		$read_es6_file    =implode("",file($es6_file));
@@ -255,6 +260,15 @@ $finish_components_es6
 		$dirr=explode("/",getcwd());
 		$dir=end($dirr);
 
+		$component_lines='';
+		$component_lines_nav="\t\t";
+		$component_lines_nav.="style.\n"
+		."\t\t\t.nav-components { padding-top:10px; display: flex;justify-content: space-between;flex-wrap: wrap;width:100%;bacgkround:#ccc;order:-9999; }\n"
+		."\t\t\t.nav-components a { display:inline-block; padding:3px 7px; margin:1px; background:teal; color:white; }\n"
+		."\t\t\t.nav-components a.active,.nav-components a:hover { background:black; color:yellow; }\n"
+		."\t\tdiv(class='nav-components')\n"
+		."\t\t\ta(href='',style='background-color:red;') Inicio\n";
+
 		$stylus_lines='';
 		$es6_lines=='';
 
@@ -272,10 +286,11 @@ $finish_components_es6
 				$name=$expl[1];
 				$directorio=$expl[0].'/'.$components_dir;
 				$externals[]=[
-					'dir'=>$directorio.'/'.$name,
-					'file'=>$name,
-					'option'=>$option
+					'dir'		=>	$directorio.'/'.$name,
+					'file'		=>	$name,
+					'option'	=>	$option
 				];
+
 			}elseif($size==1){
 				// local
 				$name=$com;
@@ -327,9 +342,18 @@ $finish_components_es6
 			.'
 ';
 
+			// JADE COMPONENTS
+			if(1){
+
+				$component_lines_nav.="\t\t\ta#nc_".$file."(href=\"#{uri}?component=".$file."\") ".$file."\n";
+				$component_lines.="\t\tif _GET['component']=='".$file."'\n";
+				$component_lines.="\t\t\tscript document.getElementById('nc_".$file."').classList.add('active');\n";
+				$component_lines.="\t\t\tinclude includes/".$file.".jade\n";
+
+			}
 
 			// STYLUS
-			if(enhay($option,'css')){
+			if(enhay($option,'css') or $proy['framework_css']=='materialize' ){
 
 				if(!file_exists("../".$final_stylus))
 					file_put_contents("../".$final_stylus,"");
@@ -382,7 +406,7 @@ $finish_components_es6
 		foreach($externals as $exter){
 
 			$external_jade[]='"./../'.$exter['dir'].'/'.$exter['file'].'.jade"';
-			if(enhay($exter['option'],'css'))
+			if(enhay($exter['option'],'css') or $proy['framework_css']=='materialize' )
 				$external_stylus[]='"./../'.$exter['dir'].'/'.$exter['file'].'.'.$proy['extension_css'].'"';
 			if(enhay($exter['option'],'es6'))
 				$external_es6[]='"./../'.$exter['dir'].'/'.$exter['file'].'.js"';
@@ -411,6 +435,13 @@ $finish_components_es6
 			$start_components_es6,
 			$finish_components_es6
 		));
+
+		file_put_contents($components_jade_file,putbetween(
+			"\n".$component_lines_nav.$component_lines."\t\t",
+			implode("",file($components_jade_file)),
+			$start_components_jade,
+			$finish_components_jade
+		));		
 
 		echo "
 

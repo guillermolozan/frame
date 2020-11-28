@@ -6,7 +6,7 @@ class Pages extends \core\Models {
 	var $post;
 
 	function __construc(&$scope){
-
+		
 		parent::__construct($scope);
 
 	}
@@ -42,11 +42,11 @@ class Pages extends \core\Models {
 
 
 	function getPage($params=[]){
-
+		
 		$config=$this->getConfig();
 
 		$params=array_merge($this->params,$params);
-
+		
 					//only for data test
 					// if($this->data_test){
 
@@ -280,8 +280,19 @@ class Pages extends \core\Models {
 	function getTitle($post=null){
 
 		$post=($post)?$post:$this->post;
-		// return ucfirst(strtolower(trim($post['name'])))." | ".$this->title;
-		return trim($post['name'])." ".$this->pipe." ".$this->title;
+		
+		if( isset($post['title']) and $post['title']!='' ){
+			$title=trim($post['title']);
+		} else {
+			$title=trim($post['name']);
+		}
+
+		if($this->invert_title){
+			return $this->title." ".$this->pipe." ".$title;
+			// return ucfirst(strtolower($title))." | ".$this->title;
+		} else {
+			return $title." ".$this->pipe." ".$this->title;
+		}
 
 	}
 
@@ -290,6 +301,14 @@ class Pages extends \core\Models {
 
 		$post=($post)?$post:$this->post;
 
+
+		if( isset($post['meta_description']) and ($post['meta_description']!='') ){
+			
+			return $post['meta_description'];
+
+		}
+		
+		
 		if($more!=null) {
 			
 			$text=$more;
@@ -313,6 +332,11 @@ class Pages extends \core\Models {
 
 		$post=($post)?$post:$this->post;
 
+		if( isset($post['meta_keywords']) and ($post['meta_keywords']!='') ){
+			
+			return $post['meta_keywords'];
+
+		}		
 		// echo '<textarea>'
 		// .str_replace("\n"," ",strip_tags(html_entity_decode($post['html'])))
 		// .'</textarea>';
@@ -325,9 +349,19 @@ class Pages extends \core\Models {
 	}
 
 
-	function getCanonical($array){
-		// prin($array);
+	function getCanonical($array=null){
+
+		$post=$this->post;
+		
 		$url = $this->view->vars['baseurl'];
+
+		if( isset($post['url']) and ($post['url']!='') ){
+			
+			return $url.$post['url'];
+
+		}
+
+		// prin($array);
 		
 		$url2='';
 		if($array['group'])
@@ -381,6 +415,7 @@ class Pages extends \core\Models {
 
 
 	}
+
 
 	function getMenu($params=[],$debug=0){
 

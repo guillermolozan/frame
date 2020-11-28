@@ -1,6 +1,6 @@
 <?php
 
-
+/*
 // ITEMS
 $productos_items=get_valores("id","url","productos_items");
 foreach($productos_items as $ii=>$url)
@@ -14,7 +14,7 @@ foreach($productos_items as $ii=>$url)
 {
 	$routes_return['/oferta-'.$url.'.html'.'$']='controller=Servicios&method=detail&level=descuento&item='.$ii;
 }
-
+*/
 
 // PAGES
 $pages_items=get_valores("id","url","paginas");
@@ -48,32 +48,35 @@ $routes_lists = [
 	// 	'detail'     =>'galeria-fotos',
 	// 	'controller' =>'Photos',
 	// ],	
-	[
-		'grid'       =>'videos',
-		'detail'     =>'galeria-videos',
-		'controller' =>'Videos',
-	],
+	// [
+	// 	'grid'       =>'videos',
+	// 	'detail'     =>'galeria-videos',
+	// 	'controller' =>'Videos',
+	// ],
 	// [
 	// 	'grid'       =>'productos',
 	// 	'detail'     =>'producto',
 	// 	'controller' =>'PagesPhotos',
 	// ]
-	[
-		'grid'       =>'posts',
-		'detail'     =>'post',
-		'controller' =>'Posts',
-		'pipe'		 =>'/'
-	],
+	// [
+	// 	'grid'       =>'posts',
+	// 	'detail'     =>'post',
+	// 	'controller' =>'Posts',
+	// 	'pipe'		 =>'/'
+	// ],
 
-	[
-		'grid'       =>'servicios',
-		'detail'     =>'servicio',
-		'controller' =>'Products',
-	],
+	// [
+	// 	'grid'       =>'servicios',
+	// 	'detail'     =>'servicio',
+	// 	'controller' =>'Products',
+	// ],
 
 ];
 
-$routes_forms =['contactenos','suscribete'];
+$routes_forms =[
+	'contactenos',
+	// 'suscribete'
+];
 
 
 

@@ -18,8 +18,6 @@ return [
 		<meta name="geo.placename" content="Lima">
 		<meta name="language" content="Español,Ingles">
 		<meta name="Subject" content="Blindaje Autos Perú">
-		<meta name="keywords" content="althon corporation, lima, peru, blindadora, \'blindajes peru\', \'lima\', \'blindaje de vehículos\', premionacional, \'mantenimiento blindajes\', \'mantenimiento blindados\', \'permiso blindaje\', \'blindajes en peru\', \'lima peru\', atentados, miraflorez, blindadoras, \'empresas reconocidas\', equipamiento contra asalto y robo, estructuras anti-accidentes, equipamiento de vehículos escolta">
-		<meta http-equiv="keywords" content="althon corporation, blindaje de autos perú, blindaje de autos, blindaje de camionetas, blindaje de vehículos, equipamiento, contra asalto y robo, estructuras anti-accidentes, equipamiento de vehículos escolta, blindaje de carros, autos blindados">
 		<meta name="revisit-after" content="1 days">
 		',
 
@@ -141,6 +139,12 @@ return [
 
 	],
 
-	'project'=> json_decode(file_get_contents("project.json"), true)
+	'project'=> json_decode(file_get_contents("project.json"), true),
+
+	'panel'=> [
+		'Home|index'=>['paginas','1'],
+		'Pages|index'=>['paginas'],
+		'Forms|contactenos'=>['paginas','5'],
+	]
 
 ];

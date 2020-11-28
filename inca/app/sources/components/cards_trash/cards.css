@@ -1,0 +1,36 @@
+@layer components {
+
+
+    /*
+     dP""b8    db    88""Yb 8888b.  .dP"Y8
+    dP   `"   dPYb   88__dP  8I  Yb `Ybo."
+    Yb       dP__Yb  88"Yb   8I  dY o.`Y8b
+     YboodP dP""""Yb 88  Yb 8888Y"  8bodP'
+    */
+    .cards {
+        & h3 {
+            @apply text-xs underline font-extrabold mb-2;
+        } 
+        & h4 {
+            @apply text-xs mb-3 font-extrabold;
+        }
+        & h5 {
+            @apply font-bold text-yellow-400 mb-3;
+        }                
+        & p {
+            @apply text-xs mb-2;
+        }
+        & strong {
+            @apply font-bold text-secondary;
+        }        
+        & ul {
+            @apply mb-4 list-disc pl-3 text-left;
+        }
+        & img {
+            @apply m-auto;
+        }
+
+    }
+    
+
+}

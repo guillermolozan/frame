@@ -3,18 +3,17 @@
 $routes_return = [];
 
 // ITEMS
-$productos_items=get_valores("id","url","productos_items");
+$productos_items=get_valores("id","url","productos_items","where visibilidad=1");
 foreach($productos_items as $ii=>$url)
 {
-	$routes_return['/'.$url.'.html'.'$']='controller=Servicios&method=detail&level=producto&item='.$ii;
+	$routes_return['/'.$url.'$']='controller=Servicios&method=detail&level=producto&item='.$ii;
 }
 
-
 // PAGES
-$pages_items=get_valores("id","url","paginas");
+$pages_items=get_valores("id","url","paginas","where visibilidad=1");
 foreach($pages_items as $ii=>$url)
 {
-	$routes_return['/'.$url.'.html'.'$']='controller=Pages&item='.$ii;
+	$routes_return['/'.$url.'$']='controller=Pages&item='.$ii;
 }
 
 
@@ -50,6 +49,11 @@ $routes_lists = [
 	// 	'detail'     =>'producto',
 	// 	'controller' =>'PagesPhotos',
 	// ]
+	[
+		// 'grid'       =>'productos',
+		'detail'     =>'imprimir',
+		'controller' =>'Imprimir',
+	]	
 ];
 
 $routes_forms =['contactenos'];

@@ -232,7 +232,7 @@ AddDefaultCharset utf-8
 	RewriteCond $1 !^(ajax\.php|index\.php|login\.php|maquina\.php|captcha|js|css|robots\.txt|humans\.txt)  
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^([a-z_]{3,100})(.*) index.php/$1 [L]
+	RewriteRule ^([a-z_]{2,100})(.*) index.php/$1 [L]
 
 </IfModule>
 

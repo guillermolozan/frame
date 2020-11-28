@@ -86,8 +86,10 @@ const ini        = require('ini');
 
 const fileExists = require('file-exists');
 
+
+
 // const framework_css='stylus';
-const framework_css='tailwind';
+// const framework_css='tailwind';
 
 
 /*
@@ -128,7 +130,21 @@ const clean = argv.c || '';
 
 var activelivedeploy = depl == 'l' ? true : false;
 
+
+const xdepl = argv.x || 'no-component';
+
+
+var modeComponent = xdepl == 'g' ? true : false;; // si es true solo va a procesar layout_components.jade
+
+var modeProd = !modeComponent; // || true;  // si es true va a aplicar purge y nano
+
+
+
 gutil.log(gutil.colors.bgRed(' DEVELOPMENT' + (activelivedeploy ? ' AND DEPLOY' : '') + ' '));
+
+
+gutil.log(gutil.colors.bgCyan(' MODE ' + (modeComponent ? ' COMPONENT ' : 'NO COMPONENT') + ' '));
+
 
 var varjson;
 
@@ -142,12 +158,24 @@ if(fileExists.sync(app + '/config.json')){
 	config_dir=argv.p;
 }
 
-var source_file_js;
+var proy_config;
+var framework_css='stylus';
+var source_file_js='app.js';
+var source_dir_css='stylus';
+
 if(fileExists.sync(app + '/project.json')){
-	config=require(app + '/project.json');
-	source_file_js=config.source_file_js;
-} else {
-	source_file_js='app.js';
+	
+	proy_config=require(app + '/project.json');
+
+	if(proy_config.framework_css)
+		framework_css=proy_config.framework_css;
+
+	if(proy_config.source_file_js)
+		source_file_js=proy_config.source_file_js;
+
+	if(proy_config.source_dir_css)
+		source_dir_css=proy_config.source_dir_css;
+
 }
 
 const sp_folder = '../../sistemapanel/' + config_dir + '/panel/';
@@ -217,40 +245,38 @@ const tailwind_task= () => {
 
 	touch_task('tailwind');
   
-	return gulp
-		.src(tailwind_dir + '/app.css')
-		// .pipe(
-		// 	stylus({
-		// 		'include css': true,
-		// 		// compress: false
-		// 	})
-		// )	
-		
-		.pipe(postcss([
-			
-			postcssEasyImport,
-
-			tailwindcss(tailwind_dir+'/tailwind.config.js'),
-			
-			autoprefixer,
-			cssnested,
-			
-			purgecss({
-				content: all_watch_jade,
-				defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
-				safelist: ['active']
-			}),
-		
-			cssnano,
-
-		]))
-		
-	  	// .pipe(postcss([tailwindcss]))
-		.pipe(gulp.dest(public_dir + '/css'))
-		.pipe(livereload());
+	if(modeProd)
+		return gulp
+			.src(tailwind_dir + '/app.css')
+			.pipe(postcss([
+				postcssEasyImport,
+				tailwindcss(tailwind_dir+'/tailwind.config.js'),
+				autoprefixer,
+				cssnested,
+				purgecss({
+					content: all_watch_jade,
+					defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+					safelist: ['active']
+				}),
+				cssnano,
+			]))
+			.pipe(gulp.dest(public_dir + '/css'))
+			.pipe(livereload());
+	else
+		return gulp
+			.src(tailwind_dir + '/app.css')
+			.pipe(postcss([
+				postcssEasyImport,
+				tailwindcss(tailwind_dir+'/tailwind.config.js'),
+				autoprefixer,
+				cssnested
+			]))
+			.pipe(gulp.dest(public_dir + '/css'))
+			.pipe(livereload());
 
 };
 
+/*
 const tailwind_task_posible = () => {
 	touch_task('tailwind');
 
@@ -271,7 +297,7 @@ const tailwind_task_posible = () => {
 	  .pipe(livereload());
 
 };
-
+*/
 
 
 /*
@@ -283,6 +309,8 @@ const tailwind_task_posible = () => {
 ##    ## ##     ## ##     ## ##       ##        ##        ##     ## ##
  ######  ##     ## ########  ######## ######### ##        ##     ## ##
 */
+
+
 const jade2php_task = () => {
 	/*
 	const command =
@@ -306,14 +334,15 @@ const jade2php_task = () => {
 	var optionsExec = {
 		continueOnError: false, // default = false, true means don't emit error event
 		pipeStdout: false, // default = false, true means stdout is written to file.contents
-	  };
+	};
 	var reportOptions = {
 		err: true, // default = true, false means don't write err
 		stderr: true, // default = true, false means don't write stderr
 		stdout: true // default = true, false means don't write stdout
 	};
+	var jade_dir_files = (modeComponent) ? '/layout_components.jade' : '/layout*.jade'
 	return gulp
-		.src(jade_dir+'/layout*.jade' )
+		.src(jade_dir + jade_dir_files )
 		/**/
 		.pipe(
 			execute(
@@ -333,7 +362,7 @@ const jade2php_task = () => {
 			)
 		*/
 		.pipe(execute.reporter(reportOptions));
-		// .pipe(livereload());
+		// .pipe( livereload() );
 
 };
 
@@ -455,23 +484,31 @@ const modifies = [
 	'./../htaccess'
 ];
 
-const external_tailwind = require(tailwind_dir + '/externals/external.json');
-const external_stylus = require(stylus_dir + '/externals/external.json');
+let all_watch_tailwind;
+if(source_dir_css=='tailwind'){
+	const external_tailwind = require(tailwind_dir + '/externals/external.json');
+	all_watch_tailwind = [
+		tailwind_dir + '/*.css',
+		tailwind_dir + '/*/*.css',
+		'tailwind.config.js',
+	].concat(external_tailwind);
+}	
+let all_watch_stylus;
+if(source_dir_css=='stylus'){
+	const external_stylus = require(stylus_dir + '/externals/external.json');
+	all_watch_stylus = [
+		// comp_dir+'/**/*.styl',
+		stylus_dir + '/*.styl',
+		stylus_dir + '/**/*.styl',
+		work_stylus_dir + '/**/*.styl'
+	].concat(external_stylus);	
+}
 const external_jade = require(jade_dir + '/externals/external.json');
 const external_es6 = require(es6_dir + '/externals/external.json');
 
-const all_watch_tailwind = [
-	tailwind_dir + '/*.css',
-	tailwind_dir + '/*/*.css',
-	'tailwind.config.js',
-].concat(external_tailwind);
 
-const all_watch_stylus = [
-	// comp_dir+'/**/*.styl',
-	stylus_dir + '/*.styl',
-	stylus_dir + '/**/*.styl',
-	work_stylus_dir + '/**/*.styl'
-].concat(external_stylus);
+
+
 
 const all_watch_js = [
 	// comp_dir+'/**/*.js',
@@ -520,7 +557,7 @@ const watch_task = () => {
 	}
 
 	if(framework_css=='tailwind'){
-		//watch stylus
+		//watch tailwind
 		gulp.watch(all_watch_tailwind, tailwind_task);
 	}	
 
@@ -550,22 +587,44 @@ const watch_task = () => {
   */
 
 	keys((ch, key) => {
+
+		if (key.ctrl && key.name === 'g') {
+			if (modeComponent){
+
+				modeComponent = false;
+				gutil.log(gutil.colors.red('mode component desactivado'));
+
+			} else {
+
+				modeComponent = true;
+				gutil.log(gutil.colors.green('mode component activado'));
+
+			}
+			// console.log('activelivedeploy '+activelivedeploy);
+		}
+
 		if (key.ctrl && key.name === 'l') {
-			if (activelivedeploy) {
+			if (activelivedeploy){
+
 				activelivedeploy = false;
 				gutil.log(gutil.colors.bgRed('live deploy desactivado'));
+
 			} else {
+
 				activelivedeploy = true;
 				gutil.log(gutil.colors.bgGreen('live deploy activado'));
+
 			}
 			// console.log('activelivedeploy '+activelivedeploy);
 		}
 
 		if (key.ctrl && key.name === 'u') {
-			gutil.log(gutil.colors.bgGreen('uploading.....'));
 
+			gutil.log(gutil.colors.bgGreen('uploading.....'));
 			deploy_task();
+
 		}
+
 	});
 
 	if (activelivedeploy) 
@@ -573,11 +632,19 @@ const watch_task = () => {
 	else 
 		gutil.log(gutil.colors.bgRed('live deploy desactivado'));
 
+
+	if (modeComponent) 
+		gutil.log(gutil.colors.green('mode component activado'));
+	else 
+		gutil.log(gutil.colors.red('mode component desactivado'));
+		
+		
 	const watcher = gulp.watch(modifies);
 
 	watcher.on('change', function (path, stats) {
 		live_deploy_task(path);
 	});
+
 };
 
 /*
@@ -798,6 +865,27 @@ const get_comp_task = async () => {
 	return gulp.src(comp_dir_from_es6).pipe(gulp.dest(comp_dir_to));
 };
 
+/*
+ ######   ######   ######
+##    ## ##    ## ##    ##
+##       ##       ##
+##        ######   ######
+##             ##       ##
+##    ## ##    ## ##    ##
+ ######   ######   ######
+*/
+const css_task = async () => {
+
+	if(framework_css=='tailwind'){
+		tailwind_task();
+	}
+	if(framework_css=='stylus'){
+		stylus_task();
+	}
+	
+}
+
+
 exports.touch = touch_task;
 exports.stylus = stylus_task;
 exports.php = jade2php_task;
@@ -810,5 +898,6 @@ exports.get_comp = get_comp_task;
 exports.deploy = deploy_task;
 // exports.email_inline   = email_inline_task;
 
-// exports.default = gulp.series(hello_task, components_task, stylus_task, jade2php_task, webpack_task, watch_task);
-exports.default = gulp.series(hello_task, components_task, tailwind_task, jade2php_task, webpack_task, watch_task);
+exports.default = gulp.series(hello_task, components_task, css_task,jade2php_task, webpack_task, watch_task);
+
+// exports.tw = gulp.series(hello_task, components_task, gulp.parallel(tailwind_task, jade2php_task, webpack_task), watch_task);

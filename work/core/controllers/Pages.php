@@ -42,15 +42,34 @@ class Pages extends \controllers\Controller {
 	function index($params){
 
 
+
 		$Page=$this->loadModel('Pages');
-		
+
+		// con este codigo obtenemos urls meta desription y meta keywords
+		$Page->setConfig([
+			'items'=>[
+				'fields' =>$Page->getConfig()['items']['fields'].",url,title,meta_description,meta_keywords",
+			],
+			'debug'=>0
+		]);
+
+
 		$post             =$Page->getPage();
-				
+		
+		$head_title       =$Page->getTitle($post);
+
 		$head_description =$Page->getDescription($post);
 
 		$head_keywords    =$Page->getKeywords($post);
+
+		$canonical  	  =$Page->getCanonical([
+
+			'group'   =>$group,
+			'name'    =>$post['name'],
+			'id'      =>$post['id'],
 		
-		$head_title       =$Page->getTitle($post);
+		]);		
+
 		
 		$this->view->assign([
 				
@@ -59,6 +78,8 @@ class Pages extends \controllers\Controller {
 			'head_description' => $head_description,
 
 			'head_keywords'    => $head_keywords,
+
+			'canonical'   	   => $canonical,
 			
 			'title'            => $post['name'],
 			
@@ -276,13 +297,7 @@ class Pages extends \controllers\Controller {
 			
 			$menu       =$this->elements->getM($menu,$this->params['uri']);
 
-			$canonical  =$Page->getCanonical([
 
-				'group'   =>$group,
-				'name'    =>$post['name'],
-				'id'      =>$post['id'],
-			
-			]);
 
 			// prin($gallery);
 
@@ -291,7 +306,6 @@ class Pages extends \controllers\Controller {
 				'menu_post'  => $menu,
 				'group_post' => $group,
 				'breadcrumb' => $breadcrumb,
-				'canonical'  => $canonical,
 
 			]);
 

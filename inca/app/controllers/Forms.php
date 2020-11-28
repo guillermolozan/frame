@@ -36,33 +36,39 @@ class Forms extends \core\controllers\Forms {
 
 			'nombre'=>[
 				'class' =>'validate',
-				'label' =>'Nombre',
+				'label' =>'Nombres y Apellidos',
 			],
 
-			// 'dni'=>[
-			// 	'label'=>'DNI o Pasaporte',
-			// ],
-
-			// 'medio'=>[
-			// 	'label'=>'¿Por qué medio nos encontró?',
-			// 	'type'  =>'select',
-			// 	'options'=>['Web','Periódico','Revista','Televisión','Panel Publicitario','Un conocido nos recomendó','Otros']
-			// ],		
-
+			'ciudad'=>[
+				'class' =>'validate',
+				'label' =>'Ciudad y Pais',
+			],	
+			
+			'medio'=>[
+				'class' =>'validate',
+				'label' =>'¿Por qué medio nos encontró?',
+				'type'  =>'select',
+				'options'=>['Web','Periódico','Revista','Televisión','Panel Publicitario','Un conocido nos recomendó','Otros']
+			],
+			
 			'telefono'=>[
 				'class' =>'validate',
-				'label'=>'Celular',
+				'label' =>'Teléfono o Celular*',
 			],
-
+			
 			'email'=>[
 				'class' =>'validate',
-				'label' =>'Correo',
+				'label' =>'Email',
 				'type'  =>'email',
+			],	
+			
+			'empresa'=>[
+				'class' =>'validate',
+				'label' =>'Empresa',
 			],
 
 			'comentario'=>[
-				'class' =>'validate',
-				'label' =>'Mensaje o comentario',
+				'label' =>'Comentario',
 				'type'  =>'textarea',
 			],
 
@@ -124,29 +130,24 @@ class Forms extends \core\controllers\Forms {
 		}
 
 		// $this->view->assign(['banner_imagen'=>'banner-contactenos.jpg?2']);
-
-
+		
 		$this->view->render(
 			
 			'layout_forms',
 
 			[
 				//head
-				'head_title'   => $this->name.' - '.$this->title,
+				'head_title'   => $this->name.' '.$this->pipe.' '.$this->title,
 
 				'title' 			=> $this->name,
 				
 				'message'		=> $this->message,
 
-				'fields1'			=> [
-					$fields_reformated[0],
-					$fields_reformated[1],
-					$fields_reformated[2],
-				],
+		
 
-				'fields2'			=> [$fields_reformated[3]],
+				'form_fields'			=> $fields_reformated,
 
-				'map'				=> $map,
+				// 'map'				=> $map,
 
 				//main
 				// 'main_title' 	=> 'Home',
@@ -155,6 +156,32 @@ class Forms extends \core\controllers\Forms {
 				// 'menu_left'    => $this->elements->getMenuLeft(),
 				// 'filters'   => $ele->getFilters(),
 				// 'grid'      => $ele->getGrid(),
+
+				/*
+				 dP""b8 8b    d8    db    88""Yb
+				dP   `" 88b  d88   dPYb   88__dP
+				Yb  "88 88YbdP88  dP__Yb  88"""
+				 YboodP 88 YY 88 dP""""Yb 88
+				*/
+				// 'gmap_key'			 => 'AIzaSyDsA0HccVmhVLNFpys3BZZlmOemTq-peBA',
+				
+				/*
+				88""Yb 888888  dP""b8    db    88""Yb 888888  dP""b8 88  88    db
+				88__dP 88__   dP   `"   dPYb   88__dP   88   dP   `" 88  88   dPYb
+				88"Yb  88""   Yb       dP__Yb  88"""    88   Yb      888888  dP__Yb
+				88  Yb 888888  YboodP dP""""Yb 88       88    YboodP 88  88 dP""""Yb
+				*/
+				'recaptcha'				=>	[
+					'site_key'				=>	'6Lfr4-IZAAAAAEO0R90iBDZHuT5-zBM-47ALzIey',
+					'secret_key'			=>	'6Lfr4-IZAAAAAEAo1zedNJjWIP_84dohG4MJByQu',
+				],
+
+				'more_metas' 			=> str_replace("\n","",'
+					<meta name="language" content="Español,Ingles">
+					<meta name="Subject" content="Blindaje Autos Perú :: Contáctenos">
+					<meta name="revisit-after" content="1 days">
+				')				
+
 			]
 
 		);		

@@ -1,0 +1,62 @@
+html(
+	lang="es",
+	class="text-gray-900 antialiased leading-tight bg-primary "
+	)
+
+	include common/head.jade
+
+	body(
+		class="#{classbody}",
+		class=" relative container mx-auto bg-white lg:px-2 pt-16 lg:pt-3 lg:pb-2 flex flex-wrap content-start items-start "
+		)
+		
+		//- BEGIN
+		div(class="w-full text-gray-500 bg-black order-first"): nav(class="flex-wrap px-1 py-2 flex")
+			a(class='px-3 py-2 rounded-md text-sm font-medium text-gray-100 hover:text-white hover:bg-gray-700',href='?component=header_pre') header_pre
+			a(class='px-3 py-2 rounded-md text-sm font-medium text-gray-100 hover:text-white hover:bg-gray-700',href='?component=header') header
+			a(class='px-3 py-2 rounded-md text-sm font-medium text-gray-100 hover:text-white hover:bg-gray-700',href='?component=menu') menu
+			a(class='px-3 py-2 rounded-md text-sm font-medium text-gray-100 hover:text-white hover:bg-gray-700',href='?component=footer') footer
+			a(class='px-3 py-2 rounded-md text-sm font-medium text-gray-100 hover:text-white hover:bg-gray-700',href='?component=footer_post') footer_post
+			a(class='px-3 py-2 rounded-md text-sm font-medium text-gray-100 hover:text-white hover:bg-gray-700',href='?component=home_banner') home_banner
+			a(class='px-3 py-2 rounded-md text-sm font-medium text-gray-100 hover:text-white hover:bg-gray-700',href='?component=home_cards') home_cards
+			a(class='px-3 py-2 rounded-md text-sm font-medium text-gray-100 hover:text-white hover:bg-gray-700',href='?component=home_models') home_models
+			a(class='px-3 py-2 rounded-md text-sm font-medium text-gray-100 hover:text-white hover:bg-gray-700',href='?component=form_cita') form_cita
+			a(class='px-3 py-2 rounded-md text-sm font-medium text-gray-100 hover:text-white hover:bg-gray-700',href='?component=form_cotiza') form_cotiza
+			a(class='px-3 py-2 rounded-md text-sm font-medium text-gray-100 hover:text-white hover:bg-gray-700',href='?component=form_reclamo') form_reclamo
+			a(class='px-3 py-2 rounded-md text-sm font-medium text-gray-100 hover:text-white hover:bg-gray-700',href='?component=app_map') app_map
+			a(class='px-3 py-2 rounded-md text-sm font-medium text-gray-100 hover:text-white hover:bg-gray-700',href='?component=post') post
+			a(class='px-3 py-2 rounded-md text-sm font-medium text-gray-100 hover:text-white hover:bg-gray-700',href='?component=gallery') gallery
+			a(class='px-3 py-2 rounded-md text-sm font-medium text-gray-100 hover:text-white hover:bg-gray-700',href='?component=app_model_detail') app_model_detail
+		if _GET['component']=='header_pre'
+			include includes/header_pre.jade
+		if _GET['component']=='header'
+			include includes/header.jade
+		if _GET['component']=='menu'
+			include includes/menu.jade
+		if _GET['component']=='footer'
+			include includes/footer.jade
+		if _GET['component']=='footer_post'
+			include includes/footer_post.jade
+		if _GET['component']=='home_banner'
+			include includes/home_banner.jade
+		if _GET['component']=='home_cards'
+			include includes/home_cards.jade
+		if _GET['component']=='home_models'
+			include includes/home_models.jade
+		if _GET['component']=='form_cita'
+			include includes/form_cita.jade
+		if _GET['component']=='form_cotiza'
+			include includes/form_cotiza.jade
+		if _GET['component']=='form_reclamo'
+			include includes/form_reclamo.jade
+		if _GET['component']=='app_map'
+			include includes/app_map.jade
+		if _GET['component']=='post'
+			include includes/post.jade
+		if _GET['component']=='gallery'
+			include includes/gallery.jade
+		if _GET['component']=='app_model_detail'
+			include includes/app_model_detail.jade
+		//- FINISH
+
+		include common/foot
