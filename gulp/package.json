@@ -14,7 +14,7 @@
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^7.0.1",
     "gulp-exec": "^5.0.0",
-    "gulp-inline-css": "^3.4.0",
+    "gulp-inline-css": "^4.0.0",
     "gulp-keylistener": "^0.1.11",
     "gulp-livereload": "^4.0.2",
     "gulp-postcss": "^9.0.0",
